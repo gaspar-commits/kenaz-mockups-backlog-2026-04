@@ -1,0 +1,1626 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Minina &amp; Kanina — Centre Veterinari · Xàbia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Mulish:wght@300;400;500;600;700;800&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Paleta K1 — tierra rural honesta */
+    --paper:        #FAF5ED;   /* crema cálida, papel rural */
+    --paper-warm:   #F2E8D8;   /* beige cálido */
+    --paper-deep:   #E9DCC6;
+    --earth:        #8A6F4A;   /* tierra natural */
+    --earth-soft:   #B89878;
+    --leaf:         #5A6B40;   /* verde hoja lleno */
+    --leaf-deep:    #3A4A28;
+    --leaf-mute:    #8A9668;
+    --terra:        #A85A3A;   /* terracotta auténtica */
+    --terra-deep:   #7A3E26;
+    --ink:          #2A2520;   /* marrón casi negro, cálido */
+    --ink-mute:     #7A6E60;
+    --line:         #2A252018;
+    --line-strong:  #2A252030;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Mulish', system-ui, sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* ---------- TOP BAR ---------- */
+  .topbar {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 56px;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .brand-mark {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--leaf-deep);
+    display: grid; place-items: center;
+    color: var(--paper-warm);
+    font-family: 'PT Serif', serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 20px;
+  }
+
+  .wordmark {
+    font-family: 'PT Serif', serif;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    line-height: 1;
+  }
+
+  .wordmark .amp {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--terra);
+    margin: 0 2px;
+  }
+
+  .wordmark-sub {
+    display: block;
+    font-family: 'Mulish', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    color: var(--ink-mute);
+    font-weight: 600;
+    margin-top: 5px;
+    text-transform: uppercase;
+  }
+
+  .nav {
+    display: flex;
+    gap: 38px;
+    font-family: 'Mulish', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .nav a {
+    color: var(--ink);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .nav a:hover { color: var(--terra); }
+  .nav a.active { color: var(--terra); }
+
+  .nav-cta {
+    font-family: 'Mulish', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 10px 22px;
+    border-radius: 999px;
+    background: var(--leaf-deep);
+    color: var(--paper);
+    text-decoration: none;
+    transition: background 0.2s ease;
+  }
+
+  .nav-cta:hover { background: var(--leaf); }
+
+  .lang {
+    display: flex;
+    gap: 10px;
+    font-family: 'Mulish', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--ink-mute);
+    margin-left: 18px;
+  }
+
+  .lang span { cursor: pointer; }
+  .lang .on { color: var(--ink); border-bottom: 1.5px solid var(--terra); padding-bottom: 2px; }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative;
+    padding: 70px 56px 90px;
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 72px;
+    align-items: center;
+    min-height: 760px;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Mulish', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--leaf-deep);
+    margin-bottom: 28px;
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 42px;
+    height: 1px;
+    background: var(--leaf-deep);
+  }
+
+  .headline {
+    font-family: 'PT Serif', serif;
+    font-weight: 400;
+    font-size: 72px;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin-bottom: 32px;
+  }
+
+  .headline em {
+    font-style: italic;
+    color: var(--leaf-deep);
+  }
+
+  .headline-note {
+    font-family: 'Caveat', cursive;
+    font-size: 32px;
+    color: var(--terra);
+    display: inline-block;
+    transform: rotate(-3deg);
+    line-height: 1;
+    margin-left: 6px;
+  }
+
+  .lede {
+    font-family: 'PT Serif', serif;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--ink);
+    max-width: 520px;
+    margin-bottom: 40px;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 44px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+  }
+
+  .hero-meta div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-meta .k {
+    font-family: 'PT Serif', serif;
+    font-style: italic;
+    font-size: 32px;
+    color: var(--leaf-deep);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .hero-meta .v {
+    font-family: 'Mulish', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    font-weight: 600;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .btn {
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 16px 32px;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .btn-primary {
+    background: var(--terra);
+    color: var(--paper);
+  }
+
+  .btn-primary:hover { background: var(--terra-deep); }
+
+  .btn-ghost {
+    color: var(--ink);
+    background: transparent;
+    border: 1px solid var(--line-strong);
+    padding: 15px 28px;
+  }
+
+  .btn-ghost:hover { border-color: var(--ink); }
+
+  .btn .arrow { font-size: 16px; line-height: 1; }
+
+  /* HERO IMAGE */
+  .hero-visual {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    max-height: 700px;
+  }
+
+  .hero-visual .frame {
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px -30px rgba(42, 37, 32, 0.35);
+  }
+
+  .hero-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+  }
+
+  .hero-visual .badge {
+    position: absolute;
+    bottom: -24px;
+    left: -24px;
+    background: var(--paper-warm);
+    border: 1px solid var(--line);
+    padding: 18px 22px;
+    border-radius: 6px;
+    font-family: 'PT Serif', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--ink);
+    max-width: 240px;
+    line-height: 1.35;
+    z-index: 3;
+    box-shadow: 0 14px 32px -18px rgba(42, 37, 32, 0.4);
+  }
+
+  .hero-visual .badge strong {
+    display: block;
+    font-family: 'Mulish', sans-serif;
+    font-style: normal;
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--terra);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .hero-visual .stamp {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: var(--leaf-deep);
+    color: var(--paper);
+    display: grid;
+    place-items: center;
+    z-index: 3;
+    text-align: center;
+    font-family: 'PT Serif', serif;
+    font-style: italic;
+    font-size: 13px;
+    line-height: 1.2;
+    transform: rotate(8deg);
+    padding: 14px;
+    box-shadow: 0 10px 26px -10px rgba(58, 74, 40, 0.5);
+  }
+
+  .hero-visual .stamp b {
+    display: block;
+    font-family: 'PT Serif', serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  /* ---------- TRUST STRIP ---------- */
+  .trust {
+    padding: 36px 56px;
+    background: var(--paper-warm);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  .trust-label {
+    font-family: 'Mulish', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .trust-items {
+    display: flex;
+    gap: 36px;
+    flex-wrap: wrap;
+    flex: 1;
+    justify-content: flex-end;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Mulish', sans-serif;
+    font-size: 13px;
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .trust-item svg {
+    width: 18px; height: 18px;
+    color: var(--leaf-deep);
+    flex-shrink: 0;
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section {
+    padding: 110px 56px;
+    position: relative;
+  }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 60px;
+    margin-bottom: 72px;
+    align-items: end;
+  }
+
+  .section-eyebrow {
+    font-family: 'Mulish', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .section-eyebrow::before {
+    content: "";
+    width: 36px;
+    height: 1px;
+    background: var(--terra);
+  }
+
+  .section-title {
+    font-family: 'PT Serif', serif;
+    font-weight: 400;
+    font-size: 52px;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--leaf-deep);
+  }
+
+  .section-intro {
+    font-family: 'PT Serif', serif;
+    font-size: 19px;
+    line-height: 1.65;
+    color: var(--ink);
+    max-width: 560px;
+  }
+
+  /* ---------- SERVICIOS ---------- */
+  .services {
+    background: var(--paper);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 48px;
+  }
+
+  .service-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    background: var(--paper-warm);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .service-card.hero-card {
+    grid-column: span 2;
+    grid-template-columns: 1.1fr 1fr;
+  }
+
+  .service-card .img-wrap {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+  }
+
+  .service-card.hero-card .img-wrap {
+    aspect-ratio: auto;
+  }
+
+  .service-card .img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .service-card .img-wrap .chip {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    background: var(--paper);
+    padding: 7px 14px;
+    border-radius: 999px;
+    font-family: 'Mulish', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--leaf-deep);
+  }
+
+  .service-card .body {
+    padding: 42px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 28px;
+  }
+
+  .service-card h3 {
+    font-family: 'PT Serif', serif;
+    font-weight: 400;
+    font-size: 34px;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 18px;
+    letter-spacing: -0.005em;
+  }
+
+  .service-card h3 em {
+    font-style: italic;
+    color: var(--leaf-deep);
+  }
+
+  .service-card p {
+    font-family: 'PT Serif', serif;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  .service-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .service-card ul li {
+    font-family: 'Mulish', sans-serif;
+    font-size: 13px;
+    color: var(--ink-mute);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .service-card ul li::before {
+    content: "—";
+    color: var(--terra);
+    font-weight: 700;
+  }
+
+  .service-card ul li:last-child { border-bottom: none; }
+
+  /* ---------- NINA ---------- */
+  .nina {
+    background: var(--paper-warm);
+    padding: 120px 56px;
+  }
+
+  .nina-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .nina-img {
+    position: relative;
+  }
+
+  .nina-img .frame {
+    aspect-ratio: 4 / 5;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 28px 56px -28px rgba(42, 37, 32, 0.35);
+  }
+
+  .nina-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .nina-img .ticket {
+    position: absolute;
+    right: -30px;
+    bottom: 40px;
+    background: var(--paper);
+    padding: 24px 28px;
+    border-radius: 6px;
+    border: 1px solid var(--line);
+    font-family: 'Caveat', cursive;
+    font-size: 26px;
+    line-height: 1.2;
+    color: var(--ink);
+    max-width: 260px;
+    transform: rotate(2deg);
+    box-shadow: 0 18px 38px -20px rgba(42, 37, 32, 0.35);
+  }
+
+  .nina-img .ticket span {
+    display: block;
+    font-family: 'Mulish', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--terra);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .nina-content h2 {
+    font-family: 'PT Serif', serif;
+    font-weight: 400;
+    font-size: 54px;
+    line-height: 1.08;
+    color: var(--ink);
+    margin-bottom: 32px;
+  }
+
+  .nina-content h2 em {
+    font-style: italic;
+    color: var(--leaf-deep);
+  }
+
+  .nina-content p {
+    font-family: 'PT Serif', serif;
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  .credentials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 36px;
+  }
+
+  .credential {
+    padding: 10px 18px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-family: 'Mulish', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .credential svg {
+    width: 14px; height: 14px;
+    color: var(--leaf-deep);
+  }
+
+  /* ---------- PROCESO ---------- */
+  .process {
+    background: var(--paper);
+  }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    counter-reset: step;
+  }
+
+  .step {
+    padding: 32px 28px;
+    background: var(--paper-warm);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .step-num {
+    font-family: 'PT Serif', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 56px;
+    color: var(--terra);
+    line-height: 0.9;
+    opacity: 0.9;
+  }
+
+  .step h4 {
+    font-family: 'PT Serif', serif;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.2;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+
+  .step p {
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-mute);
+  }
+
+  .step-illust {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: var(--leaf-deep);
+    color: var(--paper-warm);
+    display: grid;
+    place-items: center;
+  }
+
+  .step-illust svg {
+    width: 22px; height: 22px;
+  }
+
+  /* ---------- QUOTE ---------- */
+  .quote {
+    background: var(--leaf-deep);
+    color: var(--paper);
+    padding: 110px 56px;
+    text-align: center;
+  }
+
+  .quote blockquote {
+    font-family: 'PT Serif', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 42px;
+    line-height: 1.3;
+    max-width: 960px;
+    margin: 0 auto 36px;
+    color: var(--paper);
+    letter-spacing: -0.005em;
+  }
+
+  .quote blockquote::before,
+  .quote blockquote::after {
+    color: var(--terra);
+    font-family: 'PT Serif', serif;
+    font-style: normal;
+  }
+
+  .quote blockquote::before { content: "« "; }
+  .quote blockquote::after { content: " »"; }
+
+  .quote cite {
+    font-family: 'Mulish', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--paper-warm);
+    font-weight: 600;
+    font-style: normal;
+    opacity: 0.7;
+  }
+
+  /* ---------- GALERIA ---------- */
+  .gallery {
+    background: var(--paper-warm);
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 260px 260px;
+    gap: 14px;
+  }
+
+  .gallery-item {
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .gallery-item.wide { grid-column: span 2; }
+  .gallery-item.tall { grid-row: span 2; }
+
+  .gallery-item .cap {
+    position: absolute;
+    left: 14px;
+    bottom: 14px;
+    font-family: 'Mulish', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--paper);
+    font-weight: 700;
+    background: rgba(42, 37, 32, 0.6);
+    padding: 6px 10px;
+    border-radius: 4px;
+  }
+
+  /* ---------- PEDIR CITA ---------- */
+  .cita {
+    background: var(--paper);
+    padding: 120px 56px;
+  }
+
+  .cita-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .cita h2 {
+    font-family: 'PT Serif', serif;
+    font-weight: 400;
+    font-size: 56px;
+    line-height: 1.08;
+    color: var(--ink);
+    margin-bottom: 28px;
+  }
+
+  .cita h2 em {
+    font-style: italic;
+    color: var(--leaf-deep);
+  }
+
+  .cita .lede {
+    font-family: 'PT Serif', serif;
+    font-size: 18px;
+    line-height: 1.65;
+    color: var(--ink);
+    margin-bottom: 44px;
+    max-width: 480px;
+  }
+
+  .contact-block {
+    margin-bottom: 30px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .contact-block:last-child { border-bottom: none; }
+
+  .contact-label {
+    font-family: 'Mulish', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--terra);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .contact-value {
+    font-family: 'PT Serif', serif;
+    font-size: 22px;
+    line-height: 1.4;
+    color: var(--ink);
+  }
+
+  .contact-value.big {
+    font-size: 30px;
+    font-weight: 700;
+  }
+
+  .contact-sub {
+    font-family: 'Mulish', sans-serif;
+    font-size: 13px;
+    color: var(--ink-mute);
+    margin-top: 6px;
+  }
+
+  .form {
+    background: var(--paper-warm);
+    padding: 42px;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 22px;
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .form-field label {
+    font-family: 'Mulish', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    font-weight: 700;
+  }
+
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    background: var(--paper);
+    border: 1px solid var(--line-strong);
+    border-radius: 4px;
+    padding: 14px 16px;
+    font-family: 'PT Serif', serif;
+    font-size: 16px;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+
+  .form-field input:focus,
+  .form-field select:focus,
+  .form-field textarea:focus { border-color: var(--leaf-deep); }
+
+  .form-field.full { grid-column: span 2; }
+
+  .form textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+
+  .form-submit {
+    width: 100%;
+    padding: 18px;
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: var(--terra);
+    color: var(--paper);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.2s ease;
+  }
+
+  .form-submit:hover { background: var(--terra-deep); }
+
+  .form-note {
+    font-family: 'Mulish', sans-serif;
+    font-size: 12px;
+    color: var(--ink-mute);
+    margin-top: 14px;
+    text-align: center;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    background: var(--ink);
+    color: var(--paper-warm);
+    padding: 80px 56px 40px;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 60px;
+  }
+
+  .footer-brand .wordmark {
+    color: var(--paper);
+    font-size: 28px;
+  }
+
+  .footer-brand .wordmark .amp { color: var(--terra); }
+
+  .footer-brand p {
+    font-family: 'PT Serif', serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--paper-warm);
+    margin-top: 18px;
+    opacity: 0.7;
+    max-width: 380px;
+  }
+
+  .footer-col h5 {
+    font-family: 'Mulish', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--terra);
+    font-weight: 700;
+    margin-bottom: 22px;
+  }
+
+  .footer-col a, .footer-col p {
+    font-family: 'PT Serif', serif;
+    font-size: 15px;
+    color: var(--paper-warm);
+    text-decoration: none;
+    line-height: 1.9;
+    opacity: 0.85;
+    display: block;
+  }
+
+  .footer-col a:hover { opacity: 1; color: var(--paper); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(250, 245, 237, 0.12);
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Mulish', sans-serif;
+    font-size: 12px;
+    color: var(--paper-warm);
+    opacity: 0.55;
+  }
+
+  .kenaz-sig {
+    font-family: 'PT Serif', serif;
+    font-style: italic;
+    font-size: 13px;
+    opacity: 0.7;
+  }
+
+  .kenaz-sig a {
+    color: var(--paper);
+    text-decoration: underline;
+    text-decoration-color: var(--terra);
+    text-underline-offset: 3px;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ============ TOP BAR ============ -->
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-mark">M<span style="color:var(--terra); font-style:italic;">&amp;</span>K</div>
+    <div>
+      <div class="wordmark">Minina <span class="amp">&amp;</span> Kanina</div>
+      <div class="wordmark-sub">Centre Veterinari · Xàbia</div>
+    </div>
+  </div>
+  <nav class="nav">
+    <a href="#" class="active">Inicio</a>
+    <a href="#">Servicios</a>
+    <a href="#">Nina Sukup</a>
+    <a href="#">La clínica</a>
+    <a href="#">Contacto</a>
+  </nav>
+  <div style="display:flex; align-items:center; gap:22px;">
+    <div class="lang">
+      <span class="on">ES</span><span>EN</span><span>DE</span><span>NL</span>
+    </div>
+    <a href="#" class="nav-cta">Pedir cita</a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="eyebrow">Centro veterinario integrativo · desde 2001</div>
+    <h1 class="headline">
+      Medicina que<br>
+      <em>escucha</em> antes<br>
+      de medicar.
+      <span class="headline-note">sin estrés</span>
+    </h1>
+    <p class="lede">
+      Veinticuatro años tratando a las mascotas de Xàbia como familia.
+      Medicina integrativa, oftalmología UCM, acupuntura y aromaterapia
+      clínica — todo en un mismo espacio, con tiempo de verdad para
+      cada consulta.
+    </p>
+
+    <div class="hero-meta">
+      <div>
+        <span class="k">24</span>
+        <span class="v">años en Xàbia</span>
+      </div>
+      <div>
+        <span class="k">4</span>
+        <span class="v">idiomas · ES · EN · DE · NL</span>
+      </div>
+      <div>
+        <span class="k">UCM</span>
+        <span class="v">oftalmología certificada</span>
+      </div>
+    </div>
+
+    <div class="hero-actions">
+      <a href="#" class="btn btn-primary">Pedir cita <span class="arrow">→</span></a>
+      <a href="#" class="btn btn-ghost">Conocer a Nina</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="frame">
+      <img src="img/acupuntura.jpg" alt="Nina tratando con acupuntura a Pinky, una perra relajada durante la sesión" />
+    </div>
+    <div class="stamp">
+      <div>
+        desde
+        <b>2001</b>
+        Xàbia
+      </div>
+    </div>
+    <div class="badge">
+      <strong>Medicina integrativa</strong>
+      Acupuntura, medicina china, aromaterapia clínica y láser terapéutico.
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST STRIP ============ -->
+<div class="trust">
+  <span class="trust-label">Lo que nos diferencia</span>
+  <div class="trust-items">
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+      Oftalmología UCM · SEOVET
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+      Consultas sin estrés · tiempo real
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+      Atención en 4 idiomas
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+      Urgencias concertadas
+    </div>
+  </div>
+</div>
+
+<!-- ============ SERVICIOS ============ -->
+<section class="services">
+  <div class="section-head">
+    <div>
+      <div class="section-eyebrow">Servicios</div>
+      <h2 class="section-title">Todo lo que <em>tu mascota</em><br>necesita, en un solo sitio.</h2>
+    </div>
+    <p class="section-intro">
+      No hacemos medicina de cinta transportadora. Cada consulta empieza
+      por escuchar — a ti y a tu animal — y sigue por lo que de verdad
+      necesita. Convencional cuando toca. Integrativa cuando ayuda.
+    </p>
+  </div>
+
+  <div class="services-grid">
+
+    <!-- Card 1: Medicina integrativa (grande, con acupuntura como evidencia) -->
+    <div class="service-card hero-card">
+      <div class="img-wrap">
+        <img src="img/acupuntura.jpg" alt="Sesión de acupuntura veterinaria con Pinky" style="object-position: center 35%;" />
+        <span class="chip">Integrativa</span>
+      </div>
+      <div class="body">
+        <div>
+          <h3>Medicina <em>integrativa</em>: acupuntura, medicina china y aromaterapia clínica.</h3>
+          <p>
+            Para dolor crónico, artrosis, ansiedad, problemas digestivos
+            y recuperación postquirúrgica. Complementa — no sustituye — la
+            medicina convencional. Nina es una de las pocas veterinarias
+            de la Marina Alta formada en estas disciplinas.
+          </p>
+        </div>
+        <ul>
+          <li>Acupuntura veterinaria</li>
+          <li>Medicina tradicional china</li>
+          <li>Aromaterapia clínica con aceites esenciales</li>
+          <li>Láser terapéutico</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Card 2: Oftalmología -->
+    <div class="service-card">
+      <div class="img-wrap">
+        <img src="img/oftalmologia.jpg" alt="Exploración oftalmológica en perro" />
+        <span class="chip">Oftalmología</span>
+      </div>
+      <div class="body">
+        <div>
+          <h3>Oftalmología <em>UCM</em></h3>
+          <p>
+            Diagnóstico y tratamiento de patologías oculares con
+            certificación UCM y membresía SEOVET. Úlceras, cataratas,
+            conjuntivitis, KCS, uveítis.
+          </p>
+        </div>
+        <ul>
+          <li>Tonometría y fondo de ojo</li>
+          <li>Test de Schirmer · fluoresceína</li>
+          <li>Derivaciones quirúrgicas coordinadas</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Card 3: Consultas sin estrés -->
+    <div class="service-card">
+      <div class="img-wrap">
+        <img src="img/consulta-estres.jpg" alt="Nina en consulta con dos perros relajados, sin estrés" />
+        <span class="chip">Sin estrés</span>
+      </div>
+      <div class="body">
+        <div>
+          <h3>Consultas <em>sin estrés</em></h3>
+          <p>
+            Sala pequeña, luz cálida, nunca la sala de espera llena.
+            Tiempo real para que el animal llegue, huela, respire y se
+            deje tocar. La diferencia se nota desde el primer minuto.
+          </p>
+        </div>
+        <ul>
+          <li>Visitas de 30–45 minutos</li>
+          <li>Feromonas y aceites esenciales ambientales</li>
+          <li>Manipulación respetuosa Fear Free</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Card 4: Láser terapéutico -->
+    <div class="service-card">
+      <div class="img-wrap">
+        <img src="img/nina-laser.jpg" alt="Nina aplicando láser terapéutico a paciente canino" />
+        <span class="chip">Láser MLS</span>
+      </div>
+      <div class="body">
+        <div>
+          <h3>Láser <em>terapéutico</em> MLS</h3>
+          <p>
+            Tratamiento no invasivo, sin dolor y sin efectos secundarios
+            para artrosis, heridas crónicas, tendinitis, otitis y
+            cicatrización postquirúrgica. Sesiones de 10–15 minutos.
+          </p>
+        </div>
+        <ul>
+          <li>Dolor articular y muscular</li>
+          <li>Cicatrización acelerada</li>
+          <li>Animales mayores y postoperatorios</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Card 5: Medicina preventiva -->
+    <div class="service-card">
+      <div class="img-wrap">
+        <img src="img/preventiva.jpg" alt="Consulta preventiva con un animal de granja" />
+        <span class="chip">Preventiva</span>
+      </div>
+      <div class="body">
+        <div>
+          <h3>Medicina <em>preventiva</em> y general</h3>
+          <p>
+            Vacunación, desparasitación, chequeos semestrales, analíticas,
+            ecografía, radiología digital, identificación y pasaporte.
+            También exóticos y fauna de corral del campo xabiero.
+          </p>
+        </div>
+        <ul>
+          <li>Chequeos sénior completos</li>
+          <li>Pasaporte europeo y microchip</li>
+          <li>Animales exóticos y de granja</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ NINA ============ -->
+<section class="nina">
+  <div class="nina-grid">
+    <div class="nina-img">
+      <div class="frame">
+        <img src="img/nina-retrato.jpg" alt="Nina Sukup, veterinaria fundadora" />
+      </div>
+      <div class="ticket">
+        <span>Nina Sukup</span>
+        Veterinaria fundadora, colegiada desde 2001.
+      </div>
+    </div>
+
+    <div class="nina-content">
+      <div class="section-eyebrow">Nina Sukup</div>
+      <h2>La persona detrás de <em>cada visita</em>.</h2>
+      <p>
+        Nina lleva más de dos décadas tratando a las mascotas de Xàbia
+        y alrededores. Lo suyo no es una clínica más: es un proyecto
+        personal construido gato a gato, perro a perro, a veces con
+        una gallina de por medio.
+      </p>
+      <p>
+        Habla español, inglés, alemán y neerlandés — tres de cada cuatro
+        clientes son expatriados de la costa. Atiende pocos animales al
+        día, pero les dedica el tiempo que merecen. Combina lo que
+        aprendió en la facultad con lo que le enseñaron veinte años de
+        oficio y miles de consultas reales.
+      </p>
+
+      <div class="credentials">
+        <div class="credential">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.5 13l2 8-5.5-3-5.5 3 2-8"/></svg>
+          Licenciada Veterinaria
+        </div>
+        <div class="credential">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+          Oftalmología UCM
+        </div>
+        <div class="credential">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+          Socia SEOVET
+        </div>
+        <div class="credential">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+          Acupuntura IVAS
+        </div>
+        <div class="credential">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+          Aromaterapia clínica
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESO ============ -->
+<section class="process">
+  <div class="section-head">
+    <div>
+      <div class="section-eyebrow">Cómo trabajamos</div>
+      <h2 class="section-title">Una visita <em>sin prisa</em><br>en cuatro pasos.</h2>
+    </div>
+    <p class="section-intro">
+      No vas a estar en la sala de espera oyendo a otros perros ladrar.
+      Cada hora atendemos una mascota, con el tiempo que haga falta
+      para hacer bien la consulta — y para que salga queriendo volver.
+    </p>
+  </div>
+
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-illust">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.86 19.86 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.86 19.86 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+      </div>
+      <h4>Contacto inicial</h4>
+      <p>
+        Llamas, escribes WhatsApp o rellenas el formulario. Nina te
+        responde el mismo día y agendamos en función de la urgencia,
+        no del calendario.
+      </p>
+    </div>
+
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-illust">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      </div>
+      <h4>Visita tranquila</h4>
+      <p>
+        Sesión de 30 a 45 minutos, sala pequeña y luz cálida. Primero
+        hablamos, después exploramos. El animal marca el ritmo — nunca
+        al revés.
+      </p>
+    </div>
+
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-illust">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+      </div>
+      <h4>Plan claro</h4>
+      <p>
+        Te explicamos el diagnóstico en palabras reales, sin jerga, en
+        el idioma que prefieras. Convencional, integrativo, o ambos —
+        siempre con los por qués.
+      </p>
+    </div>
+
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-illust">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+      </div>
+      <h4>Seguimiento real</h4>
+      <p>
+        No desaparecemos después de la consulta. Revisamos evolución
+        por WhatsApp, ajustamos pauta si hace falta, y te llamamos
+        cuando toca revisión.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUOTE ============ -->
+<section class="quote">
+  <blockquote>
+    Nina no te vende tratamientos. Te explica lo que le pasa a tu animal
+    y te acompaña hasta que está bien.
+  </blockquote>
+  <cite>Reseña Google · 5 estrellas · 2024</cite>
+</section>
+
+<!-- ============ GALERIA ============ -->
+<section class="gallery">
+  <div class="section-head">
+    <div>
+      <div class="section-eyebrow">La clínica</div>
+      <h2 class="section-title">Un sitio <em>pequeño</em>,<br>pensado para calmar.</h2>
+    </div>
+    <p class="section-intro">
+      Pza. Almirante Bastarreche 14, en el centro de Xàbia. Luz
+      natural, plantas, olor a aceites esenciales y ningún ladrido
+      de fondo. Así es como debería ser ir al veterinario.
+    </p>
+  </div>
+
+  <div class="gallery-grid">
+    <div class="gallery-item tall">
+      <img src="img/clinica-sala.jpg" alt="Sala de consulta con mesa de exploración e instrumental" />
+      <span class="cap">Sala de exploración</span>
+    </div>
+    <div class="gallery-item wide">
+      <img src="img/clinica-cristal.jpg" alt="Cristal decorado con palmeras de Xàbia al fondo" />
+      <span class="cap">Entrada · Pza. Bastarreche</span>
+    </div>
+    <div class="gallery-item">
+      <img src="img/nina-laser.jpg" alt="Sesión de láser terapéutico MLS" />
+      <span class="cap">Láser MLS</span>
+    </div>
+    <div class="gallery-item">
+      <img src="img/oftalmologia.jpg" alt="Instrumental oftalmológico en consulta" />
+      <span class="cap">Oftalmología</span>
+    </div>
+    <div class="gallery-item wide">
+      <img src="img/preventiva.jpg" alt="Consulta a animal de granja en entorno rural" />
+      <span class="cap">Exóticos y fauna de corral</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PEDIR CITA ============ -->
+<section class="cita">
+  <div class="cita-grid">
+    <div>
+      <div class="section-eyebrow">Pedir cita</div>
+      <h2>Escríbenos en <em>tu idioma</em>.</h2>
+      <p class="lede">
+        Te respondemos el mismo día, en español, english, Deutsch o
+        Nederlands. Si es urgente, llama directamente al teléfono de
+        abajo — contesta Nina o alguien del equipo.
+      </p>
+
+      <div class="contact-block">
+        <div class="contact-label">Teléfono · WhatsApp</div>
+        <div class="contact-value big">+34 966 46 11 30</div>
+        <div class="contact-sub">Lun–Vie 10:00–14:00 · 17:00–20:00 · Sábados cita previa</div>
+      </div>
+
+      <div class="contact-block">
+        <div class="contact-label">Dirección</div>
+        <div class="contact-value">
+          Pza. Almirante Bastarreche, 14<br>
+          03730 Xàbia (Alicante)
+        </div>
+        <div class="contact-sub">A 2 minutos andando del mercado municipal</div>
+      </div>
+
+      <div class="contact-block">
+        <div class="contact-label">Urgencias fuera de horario</div>
+        <div class="contact-value">Red concertada 24h</div>
+        <div class="contact-sub">Llama al número principal y te derivamos</div>
+      </div>
+    </div>
+
+    <form class="form" onsubmit="return false;">
+      <div class="form-row">
+        <div class="form-field">
+          <label>Tu nombre</label>
+          <input type="text" placeholder="Cómo te llamas" />
+        </div>
+        <div class="form-field">
+          <label>Nombre de la mascota</label>
+          <input type="text" placeholder="Luna, Toby, Mishu…" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label>Email</label>
+          <input type="email" placeholder="tu@correo.com" />
+        </div>
+        <div class="form-field">
+          <label>Teléfono</label>
+          <input type="tel" placeholder="+34 …" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label>Idioma preferido</label>
+          <select>
+            <option>Español</option>
+            <option>English</option>
+            <option>Deutsch</option>
+            <option>Nederlands</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Motivo</label>
+          <select>
+            <option>Consulta general</option>
+            <option>Revisión preventiva</option>
+            <option>Oftalmología</option>
+            <option>Medicina integrativa</option>
+            <option>Urgencia</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field full">
+          <label>Cuéntanos qué le pasa</label>
+          <textarea placeholder="Edad, síntomas, desde cuándo… cuanto más sepamos, mejor preparamos la visita."></textarea>
+        </div>
+      </div>
+      <button type="submit" class="form-submit">Enviar solicitud</button>
+      <p class="form-note">
+        Al enviar aceptas que Nina te contacte para agendar la cita.
+        No usamos tus datos para nada más.
+      </p>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="wordmark">Minina <span class="amp">&amp;</span> Kanina</div>
+      <p>
+        Centre veterinari integrativo en el corazón de Xàbia.
+        Desde 2001 tratando a cada mascota como lo que es: parte de una
+        familia.
+      </p>
+    </div>
+
+    <div class="footer-col">
+      <h5>Servicios</h5>
+      <a href="#">Medicina integrativa</a>
+      <a href="#">Oftalmología UCM</a>
+      <a href="#">Consultas sin estrés</a>
+      <a href="#">Láser MLS</a>
+      <a href="#">Medicina preventiva</a>
+    </div>
+
+    <div class="footer-col">
+      <h5>Contacto</h5>
+      <a href="#">+34 966 46 11 30</a>
+      <a href="#">hola@mininaykanina.com</a>
+      <p>Pza. Almirante Bastarreche 14<br>03730 Xàbia</p>
+    </div>
+
+    <div class="footer-col">
+      <h5>Horario</h5>
+      <p>Lun–Vie · 10:00–14:00</p>
+      <p>Lun–Vie · 17:00–20:00</p>
+      <p>Sábados · cita previa</p>
+      <p style="margin-top:14px; opacity:0.6;">ES · EN · DE · NL</p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div>© 2026 Minina &amp; Kanina Centre Veterinari · Col. nº 000/000</div>
+    <div class="kenaz-sig">
+      Diseño propuesto por <a href="https://kenaz.studio">Kenaz Studio</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

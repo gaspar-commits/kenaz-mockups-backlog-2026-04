@@ -1,0 +1,1768 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hotel Alahuar — La montaña es el lujo</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     HOTEL ALAHUAR — Hero responsive
+     Paleta:
+       --piedra (warm limestone) #E8DFD0
+       --crema  (off-white soft) #F6F1E8
+       --terracotta (brand)     #B85A3A
+       --terracotta-deep        #8C3E26
+       --oliva  (mountain green) #4C5A3A
+       --carbon (deep night)    #1A1714
+       --sombra                 rgba(26,23,20,0.55)
+     Tipo: Fraunces (display) + Inter (body/UI)
+     ============================================================ */
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --piedra: #E8DFD0;
+    --crema: #F6F1E8;
+    --terracotta: #B85A3A;
+    --terracotta-deep: #8C3E26;
+    --oliva: #4C5A3A;
+    --oliva-deep: #2F3A22;
+    --carbon: #1A1714;
+    --carbon-soft: #2A2520;
+    --gris-apagado: #6B6258;
+    --linea: rgba(26,23,20,0.12);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--crema);
+    color: var(--carbon);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  img { display: block; max-width: 100%; }
+
+  /* ============================================================
+     NAV
+     ============================================================ */
+  .nav {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    z-index: 10;
+    padding: 32px 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .nav-logo img {
+    height: 52px;
+    width: auto;
+    /* Preserve the original logo colors on light/dark backgrounds */
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.35));
+    background: rgba(246, 241, 232, 0.94);
+    padding: 10px 18px;
+    border-radius: 6px;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 38px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--crema);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: opacity 0.2s;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+  }
+
+  .nav-links a:hover { opacity: 0.7; }
+
+  .nav-cta {
+    background: var(--terracotta);
+    color: var(--crema);
+    padding: 14px 28px;
+    border-radius: 2px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  }
+
+  .nav-cta:hover {
+    background: var(--terracotta-deep);
+    transform: translateY(-1px);
+  }
+
+  /* ============================================================
+     HERO
+     ============================================================ */
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 820px;
+    overflow: hidden;
+    background: var(--carbon);
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('img/cover-89.jpg');
+    background-size: cover;
+    background-position: 62% 58%;
+    /* Slight warm grade + subtle crush toward the shadows */
+    filter: saturate(1.08) contrast(1.06) brightness(0.84);
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg,
+        rgba(26,23,20,0.60) 0%,
+        rgba(26,23,20,0.32) 28%,
+        rgba(26,23,20,0.22) 50%,
+        rgba(26,23,20,0.82) 100%),
+      linear-gradient(90deg,
+        rgba(26,23,20,0.82) 0%,
+        rgba(26,23,20,0.60) 22%,
+        rgba(26,23,20,0.18) 52%,
+        rgba(26,23,20,0.00) 74%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    max-width: 1680px;
+    margin: 0 auto;
+    padding: 180px 80px 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--piedra);
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    width: 44px;
+    height: 1px;
+    background: var(--terracotta);
+  }
+
+  .hero h1 {
+    font-size: clamp(60px, 7.2vw, 132px);
+    line-height: 0.95;
+    color: var(--crema);
+    max-width: 14ch;
+    font-weight: 300;
+    font-style: normal;
+    letter-spacing: -0.025em;
+    margin-bottom: 32px;
+    text-shadow: 0 4px 24px rgba(0,0,0,0.45);
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--terracotta);
+  }
+
+  .hero-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--piedra);
+    max-width: 44ch;
+    line-height: 1.55;
+    margin-bottom: 52px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--terracotta);
+    color: var(--crema);
+    padding: 20px 40px;
+    border-radius: 2px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    transition: background 0.2s, transform 0.2s;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.35);
+  }
+
+  .btn-primary:hover {
+    background: var(--terracotta-deep);
+    transform: translateY(-2px);
+  }
+
+  .btn-primary svg { width: 18px; height: 18px; }
+
+  .direct-badge {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    color: var(--crema);
+    font-size: 14px;
+    line-height: 1.4;
+    border-left: 1px solid rgba(246,241,232,0.45);
+    padding-left: 24px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+    max-width: 26ch;
+  }
+
+  .direct-badge strong {
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: #fff;
+  }
+
+  .direct-badge span {
+    color: var(--piedra);
+    font-weight: 400;
+  }
+
+  /* bottom meta strip */
+  .hero-meta {
+    position: absolute;
+    left: 0; right: 0;
+    bottom: 0;
+    z-index: 3;
+    padding: 30px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    color: var(--crema);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-top: 1px solid rgba(246,241,232,0.18);
+    background: linear-gradient(180deg, rgba(26,23,20,0.15) 0%, rgba(26,23,20,0.88) 100%);
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+  }
+
+  .hero-meta-group {
+    display: flex;
+    align-items: center;
+    gap: 38px;
+  }
+
+  .hero-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+  }
+
+  .hero-meta-item .dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--terracotta);
+  }
+
+  .hero-meta-item b {
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .hero-meta-location {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 15px;
+    color: var(--piedra);
+  }
+
+  /* ============================================================
+     RESERVA / SIGNALS STRIP (debajo del hero, visible en fullpage)
+     ============================================================ */
+  .signals {
+    background: var(--crema);
+    padding: 90px 80px;
+    border-bottom: 1px solid var(--linea);
+  }
+
+  .signals-inner {
+    max-width: 1680px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 90px;
+    align-items: start;
+  }
+
+  .signals-title {
+    font-size: 52px;
+    line-height: 1.05;
+    color: var(--carbon);
+    letter-spacing: -0.02em;
+    max-width: 18ch;
+  }
+
+  .signals-title em {
+    font-style: italic;
+    color: var(--terracotta);
+    font-weight: 400;
+  }
+
+  .signals-text {
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--carbon-soft);
+    max-width: 52ch;
+  }
+
+  .signals-text p + p { margin-top: 18px; }
+
+  .signals-text .accent {
+    color: var(--terracotta-deep);
+    font-weight: 600;
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin-top: 44px;
+    border-top: 1px solid var(--linea);
+    border-bottom: 1px solid var(--linea);
+  }
+
+  .stat {
+    padding: 32px 0;
+    text-align: left;
+  }
+
+  .stat + .stat {
+    border-left: 1px solid var(--linea);
+    padding-left: 32px;
+  }
+
+  .stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 54px;
+    font-weight: 400;
+    color: var(--oliva-deep);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .stat-num em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  .stat-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--gris-apagado);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-top: 10px;
+  }
+
+  /* ============================================================
+     SECTION HEADERS (reutilizable)
+     ============================================================ */
+  .section {
+    padding: 130px 80px;
+    position: relative;
+  }
+  .section-inner { max-width: 1680px; margin: 0 auto; }
+
+  .section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--terracotta-deep);
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+  }
+  .section-eyebrow::before {
+    content: '';
+    width: 36px;
+    height: 1px;
+    background: var(--terracotta);
+  }
+
+  .section-title {
+    font-size: clamp(44px, 4.2vw, 76px);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    color: var(--carbon);
+    font-weight: 300;
+    max-width: 18ch;
+  }
+  .section-title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--terracotta);
+  }
+
+  .section-lead {
+    font-size: 19px;
+    line-height: 1.65;
+    color: var(--carbon-soft);
+    max-width: 58ch;
+    margin-top: 28px;
+  }
+
+  /* ============================================================
+     HABITACIONES
+     ============================================================ */
+  .rooms {
+    background: var(--crema);
+  }
+  .rooms-header {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    align-items: end;
+    margin-bottom: 72px;
+  }
+  .rooms-header-right {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--carbon-soft);
+    max-width: 42ch;
+    padding-bottom: 8px;
+  }
+  .rooms-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.18fr 1fr;
+    gap: 28px;
+  }
+  .room-card {
+    background: #FBF7F0;
+    border: 1px solid var(--linea);
+    border-radius: 3px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .room-card.featured {
+    background: var(--carbon);
+    color: var(--crema);
+    border-color: var(--carbon);
+    box-shadow: 0 28px 60px rgba(26,23,20,0.28);
+  }
+  .room-card-media {
+    height: 320px;
+    position: relative;
+    overflow: hidden;
+  }
+  .room-card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: saturate(1.05) contrast(1.04);
+  }
+  .room-card-media .svg-fallback {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .room-card.featured .room-card-media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(26,23,20,0) 55%, rgba(26,23,20,0.35) 100%);
+    pointer-events: none;
+  }
+  .room-badge {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    background: var(--terracotta);
+    color: var(--crema);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    border-radius: 2px;
+  }
+  .room-body {
+    padding: 34px 32px 38px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .room-name {
+    font-family: 'Fraunces', serif;
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    margin-bottom: 8px;
+  }
+  .room-card.featured .room-name em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .room-specs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gris-apagado);
+    margin-bottom: 22px;
+  }
+  .room-card.featured .room-specs { color: rgba(246,241,232,0.7); }
+  .room-specs span { display: inline-flex; align-items: center; gap: 8px; }
+  .room-specs .tick {
+    width: 4px; height: 4px; border-radius: 50%;
+    background: var(--terracotta);
+  }
+  .room-desc {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--carbon-soft);
+    margin-bottom: 28px;
+    flex: 1;
+  }
+  .room-card.featured .room-desc { color: rgba(246,241,232,0.82); }
+  .room-footer {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 20px;
+    padding-top: 22px;
+    border-top: 1px solid var(--linea);
+  }
+  .room-card.featured .room-footer { border-top-color: rgba(246,241,232,0.18); }
+  .room-price {
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    letter-spacing: -0.01em;
+    color: var(--carbon);
+  }
+  .room-card.featured .room-price { color: var(--crema); }
+  .room-price-label {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gris-apagado);
+    margin-top: 2px;
+    font-weight: 500;
+  }
+  .room-card.featured .room-price-label { color: rgba(246,241,232,0.6); }
+  .room-link {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .room-link svg { width: 14px; height: 14px; }
+
+  /* ============================================================
+     EXPERIENCIAS (Spa / Gastronomía / Senderismo)
+     ============================================================ */
+  .experiences {
+    background: var(--carbon);
+    color: var(--crema);
+  }
+  .experiences .section-eyebrow { color: var(--terracotta); }
+  .experiences .section-title { color: var(--crema); }
+  .experiences .section-lead { color: rgba(246,241,232,0.72); }
+
+  .exp-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 88px;
+    background: rgba(246,241,232,0.08);
+    border: 1px solid rgba(246,241,232,0.08);
+  }
+  .exp-card {
+    background: var(--carbon);
+    padding: 54px 44px 56px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    min-height: 440px;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .exp-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: var(--exp-bg, none);
+    background-size: cover;
+    background-position: center;
+    opacity: 0.28;
+    z-index: -2;
+    transition: opacity 0.4s ease;
+  }
+  .exp-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(26,23,20,0.55) 0%, rgba(26,23,20,0.82) 60%, rgba(26,23,20,0.92) 100%);
+    z-index: -1;
+  }
+  .exp-icon {
+    width: 64px;
+    height: 64px;
+    border: 1px solid rgba(246,241,232,0.22);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--terracotta);
+  }
+  .exp-icon svg { width: 30px; height: 30px; }
+  .exp-title {
+    font-family: 'Fraunces', serif;
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    color: var(--crema);
+  }
+  .exp-title em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .exp-body {
+    font-size: 15.5px;
+    line-height: 1.7;
+    color: rgba(246,241,232,0.78);
+    flex: 1;
+  }
+  .exp-tag {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    border-top: 1px solid rgba(246,241,232,0.18);
+    padding-top: 20px;
+  }
+
+  /* ============================================================
+     GALERÍA
+     ============================================================ */
+  .gallery {
+    background: var(--piedra);
+    padding: 130px 80px;
+  }
+  .gallery-grid {
+    max-width: 1680px;
+    margin: 72px auto 0;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: 220px;
+    gap: 14px;
+  }
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+    background: var(--carbon-soft);
+  }
+  .gallery-item img,
+  .gallery-item svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  /* Composition */
+  .gal-a { grid-column: span 5; grid-row: span 2; }
+  .gal-b { grid-column: span 4; grid-row: span 1; }
+  .gal-c { grid-column: span 3; grid-row: span 1; }
+  .gal-d { grid-column: span 4; grid-row: span 1; }
+  .gal-e { grid-column: span 3; grid-row: span 2; }
+  .gal-f { grid-column: span 4; grid-row: span 1; }
+  .gal-g { grid-column: span 5; grid-row: span 1; }
+  .gal-h { grid-column: span 7; grid-row: span 1; }
+
+  .gallery-caption {
+    position: absolute;
+    bottom: 14px;
+    left: 18px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--crema);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+    letter-spacing: 0.01em;
+  }
+
+  /* ============================================================
+     RESERVA DIRECTA
+     ============================================================ */
+  .book {
+    background: var(--crema);
+    padding: 130px 80px;
+  }
+  .book-inner {
+    max-width: 1680px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 96px;
+    align-items: center;
+  }
+  .book-copy .section-title { max-width: 16ch; }
+  .book-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 34px;
+    padding: 14px 22px;
+    background: rgba(184,90,58,0.10);
+    border-left: 3px solid var(--terracotta);
+    font-size: 14.5px;
+    color: var(--carbon);
+    line-height: 1.55;
+  }
+  .book-note b { font-weight: 600; color: var(--terracotta-deep); }
+  .book-contact {
+    margin-top: 42px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    max-width: 520px;
+  }
+  .book-contact a {
+    text-decoration: none;
+    color: var(--carbon);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .book-contact .label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gris-apagado);
+  }
+  .book-contact .value {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    color: var(--carbon);
+  }
+
+  .book-card {
+    background: var(--carbon);
+    color: var(--crema);
+    padding: 52px 48px 46px;
+    border-radius: 3px;
+    box-shadow: 0 32px 80px rgba(26,23,20,0.22);
+  }
+  .book-card-title {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    letter-spacing: -0.01em;
+    margin-bottom: 28px;
+  }
+  .book-card-title em { font-style: italic; color: var(--terracotta); }
+  .book-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-bottom: 28px;
+  }
+  .book-field {
+    background: rgba(246,241,232,0.06);
+    border: 1px solid rgba(246,241,232,0.14);
+    padding: 16px 18px;
+    border-radius: 2px;
+  }
+  .book-field.full { grid-column: span 2; }
+  .book-field .label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(246,241,232,0.55);
+    margin-bottom: 6px;
+  }
+  .book-field .value {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    color: var(--crema);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .book-field .value svg { width: 16px; height: 16px; opacity: 0.55; }
+  .book-submit {
+    width: 100%;
+    background: var(--terracotta);
+    color: var(--crema);
+    border: none;
+    padding: 22px 28px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    transition: background 0.2s;
+  }
+  .book-submit:hover { background: var(--terracotta-deep); }
+  .book-submit svg { width: 18px; height: 18px; }
+  .book-fineprint {
+    margin-top: 18px;
+    font-size: 12px;
+    color: rgba(246,241,232,0.55);
+    text-align: center;
+    letter-spacing: 0.05em;
+  }
+
+  /* ============================================================
+     CÓMO LLEGAR
+     ============================================================ */
+  .arrive {
+    background: var(--piedra);
+    padding: 130px 80px;
+  }
+  .arrive-inner {
+    max-width: 1680px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 90px;
+    align-items: center;
+  }
+  .arrive-copy .section-title { max-width: 14ch; }
+  .arrive-address {
+    margin-top: 34px;
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    line-height: 1.5;
+    color: var(--carbon);
+    max-width: 24ch;
+  }
+  .arrive-address span {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gris-apagado);
+    margin-top: 10px;
+    font-weight: 500;
+  }
+  .arrive-distances {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    max-width: 380px;
+  }
+  .arrive-distance {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(26,23,20,0.15);
+    font-size: 15px;
+    color: var(--carbon);
+  }
+  .arrive-distance b {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 20px;
+    color: var(--terracotta-deep);
+  }
+
+  .arrive-map {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    background: #DCD1BE;
+    border-radius: 3px;
+    overflow: hidden;
+    border: 1px solid rgba(26,23,20,0.15);
+    box-shadow: 0 32px 80px rgba(26,23,20,0.15);
+  }
+  .arrive-map svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .arrive-pin {
+    position: absolute;
+    top: 48%;
+    left: 55%;
+    transform: translate(-50%, -100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+  }
+  .arrive-pin-label {
+    background: var(--carbon);
+    color: var(--crema);
+    padding: 8px 14px;
+    font-family: 'Fraunces', serif;
+    font-size: 13px;
+    font-style: italic;
+    letter-spacing: 0.02em;
+    border-radius: 2px;
+    margin-bottom: 6px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    white-space: nowrap;
+  }
+  .arrive-pin-dot {
+    width: 16px;
+    height: 16px;
+    background: var(--terracotta);
+    border: 3px solid var(--crema);
+    border-radius: 50%;
+    box-shadow: 0 4px 14px rgba(184,90,58,0.6);
+  }
+
+  /* ============================================================
+     FOOTER completo
+     ============================================================ */
+  .site-footer {
+    background: var(--carbon);
+    color: var(--crema);
+    padding: 100px 80px 40px;
+  }
+  .site-footer-inner {
+    max-width: 1680px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 70px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid rgba(246,241,232,0.14);
+  }
+  .footer-brand h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    letter-spacing: -0.01em;
+    color: var(--crema);
+    margin-bottom: 16px;
+  }
+  .footer-brand h3 em { font-style: italic; color: var(--terracotta); }
+  .footer-brand p {
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: rgba(246,241,232,0.65);
+    max-width: 34ch;
+  }
+  .footer-col h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 22px;
+  }
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .footer-col a,
+  .footer-col li {
+    font-size: 14.5px;
+    color: rgba(246,241,232,0.78);
+    text-decoration: none;
+    line-height: 1.5;
+  }
+  .footer-col a:hover { color: var(--terracotta); }
+  .footer-col .muted {
+    font-size: 12px;
+    color: rgba(246,241,232,0.45);
+    letter-spacing: 0.04em;
+  }
+  .site-footer-bottom {
+    max-width: 1680px;
+    margin: 0 auto;
+    padding-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    color: rgba(246,241,232,0.45);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .site-footer-bottom a {
+    color: var(--crema);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(246,241,232,0.2);
+    padding-bottom: 2px;
+  }
+
+  /* ============================================================
+     FOOTER KENAZ ATTRIBUTION (legacy, bajito)
+     ============================================================ */
+  .kenaz-footer {
+    background: var(--carbon);
+    color: rgba(246,241,232,0.55);
+    padding: 22px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border-top: 1px solid rgba(246,241,232,0.08);
+  }
+
+  .kenaz-footer a {
+    color: var(--crema);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(246,241,232,0.25);
+    padding-bottom: 2px;
+  }
+
+  .kenaz-runa {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+
+  /* ============================================================
+     RESPONSIVE
+     ============================================================ */
+  @media (max-width: 1100px) {
+    .nav { padding: 24px 32px; }
+    .nav-links { display: none; }
+    .hero-content { padding: 140px 32px 80px; }
+    .hero-meta { padding: 22px 32px; flex-direction: column; align-items: flex-start; }
+    .hero-meta-group { flex-wrap: wrap; gap: 20px; }
+    .signals { padding: 64px 32px; }
+    .signals-inner { grid-template-columns: 1fr; gap: 44px; }
+    .section { padding: 80px 32px; }
+    .gallery, .book, .arrive { padding: 80px 32px; }
+    .rooms-header { grid-template-columns: 1fr; gap: 30px; }
+    .rooms-grid { grid-template-columns: 1fr; }
+    .exp-grid { grid-template-columns: 1fr; }
+    .book-inner { grid-template-columns: 1fr; gap: 60px; }
+    .arrive-inner { grid-template-columns: 1fr; gap: 50px; }
+    .site-footer { padding: 70px 32px 30px; }
+    .site-footer-inner { grid-template-columns: 1fr 1fr; gap: 50px; }
+    .gallery-grid { grid-template-columns: repeat(6, 1fr); grid-auto-rows: 180px; }
+    .gal-a, .gal-b, .gal-c, .gal-d, .gal-e, .gal-f, .gal-g, .gal-h {
+      grid-column: span 3; grid-row: span 1;
+    }
+    .kenaz-footer { padding: 20px 32px; flex-direction: column; gap: 10px; align-items: flex-start; }
+  }
+
+  @media (max-width: 640px) {
+    .hero { min-height: 680px; }
+    .hero-content { padding: 120px 22px 90px; }
+    .hero h1 { font-size: 52px; }
+    .hero-sub { font-size: 17px; margin-bottom: 38px; }
+    .hero-actions { flex-direction: column; align-items: flex-start; }
+    .direct-badge { border-left: none; padding-left: 0; border-top: 1px solid rgba(246,241,232,0.25); padding-top: 14px; }
+    .nav-logo img { height: 42px; padding: 8px 14px; }
+    .nav-cta { padding: 10px 18px; font-size: 11px; }
+    .signals-title { font-size: 36px; }
+    .stats { grid-template-columns: 1fr; }
+    .stat + .stat { border-left: none; border-top: 1px solid var(--linea); padding-left: 0; padding-top: 24px; }
+    .section { padding: 60px 22px; }
+    .gallery, .book, .arrive { padding: 60px 22px; }
+    .section-title { font-size: 36px; }
+    .book-fields { grid-template-columns: 1fr; }
+    .book-field.full { grid-column: span 1; }
+    .book-contact { grid-template-columns: 1fr; }
+    .site-footer-inner { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .gal-a, .gal-b, .gal-c, .gal-d, .gal-e, .gal-f, .gal-g, .gal-h {
+      grid-column: span 1; grid-row: span 1;
+    }
+    .exp-card { padding: 42px 28px; min-height: 0; }
+    .book-card { padding: 38px 26px; }
+    .site-footer-bottom { flex-direction: column; gap: 12px; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+
+    <header class="nav">
+      <div class="nav-logo">
+        <img src="img/logo-alahuar.png" alt="Hotel Alahuar" />
+      </div>
+      <ul class="nav-links">
+        <li><a href="#hotel">El hotel</a></li>
+        <li><a href="#habitaciones">Habitaciones</a></li>
+        <li><a href="#spa">Spa</a></li>
+        <li><a href="#restaurante">Restaurante</a></li>
+        <li><a href="#entorno">Entorno</a></li>
+      </ul>
+      <a href="#reservar" class="nav-cta">Reservar</a>
+    </header>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow">Benimaurell · Vall de Laguar</div>
+      <h1>La montaña<br>es el <em>lujo</em>.</h1>
+      <p class="hero-sub">
+        Hotel rural de cuatro estrellas en el Barranc de l'Infern.
+        Piedra, silencio y mesa larga. Veintiséis años cuidando una forma
+        distinta de hospedar.
+      </p>
+      <div class="hero-actions">
+        <a href="#reservar" class="btn-primary">
+          Reservar directo
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square">
+            <path d="M5 12h14M13 5l7 7-7 7"/>
+          </svg>
+        </a>
+        <div class="direct-badge">
+          <strong>Sin intermediarios.</strong>
+          <span>Mejor precio garantizado frente a plataformas.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-meta">
+      <div class="hero-meta-group">
+        <div class="hero-meta-item">
+          <span class="dot"></span>
+          <span><b>4,5 / 5</b> · 458 reseñas en TripAdvisor</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="dot"></span>
+          <span><b>9,0</b> en Booking</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="dot"></span>
+          <span>Desde <b>1999</b></span>
+        </div>
+      </div>
+      <div class="hero-meta-location">Ctra. Benimaurell, Alicante · +34 965 583 397</div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SIGNALS / RESERVAS DIRECTAS
+       ============================================================ -->
+  <section class="signals">
+    <div class="signals-inner">
+      <h2 class="signals-title">
+        Reserva directo.<br>
+        Ahorras la <em>comisión</em>,<br>
+        nosotros la respuesta.
+      </h2>
+      <div>
+        <div class="signals-text">
+          <p>
+            Cuando reservas en Booking o Expedia, entre un <span class="accent">15 % y un 18 %</span>
+            de lo que pagas se va a la plataforma. Ese dinero no vuelve a la casa,
+            no mejora tu estancia y no nos permite cuidarte mejor.
+          </p>
+          <p>
+            Reservar aquí cambia la ecuación: mismo precio (o mejor),
+            trato directo con el hotel, flexibilidad real en cancelaciones
+            y pequeñas cosas que solo podemos ofrecer de tú a tú.
+          </p>
+        </div>
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-num">20</div>
+            <div class="stat-label">Habitaciones</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">7</div>
+            <div class="stat-label">Jacuzzis en suite</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num"><em>#1</em></div>
+            <div class="stat-label">de Benimaurell</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       HABITACIONES
+       ============================================================ -->
+  <section id="habitaciones" class="section rooms">
+    <div class="section-inner">
+      <div class="rooms-header">
+        <div>
+          <div class="section-eyebrow">Veinte habitaciones</div>
+          <h2 class="section-title">Dormir es parte<br>del <em>paisaje</em>.</h2>
+        </div>
+        <p class="rooms-header-right">
+          Cada habitación mira al barranco, al valle o al pueblo. Piedra vista,
+          maderas cálidas, ropa de cama de algodón y baños amplios. Siete
+          suites con jacuzzi privado para quienes quieren prolongar la noche.
+        </p>
+      </div>
+
+      <div class="rooms-grid">
+
+        <!-- HABITACIÓN DOBLE -->
+        <article class="room-card">
+          <div class="room-card-media">
+            <img src="img/room-doble.jpg" alt="Habitación doble con cabecero forjado, piedra vista y ropa de cama blanca" />
+          </div>
+          <div class="room-body">
+            <h3 class="room-name">Habitación Doble</h3>
+            <div class="room-specs">
+              <span><span class="tick"></span>22 m²</span>
+              <span><span class="tick"></span>2 personas</span>
+              <span><span class="tick"></span>Vistas al valle</span>
+            </div>
+            <p class="room-desc">
+              Cama king-size, baño con ducha de obra, escritorio y balcón.
+              Luz natural desde primera hora. La opción pensada para quien
+              viene a descansar de verdad.
+            </p>
+            <div class="room-footer">
+              <div>
+                <span class="room-price">desde 142 €</span>
+                <span class="room-price-label">por noche · IVA incluido</span>
+              </div>
+              <a href="#reservar" class="room-link">
+                Reservar
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- SUITE CON JACUZZI (destacada) -->
+        <article class="room-card featured">
+          <div class="room-card-media">
+            <img src="img/suite-jacuzzi-bath.jpg" alt="Suite con jacuzzi y ventanal al valle, bañera redonda con copas de cava" />
+          </div>
+          <div class="room-body">
+            <span class="room-badge">Más reservada</span>
+            <h3 class="room-name">Suite con <em>Jacuzzi</em></h3>
+            <div class="room-specs">
+              <span><span class="tick"></span>38 m²</span>
+              <span><span class="tick"></span>2 personas</span>
+              <span><span class="tick"></span>Jacuzzi privado</span>
+              <span><span class="tick"></span>Vistas al barranco</span>
+            </div>
+            <p class="room-desc">
+              Siete en todo el hotel. Jacuzzi en la habitación, cama con
+              dosel, zona de estar y ventanal sobre el Barranc de l'Infern.
+              La que piden quienes hacen del viaje el plan.
+            </p>
+            <div class="room-footer">
+              <div>
+                <span class="room-price">desde 210 €</span>
+                <span class="room-price-label">por noche · IVA incluido</span>
+              </div>
+              <a href="#reservar" class="room-link">
+                Reservar
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- HABITACIÓN SINGLE -->
+        <article class="room-card">
+          <div class="room-card-media">
+            <img src="img/room-single-loft.jpg" alt="Habitación individual con altillo de madera y escalera, cama y escritorio" />
+          </div>
+          <div class="room-body">
+            <h3 class="room-name">Habitación Single</h3>
+            <div class="room-specs">
+              <span><span class="tick"></span>16 m²</span>
+              <span><span class="tick"></span>1 persona</span>
+              <span><span class="tick"></span>Vistas al pueblo</span>
+            </div>
+            <p class="room-desc">
+              Cama individual, escritorio y ventana al pueblo de Benimaurell.
+              Pensada para estancias de trabajo tranquilo o escapadas en
+              solitario, con el mismo cuidado que el resto de la casa.
+            </p>
+            <div class="room-footer">
+              <div>
+                <span class="room-price">desde 89 €</span>
+                <span class="room-price-label">por noche · IVA incluido</span>
+              </div>
+              <a href="#reservar" class="room-link">
+                Reservar
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       EXPERIENCIAS — La montaña como experiencia
+       ============================================================ -->
+  <section id="entorno" class="section experiences">
+    <div class="section-inner">
+      <div class="section-eyebrow">La montaña como experiencia</div>
+      <h2 class="section-title">Todo lo que hay<br>aquí, <em>ya está aquí</em>.</h2>
+      <p class="section-lead">
+        No hace falta moverse mucho. El valle concentra en pocos kilómetros
+        tres formas de parar el reloj: el cuerpo, la mesa y el barranco.
+      </p>
+
+      <div class="exp-grid">
+
+        <!-- SPA & WELLNESS -->
+        <article class="exp-card" style="--exp-bg: url('img/spa-chaise.jpg');">
+          <div class="exp-icon">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+              <path d="M8 22 Q 12 14 16 22 Q 20 14 24 22"/>
+              <path d="M6 26 Q 12 18 16 26 Q 22 18 26 26"/>
+              <circle cx="16" cy="8" r="3.5"/>
+              <path d="M16 11.5 L 16 16"/>
+            </svg>
+          </div>
+          <h3 class="exp-title">Spa & <em>wellness</em></h3>
+          <p class="exp-body">
+            Jacuzzis en suite, zona de relajación con vistas al valle y
+            tratamientos con aceites esenciales del Mediterráneo.
+            La hidroterapia entra en la mayoría de los paquetes.
+          </p>
+          <div class="exp-tag">Incluido en estancias de dos noches</div>
+        </article>
+
+        <!-- GASTRONOMÍA LOCAL -->
+        <article class="exp-card" style="--exp-bg: url('img/comedor-vistas.jpg');">
+          <div class="exp-icon">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+              <path d="M6 22 L 26 22"/>
+              <path d="M8 22 L 8 14 Q 8 10 12 10 L 20 10 Q 24 10 24 14 L 24 22"/>
+              <path d="M11 10 L 11 6"/>
+              <path d="M16 10 L 16 5"/>
+              <path d="M21 10 L 21 6"/>
+              <path d="M6 22 L 6 25 L 26 25 L 26 22"/>
+            </svg>
+          </div>
+          <h3 class="exp-title">Gastronomía <em>local</em></h3>
+          <p class="exp-body">
+            Mesa larga, producto del valle, aceite de Benimaurell y vinos
+            de pequeña bodega. Cocina viva, sin carta kilométrica: lo que
+            hay hoy en el mercado, cocinado como se cocina aquí.
+          </p>
+          <div class="exp-tag">Menú degustación · 48 € por persona</div>
+        </article>
+
+        <!-- SENDERISMO -->
+        <article class="exp-card" style="--exp-bg: url('img/trail-barranc.jpg');">
+          <div class="exp-icon">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 26 L 10 16 L 14 20 L 20 10 L 29 26 Z"/>
+              <circle cx="22" cy="8" r="2"/>
+              <path d="M18 18 L 14 22"/>
+            </svg>
+          </div>
+          <h3 class="exp-title">Senderismo <em>desde la puerta</em></h3>
+          <p class="exp-body">
+            El Barranc de l'Infern empieza a diez minutos a pie. Rutas
+            cortas, la PR-CV 147 de los seis mil escalones mozárabes, y
+            itinerarios guiados bajo demanda. Mapas en recepción.
+          </p>
+          <div class="exp-tag">Ruta guiada los sábados · 18 €</div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       GALERÍA
+       ============================================================ -->
+  <section class="gallery">
+    <div class="section-inner">
+      <div class="section-eyebrow">Galería</div>
+      <h2 class="section-title">Piedra, madera<br>y <em>aire limpio</em>.</h2>
+
+      <div class="gallery-grid">
+
+        <figure class="gallery-item gal-a">
+          <img src="img/cover-89.jpg" alt="Hotel Alahuar, fachada con piedra vista al atardecer" />
+          <figcaption class="gallery-caption">Fachada · atardecer</figcaption>
+        </figure>
+
+        <figure class="gallery-item gal-b">
+          <img src="img/fachada.jpg" alt="Vista lateral del hotel desde el valle entre almendros y margaritas" />
+          <figcaption class="gallery-caption">Desde el valle</figcaption>
+        </figure>
+
+        <figure class="gallery-item gal-c">
+          <img src="img/pool-mountains.jpg" alt="Piscina exterior con montañas del Vall de Laguar al fondo" />
+          <figcaption class="gallery-caption">Piscina · sur</figcaption>
+        </figure>
+
+        <figure class="gallery-item gal-d">
+          <img src="img/terraza-lounge.jpg" alt="Salón terraza con techo de madera y vista al valle" />
+          <figcaption class="gallery-caption">Salón · terraza</figcaption>
+        </figure>
+
+        <figure class="gallery-item gal-e">
+          <img src="img/suite-jacuzzi-bath.jpg" alt="Jacuzzi en suite con ventanal al valle, copas y cava" />
+          <figcaption class="gallery-caption">Suite · jacuzzi</figcaption>
+        </figure>
+
+        <figure class="gallery-item gal-f">
+          <img src="img/salon-bodega.jpg" alt="Salón bodega con chimenea encendida, copas y vinos locales" />
+          <figcaption class="gallery-caption">Bodega · chimenea</figcaption>
+        </figure>
+
+        <figure class="gallery-item gal-g">
+          <img src="img/bar.jpg" alt="Bar con techo artesonado y suelo de barro cocido" />
+          <figcaption class="gallery-caption">Bar · artesonado</figcaption>
+        </figure>
+
+        <figure class="gallery-item gal-h">
+          <img src="img/comedor-vistas.jpg" alt="Comedor con mesa redonda y ventanales sobre las montañas" />
+          <figcaption class="gallery-caption">Comedor · ventanal</figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       RESERVAR DIRECTO
+       ============================================================ -->
+  <section id="reservar" class="book">
+    <div class="book-inner">
+
+      <div class="book-copy">
+        <div class="section-eyebrow">Reservar directo</div>
+        <h2 class="section-title">Hablamos<br>con <em>usted</em>, no con una<br>plataforma.</h2>
+
+        <div class="book-note">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#B85A3A" stroke-width="2" stroke-linecap="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 8v4M12 16h.01"/>
+          </svg>
+          <span>
+            <b>Sin intermediarios.</b> Reservando aquí te ahorras el
+            <b>15-18 %</b> de comisión que se lleva Booking. Mismo precio (o mejor)
+            y flexibilidad real en cancelaciones.
+          </span>
+        </div>
+
+        <div class="book-contact">
+          <a href="mailto:reservas.alahuar@hotelesposeidon.com">
+            <span class="label">Email</span>
+            <span class="value">reservas@alahuar</span>
+          </a>
+          <a href="tel:+34965583397">
+            <span class="label">Teléfono</span>
+            <span class="value">+34 965 583 397</span>
+          </a>
+        </div>
+      </div>
+
+      <form class="book-card" onsubmit="return false">
+        <h3 class="book-card-title">Próxima <em>estancia</em></h3>
+
+        <div class="book-fields">
+          <div class="book-field">
+            <div class="label">Check-in</div>
+            <div class="value">
+              <span>Jue, 30 abr</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>
+            </div>
+          </div>
+          <div class="book-field">
+            <div class="label">Check-out</div>
+            <div class="value">
+              <span>Dom, 3 may</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>
+            </div>
+          </div>
+          <div class="book-field">
+            <div class="label">Huéspedes</div>
+            <div class="value">
+              <span>2 adultos</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+          </div>
+          <div class="book-field">
+            <div class="label">Habitación</div>
+            <div class="value">
+              <span>Cualquiera</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+          </div>
+          <div class="book-field full">
+            <div class="label">Código promocional</div>
+            <div class="value">
+              <span style="opacity:0.55">opcional</span>
+            </div>
+          </div>
+        </div>
+
+        <button class="book-submit" type="submit">
+          Comprobar disponibilidad
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
+
+        <div class="book-fineprint">
+          Confirmación inmediata · Cancelación gratis hasta 48 h antes
+        </div>
+      </form>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CÓMO LLEGAR
+       ============================================================ -->
+  <section class="arrive">
+    <div class="arrive-inner">
+
+      <div class="arrive-copy">
+        <div class="section-eyebrow">Cómo llegar</div>
+        <h2 class="section-title">Al final del <em>valle</em>,<br>donde empieza<br>el barranco.</h2>
+
+        <address class="arrive-address" style="font-style:normal;">
+          Ctra. Benimaurell s/n
+          <span>03791 · La Vall de Laguar · Alicante</span>
+        </address>
+
+        <div class="arrive-distances">
+          <div class="arrive-distance">
+            <span>Alicante aeropuerto</span>
+            <b>90 min</b>
+          </div>
+          <div class="arrive-distance">
+            <span>Calpe</span>
+            <b>60 min</b>
+          </div>
+          <div class="arrive-distance">
+            <span>Dénia</span>
+            <b>35 min</b>
+          </div>
+          <div class="arrive-distance">
+            <span>Valencia</span>
+            <b>2 h</b>
+          </div>
+        </div>
+      </div>
+
+      <div class="arrive-map">
+        <svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="mapbg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#DCD1BE"/>
+              <stop offset="100%" stop-color="#BFB19A"/>
+            </linearGradient>
+            <pattern id="topo" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+              <path d="M 0 40 Q 20 32 40 40 T 80 40" fill="none" stroke="#A89878" stroke-width="0.6" opacity="0.55"/>
+              <path d="M 0 60 Q 20 52 40 60 T 80 60" fill="none" stroke="#A89878" stroke-width="0.6" opacity="0.4"/>
+              <path d="M 0 20 Q 20 12 40 20 T 80 20" fill="none" stroke="#A89878" stroke-width="0.6" opacity="0.3"/>
+            </pattern>
+          </defs>
+          <rect width="800" height="600" fill="url(#mapbg)"/>
+          <rect width="800" height="600" fill="url(#topo)"/>
+
+          <!-- Sombra valle -->
+          <path d="M 100 480 Q 260 420 420 440 Q 560 455 720 400 L 780 440 L 780 600 L 20 600 L 20 500 Z" fill="#9E8F76" opacity="0.35"/>
+
+          <!-- Barranco serpenteante -->
+          <path d="M 140 120 Q 200 180 260 210 Q 320 240 380 270 Q 440 300 480 340 Q 520 380 560 420 Q 600 470 660 510"
+                fill="none" stroke="#4C5A3A" stroke-width="3" opacity="0.75"/>
+          <path d="M 140 120 Q 200 180 260 210 Q 320 240 380 270 Q 440 300 480 340 Q 520 380 560 420 Q 600 470 660 510"
+                fill="none" stroke="#2F3A22" stroke-width="1.5" stroke-dasharray="8 6" opacity="0.9"/>
+
+          <!-- Carretera principal -->
+          <path d="M 0 420 Q 160 400 320 380 Q 460 365 600 340 Q 700 325 800 290"
+                fill="none" stroke="#E8DFD0" stroke-width="6" opacity="0.85"/>
+          <path d="M 0 420 Q 160 400 320 380 Q 460 365 600 340 Q 700 325 800 290"
+                fill="none" stroke="#8C3E26" stroke-width="1.5" stroke-dasharray="14 10"/>
+
+          <!-- Curvas de nivel -->
+          <path d="M 200 140 Q 300 160 400 170 Q 500 178 600 180" fill="none" stroke="#8A7862" stroke-width="0.8" opacity="0.5"/>
+          <path d="M 180 200 Q 290 220 400 230 Q 510 238 620 240" fill="none" stroke="#8A7862" stroke-width="0.8" opacity="0.5"/>
+
+          <!-- Etiquetas pueblos -->
+          <g font-family="Fraunces, serif" font-style="italic" fill="#1A1714">
+            <circle cx="200" cy="460" r="4" fill="#1A1714"/>
+            <text x="210" y="465" font-size="15">Fleix</text>
+
+            <circle cx="560" cy="280" r="4" fill="#1A1714"/>
+            <text x="570" y="285" font-size="15">Campell</text>
+
+            <circle cx="100" cy="380" r="3" fill="#5A4B3C"/>
+            <text x="108" y="384" font-size="13" opacity="0.7">Orba</text>
+
+            <circle cx="720" cy="200" r="3" fill="#5A4B3C"/>
+            <text x="650" y="196" font-size="13" opacity="0.7">a Dénia</text>
+
+            <text x="30" y="560" font-size="13" opacity="0.6" letter-spacing="0.12em">VALL DE LAGUAR</text>
+          </g>
+
+          <!-- Compass -->
+          <g transform="translate(720, 80)">
+            <circle r="26" fill="#F6F1E8" stroke="#1A1714" stroke-width="1.5"/>
+            <path d="M 0 -20 L 5 0 L 0 20 L -5 0 Z" fill="#B85A3A"/>
+            <text text-anchor="middle" y="-30" font-family="Fraunces, serif" font-size="12" fill="#1A1714">N</text>
+          </g>
+        </svg>
+
+        <div class="arrive-pin">
+          <div class="arrive-pin-label">Hotel Alahuar · Benimaurell</div>
+          <div class="arrive-pin-dot"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SITE FOOTER (contacto / redes / políticas)
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+
+      <div class="footer-brand">
+        <h3>Hotel <em>Alahuar</em></h3>
+        <p>
+          Hotel rural de cuatro estrellas en Benimaurell, Vall de Laguar.
+          Veintiséis años abiertos, veinte habitaciones, una forma de
+          entender la montaña.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="mailto:reservas.alahuar@hotelesposeidon.com">reservas.alahuar<br>@hotelesposeidon.com</a></li>
+          <li><a href="tel:+34965583397">+34 965 583 397</a></li>
+          <li class="muted">Recepción 24 h</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Dirección</h4>
+        <ul>
+          <li>Ctra. Benimaurell s/n</li>
+          <li>03791 · La Vall de Laguar</li>
+          <li>Alicante · España</li>
+          <li class="muted">GPS: 38.7626, −0.0661</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Redes</h4>
+        <ul>
+          <li><a href="https://instagram.com/hotelalahuar" target="_blank">@hotelalahuar</a></li>
+          <li><a href="https://facebook.com/HotelAlahuar" target="_blank">HotelAlahuar</a></li>
+          <li class="muted">Reseñas: TripAdvisor · Booking</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="site-footer-bottom">
+      <div>© 2026 Hotel Alahuar · Hoteles Poseidón</div>
+      <div>
+        <a href="#">Política de reservas</a>
+        &nbsp;·&nbsp;
+        <a href="#">Aviso legal</a>
+        &nbsp;·&nbsp;
+        <a href="#">Privacidad</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       KENAZ ATTRIBUTION (minimal, sin runa)
+       ============================================================ -->
+  <div class="kenaz-footer">
+    <div>
+      Diseño propuesto por <a href="https://kenaz.studio" target="_blank">Kenaz Studio</a>
+    </div>
+    <div>Mockup · Hotel Alahuar · Abril 2026</div>
+  </div>
+
+</body>
+</html>

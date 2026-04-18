@@ -1,0 +1,1841 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<title>Marfil Smiles — Medical & Dental</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:        #1A1F24;       /* carbón deep para texto principal */
+    --ink-soft:   #3D4650;
+    --ink-mute:   #7A848E;
+    --paper:      #FAFAF7;       /* blanco papel escandinavo */
+    --paper-warm: #F2ECE2;       /* beige cálido madera filtrada */
+    --tan:        #C9B79A;       /* tan/camel suave */
+    --fjord:      #4A6B83;       /* azul nórdico frío */
+    --fjord-deep: #35516A;
+    --hairline:   rgba(26,31,36,0.10);
+    --hairline-soft: rgba(26,31,36,0.06);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { background: var(--paper); color: var(--ink); font-family: 'Inter', system-ui, -apple-system, sans-serif; font-weight: 400; -webkit-font-smoothing: antialiased; }
+
+  body {
+    width: 2560px;
+    font-feature-settings: "ss01","cv11";
+    letter-spacing: -0.005em;
+  }
+
+  /* ===================================================================== */
+  /* HERO — sin tocar                                                       */
+  /* ===================================================================== */
+  .page {
+    position: relative;
+    width: 2560px;
+    height: 1440px;
+    background: var(--paper);
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+  }
+
+  /* ============ LEFT: editorial text column ============ */
+  .left {
+    position: relative;
+    padding: 64px 88px 60px 112px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: var(--paper);
+  }
+
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+  }
+
+  .mark {
+    width: 60px; height: 60px;
+    display: grid; place-items: center;
+    border: 1.5px solid var(--ink);
+    border-radius: 50%;
+  }
+  .mark svg { display: block; }
+
+  .wordmark {
+    font-family: 'Fraunces', 'Inter', serif;
+    font-weight: 400;
+    font-size: 32px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .wordmark .sub {
+    display: block;
+    margin-top: 6px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+
+  .nav {
+    display: flex;
+    gap: 44px;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    color: var(--ink-soft);
+  }
+  .nav a { color: inherit; text-decoration: none; }
+  .nav .active { color: var(--ink); position: relative; }
+  .nav .active::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: -10px;
+    height: 1.5px;
+    background: var(--ink);
+  }
+
+  .lang {
+    display: flex;
+    gap: 18px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    color: var(--ink-mute);
+  }
+  .lang .on { color: var(--ink); }
+
+  .hero {
+    margin-top: 20px;
+    max-width: 1020px;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--fjord);
+    margin-bottom: 36px;
+  }
+  .eyebrow .dot { width:6px; height:6px; border-radius:50%; background: var(--fjord); display:inline-block; }
+  .eyebrow .line { width: 64px; height: 1px; background: var(--fjord); opacity: 0.5; }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 138px;
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    color: var(--ink);
+    margin-bottom: 44px;
+  }
+  h1 em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--fjord-deep);
+  }
+
+  .sub {
+    max-width: 780px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin-bottom: 44px;
+  }
+
+  .disciplines {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    max-width: 960px;
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+    margin-bottom: 44px;
+  }
+  .disc {
+    padding: 30px 28px 28px 0;
+    border-right: 1px solid var(--hairline);
+  }
+  .disc + .disc { padding-left: 28px; }
+  .disc:last-child { border-right: none; padding-right: 0; }
+  .disc .num {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--ink-mute);
+    margin-bottom: 14px;
+    text-transform: uppercase;
+  }
+  .disc .name {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 24px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 10px;
+    line-height: 1.15;
+  }
+  .disc .hint {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--ink-mute);
+    line-height: 1.5;
+  }
+
+  .cta-row {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+  }
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 22px 36px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.2s ease;
+  }
+  .cta svg { display: block; }
+  .cta-note {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--ink-mute);
+    line-height: 1.4;
+  }
+  .cta-note strong {
+    color: var(--ink);
+    font-weight: 500;
+    display: block;
+  }
+
+  .meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    font-weight: 500;
+  }
+  .meta-row .kenaz {
+    color: var(--ink-mute);
+    font-size: 11px;
+    letter-spacing: 0.32em;
+  }
+  .meta-row .loc .city {
+    color: var(--ink);
+    font-weight: 500;
+    letter-spacing: 0.22em;
+  }
+
+  .right {
+    position: relative;
+    overflow: hidden;
+    background: var(--paper-warm);
+  }
+
+  .photo {
+    position: absolute;
+    inset: 0;
+    background-image: url("./img/recepcion.jpg");
+    background-size: cover;
+    background-position: 15% center;
+    filter: saturate(0.68) brightness(1.04) contrast(1.03);
+  }
+  .photo::after {
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(135deg, rgba(250,250,247,0.25) 0%, rgba(242,236,226,0.18) 50%, rgba(201,183,154,0.18) 100%),
+      radial-gradient(ellipse at 50% 40%, rgba(26,31,36,0) 0%, rgba(26,31,36,0.12) 100%);
+  }
+
+  .booking {
+    position: absolute;
+    bottom: 72px;
+    left: 72px;
+    right: 72px;
+    background: rgba(250,250,247,0.96);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(26,31,36,0.08);
+    border-radius: 3px;
+    padding: 28px 34px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: center;
+    box-shadow: 0 24px 60px -24px rgba(26,31,36,0.25);
+  }
+  .booking-label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 14px;
+  }
+  .booking-row {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 22px;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  .booking-row .sep {
+    width: 1px; height: 22px;
+    background: var(--hairline);
+  }
+  .booking-row .value {
+    color: var(--ink);
+  }
+  .booking-row .value small {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .booking-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink);
+    padding: 14px 22px;
+    border: 1.5px solid var(--ink);
+    border-radius: 2px;
+    text-decoration: none;
+  }
+
+  .helfo {
+    position: absolute;
+    top: 56px;
+    right: 56px;
+    background: rgba(74,107,131,0.94);
+    color: var(--paper);
+    padding: 14px 22px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .helfo .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--paper); }
+
+  .page-num {
+    position: absolute;
+    bottom: 56px;
+    right: 56px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 18px;
+    color: var(--paper);
+    letter-spacing: 0.04em;
+    mix-blend-mode: difference;
+  }
+
+  /* ===================================================================== */
+  /* SISTEMA DE SECCIONES FULLPAGE                                          */
+  /* ===================================================================== */
+  section {
+    width: 2560px;
+    padding: 160px 180px;
+    position: relative;
+  }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: 1fr 1.8fr;
+    gap: 120px;
+    margin-bottom: 100px;
+    align-items: end;
+  }
+  .section-num {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--fjord);
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .section-num .line { width: 64px; height: 1px; background: var(--fjord); opacity: 0.5; }
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 88px;
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+  }
+  .section-title em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--fjord-deep);
+  }
+  .section-lede {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 640px;
+    margin-top: 24px;
+  }
+  .section-kicker {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.36em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-top: 18px;
+  }
+
+  /* ===================================================================== */
+  /* 02 — DISCIPLINAS (expandido)                                           */
+  /* ===================================================================== */
+  .s-disciplinas {
+    background: var(--paper);
+    border-top: 1px solid var(--hairline);
+  }
+  .disc-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid var(--hairline);
+  }
+  .disc-block {
+    display: grid;
+    grid-template-columns: 0.6fr 1.2fr 1fr;
+    gap: 80px;
+    padding: 70px 0;
+    border-bottom: 1px solid var(--hairline);
+    align-items: start;
+  }
+  .disc-block .lead {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .disc-block .lead .idx {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--fjord);
+  }
+  .disc-block .lead h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 52px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .disc-block .desc {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+  .disc-block .desc p + p { margin-top: 14px; }
+  .disc-block .treat {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 28px;
+    align-content: start;
+  }
+  .disc-block .treat .t-item {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    color: var(--ink);
+    letter-spacing: -0.002em;
+    padding-left: 18px;
+    position: relative;
+    line-height: 1.4;
+  }
+  .disc-block .treat .t-item::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 9px;
+    width: 8px; height: 1px;
+    background: var(--tan);
+  }
+  .disc-block .treat .t-item small {
+    display: block;
+    font-size: 12px;
+    color: var(--ink-mute);
+    font-weight: 400;
+    margin-top: 4px;
+    letter-spacing: 0;
+  }
+
+  /* ===================================================================== */
+  /* 03 — IDIOMAS (destacado)                                               */
+  /* ===================================================================== */
+  .s-idiomas {
+    background: var(--paper-warm);
+    border-top: 1px solid var(--hairline);
+    padding: 180px 180px 160px;
+  }
+  .lang-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .lang-cell {
+    padding: 56px 40px 56px 0;
+    border-right: 1px solid var(--hairline);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .lang-cell + .lang-cell { padding-left: 40px; }
+  .lang-cell:last-child { border-right: none; }
+  .lang-cell .code {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 72px;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+  }
+  .lang-cell .code em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--fjord-deep);
+    font-size: 32px;
+    letter-spacing: 0;
+    margin-left: 10px;
+    vertical-align: middle;
+  }
+  .lang-cell .nat {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 22px;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  .lang-cell .hint {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .lang-cell .tag {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-top: auto;
+  }
+
+  .helfo-bar {
+    margin-top: 72px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 44px 56px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 48px;
+    align-items: center;
+    border-radius: 2px;
+  }
+  .helfo-bar .badge {
+    background: var(--fjord);
+    color: var(--paper);
+    padding: 18px 26px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-radius: 2px;
+  }
+  .helfo-bar .badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--paper); }
+  .helfo-bar .txt {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 26px;
+    line-height: 1.3;
+    letter-spacing: -0.005em;
+    color: var(--paper);
+  }
+  .helfo-bar .txt em { font-style: italic; color: var(--tan); }
+  .helfo-bar .txt small {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    color: rgba(250,250,247,0.6);
+    letter-spacing: 0;
+    margin-top: 8px;
+  }
+  .helfo-bar .lnk {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--paper);
+    padding: 14px 20px;
+    border: 1px solid rgba(250,250,247,0.3);
+    text-decoration: none;
+    border-radius: 2px;
+  }
+
+  /* ===================================================================== */
+  /* 04 — DRA. CUCA MARFIL                                                  */
+  /* ===================================================================== */
+  .s-directora {
+    background: var(--paper);
+    border-top: 1px solid var(--hairline);
+  }
+  .dir-wrap {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 120px;
+    align-items: center;
+  }
+  .dir-portrait {
+    position: relative;
+    aspect-ratio: 4/5;
+    background: var(--paper-warm);
+    border: 1px solid var(--hairline);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .dir-portrait::before {
+    content: "";
+    position: absolute;
+    inset: 40px;
+    border: 1px solid var(--hairline);
+  }
+  .dir-portrait .mono {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 220px;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    color: var(--ink);
+    position: relative;
+  }
+  .dir-portrait .mono em {
+    font-style: italic;
+    color: var(--fjord-deep);
+    font-weight: 300;
+  }
+  .dir-portrait .cap {
+    position: absolute;
+    bottom: 32px;
+    left: 48px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.36em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .dir-portrait .page-ref {
+    position: absolute;
+    top: 32px;
+    right: 48px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 16px;
+    color: var(--ink-mute);
+  }
+  .dir-text .eyebrow {
+    margin-bottom: 28px;
+  }
+  .dir-text h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 88px;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+  .dir-text h2 em { font-style: italic; color: var(--fjord-deep); }
+  .dir-text .role {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 40px;
+  }
+  .dir-text p {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 1.62;
+    color: var(--ink-soft);
+    max-width: 680px;
+  }
+  .dir-text p + p { margin-top: 22px; }
+  .dir-facts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-top: 54px;
+    padding-top: 40px;
+    border-top: 1px solid var(--hairline);
+  }
+  .dir-fact .n {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 54px;
+    line-height: 1;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+  }
+  .dir-fact .n em { font-style: italic; color: var(--fjord-deep); }
+  .dir-fact .l {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    line-height: 1.5;
+  }
+
+  /* ===================================================================== */
+  /* 05 — PRIMERA CONSULTA                                                  */
+  /* ===================================================================== */
+  .s-consulta {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 180px 180px;
+  }
+  .s-consulta .section-num { color: var(--tan); }
+  .s-consulta .section-num .line { background: var(--tan); }
+  .consulta-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 120px;
+    align-items: end;
+  }
+  .consulta-wrap h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 120px;
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    color: var(--paper);
+    margin-bottom: 30px;
+  }
+  .consulta-wrap h2 em {
+    font-style: italic;
+    color: var(--tan);
+    font-weight: 300;
+  }
+  .consulta-wrap .lede {
+    font-family: 'Inter', sans-serif;
+    font-size: 19px;
+    line-height: 1.6;
+    color: rgba(250,250,247,0.72);
+    max-width: 560px;
+  }
+  .consulta-card {
+    background: rgba(250,250,247,0.04);
+    border: 1px solid rgba(250,250,247,0.14);
+    padding: 52px 48px;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+  .consulta-card .lab {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.36em;
+    text-transform: uppercase;
+    color: var(--tan);
+  }
+  .consulta-card .slot {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 54px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--paper);
+  }
+  .consulta-card .slot em { font-style: italic; color: var(--tan); }
+  .consulta-card .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(250,250,247,0.14);
+  }
+  .consulta-card .grid .it small {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(250,250,247,0.5);
+    margin-bottom: 10px;
+  }
+  .consulta-card .grid .it span {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 20px;
+    color: var(--paper);
+    letter-spacing: -0.005em;
+  }
+  .consulta-card .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    background: var(--fjord);
+    color: var(--paper);
+    padding: 26px 40px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    margin-top: 6px;
+  }
+  .consulta-card .btn svg { display: block; }
+  .consulta-card .foot {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: rgba(250,250,247,0.55);
+    line-height: 1.5;
+  }
+
+  /* ===================================================================== */
+  /* 06 — INSTALACIONES                                                     */
+  /* ===================================================================== */
+  .s-instalaciones {
+    background: var(--paper);
+    padding-bottom: 180px;
+  }
+  .gallery {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    grid-template-rows: 360px 360px;
+    gap: 24px;
+    height: 744px;
+  }
+  .gallery .g {
+    position: relative;
+    background: var(--paper-warm);
+    overflow: hidden;
+    border: 1px solid var(--hairline-soft);
+    isolation: isolate;
+  }
+  .gallery .g img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: saturate(0.72) brightness(1.02);
+  }
+  /* Duotone overlay — unifica las fotos Unsplash con la paleta Marfil.
+     No se aplica al tile .real (foto del cliente, logo Marfil visible). */
+  .gallery .g.editorial img {
+    filter: grayscale(0.55) saturate(0.45) brightness(1.06) contrast(1.03);
+  }
+  .gallery .g.editorial::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(140deg, rgba(242,236,226,0.30) 0%, rgba(250,250,247,0.18) 45%, rgba(53,81,106,0.22) 100%);
+    mix-blend-mode: multiply;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .gallery .g.editorial::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(53,81,106,0.14);
+    mix-blend-mode: color;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .gallery .g.main { grid-row: span 2; }
+  .gallery .g .cap {
+    position: absolute;
+    left: 24px;
+    bottom: 24px;
+    background: rgba(250,250,247,0.94);
+    backdrop-filter: blur(8px);
+    padding: 10px 16px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink);
+    border-radius: 2px;
+    z-index: 3;
+  }
+
+  /* ===================================================================== */
+  /* 07 — CONVENIOS                                                          */
+  /* ===================================================================== */
+  .s-convenios {
+    background: var(--paper-warm);
+    border-top: 1px solid var(--hairline);
+    padding: 160px 180px;
+  }
+  .conv-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .conv-cell {
+    padding: 54px 28px;
+    border-right: 1px solid var(--hairline);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 28px;
+    min-height: 200px;
+  }
+  .conv-cell:last-child { border-right: none; }
+  .conv-cell .logo {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 26px;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .conv-cell .logo em { font-style: italic; color: var(--fjord-deep); font-weight: 400; }
+  .conv-cell .logo.mono {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .conv-cell .tag {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .conv-cell.helfo-cell {
+    background: var(--fjord);
+    color: var(--paper);
+  }
+  .conv-cell.helfo-cell .logo {
+    color: var(--paper);
+    font-weight: 500;
+    font-size: 28px;
+  }
+  .conv-cell.helfo-cell .tag { color: rgba(250,250,247,0.7); }
+  .conv-note {
+    margin-top: 30px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--ink-mute);
+    letter-spacing: 0.02em;
+    font-style: italic;
+  }
+
+  /* ===================================================================== */
+  /* 08 — CÓMO LLEGAR                                                        */
+  /* ===================================================================== */
+  .s-llegar {
+    background: var(--paper);
+    border-top: 1px solid var(--hairline);
+    padding: 160px 180px;
+  }
+  .llegar-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 100px;
+    align-items: stretch;
+  }
+  .llegar-info {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  .llegar-info h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 80px;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+  }
+  .llegar-info h2 em { font-style: italic; color: var(--fjord-deep); }
+  .llegar-info .addr {
+    padding-top: 32px;
+    border-top: 1px solid var(--hairline);
+  }
+  .llegar-info .addr .lab {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.36em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 12px;
+  }
+  .llegar-info .addr .street {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 28px;
+    color: var(--ink);
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+  .llegar-info .routes {
+    display: grid;
+    gap: 20px;
+  }
+  .llegar-info .route {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--hairline-soft);
+    align-items: center;
+  }
+  .llegar-info .route .from {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .llegar-info .route .dir {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    color: var(--ink);
+    line-height: 1.45;
+  }
+  .llegar-info .route .time {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 20px;
+    color: var(--fjord-deep);
+  }
+  .llegar-map {
+    background: var(--paper-warm);
+    border: 1px solid var(--hairline);
+    position: relative;
+    overflow: hidden;
+    min-height: 560px;
+  }
+  .map-svg { width: 100%; height: 100%; display: block; }
+  .map-pin {
+    position: absolute;
+    top: 42%; left: 48%;
+    transform: translate(-50%, -100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    z-index: 3;
+  }
+  .map-pin .label {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 8px 14px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+  .map-pin .dot {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: var(--ink);
+    border: 3px solid var(--paper);
+    box-shadow: 0 4px 12px rgba(26,31,36,0.25);
+  }
+  .map-cap {
+    position: absolute;
+    bottom: 24px; left: 24px;
+    background: rgba(250,250,247,0.94);
+    backdrop-filter: blur(8px);
+    padding: 12px 18px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink);
+    border-radius: 2px;
+  }
+
+  /* ===================================================================== */
+  /* FOOTER                                                                 */
+  /* ===================================================================== */
+  footer {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 120px 180px 80px;
+  }
+  .foot-top {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr 1fr;
+    gap: 80px;
+    padding-bottom: 80px;
+    border-bottom: 1px solid rgba(250,250,247,0.14);
+  }
+  .foot-brand .logo {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 42px;
+    letter-spacing: -0.015em;
+    color: var(--paper);
+    margin-bottom: 16px;
+  }
+  .foot-brand .tag {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: rgba(250,250,247,0.5);
+    margin-bottom: 36px;
+  }
+  .foot-brand p {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.65;
+    color: rgba(250,250,247,0.7);
+    max-width: 420px;
+  }
+  .foot-col h4 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.36em;
+    text-transform: uppercase;
+    color: var(--tan);
+    margin-bottom: 28px;
+  }
+  .foot-col ul { list-style: none; display: grid; gap: 12px; }
+  .foot-col li {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    color: rgba(250,250,247,0.78);
+    line-height: 1.4;
+  }
+  .foot-col li strong { color: var(--paper); font-weight: 500; display: block; margin-bottom: 2px; }
+  .foot-col a { color: inherit; text-decoration: none; }
+
+  .foot-bottom {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 28px;
+  }
+  .foot-lang {
+    display: flex;
+    gap: 22px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.26em;
+    color: rgba(250,250,247,0.5);
+  }
+  .foot-lang .on { color: var(--paper); }
+  .foot-credits {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: rgba(250,250,247,0.4);
+  }
+  .foot-credits strong { color: var(--tan); font-weight: 500; }
+  .foot-legal {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: rgba(250,250,247,0.4);
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================================================================== -->
+<!-- 01 — HERO (sin tocar)                                                   -->
+<!-- ===================================================================== -->
+<div class="page">
+
+  <div class="left">
+
+    <div>
+      <div class="topbar">
+        <div class="brand">
+          <div class="mark" aria-hidden="true">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+              <path d="M2 15 L7 15 L9.5 7 L13 23 L16.5 11 L19 17 L28 17"
+                    stroke="#1A1F24" stroke-width="1.6" fill="none"
+                    stroke-linecap="square" stroke-linejoin="miter"/>
+            </svg>
+          </div>
+          <div class="wordmark">
+            Marfil Smiles
+            <span class="sub">Medical &amp; Dental — La Nucía</span>
+          </div>
+        </div>
+
+        <nav class="nav">
+          <a class="active" href="#">Inicio</a>
+          <a href="#">Odontología</a>
+          <a href="#">Estética</a>
+          <a href="#">Podología</a>
+          <a href="#">Equipo</a>
+          <a href="#">Contacto</a>
+        </nav>
+
+        <div class="lang">
+          <span class="on">ES</span>
+          <span>EN</span>
+          <span>NO</span>
+          <span>DE</span>
+        </div>
+      </div>
+
+      <div class="hero">
+        <div class="eyebrow">
+          <span class="dot"></span>
+          <span>Centro multidisciplinar — La Nucía</span>
+          <span class="line"></span>
+        </div>
+
+        <h1>Precisión clínica,<br>en <em>cuatro idiomas.</em></h1>
+
+        <p class="sub">
+          Odontología, medicina estética y podología bajo un mismo protocolo
+          clínico. Atendemos en español, inglés, noruego y alemán, con el
+          rigor que tu tratamiento necesita y sin la fricción de traducir
+          tu historia clínica dos veces.
+        </p>
+
+        <div class="disciplines">
+          <div class="disc">
+            <div class="num">01 / Odontología</div>
+            <div class="name">Implantología y estética dental</div>
+            <div class="hint">Invisalign, implantes, endodoncia. Godkjent for HELFO.</div>
+          </div>
+          <div class="disc">
+            <div class="num">02 / Medicina estética</div>
+            <div class="name">Rostro y cuerpo, criterio médico</div>
+            <div class="hint">Botox, rellenos, mesoterapia. Siempre con valoración previa.</div>
+          </div>
+          <div class="disc">
+            <div class="num">03 / Podología</div>
+            <div class="name">Salud del pie, con seguimiento</div>
+            <div class="hint">Biomecánica, quiropodia, plantillas personalizadas.</div>
+          </div>
+        </div>
+
+        <div class="cta-row">
+          <a href="#" class="cta">
+            Pedir cita
+            <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
+              <path d="M0 6 L14 6 M9 1 L14 6 L9 11" stroke="#FAFAF7" stroke-width="1.5" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+            </svg>
+          </a>
+          <div class="cta-note">
+            <strong>Primera consulta sin coste</strong>
+            Revisión + plan de tratamiento en 45 minutos.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="meta-row">
+      <div class="loc">
+        <span class="city">La Nucía</span> &nbsp;·&nbsp; Av. Marina Baixa 19 &nbsp;·&nbsp; 03530 Alicante
+      </div>
+      <div class="kenaz">Diseño propuesto por Kenaz Studio</div>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="photo" role="img" aria-label="Recepción Marfil Smiles"></div>
+
+    <div class="helfo">
+      <span class="dot"></span>
+      <span>Godkjent for søknad om HELFO</span>
+    </div>
+
+    <div class="booking">
+      <div>
+        <div class="booking-label">Próxima cita disponible</div>
+        <div class="booking-row">
+          <div class="value">
+            <small>Fecha</small>
+            Jueves, 24 abr — 10:30
+          </div>
+          <div class="sep"></div>
+          <div class="value">
+            <small>Idioma de la consulta</small>
+            Norsk
+          </div>
+          <div class="sep"></div>
+          <div class="value">
+            <small>Profesional</small>
+            Dra. Cuca Marfil
+          </div>
+        </div>
+      </div>
+      <a href="#" class="booking-cta">
+        Reservar
+        <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
+          <path d="M0 5 L12 5 M8 1 L12 5 L8 9" stroke="#1A1F24" stroke-width="1.5" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="page-num">01 / 04</div>
+  </div>
+
+</div>
+
+<!-- ===================================================================== -->
+<!-- 02 — DISCIPLINAS (expandido)                                            -->
+<!-- ===================================================================== -->
+<section class="s-disciplinas">
+  <div class="section-head">
+    <div>
+      <div class="section-num"><span class="line"></span><span>02 / Disciplinas</span></div>
+      <div class="section-kicker">Tres especialidades, un solo equipo</div>
+    </div>
+    <div>
+      <h2 class="section-title">Tratamientos que <em>coordinamos</em><br>bajo el mismo techo.</h2>
+      <p class="section-lede">
+        La salud no se trocea por especialidades. Cuando un implante afecta la
+        postura, o una intervención facial requiere análisis dermatológico,
+        tus médicos hablan entre ellos. Sin derivaciones externas.
+      </p>
+    </div>
+  </div>
+
+  <div class="disc-stack">
+    <div class="disc-block">
+      <div class="lead">
+        <div class="idx">01 — Odontología</div>
+        <h3>Dental</h3>
+      </div>
+      <div class="desc">
+        <p>Implantología con cirugía guiada por planificación digital. Ortodoncia invisible Invisalign para adultos y adolescentes. Estética dental centrada en anatomía real, no en tonos artificiales.</p>
+        <p>Periodoncia y mantenimiento como base de cualquier plan a largo plazo.</p>
+      </div>
+      <div class="treat">
+        <div class="t-item">Implantes dentales<small>Carga inmediata cuando procede</small></div>
+        <div class="t-item">Ortodoncia Invisalign<small>Casos adultos y adolescentes</small></div>
+        <div class="t-item">Carillas y estética<small>Composite y porcelana</small></div>
+        <div class="t-item">Periodoncia<small>Encía sana, implante estable</small></div>
+      </div>
+    </div>
+
+    <div class="disc-block">
+      <div class="lead">
+        <div class="idx">02 — Medicina estética</div>
+        <h3>Estética médica</h3>
+      </div>
+      <div class="desc">
+        <p>Criterio médico antes que catálogo. Cada tratamiento parte de una valoración facial completa y una conversación honesta sobre qué aporta valor y qué no.</p>
+        <p>Trabajamos rostro, cuero cabelludo y corporal con productos y protocolos acreditados.</p>
+      </div>
+      <div class="treat">
+        <div class="t-item">Toxina botulínica<small>Expresividad preservada</small></div>
+        <div class="t-item">Ácido hialurónico<small>Rellenos anatómicos</small></div>
+        <div class="t-item">Hilos tensores<small>Sostén natural, sin tirantez</small></div>
+        <div class="t-item">Tratamientos capilares<small>Mesoterapia y plasma</small></div>
+      </div>
+    </div>
+
+    <div class="disc-block">
+      <div class="lead">
+        <div class="idx">03 — Podología</div>
+        <h3>Podología</h3>
+      </div>
+      <div class="desc">
+        <p>Análisis biomecánico con estudio de pisada, valoración de calzado y seguimiento postural. Cirugía podológica mínimamente invasiva cuando el conservador no alcanza.</p>
+        <p>Plantillas hechas a medida en laboratorio propio, con ajuste clínico antes de la entrega.</p>
+      </div>
+      <div class="treat">
+        <div class="t-item">Estudio biomecánico<small>Marcha y pisada en vídeo</small></div>
+        <div class="t-item">Cirugía podológica<small>MIS, seguimiento completo</small></div>
+        <div class="t-item">Plantillas a medida<small>Diseño clínico y fabricación</small></div>
+        <div class="t-item">Quiropodia avanzada<small>Uñas, helomas, hiperqueratosis</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- 03 — IDIOMAS                                                            -->
+<!-- ===================================================================== -->
+<section class="s-idiomas">
+  <div class="section-head">
+    <div>
+      <div class="section-num"><span class="line"></span><span>03 / Idiomas</span></div>
+      <div class="section-kicker">Sin traducir tu historia dos veces</div>
+    </div>
+    <div>
+      <h2 class="section-title">Atención en <em>tu idioma,</em><br>no en el nuestro.</h2>
+      <p class="section-lede">
+        El equipo clínico atiende de forma nativa en cuatro idiomas. Eso significa
+        diagnóstico en tu lengua, consentimiento informado que entiendes de verdad
+        y un informe que tu médico de cabecera puede leer sin esfuerzo.
+      </p>
+    </div>
+  </div>
+
+  <div class="lang-grid">
+    <div class="lang-cell">
+      <div class="code">ES<em>Español</em></div>
+      <div class="nat">Castellano neutro</div>
+      <div class="hint">Equipo clínico nativo. Informes y consentimientos en castellano.</div>
+      <div class="tag">Atención nativa</div>
+    </div>
+    <div class="lang-cell">
+      <div class="code">EN<em>English</em></div>
+      <div class="nat">Clinical English</div>
+      <div class="hint">Consultas, informes y seguimiento íntegramente en inglés médico.</div>
+      <div class="tag">Personal titulado</div>
+    </div>
+    <div class="lang-cell">
+      <div class="code">NO<em>Norsk</em></div>
+      <div class="nat">Norsk bokmål</div>
+      <div class="hint">Profesionales de habla noruega. Documentación compatible con HELFO.</div>
+      <div class="tag">Godkjent HELFO</div>
+    </div>
+    <div class="lang-cell">
+      <div class="code">DE<em>Deutsch</em></div>
+      <div class="nat">Deutsch</div>
+      <div class="hint">Consulta y planes de tratamiento en alemán. Informes bilingües bajo petición.</div>
+      <div class="tag">Atención nativa</div>
+    </div>
+  </div>
+
+  <div class="helfo-bar">
+    <div class="badge"><span class="dot"></span>Godkjent for søknad om HELFO</div>
+    <div class="txt">
+      Centro <em>reconocido</em> para solicitud de reembolso HELFO.
+      <small>Preparamos la documentación clínica requerida por Helfo en noruego, con los códigos y justificantes necesarios.</small>
+    </div>
+    <a href="#" class="lnk">Cómo funciona</a>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- 04 — DIRECTORA                                                          -->
+<!-- ===================================================================== -->
+<section class="s-directora">
+  <div class="section-head">
+    <div>
+      <div class="section-num"><span class="line"></span><span>04 / Dirección clínica</span></div>
+      <div class="section-kicker">La firma detrás del centro</div>
+    </div>
+    <div>
+      <h2 class="section-title">Una <em>sola</em> mano<br>coordina el plan.</h2>
+    </div>
+  </div>
+
+  <div class="dir-wrap">
+    <div class="dir-portrait">
+      <span class="page-ref">pl. 04</span>
+      <div class="mono">C<em>M</em></div>
+      <span class="cap">Retrato editorial — próxima sesión</span>
+    </div>
+
+    <div class="dir-text">
+      <h2>Dra. Cuca <em>Marfil</em></h2>
+      <div class="role">Directora clínica · Odontóloga</div>
+      <p>
+        Fundó Marfil Smiles con una idea simple y obstinada: que un paciente
+        no debería contar tres veces la misma historia a tres profesionales
+        distintos. Formación en odontología integral, con especialización
+        en implantología y estética funcional.
+      </p>
+      <p>
+        Coordina el equipo multidisciplinar y revisa cada plan antes de que
+        llegue a consulta. Consulta a diario en español, noruego, inglés
+        y alemán, con un enfoque que pone la salud por delante del catálogo
+        de tratamientos.
+      </p>
+      <div class="dir-facts">
+        <div class="dir-fact">
+          <div class="n">20<em>+</em></div>
+          <div class="l">Años de ejercicio clínico</div>
+        </div>
+        <div class="dir-fact">
+          <div class="n">4</div>
+          <div class="l">Idiomas de consulta</div>
+        </div>
+        <div class="dir-fact">
+          <div class="n">3</div>
+          <div class="l">Disciplinas coordinadas</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- 05 — PRIMERA CONSULTA                                                   -->
+<!-- ===================================================================== -->
+<section class="s-consulta">
+  <div class="section-head">
+    <div>
+      <div class="section-num"><span class="line"></span><span>05 / Primera cita</span></div>
+    </div>
+    <div></div>
+  </div>
+
+  <div class="consulta-wrap">
+    <div>
+      <h2>Primera consulta<br><em>sin coste.</em></h2>
+      <p class="lede">
+        45 minutos con la doctora. Revisión clínica completa, radiografía si
+        corresponde y un plan escrito con tiempos y alternativas. Sin compromiso
+        de continuar, sin letra pequeña.
+      </p>
+    </div>
+
+    <div class="consulta-card">
+      <div class="lab">Próxima cita disponible</div>
+      <div class="slot">Martes, 22 <em>abr</em> — 11:00</div>
+      <div class="grid">
+        <div class="it"><small>Duración</small><span>45 minutos</span></div>
+        <div class="it"><small>Idioma</small><span>A elegir</span></div>
+        <div class="it"><small>Coste</small><span>Sin coste</span></div>
+      </div>
+      <a href="#" class="btn">
+        Pedir primera consulta
+        <svg width="18" height="12" viewBox="0 0 18 12" fill="none">
+          <path d="M0 6 L16 6 M11 1 L16 6 L11 11" stroke="#FAFAF7" stroke-width="1.5" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+        </svg>
+      </a>
+      <div class="foot">
+        O escribe a info@marfil-smiles.com · WhatsApp +34 965 870 868
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- 06 — INSTALACIONES                                                      -->
+<!-- ===================================================================== -->
+<section class="s-instalaciones">
+  <div class="section-head">
+    <div>
+      <div class="section-num"><span class="line"></span><span>06 / Instalaciones</span></div>
+      <div class="section-kicker">Av. Marina Baixa 19 · La Nucía</div>
+    </div>
+    <div>
+      <h2 class="section-title">El espacio<br><em>también</em> cura.</h2>
+      <p class="section-lede">
+        Clínica diseñada con aire, luz natural y materiales nobles. Tres
+        gabinetes independientes, sala de esterilización propia y recepción
+        que no parece sala de espera.
+      </p>
+    </div>
+  </div>
+
+  <div class="gallery">
+    <div class="g main real">
+      <img src="./img/recepcion.jpg" alt="Recepción Marfil Smiles"/>
+      <div class="cap">Recepción</div>
+    </div>
+    <div class="g editorial">
+      <img src="./img/gabinete.jpg" alt="Gabinete dental, luz diurna"/>
+      <div class="cap">Gabinete dental</div>
+    </div>
+    <div class="g editorial">
+      <img src="./img/consulta.jpg" alt="Sala de consulta, silla dental"/>
+      <div class="cap">Sala de consulta</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- 07 — CONVENIOS                                                          -->
+<!-- ===================================================================== -->
+<section class="s-convenios">
+  <div class="section-head">
+    <div>
+      <div class="section-num"><span class="line"></span><span>07 / Convenios y seguros</span></div>
+      <div class="section-kicker">Trabajamos con las principales aseguradoras</div>
+    </div>
+    <div>
+      <h2 class="section-title">Tu <em>seguro</em><br>es bienvenido.</h2>
+      <p class="section-lede">
+        Gestionamos directamente la facturación con la mayoría de las aseguradoras
+        privadas españolas y preparamos la documentación para reembolso HELFO
+        en el caso de pacientes residentes en Noruega.
+      </p>
+    </div>
+  </div>
+
+  <div class="conv-grid">
+    <div class="conv-cell helfo-cell">
+      <div class="logo">HELFO</div>
+      <div class="tag">Noruega · reembolso</div>
+    </div>
+    <div class="conv-cell">
+      <div class="logo mono">SANITAS</div>
+      <div class="tag">España</div>
+    </div>
+    <div class="conv-cell">
+      <div class="logo mono">DKV</div>
+      <div class="tag">España · internacional</div>
+    </div>
+    <div class="conv-cell">
+      <div class="logo mono">ADESLAS</div>
+      <div class="tag">España</div>
+    </div>
+    <div class="conv-cell">
+      <div class="logo mono">ASISA</div>
+      <div class="tag">España</div>
+    </div>
+    <div class="conv-cell">
+      <div class="logo">Mutuas<em> varias</em></div>
+      <div class="tag">Consultar en recepción</div>
+    </div>
+  </div>
+
+  <div class="conv-note">Si tu aseguradora no aparece, consúltanos. Trabajamos también por reembolso directo.</div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- 08 — CÓMO LLEGAR                                                        -->
+<!-- ===================================================================== -->
+<section class="s-llegar">
+  <div class="section-head">
+    <div>
+      <div class="section-num"><span class="line"></span><span>08 / Cómo llegar</span></div>
+      <div class="section-kicker">La Nucía · Costa Blanca Norte</div>
+    </div>
+    <div>
+      <h2 class="section-title">A quince <em>minutos</em><br>de la costa.</h2>
+    </div>
+  </div>
+
+  <div class="llegar-wrap">
+    <div class="llegar-info">
+      <div class="addr">
+        <div class="lab">Dirección</div>
+        <div class="street">Av. Marina Baixa 19, Local 2<br>03530 La Nucía · Alicante</div>
+      </div>
+
+      <div class="routes">
+        <div class="route">
+          <div class="from">Benidorm</div>
+          <div class="dir">CV-70 dirección La Nucía · 8 km</div>
+          <div class="time">12 min</div>
+        </div>
+        <div class="route">
+          <div class="from">Altea</div>
+          <div class="dir">N-332 + CV-763 · 7 km</div>
+          <div class="time">11 min</div>
+        </div>
+        <div class="route">
+          <div class="from">Alfaz del Pi</div>
+          <div class="dir">CV-70 directa · 4 km</div>
+          <div class="time">7 min</div>
+        </div>
+        <div class="route">
+          <div class="from">Calpe</div>
+          <div class="dir">AP-7 salida 64 · 22 km</div>
+          <div class="time">24 min</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="llegar-map">
+      <svg class="map-svg" viewBox="0 0 800 560" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(26,31,36,0.05)" stroke-width="0.5"/>
+          </pattern>
+        </defs>
+        <rect width="800" height="560" fill="#F2ECE2"/>
+        <rect width="800" height="560" fill="url(#grid)"/>
+        <!-- línea costa esquematizada -->
+        <path d="M 0 440 Q 120 430 220 460 T 420 470 T 640 455 T 800 480 L 800 560 L 0 560 Z"
+              fill="rgba(74,107,131,0.18)" stroke="rgba(74,107,131,0.4)" stroke-width="1.2"/>
+        <!-- carreteras -->
+        <path d="M 0 280 Q 200 260 380 268 T 800 255"
+              fill="none" stroke="rgba(26,31,36,0.28)" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M 220 0 Q 260 180 380 268 Q 440 320 500 440"
+              fill="none" stroke="rgba(26,31,36,0.2)" stroke-width="1.5" stroke-dasharray="4 6"/>
+        <path d="M 380 268 Q 520 290 640 340 T 800 360"
+              fill="none" stroke="rgba(26,31,36,0.2)" stroke-width="1.5" stroke-dasharray="4 6"/>
+        <!-- etiquetas -->
+        <text x="40" y="520" fill="rgba(26,31,36,0.45)" font-family="Inter" font-size="11" letter-spacing="3">MAR MEDITERRÁNEO</text>
+        <text x="570" y="490" fill="rgba(74,107,131,0.85)" font-family="Inter" font-size="11" letter-spacing="3">BENIDORM</text>
+        <text x="80" y="490" fill="rgba(74,107,131,0.85)" font-family="Inter" font-size="11" letter-spacing="3">ALTEA</text>
+        <text x="230" y="40" fill="rgba(26,31,36,0.45)" font-family="Inter" font-size="11" letter-spacing="3">CV-70</text>
+        <text x="680" y="160" fill="rgba(26,31,36,0.4)" font-family="Fraunces" font-style="italic" font-size="14">Sierra Gelada</text>
+        <!-- ciudad La Nucía -->
+        <circle cx="380" cy="268" r="3" fill="#1A1F24"/>
+        <text x="400" y="250" fill="#1A1F24" font-family="Inter" font-size="12" font-weight="600" letter-spacing="2">LA NUCÍA</text>
+      </svg>
+      <div class="map-pin">
+        <div class="label">Marfil Smiles · Av. Marina Baixa 19</div>
+        <div class="dot"></div>
+      </div>
+      <div class="map-cap">La Nucía centro</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================================== -->
+<!-- FOOTER                                                                  -->
+<!-- ===================================================================== -->
+<footer>
+  <div class="foot-top">
+    <div class="foot-brand">
+      <div class="logo">Marfil Smiles</div>
+      <div class="tag">Medical &amp; Dental — La Nucía</div>
+      <p>Centro multidisciplinar donde odontología, medicina estética y podología comparten protocolo, equipo y responsabilidad clínica. Atención nativa en cuatro idiomas.</p>
+    </div>
+
+    <div class="foot-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li><strong>Teléfono</strong><a href="tel:+34965870868">+34 965 870 868</a></li>
+        <li><strong>Email</strong><a href="mailto:info@marfil-smiles.com">info@marfil-smiles.com</a></li>
+        <li><strong>WhatsApp</strong><a href="#">+34 965 870 868</a></li>
+      </ul>
+    </div>
+
+    <div class="foot-col">
+      <h4>Dirección</h4>
+      <ul>
+        <li><strong>Clínica</strong>Av. Marina Baixa 19, Local 2</li>
+        <li>03530 La Nucía</li>
+        <li>Alicante, España</li>
+      </ul>
+    </div>
+
+    <div class="foot-col">
+      <h4>Horario</h4>
+      <ul>
+        <li><strong>Lunes a viernes</strong>09:00 — 20:00</li>
+        <li><strong>Sábados</strong>10:00 — 14:00 (cita previa)</li>
+        <li><strong>Domingos</strong>Cerrado</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="foot-bottom">
+    <div class="foot-lang">
+      <span class="on">ES</span>
+      <span>EN</span>
+      <span>NO</span>
+      <span>DE</span>
+    </div>
+    <div class="foot-legal">
+      © 2026 Marfil Smiles · Nº Col. dental asistencia · Aviso legal · Política de privacidad · Cookies
+    </div>
+    <div class="foot-credits">Diseño propuesto por <strong>Kenaz Studio</strong></div>
+  </div>
+</footer>
+
+</body>
+</html>
