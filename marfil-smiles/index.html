@@ -274,15 +274,15 @@
     inset: 0;
     background-image: url("./img/recepcion.jpg");
     background-size: cover;
-    background-position: 15% center;
-    filter: saturate(0.68) brightness(1.04) contrast(1.03);
+    background-position: 62% center;
+    filter: saturate(0.55) brightness(1.06) contrast(1.02);
   }
   .photo::after {
     content: "";
     position: absolute; inset: 0;
     background:
-      linear-gradient(135deg, rgba(250,250,247,0.25) 0%, rgba(242,236,226,0.18) 50%, rgba(201,183,154,0.18) 100%),
-      radial-gradient(ellipse at 50% 40%, rgba(26,31,36,0) 0%, rgba(26,31,36,0.12) 100%);
+      linear-gradient(135deg, rgba(250,250,247,0.30) 0%, rgba(242,236,226,0.22) 50%, rgba(201,183,154,0.18) 100%),
+      radial-gradient(ellipse at 50% 40%, rgba(26,31,36,0) 0%, rgba(26,31,36,0.14) 100%);
   }
 
   .booking {
@@ -913,16 +913,18 @@
     filter: saturate(0.72) brightness(1.02);
   }
   /* Duotone overlay — unifica las fotos Unsplash con la paleta Marfil.
+     Aplastamos el cian/turquesa de las sillas dentales y lo llevamos a
+     monocromático tintado con fjord + paper-warm.
      No se aplica al tile .real (foto del cliente, logo Marfil visible). */
   .gallery .g.editorial img {
-    filter: grayscale(0.55) saturate(0.45) brightness(1.06) contrast(1.03);
+    filter: grayscale(1) brightness(1.08) contrast(1.05);
   }
   .gallery .g.editorial::before {
     content: "";
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(140deg, rgba(242,236,226,0.30) 0%, rgba(250,250,247,0.18) 45%, rgba(53,81,106,0.22) 100%);
+      linear-gradient(140deg, rgba(242,236,226,0.55) 0%, rgba(201,183,154,0.38) 50%, rgba(53,81,106,0.45) 100%);
     mix-blend-mode: multiply;
     z-index: 1;
     pointer-events: none;
@@ -931,7 +933,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(53,81,106,0.14);
+    background: rgba(74,107,131,0.28);
     mix-blend-mode: color;
     z-index: 2;
     pointer-events: none;
@@ -1766,9 +1768,9 @@
         <path d="M 380 268 Q 520 290 640 340 T 800 360"
               fill="none" stroke="rgba(26,31,36,0.2)" stroke-width="1.5" stroke-dasharray="4 6"/>
         <!-- etiquetas -->
-        <text x="40" y="520" fill="rgba(26,31,36,0.45)" font-family="Inter" font-size="11" letter-spacing="3">MAR MEDITERRÁNEO</text>
-        <text x="570" y="490" fill="rgba(74,107,131,0.85)" font-family="Inter" font-size="11" letter-spacing="3">BENIDORM</text>
-        <text x="80" y="490" fill="rgba(74,107,131,0.85)" font-family="Inter" font-size="11" letter-spacing="3">ALTEA</text>
+        <text x="40" y="540" fill="rgba(26,31,36,0.5)" font-family="Inter" font-size="11" letter-spacing="3">MAR MEDITERRÁNEO</text>
+        <text x="580" y="420" fill="rgba(74,107,131,0.9)" font-family="Inter" font-size="12" font-weight="600" letter-spacing="3">BENIDORM</text>
+        <text x="70" y="420" fill="rgba(74,107,131,0.9)" font-family="Inter" font-size="12" font-weight="600" letter-spacing="3">ALTEA</text>
         <text x="230" y="40" fill="rgba(26,31,36,0.45)" font-family="Inter" font-size="11" letter-spacing="3">CV-70</text>
         <text x="680" y="160" fill="rgba(26,31,36,0.4)" font-family="Fraunces" font-style="italic" font-size="14">Sierra Gelada</text>
         <!-- ciudad La Nucía -->
