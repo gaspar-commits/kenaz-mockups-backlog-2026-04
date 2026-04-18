@@ -36,6 +36,8 @@
 
   html { scroll-behavior: smooth; }
 
+  html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
+
   body {
     font-family: 'Inter', sans-serif;
     background: var(--crema);
@@ -51,7 +53,7 @@
     letter-spacing: -0.01em;
   }
 
-  img { display: block; max-width: 100%; }
+  img, svg { display: block; max-width: 100%; height: auto; }
 
   /* ============================================================
      NAV
@@ -60,11 +62,15 @@
     position: absolute;
     top: 0; left: 0; right: 0;
     z-index: 10;
-    padding: 32px 64px;
+    padding: clamp(1.25rem, 3vw, 2rem) clamp(1.25rem, 4vw, 4rem);
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: clamp(1rem, 2vw, 2rem);
+    flex-wrap: wrap;
   }
+
+  .nav-links { flex-wrap: wrap; row-gap: 12px; }
 
   .nav-logo {
     display: flex;
@@ -165,7 +171,7 @@
     height: 100%;
     max-width: 1680px;
     margin: 0 auto;
-    padding: 180px 80px 90px;
+    padding: clamp(6rem, 10vw, 11rem) clamp(1.25rem, 4vw, 5rem) clamp(3rem, 6vw, 5.5rem);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -283,11 +289,12 @@
     left: 0; right: 0;
     bottom: 0;
     z-index: 3;
-    padding: 30px 80px;
+    padding: clamp(1.25rem, 2.5vw, 1.875rem) clamp(1.25rem, 4vw, 5rem);
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 24px;
+    flex-wrap: wrap;
     color: var(--crema);
     font-size: 13px;
     letter-spacing: 0.1em;
@@ -335,7 +342,7 @@
      ============================================================ */
   .signals {
     background: var(--crema);
-    padding: 90px 80px;
+    padding: clamp(3.5rem, 6vw, 5.5rem) clamp(1.25rem, 4vw, 5rem);
     border-bottom: 1px solid var(--linea);
   }
 
@@ -344,12 +351,12 @@
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1.3fr 1fr;
-    gap: 90px;
+    gap: clamp(2.5rem, 5vw, 5.625rem);
     align-items: start;
   }
 
   .signals-title {
-    font-size: 52px;
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
     line-height: 1.05;
     color: var(--carbon);
     letter-spacing: -0.02em;
@@ -378,7 +385,7 @@
 
   .stats {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 0;
     margin-top: 44px;
     border-top: 1px solid var(--linea);
@@ -422,7 +429,7 @@
      SECTION HEADERS (reutilizable)
      ============================================================ */
   .section {
-    padding: 130px 80px;
+    padding: clamp(4.5rem, 9vw, 8.125rem) clamp(1.25rem, 4vw, 5rem);
     position: relative;
   }
   .section-inner { max-width: 1680px; margin: 0 auto; }
@@ -476,9 +483,9 @@
   .rooms-header {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
-    gap: 80px;
+    gap: clamp(2rem, 4vw, 5rem);
     align-items: end;
-    margin-bottom: 72px;
+    margin-bottom: clamp(3rem, 5vw, 4.5rem);
   }
   .rooms-header-right {
     font-size: 15px;
@@ -489,8 +496,8 @@
   }
   .rooms-grid {
     display: grid;
-    grid-template-columns: 1fr 1.18fr 1fr;
-    gap: 28px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: clamp(1rem, 2vw, 1.75rem);
   }
   .room-card {
     background: #FBF7F0;
@@ -639,9 +646,9 @@
 
   .exp-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2px;
-    margin-top: 88px;
+    margin-top: clamp(3rem, 6vw, 5.5rem);
     background: rgba(246,241,232,0.08);
     border: 1px solid rgba(246,241,232,0.08);
   }
@@ -717,14 +724,14 @@
      ============================================================ */
   .gallery {
     background: var(--piedra);
-    padding: 130px 80px;
+    padding: clamp(4.5rem, 9vw, 8.125rem) clamp(1.25rem, 4vw, 5rem);
   }
   .gallery-grid {
     max-width: 1680px;
-    margin: 72px auto 0;
+    margin: clamp(3rem, 5vw, 4.5rem) auto 0;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-auto-rows: 220px;
+    grid-auto-rows: minmax(160px, 220px);
     gap: 14px;
   }
   .gallery-item {
@@ -767,14 +774,14 @@
      ============================================================ */
   .book {
     background: var(--crema);
-    padding: 130px 80px;
+    padding: clamp(4.5rem, 9vw, 8.125rem) clamp(1.25rem, 4vw, 5rem);
   }
   .book-inner {
     max-width: 1680px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1.15fr;
-    gap: 96px;
+    gap: clamp(2.5rem, 5vw, 6rem);
     align-items: center;
   }
   .book-copy .section-title { max-width: 16ch; }
@@ -896,14 +903,14 @@
      ============================================================ */
   .arrive {
     background: var(--piedra);
-    padding: 130px 80px;
+    padding: clamp(4.5rem, 9vw, 8.125rem) clamp(1.25rem, 4vw, 5rem);
   }
   .arrive-inner {
     max-width: 1680px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1.2fr;
-    gap: 90px;
+    gap: clamp(2.5rem, 5vw, 5.625rem);
     align-items: center;
   }
   .arrive-copy .section-title { max-width: 14ch; }
@@ -1000,15 +1007,15 @@
   .site-footer {
     background: var(--carbon);
     color: var(--crema);
-    padding: 100px 80px 40px;
+    padding: clamp(3.5rem, 6vw, 6.25rem) clamp(1.25rem, 4vw, 5rem) clamp(1.5rem, 3vw, 2.5rem);
   }
   .site-footer-inner {
     max-width: 1680px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr 1fr;
-    gap: 70px;
-    padding-bottom: 60px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: clamp(2rem, 4vw, 4.375rem);
+    padding-bottom: clamp(2rem, 4vw, 3.75rem);
     border-bottom: 1px solid rgba(246,241,232,0.14);
   }
   .footer-brand h3 {
@@ -1078,10 +1085,12 @@
   .kenaz-footer {
     background: var(--carbon);
     color: rgba(246,241,232,0.55);
-    padding: 22px 80px;
+    padding: 22px clamp(1.25rem, 4vw, 5rem);
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
     font-size: 12px;
     letter-spacing: 0.14em;
     text-transform: uppercase;

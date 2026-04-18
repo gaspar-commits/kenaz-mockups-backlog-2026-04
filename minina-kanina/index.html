@@ -37,7 +37,12 @@
     line-height: 1.55;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
   }
+
+  img, svg { max-width: 100%; height: auto; display: block; }
 
   /* ---------- TOP BAR ---------- */
   .topbar {
@@ -46,9 +51,14 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 22px 56px;
+    gap: clamp(1rem, 2vw, 2rem);
+    flex-wrap: wrap;
+    padding: 22px clamp(1.25rem, 4vw, 3.5rem);
     background: var(--paper);
     border-bottom: 1px solid var(--line);
+    max-width: 1600px;
+    margin: 0 auto;
+    width: 100%;
   }
 
   .brand {
@@ -147,12 +157,15 @@
   /* ---------- HERO ---------- */
   .hero {
     position: relative;
-    padding: 70px 56px 90px;
+    padding: clamp(2.5rem, 5vw, 4.5rem) clamp(1.25rem, 4vw, 3.5rem) clamp(3rem, 6vw, 5.5rem);
     display: grid;
     grid-template-columns: 1.05fr 1fr;
-    gap: 72px;
+    gap: clamp(2rem, 5vw, 4.5rem);
     align-items: center;
-    min-height: 760px;
+    min-height: 720px;
+    max-width: 1600px;
+    margin: 0 auto;
+    width: 100%;
   }
 
   .hero-content {
@@ -183,7 +196,7 @@
   .headline {
     font-family: 'PT Serif', serif;
     font-weight: 400;
-    font-size: 72px;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
     line-height: 1.05;
     letter-spacing: -0.015em;
     color: var(--ink);
@@ -370,14 +383,15 @@
 
   /* ---------- TRUST STRIP ---------- */
   .trust {
-    padding: 36px 56px;
+    padding: clamp(1.5rem, 3vw, 2.25rem) clamp(1.25rem, 4vw, 3.5rem);
     background: var(--paper-warm);
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 40px;
+    gap: clamp(1.25rem, 2.5vw, 2.5rem);
+    flex-wrap: wrap;
   }
 
   .trust-label {
@@ -416,15 +430,18 @@
 
   /* ---------- SECTION SHELL ---------- */
   section {
-    padding: 110px 56px;
+    padding: clamp(4rem, 7vw, 7rem) clamp(1.25rem, 4vw, 3.5rem);
     position: relative;
+    max-width: 1600px;
+    margin: 0 auto;
+    width: 100%;
   }
 
   .section-head {
     display: grid;
     grid-template-columns: 0.9fr 1.1fr;
-    gap: 60px;
-    margin-bottom: 72px;
+    gap: clamp(2rem, 4vw, 3.75rem);
+    margin-bottom: clamp(3rem, 5vw, 4.5rem);
     align-items: end;
   }
 
@@ -451,7 +468,7 @@
   .section-title {
     font-family: 'PT Serif', serif;
     font-weight: 400;
-    font-size: 52px;
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
     line-height: 1.1;
     letter-spacing: -0.01em;
     color: var(--ink);
@@ -477,8 +494,8 @@
 
   .services-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 48px;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: clamp(1.5rem, 3vw, 3rem);
   }
 
   .service-card {
@@ -588,13 +605,16 @@
   /* ---------- NINA ---------- */
   .nina {
     background: var(--paper-warm);
-    padding: 120px 56px;
+    padding: clamp(4rem, 7.5vw, 7.5rem) clamp(1.25rem, 4vw, 3.5rem);
+    max-width: 1600px;
+    margin: 0 auto;
+    width: 100%;
   }
 
   .nina-grid {
     display: grid;
     grid-template-columns: 1fr 1.1fr;
-    gap: 80px;
+    gap: clamp(2.5rem, 5vw, 5rem);
     align-items: center;
   }
 
@@ -646,7 +666,7 @@
   .nina-content h2 {
     font-family: 'PT Serif', serif;
     font-weight: 400;
-    font-size: 54px;
+    font-size: clamp(2rem, 4.5vw, 3.375rem);
     line-height: 1.08;
     color: var(--ink);
     margin-bottom: 32px;
@@ -699,8 +719,8 @@
 
   .process-steps {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: clamp(1rem, 2vw, 2.5rem);
     counter-reset: step;
   }
 
@@ -759,15 +779,16 @@
   .quote {
     background: var(--leaf-deep);
     color: var(--paper);
-    padding: 110px 56px;
+    padding: clamp(4rem, 7vw, 7rem) clamp(1.25rem, 4vw, 3.5rem);
     text-align: center;
+    max-width: none;
   }
 
   .quote blockquote {
     font-family: 'PT Serif', serif;
     font-style: italic;
     font-weight: 400;
-    font-size: 42px;
+    font-size: clamp(1.625rem, 3.5vw, 2.625rem);
     line-height: 1.3;
     max-width: 960px;
     margin: 0 auto 36px;
@@ -806,6 +827,7 @@
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 260px 260px;
     gap: 14px;
+    min-width: 0;
   }
 
   .gallery-item {
@@ -841,20 +863,23 @@
   /* ---------- PEDIR CITA ---------- */
   .cita {
     background: var(--paper);
-    padding: 120px 56px;
+    padding: clamp(4rem, 7.5vw, 7.5rem) clamp(1.25rem, 4vw, 3.5rem);
+    max-width: 1600px;
+    margin: 0 auto;
+    width: 100%;
   }
 
   .cita-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 80px;
+    gap: clamp(2.5rem, 5vw, 5rem);
     align-items: start;
   }
 
   .cita h2 {
     font-family: 'PT Serif', serif;
     font-weight: 400;
-    font-size: 56px;
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
     line-height: 1.08;
     color: var(--ink);
     margin-bottom: 28px;
@@ -996,14 +1021,17 @@
   footer {
     background: var(--ink);
     color: var(--paper-warm);
-    padding: 80px 56px 40px;
+    padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 4vw, 3.5rem) clamp(1.5rem, 3vw, 2.5rem);
   }
 
   .footer-grid {
     display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr 1fr;
-    gap: 60px;
-    margin-bottom: 60px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: clamp(2rem, 4vw, 3.75rem);
+    margin-bottom: clamp(2.5rem, 5vw, 3.75rem);
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .footer-brand .wordmark {
@@ -1069,6 +1097,51 @@
     text-decoration: underline;
     text-decoration-color: var(--terra);
     text-underline-offset: 3px;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 1100px) {
+    .hero {
+      grid-template-columns: 1fr;
+      min-height: 0;
+    }
+    .hero-visual { max-height: 620px; }
+    .section-head {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .nina-grid { grid-template-columns: 1fr; }
+    .cita-grid { grid-template-columns: 1fr; }
+    .service-card.hero-card { grid-column: auto; grid-template-columns: 1fr; }
+    .gallery-grid {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: auto;
+    }
+    .gallery-item,
+    .gallery-item.wide,
+    .gallery-item.tall {
+      grid-column: auto;
+      grid-row: auto;
+      aspect-ratio: 4/3;
+    }
+    .nav { display: none; }
+  }
+  @media (max-width: 768px) {
+    .hero-meta { gap: 20px; flex-wrap: wrap; }
+    .service-card { grid-template-columns: 1fr; }
+    .service-card .img-wrap { aspect-ratio: 16/9; }
+    .trust-items { justify-content: flex-start; }
+    .form-row { grid-template-columns: 1fr; }
+    .form-field.full { grid-column: auto; }
+    .footer-bottom { flex-direction: column; gap: 12px; align-items: flex-start; }
+    .hero-visual .badge { left: 0; bottom: -16px; max-width: 90%; }
+    .hero-visual .stamp { width: 96px; height: 96px; top: -12px; right: -12px; }
+  }
+  @media (max-width: 560px) {
+    .gallery-grid { grid-template-columns: 1fr; }
+    .hero-actions { flex-direction: column; align-items: stretch; }
+    .hero-actions .btn { justify-content: center; }
   }
 
 </style>

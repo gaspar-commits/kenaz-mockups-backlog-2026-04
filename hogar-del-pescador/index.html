@@ -16,6 +16,7 @@
 
 /* === RESET === */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
 html { font-size: 16px; scroll-behavior: smooth; }
 body {
   font-family: 'Inter', sans-serif;
@@ -942,18 +943,31 @@ button { border: none; cursor: pointer; font-family: inherit; background: none; 
   .hero-aside { border-left: 0; padding-left: 0; border-top: 1px solid rgba(200, 185, 138, 0.22); padding-top: 44px; }
   .oficio-grid, .galeria-head, .reserva-grid, .equipo-grid { grid-template-columns: 1fr; gap: 50px; }
   .carta-grid { grid-template-columns: repeat(2, 1fr); }
-  .footer-inner { grid-template-columns: 1fr 1fr; }
+  .footer-inner { grid-template-columns: repeat(2, 1fr); }
+  .nav-menu { gap: 26px; }
+}
+@media (max-width: 900px) {
+  .nav-menu { display: none; }
+  .galeria-grid { grid-template-columns: repeat(6, 1fr); }
+  .g-1 { grid-column: span 6; aspect-ratio: 16/9; }
+  .g-2, .g-3 { grid-column: span 3; aspect-ratio: auto; }
+  .g-4, .g-5, .g-6 { grid-column: span 2; }
+  .equipo-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 720px) {
-  .nav-menu { display: none; }
   .hero-facts { grid-template-columns: 1fr 1fr; }
   .carta-grid { grid-template-columns: 1fr; }
   .persona { grid-template-columns: 1fr; }
-  .persona-img { aspect-ratio: 4/5; }
-  .galeria-grid { grid-template-columns: 1fr; }
+  .persona-img { aspect-ratio: 4/5; max-width: 320px; }
+  .galeria-grid { grid-template-columns: 1fr; gap: 14px; }
   .g-1, .g-2, .g-3, .g-4, .g-5, .g-6 { grid-column: 1 / -1; aspect-ratio: 4/3; }
   .footer-inner { grid-template-columns: 1fr; }
   .booking-form { grid-template-columns: 1fr; }
+  .lonja-head { grid-template-columns: 1fr; align-items: start; }
+  .lonja-date { text-align: left; }
+  .hero-ctas { flex-direction: column; align-items: stretch; }
+  .hero-ctas a { justify-content: center; }
+  .reserva-info-row { grid-template-columns: 1fr; gap: 6px; }
 }
 </style>
 </head>

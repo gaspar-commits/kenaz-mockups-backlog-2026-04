@@ -46,6 +46,12 @@
 
   html { scroll-behavior: smooth; }
 
+  html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
   body {
     font-family: 'Space Grotesk', system-ui, sans-serif;
     background: var(--hueso);
@@ -56,7 +62,7 @@
   }
 
   h1, h2, h3, h4 { letter-spacing: -0.02em; }
-  img { display: block; max-width: 100%; }
+  img, svg { display: block; max-width: 100%; height: auto; }
 
   /* ============================================================
      NAV
@@ -65,11 +71,15 @@
     position: absolute;
     top: 0; left: 0; right: 0;
     z-index: 10;
-    padding: 34px 72px;
+    padding: clamp(1.25rem, 3vw, 2.25rem) clamp(1.25rem, 4vw, 4.5rem);
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: clamp(1rem, 2vw, 2rem);
+    flex-wrap: wrap;
   }
+
+  .nav-links { flex-wrap: wrap; row-gap: 12px; }
 
   .nav-logo {
     display: flex;
@@ -140,9 +150,12 @@
     background: var(--hueso);
     display: grid;
     grid-template-columns: 1.15fr 1fr;
-    padding: 140px 72px 72px;
-    gap: 64px;
+    padding: clamp(6rem, 10vw, 8.75rem) clamp(1.25rem, 4vw, 4.5rem) clamp(3rem, 5vw, 4.5rem);
+    gap: clamp(2rem, 4vw, 4rem);
     align-items: end;
+    max-width: 1600px;
+    margin: 0 auto;
+    width: 100%;
   }
 
   .hero-left {
@@ -173,7 +186,7 @@
   .hero-headline {
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 400;
-    font-size: 118px;
+    font-size: clamp(3.25rem, 8.5vw, 7.375rem);
     line-height: 0.94;
     letter-spacing: -0.035em;
     color: var(--grafito);
@@ -278,10 +291,12 @@
      ============================================================ */
   .hero-right {
     position: relative;
+    min-height: 540px;
     height: calc(100vh - 212px);
     display: grid;
     grid-template-rows: 1.4fr 1fr;
     gap: 20px;
+    min-width: 0;
   }
 
   .plate {
@@ -348,16 +363,19 @@
      SECTION 2 — Enfoque / método
      ============================================================ */
   .section {
-    padding: 140px 72px;
+    padding: clamp(4.5rem, 9vw, 8.75rem) clamp(1.25rem, 4vw, 4.5rem);
     background: var(--hueso-soft);
     border-top: 1px solid var(--linea);
+    max-width: 1600px;
+    margin: 0 auto;
+    width: 100%;
   }
 
   .section-head {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    gap: 64px;
-    margin-bottom: 96px;
+    gap: clamp(2rem, 4vw, 4rem);
+    margin-bottom: clamp(3.5rem, 6vw, 6rem);
     align-items: start;
   }
 
@@ -373,7 +391,7 @@
   .section-title {
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 400;
-    font-size: 64px;
+    font-size: clamp(2.25rem, 5vw, 4rem);
     line-height: 1;
     letter-spacing: -0.03em;
     color: var(--grafito);
@@ -395,7 +413,7 @@
 
   .cards {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 1px;
     background: var(--linea-strong);
     border-top: 1px solid var(--linea-strong);
@@ -443,9 +461,12 @@
      SECTION — Proceso (4 pasos editoriales)
      ============================================================ */
   .section-alt {
-    padding: 140px 72px;
+    padding: clamp(4.5rem, 9vw, 8.75rem) clamp(1.25rem, 4vw, 4.5rem);
     background: var(--hueso);
     border-top: 1px solid var(--linea);
+    max-width: 1600px;
+    margin: 0 auto;
+    width: 100%;
   }
 
   .proceso-list {
@@ -456,9 +477,9 @@
 
   .proceso-row {
     display: grid;
-    grid-template-columns: 140px 1fr 1fr 0.7fr;
-    gap: 48px;
-    padding: 48px 0;
+    grid-template-columns: 110px 1fr 1fr 0.7fr;
+    gap: clamp(1.5rem, 3vw, 3rem);
+    padding: clamp(2rem, 4vw, 3rem) 0;
     border-bottom: 1px solid var(--linea-strong);
     align-items: baseline;
   }
@@ -503,8 +524,8 @@
      ============================================================ */
   .obra-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: clamp(1.25rem, 2.5vw, 2rem);
   }
 
   .obra-card {
@@ -575,7 +596,7 @@
      ============================================================ */
   .materiales-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 1px;
     background: var(--linea-strong);
     border: 1px solid var(--linea-strong);
@@ -630,14 +651,17 @@
      ============================================================ */
   .zona {
     background: var(--hueso-soft);
-    padding: 140px 72px;
+    padding: clamp(4.5rem, 9vw, 8.75rem) clamp(1.25rem, 4vw, 4.5rem);
     border-top: 1px solid var(--linea);
+    max-width: 1600px;
+    margin: 0 auto;
+    width: 100%;
   }
 
   .zona-body {
     display: grid;
     grid-template-columns: 1fr 1.5fr;
-    gap: 64px;
+    gap: clamp(2rem, 4vw, 4rem);
     align-items: center;
   }
 
@@ -703,7 +727,7 @@
   .stats-section {
     background: var(--grafito);
     color: var(--hueso);
-    padding: 120px 72px;
+    padding: clamp(4rem, 7.5vw, 7.5rem) clamp(1.25rem, 4vw, 4.5rem);
     border-top: 1px solid rgba(239,234,226,0.08);
     border-bottom: 1px solid rgba(239,234,226,0.08);
   }
@@ -735,7 +759,7 @@
 
   .stats-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 1px;
     background: rgba(239,234,226,0.12);
     border-top: 1px solid rgba(239,234,226,0.12);
@@ -754,7 +778,7 @@
     font-family: 'Fraunces', Georgia, serif;
     font-style: italic;
     font-weight: 300;
-    font-size: 104px;
+    font-size: clamp(3.5rem, 7vw, 6.5rem);
     line-height: 1;
     letter-spacing: -0.035em;
     color: var(--hueso);
@@ -790,8 +814,11 @@
      SECTION — Consultar (formulario + canal WhatsApp)
      ============================================================ */
   .consultar {
-    padding: 140px 72px;
+    padding: clamp(4.5rem, 9vw, 8.75rem) clamp(1.25rem, 4vw, 4.5rem);
     background: var(--hueso);
+    max-width: 1600px;
+    margin: 0 auto;
+    width: 100%;
   }
 
   .consultar-card {
@@ -803,7 +830,7 @@
   }
 
   .consultar-left {
-    padding: 72px 60px;
+    padding: clamp(2.25rem, 5vw, 4.5rem) clamp(1.5rem, 4vw, 3.75rem);
     border-right: 1px solid var(--linea-strong);
     display: flex;
     flex-direction: column;
@@ -867,7 +894,7 @@
   }
 
   .consultar-right {
-    padding: 72px 60px;
+    padding: clamp(2.25rem, 5vw, 4.5rem) clamp(1.5rem, 4vw, 3.75rem);
     display: flex;
     flex-direction: column;
     gap: 28px;
@@ -951,15 +978,17 @@
   .footer {
     background: var(--grafito);
     color: var(--ceniza-light);
-    padding: 72px 72px 44px;
+    padding: clamp(3rem, 5vw, 4.5rem) clamp(1.25rem, 4vw, 4.5rem) clamp(1.75rem, 3vw, 2.75rem);
   }
 
   .footer-grid {
     display: grid;
-    grid-template-columns: 1.3fr 1fr 1.1fr 1.2fr 1fr;
-    gap: 40px;
-    padding-bottom: 56px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+    padding-bottom: clamp(2rem, 4vw, 3.5rem);
     border-bottom: 1px solid rgba(239,234,226,0.12);
+    max-width: 1600px;
+    margin: 0 auto;
   }
 
   .footer-brand {
@@ -1007,6 +1036,37 @@
   }
 
   .footer-bottom a { color: var(--ocre); text-decoration: none; }
+
+  /* ============================================================
+     RESPONSIVE
+     ============================================================ */
+  @media (max-width: 1100px) {
+    .hero {
+      grid-template-columns: 1fr;
+      align-items: start;
+      min-height: 0;
+    }
+    .hero-left { min-height: 0; }
+    .hero-right { height: auto; aspect-ratio: 4 / 3; }
+    .section-head { grid-template-columns: 1fr; gap: 24px; }
+    .proceso-row { grid-template-columns: 80px 1fr; row-gap: 12px; }
+    .proceso-meta { grid-column: 1 / -1; justify-self: start; text-align: left; padding-left: 0; }
+    .proceso-copy { grid-column: 1 / -1; max-width: none; }
+    .zona-body { grid-template-columns: 1fr; }
+    .consultar-card { grid-template-columns: 1fr; }
+    .consultar-left { border-right: none; border-bottom: 1px solid var(--linea-strong); }
+    .nav-links { display: none; }
+  }
+  @media (max-width: 768px) {
+    .hero-footer-left { flex-wrap: wrap; gap: 24px; }
+    .hero-actions { flex-wrap: wrap; }
+    .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+    .footer-bottom { flex-direction: column; gap: 12px; align-items: flex-start; padding-top: 24px; }
+  }
+  @media (max-width: 560px) {
+    .hero-meta { flex-wrap: wrap; row-gap: 8px; }
+    .plate-caption { top: 10px; right: 10px; font-size: 8px; padding: 6px 10px; }
+  }
 
 </style>
 </head>
