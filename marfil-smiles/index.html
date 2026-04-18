@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Marfil Smiles — Medical & Dental</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,24 +19,37 @@
     --fjord-deep: #35516A;
     --hairline:   rgba(26,31,36,0.10);
     --hairline-soft: rgba(26,31,36,0.06);
+    --maxw: 1440px;
+    --gutter: clamp(1.25rem, 4vw, 4.5rem);
   }
 
   * { margin:0; padding:0; box-sizing:border-box; }
-  html, body { background: var(--paper); color: var(--ink); font-family: 'Inter', system-ui, -apple-system, sans-serif; font-weight: 400; -webkit-font-smoothing: antialiased; }
+  html, body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
 
   body {
-    width: 2560px;
     font-feature-settings: "ss01","cv11";
     letter-spacing: -0.005em;
   }
 
+  img, svg { max-width: 100%; height: auto; display: block; }
+
   /* ===================================================================== */
-  /* HERO — sin tocar                                                       */
+  /* HERO                                                                   */
   /* ===================================================================== */
   .page {
     position: relative;
-    width: 2560px;
-    height: 1440px;
+    width: 100%;
+    max-width: 100vw;
+    min-height: 100vh;
     background: var(--paper);
     display: grid;
     grid-template-columns: 1.05fr 1fr;
@@ -44,18 +58,21 @@
   /* ============ LEFT: editorial text column ============ */
   .left {
     position: relative;
-    padding: 64px 88px 60px 112px;
+    padding: clamp(2rem, 4vw, 4rem) clamp(1.5rem, 4vw, 5.5rem) clamp(2rem, 4vw, 3.75rem) clamp(1.5rem, 4vw, 7rem);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: clamp(2rem, 5vw, 4rem);
     background: var(--paper);
+    min-width: 0;
   }
 
   .topbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 40px;
+    gap: clamp(1rem, 2vw, 2.5rem);
+    flex-wrap: wrap;
   }
 
   .brand {
@@ -93,7 +110,8 @@
 
   .nav {
     display: flex;
-    gap: 44px;
+    gap: clamp(1rem, 2.5vw, 2.75rem);
+    flex-wrap: wrap;
     font-weight: 500;
     font-size: 14px;
     letter-spacing: 0.04em;
@@ -121,7 +139,7 @@
   .lang .on { color: var(--ink); }
 
   .hero {
-    margin-top: 20px;
+    margin-top: clamp(1rem, 2vw, 1.25rem);
     max-width: 1020px;
   }
 
@@ -143,11 +161,11 @@
   h1 {
     font-family: 'Fraunces', serif;
     font-weight: 300;
-    font-size: 138px;
+    font-size: clamp(3rem, 7.2vw, 8.625rem);
     line-height: 0.98;
     letter-spacing: -0.035em;
     color: var(--ink);
-    margin-bottom: 44px;
+    margin-bottom: clamp(1.5rem, 2.5vw, 2.75rem);
   }
   h1 em {
     font-style: italic;
@@ -159,20 +177,20 @@
     max-width: 780px;
     font-family: 'Inter', sans-serif;
     font-weight: 400;
-    font-size: 20px;
+    font-size: clamp(1rem, 1.1vw, 1.25rem);
     line-height: 1.55;
     color: var(--ink-soft);
-    margin-bottom: 44px;
+    margin-bottom: clamp(1.5rem, 2.5vw, 2.75rem);
   }
 
   .disciplines {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 0;
     max-width: 960px;
     border-top: 1px solid var(--hairline);
     border-bottom: 1px solid var(--hairline);
-    margin-bottom: 44px;
+    margin-bottom: clamp(1.5rem, 2.5vw, 2.75rem);
   }
   .disc {
     padding: 30px 28px 28px 0;
@@ -209,7 +227,8 @@
   .cta-row {
     display: flex;
     align-items: center;
-    gap: 36px;
+    gap: clamp(1rem, 2vw, 2.25rem);
+    flex-wrap: wrap;
   }
   .cta {
     display: inline-flex;
@@ -267,6 +286,7 @@
     position: relative;
     overflow: hidden;
     background: var(--paper-warm);
+    min-height: clamp(420px, 60vh, 900px);
   }
 
   .photo {
@@ -287,17 +307,17 @@
 
   .booking {
     position: absolute;
-    bottom: 72px;
-    left: 72px;
-    right: 72px;
+    bottom: clamp(1.5rem, 3vw, 4.5rem);
+    left: clamp(1rem, 3vw, 4.5rem);
+    right: clamp(1rem, 3vw, 4.5rem);
     background: rgba(250,250,247,0.96);
     backdrop-filter: blur(14px);
     border: 1px solid rgba(26,31,36,0.08);
     border-radius: 3px;
-    padding: 28px 34px;
+    padding: clamp(1rem, 1.5vw, 1.75rem) clamp(1.25rem, 2vw, 2.125rem);
     display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 24px;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: clamp(1rem, 1.5vw, 1.5rem);
     align-items: center;
     box-shadow: 0 24px 60px -24px rgba(26,31,36,0.25);
   }
@@ -313,10 +333,11 @@
   .booking-row {
     display: flex;
     align-items: center;
-    gap: 24px;
+    flex-wrap: wrap;
+    gap: clamp(1rem, 1.5vw, 1.5rem);
     font-family: 'Fraunces', serif;
     font-weight: 400;
-    font-size: 22px;
+    font-size: clamp(1rem, 1.2vw, 1.375rem);
     color: var(--ink);
     letter-spacing: -0.005em;
   }
@@ -389,16 +410,18 @@
   /* SISTEMA DE SECCIONES FULLPAGE                                          */
   /* ===================================================================== */
   section {
-    width: 2560px;
-    padding: 160px 180px;
+    width: 100%;
+    max-width: 100%;
+    padding: clamp(4rem, 9vw, 10rem) var(--gutter);
     position: relative;
   }
+  section > * { max-width: var(--maxw); margin-left: auto; margin-right: auto; }
 
   .section-head {
     display: grid;
     grid-template-columns: 1fr 1.8fr;
-    gap: 120px;
-    margin-bottom: 100px;
+    gap: clamp(2rem, 5vw, 7.5rem);
+    margin-bottom: clamp(2.5rem, 6vw, 6.25rem);
     align-items: end;
   }
   .section-num {
@@ -416,7 +439,7 @@
   .section-title {
     font-family: 'Fraunces', serif;
     font-weight: 300;
-    font-size: 88px;
+    font-size: clamp(2.25rem, 4.6vw, 5.5rem);
     line-height: 1.02;
     letter-spacing: -0.03em;
     color: var(--ink);
@@ -461,8 +484,8 @@
   .disc-block {
     display: grid;
     grid-template-columns: 0.6fr 1.2fr 1fr;
-    gap: 80px;
-    padding: 70px 0;
+    gap: clamp(1.5rem, 3.5vw, 5rem);
+    padding: clamp(2.5rem, 4.5vw, 4.375rem) 0;
     border-bottom: 1px solid var(--hairline);
     align-items: start;
   }
@@ -482,7 +505,7 @@
   .disc-block .lead h3 {
     font-family: 'Fraunces', serif;
     font-weight: 300;
-    font-size: 52px;
+    font-size: clamp(1.75rem, 2.8vw, 3.25rem);
     line-height: 1;
     letter-spacing: -0.02em;
     color: var(--ink);
@@ -533,11 +556,10 @@
   .s-idiomas {
     background: var(--paper-warm);
     border-top: 1px solid var(--hairline);
-    padding: 180px 180px 160px;
   }
   .lang-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 0;
     border-top: 1px solid var(--hairline);
     border-bottom: 1px solid var(--hairline);
@@ -554,7 +576,7 @@
   .lang-cell .code {
     font-family: 'Fraunces', serif;
     font-weight: 300;
-    font-size: 72px;
+    font-size: clamp(2.5rem, 4vw, 4.5rem);
     line-height: 0.9;
     letter-spacing: -0.03em;
     color: var(--ink);
@@ -593,13 +615,13 @@
   }
 
   .helfo-bar {
-    margin-top: 72px;
+    margin-top: clamp(2.5rem, 5vw, 4.5rem);
     background: var(--ink);
     color: var(--paper);
-    padding: 44px 56px;
+    padding: clamp(1.5rem, 3vw, 2.75rem) clamp(1.5rem, 3vw, 3.5rem);
     display: grid;
-    grid-template-columns: auto 1fr auto;
-    gap: 48px;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: clamp(1.5rem, 3vw, 3rem);
     align-items: center;
     border-radius: 2px;
   }
@@ -659,7 +681,7 @@
   .dir-wrap {
     display: grid;
     grid-template-columns: 0.85fr 1.15fr;
-    gap: 120px;
+    gap: clamp(2rem, 5vw, 7.5rem);
     align-items: center;
   }
   .dir-portrait {
@@ -681,7 +703,7 @@
   .dir-portrait .mono {
     font-family: 'Fraunces', serif;
     font-weight: 300;
-    font-size: 220px;
+    font-size: clamp(7rem, 16vw, 13.75rem);
     line-height: 0.9;
     letter-spacing: -0.04em;
     color: var(--ink);
@@ -719,7 +741,7 @@
   .dir-text h2 {
     font-family: 'Fraunces', serif;
     font-weight: 300;
-    font-size: 88px;
+    font-size: clamp(2.25rem, 4.6vw, 5.5rem);
     line-height: 1;
     letter-spacing: -0.03em;
     color: var(--ink);
@@ -746,16 +768,16 @@
   .dir-text p + p { margin-top: 22px; }
   .dir-facts {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    margin-top: 54px;
-    padding-top: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: clamp(1.5rem, 2.5vw, 2.5rem);
+    margin-top: clamp(2rem, 4vw, 3.375rem);
+    padding-top: clamp(1.5rem, 2.5vw, 2.5rem);
     border-top: 1px solid var(--hairline);
   }
   .dir-fact .n {
     font-family: 'Fraunces', serif;
     font-weight: 300;
-    font-size: 54px;
+    font-size: clamp(2.25rem, 3vw, 3.375rem);
     line-height: 1;
     color: var(--ink);
     letter-spacing: -0.02em;
@@ -778,20 +800,19 @@
   .s-consulta {
     background: var(--ink);
     color: var(--paper);
-    padding: 180px 180px;
   }
   .s-consulta .section-num { color: var(--tan); }
   .s-consulta .section-num .line { background: var(--tan); }
   .consulta-wrap {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 120px;
+    gap: clamp(2rem, 5vw, 7.5rem);
     align-items: end;
   }
   .consulta-wrap h2 {
     font-family: 'Fraunces', serif;
     font-weight: 300;
-    font-size: 120px;
+    font-size: clamp(2.5rem, 6vw, 7.5rem);
     line-height: 0.98;
     letter-spacing: -0.035em;
     color: var(--paper);
@@ -812,11 +833,12 @@
   .consulta-card {
     background: rgba(250,250,247,0.04);
     border: 1px solid rgba(250,250,247,0.14);
-    padding: 52px 48px;
+    padding: clamp(1.75rem, 3.5vw, 3.25rem) clamp(1.5rem, 3vw, 3rem);
     border-radius: 3px;
     display: flex;
     flex-direction: column;
-    gap: 36px;
+    gap: clamp(1.5rem, 2.5vw, 2.25rem);
+    min-width: 0;
   }
   .consulta-card .lab {
     font-family: 'Inter', sans-serif;
@@ -829,7 +851,7 @@
   .consulta-card .slot {
     font-family: 'Fraunces', serif;
     font-weight: 300;
-    font-size: 54px;
+    font-size: clamp(2rem, 3.2vw, 3.375rem);
     line-height: 1;
     letter-spacing: -0.02em;
     color: var(--paper);
@@ -889,14 +911,12 @@
   /* ===================================================================== */
   .s-instalaciones {
     background: var(--paper);
-    padding-bottom: 180px;
   }
   .gallery {
     display: grid;
     grid-template-columns: 1.6fr 1fr;
-    grid-template-rows: 360px 360px;
-    gap: 24px;
-    height: 744px;
+    grid-template-rows: minmax(220px, 30vw) minmax(220px, 30vw);
+    gap: clamp(1rem, 1.5vw, 1.5rem);
   }
   .gallery .g {
     position: relative;
@@ -962,11 +982,10 @@
   .s-convenios {
     background: var(--paper-warm);
     border-top: 1px solid var(--hairline);
-    padding: 160px 180px;
   }
   .conv-grid {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 0;
     border-top: 1px solid var(--hairline);
     border-bottom: 1px solid var(--hairline);
@@ -1031,12 +1050,11 @@
   .s-llegar {
     background: var(--paper);
     border-top: 1px solid var(--hairline);
-    padding: 160px 180px;
   }
   .llegar-wrap {
     display: grid;
     grid-template-columns: 1fr 1.4fr;
-    gap: 100px;
+    gap: clamp(2rem, 4.5vw, 6.25rem);
     align-items: stretch;
   }
   .llegar-info {
@@ -1047,7 +1065,7 @@
   .llegar-info h2 {
     font-family: 'Fraunces', serif;
     font-weight: 300;
-    font-size: 80px;
+    font-size: clamp(2.25rem, 4.2vw, 5rem);
     line-height: 1;
     letter-spacing: -0.03em;
     color: var(--ink);
@@ -1113,9 +1131,9 @@
     border: 1px solid var(--hairline);
     position: relative;
     overflow: hidden;
-    min-height: 560px;
+    min-height: clamp(320px, 40vw, 560px);
   }
-  .map-svg { width: 100%; height: 100%; display: block; }
+  .map-svg { width: 100%; height: 100%; display: block; max-width: 100%; }
   .map-pin {
     position: absolute;
     top: 42%; left: 48%;
@@ -1166,19 +1184,20 @@
   footer {
     background: var(--ink);
     color: var(--paper);
-    padding: 120px 180px 80px;
+    padding: clamp(3.5rem, 7vw, 7.5rem) var(--gutter) clamp(2.5rem, 4vw, 5rem);
   }
+  footer > * { max-width: var(--maxw); margin-left: auto; margin-right: auto; }
   .foot-top {
     display: grid;
-    grid-template-columns: 1.3fr 1fr 1fr 1fr;
-    gap: 80px;
-    padding-bottom: 80px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: clamp(2rem, 4vw, 5rem);
+    padding-bottom: clamp(2.5rem, 4vw, 5rem);
     border-bottom: 1px solid rgba(250,250,247,0.14);
   }
   .foot-brand .logo {
     font-family: 'Fraunces', serif;
     font-weight: 400;
-    font-size: 42px;
+    font-size: clamp(1.75rem, 2.5vw, 2.625rem);
     letter-spacing: -0.015em;
     color: var(--paper);
     margin-bottom: 16px;
@@ -1251,6 +1270,117 @@
     font-family: 'Inter', sans-serif;
     font-size: 12px;
     color: rgba(250,250,247,0.4);
+  }
+
+  /* ===================================================================== */
+  /* RESPONSIVE BREAKPOINTS                                                  */
+  /* ===================================================================== */
+  @media (max-width: 1100px) {
+    .page {
+      grid-template-columns: 1fr;
+    }
+    .right {
+      min-height: 520px;
+      order: -1;
+    }
+    .section-head {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+    .disc-block {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .disc-block .treat {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .dir-wrap {
+      grid-template-columns: 1fr;
+    }
+    .dir-portrait { aspect-ratio: 3/2; }
+    .consulta-wrap {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    .llegar-wrap {
+      grid-template-columns: 1fr;
+    }
+    .gallery {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+    }
+    .gallery .g.main { grid-row: span 1; grid-column: span 2; }
+    .helfo-bar {
+      grid-template-columns: 1fr;
+      text-align: left;
+    }
+    .helfo-bar .badge { justify-self: start; }
+    .helfo-bar .lnk { justify-self: start; }
+  }
+
+  @media (max-width: 768px) {
+    .nav { display: none; }
+    .topbar { gap: 1rem; }
+    .disciplines {
+      grid-template-columns: 1fr;
+    }
+    .disc {
+      border-right: none;
+      border-bottom: 1px solid var(--hairline);
+      padding: 1.25rem 0;
+    }
+    .disc + .disc { padding-left: 0; }
+    .disc:last-child { border-bottom: none; }
+    .booking {
+      grid-template-columns: 1fr;
+    }
+    .booking-cta { justify-self: start; }
+    .disc-block .treat {
+      grid-template-columns: 1fr;
+    }
+    .lang-cell {
+      padding: 2rem 0 !important;
+      border-right: none !important;
+      border-bottom: 1px solid var(--hairline);
+    }
+    .lang-cell:last-child { border-bottom: none; }
+    .conv-cell {
+      border-right: none;
+      border-bottom: 1px solid var(--hairline);
+    }
+    .conv-cell:last-child { border-bottom: none; }
+    .gallery {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+    }
+    .gallery .g.main { grid-column: span 1; }
+    .foot-bottom {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+    .meta-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+    .lang { gap: 0.75rem; }
+  }
+
+  @media (max-width: 560px) {
+    :root { --gutter: 1.25rem; }
+    .left {
+      padding: 2rem 1.25rem;
+    }
+    .helfo { top: 1rem; right: 1rem; padding: 10px 14px; font-size: 10px; }
+    .booking {
+      bottom: 1rem; left: 1rem; right: 1rem;
+      padding: 1rem 1.25rem;
+    }
+    .route {
+      grid-template-columns: 1fr auto !important;
+    }
+    .route .dir { grid-column: 1 / -1; }
   }
 </style>
 </head>
