@@ -299,11 +299,8 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* venue-12 is 1500x400 composite of 3 images; crop left panel */
-    object-position: 15% center;
-    transform: scale(2.6);
-    transform-origin: 12% center;
-    filter: saturate(0.85) contrast(0.95);
+    object-position: center center;
+    filter: saturate(0.88) contrast(0.96) brightness(1.02);
   }
 
   .hero__image::after {
@@ -539,16 +536,12 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center center;
     transition: transform 0.7s ease;
-    filter: saturate(0.9);
+    filter: saturate(0.88) contrast(0.96);
   }
 
-  /* Each venue-N.png is a composite of 3 panels ~1500x400. Crop left panel which is the main image. */
-  .venue-card__img img.crop-left { object-position: 10% center; transform: scale(2.4); transform-origin: 10% center; }
-  .venue-card__img img.crop-wide { object-position: 25% center; transform: scale(2.2); transform-origin: 25% center; }
-
-  .venue-card:hover .venue-card__img img { transform: scale(2.6); }
-  .venue-card:hover .venue-card__img img.crop-wide { transform: scale(2.4); }
+  .venue-card:hover .venue-card__img img { transform: scale(1.04); }
 
   .venue-card__label {
     font-family: var(--sans);
@@ -898,10 +891,10 @@
     </div>
 
     <div class="hero__image">
-      <img src="img/venue-12-hd.png" alt="Seaside ceremony archway at Hotel Sol y Mar, Calpe">
+      <img src="img/v4/hero-seaside-arch.jpg" alt="Floral ceremony arch overlooking the Mediterranean">
       <span class="hero__caption">
         From the archive
-        <em>Hotel Sol y Mar &middot; Calpe</em>
+        <em>A coastal ceremony &middot; Calpe</em>
       </span>
     </div>
   </div>
@@ -1008,16 +1001,16 @@
     <div class="portfolio__grid">
       <article class="venue-card">
         <div class="venue-card__img">
-          <img src="img/venue-5-hd.png" class="crop-left" alt="Moli de Canyamelar garden ceremony, Oliva">
+          <img src="img/v4/venue-moli-olives.jpg" alt="Olive branches against the Mediterranean">
         </div>
-        <span class="venue-card__label">Rural &middot; Garden</span>
+        <span class="venue-card__label">Rural &middot; Olive grove</span>
         <h3 class="venue-card__name">Mol&iacute; de Canyamelar</h3>
         <span class="venue-card__loc">Oliva</span>
       </article>
 
       <article class="venue-card">
         <div class="venue-card__img">
-          <img src="img/venue-11-hd.png" class="crop-left" alt="Casa Santonja villa">
+          <img src="img/v4/venue-santonja-pergola.jpg" alt="Whitewashed pergola at a Benissa villa">
         </div>
         <span class="venue-card__label">Rural &middot; Historic villa</span>
         <h3 class="venue-card__name">Casa Santonja</h3>
@@ -1026,7 +1019,7 @@
 
       <article class="venue-card">
         <div class="venue-card__img">
-          <img src="img/venue-9-hd.png" class="crop-left" alt="La Plantacion Finestrat">
+          <img src="img/v4/venue-laplantacion-terrace.jpg" alt="Terrace at La Plantacion Finestrat">
         </div>
         <span class="venue-card__label">Coastal &middot; Terrace</span>
         <h3 class="venue-card__name">La Plantaci&oacute;n</h3>
@@ -1035,7 +1028,7 @@
 
       <article class="venue-card">
         <div class="venue-card__img">
-          <img src="img/venue-4-hd.png" class="crop-left" alt="Le Dauphin Moraira terrace">
+          <img src="img/v4/venue-dauphin-table.jpg" alt="Linen tablescape at Le Dauphin Moraira">
         </div>
         <span class="venue-card__label">Restaurant &middot; Garden</span>
         <h3 class="venue-card__name">Le Dauphin</h3>
@@ -1044,7 +1037,7 @@
 
       <article class="venue-card">
         <div class="venue-card__img">
-          <img src="img/venue-6-hd.png" class="crop-left" alt="Sant Jeroni de Cotalba monastery">
+          <img src="img/v4/venue-cotalba-cloister.jpg" alt="Cloister at Sant Jeroni de Cotalba">
         </div>
         <span class="venue-card__label">Historic &middot; Monastery</span>
         <h3 class="venue-card__name">Sant Jeroni<br>de Cotalba</h3>
@@ -1053,11 +1046,11 @@
 
       <article class="venue-card">
         <div class="venue-card__img">
-          <img src="img/venue-3-hd.png" class="crop-left" alt="Finca La Magueda">
+          <img src="img/v4/venue-magueda-chairs.jpg" alt="Wooden ceremony chairs under the pines at Finca La Magueda">
         </div>
         <span class="venue-card__label">Rural &middot; Pine grove</span>
         <h3 class="venue-card__name">Finca la Magueda</h3>
-        <span class="venue-card__loc">Javea inland</span>
+        <span class="venue-card__loc">J&aacute;vea inland</span>
       </article>
     </div>
   </div>
