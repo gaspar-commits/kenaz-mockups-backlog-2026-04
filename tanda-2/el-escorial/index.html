@@ -44,29 +44,30 @@
     position: absolute;
     top: 0; left: 0; right: 0;
     z-index: 20;
-    padding: 32px 0;
+    padding: 26px 0;
   }
   .nav-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 32px;
+    gap: 24px;
   }
   .brand {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 12px;
     color: var(--cream);
     text-decoration: none;
+    flex-shrink: 0;
   }
   .brand-mark {
-    width: 44px; height: 44px;
+    width: 38px; height: 38px;
     border: 1.5px solid var(--cream);
     border-radius: 50%;
     display: grid; place-items: center;
     font-family: 'Fraunces', serif;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 18px;
     font-style: italic;
     letter-spacing: -0.02em;
   }
@@ -77,28 +78,28 @@
   }
   .brand-text .top {
     font-family: 'Inter', sans-serif;
-    font-size: 10px;
+    font-size: 9.5px;
     letter-spacing: 0.28em;
     text-transform: uppercase;
     opacity: 0.75;
   }
   .brand-text .name {
     font-family: 'Fraunces', serif;
-    font-size: 22px;
+    font-size: 19px;
     font-weight: 500;
     letter-spacing: 0.02em;
   }
 
   .nav-links {
     display: flex;
-    gap: 36px;
+    gap: 26px;
     list-style: none;
   }
   .nav-links a {
     color: var(--cream);
     text-decoration: none;
-    font-size: 13px;
-    letter-spacing: 0.18em;
+    font-size: 12px;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     font-weight: 500;
     transition: opacity .2s;
@@ -106,28 +107,31 @@
   .nav-links a:hover { opacity: 0.7; }
 
   .nav-cta {
-    padding: 12px 22px;
+    padding: 11px 20px;
     background: var(--cream);
     color: var(--ink);
     border-radius: 3px;
-    font-size: 12px;
+    font-size: 11.5px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     font-weight: 600;
     text-decoration: none;
     transition: all .25s;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
   .nav-cta:hover { background: var(--gold); color: var(--cream); }
 
-  @media (max-width: 1100px) {
+  @media (max-width: 1180px) {
     .nav-links { display: none; }
   }
 
   /* === HERO === */
   .hero {
     position: relative;
-    min-height: 960px;
-    height: 100vh;
+    min-height: 720px;
+    height: 88vh;
+    max-height: 820px;
     overflow: hidden;
     background: var(--ink);
   }
@@ -137,29 +141,30 @@
     background-image: url('img/costilla-miel-hero.jpg');
     background-size: cover;
     background-position: center 40%;
-    filter: brightness(0.62) saturate(1.08) contrast(1.04);
+    filter: brightness(0.72) saturate(0.8) contrast(0.98);
   }
   .hero-grad {
     position: absolute;
     inset: 0;
     background:
       linear-gradient(180deg,
-        rgba(42, 37, 32, 0.65) 0%,
-        rgba(42, 37, 32, 0.25) 35%,
-        rgba(42, 37, 32, 0.15) 55%,
-        rgba(42, 37, 32, 0.85) 100%),
+        rgba(26, 20, 16, 0.55) 0%,
+        rgba(26, 20, 16, 0.20) 40%,
+        rgba(26, 20, 16, 0.20) 65%,
+        rgba(26, 20, 16, 0.85) 100%),
       linear-gradient(90deg,
-        rgba(42, 37, 32, 0.55) 0%,
-        rgba(42, 37, 32, 0.15) 55%,
-        rgba(42, 37, 32, 0) 100%);
+        rgba(26, 20, 16, 0.88) 0%,
+        rgba(26, 20, 16, 0.70) 35%,
+        rgba(26, 20, 16, 0.30) 65%,
+        rgba(26, 20, 16, 0.05) 100%);
   }
   .hero-inner {
     position: relative;
     z-index: 2;
     display: grid;
-    grid-template-rows: auto 1fr auto;
-    min-height: 960px;
-    height: 100vh;
+    grid-template-rows: 110px 1fr;
+    min-height: 720px;
+    height: 100%;
     color: var(--cream);
   }
 
@@ -172,7 +177,7 @@
     text-transform: uppercase;
     color: var(--cream);
     opacity: 0.9;
-    margin-bottom: 40px;
+    margin-bottom: 28px;
   }
   .hero-eyebrow::before {
     content: '';
@@ -184,8 +189,8 @@
   .hero-body {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 60px clamp(20px, 4vw, 56px) 40px;
+    justify-content: flex-start;
+    padding: 40px clamp(20px, 4vw, 56px) 60px;
     max-width: 1280px;
     width: 100%;
     margin: 0 auto;
@@ -194,12 +199,12 @@
   .hero h1 {
     font-family: 'Fraunces', serif;
     font-weight: 400;
-    font-size: clamp(40px, 4.6vw, 68px);
-    line-height: 1.1;
+    font-size: clamp(38px, 4.2vw, 62px);
+    line-height: 1.08;
     letter-spacing: -0.02em;
     color: var(--cream);
     max-width: 820px;
-    margin-bottom: 32px;
+    margin-bottom: 28px;
   }
   .hero h1 em {
     font-style: italic;
@@ -212,8 +217,8 @@
     font-size: clamp(15px, 1.15vw, 17px);
     line-height: 1.65;
     max-width: 540px;
-    opacity: 0.88;
-    margin-bottom: 52px;
+    opacity: 0.92;
+    margin-bottom: 40px;
     font-weight: 300;
   }
 
@@ -247,43 +252,61 @@
   }
   .btn-ghost:hover { border-color: var(--cream); background: rgba(246, 238, 224, 0.08); }
 
-  .hero-footer {
-    padding: 40px clamp(20px, 4vw, 56px) 56px;
-    max-width: 1280px;
-    width: 100%;
-    margin: 0 auto;
+  /* === TRUST STRIP (stats fuera del hero) === */
+  .trust-strip {
+    background: #1d1a16;
+    border-top: 1px solid rgba(246, 238, 224, 0.08);
+    border-bottom: 1px solid rgba(246, 238, 224, 0.08);
+    color: var(--cream);
+    padding: 36px 0;
+  }
+  .trust-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 40px;
-    color: var(--cream);
+    gap: 48px;
+    align-items: center;
   }
-  .hero-stat {
-    border-top: 1px solid rgba(246, 238, 224, 0.22);
-    padding-top: 20px;
+  .trust-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 8px;
+    position: relative;
   }
-  .hero-stat .val {
+  .trust-item + .trust-item::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: rgba(246, 238, 224, 0.12);
+  }
+  .trust-item .val {
     font-family: 'Fraunces', serif;
-    font-size: clamp(24px, 2.4vw, 34px);
+    font-size: clamp(22px, 2.2vw, 30px);
     font-weight: 500;
-    line-height: 1.1;
-    margin-bottom: 10px;
+    line-height: 1.05;
     color: var(--cream);
+    letter-spacing: -0.01em;
   }
-  .hero-stat .val em { font-style: italic; color: var(--gold); font-weight: 400; }
-  .hero-stat .lab {
-    font-size: 11px;
-    letter-spacing: 0.2em;
+  .trust-item .val em { font-style: italic; color: var(--gold); font-weight: 400; }
+  .trust-item .lab {
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    opacity: 0.72;
+    color: rgba(246, 238, 224, 0.6);
+    font-weight: 500;
   }
 
   @media (max-width: 900px) {
-    .hero-footer { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 32px 24px; }
+    .trust-item + .trust-item::before { display: none; }
   }
   @media (max-width: 560px) {
-    .hero { min-height: 780px; }
-    .hero-inner { min-height: 780px; }
-    .hero-footer { grid-template-columns: 1fr 1fr; padding-bottom: 24px; }
+    .hero { min-height: 680px; }
+    .hero-inner { min-height: 680px; }
+    .trust-grid { grid-template-columns: 1fr 1fr; }
     .hero-ctas { flex-direction: column; align-items: stretch; }
     .btn { justify-content: center; }
   }
@@ -941,23 +964,28 @@
           <a href="#menu" class="btn btn-ghost">Ver la carta</a>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="hero-footer">
-        <div class="hero-stat">
-          <div class="val">4<em>,6</em></div>
-          <div class="lab">Sluurpy · 7.581 reseñas</div>
+  <!-- === TRUST STRIP === -->
+  <section class="trust-strip" aria-label="Reconocimiento online">
+    <div class="container">
+      <div class="trust-grid">
+        <div class="trust-item">
+          <div class="val">4<em>,6</em> · Sluurpy</div>
+          <div class="lab">7.581 reseñas</div>
         </div>
-        <div class="hero-stat">
-          <div class="val">4<em>,3</em></div>
-          <div class="lab">TripAdvisor · 204 reseñas</div>
+        <div class="trust-item">
+          <div class="val">4<em>,3</em> · TripAdvisor</div>
+          <div class="lab">204 reseñas</div>
         </div>
-        <div class="hero-stat">
-          <div class="val">8<em>,2</em></div>
-          <div class="lab">Gastroranking · 1.361 votos</div>
+        <div class="trust-item">
+          <div class="val">8<em>,2</em> · Gastroranking</div>
+          <div class="lab">1.361 votos</div>
         </div>
-        <div class="hero-stat">
-          <div class="val"><em>365</em> días</div>
-          <div class="lab">13—16h · 19—23h · Abierto cada día</div>
+        <div class="trust-item">
+          <div class="val"><em>365</em> días abierto</div>
+          <div class="lab">13—16h · 19—23h</div>
         </div>
       </div>
     </div>
