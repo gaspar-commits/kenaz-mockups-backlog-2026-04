@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Destino Guadalest — Apartamentos en el pueblo más visitado del interior</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F4EEE0;
+    --paper-warm: #EAE2D0;
+    --stone: #A89A82;
+    --stone-dark: #8A7E68;
+    --med: #8F9DA8;
+    --med-deep: #5E6D79;
+    --olive: #6B7E5C;
+    --olive-dark: #4E5E42;
+    --ink: #1F2420;
+    --ink-soft: #3A3E39;
+    --cream: #FBF7EC;
+    --gold: #C9B77E;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-weight: 400;
+    line-height: 1.55;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .serif { font-family: 'EB Garamond', 'Times New Roman', serif; }
+  .mono { font-family: 'Inter', monospace; letter-spacing: 0.14em; text-transform: uppercase; font-size: 0.72rem; font-weight: 500; }
+  .container { max-width: 1320px; margin: 0 auto; padding: 0 44px; }
+
+  /* Nav */
+  nav.top {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    z-index: 10;
+    padding: 28px 44px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--cream);
+  }
+  .brand {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.45rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+  .brand em { font-style: italic; font-weight: 400; opacity: 0.9; }
+  nav.top ul { display: flex; list-style: none; gap: 36px; align-items: center; }
+  nav.top a { color: inherit; text-decoration: none; font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 400; opacity: 0.92; }
+  nav.top a:hover { opacity: 1; }
+  .lang-toggle { display: flex; gap: 8px; font-size: 0.75rem; letter-spacing: 0.2em; align-items: center; }
+  .lang-toggle span.active { border-bottom: 1px solid currentColor; padding-bottom: 2px; opacity: 1; }
+  .lang-toggle span { opacity: 0.7; }
+
+  /* Hero */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    background-image: linear-gradient(180deg, rgba(15,20,24,0.35) 0%, rgba(15,20,24,0.55) 45%, rgba(15,20,24,0.82) 100%), url('./img/hero5.jpg');
+    background-size: cover;
+    background-position: center 55%;
+    color: var(--cream);
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 90px;
+  }
+  .hero-content { width: 100%; }
+  .hero-kicker {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 36px;
+    flex-wrap: wrap;
+  }
+  .hero-kicker .mono { color: var(--cream); opacity: 0.85; }
+  .hero-kicker .dot { width: 4px; height: 4px; background: var(--cream); border-radius: 50%; opacity: 0.55; }
+  h1.hero-title {
+    font-family: 'EB Garamond', serif;
+    font-size: 5.6rem;
+    font-weight: 400;
+    line-height: 0.98;
+    letter-spacing: -0.015em;
+    max-width: 920px;
+    margin-bottom: 28px;
+  }
+  h1.hero-title em { font-style: italic; color: #E6D9B8; }
+  .hero-sub {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 400;
+    max-width: 560px;
+    line-height: 1.45;
+    opacity: 0.92;
+    margin-bottom: 48px;
+  }
+  .hero-meta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 860px;
+    gap: 32px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(251,247,236,0.28);
+  }
+  .meta-block .mono { display: block; opacity: 0.65; margin-bottom: 8px; }
+  .meta-block .val { font-family: 'EB Garamond', serif; font-size: 1.6rem; line-height: 1; }
+  .meta-block .val small { font-size: 0.8rem; opacity: 0.7; margin-left: 4px; font-family: 'EB Garamond', serif; font-style: italic; }
+
+  /* Intro band */
+  .intro {
+    padding: 120px 0 100px;
+    background: var(--paper);
+  }
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 100px;
+    align-items: start;
+  }
+  .intro h2 {
+    font-family: 'EB Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .intro h2 em { font-style: italic; color: var(--olive-dark); }
+  .intro-body p {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+    max-width: 560px;
+  }
+  .intro-body p:first-child::first-letter {
+    font-family: 'EB Garamond', serif;
+    font-size: 3.6rem;
+    float: left;
+    line-height: 0.9;
+    margin: 4px 10px 0 0;
+    color: var(--olive-dark);
+    font-weight: 500;
+  }
+  .stat-row {
+    display: flex;
+    gap: 48px;
+    margin-top: 40px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(31,36,32,0.14);
+  }
+  .stat .num { font-family: 'EB Garamond', serif; font-size: 2.3rem; line-height: 1; color: var(--ink); }
+  .stat .lab { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--stone-dark); margin-top: 8px; }
+
+  /* Apartments — editorial style, no fake interior photos */
+  .aparts {
+    padding: 0;
+    background: var(--cream);
+  }
+  .aparts-hero {
+    height: 560px;
+    background-image: linear-gradient(180deg, rgba(31,36,32,0.1) 60%, rgba(31,36,32,0.6) 100%), url('./img/panoramica.jpg');
+    background-size: cover;
+    background-position: center 40%;
+    display: flex;
+    align-items: flex-end;
+    color: var(--cream);
+  }
+  .aparts-hero .inner {
+    padding-bottom: 44px;
+    max-width: 1320px;
+    margin: 0 auto;
+    width: 100%;
+    padding-left: 44px; padding-right: 44px;
+  }
+  .aparts-hero .mono { color: var(--paper-warm); opacity: 0.9; }
+  .aparts-hero h2 {
+    font-family: 'EB Garamond', serif;
+    font-size: 3.2rem;
+    font-weight: 400;
+    line-height: 1.04;
+    margin-top: 18px;
+    max-width: 760px;
+    letter-spacing: -0.01em;
+  }
+  .aparts-hero h2 em { font-style: italic; color: #E6D9B8; }
+
+  .aparts-body {
+    padding: 100px 0;
+  }
+  .aparts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 44px;
+    margin-top: 48px;
+  }
+  .apart-type {
+    background: var(--paper);
+    padding: 44px 40px;
+    border-top: 2px solid var(--olive-dark);
+    display: flex;
+    flex-direction: column;
+  }
+  .apart-type .num { font-family: 'EB Garamond', serif; font-style: italic; font-size: 1.05rem; color: var(--stone-dark); margin-bottom: 20px; }
+  .apart-type h3 {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.85rem;
+    font-weight: 500;
+    line-height: 1.12;
+    margin-bottom: 14px;
+    letter-spacing: -0.005em;
+  }
+  .apart-type .sub {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    color: var(--stone-dark);
+    font-size: 1rem;
+    margin-bottom: 22px;
+  }
+  .apart-type ul { list-style: none; margin-bottom: 28px; }
+  .apart-type li {
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(31,36,32,0.1);
+    display: flex;
+    justify-content: space-between;
+  }
+  .apart-type li:last-child { border-bottom: none; }
+  .apart-type li .key { color: var(--stone-dark); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; }
+  .apart-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid rgba(31,36,32,0.14);
+  }
+  .apart-meta .from { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--stone-dark); }
+  .apart-meta .price { font-family: 'EB Garamond', serif; font-size: 1.8rem; color: var(--ink); }
+  .apart-meta .price small { font-size: 0.7rem; font-family: 'Inter', sans-serif; letter-spacing: 0.08em; text-transform: uppercase; color: var(--stone-dark); margin-left: 4px; }
+
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+    margin-bottom: 12px;
+  }
+  .section-head h2 {
+    font-family: 'EB Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 400;
+    line-height: 1.06;
+    letter-spacing: -0.01em;
+    max-width: 640px;
+  }
+  .section-head h2 em { font-style: italic; color: var(--olive-dark); }
+  .section-head .lead {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--stone-dark);
+    max-width: 340px;
+    line-height: 1.5;
+  }
+
+  /* Editorial band */
+  .editorial { background: var(--paper); }
+  .ed-row { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; }
+  .ed-row.flip { direction: rtl; }
+  .ed-row.flip > * { direction: ltr; }
+  .ed-photo { min-height: 640px; background-size: cover; background-position: center; }
+  .ed-text {
+    padding: 110px 80px;
+    display: flex; flex-direction: column; justify-content: center;
+    background: var(--paper);
+  }
+  .ed-row.dark .ed-text { background: var(--ink); color: var(--cream); }
+  .ed-text .mono { color: var(--olive-dark); margin-bottom: 22px; }
+  .ed-row.dark .ed-text .mono { color: var(--gold); opacity: 0.9; }
+  .ed-text h2 {
+    font-family: 'EB Garamond', serif;
+    font-size: 2.6rem; font-weight: 400;
+    line-height: 1.08; letter-spacing: -0.01em;
+    margin-bottom: 28px;
+  }
+  .ed-text h2 em { font-style: italic; color: var(--olive-dark); }
+  .ed-row.dark .ed-text h2 em { color: var(--gold); opacity: 0.92; }
+  .ed-text p { font-size: 1rem; line-height: 1.75; color: var(--ink-soft); margin-bottom: 16px; max-width: 480px; }
+  .ed-row.dark .ed-text p { color: rgba(244,238,224,0.82); }
+  .en-alt { display: block; font-family: 'EB Garamond', serif; font-style: italic; font-size: 0.78em; color: rgba(31,36,32,0.48); margin-top: 10px; }
+  .ed-row.dark .en-alt, .hero .en-alt, .reserva .en-alt, .q-card.photo .en-alt { color: rgba(244,238,224,0.55); }
+
+  /* Qué hacer */
+  .qhacer {
+    padding: 120px 0;
+    background: var(--paper-warm);
+  }
+  .qhacer-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 24px;
+    margin-top: 56px;
+  }
+  .q-card {
+    background: var(--cream);
+    padding: 40px 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 360px;
+  }
+  .q-card.photo { padding: 0; min-height: 360px; background-size: cover; background-position: center; position: relative; color: var(--cream); }
+  .q-card.photo::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 35%, rgba(15,20,24,0.88) 100%); }
+  .q-card.photo .inner { position: relative; z-index: 1; padding: 36px; display: flex; flex-direction: column; justify-content: flex-end; height: 100%; }
+  .q-card.tall { grid-row: span 2; min-height: 744px; }
+  .q-card .num { font-family: 'EB Garamond', serif; font-style: italic; font-size: 1.05rem; color: var(--stone-dark); margin-bottom: 18px; }
+  .q-card.photo .num { color: var(--paper-warm); opacity: 0.85; }
+  .q-card h3 {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.85rem;
+    font-weight: 400;
+    line-height: 1.15;
+    margin-bottom: 14px;
+  }
+  .q-card.photo h3 { font-size: 2.2rem; }
+  .q-card p { font-size: 0.92rem; line-height: 1.65; color: var(--ink-soft); }
+  .q-card.photo p { color: rgba(251,247,236,0.88); }
+  .q-card .distance { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--olive-dark); margin-top: auto; padding-top: 20px; }
+  .q-card.photo .distance { color: var(--gold); opacity: 0.95; padding-top: 18px; }
+
+  /* Gastronomy — editorial illustrations (SVG) instead of fake photos */
+  .gastro {
+    padding: 120px 0;
+    background: var(--paper);
+  }
+  .gastro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 32px;
+    margin-top: 56px;
+  }
+  .gastro-item {
+    background: var(--cream);
+    padding: 44px 40px;
+    display: flex;
+    flex-direction: column;
+    border-left: 2px solid var(--gold);
+  }
+  .gastro-item .illus {
+    height: 130px;
+    margin-bottom: 28px;
+    display: flex; align-items: center; justify-content: flex-start;
+  }
+  .gastro-item .illus svg { height: 100%; width: auto; }
+  .gastro-item h4 {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.65rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .gastro-item .sub {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    color: var(--stone-dark);
+    font-size: 1rem;
+    margin-bottom: 18px;
+  }
+  .gastro-item p { font-size: 0.92rem; line-height: 1.65; color: var(--ink-soft); }
+
+  /* Reserva directa */
+  .reserva {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 140px 0;
+  }
+  .reserva-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 100px;
+    align-items: center;
+  }
+  .reserva h2 {
+    font-family: 'EB Garamond', serif;
+    font-size: 3.2rem;
+    font-weight: 400;
+    line-height: 1.04;
+    letter-spacing: -0.015em;
+    margin-bottom: 32px;
+  }
+  .reserva h2 em { font-style: italic; color: var(--gold); }
+  .reserva p { font-size: 1.05rem; line-height: 1.7; color: rgba(244,238,224,0.78); max-width: 520px; margin-bottom: 20px; }
+  .compare-box {
+    background: rgba(244,238,224,0.04);
+    border: 1px solid rgba(244,238,224,0.16);
+    padding: 40px 36px;
+  }
+  .compare-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(244,238,224,0.12);
+  }
+  .compare-row:last-child { border-bottom: none; }
+  .compare-row .where { font-family: 'EB Garamond', serif; font-size: 1.25rem; }
+  .compare-row .where small { display: block; font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(244,238,224,0.5); margin-top: 4px; }
+  .compare-row .p { font-family: 'EB Garamond', serif; font-size: 1.55rem; }
+  .compare-row.best .p { color: var(--gold); }
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--cream);
+    color: var(--ink);
+    padding: 20px 36px;
+    text-decoration: none;
+    font-size: 0.82rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-top: 36px;
+    transition: all 0.25s ease;
+  }
+  .cta-btn:hover { background: var(--gold); }
+  .cta-btn .arrow { font-family: 'EB Garamond', serif; font-size: 1.4rem; text-transform: none; letter-spacing: 0; }
+
+  /* Testimonials */
+  .tests {
+    padding: 120px 0;
+    background: var(--paper-warm);
+  }
+  .tests-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 56px;
+  }
+  .test-card {
+    background: var(--cream);
+    padding: 40px 36px;
+    display: flex;
+    flex-direction: column;
+  }
+  .test-score {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(31,36,32,0.12);
+    margin-bottom: 24px;
+  }
+  .test-score .big { font-family: 'EB Garamond', serif; font-size: 2.2rem; line-height: 1; }
+  .test-score .src { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--stone-dark); }
+  .test-card blockquote {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 1.12rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin-bottom: 24px;
+    flex-grow: 1;
+  }
+  .test-card blockquote::before { content: '“'; font-size: 2.5rem; line-height: 0; vertical-align: -0.3em; color: var(--olive-dark); margin-right: 4px; }
+  .test-attr { font-size: 0.85rem; color: var(--ink); }
+  .test-attr small { display: block; color: var(--stone-dark); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 4px; }
+
+  /* Access */
+  .access {
+    padding: 120px 0;
+    background: var(--paper);
+  }
+  .access-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .access-map {
+    position: relative;
+    aspect-ratio: 5/4;
+    background: #E8DFCC;
+    overflow: hidden;
+    border: 1px solid rgba(31,36,32,0.14);
+  }
+  .access-map svg { width: 100%; height: 100%; display: block; }
+  .access-list { margin-top: 36px; }
+  .access-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 24px;
+    align-items: baseline;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(31,36,32,0.14);
+  }
+  .access-row .mono { color: var(--olive-dark); }
+  .access-row .city { font-family: 'EB Garamond', serif; font-size: 1.3rem; }
+  .access-row .dist { font-family: 'EB Garamond', serif; font-size: 1.05rem; color: var(--stone-dark); font-style: italic; }
+
+  /* Footer */
+  footer.site {
+    background: var(--ink);
+    color: rgba(244,238,224,0.75);
+    padding: 80px 0 36px;
+    font-size: 0.88rem;
+  }
+  .foot-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid rgba(244,238,224,0.14);
+  }
+  .foot-brand .brand { color: var(--cream); font-size: 1.6rem; margin-bottom: 18px; display: block; }
+  .foot-brand p { max-width: 320px; line-height: 1.65; color: rgba(244,238,224,0.65); }
+  .foot-col h5 { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cream); margin-bottom: 20px; }
+  .foot-col ul { list-style: none; }
+  .foot-col li { margin-bottom: 12px; }
+  .foot-col a { color: rgba(244,238,224,0.72); text-decoration: none; }
+  .foot-col a:hover { color: var(--cream); }
+  .foot-bottom {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 28px;
+    font-size: 0.76rem;
+    color: rgba(244,238,224,0.5);
+    letter-spacing: 0.06em;
+  }
+  .foot-bottom .kenaz { color: rgba(244,238,224,0.7); }
+  .foot-bottom .kenaz a { color: var(--cream); text-decoration: none; border-bottom: 1px solid rgba(244,238,224,0.3); padding-bottom: 2px; }
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <nav class="top">
+    <div class="brand serif">Destino <em>Guadalest</em></div>
+    <ul>
+      <li><a href="#aparts">Apartamentos</a></li>
+      <li><a href="#descubrir">Qué hacer</a></li>
+      <li><a href="#gastro">Gastronomía</a></li>
+      <li><a href="#reserva">Reservar</a></li>
+      <li><a href="#llegar">Cómo llegar</a></li>
+      <li class="lang-toggle"><span class="active">ES</span><span>·</span><span>EN</span></li>
+    </ul>
+  </nav>
+  <div class="container hero-content">
+    <div class="hero-kicker">
+      <span class="mono">Guadalest · Alicante</span>
+      <span class="dot"></span>
+      <span class="mono">Pueblo más visitado del interior</span>
+      <span class="dot"></span>
+      <span class="mono">9,7 · Booking</span>
+    </div>
+    <h1 class="hero-title">Noches con el <em>Castell</em><br>como vecino.</h1>
+    <p class="hero-sub">Apartamentos con jacuzzi privado en el corazón de Guadalest. Dos millones de personas visitan el pueblo cada año. Muy pocos se quedan a dormir dentro.<span class="en-alt">Private-jacuzzi apartments in the heart of Guadalest. Two million people visit the village each year. Very few stay the night.</span></p>
+    <div class="hero-meta">
+      <div class="meta-block">
+        <span class="mono">Rating</span>
+        <span class="val">9,7<small>/10 Booking</small></span>
+      </div>
+      <div class="meta-block">
+        <span class="mono">Apartamentos</span>
+        <span class="val">6<small>únicos</small></span>
+      </div>
+      <div class="meta-block">
+        <span class="mono">Desde</span>
+        <span class="val">95€<small>/noche</small></span>
+      </div>
+      <div class="meta-block">
+        <span class="mono">Pet friendly</span>
+        <span class="val">Sí<small>sin recargo</small></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= INTRO ================= -->
+<section class="intro">
+  <div class="container">
+    <div class="intro-grid">
+      <h2>Un pueblo colgado de la roca.<br><em>Y tu ventana mirándolo.</em></h2>
+      <div class="intro-body">
+        <p>Guadalest es una anomalía geográfica y una postal que los turistas de Benidorm conocen de memoria. El Castell de Sant Josep corona una roca de piedra blanca sobre el embalse turquesa. Lo que casi nadie sabe es que se puede dormir ahí arriba.</p>
+        <p>Destino Guadalest son seis apartamentos con jacuzzi privado repartidos por el casco histórico. No somos hotel, no somos casa rural al uso. Somos la versión del pueblo que sigue despierta cuando los autobuses se van a las seis de la tarde.</p>
+        <div class="stat-row">
+          <div class="stat"><div class="num">2M+</div><div class="lab">Visitantes / año</div></div>
+          <div class="stat"><div class="num">18</div><div class="lab">Años recibiendo</div></div>
+          <div class="stat"><div class="num">9,7</div><div class="lab">Booking rating</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= APARTMENTS (editorial hero + text cards) ================= -->
+<section class="aparts" id="aparts">
+  <div class="aparts-hero">
+    <div class="inner">
+      <span class="mono">01 · Alojamiento</span>
+      <h2>Seis apartamentos.<br><em>Ninguno igual al otro.</em></h2>
+    </div>
+  </div>
+  <div class="aparts-body">
+    <div class="container">
+      <div class="section-head" style="margin-bottom:0">
+        <p class="lead" style="max-width:520px">Cada apartamento ocupa una casa de piedra del casco histórico. Jacuzzi privado, cocina completa, vistas al valle o al Castell. Tipologías por capacidad — el equipo te asigna el más adecuado según fechas y huéspedes.</p>
+        <div style="text-align:right">
+          <div class="mono" style="color:var(--stone-dark);margin-bottom:8px">Tipologías</div>
+          <div style="font-family:'EB Garamond',serif;font-size:1.1rem;color:var(--ink);font-style:italic">Tres capacidades, seis apartamentos</div>
+        </div>
+      </div>
+      <div class="aparts-grid">
+
+        <article class="apart-type">
+          <div class="num">I.</div>
+          <h3>Tipología Íntima</h3>
+          <div class="sub">Dos huéspedes · escapada de pareja</div>
+          <ul>
+            <li><span class="key">Superficie</span><span>38 – 45 m²</span></li>
+            <li><span class="key">Dormitorios</span><span>1 · cama king</span></li>
+            <li><span class="key">Jacuzzi</span><span>Privado interior</span></li>
+            <li><span class="key">Cocina</span><span>Completa</span></li>
+            <li><span class="key">Mascotas</span><span>Sí · sin recargo</span></li>
+          </ul>
+          <div class="apart-meta">
+            <span class="from">Desde</span>
+            <span class="price">95€<small>/noche</small></span>
+          </div>
+        </article>
+
+        <article class="apart-type">
+          <div class="num">II.</div>
+          <h3>Tipología Familia</h3>
+          <div class="sub">Tres huéspedes · escapada con hijo</div>
+          <ul>
+            <li><span class="key">Superficie</span><span>48 – 55 m²</span></li>
+            <li><span class="key">Dormitorios</span><span>2 · king + individual</span></li>
+            <li><span class="key">Jacuzzi</span><span>Privado interior</span></li>
+            <li><span class="key">Cocina</span><span>Completa + salón</span></li>
+            <li><span class="key">Mascotas</span><span>Sí · sin recargo</span></li>
+          </ul>
+          <div class="apart-meta">
+            <span class="from">Desde</span>
+            <span class="price">125€<small>/noche</small></span>
+          </div>
+        </article>
+
+        <article class="apart-type">
+          <div class="num">III.</div>
+          <h3>Tipología Grupo</h3>
+          <div class="sub">Cuatro huéspedes · dos parejas o familia</div>
+          <ul>
+            <li><span class="key">Superficie</span><span>60 – 70 m²</span></li>
+            <li><span class="key">Dormitorios</span><span>2 · dos camas king</span></li>
+            <li><span class="key">Jacuzzi</span><span>Privado + terraza</span></li>
+            <li><span class="key">Cocina</span><span>Completa + chimenea</span></li>
+            <li><span class="key">Mascotas</span><span>Sí · sin recargo</span></li>
+          </ul>
+          <div class="apart-meta">
+            <span class="from">Desde</span>
+            <span class="price">165€<small>/noche</small></span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EDITORIAL BAND — pueblo vacío ================= -->
+<section class="editorial">
+  <div class="ed-row">
+    <div class="ed-photo" style="background-image:url('./img/hero2.jpg')"></div>
+    <div class="ed-text">
+      <span class="mono">02 · El pueblo que queda</span>
+      <h2>El silencio empieza cuando<br>cierra <em>la última taquilla</em>.</h2>
+      <p>Los autobuses descargan turistas desde las nueve de la mañana. A las seis de la tarde, todos se han ido. Lo que queda es un pueblo vacío, luz lateral sobre la piedra blanca, y el valle en silencio.</p>
+      <p>Los huéspedes de Destino Guadalest tienen ese rato para ellos. Paseo por calles empedradas sin nadie, cena en la plaza, jacuzzi al volver al apartamento. Mañana los autobuses vuelven, pero ya habrás vivido el pueblo real.<span class="en-alt">When the last bus leaves at six, the village belongs to our guests. Empty cobbled streets, dinner on the square, jacuzzi back at the apartment. Tomorrow the buses return — but you will have lived the real Guadalest.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= QUE HACER ================= -->
+<section class="qhacer" id="descubrir">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="mono" style="color:var(--olive-dark)">03 · Descubrir</div>
+        <h2 style="margin-top:18px">Qué se hace aquí<br><em>cuando no se está en el jacuzzi.</em></h2>
+      </div>
+      <p class="lead">El valle de Guadalest es senderismo, embalse con kayak, barranquismo, bodegas y una historia que va desde los íberos hasta la guerra civil.</p>
+    </div>
+    <div class="qhacer-grid">
+
+      <div class="q-card photo tall" style="background-image:url('./img/panoramica.jpg')">
+        <div class="inner">
+          <div class="num">I.</div>
+          <h3>El Castell de<br>Sant Josep</h3>
+          <p>La fortaleza colgada sobre la roca blanca. Subida de 15 minutos desde el casco histórico, vistas de 360° sobre el valle y el embalse.</p>
+          <div class="distance">A 2 min. andando</div>
+        </div>
+      </div>
+
+      <div class="q-card">
+        <div class="num">II.</div>
+        <h3>Embalse de<br>Guadalest</h3>
+        <p>Las aguas turquesas más fotografiadas del interior de Alicante. Kayak, paddle surf y tres miradores panorámicos alrededor de la presa.</p>
+        <div class="distance">A 5 min. en coche</div>
+      </div>
+
+      <div class="q-card">
+        <div class="num">III.</div>
+        <h3>Ruta del<br>Puig Campana</h3>
+        <p>Sendero circular que rodea el pico más icónico de la Marina Baixa. Seis horas de trekking, vistas al Mediterráneo desde la montaña.</p>
+        <div class="distance">Inicio a 20 min.</div>
+      </div>
+
+      <div class="q-card photo" style="background-image:url('./img/hero3.jpg')">
+        <div class="inner">
+          <div class="num">IV.</div>
+          <h3>Embalse &<br>barrancos</h3>
+          <p>Barranquismo guiado por los desfiladeros del valle. Reservamos la sesión desde recepción con guía local.</p>
+        </div>
+      </div>
+
+      <div class="q-card">
+        <div class="num">V.</div>
+        <h3>Ocho museos<br>en un kilómetro</h3>
+        <p>Microminiaturas, saleros, etnológico, histórico, casa orduña. La densidad museística más rara de España, toda en el casco.</p>
+        <div class="distance">En el pueblo</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= EDITORIAL — dark band ================= -->
+<section class="editorial">
+  <div class="ed-row dark flip">
+    <div class="ed-photo" style="background-image:url('./img/hero1.jpg')"></div>
+    <div class="ed-text">
+      <span class="mono">04 · Territorio</span>
+      <h2>Montaña mediterránea,<br><em>sin teatralización.</em></h2>
+      <p>Guadalest no es un parque temático. Los vecinos siguen viviendo aquí, las tiendas siguen vendiendo turrón de almendra de verdad, y la panadería abre a las siete como hace cuarenta años.</p>
+      <p>Estamos a treinta minutos de Benidorm en coche. Pero la altitud, la piedra y el silencio hacen que parezca otro país. Huéspedes alemanes, belgas, holandeses y británicos descubren aquí el interior mediterráneo que no sale en las guías.<span class="en-alt">Thirty minutes from Benidorm, but the altitude, stone and silence make it feel like another country. Mediterranean mountain without the theme-park staging.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GASTRONOMIA (editorial SVG illustrations) ================= -->
+<section class="gastro" id="gastro">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="mono" style="color:var(--olive-dark)">05 · Gastronomía</div>
+        <h2 style="margin-top:18px">Lo que la sierra<br><em>te da de comer.</em></h2>
+      </div>
+      <p class="lead">Cocina de montaña mediterránea. Restaurantes recomendados a cinco minutos del apartamento y productores locales de confianza.</p>
+    </div>
+    <div class="gastro-grid">
+
+      <div class="gastro-item">
+        <div class="illus">
+          <svg viewBox="0 0 160 130" xmlns="http://www.w3.org/2000/svg">
+            <!-- Almond -->
+            <g stroke="#4E5E42" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <ellipse cx="80" cy="75" rx="32" ry="48"/>
+              <path d="M 80 28 Q 80 56 80 122"/>
+              <path d="M 62 50 Q 80 55 98 50" opacity="0.6"/>
+              <path d="M 58 70 Q 80 76 102 70" opacity="0.5"/>
+              <path d="M 60 90 Q 80 96 100 90" opacity="0.4"/>
+            </g>
+            <g stroke="#6B7E5C" stroke-width="1" fill="none" opacity="0.7">
+              <path d="M 30 30 Q 48 40 58 54"/>
+              <path d="M 28 38 Q 36 42 46 46"/>
+              <path d="M 30 30 Q 34 22 38 20"/>
+            </g>
+          </svg>
+        </div>
+        <h4>Almendra marcona</h4>
+        <div class="sub">Turrón y guirlache del valle</div>
+        <p>Los almendros de la sierra de Guadalest dan una variedad dulce que se trabaja en turrones artesanos desde hace siglos. La cooperativa del pueblo vende directo al público.</p>
+      </div>
+
+      <div class="gastro-item">
+        <div class="illus">
+          <svg viewBox="0 0 160 130" xmlns="http://www.w3.org/2000/svg">
+            <!-- Honey jar -->
+            <g stroke="#4E5E42" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="52" y="38" width="56" height="14" rx="2"/>
+              <path d="M 48 52 L 48 116 Q 48 122 54 122 L 106 122 Q 112 122 112 116 L 112 52"/>
+              <path d="M 48 56 L 112 56"/>
+              <!-- honey fill line -->
+              <path d="M 52 72 Q 80 68 108 72 L 108 118 Q 108 118 104 118 L 56 118 Q 52 118 52 118 Z" fill="#C9B77E" opacity="0.3" stroke="none"/>
+              <path d="M 52 72 Q 80 68 108 72" stroke="#C9B77E" stroke-width="1.2"/>
+              <!-- hexagons for honey -->
+              <path d="M 68 84 L 72 86 L 72 92 L 68 94 L 64 92 L 64 86 Z"/>
+              <path d="M 92 98 L 96 100 L 96 106 L 92 108 L 88 106 L 88 100 Z"/>
+            </g>
+          </svg>
+        </div>
+        <h4>Miel de romero</h4>
+        <div class="sub">Apicultura familiar de montaña</div>
+        <p>Floración de romero, tomillo y azahar. Tres apicultores locales venden producción limitada cada temporada. Te indicamos quién tiene tarro este mes.</p>
+      </div>
+
+      <div class="gastro-item">
+        <div class="illus">
+          <svg viewBox="0 0 160 130" xmlns="http://www.w3.org/2000/svg">
+            <!-- Olive oil bottle -->
+            <g stroke="#4E5E42" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M 72 14 L 72 36 Q 72 40 68 42 L 64 44 Q 54 50 54 64 L 54 116 Q 54 122 60 122 L 100 122 Q 106 122 106 116 L 106 64 Q 106 50 96 44 L 92 42 Q 88 40 88 36 L 88 14 Z"/>
+              <path d="M 70 14 L 90 14"/>
+              <!-- oil fill -->
+              <path d="M 56 70 L 56 118 Q 56 120 60 120 L 100 120 Q 104 120 104 118 L 104 70 Q 94 68 80 68 Q 66 68 56 70 Z" fill="#6B7E5C" opacity="0.25" stroke="none"/>
+              <path d="M 56 70 Q 80 66 104 70" stroke="#6B7E5C" stroke-width="1.2"/>
+              <!-- label -->
+              <rect x="62" y="82" width="36" height="24" opacity="0.4"/>
+              <path d="M 70 92 L 90 92" opacity="0.6"/>
+              <path d="M 70 98 L 86 98" opacity="0.5"/>
+            </g>
+          </svg>
+        </div>
+        <h4>Aceite de la Marina</h4>
+        <div class="sub">Variedad Blanqueta autóctona</div>
+        <p>Molinos pequeños de la comarca, variedad Blanqueta. Aceite intenso, ligeramente amargo, perfecto sobre pan de pueblo y tomate de secano.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= RESERVA DIRECTA ================= -->
+<section class="reserva" id="reserva">
+  <div class="container">
+    <div class="reserva-grid">
+      <div>
+        <span class="mono" style="color:var(--gold)">06 · Reserva directa</span>
+        <h2 style="margin-top:24px">Reserva con nosotros,<br>no con <em>un intermediario.</em></h2>
+        <p>Booking, Airbnb y las demás plataformas cobran comisión del 15 al 22% por cada reserva. Ese dinero sale del margen del alojamiento y termina bajando la calidad del servicio.</p>
+        <p>Reservando directo nos cuentas quién viene, qué necesitas y pagas exactamente por lo que usas. Mismo apartamento, mismo precio base, sin intermediarios.<span class="en-alt">Book direct: no OTA commissions, no middlemen, same apartment, better service.</span></p>
+        <a href="#" class="cta-btn">Reservar ahora <span class="arrow">→</span></a>
+      </div>
+      <div class="compare-box">
+        <div class="compare-row">
+          <div class="where">Booking.com<small>OTA · 17% comisión</small></div>
+          <div class="p">137€</div>
+        </div>
+        <div class="compare-row">
+          <div class="where">Airbnb<small>OTA · 20% comisión</small></div>
+          <div class="p">142€</div>
+        </div>
+        <div class="compare-row best">
+          <div class="where">Destino Guadalest<small>reserva directa</small></div>
+          <div class="p">110€</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIOS ================= -->
+<section class="tests">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="mono" style="color:var(--olive-dark)">07 · Huéspedes</div>
+        <h2 style="margin-top:18px">9,7 en Booking<br><em>no se consigue por casualidad.</em></h2>
+      </div>
+      <p class="lead">Más de 1.200 reseñas verificadas entre Booking, TripAdvisor y Google. Selección editorial representativa.</p>
+    </div>
+    <div class="tests-grid">
+      <div class="test-card">
+        <div class="test-score"><span class="big">10/10</span><span class="src">Booking · Verificada</span></div>
+        <blockquote>Apartamento impecable, jacuzzi con vistas al Castell, cama que hacía años que no dormía así. El anfitrión nos recomendó restaurantes que no salen en ninguna guía.</blockquote>
+        <div class="test-attr">Sabine K. <small>Düsseldorf · octubre 2025</small></div>
+      </div>
+      <div class="test-card">
+        <div class="test-score"><span class="big">9,8/10</span><span class="src">TripAdvisor</span></div>
+        <blockquote>Lo de la ubicación es brutal: caminas tres minutos y estás en la plaza principal. Y cuando los turistas se van, el pueblo es tuyo.</blockquote>
+        <div class="test-attr">Joan M. <small>Barcelona · septiembre 2025</small></div>
+      </div>
+      <div class="test-card">
+        <div class="test-score"><span class="big">10/10</span><span class="src">Google Reviews</span></div>
+        <blockquote>Vinimos con el perro y nos trataron mejor que en muchos hoteles sin mascota. Jacuzzi enorme, detalle de bienvenida, y atención real, no robotizada.</blockquote>
+        <div class="test-attr">Laura P. <small>Madrid · agosto 2025</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ACCESS MAP ================= -->
+<section class="access" id="llegar">
+  <div class="container">
+    <div class="access-grid">
+      <div class="access-map">
+        <svg viewBox="0 0 600 480" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="topo" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M0 20 Q10 14 20 20 T40 20" stroke="rgba(31,36,32,0.08)" fill="none" stroke-width="0.5"/>
+            </pattern>
+          </defs>
+          <rect width="600" height="480" fill="#E8DFCC"/>
+          <rect width="600" height="480" fill="url(#topo)"/>
+
+          <!-- Mediterranean coast (right edge) -->
+          <path d="M 540 0 L 540 120 Q 530 180 550 230 Q 560 300 545 360 Q 530 420 540 480 L 600 480 L 600 0 Z" fill="#B8C4CB" opacity="0.8"/>
+
+          <!-- Rivers -->
+          <path d="M 310 220 Q 360 250 430 280 Q 490 300 540 330" stroke="#8F9DA8" stroke-width="2.5" fill="none" opacity="0.6"/>
+
+          <!-- Mountains -->
+          <path d="M 220 260 L 260 200 L 290 240 L 320 190 L 360 250 Z" fill="#A89A82" opacity="0.35"/>
+          <path d="M 170 310 L 210 250 L 240 290 L 270 240 L 310 300 Z" fill="#A89A82" opacity="0.3"/>
+
+          <!-- Guadalest (highlighted) -->
+          <circle cx="310" cy="220" r="8" fill="#1F2420"/>
+          <circle cx="310" cy="220" r="14" fill="none" stroke="#1F2420" stroke-width="1" opacity="0.4"/>
+          <circle cx="310" cy="220" r="22" fill="none" stroke="#1F2420" stroke-width="0.5" opacity="0.25"/>
+          <text x="310" y="202" font-family="EB Garamond" font-size="15" font-style="italic" text-anchor="middle" fill="#1F2420">Guadalest</text>
+          <text x="310" y="190" font-family="Inter" font-size="7" letter-spacing="1.5" text-anchor="middle" fill="#6B7E5C">DESTINO</text>
+
+          <!-- Benidorm -->
+          <circle cx="440" cy="310" r="4" fill="#3A3E39"/>
+          <text x="447" y="314" font-family="Inter" font-size="10" fill="#3A3E39">Benidorm</text>
+          <text x="447" y="326" font-family="EB Garamond" font-size="10" font-style="italic" fill="#8A7E68">30 min</text>
+
+          <!-- Calpe -->
+          <circle cx="490" cy="260" r="4" fill="#3A3E39"/>
+          <text x="497" y="264" font-family="Inter" font-size="10" fill="#3A3E39">Calpe</text>
+          <text x="497" y="276" font-family="EB Garamond" font-size="10" font-style="italic" fill="#8A7E68">45 min</text>
+
+          <!-- Alicante -->
+          <circle cx="350" cy="400" r="4" fill="#3A3E39"/>
+          <text x="357" y="404" font-family="Inter" font-size="10" fill="#3A3E39">Alicante</text>
+          <text x="357" y="416" font-family="EB Garamond" font-size="10" font-style="italic" fill="#8A7E68">1 h</text>
+
+          <!-- Altea -->
+          <circle cx="470" cy="280" r="3" fill="#3A3E39" opacity="0.7"/>
+          <text x="477" y="283" font-family="Inter" font-size="9" fill="#3A3E39" opacity="0.8">Altea</text>
+
+          <!-- Roads -->
+          <path d="M 310 220 L 440 310" stroke="#6B7E5C" stroke-width="1" stroke-dasharray="4 3" opacity="0.6" fill="none"/>
+          <path d="M 310 220 L 490 260" stroke="#6B7E5C" stroke-width="1" stroke-dasharray="4 3" opacity="0.6" fill="none"/>
+          <path d="M 310 220 L 350 400" stroke="#6B7E5C" stroke-width="1" stroke-dasharray="4 3" opacity="0.6" fill="none"/>
+
+          <!-- Sea label -->
+          <text x="575" y="170" font-family="EB Garamond" font-size="13" font-style="italic" text-anchor="middle" fill="#5E6D79" transform="rotate(90 575 170)">Mar Mediterráneo</text>
+
+          <!-- Compass -->
+          <g transform="translate(560 50)">
+            <circle cx="0" cy="0" r="18" fill="none" stroke="#1F2420" stroke-width="0.5" opacity="0.5"/>
+            <path d="M 0 -14 L 4 0 L 0 14 L -4 0 Z" fill="#1F2420"/>
+            <text x="0" y="-22" font-family="Inter" font-size="8" text-anchor="middle" fill="#1F2420">N</text>
+          </g>
+        </svg>
+      </div>
+      <div>
+        <div class="mono" style="color:var(--olive-dark)">08 · Cómo llegar</div>
+        <h2 style="font-family:'EB Garamond',serif;font-size:2.6rem;font-weight:400;line-height:1.08;margin:18px 0 24px;letter-spacing:-0.01em">Treinta minutos<br><em style="font-style:italic;color:var(--olive-dark)">de la costa.</em></h2>
+        <p style="font-size:1rem;line-height:1.7;color:var(--ink-soft);max-width:440px">Guadalest está en el interior de la Marina Baixa. Acceso directo desde la AP-7 y la N-332. Aeropuerto de Alicante a una hora en coche.</p>
+        <div class="access-list">
+          <div class="access-row">
+            <span class="mono">A</span>
+            <span class="city">Benidorm</span>
+            <span class="dist">30 min · 25 km</span>
+          </div>
+          <div class="access-row">
+            <span class="mono">B</span>
+            <span class="city">Calpe</span>
+            <span class="dist">45 min · 38 km</span>
+          </div>
+          <div class="access-row">
+            <span class="mono">C</span>
+            <span class="city">Alicante <small style="font-family:'Inter';font-size:0.7rem;letter-spacing:0.08em;color:var(--stone-dark)">· aeropuerto</small></span>
+            <span class="dist">1 h · 65 km</span>
+          </div>
+          <div class="access-row">
+            <span class="mono">D</span>
+            <span class="city">Valencia</span>
+            <span class="dist">1 h 30 · 140 km</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="brand serif">Destino <em style="font-style:italic;font-weight:400;opacity:0.9">Guadalest</em></span>
+        <p>Apartamentos con jacuzzi privado en el casco histórico de Guadalest. Pet friendly. Reserva directa sin comisiones.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Contacto</h5>
+        <ul>
+          <li><a href="mailto:info@destinoguadalest.com">info@destinoguadalest.com</a></li>
+          <li>Guadalest · Alicante</li>
+          <li>Check-in · 16:00</li>
+          <li>Check-out · 11:00</li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Apartamentos</h5>
+        <ul>
+          <li><a href="#">Tipología Íntima</a></li>
+          <li><a href="#">Tipología Familia</a></li>
+          <li><a href="#">Tipología Grupo</a></li>
+          <li><a href="#">Disponibilidad</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="#">Aviso legal</a></li>
+          <li><a href="#">Política de privacidad</a></li>
+          <li><a href="#">Política de cookies</a></li>
+          <li><a href="#">Condiciones de reserva</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2008 – 2026 Destino Guadalest · Todos los derechos reservados</span>
+      <span class="kenaz">Diseño propuesto por <a href="https://kenaz.studio">Kenaz Studio</a></span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
