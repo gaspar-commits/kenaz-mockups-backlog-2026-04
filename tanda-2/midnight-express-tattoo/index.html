@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Midnight Express Tattoo — Calpe · Tatuando desde 2005</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500&family=JetBrains+Mono:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Paleta tattoo editorial Sang Bleu / Migra */
+    --ink-deep:   #0B0B0D;   /* negro profundo */
+    --ink:        #141417;   /* negro carbón */
+    --ink-soft:   #1E1E22;
+    --carbon:     #2A2A2E;   /* gris carbón */
+    --carbon-mid: #3A3A3E;
+    --ash:        #6D6D72;
+    --ash-soft:   #9A9A9F;
+    --paper:      #F5F2EC;   /* blanco tinta cálido */
+    --paper-warm: #EDE7DD;
+    --paper-mute: #CFC9BE;
+    --blood:      #B2322C;   /* rojo tatuaje */
+    --blood-deep: #7A1F1C;
+    --night:      #6B5B95;   /* violeta noche (acento opcional) */
+    --line:       #F5F2EC14;
+    --line-ink:   #0B0B0D12;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--ink-deep);
+    color: var(--paper);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  img, svg { max-width: 100%; height: auto; display: block; }
+  a { color: inherit; text-decoration: none; }
+
+  .shell { width: 100%; max-width: 1440px; margin: 0 auto; }
+
+  /* ---------- TOPBAR ---------- */
+  .topbar {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 22px clamp(1.25rem, 3vw, 3rem);
+    border-bottom: 1px solid var(--line);
+    background: var(--ink-deep);
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .brand-mark {
+    width: 42px; height: 42px;
+    border: 1.5px solid var(--paper);
+    display: grid; place-items: center;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 22px;
+    color: var(--paper);
+    letter-spacing: -0.02em;
+  }
+
+  .wordmark {
+    line-height: 1;
+  }
+
+  .wordmark-main {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: 0.01em;
+    color: var(--paper);
+    font-variation-settings: 'opsz' 144;
+  }
+
+  .wordmark-sub {
+    display: block;
+    margin-top: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 400;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ash-soft);
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 2.25rem;
+  }
+
+  .nav a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--paper-mute);
+    transition: color .2s;
+  }
+
+  .nav a:hover, .nav a.active { color: var(--paper); }
+  .nav a.active { position: relative; }
+  .nav a.active::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0;
+    bottom: -8px;
+    height: 1px;
+    background: var(--blood);
+  }
+
+  .cta-top {
+    padding: 11px 22px;
+    border: 1px solid var(--paper);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--paper);
+    background: transparent;
+    cursor: pointer;
+    transition: all .2s;
+  }
+
+  .cta-top:hover { background: var(--paper); color: var(--ink-deep); }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative;
+    padding: clamp(3rem, 6vw, 5.5rem) clamp(1.25rem, 3vw, 3rem) clamp(4rem, 7vw, 6rem);
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: clamp(2rem, 4vw, 4.5rem);
+    align-items: center;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 1.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ash-soft);
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 32px; height: 1px;
+    background: var(--blood);
+  }
+
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(3.5rem, 6vw, 5.75rem);
+    line-height: 0.96;
+    letter-spacing: -0.025em;
+    color: var(--paper);
+    font-variation-settings: 'opsz' 144, 'SOFT' 100;
+    margin-bottom: 1.75rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--paper-mute);
+  }
+
+  .hero h1 .accent {
+    color: var(--blood);
+    font-style: italic;
+    font-weight: 500;
+  }
+
+  .hero-lead {
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--paper-mute);
+    max-width: 46ch;
+    margin-bottom: 2.25rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 15px 28px;
+    background: var(--blood);
+    color: var(--paper);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: background .2s;
+  }
+
+  .btn-primary:hover { background: var(--blood-deep); }
+
+  .btn-primary svg { width: 14px; height: 14px; }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 22px;
+    color: var(--paper);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    border: 1px solid var(--carbon-mid);
+    background: transparent;
+    cursor: pointer;
+    transition: all .2s;
+  }
+
+  .btn-ghost:hover { border-color: var(--paper); }
+
+  .hero-meta {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--line);
+    max-width: 540px;
+  }
+
+  .meta-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .meta-stat-num {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 1;
+    color: var(--paper);
+    font-variation-settings: 'opsz' 144;
+  }
+
+  .meta-stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ash-soft);
+  }
+
+  .hero-visual {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+  }
+
+  .hero-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(15%) contrast(1.05);
+  }
+
+  .hero-visual-caption {
+    position: absolute;
+    left: 20px; bottom: 20px;
+    padding: 10px 14px;
+    background: var(--ink-deep);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--paper-mute);
+    border-left: 2px solid var(--blood);
+  }
+
+  /* ---------- SECTION BASE ---------- */
+  section {
+    padding: clamp(4rem, 7vw, 6.5rem) clamp(1.25rem, 3vw, 3rem);
+  }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: clamp(2rem, 4vw, 5rem);
+    align-items: end;
+    margin-bottom: clamp(3rem, 5vw, 4.5rem);
+  }
+
+  .section-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--blood);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(2.25rem, 4vw, 3.5rem);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    color: var(--paper);
+    font-variation-settings: 'opsz' 144;
+  }
+
+  .section-title em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--ash-soft);
+  }
+
+  .section-lead {
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--paper-mute);
+    max-width: 52ch;
+  }
+
+  /* ---------- ARTISTAS ---------- */
+  .artists {
+    background: var(--ink);
+    border-top: 1px solid var(--carbon);
+    border-bottom: 1px solid var(--carbon);
+  }
+
+  .artists-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--carbon);
+    border: 1px solid var(--carbon);
+  }
+
+  .artist-card {
+    background: var(--ink);
+    padding: 2rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .artist-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    color: var(--blood);
+  }
+
+  .artist-name {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 28px;
+    letter-spacing: -0.015em;
+    line-height: 1.05;
+    color: var(--paper);
+    font-variation-settings: 'opsz' 144;
+  }
+
+  .artist-name em {
+    font-style: italic;
+    color: var(--ash-soft);
+    font-weight: 300;
+  }
+
+  .artist-style {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--paper-mute);
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--carbon-mid);
+  }
+
+  .artist-bio {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ash);
+  }
+
+  .artist-availability {
+    margin-top: auto;
+    padding-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+
+  .availability-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+  }
+
+  .avail-open .availability-dot { background: #7FB069; }
+  .avail-open { color: #9BC48C; }
+  .avail-wait .availability-dot { background: var(--blood); }
+  .avail-wait { color: var(--blood); }
+
+  /* ---------- PORTFOLIO ---------- */
+  .portfolio {
+    background: var(--ink-deep);
+  }
+
+  .portfolio-filters {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .filter-btn {
+    padding: 9px 18px;
+    background: transparent;
+    border: 1px solid var(--carbon-mid);
+    color: var(--paper-mute);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all .2s;
+  }
+
+  .filter-btn:hover { border-color: var(--paper); color: var(--paper); }
+  .filter-btn.active {
+    background: var(--paper);
+    color: var(--ink-deep);
+    border-color: var(--paper);
+  }
+
+  .portfolio-count {
+    margin-left: auto;
+    align-self: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ash);
+  }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .portfolio-item {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 3 / 4;
+    cursor: pointer;
+  }
+
+  .portfolio-item.tall { aspect-ratio: 3 / 5; }
+  .portfolio-item.wide { aspect-ratio: 1 / 1; }
+
+  .portfolio-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: grayscale(10%) contrast(1.02);
+    transition: transform .6s ease, filter .4s ease;
+  }
+
+  .portfolio-item:hover img {
+    transform: scale(1.04);
+    filter: grayscale(0%) contrast(1.05);
+  }
+
+  .portfolio-item-meta {
+    position: absolute;
+    left: 14px; bottom: 14px;
+    padding: 8px 12px;
+    background: rgba(11, 11, 13, 0.88);
+    backdrop-filter: blur(4px);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--paper-mute);
+    border-left: 2px solid var(--blood);
+  }
+
+  /* editorial tiles (portfolio-item sin foto) */
+  .portfolio-item.editorial-tile {
+    background: var(--ink-soft);
+    border: 1px solid var(--carbon);
+    cursor: default;
+  }
+  .portfolio-item.editorial-tile:hover img { transform: none; }
+  .editorial-tile-inner {
+    width: 100%; height: 100%;
+    padding: 2rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+    color: var(--paper);
+  }
+  .editorial-tile-num {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'opsz' 144;
+    font-weight: 300;
+    font-size: clamp(4rem, 8vw, 6.5rem);
+    line-height: 0.92;
+    letter-spacing: -0.04em;
+    color: var(--paper);
+  }
+  .editorial-tile-copy { display: flex; flex-direction: column; gap: 8px; }
+  .editorial-tile-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--blood);
+  }
+  .editorial-tile-sub {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ash-soft);
+  }
+  .editorial-tile-glyph {
+    color: var(--ash);
+    opacity: 0.55;
+    align-self: flex-end;
+  }
+  .tile-quote-inner { justify-content: center; gap: 18px; }
+  .tile-quote-mark {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 5rem;
+    line-height: 0.6;
+    color: var(--blood);
+  }
+  .tile-quote-text {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'opsz' 144;
+    font-weight: 400;
+    font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+    line-height: 1.45;
+    color: var(--paper);
+    letter-spacing: -0.005em;
+  }
+  .tile-quote-text em {
+    font-style: italic;
+    color: var(--blood);
+  }
+  .tile-quote-meta {
+    margin-top: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ash);
+  }
+
+  /* ---------- PROCESO ---------- */
+  .process {
+    background: var(--ink);
+    border-top: 1px solid var(--carbon);
+  }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--carbon);
+    border-bottom: 1px solid var(--carbon);
+  }
+
+  .process-step {
+    padding: 2.5rem 1.75rem;
+    border-right: 1px solid var(--carbon);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-height: 260px;
+  }
+
+  .process-step:last-child { border-right: none; }
+
+  .process-num {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 14px;
+    color: var(--blood);
+    font-variation-settings: 'opsz' 144;
+    letter-spacing: 0.1em;
+  }
+
+  .process-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    color: var(--paper);
+    font-variation-settings: 'opsz' 144;
+  }
+
+  .process-title em {
+    font-style: italic;
+    color: var(--ash-soft);
+    font-weight: 300;
+  }
+
+  .process-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--ash);
+  }
+
+  /* ---------- STUDIO STRIP ---------- */
+  .studio-strip {
+    background: var(--ink-deep);
+  }
+
+  .studio-images {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 8px;
+    margin-top: 2rem;
+  }
+
+  .studio-images figure {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+  }
+
+  .studio-images figure:first-child { aspect-ratio: 4 / 5; }
+
+  .studio-images img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: grayscale(15%) contrast(1.02);
+  }
+
+  .studio-caption {
+    position: absolute;
+    left: 14px; bottom: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--paper);
+    padding: 6px 10px;
+    background: rgba(11, 11, 13, 0.85);
+  }
+
+  /* ---------- RESERVA ---------- */
+  .booking {
+    background: var(--ink);
+    border-top: 1px solid var(--carbon);
+  }
+
+  .booking-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: center;
+  }
+
+  .booking-big {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(2.5rem, 4.5vw, 4.25rem);
+    line-height: 1;
+    letter-spacing: -0.025em;
+    color: var(--paper);
+    font-variation-settings: 'opsz' 144;
+    margin-bottom: 1.5rem;
+  }
+
+  .booking-big em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--blood);
+  }
+
+  .booking-sub {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--paper-mute);
+    max-width: 44ch;
+    margin-bottom: 2.25rem;
+  }
+
+  .channel-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .channel {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 20px 24px;
+    background: var(--ink-deep);
+    border: 1px solid var(--carbon);
+    transition: all .2s;
+  }
+
+  .channel:hover {
+    border-color: var(--paper);
+  }
+
+  .channel-icon {
+    width: 40px; height: 40px;
+    border: 1px solid var(--carbon-mid);
+    display: grid; place-items: center;
+    color: var(--paper);
+  }
+
+  .channel-icon svg { width: 18px; height: 18px; }
+
+  .channel-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ash-soft);
+    margin-bottom: 4px;
+  }
+
+  .channel-value {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    color: var(--paper);
+    letter-spacing: -0.01em;
+    font-variation-settings: 'opsz' 144;
+  }
+
+  .channel-arrow {
+    color: var(--ash);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+  }
+
+  .channel.primary {
+    border-color: var(--blood);
+    background: linear-gradient(180deg, rgba(178, 50, 44, 0.08), var(--ink-deep));
+  }
+
+  .channel.primary .channel-icon {
+    border-color: var(--blood);
+    color: var(--blood);
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq {
+    background: var(--ink-deep);
+    border-top: 1px solid var(--carbon);
+  }
+
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--carbon);
+    border: 1px solid var(--carbon);
+  }
+
+  .faq-item {
+    background: var(--ink);
+    padding: 2rem 1.75rem;
+  }
+
+  .faq-q {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    color: var(--paper);
+    font-variation-settings: 'opsz' 144;
+    margin-bottom: 0.75rem;
+  }
+
+  .faq-q em {
+    font-style: italic;
+    color: var(--ash-soft);
+    font-weight: 300;
+  }
+
+  .faq-a {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--ash);
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    background: var(--ink-deep);
+    padding: 3.5rem clamp(1.25rem, 3vw, 3rem) 2rem;
+    border-top: 1px solid var(--carbon);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .footer-brand .wordmark-main { font-size: 24px; }
+  .footer-tagline {
+    margin-top: 1rem;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.45;
+    color: var(--ash-soft);
+    max-width: 34ch;
+  }
+
+  .footer-col h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--blood);
+    margin-bottom: 1rem;
+  }
+
+  .footer-col ul { list-style: none; }
+  .footer-col li {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--paper-mute);
+    line-height: 1.8;
+  }
+
+  .footer-col a { color: var(--paper-mute); }
+  .footer-col a:hover { color: var(--paper); }
+
+  .footer-bar {
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--carbon);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ash);
+  }
+
+  .footer-bar a { color: var(--ash-soft); }
+  .footer-bar a:hover { color: var(--paper); }
+
+  .kenaz-sig {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--ash-soft);
+  }
+
+  /* ---------- MOBILE ---------- */
+  @media (max-width: 880px) {
+    .nav, .cta-top { display: none; }
+    .hero-grid, .section-head, .booking-grid, .footer-grid {
+      grid-template-columns: 1fr;
+    }
+    .hero-meta { grid-template-columns: repeat(3, 1fr); max-width: 100%; }
+    .artists-grid { grid-template-columns: 1fr; }
+    .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .process-step { border-right: 1px solid var(--carbon); border-bottom: 1px solid var(--carbon); }
+    .studio-images { grid-template-columns: 1fr 1fr; }
+    .faq-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">M</div>
+      <div class="wordmark">
+        <div class="wordmark-main">Midnight Express</div>
+        <span class="wordmark-sub">Tattoo · Calpe · Desde 2005</span>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a href="#artistas">Artistas</a>
+      <a href="#portfolio" class="active">Portfolio</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#estudio">Estudio</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <button class="cta-top">Reservar cita</button>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-tag">Tatuando en Calpe · 2005 — 2025</div>
+        <h1>
+          Veinte años<br/>
+          <em>dejando huella.</em><br/>
+          <span class="accent">Cada trabajo</span> documentado.
+        </h1>
+        <p class="hero-lead">
+          Midnight Express es un estudio de tatuaje en el centro de Calpe.
+          Trabajamos desde 2005 con método, higiene clínica y un portfolio
+          que se construye cita a cita. Aquí no hay flash improvisado:
+          cada pieza se diseña, se consulta y se firma.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#booking" class="btn-primary">
+            Reservar consulta
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M13 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <a href="#portfolio" class="btn-ghost">
+            Ver portfolio
+          </a>
+        </div>
+
+        <div class="hero-meta">
+          <div class="meta-stat">
+            <div class="meta-stat-num">20</div>
+            <div class="meta-stat-label">Años<br/>tatuando</div>
+          </div>
+          <div class="meta-stat">
+            <div class="meta-stat-num">2.4k</div>
+            <div class="meta-stat-label">Piezas<br/>documentadas</div>
+          </div>
+          <div class="meta-stat">
+            <div class="meta-stat-num">Calpe</div>
+            <div class="meta-stat-label">Centro<br/>histórico</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <img src="img/portfolio-back-japanese.jpg" alt="Ejemplo de estilo japonés tradicional en espalda · Referencia visual, no pertenece al estudio." />
+        <div class="hero-visual-caption">Estilo similar · Referencia visual</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTISTAS -->
+  <section class="artists" id="artistas">
+    <div class="section-head">
+      <div>
+        <div class="section-eyebrow">01 · Residentes</div>
+        <h2 class="section-title">Tres manos,<br/><em>un mismo criterio.</em></h2>
+      </div>
+      <p class="section-lead">
+        El tatuaje no lo hace la tinta ni la máquina: lo hace la persona
+        que decide dónde va cada línea. En Midnight Express trabajan
+        tatuadores con trayectoria propia y estilos diferenciados.
+        Elegís artista leyendo su obra, no su bio.
+      </p>
+    </div>
+
+    <div class="artists-grid">
+      <article class="artist-card">
+        <div class="artist-num">— 01</div>
+        <h3 class="artist-name">Resident <em>Artist</em></h3>
+        <div class="artist-style">Black work · Geométrico · Dotwork</div>
+        <p class="artist-bio">
+          Veinte años dibujando en piel. Trabajo de líneas limpias,
+          composición pensada para la anatomía y paciencia obsesiva
+          con el detalle.
+        </p>
+        <div class="artist-availability avail-open">
+          <span class="availability-dot"></span>
+          Agenda abierta · consultar
+        </div>
+      </article>
+
+      <article class="artist-card">
+        <div class="artist-num">— 02</div>
+        <h3 class="artist-name">Resident <em>Artist</em></h3>
+        <div class="artist-style">Realismo · Retrato · Blanco y negro</div>
+        <p class="artist-bio">
+          Formación en dibujo clásico aplicada al realismo. Piezas
+          medias y grandes, siempre con consulta previa y referencia
+          fotográfica trabajada.
+        </p>
+        <div class="artist-availability avail-wait">
+          <span class="availability-dot"></span>
+          Lista de espera · 6 semanas
+        </div>
+      </article>
+
+      <article class="artist-card">
+        <div class="artist-num">— 03</div>
+        <h3 class="artist-name">Guest <em>Artist</em></h3>
+        <div class="artist-style">Neotradicional · Color · Old school</div>
+        <p class="artist-bio">
+          Artista invitado por temporadas. Color saturado, trazo grueso
+          y repertorio clásico con giro contemporáneo. Fechas anunciadas
+          en Instagram.
+        </p>
+        <div class="artist-availability avail-wait">
+          <span class="availability-dot"></span>
+          Próxima residencia · consultar
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section class="portfolio" id="portfolio">
+    <div class="section-head">
+      <div>
+        <div class="section-eyebrow">02 · Portfolio</div>
+        <h2 class="section-title">El trabajo,<br/><em>ordenado por estilo.</em></h2>
+      </div>
+      <p class="section-lead">
+        Un estudio serio se juzga por lo que ya hizo. Aquí está el archivo
+        navegable, filtrable por estilo y artista. Sin Instagram que
+        desaparece entre stories. Cada pieza con fecha, autor y contexto.
+      </p>
+    </div>
+
+    <div class="portfolio-filters">
+      <button class="filter-btn active">Todo</button>
+      <button class="filter-btn">Black work</button>
+      <button class="filter-btn">Realismo</button>
+      <button class="filter-btn">Geométrico</button>
+      <button class="filter-btn">Neotradicional</button>
+      <button class="filter-btn">Dotwork</button>
+      <span class="portfolio-count">240 piezas</span>
+    </div>
+
+    <div class="portfolio-grid">
+      <figure class="portfolio-item tall">
+        <img src="img/portfolio-bw-machine.jpg" alt="Ejemplo de estilo japonés blanco y negro · Referencia visual, no pertenece al estudio." />
+        <div class="portfolio-item-meta">Estilo similar · Japonés BW</div>
+      </figure>
+      <figure class="portfolio-item">
+        <img src="img/portfolio-line-botanical.jpg" alt="Ejemplo de estilo line botanical minimal · Referencia visual, no pertenece al estudio." />
+        <div class="portfolio-item-meta">Estilo similar · Line botanical</div>
+      </figure>
+      <figure class="portfolio-item wide editorial-tile">
+        <div class="editorial-tile-inner">
+          <div class="editorial-tile-num">240</div>
+          <div class="editorial-tile-copy">
+            <span class="editorial-tile-label">Piezas archivadas</span>
+            <span class="editorial-tile-sub">2005 — 2025 · firmadas, fechadas,<br/>filtrables por estilo y artista</span>
+          </div>
+          <svg viewBox="0 0 120 120" width="92" height="92" class="editorial-tile-glyph" aria-hidden="true">
+            <circle cx="60" cy="60" r="54" fill="none" stroke="currentColor" stroke-width="1"/>
+            <path d="M 28 60 L 60 28 L 92 60 L 60 92 Z" fill="none" stroke="currentColor" stroke-width="1"/>
+            <circle cx="60" cy="60" r="4" fill="currentColor"/>
+          </svg>
+        </div>
+      </figure>
+      <figure class="portfolio-item">
+        <img src="img/portfolio-flower-bw.jpg" alt="Ejemplo de estilo dotwork floral blanco y negro · Referencia visual, no pertenece al estudio." />
+        <div class="portfolio-item-meta">Estilo similar · Dotwork floral</div>
+      </figure>
+      <figure class="portfolio-item tall">
+        <img src="img/portfolio-back-japanese.jpg" alt="Ejemplo de estilo japonés tradicional en espalda completa · Referencia visual, no pertenece al estudio." />
+        <div class="portfolio-item-meta">Estilo similar · Japonés espalda</div>
+      </figure>
+      <figure class="portfolio-item editorial-tile tile-quote">
+        <div class="editorial-tile-inner tile-quote-inner">
+          <div class="tile-quote-mark">“</div>
+          <p class="tile-quote-text">
+            Entré con una idea vaga.<br/>
+            Salí con una pieza que <em>ya era mía</em><br/>
+            antes de tatuármela.
+          </p>
+          <div class="tile-quote-meta">— cliente · Calpe · 2024</div>
+        </div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- PROCESO -->
+  <section class="process" id="proceso">
+    <div class="section-head">
+      <div>
+        <div class="section-eyebrow">03 · Cómo trabajamos</div>
+        <h2 class="section-title">De la idea<br/><em>a la tinta.</em></h2>
+      </div>
+      <p class="section-lead">
+        Un tatuaje bueno empieza semanas antes de encender la máquina.
+        Este es el recorrido que vas a hacer con nosotros, paso a paso,
+        sin sorpresas y sin improvisación.
+      </p>
+    </div>
+
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="process-num">— 01</div>
+        <h3 class="process-title">Consulta</h3>
+        <p class="process-desc">
+          Traé tu idea, referencias y zona del cuerpo. Evaluamos
+          tamaño, estilo y si la pieza funciona ahí. Gratis y sin
+          compromiso.
+        </p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">— 02</div>
+        <h3 class="process-title">Diseño</h3>
+        <p class="process-desc">
+          El tatuador dibuja la pieza adaptada a tu anatomía.
+          Revisamos juntos y ajustamos hasta que sea exactamente
+          lo que buscás.
+        </p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">— 03</div>
+        <h3 class="process-title">Reserva</h3>
+        <p class="process-desc">
+          Señal del 20 % para bloquear fecha. Te enviamos pautas
+          previas: descansar, hidratarse, comer bien y no venir
+          con alcohol.
+        </p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">— 04</div>
+        <h3 class="process-title">Sesión</h3>
+        <p class="process-desc">
+          Material estéril de un solo uso, tinta certificada y
+          cabina individual. Las sesiones largas se fraccionan
+          en varias citas.
+        </p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">— 05</div>
+        <h3 class="process-title">Cuidado</h3>
+        <p class="process-desc">
+          Guía escrita de cicatrización, seguimiento a los 15 días
+          y retoque gratis si hace falta durante los primeros 3
+          meses.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STUDIO STRIP -->
+  <section class="studio-strip" id="estudio">
+    <div class="section-head">
+      <div>
+        <div class="section-eyebrow">04 · El estudio</div>
+        <h2 class="section-title">Higiene clínica,<br/><em>ambiente humano.</em></h2>
+      </div>
+      <p class="section-lead">
+        Autoclave de clase B, material de un solo uso, guantes nitrilo
+        y tinta con certificado REACH europeo. La parte técnica es
+        innegociable. El resto es café, música y conversación larga.
+      </p>
+    </div>
+
+    <div class="studio-images">
+      <figure>
+        <img src="img/process-artist-hands.jpg" alt="Ejemplo de ambiente de cabina con guantes estériles y máquina rotativa · Referencia visual." />
+        <div class="studio-caption">Referencia visual · Ambiente</div>
+      </figure>
+      <figure>
+        <img src="img/process-machine-color.jpg" alt="Ejemplo de máquina rotativa profesional en uso · Referencia visual." />
+        <div class="studio-caption">Referencia visual · Material</div>
+      </figure>
+      <figure>
+        <img src="img/process-artist-bw.jpg" alt="Ejemplo de concentración en sesión larga blanco y negro · Referencia visual." />
+        <div class="studio-caption">Referencia visual · Método</div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- RESERVA / CONTACTO -->
+  <section class="booking" id="booking">
+    <div class="booking-grid">
+      <div>
+        <div class="section-eyebrow">05 · Reserva</div>
+        <h2 class="booking-big">Escribinos.<br/><em>Contestamos.</em></h2>
+        <p class="booking-sub">
+          El canal más rápido es WhatsApp o Instagram. El teléfono
+          del estudio está activo en horario de cabina. Contanos
+          idea, tamaño aproximado y zona del cuerpo, y te
+          devolvemos fecha posible en el día.
+        </p>
+        <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+          <a href="#" class="btn-primary">
+            Reservar por WhatsApp
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C6.48 2 2 6.48 2 12c0 1.76.46 3.42 1.26 4.86L2 22l5.3-1.23A10 10 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.48 14.16c-.23.65-1.34 1.25-1.86 1.32-.48.07-1.08.1-1.74-.11-.4-.13-.91-.3-1.57-.58-2.76-1.19-4.56-3.97-4.7-4.15-.14-.18-1.12-1.49-1.12-2.85s.72-2.02.97-2.3c.25-.28.55-.35.73-.35.18 0 .37 0 .53.01.17.01.4-.06.62.47.23.56.78 1.92.85 2.06.07.14.12.3.02.49-.1.18-.14.3-.28.46-.14.16-.3.36-.42.49-.14.14-.29.3-.12.58.16.28.74 1.22 1.6 1.98 1.1.98 2.03 1.28 2.32 1.43.29.14.46.12.63-.07.17-.19.72-.84.91-1.13.19-.28.38-.23.64-.14.26.09 1.63.77 1.91.91.28.14.47.21.53.33.07.12.07.69-.16 1.35z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="channel-stack">
+        <a href="tel:+34965838431" class="channel primary">
+          <div class="channel-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="channel-label">Teléfono estudio</div>
+            <div class="channel-value">+34 965 83 84 31</div>
+          </div>
+          <span class="channel-arrow">→</span>
+        </a>
+
+        <a href="#" class="channel">
+          <div class="channel-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <rect x="3" y="3" width="18" height="18" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/>
+            </svg>
+          </div>
+          <div>
+            <div class="channel-label">Instagram</div>
+            <div class="channel-value">@midnightexpresstattoo</div>
+          </div>
+          <span class="channel-arrow">→</span>
+        </a>
+
+        <a href="#" class="channel">
+          <div class="channel-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <div>
+            <div class="channel-label">Dirección</div>
+            <div class="channel-value">Centro de Calpe, Alicante</div>
+          </div>
+          <span class="channel-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="section-head">
+      <div>
+        <div class="section-eyebrow">06 · Preguntas frecuentes</div>
+        <h2 class="section-title">Lo que<br/><em>siempre preguntan.</em></h2>
+      </div>
+      <p class="section-lead">
+        Respuestas directas a lo que más se repite en consulta. Si no
+        está aquí, escribinos por WhatsApp y te contestamos sin
+        vueltas.
+      </p>
+    </div>
+
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h3 class="faq-q">¿Cuánto <em>duele?</em></h3>
+        <p class="faq-a">
+          Depende de la zona y de tu umbral. Zonas óseas (costillas,
+          tobillo, codo) son más intensas. Antebrazo, pantorrilla y
+          muslo son más llevaderas. Trabajamos con pausas.
+        </p>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-q">¿Cuánto <em>cuesta?</em></h3>
+        <p class="faq-a">
+          El precio se calcula por pieza, no por hora. En consulta
+          te damos presupuesto cerrado. Mínimos desde 60 € para
+          piezas pequeñas.
+        </p>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-q">¿Es mi <em>primer tatuaje?</em></h3>
+        <p class="faq-a">
+          Sin drama. Te explicamos todo antes de empezar, vas a saber
+          qué esperar. Elegí una zona cómoda para la primera pieza
+          y un tamaño razonable.
+        </p>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-q">¿Cómo <em>cuido el tatuaje?</em></h3>
+        <p class="faq-a">
+          Tres semanas sin sol directo, sin piscina y sin mar. Lavado
+          suave dos veces al día y crema específica. Te damos guía
+          escrita al salir del estudio.
+        </p>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-q">¿Hacéis <em>tapado de tatuajes?</em></h3>
+        <p class="faq-a">
+          Sí. Cover-ups y reworks son una especialidad del estudio.
+          Mandá foto de la pieza actual por WhatsApp y evaluamos
+          opciones.
+        </p>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-q">¿<em>Retocáis</em> piezas viejas?</h3>
+        <p class="faq-a">
+          Sí, tanto piezas propias como de otros estudios. Los
+          retoques de piezas hechas acá son gratis durante el primer
+          año, salvo descuido en el cuidado.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="wordmark-main">Midnight Express</div>
+        <div class="wordmark-sub" style="margin-top:6px;">Tattoo · Calpe · Desde 2005</div>
+        <p class="footer-tagline">
+          Veinte años tatuando en la Costa Blanca. Método, higiene
+          y portfolio firmado.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Estudio</h4>
+        <ul>
+          <li>Artistas</li>
+          <li>Portfolio</li>
+          <li>Proceso</li>
+          <li>Cuidados</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li>+34 965 83 84 31</li>
+          <li>WhatsApp directo</li>
+          <li>@midnightexpresstattoo</li>
+          <li>Calpe · Alicante</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Horario</h4>
+        <ul>
+          <li>Martes a sábado</li>
+          <li>11:00 — 20:00</li>
+          <li>Domingo y lunes cerrado</li>
+          <li>Con cita previa</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bar">
+      <div>© 2005 — 2026 Midnight Express Tattoo · Calpe</div>
+      <div class="kenaz-sig">
+        <span>Diseño propuesto por Kenaz Studio</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>

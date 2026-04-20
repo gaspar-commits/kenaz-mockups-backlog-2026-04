@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>La Plaza Dental — Dentistry in Jávea since 1990</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAFAF7;
+    --cream:#EFE6D6;
+    --cream-2:#E5D5C0;
+    --ink:#1F2833;
+    --ink-2:#3A434D;
+    --mute:#7F8793;
+    --line:#E3DED2;
+    --blue:#3B6D87;
+    --blue-deep:#294F63;
+    --coral:#C7765F;
+    --coral-soft:#E5A995;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--paper);color:var(--ink);font-family:'Inter',system-ui,sans-serif;font-weight:400;-webkit-font-smoothing:antialiased;line-height:1.55}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .serif{font-family:'Fraunces',serif;font-weight:400;letter-spacing:-0.01em}
+  .italic{font-style:italic}
+  .mute{color:var(--mute)}
+  .uppercase{text-transform:uppercase;letter-spacing:0.18em;font-size:11px;font-weight:500}
+  .container{max-width:1240px;margin:0 auto;padding:0 48px}
+
+  /* ----- TOP BAR ----- */
+  .topbar{background:var(--ink);color:var(--cream);font-size:12px;letter-spacing:0.02em}
+  .topbar .row{display:flex;justify-content:space-between;align-items:center;padding:10px 0}
+  .topbar .left{display:flex;gap:28px;align-items:center;color:#C9C2B3}
+  .topbar .left span{display:flex;align-items:center;gap:8px}
+  .topbar .dot{width:6px;height:6px;border-radius:50%;background:var(--coral);display:inline-block}
+  .topbar .right{display:flex;gap:20px;align-items:center}
+  .lang-toggle{display:flex;gap:2px;background:rgba(255,255,255,0.07);padding:3px;border-radius:20px}
+  .lang-toggle span{padding:3px 10px;border-radius:14px;font-size:11px;letter-spacing:0.14em;font-weight:500}
+  .lang-toggle .active{background:var(--cream);color:var(--ink)}
+
+  /* ----- NAV ----- */
+  nav.main{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30}
+  nav.main .row{display:flex;align-items:center;justify-content:space-between;padding:22px 0}
+  .brand{display:flex;align-items:baseline;gap:14px}
+  .brand .mark{font-family:'Fraunces',serif;font-weight:300;font-size:28px;letter-spacing:-0.02em;color:var(--ink)}
+  .brand .mark em{font-style:italic;font-weight:400;color:var(--coral)}
+  .brand .sub{font-size:10px;letter-spacing:0.22em;color:var(--mute);text-transform:uppercase;border-left:1px solid var(--line);padding-left:14px}
+  .links{display:flex;gap:32px;align-items:center;font-size:13.5px;color:var(--ink-2)}
+  .links a{position:relative;padding:6px 0}
+  .links a:hover{color:var(--coral)}
+  .cta{background:var(--ink);color:var(--paper);padding:12px 22px;border-radius:999px;font-size:13px;letter-spacing:0.04em;display:inline-flex;align-items:center;gap:10px}
+  .cta:hover{background:var(--blue-deep)}
+
+  /* ----- HERO ----- */
+  .hero{padding:64px 0 90px;background:linear-gradient(180deg,var(--paper) 0%,var(--cream) 100%);position:relative;overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:72px;align-items:center}
+  .hero-eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:26px}
+  .hero-eyebrow .bar{height:1px;width:60px;background:var(--coral)}
+  .hero-eyebrow span{font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:var(--coral);font-weight:500}
+  h1.hero-title{font-family:'Fraunces',serif;font-weight:300;font-size:82px;line-height:0.98;letter-spacing:-0.035em;color:var(--ink)}
+  h1.hero-title em{font-style:italic;font-weight:400;color:var(--blue-deep)}
+  .hero-lead{margin-top:28px;font-size:19px;line-height:1.55;color:var(--ink-2);max-width:520px}
+  .hero-lead strong{color:var(--ink);font-weight:500}
+  .hero-es{margin-top:20px;font-size:15px;color:var(--mute);max-width:500px;font-style:italic;font-family:'Fraunces',serif;font-weight:300}
+  .hero-actions{display:flex;gap:14px;margin-top:40px;align-items:center}
+  .btn-primary{background:var(--coral);color:#fff;padding:16px 28px;border-radius:999px;font-size:14px;letter-spacing:0.03em;display:inline-flex;align-items:center;gap:10px;font-weight:500}
+  .btn-primary:hover{background:var(--ink)}
+  .btn-ghost{border:1px solid var(--ink);padding:15px 26px;border-radius:999px;font-size:13.5px;letter-spacing:0.03em;display:inline-flex;align-items:center;gap:10px;color:var(--ink)}
+  .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:56px;padding-top:34px;border-top:1px solid rgba(31,40,51,0.12);max-width:520px}
+  .hero-stats .s-num{font-family:'Fraunces',serif;font-size:40px;font-weight:300;color:var(--ink);letter-spacing:-0.03em;line-height:1}
+  .hero-stats .s-num em{font-style:italic;color:var(--coral)}
+  .hero-stats .s-lbl{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--mute);margin-top:8px}
+
+  .hero-visual{position:relative}
+  .hero-visual .frame{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:4px;background:var(--cream-2)}
+  .hero-visual .frame img{width:100%;height:100%;object-fit:cover;filter:saturate(0.92) contrast(1.02)}
+  .hero-visual .tag{position:absolute;bottom:24px;left:24px;right:24px;background:rgba(250,250,247,0.94);backdrop-filter:blur(6px);padding:18px 22px;border-radius:3px;display:flex;gap:14px;align-items:center}
+  .hero-visual .tag .t-name{font-family:'Fraunces',serif;font-size:18px;color:var(--ink);letter-spacing:-0.01em}
+  .hero-visual .tag .t-sub{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--mute);margin-top:3px}
+  .hero-visual .tag .t-meta{margin-left:auto;text-align:right;font-size:11px;letter-spacing:0.12em;color:var(--coral);text-transform:uppercase}
+  .hero-visual::before{content:"";position:absolute;top:-40px;right:-60px;width:180px;height:180px;border:1px solid var(--coral);border-radius:50%;opacity:0.4}
+  .hero-visual::after{content:"";position:absolute;bottom:-30px;left:-40px;width:110px;height:110px;background:var(--coral-soft);opacity:0.35;border-radius:50%}
+
+  /* ----- DOCTOR ----- */
+  .doctor{padding:120px 0;background:var(--paper)}
+  .doctor-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:80px;align-items:center}
+  .doctor-img{position:relative;aspect-ratio:4/5;border-radius:2px;overflow:hidden;background:var(--cream-2)}
+  .doctor-img img{width:100%;height:100%;object-fit:cover;object-position:center top}
+  .doctor-img .cite{position:absolute;top:-18px;left:-18px;font-family:'Fraunces',serif;font-style:italic;font-size:140px;color:var(--coral);line-height:1;opacity:0.25}
+  .doctor-head{display:flex;gap:16px;align-items:center;margin-bottom:24px}
+  .doctor-head .line{height:1px;width:48px;background:var(--ink)}
+  .doctor-head span{font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:var(--ink-2);font-weight:500}
+  .doctor h2{font-family:'Fraunces',serif;font-weight:300;font-size:54px;line-height:1.05;letter-spacing:-0.025em;color:var(--ink);margin-bottom:26px}
+  .doctor h2 em{font-style:italic;color:var(--blue-deep)}
+  .doctor p{font-size:16.5px;line-height:1.7;color:var(--ink-2);margin-bottom:18px;max-width:520px}
+  .doctor .quote{font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:22px;line-height:1.4;color:var(--ink);border-left:2px solid var(--coral);padding:4px 0 4px 22px;margin:30px 0 34px}
+  .credentials{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:36px;padding-top:30px;border-top:1px solid var(--line)}
+  .credentials .c{}
+  .credentials .c-lbl{font-size:10.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--mute);margin-bottom:6px}
+  .credentials .c-val{font-family:'Fraunces',serif;font-size:17px;color:var(--ink);line-height:1.3}
+
+  /* ----- TREATMENTS ----- */
+  .treatments{padding:120px 0;background:var(--cream)}
+  .sec-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:64px;gap:60px}
+  .sec-head .l{flex:1}
+  .sec-head .eyebrow{font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:var(--coral);font-weight:500;margin-bottom:16px}
+  .sec-head h2{font-family:'Fraunces',serif;font-weight:300;font-size:56px;line-height:1.05;letter-spacing:-0.025em;color:var(--ink);max-width:720px}
+  .sec-head h2 em{font-style:italic;color:var(--blue-deep)}
+  .sec-head .r{max-width:360px;font-size:15px;color:var(--ink-2);line-height:1.65;padding-bottom:10px}
+  .treat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+  .t-card{background:var(--paper);padding:36px 30px;border-radius:3px;border:1px solid var(--line);transition:transform 0.3s, border-color 0.3s;display:flex;flex-direction:column;min-height:300px}
+  .t-card:hover{transform:translateY(-4px);border-color:var(--coral)}
+  .t-card .num{font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:22px;color:var(--coral);margin-bottom:24px}
+  .t-card h3{font-family:'Fraunces',serif;font-weight:400;font-size:24px;line-height:1.2;color:var(--ink);margin-bottom:12px;letter-spacing:-0.01em}
+  .t-card .es{font-size:12px;color:var(--mute);margin-bottom:16px;letter-spacing:0.02em;font-style:italic}
+  .t-card p{font-size:14px;line-height:1.6;color:var(--ink-2);margin-bottom:22px}
+  .t-card .learn{margin-top:auto;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink);display:flex;align-items:center;gap:8px;font-weight:500}
+  .t-card .learn:hover{color:var(--coral)}
+
+  /* ----- EXPAT ----- */
+  .expat{padding:130px 0;background:var(--ink);color:var(--cream);position:relative;overflow:hidden}
+  .expat::before{content:"";position:absolute;top:-100px;right:-100px;width:360px;height:360px;border:1px solid rgba(231,189,168,0.2);border-radius:50%}
+  .expat::after{content:"";position:absolute;bottom:-160px;left:-120px;width:420px;height:420px;border:1px solid rgba(231,189,168,0.12);border-radius:50%}
+  .expat .container{position:relative}
+  .expat-grid{display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center}
+  .expat .eyebrow{font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:var(--coral-soft);margin-bottom:22px;font-weight:500}
+  .expat h2{font-family:'Fraunces',serif;font-weight:300;font-size:60px;line-height:1.05;letter-spacing:-0.025em;color:var(--cream);margin-bottom:28px}
+  .expat h2 em{font-style:italic;color:var(--coral-soft)}
+  .expat p{font-size:16.5px;line-height:1.7;color:#D4CFC1;margin-bottom:18px;max-width:520px}
+  .expat .pill-row{display:flex;gap:10px;margin-top:34px;flex-wrap:wrap}
+  .pill{border:1px solid rgba(231,189,168,0.35);padding:10px 18px;border-radius:999px;font-size:12px;letter-spacing:0.08em;color:var(--cream)}
+  .expat-cards{display:grid;grid-template-columns:1fr;gap:20px}
+  .expat-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);padding:32px 30px;border-radius:3px;backdrop-filter:blur(6px)}
+  .expat-card .ec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:14px}
+  .expat-card .ec-flag{font-family:'Fraunces',serif;font-style:italic;font-weight:300;color:var(--coral-soft);font-size:15px;letter-spacing:0.04em}
+  .expat-card h4{font-family:'Fraunces',serif;font-weight:400;font-size:22px;color:var(--cream);letter-spacing:-0.01em}
+  .expat-card p{font-size:14.5px;line-height:1.65;color:#B8B3A4;margin:0;max-width:none}
+
+  /* ----- PROCESS ----- */
+  .process{padding:130px 0;background:var(--paper)}
+  .proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:48px;margin-top:70px}
+  .proc-step{position:relative}
+  .proc-step .n{font-family:'Fraunces',serif;font-weight:300;font-size:64px;color:var(--coral);line-height:1;letter-spacing:-0.03em;margin-bottom:20px}
+  .proc-step .n em{font-style:italic}
+  .proc-step h4{font-family:'Fraunces',serif;font-weight:400;font-size:22px;color:var(--ink);margin-bottom:10px;letter-spacing:-0.01em}
+  .proc-step .es{font-size:12px;color:var(--mute);font-style:italic;margin-bottom:14px}
+  .proc-step p{font-size:14px;line-height:1.65;color:var(--ink-2)}
+  .proc-line{height:1px;background:linear-gradient(90deg,transparent,var(--coral-soft),transparent);margin-top:80px}
+
+  /* ----- TESTIMONIALS ----- */
+  .testi{padding:120px 0;background:var(--cream-2);position:relative}
+  .testi-wrap{max-width:980px;margin:0 auto}
+  .testi-badge{display:inline-flex;align-items:center;gap:12px;background:var(--paper);border:1px solid var(--line);padding:10px 18px;border-radius:999px;margin-bottom:36px}
+  .testi-badge .stars{color:var(--coral);letter-spacing:2px;font-size:13px}
+  .testi-badge .score{font-family:'Fraunces',serif;font-size:14px;color:var(--ink);font-weight:500}
+  .testi-badge .src{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--mute)}
+  .testi-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+  .testi-card{background:var(--paper);padding:40px 36px;border-radius:3px}
+  .testi-card .q{font-family:'Fraunces',serif;font-weight:300;font-style:italic;font-size:21px;line-height:1.5;color:var(--ink);margin-bottom:26px}
+  .testi-card .who{display:flex;align-items:center;gap:14px;padding-top:22px;border-top:1px solid var(--line)}
+  .testi-card .who .av{width:42px;height:42px;border-radius:50%;background:var(--coral-soft);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;color:var(--ink);font-size:16px;font-weight:500}
+  .testi-card .who .name{font-size:14px;color:var(--ink);font-weight:500}
+  .testi-card .who .meta{font-size:12px;color:var(--mute);letter-spacing:0.04em;margin-top:2px}
+
+  /* ----- CONTACT ----- */
+  .contact{padding:130px 0;background:var(--paper)}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+  .contact .eyebrow{font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:var(--coral);font-weight:500;margin-bottom:18px}
+  .contact h2{font-family:'Fraunces',serif;font-weight:300;font-size:56px;line-height:1.05;letter-spacing:-0.025em;color:var(--ink);margin-bottom:30px}
+  .contact h2 em{font-style:italic;color:var(--blue-deep)}
+  .contact p.lead{font-size:16px;line-height:1.65;color:var(--ink-2);margin-bottom:40px;max-width:480px}
+  .contact-info{display:grid;grid-template-columns:1fr 1fr;gap:30px 28px;margin-bottom:40px}
+  .ci{}
+  .ci .lbl{font-size:10.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
+  .ci .val{font-family:'Fraunces',serif;font-size:18px;color:var(--ink);line-height:1.4}
+  .ci .val a:hover{color:var(--coral)}
+  .contact-map{background:linear-gradient(135deg,var(--blue) 0%,var(--blue-deep) 100%);border-radius:3px;aspect-ratio:5/6;position:relative;overflow:hidden;color:#fff;display:flex;flex-direction:column;justify-content:space-between;padding:40px}
+  .contact-map::before{content:"";position:absolute;inset:0;background-image:
+    radial-gradient(circle at 30% 40%,rgba(255,255,255,0.08) 0,transparent 40%),
+    radial-gradient(circle at 70% 70%,rgba(255,255,255,0.05) 0,transparent 50%);}
+  .contact-map .pin{position:absolute;top:48%;left:48%;width:18px;height:18px;background:var(--coral);border-radius:50%;box-shadow:0 0 0 8px rgba(199,118,95,0.3),0 0 0 22px rgba(199,118,95,0.12)}
+  .contact-map .label-top{position:relative;font-size:11px;letter-spacing:0.24em;text-transform:uppercase;opacity:0.75}
+  .contact-map .label-bot{position:relative}
+  .contact-map .label-bot .t1{font-family:'Fraunces',serif;font-size:26px;font-weight:300;letter-spacing:-0.015em}
+  .contact-map .label-bot .t2{font-size:13px;opacity:0.75;margin-top:6px;letter-spacing:0.04em}
+  .contact-map svg.lines{position:absolute;inset:0;width:100%;height:100%;opacity:0.18}
+
+  /* ----- FOOTER ----- */
+  footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px;margin-bottom:60px}
+  .foot-brand .mark{font-family:'Fraunces',serif;font-weight:300;font-size:28px;color:var(--cream);letter-spacing:-0.02em}
+  .foot-brand .mark em{font-style:italic;color:var(--coral-soft)}
+  .foot-brand p{font-size:13.5px;color:#A69E8F;margin-top:16px;max-width:300px;line-height:1.65}
+  .foot-col h5{font-size:10.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--cream);margin-bottom:20px;font-weight:500}
+  .foot-col a,.foot-col span{display:block;font-size:13.5px;color:#A69E8F;margin-bottom:10px}
+  .foot-col a:hover{color:var(--coral-soft)}
+  .foot-bottom{border-top:1px solid rgba(231,189,168,0.15);padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:11.5px;color:#7F7869;letter-spacing:0.06em}
+  .foot-bottom a{color:var(--coral-soft)}
+  .kenaz-sig{display:flex;align-items:center;gap:10px}
+  .kenaz-sig .rune{font-family:'Fraunces',serif;font-style:italic;color:var(--coral-soft)}
+</style>
+</head>
+<body>
+
+<!-- ===== TOP BAR ===== -->
+<div class="topbar">
+  <div class="container">
+    <div class="row">
+      <div class="left">
+        <span><span class="dot"></span> Open today · 09:30 – 19:00</span>
+        <span>Edif. La Plaza, Local 5 · Jávea</span>
+      </div>
+      <div class="right">
+        <span>+34 96 646 1120</span>
+        <div class="lang-toggle">
+          <span class="active">EN</span>
+          <span>ES</span>
+          <span>DE</span>
+          <span>NL</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== NAV ===== -->
+<nav class="main">
+  <div class="container">
+    <div class="row">
+      <div class="brand">
+        <div class="mark">La Plaza <em>Dental</em></div>
+        <div class="sub">Jávea · Since 1990</div>
+      </div>
+      <div class="links">
+        <a href="#doctor">About</a>
+        <a href="#treatments">Treatments</a>
+        <a href="#expat">For Expats</a>
+        <a href="#process">Your Visit</a>
+        <a href="#contact">Contact</a>
+        <a href="#book" class="cta">Book consultation <span>→</span></a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow">
+          <span class="bar"></span>
+          <span>Dentistry in Jávea · Since 1990</span>
+        </div>
+        <h1 class="hero-title">English-speaking dentistry, <em>quietly refined</em> on the Costa Blanca.</h1>
+        <p class="hero-lead">Led by <strong>Dr. Karen Gardner</strong>, Royal London Hospital 1988. <strong>Three decades</strong> caring for British, Dutch and German families in Jávea — general, cosmetic, implants and orthodontics under one roof.</p>
+        <p class="hero-es">Odontología en Jávea desde 1990. Atención en inglés, español, alemán y neerlandés.</p>
+        <div class="hero-actions">
+          <a href="#book" class="btn-primary">Book your consultation <span>→</span></a>
+          <a href="#treatments" class="btn-ghost">Explore treatments</a>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="s-num"><em>35</em></div>
+            <div class="s-lbl">Years in Jávea</div>
+          </div>
+          <div>
+            <div class="s-num">4<em>.9</em></div>
+            <div class="s-lbl">Google rating</div>
+          </div>
+          <div>
+            <div class="s-num">4<em>×</em></div>
+            <div class="s-lbl">Languages spoken</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="frame">
+          <img src="img/dr-karen.jpg" alt="Dr. Karen Gardner at Clínica Dental La Plaza, Jávea" />
+          <div class="tag">
+            <div>
+              <div class="t-name">Dr. Karen Gardner</div>
+              <div class="t-sub">Principal Dentist · BDS London</div>
+            </div>
+            <div class="t-meta">Est. 1990</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DOCTOR ===== -->
+<section class="doctor" id="doctor">
+  <div class="container">
+    <div class="doctor-grid">
+      <div class="doctor-img">
+        <span class="cite">&ldquo;</span>
+        <img src="img/dr-karen.jpg" alt="Dr. Karen Gardner" />
+      </div>
+      <div>
+        <div class="doctor-head">
+          <span class="line"></span>
+          <span>The principal</span>
+        </div>
+        <h2>A London-trained dentist who <em>made Jávea home</em>.</h2>
+        <p>Karen qualified from <strong>The Royal London Hospital College in 1988</strong>. After six years practising in London and Dorset she moved to Jávea in 1994 &mdash; and never looked back. She runs the clinic with the same principle she began with: take time, explain clearly, treat conservatively.</p>
+        <div class="quote">&ldquo;Most of my patients arrived frightened of dentists. They stay with us because we listen first, and treat second.&rdquo;</div>
+        <p>In addition to general dentistry, Karen holds advanced qualifications in orthodontics, cosmetic dentistry and facial rejuvenation. She works alongside <strong>Dr. Jorge Santillán</strong> (implants &amp; prosthodontics) and a bilingual team who have been together for over a decade.</p>
+        <div class="credentials">
+          <div class="c">
+            <div class="c-lbl">Qualification</div>
+            <div class="c-val">BDS · Royal London Hospital, 1988</div>
+          </div>
+          <div class="c">
+            <div class="c-lbl">Registered with</div>
+            <div class="c-val">Colegio de Dentistas de Alicante</div>
+          </div>
+          <div class="c">
+            <div class="c-lbl">Specialties</div>
+            <div class="c-val">Cosmetic · Orthodontics · Facial Aesthetics</div>
+          </div>
+          <div class="c">
+            <div class="c-lbl">Languages</div>
+            <div class="c-val">English · Español · Deutsch · Nederlands</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TREATMENTS ===== -->
+<section class="treatments" id="treatments">
+  <div class="container">
+    <div class="sec-head">
+      <div class="l">
+        <div class="eyebrow">Treatments · Tratamientos</div>
+        <h2>Everything dentistry has to offer, <em>under one roof</em>.</h2>
+      </div>
+      <div class="r">
+        A full clinic so you never need a referral elsewhere. Second opinions welcome &mdash; and always free.
+      </div>
+    </div>
+    <div class="treat-grid">
+      <div class="t-card">
+        <div class="num"><em>01</em></div>
+        <h3>General &amp; Preventive</h3>
+        <div class="es">Odontología general</div>
+        <p>Check-ups, hygienist visits, fillings, crowns and bridges. The quiet work that keeps everything else unnecessary.</p>
+        <a href="#" class="learn">Learn more <span>→</span></a>
+      </div>
+      <div class="t-card">
+        <div class="num"><em>02</em></div>
+        <h3>Dental Implants</h3>
+        <div class="es">Implantes dentales</div>
+        <p>Single tooth, full-arch and All-on-4 solutions with Dr. Santillán, who has placed implants since 2000.</p>
+        <a href="#" class="learn">Learn more <span>→</span></a>
+      </div>
+      <div class="t-card">
+        <div class="num"><em>03</em></div>
+        <h3>Cosmetic &amp; Whitening</h3>
+        <div class="es">Estética dental</div>
+        <p>Porcelain veneers, composite bonding and home-whitening trays made in our own lab. Natural, never overdone.</p>
+        <a href="#" class="learn">Learn more <span>→</span></a>
+      </div>
+      <div class="t-card">
+        <div class="num"><em>04</em></div>
+        <h3>Orthodontics</h3>
+        <div class="es">Ortodoncia</div>
+        <p>Invisible aligners and fixed braces for adults and children. Consultation includes a full digital smile preview.</p>
+        <a href="#" class="learn">Learn more <span>→</span></a>
+      </div>
+      <div class="t-card">
+        <div class="num"><em>05</em></div>
+        <h3>Children&rsquo;s Dentistry</h3>
+        <div class="es">Odontopediatría</div>
+        <p>Gentle first visits, sealants and early orthodontic assessment. The family&rsquo;s first step into good habits.</p>
+        <a href="#" class="learn">Learn more <span>→</span></a>
+      </div>
+      <div class="t-card">
+        <div class="num"><em>06</em></div>
+        <h3>Facial Aesthetics</h3>
+        <div class="es">Estética facial</div>
+        <p>Restylane, Botox and rejuvenation treatments delivered by a medically qualified team. Subtle, considered.</p>
+        <a href="#" class="learn">Learn more <span>→</span></a>
+      </div>
+      <div class="t-card">
+        <div class="num"><em>07</em></div>
+        <h3>Emergencies</h3>
+        <div class="es">Urgencias</div>
+        <p>Same-day appointments for pain, lost crowns or trauma. Call before 10:00 for a slot on the day.</p>
+        <a href="#" class="learn">Learn more <span>→</span></a>
+      </div>
+      <div class="t-card">
+        <div class="num"><em>08</em></div>
+        <h3>Dental Holidays</h3>
+        <div class="es">Odontología con estancia</div>
+        <p>Complex treatment combined with a week on the Costa Blanca. We coordinate hotels, transfers and follow-up.</p>
+        <a href="#" class="learn">Learn more <span>→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EXPAT ===== -->
+<section class="expat" id="expat">
+  <div class="container">
+    <div class="expat-grid">
+      <div>
+        <div class="eyebrow">For the expat community</div>
+        <h2>Registered in Spain, <em>familiar in English</em>.</h2>
+        <p>Most of our patients moved here from the UK, the Netherlands or Germany. We know the questions before you ask them &mdash; from NHS differences to insurance reimbursement back home.</p>
+        <p>Every treatment plan is written in your language, with transparent pricing up front and a printed itemised invoice compatible with UK private insurance reclaims.</p>
+        <div class="pill-row">
+          <span class="pill">English-speaking team</span>
+          <span class="pill">Nederlands gesproken</span>
+          <span class="pill">Deutsch gesprochen</span>
+          <span class="pill">UK insurance invoices</span>
+          <span class="pill">Free second opinions</span>
+        </div>
+      </div>
+      <div class="expat-cards">
+        <div class="expat-card">
+          <div class="ec-head">
+            <span class="ec-flag">UK</span>
+            <h4>Familiar with your history</h4>
+          </div>
+          <p>Bring your UK dental records &mdash; we read the notation, charting and radiographs without translation. Transitioning from an NHS or Denplan practice is straightforward.</p>
+        </div>
+        <div class="expat-card">
+          <div class="ec-head">
+            <span class="ec-flag">NL · DE</span>
+            <h4>Verzekering &amp; Versicherung</h4>
+          </div>
+          <p>Itemised invoices prepared to the format most Dutch and German private health insurers require. We assist with the paperwork if needed.</p>
+        </div>
+        <div class="expat-card">
+          <div class="ec-head">
+            <span class="ec-flag">ES</span>
+            <h4>Residente en España</h4>
+          </div>
+          <p>Atención en castellano para residentes locales. Presupuestos detallados, facturación digital y plan de financiación a medida para tratamientos extensos.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROCESS ===== -->
+<section class="process" id="process">
+  <div class="container">
+    <div class="sec-head">
+      <div class="l">
+        <div class="eyebrow" style="color:var(--coral)">Your first visit</div>
+        <h2>Four calm steps. <em>No pressure, ever.</em></h2>
+      </div>
+      <div class="r">Consultation and second opinions are free. Nothing is booked in on the day of the exam.</div>
+    </div>
+    <div class="proc-grid">
+      <div class="proc-step">
+        <div class="n"><em>01</em></div>
+        <h4>Write or call</h4>
+        <div class="es">Contacto inicial</div>
+        <p>Tell us what is on your mind in a WhatsApp, email or call. We answer in English or Spanish within the working day.</p>
+      </div>
+      <div class="proc-step">
+        <div class="n"><em>02</em></div>
+        <h4>Full examination</h4>
+        <div class="es">Revisión completa</div>
+        <p>45-minute visit including digital x-rays, intraoral photographs and a conversation about what you actually want.</p>
+      </div>
+      <div class="proc-step">
+        <div class="n"><em>03</em></div>
+        <h4>Written plan</h4>
+        <div class="es">Plan escrito</div>
+        <p>A printed plan in your language with staged options, transparent costs and timings. You take it home to think.</p>
+      </div>
+      <div class="proc-step">
+        <div class="n"><em>04</em></div>
+        <h4>Treatment, your pace</h4>
+        <div class="es">Tratamiento, a tu ritmo</div>
+        <p>Start when you are ready. Appointments clustered for visitors; spread out for residents. Always your call.</p>
+      </div>
+    </div>
+    <div class="proc-line"></div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="testi">
+  <div class="container">
+    <div class="testi-wrap">
+      <div style="text-align:center;margin-bottom:56px">
+        <div class="testi-badge">
+          <span class="stars">★★★★★</span>
+          <span class="score">4.9 / 5</span>
+          <span class="src">Google · Facebook · Doctoralia</span>
+        </div>
+        <h2 style="font-family:'Fraunces',serif;font-weight:300;font-size:50px;letter-spacing:-0.025em;color:var(--ink);line-height:1.1;max-width:720px;margin:0 auto">A clinic patients <em style="font-style:italic;color:var(--blue-deep)">recommend by name</em>.</h2>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card">
+          <div class="q">&ldquo;Karen has been our family dentist for more than five years and has done a great job of looking after all our teeth. She is really good with nervous patients &mdash; I know from my own experience.&rdquo;</div>
+          <div class="who">
+            <div class="av">J</div>
+            <div>
+              <div class="name">Jane R.</div>
+              <div class="meta">Patient · Jávea · via Google</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="q">&ldquo;Went to see Karen after a friend recommended her. Her restylane treatment worked wonders. All the staff are friendly and the treatment didn&rsquo;t hurt at all.&rdquo;</div>
+          <div class="who">
+            <div class="av">M</div>
+            <div>
+              <div class="name">Margaret L.</div>
+              <div class="meta">Patient · Moraira · via Facebook</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <div class="eyebrow">Contact · Contacto</div>
+        <h2>We are on the Plaza, <em>right in the old town</em>.</h2>
+        <p class="lead">Edif. La Plaza, Local 5 &mdash; a two-minute walk from the Mercado Municipal. Parking in Plaza de la Constitución.</p>
+        <div class="contact-info">
+          <div class="ci">
+            <div class="lbl">Phone</div>
+            <div class="val"><a href="tel:+34966461120">+34 96 646 11 20</a></div>
+          </div>
+          <div class="ci">
+            <div class="lbl">WhatsApp</div>
+            <div class="val"><a href="https://wa.me/34680500357">+34 680 500 357</a></div>
+          </div>
+          <div class="ci">
+            <div class="lbl">Email</div>
+            <div class="val"><a href="mailto:info@clinicadentallaplaza.com">info@clinicadentallaplaza.com</a></div>
+          </div>
+          <div class="ci">
+            <div class="lbl">Hours</div>
+            <div class="val">Mon &ndash; Fri · 09:30 – 19:00</div>
+          </div>
+          <div class="ci" style="grid-column:span 2">
+            <div class="lbl">Address</div>
+            <div class="val">Edif. La Plaza, Local 5 · 03730 Jávea (Xàbia) · Alicante</div>
+          </div>
+        </div>
+        <a href="#book" class="btn-primary">Book a free consultation <span>→</span></a>
+      </div>
+      <div class="contact-map">
+        <svg class="lines" viewBox="0 0 400 500" preserveAspectRatio="none">
+          <path d="M 0 120 Q 200 90 400 140" stroke="#fff" fill="none" stroke-width="1"/>
+          <path d="M 0 220 Q 200 200 400 240" stroke="#fff" fill="none" stroke-width="1"/>
+          <path d="M 0 340 Q 200 310 400 360" stroke="#fff" fill="none" stroke-width="1"/>
+          <path d="M 120 0 L 140 500" stroke="#fff" fill="none" stroke-width="1"/>
+          <path d="M 260 0 L 280 500" stroke="#fff" fill="none" stroke-width="1"/>
+        </svg>
+        <div class="pin"></div>
+        <div class="label-top">Jávea · Xàbia · Alicante</div>
+        <div class="label-bot">
+          <div class="t1">Edif. La Plaza, Local 5</div>
+          <div class="t2">38°47&prime;N · 0°10&prime;E · Old town</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="mark">La Plaza <em>Dental</em></div>
+        <p>A small, multilingual clinic in the old town of Jávea. Caring for the Costa Blanca community since 1990.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Clinic</h5>
+        <a href="#doctor">About Dr. Gardner</a>
+        <a href="#treatments">Treatments</a>
+        <a href="#expat">For expats</a>
+        <a href="#process">Your first visit</a>
+      </div>
+      <div class="foot-col">
+        <h5>Contact</h5>
+        <a href="tel:+34966461120">+34 96 646 11 20</a>
+        <a href="https://wa.me/34680500357">WhatsApp</a>
+        <a href="mailto:info@clinicadentallaplaza.com">info@clinicadentallaplaza.com</a>
+        <span>Edif. La Plaza, Local 5 · Jávea</span>
+      </div>
+      <div class="foot-col">
+        <h5>Languages</h5>
+        <span>English</span>
+        <span>Español</span>
+        <span>Deutsch</span>
+        <span>Nederlands</span>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>© 2026 Clínica Dental La Plaza · Jávea, España</div>
+      <div class="kenaz-sig">
+        <span class="rune">Site proposal by</span>
+        <a href="https://kenaz.studio">Kenaz Studio</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

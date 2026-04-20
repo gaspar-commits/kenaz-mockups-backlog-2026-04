@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restaurante El Escorial · Calpe · Italiana, argentina y mediterránea</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream:       #F6EEE0;
+    --cream-deep:  #E8D9BF;
+    --terracotta:  #8A3C2C;
+    --olive:       #4A5A3E;
+    --gold:        #B8894A;
+    --ink:         #2A2520;
+    --wood:        #5E4A32;
+    --line:        rgba(42, 37, 32, 0.14);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  img { max-width: 100%; display: block; }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 4vw, 56px);
+  }
+
+  /* === NAV === */
+  .nav {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    z-index: 20;
+    padding: 28px 0;
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--cream);
+    text-decoration: none;
+  }
+  .brand-mark {
+    width: 44px; height: 44px;
+    border: 1.5px solid var(--cream);
+    border-radius: 50%;
+    display: grid; place-items: center;
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 20px;
+    font-style: italic;
+    letter-spacing: -0.02em;
+  }
+  .brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.05;
+  }
+  .brand-text .top {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    opacity: 0.75;
+  }
+  .brand-text .name {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: opacity .2s;
+  }
+  .nav-links a:hover { opacity: 0.7; }
+
+  .nav-cta {
+    padding: 12px 22px;
+    background: var(--cream);
+    color: var(--ink);
+    border-radius: 3px;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all .25s;
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--cream); }
+
+  @media (max-width: 1100px) {
+    .nav-links { display: none; }
+  }
+
+  /* === HERO === */
+  .hero {
+    position: relative;
+    min-height: 900px;
+    height: 100vh;
+    overflow: hidden;
+    background: var(--ink);
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('img/costilla-miel-hero.jpg');
+    background-size: cover;
+    background-position: center 40%;
+    filter: brightness(0.62) saturate(1.08) contrast(1.04);
+  }
+  .hero-grad {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg,
+        rgba(42, 37, 32, 0.65) 0%,
+        rgba(42, 37, 32, 0.25) 35%,
+        rgba(42, 37, 32, 0.15) 55%,
+        rgba(42, 37, 32, 0.85) 100%),
+      linear-gradient(90deg,
+        rgba(42, 37, 32, 0.55) 0%,
+        rgba(42, 37, 32, 0.15) 55%,
+        rgba(42, 37, 32, 0) 100%);
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 900px;
+    height: 100vh;
+    color: var(--cream);
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--cream);
+    opacity: 0.9;
+    margin-bottom: 28px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 42px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .hero-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 clamp(20px, 4vw, 56px);
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(48px, 7vw, 96px);
+    line-height: 1.03;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+    max-width: 900px;
+    margin-bottom: 28px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 400;
+  }
+
+  .hero-lead {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(15px, 1.2vw, 18px);
+    line-height: 1.6;
+    max-width: 560px;
+    opacity: 0.88;
+    margin-bottom: 40px;
+    font-weight: 300;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    padding: 18px 32px;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 3px;
+    transition: all .25s;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .btn-primary {
+    background: var(--cream);
+    color: var(--ink);
+  }
+  .btn-primary:hover { background: var(--gold); color: var(--cream); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--cream);
+    border: 1px solid rgba(246, 238, 224, 0.5);
+  }
+  .btn-ghost:hover { border-color: var(--cream); background: rgba(246, 238, 224, 0.08); }
+
+  .hero-footer {
+    padding: 0 clamp(20px, 4vw, 56px) 40px;
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    color: var(--cream);
+  }
+  .hero-stat {
+    border-top: 1px solid rgba(246, 238, 224, 0.22);
+    padding-top: 16px;
+  }
+  .hero-stat .val {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(26px, 2.8vw, 38px);
+    font-weight: 500;
+    line-height: 1;
+    margin-bottom: 8px;
+    color: var(--cream);
+  }
+  .hero-stat .val em { font-style: italic; color: var(--gold); font-weight: 400; }
+  .hero-stat .lab {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.72;
+  }
+
+  @media (max-width: 900px) {
+    .hero-footer { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  }
+  @media (max-width: 560px) {
+    .hero { min-height: 780px; }
+    .hero-inner { min-height: 780px; }
+    .hero-footer { grid-template-columns: 1fr 1fr; padding-bottom: 24px; }
+    .hero-ctas { flex-direction: column; align-items: stretch; }
+    .btn { justify-content: center; }
+  }
+
+  /* === SECTION TRES COCINAS === */
+  .section {
+    padding: clamp(80px, 9vw, 140px) 0;
+    position: relative;
+  }
+
+  .section-header {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: clamp(24px, 5vw, 80px);
+    align-items: end;
+    margin-bottom: clamp(48px, 6vw, 80px);
+  }
+  .section-header .kicker {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: clamp(14px, 1.2vw, 18px);
+    color: var(--terracotta);
+    letter-spacing: 0.02em;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .section-header h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    max-width: 880px;
+  }
+  .section-header h2 em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  @media (max-width: 900px) {
+    .section-header { grid-template-columns: 1fr; gap: 12px; align-items: start; }
+  }
+
+  .cocinas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
+  }
+  .cocina {
+    background: var(--cream-deep);
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .cocina-img {
+    aspect-ratio: 4/3;
+    width: 100%;
+    object-fit: cover;
+  }
+  .cocina-body {
+    padding: 28px 28px 32px;
+  }
+  .cocina-label {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 14px;
+    font-weight: 600;
+  }
+  .cocina h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 28px;
+    letter-spacing: -0.015em;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+  .cocina h3 em { font-style: italic; color: var(--wood); }
+  .cocina p {
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: rgba(42, 37, 32, 0.82);
+  }
+
+  /* === MENU SECTION === */
+  .menu-wrap {
+    background: var(--ink);
+    color: var(--cream);
+  }
+  .menu-wrap .section-header h2 { color: var(--cream); }
+  .menu-wrap .section-header h2 em { color: var(--gold); }
+  .menu-wrap .section-header .kicker { color: var(--gold); }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: clamp(32px, 5vw, 72px);
+    align-items: start;
+  }
+
+  .menu-card {
+    background: var(--terracotta);
+    padding: 44px 40px 48px;
+    border-radius: 6px;
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+  .menu-card::before {
+    content: '';
+    position: absolute;
+    top: 20px; right: 20px;
+    width: 80px; height: 80px;
+    border: 1px solid rgba(246, 238, 224, 0.28);
+    border-radius: 50%;
+  }
+  .menu-card .mc-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    opacity: 0.8;
+    margin-bottom: 18px;
+    font-weight: 600;
+  }
+  .menu-card h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(32px, 3.5vw, 46px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+  .menu-card h3 em { font-style: italic; }
+  .menu-card .price {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(48px, 5vw, 68px);
+    font-weight: 500;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .menu-card .price sup {
+    font-size: 0.4em;
+    font-weight: 400;
+    vertical-align: super;
+    margin-left: 4px;
+    opacity: 0.8;
+  }
+  .menu-card .incl {
+    font-size: 13px;
+    opacity: 0.82;
+    margin-bottom: 28px;
+    letter-spacing: 0.01em;
+  }
+  .menu-card .horario {
+    padding-top: 20px;
+    border-top: 1px solid rgba(246, 238, 224, 0.22);
+    font-size: 12.5px;
+    line-height: 1.7;
+    opacity: 0.85;
+  }
+  .menu-card .horario strong { font-weight: 600; opacity: 1; letter-spacing: 0.02em; }
+
+  .menu-list {
+    display: flex;
+    flex-direction: column;
+  }
+  .menu-list h4 {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--gold);
+    margin-bottom: 24px;
+    letter-spacing: 0.01em;
+  }
+  .dish {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 20px;
+    padding: 22px 0;
+    border-bottom: 1px solid rgba(246, 238, 224, 0.14);
+    align-items: start;
+  }
+  .dish:last-child { border-bottom: none; }
+  .dish-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .dish-name {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--cream);
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+  .dish-name em { font-style: italic; color: var(--gold); }
+  .dish-desc {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: rgba(246, 238, 224, 0.7);
+    max-width: 520px;
+  }
+  .dish-price {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--gold);
+    white-space: nowrap;
+    line-height: 1.2;
+  }
+  .dish-price.sin-precio {
+    font-size: 13px;
+    color: rgba(246, 238, 224, 0.5);
+    font-weight: 400;
+    font-style: italic;
+    padding-top: 4px;
+  }
+
+  @media (max-width: 900px) {
+    .menu-grid { grid-template-columns: 1fr; }
+  }
+
+  /* === TERRAZA === */
+  .terraza-grid {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap: clamp(32px, 5vw, 72px);
+    align-items: center;
+  }
+  .terraza-img {
+    aspect-ratio: 4/3;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+  .terraza-body h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(32px, 4.5vw, 56px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+  .terraza-body h2 em { font-style: italic; color: var(--olive); }
+  .terraza-body p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(42, 37, 32, 0.82);
+    margin-bottom: 18px;
+    max-width: 520px;
+  }
+  .terraza-feats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px 28px;
+    margin-top: 28px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+  }
+  .terraza-feat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .terraza-feat .ff {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .terraza-feat .ff em { font-style: italic; color: var(--olive); }
+  .terraza-feat .fl {
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(42, 37, 32, 0.55);
+    font-weight: 500;
+  }
+  @media (max-width: 900px) {
+    .terraza-grid { grid-template-columns: 1fr; }
+  }
+
+  /* === GALERIA === */
+  .galeria-wrap {
+    background: var(--cream-deep);
+  }
+  .galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 16px;
+    grid-template-areas:
+      "a a b c"
+      "a a d e";
+    aspect-ratio: 2.2 / 1;
+  }
+  .galeria-grid figure {
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+    border-radius: 3px;
+  }
+  .galeria-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .45s ease;
+  }
+  .galeria-grid figure:hover img { transform: scale(1.04); }
+  .galeria-grid figure.a { grid-area: a; }
+  .galeria-grid figure.b { grid-area: b; }
+  .galeria-grid figure.c { grid-area: c; }
+  .galeria-grid figure.d { grid-area: d; }
+  .galeria-grid figure.e { grid-area: e; }
+
+  .galeria-grid figcaption {
+    position: absolute;
+    bottom: 12px;
+    left: 14px;
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cream);
+    background: rgba(42, 37, 32, 0.66);
+    backdrop-filter: blur(4px);
+    padding: 6px 10px;
+    border-radius: 2px;
+    font-weight: 500;
+  }
+  @media (max-width: 900px) {
+    .galeria-grid {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: auto;
+      grid-template-areas: "a a" "b c" "d e";
+      aspect-ratio: auto;
+    }
+    .galeria-grid figure { aspect-ratio: 4/3; }
+    .galeria-grid figure.a { aspect-ratio: 16/9; }
+  }
+
+  /* === RESEÑAS === */
+  .reviews-wrap {
+    background: var(--cream);
+  }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .review {
+    background: var(--cream-deep);
+    border-radius: 4px;
+    padding: 36px 30px 32px;
+    display: flex;
+    flex-direction: column;
+  }
+  .review-stars {
+    color: var(--gold);
+    font-size: 16px;
+    letter-spacing: 0.1em;
+    margin-bottom: 18px;
+  }
+  .review-text {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 28px;
+    flex: 1;
+    letter-spacing: -0.005em;
+    font-weight: 400;
+  }
+  .review-text::before { content: '"'; color: var(--terracotta); }
+  .review-text::after  { content: '"'; color: var(--terracotta); }
+  .review-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(42, 37, 32, 0.62);
+  }
+  .review-meta strong {
+    color: var(--ink);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+  @media (max-width: 900px) {
+    .reviews-grid { grid-template-columns: 1fr; }
+  }
+
+  /* === RATINGS ROW === */
+  .ratings {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+    padding-top: 48px;
+    border-top: 1px solid var(--line);
+  }
+  .rating {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .rating .n {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(28px, 3vw, 40px);
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .rating .n em { font-style: italic; color: var(--terracotta); }
+  .rating .src {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(42, 37, 32, 0.55);
+    font-weight: 500;
+  }
+  @media (max-width: 720px) {
+    .ratings { grid-template-columns: 1fr 1fr; gap: 20px; }
+  }
+
+  /* === RESERVAS === */
+  .reservas-wrap {
+    background: var(--ink);
+    color: var(--cream);
+  }
+  .reservas-wrap .section-header h2 { color: var(--cream); }
+  .reservas-wrap .section-header h2 em { color: var(--gold); }
+  .reservas-wrap .section-header .kicker { color: var(--gold); }
+
+  .reservas-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(32px, 5vw, 72px);
+  }
+  .reservas-card {
+    padding: 44px 40px;
+    background: rgba(246, 238, 224, 0.05);
+    border: 1px solid rgba(246, 238, 224, 0.12);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .reservas-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--cream);
+    margin-bottom: -8px;
+  }
+  .reservas-card h3 em { font-style: italic; color: var(--gold); }
+  .reserve-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px 0;
+    border-top: 1px solid rgba(246, 238, 224, 0.14);
+  }
+  .reserve-row:first-of-type { border-top: none; padding-top: 0; }
+  .reserve-row .lbl {
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgba(246, 238, 224, 0.6);
+    font-weight: 500;
+  }
+  .reserve-row .val {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--cream);
+    letter-spacing: -0.01em;
+  }
+  .reserve-row a {
+    color: inherit;
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .reserve-row a:hover { color: var(--gold); }
+
+  .reservas-map {
+    background-image: url('img/interior-terraza.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 6px;
+    min-height: 320px;
+    position: relative;
+    overflow: hidden;
+  }
+  .reservas-map::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(42,37,32,0.15) 0%, rgba(42,37,32,0.75) 100%);
+  }
+  .reservas-map .mt {
+    position: absolute;
+    bottom: 28px; left: 32px; right: 32px;
+    z-index: 2;
+    color: var(--cream);
+  }
+  .reservas-map .mt .addr {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+  .reservas-map .mt .addr em { font-style: italic; color: var(--gold); }
+  .reservas-map .mt .city {
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+  @media (max-width: 900px) {
+    .reservas-grid { grid-template-columns: 1fr; }
+  }
+
+  /* === FOOTER === */
+  .footer {
+    background: #1d1a16;
+    color: var(--cream);
+    padding: 64px 0 32px;
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 56px;
+    border-bottom: 1px solid rgba(246, 238, 224, 0.12);
+  }
+  .footer-col h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 18px;
+    font-weight: 600;
+  }
+  .footer-col p, .footer-col a {
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: rgba(246, 238, 224, 0.78);
+    text-decoration: none;
+    display: block;
+  }
+  .footer-col a:hover { color: var(--cream); }
+  .footer-brand-text {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--cream);
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+  .footer-brand-text em { font-style: italic; color: var(--gold); }
+  .footer-tagline {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: rgba(246, 238, 224, 0.72);
+    max-width: 320px;
+    line-height: 1.5;
+  }
+  .flags {
+    display: flex;
+    gap: 8px;
+    margin-top: 18px;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(246, 238, 224, 0.6);
+  }
+  .flags span { padding: 4px 9px; border: 1px solid rgba(246, 238, 224, 0.2); border-radius: 2px; font-weight: 500; }
+
+  .footer-bottom {
+    padding-top: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 11.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(246, 238, 224, 0.5);
+  }
+  .footer-bottom a { color: var(--gold); text-decoration: none; }
+
+  @media (max-width: 900px) {
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 36px; }
+  }
+  @media (max-width: 560px) {
+    .footer-top { grid-template-columns: 1fr; }
+  }
+
+  /* soft reveal */
+  .section .container > *, .hero-inner > *, .galeria-grid > *, .reviews-grid > *, .reservas-grid > *, .footer-top > * {
+    opacity: 1;
+  }
+</style>
+</head>
+<body>
+
+  <!-- === HERO === -->
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-grad" aria-hidden="true"></div>
+
+    <div class="hero-inner">
+      <nav class="nav">
+        <div class="nav-inner container">
+          <a href="#" class="brand" aria-label="Restaurante El Escorial">
+            <span class="brand-mark">E</span>
+            <span class="brand-text">
+              <span class="top">Restaurante</span>
+              <span class="name">El Escorial</span>
+            </span>
+          </a>
+          <ul class="nav-links">
+            <li><a href="#cocinas">Cocina</a></li>
+            <li><a href="#menu">Carta</a></li>
+            <li><a href="#terraza">Terraza</a></li>
+            <li><a href="#galeria">Fotos</a></li>
+            <li><a href="#reservas">Reservas</a></li>
+          </ul>
+          <a href="tel:+34965875234" class="nav-cta">Reservar · 965 87 52 34</a>
+        </div>
+      </nav>
+
+      <div class="hero-body">
+        <div class="hero-eyebrow">Calpe · Calle Pintor Sorolla 19</div>
+        <h1>Italiana, argentina<br>y <em>mediterránea</em>, en una sola mesa.</h1>
+        <p class="hero-lead">
+          Cocina de casa con raciones generosas, terraza climatizada abierta todo el año y menú del día a €13,90. Mediodía y noche, todos los días.
+        </p>
+        <div class="hero-ctas">
+          <a href="#reservas" class="btn btn-primary">Reservar mesa →</a>
+          <a href="#menu" class="btn btn-ghost">Ver la carta</a>
+        </div>
+      </div>
+
+      <div class="hero-footer">
+        <div class="hero-stat">
+          <div class="val">4<em>,6</em></div>
+          <div class="lab">Sluurpy · 7.581 reseñas</div>
+        </div>
+        <div class="hero-stat">
+          <div class="val">4<em>,3</em></div>
+          <div class="lab">TripAdvisor · 204 reseñas</div>
+        </div>
+        <div class="hero-stat">
+          <div class="val">8<em>,2</em></div>
+          <div class="lab">Gastroranking · 1.361 votos</div>
+        </div>
+        <div class="hero-stat">
+          <div class="val"><em>13</em>—16h · <em>19</em>—23h</div>
+          <div class="lab">Abierto cada día</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- === TRES COCINAS, UNA MESA === -->
+  <section class="section" id="cocinas">
+    <div class="container">
+      <div class="section-header">
+        <span class="kicker">Tres cocinas, una mesa</span>
+        <h2>Pasta italiana, carne argentina, <em>pescado del Mediterráneo</em>. No elegimos; servimos.</h2>
+      </div>
+      <div class="cocinas-grid">
+        <article class="cocina">
+          <img src="img/pasta-bolognesa.jpg" alt="Ejemplo de pasta con salsa, referencia de la cocina italiana del restaurante" class="cocina-img">
+          <div class="cocina-body">
+            <span class="cocina-label">Italiana</span>
+            <h3>Pasta y <em>arroces melosos</em></h3>
+            <p>Spaghetti, pappardelle, raviolis rellenos, lasaña y risotto del día. Salsas largas, hechas a fuego lento, con parmesano rallado a la mesa.</p>
+          </div>
+        </article>
+        <article class="cocina">
+          <img src="img/solomillo-argentino.jpg" alt="Solomillo argentino en tabla, referencia de la cocina argentina" class="cocina-img">
+          <div class="cocina-body">
+            <span class="cocina-label">Argentina</span>
+            <h3>Carnes, empanadas y <em>milanesas</em></h3>
+            <p>Entraña, solomillo, chuletón, costilla a la miel y la milanesa napolitana de la casa. Guarnición con patatas bravas en freidora y ensalada de rúcula.</p>
+          </div>
+        </article>
+        <article class="cocina">
+          <img src="img/arroz-meloso.jpg" alt="Arroz con marisco estilo mediterráneo, referencia de la cocina mediterránea" class="cocina-img">
+          <div class="cocina-body">
+            <span class="cocina-label">Mediterránea</span>
+            <h3>Pescado fresco y <em>tapas</em></h3>
+            <p>Sepia a la plancha, pulpo a la gallega, lubina al horno, calamares, ensaladas con queso de cabra. Todo con producto de lonja y verdura de huerta cercana.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- === MENU === -->
+  <section class="section menu-wrap" id="menu">
+    <div class="container">
+      <div class="section-header">
+        <span class="kicker">Carta y menú del día</span>
+        <h2>La casa <em>siempre llena</em> a precio de barrio.</h2>
+      </div>
+
+      <div class="menu-grid">
+        <div class="menu-card">
+          <div class="mc-eyebrow">Menú del día</div>
+          <h3>Primero, segundo, postre y bebida.</h3>
+          <div class="price">€13<sup>,90</sup></div>
+          <p class="incl">Cada mediodía, de lunes a viernes. Pan de la casa incluido.</p>
+          <div class="horario">
+            <strong>Horarios · </strong>Comidas 13:00–16:00<br>
+            <strong>Cenas · </strong>19:00–23:00<br>
+            <strong>Todos los días del año.</strong>
+          </div>
+        </div>
+
+        <div class="menu-list">
+          <h4>Platos de la carta</h4>
+
+          <div class="dish">
+            <div class="dish-info">
+              <span class="dish-name">Costilla a la <em>miel</em></span>
+              <span class="dish-desc">Costilla de cerdo al horno lento, glaseada con miel, ajo y romero. Se sirve con patatas en freidora y rúcula.</span>
+            </div>
+            <span class="dish-price">€17,90</span>
+          </div>
+
+          <div class="dish">
+            <div class="dish-info">
+              <span class="dish-name">Entraña de <em>ternera</em></span>
+              <span class="dish-desc">Corte argentino. A la parrilla, sal gruesa y chimichurri. Guarnición a elección.</span>
+            </div>
+            <span class="dish-price">€17,90</span>
+          </div>
+
+          <div class="dish">
+            <div class="dish-info">
+              <span class="dish-name">Solomillo argentino</span>
+              <span class="dish-desc">Pieza entera, vuelta y vuelta. "Se deshace en la boca" según los comensales.</span>
+            </div>
+            <span class="dish-price">€31,90</span>
+          </div>
+
+          <div class="dish">
+            <div class="dish-info">
+              <span class="dish-name">Milanesa <em>napolitana</em></span>
+              <span class="dish-desc">Ternera empanada, tomate, jamón y queso fundido al horno. El híbrido italo-argentino más pedido.</span>
+            </div>
+            <span class="dish-price">€15,90</span>
+          </div>
+
+          <div class="dish">
+            <div class="dish-info">
+              <span class="dish-name">Arroz meloso del día</span>
+              <span class="dish-desc">Preparación del día según pescado fresco. Pregunte al pasar.</span>
+            </div>
+            <span class="dish-price sin-precio">Precio del día</span>
+          </div>
+
+          <div class="dish">
+            <div class="dish-info">
+              <span class="dish-name">Ensalada de <em>queso de cabra</em></span>
+              <span class="dish-desc">Rúcula, tomate, nueces, queso de cabra gratinado y reducción de balsámico.</span>
+            </div>
+            <span class="dish-price sin-precio">Ver carta</span>
+          </div>
+
+          <div class="dish">
+            <div class="dish-info">
+              <span class="dish-name">Cheesecake de la casa</span>
+              <span class="dish-desc">Postre hecho por el equipo cada mañana. Se acaba casi siempre a media noche.</span>
+            </div>
+            <span class="dish-price sin-precio">Ver carta</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- === TERRAZA === -->
+  <section class="section" id="terraza">
+    <div class="container">
+      <div class="terraza-grid">
+        <img src="img/interior-terraza.jpg" alt="Terraza interior del Restaurante El Escorial con mesas, sillas oscuras y luces colgantes" class="terraza-img">
+        <div class="terraza-body">
+          <span class="kicker" style="font-family:'Fraunces',serif; font-style:italic; color: var(--terracotta); font-size: 16px; display:block; margin-bottom: 12px;">La terraza del barrio</span>
+          <h2>Climatizada <em>todo el año</em>, en pleno centro de Calpe.</h2>
+          <p>Calle Pintor Sorolla, a dos manzanas del paseo y la playa del Arenal. Techo cerrado en invierno, abierta al fresco en verano. Mesas largas para familia, rincón de pareja, y barra para una copa rápida.</p>
+          <p>Admite niños, celíacos, vegetarianos, grupos. Turistas que vuelven todos los años.</p>
+
+          <div class="terraza-feats">
+            <div class="terraza-feat">
+              <span class="ff"><em>Hasta</em> 65 cubiertos</span>
+              <span class="fl">Grupos y familias</span>
+            </div>
+            <div class="terraza-feat">
+              <span class="ff">365 días</span>
+              <span class="fl">Abierto todo el año</span>
+            </div>
+            <div class="terraza-feat">
+              <span class="ff">ES · EN · DE · NL</span>
+              <span class="fl">Idiomas en sala</span>
+            </div>
+            <div class="terraza-feat">
+              <span class="ff">Pet <em>friendly</em></span>
+              <span class="fl">Mascotas bienvenidas</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- === GALERIA === -->
+  <section class="section galeria-wrap" id="galeria">
+    <div class="container">
+      <div class="section-header">
+        <span class="kicker">Del comedor</span>
+        <h2>Tal como lo sirven, <em>tal como se ve</em>.</h2>
+      </div>
+      <div class="galeria-grid">
+        <figure class="a">
+          <img src="img/costilla-terraza.jpg" alt="Costilla a la miel servida en la terraza del restaurante El Escorial">
+          <figcaption>Costilla a la miel · Terraza</figcaption>
+        </figure>
+        <figure class="b">
+          <img src="img/milanesa-napolitana.jpg" alt="Milanesa napolitana con tomate y queso en El Escorial">
+          <figcaption>Milanesa napolitana</figcaption>
+        </figure>
+        <figure class="c">
+          <img src="img/ensalada-cabra.jpg" alt="Ensalada con queso de cabra, rúcula y nueces">
+          <figcaption>Queso de cabra</figcaption>
+        </figure>
+        <figure class="d">
+          <img src="img/entrecot-tabla.jpg" alt="Entrecot con patatas en tabla de madera y pizarra">
+          <figcaption>Entrecot argentino</figcaption>
+        </figure>
+        <figure class="e">
+          <img src="img/spaghetti-tomate.jpg" alt="Spaghetti con salsa de tomate y parmesano">
+          <figcaption>Pasta italiana</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- === RESEÑAS === -->
+  <section class="section reviews-wrap">
+    <div class="container">
+      <div class="section-header">
+        <span class="kicker">Lo que dicen</span>
+        <h2>Boca a boca, <em>desde hace años</em>. Ahora por fin online.</h2>
+      </div>
+
+      <div class="reviews-grid">
+        <article class="review">
+          <div class="review-stars">★ ★ ★ ★ ★</div>
+          <p class="review-text">Excelente trato y comida casera como la de mi abuela. La costilla a la miel es espectacular y las raciones, generosas.</p>
+          <div class="review-meta">
+            <strong>Sluurpy</strong>
+            <span>Reseña verificada</span>
+          </div>
+        </article>
+
+        <article class="review">
+          <div class="review-stars">★ ★ ★ ★ ★</div>
+          <p class="review-text">Carne argentina de primera, pasta bien hecha y terraza muy agradable. Volvemos cada vez que venimos a Calpe.</p>
+          <div class="review-meta">
+            <strong>TripAdvisor</strong>
+            <span>Familia, vacaciones</span>
+          </div>
+        </article>
+
+        <article class="review">
+          <div class="review-stars">★ ★ ★ ★ ★</div>
+          <p class="review-text">Precio justo, mucha cantidad y el menú del día es la mejor relación calidad-precio del centro.</p>
+          <div class="review-meta">
+            <strong>Google</strong>
+            <span>Habitual del mediodía</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="ratings">
+        <div class="rating"><span class="n">4<em>,6</em></span><span class="src">Sluurpy · 7.581 reseñas</span></div>
+        <div class="rating"><span class="n">4<em>,3</em></span><span class="src">TripAdvisor · 204 reseñas</span></div>
+        <div class="rating"><span class="n">8<em>,2</em></span><span class="src">Gastroranking · 1.361 votos</span></div>
+        <div class="rating"><span class="n">4<em>,2</em></span><span class="src">Google Maps · Calpe</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- === RESERVAS === -->
+  <section class="section reservas-wrap" id="reservas">
+    <div class="container">
+      <div class="section-header">
+        <span class="kicker">Reserva directa</span>
+        <h2>Mesa en <em>pocos minutos</em>. Sin intermediarios.</h2>
+      </div>
+
+      <div class="reservas-grid">
+        <div class="reservas-card">
+          <h3>Teléfono, WhatsApp o <em>email</em></h3>
+
+          <div class="reserve-row">
+            <span class="lbl">Teléfono fijo</span>
+            <span class="val"><a href="tel:+34965875234">965 87 52 34</a></span>
+          </div>
+          <div class="reserve-row">
+            <span class="lbl">Móvil / WhatsApp</span>
+            <span class="val"><a href="https://wa.me/34627806623">627 80 66 23</a></span>
+          </div>
+          <div class="reserve-row">
+            <span class="lbl">Email reservas</span>
+            <span class="val" style="font-size: 18px;"><a href="mailto:info@restauranteelescorial.es">info@restauranteelescorial.es</a></span>
+          </div>
+          <div class="reserve-row">
+            <span class="lbl">Horario de sala</span>
+            <span class="val">13—16h · 19—23h · Todos los días</span>
+          </div>
+        </div>
+
+        <div class="reservas-map">
+          <div class="mt">
+            <div class="addr">Calle Pintor Sorolla, <em>19</em></div>
+            <div class="city">03710 · Calpe · Alicante</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- === FOOTER === -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-col">
+          <div class="footer-brand-text">Restaurante <em>El Escorial</em></div>
+          <p class="footer-tagline">Italiana, argentina y mediterránea. La mesa larga del barrio, en el centro de Calpe.</p>
+          <div class="flags">
+            <span>ES</span>
+            <span>EN</span>
+            <span>DE</span>
+            <span>NL</span>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Visítanos</h4>
+          <p>Calle Pintor Sorolla, 19<br>03710 · Calpe, Alicante</p>
+          <p style="margin-top:10px;">Mediodía 13—16h<br>Noche 19—23h<br>Todos los días</p>
+        </div>
+        <div class="footer-col">
+          <h4>Reservas</h4>
+          <a href="tel:+34965875234">965 87 52 34</a>
+          <a href="https://wa.me/34627806623">WhatsApp 627 80 66 23</a>
+          <a href="mailto:info@restauranteelescorial.es">info@restauranteelescorial.es</a>
+        </div>
+        <div class="footer-col">
+          <h4>En la red</h4>
+          <a href="#">Instagram</a>
+          <a href="#">Facebook</a>
+          <a href="#">Google Business</a>
+          <a href="#">TripAdvisor</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© Restaurante El Escorial · Calpe</span>
+        <span>Diseño propuesto por <a href="https://kenaz.studio" target="_blank" rel="noopener">Kenaz Studio</a></span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
