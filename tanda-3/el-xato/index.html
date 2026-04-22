@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>El Xato — Restaurante · Catering · Eventos · La Nucía</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Albert+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --cream:     #EFE7DA;   /* crema base refinado (de #e4dfd9) */
+    --cream-2:   #E6DCC9;   /* crema profundo */
+    --paper:     #F6F1E7;   /* papel claro */
+    --ink:       #1A1714;   /* tinta cálida (de #111111) */
+    --ink-soft:  #3A332C;
+    --olive:     #556B2A;   /* verde oliva refinado (de #4e8221 / #61a229) */
+    --olive-d:   #3E4F1E;
+    --gold:      #A88B4A;   /* dorado sutil — premios, acentos */
+    --stone:     #665650;   /* piedra cálida (existente) */
+    --line:      #D4C9B3;
+    --white:     #FBF8F1;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Albert Sans', system-ui, sans-serif;
+  }
+  body {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  /* Typography */
+  .display {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+  }
+  .display-it { font-style: italic; font-weight: 400; }
+  .mono {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-weight: 400;
+  }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+  }
+  .rule {
+    width: 38px; height: 1px; background: var(--gold);
+    display: inline-block; vertical-align: middle; margin-right: 14px;
+  }
+
+  /* Nav */
+  .nav {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 20;
+    padding: 26px 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    color: var(--white);
+  }
+  .nav-inner { display: flex; align-items: center; gap: 48px; }
+  .brand {
+    display: flex; align-items: center; gap: 14px;
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--white);
+  }
+  .brand-mark {
+    width: 36px; height: 36px;
+    border: 1px solid rgba(251,248,241,0.6);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--white);
+  }
+  .brand-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(251,248,241,0.7);
+    display: block;
+    margin-top: 3px;
+  }
+  .nav-links { display: flex; gap: 36px; list-style: none; align-items: center; }
+  .nav-links a {
+    color: rgba(251,248,241,0.88);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    transition: color .2s ease;
+  }
+  .nav-links a:hover { color: var(--white); }
+  .nav-actions { display: flex; align-items: center; gap: 20px; }
+  .lang {
+    display: flex; gap: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: rgba(251,248,241,0.6);
+  }
+  .lang .active { color: var(--white); border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
+  .btn-reserve {
+    background: var(--white);
+    color: var(--ink);
+    padding: 11px 22px;
+    font-size: 12.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all .25s ease;
+    border: 1px solid var(--white);
+  }
+  .btn-reserve:hover { background: transparent; color: var(--white); }
+
+  /* Hero */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 820px;
+    overflow: hidden;
+    background: var(--ink);
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background-image: url('img/hero-exterior.jpg');
+    background-size: cover;
+    background-position: center 45%;
+    filter: saturate(0.92) contrast(1.02) brightness(0.88);
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, rgba(26,23,20,0.55) 0%, rgba(26,23,20,0.3) 35%, rgba(26,23,20,0.55) 75%, rgba(26,23,20,0.85) 100%),
+      radial-gradient(ellipse at 30% 50%, rgba(26,23,20,0.2) 0%, transparent 60%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    padding: 150px 60px 60px;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .hero-left { color: var(--white); max-width: 720px; }
+  .hero-eyebrow {
+    display: flex; align-items: center; gap: 0;
+    margin-bottom: 34px;
+  }
+  .hero-eyebrow .eyebrow { color: var(--cream); }
+  .hero-eyebrow .rule { background: var(--cream); opacity: 0.55; }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: 86px;
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    margin-bottom: 28px;
+  }
+  .hero-title .it {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--cream);
+  }
+  .hero-title .amp {
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 400;
+  }
+
+  .hero-lede {
+    font-size: 17.5px;
+    line-height: 1.6;
+    color: rgba(251,248,241,0.85);
+    max-width: 540px;
+    margin-bottom: 40px;
+    font-weight: 300;
+  }
+
+  .hero-ctas { display: flex; gap: 16px; align-items: center; }
+  .btn-primary {
+    background: var(--olive);
+    color: var(--white);
+    padding: 16px 30px;
+    font-size: 12.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all .25s ease;
+    display: inline-flex; align-items: center; gap: 12px;
+  }
+  .btn-primary:hover { background: var(--olive-d); }
+  .btn-primary .arrow { font-family: serif; font-style: italic; font-size: 15px; }
+  .btn-ghost {
+    background: transparent;
+    color: var(--white);
+    padding: 16px 0;
+    font-size: 12.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 400;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(251,248,241,0.4);
+    transition: border-color .25s ease;
+  }
+  .btn-ghost:hover { border-color: var(--white); }
+
+  /* Hero right — data card */
+  .hero-card {
+    justify-self: end;
+    align-self: center;
+    width: 100%;
+    max-width: 360px;
+    background: rgba(26,23,20,0.55);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(239,231,218,0.18);
+    padding: 36px 34px;
+    color: var(--white);
+  }
+  .hero-card .row { display: flex; justify-content: space-between; align-items: baseline; padding: 16px 0; border-bottom: 1px solid rgba(239,231,218,0.12); }
+  .hero-card .row:last-child { border-bottom: none; padding-bottom: 0; }
+  .hero-card .row:first-child { padding-top: 0; }
+  .hero-card .key {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .hero-card .val {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--white);
+    text-align: right;
+  }
+  .hero-card .val .sub {
+    display: block;
+    font-family: 'Albert Sans', sans-serif;
+    font-size: 11.5px;
+    letter-spacing: 0.04em;
+    color: rgba(239,231,218,0.65);
+    margin-top: 2px;
+    font-weight: 300;
+  }
+  .hero-card-head {
+    margin-bottom: 10px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(239,231,218,0.22);
+  }
+  .hero-card-head .eyebrow { color: var(--gold); }
+  .hero-card-head h4 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: 22px;
+    margin-top: 10px;
+    color: var(--white);
+  }
+
+  /* Hero footer — awards strip */
+  .awards-strip {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    z-index: 3;
+    padding: 24px 60px;
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    background: linear-gradient(180deg, transparent 0%, rgba(26,23,20,0.75) 40%, rgba(26,23,20,0.95) 100%);
+  }
+  .awards-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(239,231,218,0.65);
+    white-space: nowrap;
+  }
+  .awards {
+    display: flex;
+    align-items: center;
+    gap: 38px;
+    flex: 1;
+  }
+  .award {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-left: 18px;
+    border-left: 1px solid rgba(239,231,218,0.18);
+  }
+  .award .nm {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--white);
+  }
+  .award .yr {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .since {
+    text-align: right;
+  }
+  .since .big {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 32px;
+    color: var(--white);
+    line-height: 1;
+  }
+  .since .sm {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(239,231,218,0.7);
+    margin-top: 4px;
+  }
+
+  /* ======================== SECTION: identidad ======================== */
+  .section {
+    padding: 120px 60px;
+    background: var(--cream);
+  }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 80px;
+    align-items: start;
+    margin-bottom: 90px;
+  }
+  .section-eyebrow-group .eyebrow { color: var(--olive); }
+  .section-eyebrow-group .rule { background: var(--olive); }
+  .section-eyebrow-group h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: 52px;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin-top: 26px;
+  }
+  .section-eyebrow-group h2 .it { font-style: italic; color: var(--stone); }
+
+  .section-lede {
+    font-size: 19px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    font-weight: 300;
+    padding-top: 22px;
+  }
+  .section-lede p + p { margin-top: 18px; }
+
+  /* 3-pillar grid */
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+  .pillar {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .pillar-img {
+    aspect-ratio: 4/3;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  .pillar-img::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 55%, rgba(26,23,20,0.35) 100%);
+  }
+  .pillar-num {
+    position: absolute;
+    top: 20px; left: 22px;
+    z-index: 2;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    color: var(--white);
+    background: rgba(26,23,20,0.55);
+    padding: 6px 10px;
+    backdrop-filter: blur(6px);
+  }
+  .pillar-body { padding: 30px 30px 34px; }
+  .pillar h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-size: 24px;
+    color: var(--ink);
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+  .pillar p {
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+    font-weight: 300;
+  }
+  .pillar-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--olive);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .pillar-link .arr { font-family: serif; font-style: italic; font-size: 14px; }
+
+  /* ======================== SECTION: XATO CUBE ======================== */
+  .cube-section {
+    padding: 120px 60px;
+    background: var(--ink);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+  .cube-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .cube-left .eyebrow { color: var(--gold); }
+  .cube-left .rule { background: var(--gold); }
+  .cube-left h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: 56px;
+    line-height: 1.04;
+    letter-spacing: -0.015em;
+    margin: 26px 0 28px;
+  }
+  .cube-left h2 .it { font-style: italic; color: var(--cream); }
+  .cube-left p {
+    font-size: 17px;
+    line-height: 1.65;
+    color: rgba(239,231,218,0.82);
+    font-weight: 300;
+    margin-bottom: 18px;
+  }
+  .cube-meta {
+    display: flex;
+    gap: 50px;
+    margin-top: 40px;
+    padding-top: 34px;
+    border-top: 1px solid rgba(239,231,218,0.18);
+  }
+  .cube-meta .stat .n {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1;
+  }
+  .cube-meta .stat .n .unit {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    margin-left: 4px;
+  }
+  .cube-meta .stat .l {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgba(239,231,218,0.6);
+    margin-top: 10px;
+  }
+
+  .cube-right {
+    position: relative;
+    aspect-ratio: 4/5;
+    overflow: hidden;
+  }
+  .cube-right img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .cube-label {
+    position: absolute;
+    top: 24px; left: 24px;
+    padding: 10px 16px;
+    background: var(--gold);
+    color: var(--ink);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* Footer */
+  .footer {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 44px 60px 30px;
+    border-top: 1px solid rgba(239,231,218,0.1);
+  }
+  .footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(239,231,218,0.6);
+  }
+  .footer-row a {
+    color: rgba(239,231,218,0.75);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(239,231,218,0.2);
+    padding-bottom: 2px;
+  }
+  .footer-row a:hover { color: var(--gold); border-color: var(--gold); }
+  .kenaz-signature {
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(239,231,218,0.08);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(239,231,218,0.35);
+    text-align: center;
+  }
+  .kenaz-signature a {
+    color: rgba(239,231,218,0.5);
+    text-decoration: none;
+    border-bottom: 1px dotted rgba(239,231,218,0.25);
+  }
+
+  @media (max-width: 1280px) {
+    .hero-title { font-size: 72px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="brand">
+      <span class="brand-mark">X</span>
+      <span>
+        El Xato
+        <span class="brand-sub">Desde 1915 · La Nucía</span>
+      </span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#">Restaurante</a></li>
+      <li><a href="#">Carta</a></li>
+      <li><a href="#">Bodas y eventos</a></li>
+      <li><a href="#">Xato Cube</a></li>
+      <li><a href="#">Casa Cano</a></li>
+    </ul>
+  </div>
+  <div class="nav-actions">
+    <div class="lang">
+      <span class="active">ES</span>
+      <span>CA</span>
+      <span>EN</span>
+    </div>
+    <a href="#" class="btn-reserve">Reservar</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <span class="rule"></span>
+        <span class="eyebrow">Cuatro generaciones · Familia Cano</span>
+      </div>
+      <h1 class="hero-title">
+        Una casa con <span class="it">memoria</span><span class="amp">,</span><br/>
+        una cocina con <span class="it">futuro.</span>
+      </h1>
+      <p class="hero-lede">
+        Desde 1915, en La Nucía. Cocina mediterránea contemporánea, catering para bodas y eventos, y un proyecto que mira hacia adelante: el Xato Cube, laboratorio gastronómico junto a Benidorm, La Nucía y Altea.
+      </p>
+      <div class="hero-ctas">
+        <a href="#" class="btn-primary">
+          Reservar mesa
+          <span class="arrow">→</span>
+        </a>
+        <a href="#" class="btn-ghost">Ver la carta</a>
+      </div>
+    </div>
+
+    <aside class="hero-card">
+      <div class="hero-card-head">
+        <span class="eyebrow">Esta semana</span>
+        <h4>Menú degustación</h4>
+      </div>
+      <div class="row">
+        <span class="key">Servicio</span>
+        <span class="val">Almuerzo<span class="sub">Mar – Dom · 13:30 – 16:00</span></span>
+      </div>
+      <div class="row">
+        <span class="key">Cena</span>
+        <span class="val">Vie – Sáb<span class="sub">20:30 – 23:00</span></span>
+      </div>
+      <div class="row">
+        <span class="key">Ubicación</span>
+        <span class="val">La Nucía<span class="sub">Av. l'Aigüera, 3</span></span>
+      </div>
+      <div class="row">
+        <span class="key">Reservas</span>
+        <span class="val">+34 965 87 06 31<span class="sub">reservas@elxato.com</span></span>
+      </div>
+    </aside>
+  </div>
+
+  <!-- awards strip -->
+  <div class="awards-strip">
+    <span class="awards-label">Reconocimientos</span>
+    <div class="awards">
+      <div class="award">
+        <span class="nm">Sol Repsol</span>
+        <span class="yr">Guía Repsol</span>
+      </div>
+      <div class="award">
+        <span class="nm">Exquisit Mediterrani</span>
+        <span class="yr">Generalitat Valenciana</span>
+      </div>
+      <div class="award">
+        <span class="nm">Premio Nacional</span>
+        <span class="yr">Hostelería · 2024</span>
+      </div>
+      <div class="award">
+        <span class="nm">Travellers' Choice</span>
+        <span class="yr">TripAdvisor</span>
+      </div>
+    </div>
+    <div class="since">
+      <div class="big">MCMXV</div>
+      <div class="sm">Est. 1915</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: tres facetas -->
+<section class="section">
+  <div class="section-head">
+    <div class="section-eyebrow-group">
+      <div>
+        <span class="rule"></span>
+        <span class="eyebrow">Tres casas, una familia</span>
+      </div>
+      <h2>Restaurante, catering<br/><span class="it">y eventos</span>.</h2>
+    </div>
+    <div class="section-lede">
+      <p>Cristina Cano dirige la cocina de la casa familiar que abrió su abuelo en 1915. Producto de proximidad, técnica actual y el ritmo pausado del mediterráneo.</p>
+      <p>Además del restaurante, El Xato lleva más de dos décadas firmando bodas, eventos corporativos y celebraciones privadas en la Costa Blanca.</p>
+    </div>
+  </div>
+
+  <div class="pillars">
+    <article class="pillar">
+      <div class="pillar-img" style="background-image: url('img/plato-montemolar.jpg');">
+        <span class="pillar-num">01 / Restaurante</span>
+      </div>
+      <div class="pillar-body">
+        <h3>La mesa de Cristina</h3>
+        <p>Cocina mediterránea contemporánea. Menú degustación y a la carta con producto de temporada del Mediterráneo valenciano.</p>
+        <a href="#" class="pillar-link">Ver la carta <span class="arr">→</span></a>
+      </div>
+    </article>
+
+    <article class="pillar">
+      <div class="pillar-img" style="background-image: url('img/catering-bodas.jpg');">
+        <span class="pillar-num">02 / Bodas</span>
+      </div>
+      <div class="pillar-body">
+        <h3>Bodas a medida</h3>
+        <p>Catering de alta cocina en cualquier ubicación de la Costa Blanca. Menús diseñados para la pareja, servicio de sumiller y equipo propio.</p>
+        <a href="#" class="pillar-link">Consultar bodas <span class="arr">→</span></a>
+      </div>
+    </article>
+
+    <article class="pillar">
+      <div class="pillar-img" style="background-image: url('img/catering-corporativo.jpg');">
+        <span class="pillar-num">03 / Eventos</span>
+      </div>
+      <div class="pillar-body">
+        <h3>Eventos corporativos</h3>
+        <p>Presentaciones, cenas de empresa y eventos privados. Producción integral, logística y cocina en el lugar que elijas.</p>
+        <a href="#" class="pillar-link">Cotizar evento <span class="arr">→</span></a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- SECTION: XATO CUBE -->
+<section class="cube-section">
+  <div class="cube-inner">
+    <div class="cube-left">
+      <div>
+        <span class="rule"></span>
+        <span class="eyebrow">Proyecto · Turismo Azul</span>
+      </div>
+      <h2>Xato Cube:<br/>el laboratorio <span class="it">gastronómico</span>.</h2>
+      <p>Una iniciativa conjunta con los ayuntamientos de Benidorm, La Nucía y Altea para investigar el futuro de la cocina mediterránea sostenible: producto local, biodiversidad costera y experiencias gastronómicas vinculadas al mar.</p>
+      <p>El Xato aporta más de un siglo de cocina familiar al proyecto.</p>
+      <div class="cube-meta">
+        <div class="stat">
+          <div class="n">225<span class="unit">K€</span></div>
+          <div class="l">Subvención turismo azul</div>
+        </div>
+        <div class="stat">
+          <div class="n">3</div>
+          <div class="l">Ayuntamientos implicados</div>
+        </div>
+        <div class="stat">
+          <div class="n">2025</div>
+          <div class="l">Año de ejecución</div>
+        </div>
+      </div>
+    </div>
+    <div class="cube-right">
+      <span class="cube-label">Xato Cube · 2025</span>
+      <img src="img/xato-cube.png" alt="Xato Cube — laboratorio gastronómico" />
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-row">
+    <span>El Xato · Av. l'Aigüera 3 · La Nucía · Alicante</span>
+    <span><a href="#">elxato.com</a> · <a href="#">@elxatorestaurante</a></span>
+    <span>+34 965 87 06 31</span>
+  </div>
+  <div class="kenaz-signature">
+    Diseño propuesto por <a href="https://kenaz.studio">Kenaz Studio</a> · kenaz.studio
+  </div>
+</footer>
+
+</body>
+</html>

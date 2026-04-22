@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Sand · Restaurante frente al Mediterráneo — Moraira</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #13314b;
+    --navy-deep: #0c2238;
+    --sand: #f3ece0;
+    --cream: #faf6ee;
+    --terracotta: #c26b4a;
+    --gold: #b48a4e;
+    --ink: #1a1a1a;
+    --muted: rgba(19, 49, 75, 0.55);
+    --line: rgba(19, 49, 75, 0.15);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    background: var(--cream);
+    color: var(--navy-deep);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* ───── Top bar ───── */
+  .topbar {
+    background: var(--navy-deep);
+    color: var(--sand);
+    padding: 10px 56px;
+    font-size: 11px;
+    font-family: 'JetBrains Mono', monospace;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .topbar .left { display: flex; gap: 28px; opacity: 0.85; }
+  .topbar .left span { display: inline-flex; align-items: center; gap: 8px; }
+  .topbar .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #7fb98a;
+    box-shadow: 0 0 0 3px rgba(127, 185, 138, 0.2);
+  }
+  .topbar .right { display: flex; gap: 18px; opacity: 0.6; }
+  .topbar .right a { color: inherit; text-decoration: none; }
+  .topbar .right .lang-active { opacity: 1; border-bottom: 1px solid var(--sand); padding-bottom: 2px; }
+
+  /* ───── Nav ───── */
+  nav.main {
+    padding: 26px 56px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    background: var(--cream);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 40px;
+    color: var(--navy);
+    letter-spacing: -0.01em;
+    line-height: 1;
+  }
+  nav .brand sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+    margin-top: 4px;
+    padding-left: 2px;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 36px;
+    justify-content: center;
+  }
+  nav ul a {
+    color: var(--navy-deep);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 400;
+    position: relative;
+    padding-bottom: 4px;
+  }
+  nav ul a.active::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 1px;
+    background: var(--terracotta);
+  }
+  nav .cta-reserva {
+    justify-self: end;
+    background: var(--navy);
+    color: var(--sand);
+    padding: 14px 28px;
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid var(--navy);
+    transition: all .25s ease;
+  }
+  nav .cta-reserva::after {
+    content: "→";
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+  }
+
+  /* ───── Hero ───── */
+  .hero {
+    position: relative;
+    padding: 56px;
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 56px;
+    min-height: 760px;
+    background: var(--cream);
+  }
+
+  /* left column — editorial copy */
+  .hero .left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 40px;
+    padding-bottom: 16px;
+  }
+  .kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 40px;
+  }
+  .kicker::before {
+    content: "";
+    width: 36px;
+    height: 1px;
+    background: var(--terracotta);
+  }
+  h1.headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 104px;
+    line-height: 0.95;
+    color: var(--navy-deep);
+    letter-spacing: -0.02em;
+    margin-bottom: 36px;
+  }
+  h1.headline em {
+    font-style: italic;
+    color: var(--navy);
+    font-weight: 500;
+  }
+  .sub {
+    font-size: 18px;
+    line-height: 1.55;
+    max-width: 520px;
+    color: var(--navy-deep);
+    opacity: 0.82;
+    font-weight: 300;
+    margin-bottom: 48px;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    margin-bottom: 64px;
+  }
+  .btn-primary {
+    background: var(--navy-deep);
+    color: var(--sand);
+    padding: 18px 34px;
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .btn-primary::after { content: "→"; font-size: 15px; }
+  .btn-ghost {
+    color: var(--navy-deep);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 18px 8px;
+    border-bottom: 1px solid var(--navy-deep);
+  }
+
+  /* bottom strip — credentials */
+  .cred-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--line);
+    padding-top: 28px;
+  }
+  .cred-strip .cell { padding-right: 20px; }
+  .cred-strip .cell:not(:first-child) {
+    border-left: 1px solid var(--line);
+    padding-left: 20px;
+  }
+  .cred-strip .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .cred-strip .value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: var(--navy-deep);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+  .cred-strip .value small {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 12px;
+    color: var(--muted);
+    display: block;
+    margin-top: 4px;
+    letter-spacing: 0.02em;
+  }
+  .stars-inline { color: var(--gold); letter-spacing: 0.05em; }
+
+  /* right column — image */
+  .hero .right {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .photo-frame {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    background: var(--sand);
+    min-height: 560px;
+  }
+  .photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .photo-label {
+    position: absolute;
+    top: 22px;
+    left: 22px;
+    background: rgba(250, 246, 238, 0.94);
+    backdrop-filter: blur(6px);
+    padding: 10px 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--navy-deep);
+  }
+  .photo-coords {
+    position: absolute;
+    bottom: 22px;
+    right: 22px;
+    background: rgba(12, 34, 56, 0.82);
+    backdrop-filter: blur(6px);
+    padding: 10px 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--sand);
+    line-height: 1.5;
+  }
+
+  /* side card */
+  .side-card {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 20px;
+    align-items: stretch;
+  }
+  .dish-card {
+    background: var(--sand);
+    padding: 22px;
+    position: relative;
+  }
+  .dish-card .dish-img {
+    width: 100%;
+    aspect-ratio: 1.15 / 1;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 16px;
+  }
+  .dish-card .dish-kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 6px;
+  }
+  .dish-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.15;
+    color: var(--navy-deep);
+    margin-bottom: 6px;
+  }
+  .dish-card p {
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  .quote-card {
+    background: var(--navy-deep);
+    color: var(--sand);
+    padding: 28px 26px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+  .quote-card::before {
+    content: "“";
+    position: absolute;
+    top: -12px;
+    left: 16px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 140px;
+    color: var(--gold);
+    opacity: 0.22;
+    line-height: 1;
+  }
+  .quote-card .q-kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+  .quote-card blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 17px;
+    line-height: 1.4;
+    color: var(--sand);
+    font-weight: 400;
+    position: relative;
+    z-index: 1;
+  }
+  .quote-card .attribution {
+    margin-top: 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--sand);
+    opacity: 0.65;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .quote-card .attribution .stars {
+    color: var(--gold);
+    letter-spacing: 0.1em;
+  }
+
+  /* ───── Footer Kenaz signature ───── */
+  .kenaz-sig {
+    padding: 14px 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--cream);
+    border-top: 1px solid var(--line);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .kenaz-sig a { color: var(--navy); text-decoration: none; }
+  .kenaz-sig .runa {
+    color: var(--navy);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="left">
+    <span><span class="dot"></span> Mesa disponible esta noche</span>
+    <span>Reservas · 966 49 19 49</span>
+    <span>Paseo Senillar, 22 · Moraira</span>
+  </div>
+  <div class="right">
+    <a href="#" class="lang-active">ES</a>
+    <a href="#">EN</a>
+    <a href="#">DE</a>
+  </div>
+</div>
+
+<nav class="main">
+  <div class="brand">
+    Sand<sub>Moraira · Grupo LaSort</sub>
+  </div>
+  <ul>
+    <li><a href="#" class="active">Carta</a></li>
+    <li><a href="#">Arroces</a></li>
+    <li><a href="#">La casa</a></li>
+    <li><a href="#">Reservas</a></li>
+    <li><a href="#">Contacto</a></li>
+  </ul>
+  <a href="#" class="cta-reserva">Reservar mesa</a>
+</nav>
+
+<section class="hero">
+  <div class="left">
+    <div>
+      <div class="kicker">Guía Michelin · Selección 2025</div>
+      <h1 class="headline">
+        El Mediterráneo,<br>
+        servido <em>a la mesa.</em>
+      </h1>
+      <p class="sub">
+        En primera línea de la Playa de l&rsquo;Ampolla, Sand es el refugio de quienes buscan arroces de autor, pescado de la lonja de Moraira y horas largas frente al mar. Cocina mediterránea con el ritmo de la costa.
+      </p>
+      <div class="hero-ctas">
+        <a href="#" class="btn-primary">Reservar mesa</a>
+        <a href="#" class="btn-ghost">Ver la carta</a>
+      </div>
+    </div>
+
+    <div class="cred-strip">
+      <div class="cell">
+        <div class="label">Valoración</div>
+        <div class="value">4,4 <span class="stars-inline">★★★★</span><small>1.530 reseñas Google</small></div>
+      </div>
+      <div class="cell">
+        <div class="label">Reconocimiento</div>
+        <div class="value">Michelin<small>Selección 2025</small></div>
+      </div>
+      <div class="cell">
+        <div class="label">Especialidad</div>
+        <div class="value">Paellas<small>individuales</small></div>
+      </div>
+      <div class="cell">
+        <div class="label">Horario</div>
+        <div class="value">08:00 – 22:45<small>Todos los días</small></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="photo-frame">
+      <div class="photo-label">La terraza · Paseo Senillar</div>
+      <img src="img/hero-terrace.jpg" alt="Terraza de Restaurante Sand con vistas al Mediterráneo">
+      <div class="photo-coords">
+        38.6875° N · 0.1320° E<br>
+        Playa de l&rsquo;Ampolla
+      </div>
+    </div>
+
+    <div class="side-card">
+      <div class="dish-card">
+        <img class="dish-img" src="img/arroces.jpg" alt="Arroz del senyoret elaborado en Sand Moraira">
+        <div class="dish-kicker">Plato de la casa</div>
+        <h3>Arroz del senyoret</h3>
+        <p>Pescado limpio, fumet propio, punto justo del grano. Servido en sartén individual, como debe ser.</p>
+      </div>
+      <div class="quote-card">
+        <div>
+          <div class="q-kicker">Reseña · Google</div>
+          <blockquote>
+            Un lugar fantástico junto al mar. El entorno es precioso, con unas vistas espectaculares y una tranquilidad que invita a quedarse.
+          </blockquote>
+        </div>
+        <div class="attribution">
+          <span>— José M. · Noviembre 2025</span>
+          <span class="stars">★★★★★</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="kenaz-sig">
+  <span>Sand · Restaurante mediterráneo en Moraira · Grupo LaSort</span>
+  <span>Propuesta de diseño · <span class="runa">ᚲ</span> <a href="https://kenaz.studio">Kenaz Studio</a></span>
+</div>
+
+</body>
+</html>

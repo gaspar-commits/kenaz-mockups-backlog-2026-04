@@ -1,0 +1,993 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<title>SmileClinic — Alfaz del Pi · Dra. Patricia León</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  /* =========================================================
+     SmileClinic — Alfaz del Pi
+     Diseno propuesto por Kenaz Studio (mockup)
+     Paleta refinada del branding actual:
+       - teal profundo (signature color del logo)
+       - teal claro (secundario)
+       - crema calido (NO blanco clinico frio)
+       - charcoal calido
+       - oro suave (acento boutique)
+     ========================================================= */
+
+  :root {
+    --bg-cream:    #F5EFE6;   /* fondo principal calido */
+    --bg-warm:     #EDE4D6;   /* variante */
+    --ink:         #14242B;   /* texto principal charcoal calido */
+    --ink-soft:    #3C5863;   /* texto secundario */
+    --teal-deep:   #145963;   /* signature color refinado del logo */
+    --teal-mid:    #1E8A8F;
+    --teal-soft:   #9BC9CC;
+    --gold:        #B6894C;   /* acento boutique */
+    --line:        rgba(20, 36, 43, 0.12);
+    --line-soft:   rgba(20, 36, 43, 0.06);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 100%; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg-cream);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  /* ===== NAV ===== */
+  .nav {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 28px 56px;
+    z-index: 20;
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .nav-logo__mark {
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+  }
+  .nav-logo__mark img { width: 44px; height: 44px; object-fit: contain; }
+  .nav-logo__text {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+    color: var(--teal-deep);
+    line-height: 1;
+  }
+  .nav-logo__text small {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-top: 4px;
+  }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    justify-self: center;
+  }
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    position: relative;
+    padding: 6px 0;
+  }
+  .nav-links a:hover { color: var(--teal-deep); }
+  .nav-links a.active::after {
+    content: "";
+    position: absolute;
+    left: 50%; bottom: -2px;
+    width: 4px; height: 4px;
+    background: var(--gold);
+    border-radius: 50%;
+    transform: translateX(-50%);
+  }
+  .nav-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 16px;
+  }
+  .lang-switch {
+    display: flex;
+    gap: 2px;
+    align-items: center;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
+  }
+  .lang-switch span { padding: 4px 6px; cursor: pointer; }
+  .lang-switch .active { color: var(--teal-deep); }
+  .lang-switch em {
+    font-style: normal;
+    opacity: 0.3;
+    font-size: 9px;
+  }
+  .btn-appointment {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--teal-deep);
+    color: var(--bg-cream);
+    padding: 11px 20px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: transform .2s;
+  }
+  .btn-appointment::after {
+    content: "";
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 0;
+    position: relative;
+  }
+
+  /* left content */
+  .hero-left {
+    padding: 180px 72px 80px 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 36px;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 28px;
+    height: 1px;
+    background: var(--gold);
+  }
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 74px;
+    line-height: 0.98;
+    letter-spacing: -0.028em;
+    color: var(--ink);
+    margin-bottom: 28px;
+  }
+  h1 em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--teal-deep);
+  }
+  .lead {
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 520px;
+    margin-bottom: 40px;
+    font-weight: 400;
+  }
+  .lead strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .cta-row {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    margin-bottom: 56px;
+  }
+  .cta-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--teal-deep);
+    color: var(--bg-cream);
+    padding: 16px 28px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 0.005em;
+  }
+  .cta-primary svg { width: 14px; height: 14px; }
+  .cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--ink);
+    padding: 16px 22px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 0.005em;
+    border: 1px solid var(--line);
+  }
+  .cta-secondary::before {
+    content: "";
+    width: 8px; height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+  }
+
+  /* trust strip */
+  .trust {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 48px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line-soft);
+    align-items: start;
+  }
+  .trust-item small {
+    display: block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+  }
+  .trust-item strong {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 28px;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    line-height: 1;
+    display: block;
+  }
+  .trust-item span {
+    font-size: 12px;
+    color: var(--ink-soft);
+    margin-top: 4px;
+    display: block;
+  }
+  .trust-item .stars {
+    color: var(--gold);
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-top: 4px;
+  }
+
+  /* right: image */
+  .hero-right {
+    position: relative;
+    background: var(--teal-deep);
+    overflow: hidden;
+  }
+  .hero-image {
+    position: absolute;
+    inset: 0;
+    background: url("img/clinic-team.jpg") center 30% / cover no-repeat;
+    filter: saturate(0.92) contrast(1.04) brightness(0.98);
+  }
+  .hero-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(20, 36, 43, 0.0) 0%,
+      rgba(20, 36, 43, 0.0) 40%,
+      rgba(20, 36, 43, 0.55) 100%
+    );
+  }
+
+  /* caption card over image */
+  .hero-caption {
+    position: absolute;
+    left: 32px;
+    bottom: 32px;
+    right: 32px;
+    background: var(--bg-cream);
+    padding: 22px 24px;
+    border-radius: 4px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: center;
+    z-index: 3;
+  }
+  .caption-name {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+  .caption-role {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-top: 6px;
+  }
+  .caption-col {
+    font-size: 11px;
+    color: var(--gold);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    margin-top: 4px;
+  }
+  .caption-action {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--teal-deep);
+    display: grid; place-items: center;
+  }
+  .caption-action svg { width: 14px; height: 14px; stroke: var(--bg-cream); }
+
+  /* floating badge bottom-right on image */
+  .badge-years {
+    position: absolute;
+    top: 140px;
+    right: 32px;
+    background: var(--bg-cream);
+    padding: 18px 22px;
+    border-radius: 4px;
+    z-index: 3;
+    text-align: right;
+  }
+  .badge-years strong {
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 34px;
+    color: var(--teal-deep);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .badge-years small {
+    display: block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-top: 6px;
+  }
+
+  /* vertical marker left of image */
+  .vertical-meta {
+    position: absolute;
+    top: 50%;
+    left: 32px;
+    transform: translateY(-50%) rotate(-90deg);
+    transform-origin: left center;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--bg-cream);
+    opacity: 0.75;
+    white-space: nowrap;
+    z-index: 3;
+  }
+
+  /* decorative quote bar bottom-left */
+  .quote-bar {
+    position: absolute;
+    bottom: 44px;
+    left: 56px;
+    right: 72px;
+    display: none; /* visible in fullpage section */
+  }
+
+  /* ===== SECTION: SERVICES ===== */
+  .services {
+    padding: 120px 56px 100px;
+    background: var(--bg-cream);
+    border-top: 1px solid var(--line-soft);
+  }
+  .section-head {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 80px;
+    margin-bottom: 72px;
+    align-items: end;
+  }
+  .section-head h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+  }
+  .section-head h2 em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--teal-deep);
+  }
+  .section-head p {
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    max-width: 520px;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    background: var(--line-soft);
+    border: 1px solid var(--line-soft);
+  }
+  .service-card {
+    background: var(--bg-cream);
+    padding: 36px 28px 32px;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .service-card header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .service-num {
+    font-family: 'Fraunces', serif;
+    font-size: 13px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--gold);
+    letter-spacing: 0.04em;
+  }
+  .service-card h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 22px;
+    color: var(--ink);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-top: auto;
+    padding-top: 40px;
+  }
+  .service-card p {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    margin-top: 10px;
+    line-height: 1.5;
+  }
+  .service-icon {
+    width: 36px; height: 36px;
+    opacity: 0.85;
+  }
+
+  /* ===== SECTION: PROMISE ===== */
+  .promise {
+    padding: 120px 56px;
+    background: var(--teal-deep);
+    color: var(--bg-cream);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .promise::before {
+    content: "";
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 420px; height: 420px;
+    border-radius: 50%;
+    background: rgba(182, 137, 76, 0.08);
+  }
+  .promise-text h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 56px;
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    margin-bottom: 28px;
+  }
+  .promise-text h2 em {
+    font-style: italic;
+    color: var(--teal-soft);
+  }
+  .promise-text p {
+    font-size: 15px;
+    line-height: 1.7;
+    opacity: 0.85;
+    max-width: 480px;
+  }
+  .promise-points {
+    display: grid;
+    gap: 2px;
+    background: rgba(245, 239, 230, 0.1);
+    border: 1px solid rgba(245, 239, 230, 0.1);
+  }
+  .promise-point {
+    padding: 26px 28px;
+    background: var(--teal-deep);
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 24px;
+    align-items: center;
+  }
+  .promise-point .n {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 34px;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .promise-point .t {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 18px;
+    letter-spacing: -0.005em;
+  }
+  .promise-point .t small {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    opacity: 0.65;
+    margin-top: 4px;
+    letter-spacing: 0;
+  }
+  .promise-point .lang {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    opacity: 0.5;
+  }
+
+  /* ===== SECTION: VISIT / CONTACT ===== */
+  .visit {
+    padding: 120px 56px;
+    background: var(--bg-warm);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+  .visit-photo {
+    background: url("img/clinic-02.jpg") center / cover no-repeat;
+    min-height: 520px;
+    border-radius: 2px;
+  }
+  .visit-content h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 48px;
+    letter-spacing: -0.025em;
+    margin-bottom: 12px;
+    line-height: 1.02;
+  }
+  .visit-content h2 em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--teal-deep);
+  }
+  .visit-content > p {
+    color: var(--ink-soft);
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    max-width: 460px;
+  }
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin-bottom: 32px;
+  }
+  .info-cell {
+    background: var(--bg-warm);
+    padding: 22px 24px;
+  }
+  .info-cell small {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+    display: block;
+  }
+  .info-cell strong {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.3;
+    letter-spacing: -0.005em;
+    display: block;
+  }
+  .info-cell span {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 4px;
+    display: block;
+    line-height: 1.5;
+  }
+  .book-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--teal-deep);
+    color: var(--bg-cream);
+    padding: 18px 32px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .book-cta small {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding-left: 14px;
+    border-left: 1px solid rgba(245, 239, 230, 0.3);
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--ink);
+    color: var(--bg-cream);
+    padding: 80px 56px 36px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr 1fr;
+    gap: 56px;
+    padding-bottom: 56px;
+    border-bottom: 1px solid rgba(245, 239, 230, 0.1);
+  }
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .footer-brand .mark {
+    width: 46px; height: 46px;
+    background: var(--bg-cream);
+    border-radius: 50%;
+    display: grid; place-items: center;
+    overflow: hidden;
+  }
+  .footer-brand .mark img { width: 46px; height: 46px; object-fit: contain; }
+  .footer-brand h4 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 20px;
+    letter-spacing: -0.01em;
+  }
+  .footer-brand p {
+    font-size: 13px;
+    line-height: 1.6;
+    opacity: 0.65;
+    max-width: 280px;
+  }
+  .footer-col h5 {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 16px;
+    opacity: 0.55;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li {
+    font-size: 13px;
+    margin-bottom: 8px;
+    opacity: 0.85;
+  }
+  .footer-col li a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .footer-base {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 28px;
+    font-size: 11px;
+    opacity: 0.55;
+    letter-spacing: 0.04em;
+  }
+  .footer-base .kenaz-sig {
+    opacity: 0.5;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-size: 10px;
+  }
+  .footer-base .kenaz-sig a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(245, 239, 230, 0.3);
+    padding-bottom: 1px;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">
+    <div class="nav-logo__mark">
+      <img src="img/logo-hires.jpg" alt="SmileClinic" />
+    </div>
+    <div class="nav-logo__text">
+      SmileClinic
+      <small>Alfaz del Pi · est. 2018</small>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#" class="active">Inicio</a>
+    <a href="#">Servicios</a>
+    <a href="#">Equipo</a>
+    <a href="#">Casos</a>
+    <a href="#">Blog</a>
+    <a href="#">Contacto</a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-switch">
+      <span class="active">ES</span><em>/</em><span>EN</span><em>/</em><span>NL</span><em>/</em><span>DE</span>
+    </div>
+    <a href="#" class="btn-appointment">Pedir cita</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div>
+      <div class="eyebrow">Clínica dental · Alfaz del Pi</div>
+      <h1>Sonrisas<br/>cuidadas con<br/><em>criterio.</em></h1>
+      <p class="lead">
+        Somos <strong>la Dra. Patricia León</strong> y su equipo. Siete años tratando a vecinos y expats de Alfaz, Albir y Benidorm, con un enfoque cercano, honesto y sin prisa. La primera consulta es gratuita.
+      </p>
+      <div class="cta-row">
+        <a href="#" class="cta-primary">
+          Reservar primera consulta
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-6-6l6 6-6 6"/></svg>
+        </a>
+        <a href="#" class="cta-secondary">Cómo llegar</a>
+      </div>
+    </div>
+
+    <div class="trust">
+      <div class="trust-item">
+        <small>Google Rating</small>
+        <strong>5.0</strong>
+        <div class="stars">★★★★★</div>
+      </div>
+      <div class="trust-item">
+        <small>Pacientes</small>
+        <strong>2,500+</strong>
+        <span>atendidos desde 2018</span>
+      </div>
+      <div class="trust-item">
+        <small>Idiomas</small>
+        <strong>ES · EN · NL · DE</strong>
+        <span>Atención bilingüe para residentes internacionales</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-image"></div>
+
+    <div class="vertical-meta">Dra. Patricia León · Col. 03377</div>
+
+    <div class="badge-years">
+      <strong>7<span style="font-size: 20px; vertical-align: top;">+</span></strong>
+      <small>Años en Alfaz</small>
+    </div>
+
+    <div class="hero-caption">
+      <div>
+        <div class="caption-name">Dra. Patricia León</div>
+        <div class="caption-role">Odontóloga · Directora clínica</div>
+        <div class="caption-col">Col. 03377 · Alicante</div>
+      </div>
+      <div class="caption-action" title="Ver equipo completo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-6-6l6 6-6 6"/></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services">
+  <div class="section-head">
+    <h2>Tratamientos <em>con método.</em></h2>
+    <p>Odontología general, estética e implantología planificada con tecnología 3D. Cada caso empieza con un diagnóstico claro, un presupuesto sin sorpresas y un plan que respeta tu tiempo.</p>
+  </div>
+  <div class="services-grid">
+    <article class="service-card">
+      <header>
+        <img class="service-icon" src="img/icon-dentista.png" alt="" />
+        <div class="service-num">01 / 08</div>
+      </header>
+      <h3>Odontología general</h3>
+      <p>Revisiones, limpiezas, caries y endodoncia con enfoque preventivo.</p>
+    </article>
+    <article class="service-card">
+      <header>
+        <img class="service-icon" src="img/icon-ortodoncia.png" alt="" />
+        <div class="service-num">02 / 08</div>
+      </header>
+      <h3>Ortodoncia invisible</h3>
+      <p>Planificación digital 3D. Alineadores transparentes adaptados a adultos.</p>
+    </article>
+    <article class="service-card">
+      <header>
+        <img class="service-icon" src="img/icon-diente.png" alt="" />
+        <div class="service-num">03 / 08</div>
+      </header>
+      <h3>Implantes dentales</h3>
+      <p>Implantología guiada. Soluciones fijas para dientes perdidos, con garantía.</p>
+    </article>
+    <article class="service-card">
+      <header>
+        <img class="service-icon" src="img/icon-odontologia.png" alt="" />
+        <div class="service-num">04 / 08</div>
+      </header>
+      <h3>Diseño de sonrisa</h3>
+      <p>Carillas y estética avanzada. Simulación previa antes de tocar un diente.</p>
+    </article>
+  </div>
+</section>
+
+<!-- PROMISE -->
+<section class="promise">
+  <div class="promise-text">
+    <h2>Un dentista<br/><em>de confianza</em><br/>cerca de casa.</h2>
+    <p>Alfaz, Albir, Benidorm. Muchos de nuestros pacientes llevan años viviendo lejos de su país y nos han elegido por algo muy concreto: les hablamos en su idioma, les explicamos todo antes de empezar y no desaparecemos después.</p>
+  </div>
+  <div class="promise-points">
+    <div class="promise-point">
+      <div class="n">01</div>
+      <div class="t">Primera visita gratuita<small>Diagnóstico, presupuesto y plan de tratamiento sin coste.</small></div>
+      <div class="lang">ES</div>
+    </div>
+    <div class="promise-point">
+      <div class="n">02</div>
+      <div class="t">Spoken in English<small>Patricia and Daniel attend international patients daily.</small></div>
+      <div class="lang">EN</div>
+    </div>
+    <div class="promise-point">
+      <div class="n">03</div>
+      <div class="t">Nederlands &amp; Deutsch<small>Documentación y presupuestos disponibles en NL / DE.</small></div>
+      <div class="lang">NL·DE</div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit">
+  <div class="visit-photo"></div>
+  <div class="visit-content">
+    <h2>Visitanos.<br/><em>Primera consulta gratis.</em></h2>
+    <p>Entra, conoce la clínica y a Patricia. Sin compromiso ni presupuesto en la primera visita — solo una conversación honesta sobre lo que necesita tu boca.</p>
+    <div class="info-grid">
+      <div class="info-cell">
+        <small>Dirección</small>
+        <strong>Av. País Valencia, 17</strong>
+        <span>Local 3 · 03580 Alfaz del Pi, Alicante</span>
+      </div>
+      <div class="info-cell">
+        <small>Reservas</small>
+        <strong>+34 678 989 836</strong>
+        <span>smileclinicalfaz@gmail.com</span>
+      </div>
+      <div class="info-cell">
+        <small>Lunes &amp; Viernes</small>
+        <strong>09:00 — 16:30</strong>
+        <span>Horario continuo</span>
+      </div>
+      <div class="info-cell">
+        <small>Martes a Jueves</small>
+        <strong>09:00 — 13:00 · 17:00 — 20:00</strong>
+        <span>Partido para tardes</span>
+      </div>
+    </div>
+    <a href="#" class="book-cta">
+      Reservar por WhatsApp
+      <small>Respuesta &lt; 2h</small>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="mark">
+        <img src="img/logo-hires.jpg" alt="SmileClinic" />
+      </div>
+      <h4>SmileClinic — Alfaz del Pi</h4>
+      <p>Odontología cercana, honesta y en cuatro idiomas. Dra. Patricia León, colegiada 03377.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Tratamientos</h5>
+      <ul>
+        <li><a href="#">Odontología general</a></li>
+        <li><a href="#">Ortodoncia invisible</a></li>
+        <li><a href="#">Implantes</a></li>
+        <li><a href="#">Diseño de sonrisa</a></li>
+        <li><a href="#">Odontopediatría</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Clínica</h5>
+      <ul>
+        <li><a href="#">Sobre nosotros</a></li>
+        <li><a href="#">Equipo</a></li>
+        <li><a href="#">Casos reales</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Visitanos</h5>
+      <ul>
+        <li>Av. País Valencia, 17</li>
+        <li>Local 3 · Alfaz del Pi</li>
+        <li>+34 678 989 836</li>
+        <li>smileclinicalfaz@gmail.com</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-base">
+    <div>© 2026 SmileClinic Alfaz del Pi · Todos los derechos reservados</div>
+    <div class="kenaz-sig">Diseño propuesto por <a href="https://kenaz.studio" target="_blank">Kenaz Studio</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
