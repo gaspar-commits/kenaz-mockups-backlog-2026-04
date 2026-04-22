@@ -402,25 +402,456 @@
     letter-spacing: 0.1em;
   }
 
-  /* ───── Footer Kenaz signature ───── */
-  .kenaz-sig {
-    padding: 14px 56px;
+  /* ───── Section shell ───── */
+  section.block {
+    padding: 120px 56px;
+    background: var(--cream);
+    border-top: 1px solid var(--line);
+  }
+  section.block.dark {
+    background: var(--navy-deep);
+    color: var(--sand);
+    border-top: none;
+  }
+  .block-head {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: end;
+    margin-bottom: 64px;
+  }
+  .block-head .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+  .block-head .tag::before {
+    content: "";
+    width: 36px;
+    height: 1px;
+    background: var(--terracotta);
+  }
+  .block.dark .block-head .tag { color: var(--gold); }
+  .block.dark .block-head .tag::before { background: var(--gold); }
+  .block-head h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 76px;
+    line-height: 0.98;
+    color: var(--navy-deep);
+    letter-spacing: -0.02em;
+  }
+  .block.dark .block-head h2 { color: var(--sand); }
+  .block-head h2 em {
+    font-style: italic;
+    color: var(--navy);
+    font-weight: 500;
+  }
+  .block.dark .block-head h2 em { color: var(--gold); }
+  .block-head .lede {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--navy-deep);
+    opacity: 0.8;
+    max-width: 480px;
+    justify-self: end;
+    font-weight: 300;
+  }
+  .block.dark .block-head .lede {
+    color: var(--sand);
+    opacity: 0.78;
+  }
+
+  /* ───── Arroces grid ───── */
+  .arroz-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+  }
+  .arroz-card {
+    background: var(--sand);
+    display: flex;
+    flex-direction: column;
+  }
+  .arroz-card .media {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: var(--navy-deep);
+  }
+  .arroz-card .media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .arroz-card .body {
+    padding: 26px 22px 28px;
+  }
+  .arroz-card .body .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 12px;
+  }
+  .arroz-card .body h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.1;
+    color: var(--navy-deep);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .arroz-card .body p {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--muted);
+    font-weight: 400;
+  }
+  .arroz-cta {
+    margin-top: 48px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: var(--cream);
     border-top: 1px solid var(--line);
+    padding-top: 28px;
+  }
+  .arroz-cta span {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
+    font-size: 11px;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--muted);
   }
-  .kenaz-sig a { color: var(--navy); text-decoration: none; }
-  .kenaz-sig .runa {
-    color: var(--navy);
-    font-family: 'JetBrains Mono', monospace;
+  .arroz-cta a {
+    color: var(--navy-deep);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
     font-weight: 500;
+    padding: 14px 2px;
+    border-bottom: 1px solid var(--navy-deep);
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .arroz-cta a::after { content: "→"; font-size: 14px; }
+
+  /* ───── La casa (editorial) ───── */
+  .casa-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .casa-grid h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 96px;
+    line-height: 0.95;
+    color: var(--sand);
+    letter-spacing: -0.025em;
+    margin-bottom: 40px;
+  }
+  .casa-grid h2 em {
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 500;
+  }
+  .casa-grid .col-left .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 36px;
+  }
+  .casa-grid .col-left .tag::before {
+    content: "";
+    width: 36px;
+    height: 1px;
+    background: var(--gold);
+  }
+  .casa-copy p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--sand);
+    opacity: 0.82;
+    max-width: 480px;
+    margin-bottom: 18px;
+    font-weight: 300;
+  }
+  .casa-copy p:last-child { margin-bottom: 0; }
+  .casa-facts {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    border-left: 1px solid rgba(242, 236, 224, 0.18);
+    padding-left: 36px;
+  }
+  .casa-facts .item {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 22px;
+    align-items: start;
+  }
+  .casa-facts .k {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding-top: 4px;
+  }
+  .casa-facts .v {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--sand);
+    line-height: 1.25;
+    letter-spacing: -0.005em;
+  }
+  .casa-facts .v small {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+    color: rgba(242, 236, 224, 0.6);
+    margin-top: 6px;
+    letter-spacing: 0.02em;
+  }
+
+  /* ───── La terraza (gallery) ───── */
+  .terraza-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 340px 340px;
+    gap: 20px;
+  }
+  .terraza-grid figure {
+    position: relative;
+    overflow: hidden;
+    background: var(--sand);
+  }
+  .terraza-grid figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .terraza-grid figure figcaption {
+    position: absolute;
+    bottom: 18px;
+    left: 18px;
+    background: rgba(250, 246, 238, 0.92);
+    backdrop-filter: blur(6px);
+    padding: 9px 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--navy-deep);
+  }
+  .terraza-grid .span-2-cols { grid-column: span 2; }
+  .terraza-grid .span-2-rows { grid-row: span 2; }
+
+  /* ───── Reservas ───── */
+  .reservas-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--line);
+    background: var(--sand);
+  }
+  .reservas-grid .pane {
+    padding: 64px 56px;
+  }
+  .reservas-grid .pane.dark {
+    background: var(--navy-deep);
+    color: var(--sand);
+  }
+  .reservas-grid .pane h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 44px;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 28px;
+    color: var(--navy-deep);
+  }
+  .reservas-grid .pane.dark h3 { color: var(--sand); }
+  .reservas-grid .tel-big {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 58px;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--sand);
+    margin-bottom: 16px;
+    display: block;
+    text-decoration: none;
+  }
+  .reservas-grid .tel-big:hover { color: var(--gold); }
+  .reservas-grid .pane.dark p {
+    font-size: 14px;
+    line-height: 1.65;
+    color: rgba(242, 236, 224, 0.78);
+    max-width: 380px;
+    font-weight: 300;
+  }
+  .reservas-grid .info-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 20px;
+    padding: 18px 0;
+    border-top: 1px solid var(--line);
+    align-items: start;
+  }
+  .reservas-grid .info-row:first-of-type { border-top: none; padding-top: 4px; }
+  .reservas-grid .info-row .k {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-top: 4px;
+  }
+  .reservas-grid .info-row .v {
+    font-size: 15px;
+    color: var(--navy-deep);
+    line-height: 1.45;
+    font-weight: 400;
+  }
+  .reservas-grid .info-row .v a {
+    color: var(--navy-deep);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+  }
+  .reservas-grid .info-row .v a:hover { border-color: var(--terracotta); }
+  .reservas-grid .info-row .v small {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    margin-top: 4px;
+    text-transform: uppercase;
+  }
+
+  /* ───── Footer real ───── */
+  footer.site {
+    background: var(--navy-deep);
+    color: var(--sand);
+    padding: 96px 56px 40px;
+  }
+  footer.site .top {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr 1fr;
+    gap: 56px;
+    padding-bottom: 56px;
+    border-bottom: 1px solid rgba(242, 236, 224, 0.14);
+  }
+  footer.site .brand-block .mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 54px;
+    line-height: 1;
+    color: var(--sand);
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+  }
+  footer.site .brand-block .sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+  }
+  footer.site .brand-block p {
+    font-size: 14px;
+    line-height: 1.65;
+    max-width: 340px;
+    color: rgba(242, 236, 224, 0.72);
+    font-weight: 300;
+  }
+  footer.site .col h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 22px;
+    font-weight: 400;
+  }
+  footer.site .col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  footer.site .col ul li,
+  footer.site .col ul a {
+    font-size: 14px;
+    color: rgba(242, 236, 224, 0.82);
+    text-decoration: none;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+  footer.site .col ul a:hover { color: var(--gold); }
+  footer.site .col ul li small {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: rgba(242, 236, 224, 0.5);
+    margin-top: 4px;
+    text-transform: uppercase;
+  }
+  footer.site .bottom {
+    padding-top: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(242, 236, 224, 0.55);
+  }
+  footer.site .bottom a {
+    color: rgba(242, 236, 224, 0.72);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(242, 236, 224, 0.18);
+    padding-bottom: 2px;
+  }
+  footer.site .bottom a:hover { color: var(--gold); }
+  footer.site .bottom .kenaz-mark {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(242, 236, 224, 0.55);
+  }
+  footer.site .bottom .kenaz-mark .runa {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--gold);
+    font-size: 13px;
+    letter-spacing: 0;
   }
 </style>
 </head>
@@ -523,10 +954,228 @@
   </div>
 </section>
 
-<div class="kenaz-sig">
-  <span>Sand · Restaurante mediterráneo en Moraira · Grupo LaSort</span>
-  <span>Propuesta de diseño · <span class="runa">ᚲ</span> <a href="https://kenaz.studio">Kenaz Studio</a></span>
-</div>
+<!-- ═════════ ARROCES ═════════ -->
+<section class="block" id="arroces">
+  <div class="block-head">
+    <div>
+      <div class="tag">Nuestra especialidad</div>
+      <h2>Arroces <em>del día.</em></h2>
+    </div>
+    <p class="lede">
+      Fumet propio, grano justo y pescado de la lonja de Moraira. Paellas individuales servidas en sartén, como las cocinan los que saben.
+    </p>
+  </div>
+
+  <div class="arroz-grid">
+    <div class="arroz-card">
+      <div class="media"><img src="img/paella-individual.png" alt="Paella individual de Sand"></div>
+      <div class="body">
+        <div class="num">01 · Paella</div>
+        <h3>Paella individual</h3>
+        <p>Servida en sartén propia, punto justo y socarrat. Marisco o mixta según temporada.</p>
+      </div>
+    </div>
+    <div class="arroz-card">
+      <div class="media"><img src="img/arroces.jpg" alt="Arroz del senyoret"></div>
+      <div class="body">
+        <div class="num">02 · Arroz</div>
+        <h3>Arroz del senyoret</h3>
+        <p>Sin espinas, sin pelar. Pescado limpio, fumet concentrado y grano abierto en su medida.</p>
+      </div>
+    </div>
+    <div class="arroz-card">
+      <div class="media"><img src="img/salmonetes.jpg" alt="Salmonetes de la lonja de Moraira"></div>
+      <div class="body">
+        <div class="num">03 · Del mar</div>
+        <h3>Pescado de lonja</h3>
+        <p>Entrada diaria de Moraira. Salmonetes, gallo, pescadilla — lo que traiga la barca esa mañana.</p>
+      </div>
+    </div>
+    <div class="arroz-card">
+      <div class="media"><img src="img/espencat.jpg" alt="Espencat valenciano"></div>
+      <div class="body">
+        <div class="num">04 · De la huerta</div>
+        <h3>Espencat</h3>
+        <p>Pimiento y berenjena asados, anchoa y aceite virgen. La Marina Alta en una tabla.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="arroz-cta">
+    <span>Los platos cambian con la temporada</span>
+    <a href="#">Consultar carta completa</a>
+  </div>
+</section>
+
+<!-- ═════════ LA CASA ═════════ -->
+<section class="block dark" id="casa">
+  <div class="casa-grid">
+    <div class="col-left">
+      <div class="tag">La casa</div>
+      <h2>Una cocina mediterránea, <em>con identidad propia.</em></h2>
+      <div class="casa-copy">
+        <p>
+          Sand pertenece al Grupo LaSort, un grupo familiar con raíces en la Marina Alta que cuida sus casas una por una. En Sand se trabaja con producto de la lonja de Moraira y producto de huerta de temporada.
+        </p>
+        <p>
+          La Guía Michelin incluye al restaurante en su Selección 2025: cocina honesta, sin artificios, pensada para comer frente al mar sin perder el nivel.
+        </p>
+      </div>
+    </div>
+    <div class="casa-facts">
+      <div class="item">
+        <div class="k">Grupo</div>
+        <div class="v">Grupo LaSort<small>Restaurantes en la Marina Alta</small></div>
+      </div>
+      <div class="item">
+        <div class="k">Guía</div>
+        <div class="v">Michelin Selección 2025<small>Reconocimiento oficial</small></div>
+      </div>
+      <div class="item">
+        <div class="k">Producto</div>
+        <div class="v">Lonja de Moraira<small>Pescado del día</small></div>
+      </div>
+      <div class="item">
+        <div class="k">Ubicación</div>
+        <div class="v">Playa de l&rsquo;Ampolla<small>Paseo Senillar 22 · Moraira</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ LA TERRAZA ═════════ -->
+<section class="block" id="terraza">
+  <div class="block-head">
+    <div>
+      <div class="tag">Primera línea de mar</div>
+      <h2>La terraza, <em>frente a l&rsquo;Ampolla.</em></h2>
+    </div>
+    <p class="lede">
+      Cocina mediterránea completa: arroces, pescados, carnes, pastas y pizzas al horno. Comida y sobremesa con los pies casi en la arena.
+    </p>
+  </div>
+
+  <div class="terraza-grid">
+    <figure class="span-2-cols span-2-rows">
+      <img src="img/carnes.jpg" alt="Carnes a la brasa en Sand">
+      <figcaption>De la brasa</figcaption>
+    </figure>
+    <figure>
+      <img src="img/marisco.jpg" alt="Marisco fresco del día">
+      <figcaption>Marisco · Del día</figcaption>
+    </figure>
+    <figure>
+      <img src="img/pasta.jpg" alt="Pasta fresca italiana">
+      <figcaption>Pasta fresca</figcaption>
+    </figure>
+    <figure>
+      <img src="img/pizzas.jpg" alt="Pizza al horno">
+      <figcaption>Pizza al horno</figcaption>
+    </figure>
+    <figure>
+      <img src="img/espencat.jpg" alt="Entrantes de la huerta">
+      <figcaption>De la huerta</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ═════════ RESERVAS ═════════ -->
+<section class="block" id="reservas" style="padding-top: 40px;">
+  <div class="block-head">
+    <div>
+      <div class="tag">Reservas</div>
+      <h2>Guardá tu mesa <em>con vistas.</em></h2>
+    </div>
+    <p class="lede">
+      Abierto todos los días de 08:00 a 22:45. La terraza se llena pronto — recomendamos reservar por teléfono con algo de antelación.
+    </p>
+  </div>
+
+  <div class="reservas-grid">
+    <div class="pane dark">
+      <h3>Reservar<br>por teléfono</h3>
+      <a href="tel:+34966491949" class="tel-big">+34 966 49 19 49</a>
+      <p>
+        Nuestro equipo atiende en horario del restaurante. Si no podemos contestar, dejá mensaje y devolvemos la llamada.
+      </p>
+    </div>
+    <div class="pane">
+      <div class="info-row">
+        <div class="k">Dirección</div>
+        <div class="v">
+          Paseo Senillar, 22<br>
+          03724 Moraira · Alicante
+          <small><a href="https://maps.google.com/?q=Restaurante+Sand+Moraira" target="_blank" rel="noopener">Abrir en Google Maps ↗</a></small>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="k">Horario</div>
+        <div class="v">
+          Lunes a domingo · 08:00 – 22:45
+          <small>Sin día de cierre</small>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="k">Email</div>
+        <div class="v">
+          <a href="mailto:sand@grupolasort.com">sand@grupolasort.com</a>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="k">Grupos</div>
+        <div class="v">
+          Eventos privados y celebraciones bajo consulta
+          <small>Escribinos con fecha y comensales</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ FOOTER REAL ═════════ -->
+<footer class="site">
+  <div class="top">
+    <div class="brand-block">
+      <div class="mark">Sand</div>
+      <div class="sub">Moraira · Grupo LaSort</div>
+      <p>
+        Cocina mediterránea frente al mar. Arroces de autor, pescado de la lonja de Moraira y primera línea de la Playa de l&rsquo;Ampolla.
+      </p>
+    </div>
+
+    <div class="col">
+      <h4>Contacto</h4>
+      <ul>
+        <li>Paseo Senillar, 22<br><small>03724 Moraira · Alicante</small></li>
+        <li><a href="tel:+34966491949">+34 966 49 19 49</a></li>
+        <li><a href="mailto:sand@grupolasort.com">sand@grupolasort.com</a></li>
+      </ul>
+    </div>
+
+    <div class="col">
+      <h4>Visitar</h4>
+      <ul>
+        <li>Lunes a domingo<br><small>08:00 – 22:45</small></li>
+        <li><a href="https://maps.google.com/?q=Restaurante+Sand+Moraira" target="_blank" rel="noopener">Cómo llegar ↗</a></li>
+        <li><a href="#reservas">Reservar mesa</a></li>
+      </ul>
+    </div>
+
+    <div class="col">
+      <h4>Seguinos</h4>
+      <ul>
+        <li><a href="https://www.instagram.com/restaurantesand/" target="_blank" rel="noopener">Instagram ↗</a></li>
+        <li><a href="https://www.facebook.com/restaurantesand/" target="_blank" rel="noopener">Facebook ↗</a></li>
+        <li><a href="https://grupolasort.com" target="_blank" rel="noopener">Grupo LaSort ↗</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <span>© 2026 Restaurante Sand · Grupo LaSort · Todos los derechos reservados</span>
+    <span class="kenaz-mark"><span class="runa">ᚲ</span> Propuesta de diseño · <a href="https://kenaz.studio">kenaz.studio</a></span>
+  </div>
+</footer>
 
 </body>
 </html>
