@@ -293,6 +293,344 @@
   }
   .substrip .addr strong { font-weight: 600; font-style: normal; letter-spacing: 0.02em; }
 
+  /* ─── Section shell */
+  .section {
+    padding: 112px 56px;
+    border-top: 1px solid var(--line);
+  }
+  .section.light {
+    background: var(--cream);
+    color: var(--ink);
+    border-top: 1px solid var(--line-dark);
+  }
+  .section-head {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 56px;
+    margin-bottom: 72px;
+    align-items: end;
+  }
+  .section-eyebrow {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 18px;
+  }
+  .section.light .section-eyebrow { color: rgba(14,14,14,0.55); }
+  .section-eyebrow .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent);
+  }
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 340;
+    font-size: clamp(40px, 4.2vw, 68px);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+  }
+  .section.light .section-title { color: var(--ink); }
+  .section-title em {
+    font-style: italic;
+    font-weight: 340;
+    color: var(--accent);
+  }
+  .section.light .section-title em { color: var(--ink); font-style: italic; }
+  .section-lede {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--muted);
+    max-width: 520px;
+  }
+  .section.light .section-lede { color: rgba(14,14,14,0.68); }
+
+  /* ─── Instalaciones grid */
+  .facility-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--line);
+    border-left: 1px solid var(--line);
+  }
+  .facility {
+    padding: 40px 32px 48px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    min-height: 260px;
+    position: relative;
+  }
+  .facility .num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+  .facility h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 360;
+    font-size: 26px;
+    line-height: 1.08;
+    letter-spacing: -0.012em;
+    color: var(--cream);
+  }
+  .facility h3 em { font-style: italic; color: var(--accent); font-weight: 360; }
+  .facility p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--muted);
+    margin-top: auto;
+  }
+
+  /* ─── Clases dirigidas grid */
+  .classes-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 18px;
+  }
+  .class-card {
+    background: rgba(244,240,232,0.04);
+    border: 1px solid rgba(14,14,14,0.08);
+    padding: 26px 24px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-height: 168px;
+    transition: background .25s;
+  }
+  .section.light .class-card {
+    background: rgba(14,14,14,0.03);
+    border: 1px solid rgba(14,14,14,0.08);
+  }
+  .class-card .tag {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(14,14,14,0.55);
+  }
+  .class-card h4 {
+    font-family: 'Fraunces', serif;
+    font-weight: 360;
+    font-size: 24px;
+    line-height: 1.04;
+    letter-spacing: -0.012em;
+    color: var(--ink);
+  }
+  .class-card p {
+    font-size: 13px;
+    line-height: 1.55;
+    color: rgba(14,14,14,0.62);
+    margin-top: auto;
+  }
+  .classes-note {
+    margin-top: 32px;
+    padding: 18px 22px;
+    border: 1px dashed rgba(14,14,14,0.2);
+    display: flex; align-items: center; gap: 14px;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(14,14,14,0.6);
+  }
+  .classes-note strong { color: var(--ink); font-weight: 600; }
+  .classes-note .pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 12px;
+    background: var(--ink);
+    color: var(--cream);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+  }
+  .classes-note .pill .d {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--accent);
+  }
+
+  /* ─── Primera visita */
+  .visit {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 0;
+    border-top: 1px solid var(--line);
+  }
+  .visit-text {
+    padding: 72px 56px;
+    border-right: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .visit-steps {
+    padding: 72px 56px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+  .visit h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 340;
+    font-size: clamp(40px, 4.4vw, 64px);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+    margin-bottom: 22px;
+  }
+  .visit h2 em { font-style: italic; color: var(--accent); font-weight: 340; }
+  .visit .lede {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--muted);
+    max-width: 480px;
+    margin-bottom: 40px;
+  }
+  .visit-cta {
+    display: flex; flex-wrap: wrap; gap: 14px; align-items: center;
+  }
+  .visit-cta .phone {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 22px;
+    color: var(--cream);
+    letter-spacing: 0.02em;
+  }
+  .step {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 20px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .step:last-child { border-bottom: none; }
+  .step .s-num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 24px;
+    color: var(--accent);
+    letter-spacing: -0.01em;
+  }
+  .step h4 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--cream);
+    margin-bottom: 6px;
+  }
+  .step p {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--muted);
+  }
+
+  /* ─── Contact / Visit */
+  .contact {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 0;
+    border-top: 1px solid var(--line-dark);
+  }
+  .contact-main {
+    padding: 80px 56px;
+    border-right: 1px solid var(--line-dark);
+  }
+  .contact-side {
+    padding: 80px 56px;
+    background: var(--cream-dim);
+  }
+  .contact h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 340;
+    font-size: clamp(44px, 4.8vw, 72px);
+    line-height: 1;
+    letter-spacing: -0.022em;
+    color: var(--ink);
+    margin-bottom: 36px;
+  }
+  .contact h2 em { font-style: italic; }
+  .contact-rows { display: flex; flex-direction: column; gap: 0; }
+  .c-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 24px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(14,14,14,0.1);
+    align-items: baseline;
+  }
+  .c-row:first-of-type { border-top: 1px solid rgba(14,14,14,0.1); }
+  .c-row .label {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(14,14,14,0.55);
+  }
+  .c-row .val {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.3;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  .c-row .val a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(14,14,14,0.25);
+    padding-bottom: 1px;
+  }
+  .c-row .val a:hover { border-bottom-color: var(--ink); }
+  .c-row .val.note {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    color: rgba(14,14,14,0.68);
+  }
+  .map-card {
+    border: 1px solid rgba(14,14,14,0.12);
+    background: var(--cream);
+    padding: 28px 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .map-card .pin {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(14,14,14,0.55);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .map-card .pin .d {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent);
+  }
+  .map-card h4 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .map-card .map-link {
+    margin-top: 6px;
+    padding: 12px 16px;
+    background: var(--ink);
+    color: var(--cream);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-flex; justify-content: space-between; align-items: center;
+  }
+  .map-card .map-link .arrow { font-family: 'Fraunces', serif; font-style: italic; font-size: 14px; }
+
   /* ─── Footer signature */
   .signature {
     padding: 18px 56px;
@@ -303,6 +641,17 @@
     background: var(--ink);
   }
   .signature a { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(244,240,232,0.2); padding-bottom: 1px; }
+
+  @media (max-width: 960px) {
+    .facility-grid { grid-template-columns: repeat(2, 1fr); }
+    .classes-wrap { grid-template-columns: repeat(2, 1fr); }
+    .visit { grid-template-columns: 1fr; }
+    .visit-text, .visit-steps { padding: 56px 32px; border-right: none; }
+    .contact { grid-template-columns: 1fr; }
+    .contact-main, .contact-side { padding: 56px 32px; border-right: none; }
+    .section-head { grid-template-columns: 1fr; gap: 24px; }
+    .section { padding: 72px 32px; }
+  }
 
 </style>
 </head>
@@ -337,14 +686,14 @@
         </div>
 
         <h1 class="headline">
-          <span class="thin">Un centro de</span><br/>
-          <em>600 m²</em> reales<br/>
+          <span class="thin">Un centro</span><br/>
+          <em>completo</em><br/>
           en el corazón<br/>
           de Calpe.
         </h1>
 
         <p class="sub">
-          Sala de musculación, dos salas de clases dirigidas y entrenamiento personal en Av. Diputación. Abierto de lunes a viernes, de siete de la mañana a diez de la noche.
+          Sala de musculación, dos salas de clases dirigidas, entrenamiento personal y sistema de reservas por app. En Av. Diputación.
         </p>
 
         <div class="cta-row">
@@ -355,16 +704,16 @@
 
       <div class="facts">
         <div class="fact">
-          <div class="n">600<sup>m²</sup></div>
-          <div class="l">Instalaciones</div>
-        </div>
-        <div class="fact">
           <div class="n">3</div>
           <div class="l">Salas · Musculación + 2 clases</div>
         </div>
         <div class="fact">
-          <div class="n">7–22<sup>h</sup></div>
-          <div class="l">Lunes a viernes</div>
+          <div class="n">1:1</div>
+          <div class="l">Entrenamiento personal</div>
+        </div>
+        <div class="fact">
+          <div class="n">App</div>
+          <div class="l">Reservas Trainingym</div>
         </div>
       </div>
     </div>
@@ -376,18 +725,18 @@
       <div class="schedule-card">
         <div class="title">
           <span class="dot"></span>
-          <span>Horario del centro</span>
+          <span>Reservas · Trainingym</span>
         </div>
         <div class="schedule-row">
-          <span class="day">Lunes a viernes</span>
-          <span class="time">07:00 — 22:00</span>
+          <span class="day">Clases dirigidas</span>
+          <span class="time">En la app</span>
         </div>
         <div class="schedule-row">
-          <span class="day">Sábado</span>
-          <span class="time">08:00 — 14:00</span>
+          <span class="day">Entrenador personal</span>
+          <span class="time">Bajo cita</span>
         </div>
         <div class="schedule-cta">
-          <span>Ver calendario completo</span>
+          <span>Consulta horario actual</span>
           <span>→</span>
         </div>
       </div>
@@ -414,6 +763,176 @@
       <strong>653 698 880</strong> · info@plazafitnesscalpe.es
     </div>
   </div>
+
+  <!-- ─── SECCIÓN 1 · Instalaciones -->
+  <section class="section" id="instalaciones">
+    <div class="section-head">
+      <div>
+        <div class="section-eyebrow">
+          <span class="dot"></span>
+          <span>El centro</span>
+        </div>
+        <h2 class="section-title">Instalaciones<br/><em>que acompañan</em><br/>tu entrenamiento.</h2>
+      </div>
+      <p class="section-lede">
+        Un centro pensado para entrenar en serio sin complicaciones. Musculación, clases dirigidas y trabajo personal, todo en el mismo sitio y gestionado desde la app.
+      </p>
+    </div>
+
+    <div class="facility-grid">
+      <article class="facility">
+        <span class="num">01</span>
+        <h3>Sala de <em>musculación</em></h3>
+        <p>Zona de fuerza, cardio y máquinas guiadas. Espacio abierto para entrenar a tu ritmo, con material para cualquier nivel.</p>
+      </article>
+      <article class="facility">
+        <span class="num">02</span>
+        <h3>Dos salas de <em>clases dirigidas</em></h3>
+        <p>Dos espacios independientes que permiten compaginar varias disciplinas en paralelo a lo largo del día.</p>
+      </article>
+      <article class="facility">
+        <span class="num">03</span>
+        <h3>Entrenamiento <em>personal</em></h3>
+        <p>Sesiones 1 a 1 con un plan adaptado a tu objetivo, tu nivel y tu tiempo real. Se reserva bajo cita.</p>
+      </article>
+      <article class="facility">
+        <span class="num">04</span>
+        <h3>App <em>Trainingym</em></h3>
+        <p>Reservas de clases, control de tus entrenamientos y seguimiento desde el móvil. Todo el centro en una sola app.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ─── SECCIÓN 2 · Clases dirigidas -->
+  <section class="section light" id="clases">
+    <div class="section-head">
+      <div>
+        <div class="section-eyebrow">
+          <span class="dot"></span>
+          <span>Clases dirigidas</span>
+        </div>
+        <h2 class="section-title">Disciplinas<br/>para <em>empezar</em>,<br/>mantener o avanzar.</h2>
+      </div>
+      <p class="section-lede">
+        Cada semana se combinan clases de fuerza, movilidad y cardio en las dos salas del centro. Elige las que encajan contigo y reserva tu plaza desde la app.
+      </p>
+    </div>
+
+    <div class="classes-wrap">
+      <article class="class-card">
+        <span class="tag">Fuerza</span>
+        <h4>Entrenamiento funcional</h4>
+        <p>Trabajo de fuerza y resistencia con peso corporal y material ligero.</p>
+      </article>
+      <article class="class-card">
+        <span class="tag">Cuerpo y mente</span>
+        <h4>Pilates</h4>
+        <p>Control, core y postura. Sesiones de baja intensidad y alta precisión.</p>
+      </article>
+      <article class="class-card">
+        <span class="tag">Cuerpo y mente</span>
+        <h4>Yoga</h4>
+        <p>Movilidad, respiración y calma. Para descomprimir y recuperar.</p>
+      </article>
+      <article class="class-card">
+        <span class="tag">Intensidad</span>
+        <h4>HIIT</h4>
+        <p>Intervalos cortos de alta intensidad. Para ganar fondo sin dedicar horas.</p>
+      </article>
+    </div>
+
+    <div class="classes-note">
+      <span class="pill"><span class="d"></span> Oferta habitual</span>
+      <span><strong>Consulta el horario actualizado</strong> en la app Trainingym. La programación se ajusta por temporada.</span>
+    </div>
+  </section>
+
+  <!-- ─── SECCIÓN 3 · Primera visita -->
+  <section class="section" id="visita">
+    <div class="visit">
+      <div class="visit-text">
+        <div class="section-eyebrow">
+          <span class="dot"></span>
+          <span>Primera visita</span>
+        </div>
+        <h2>Reserva una <em>visita guiada</em> sin compromiso.</h2>
+        <p class="lede">
+          Antes de apuntarte, conoces el centro por dentro, pruebas una clase y hablas con el equipo. Sin presión, sin matrícula previa.
+        </p>
+        <div class="visit-cta">
+          <a href="tel:+34653698880" class="btn btn-primary">Reservar visita <span class="arrow">→</span></a>
+          <span class="phone">653 698 880</span>
+        </div>
+      </div>
+
+      <div class="visit-steps">
+        <div class="step">
+          <span class="s-num">i.</span>
+          <div>
+            <h4>Tour por el centro</h4>
+            <p>Te enseñan las dos salas, la zona de musculación y cómo funciona el día a día.</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="s-num">ii.</span>
+          <div>
+            <h4>Prueba una clase</h4>
+            <p>Eliges una clase dirigida de la programación vigente y la haces sin coste.</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="s-num">iii.</span>
+          <div>
+            <h4>Asesoramiento</h4>
+            <p>Hablas con el equipo sobre tu objetivo y decides qué modalidad te encaja mejor.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SECCIÓN 4 · Visit / Contact -->
+  <section class="section light" id="contacto" style="padding: 0;">
+    <div class="contact">
+      <div class="contact-main">
+        <div class="section-eyebrow">
+          <span class="dot"></span>
+          <span>Visita · Contacto</span>
+        </div>
+        <h2>Nos <em>encuentras</em> aquí.</h2>
+
+        <div class="contact-rows">
+          <div class="c-row">
+            <span class="label">Dirección</span>
+            <span class="val">Av. Diputación 49-51<br/>03710 Calpe · Alicante</span>
+          </div>
+          <div class="c-row">
+            <span class="label">Teléfono</span>
+            <span class="val"><a href="tel:+34653698880">653 698 880</a></span>
+          </div>
+          <div class="c-row">
+            <span class="label">Email</span>
+            <span class="val"><a href="mailto:info@plazafitnesscalpe.es">info@plazafitnesscalpe.es</a></span>
+          </div>
+          <div class="c-row">
+            <span class="label">Horario</span>
+            <span class="val note">Consulta el horario actualizado del centro y de las clases en la app Trainingym.</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="contact-side">
+        <div class="map-card">
+          <div class="pin"><span class="d"></span> Cómo llegar</div>
+          <h4>Av. Diputación 49-51, Calpe — en pleno centro, a pocos minutos andando desde la playa de la Fossa.</h4>
+          <a href="https://maps.google.com/?q=Plaza+Fitness+Calpe" class="map-link" target="_blank" rel="noopener">
+            Ver en Google Maps
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </aside>
+    </div>
+  </section>
 
   <!-- Kenaz minimal signature -->
   <footer class="signature">
