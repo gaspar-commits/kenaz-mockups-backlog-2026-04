@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cervecería Marina Alta Brewing — Cerveza artesanal de la Marina Alta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1a130c;
+    --ink-soft:#3a2f23;
+    --paper:#f4ecdd;
+    --paper-warm:#ebe0c7;
+    --cream:#fbf6eb;
+    --copper:#a05a1f;
+    --copper-deep:#7a3f12;
+    --amber:#c88133;
+    --amber-glow:#e1a65a;
+    --hop:#5e6b34;
+    --line:rgba(26,19,12,.14);
+    --line-strong:rgba(26,19,12,.28);
+    --mut:rgba(26,19,12,.58);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--paper);color:var(--ink);font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;font-feature-settings:"ss01","cv11"}
+  body{min-height:100vh;overflow-x:hidden}
+
+  /* ——— NAV ——— */
+  nav{position:absolute;top:0;left:0;right:0;z-index:30;padding:30px 56px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+  .brand{display:flex;align-items:center;gap:14px}
+  .logo-mark{width:54px;height:54px;position:relative;display:flex;align-items:center;justify-content:center;border:1.5px solid var(--copper);border-radius:50%;background:var(--cream)}
+  .logo-mark svg{width:28px;height:28px}
+  .logo-word{display:flex;flex-direction:column;line-height:1}
+  .logo-word .top{font-family:'Fraunces',serif;font-weight:500;font-size:18px;color:var(--ink);letter-spacing:-0.01em}
+  .logo-word .sub{font-family:'JetBrains Mono',monospace;font-weight:400;font-size:10px;color:var(--copper);letter-spacing:0.22em;text-transform:uppercase;margin-top:4px}
+  .nav-links{display:flex;gap:34px;align-items:center}
+  .nav-links a{font-family:'Inter',sans-serif;font-weight:400;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-soft);text-decoration:none;transition:color .2s}
+  .nav-links a:hover{color:var(--copper)}
+  .nav-links a.active{color:var(--ink);font-weight:500}
+  .nav-cta{display:flex;align-items:center;gap:18px}
+  .lang{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:var(--mut);display:flex;gap:6px}
+  .lang .act{color:var(--ink);font-weight:500}
+  .book-btn{background:var(--ink);color:var(--cream);font-family:'Inter',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;padding:13px 22px;border:none;cursor:pointer;border-radius:1px;transition:background .2s;text-decoration:none}
+  .book-btn:hover{background:var(--copper-deep)}
+
+  /* ——— HERO ——— */
+  .hero{position:relative;padding:150px 56px 60px;min-height:1050px;max-width:1680px;margin:0 auto}
+  .hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:start}
+
+  .eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:36px}
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--copper)}
+  .eyebrow span{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.26em;text-transform:uppercase;color:var(--ink-soft);font-weight:500}
+
+  h1.hero-title{font-family:'Fraunces',serif;font-weight:300;font-size:104px;line-height:0.94;letter-spacing:-0.035em;color:var(--ink)}
+  h1 .em{font-style:italic;font-weight:300;color:var(--copper);letter-spacing:-0.02em}
+  h1 .line{display:block}
+
+  .hero-sub{max-width:500px;font-family:'Inter',sans-serif;font-weight:300;font-size:18px;line-height:1.65;color:var(--ink-soft);margin-top:34px;letter-spacing:-0.005em}
+
+  .hero-actions{display:flex;align-items:center;gap:26px;margin-top:44px}
+  .btn-primary{background:var(--ink);color:var(--cream);font-family:'Inter',sans-serif;font-weight:500;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;padding:18px 30px;border:none;cursor:pointer;border-radius:1px;display:inline-flex;align-items:center;gap:14px;text-decoration:none}
+  .btn-primary .arr{width:18px;height:1px;background:var(--cream);position:relative}
+  .btn-primary .arr::after{content:"";position:absolute;right:0;top:-3px;width:7px;height:7px;border-top:1px solid var(--cream);border-right:1px solid var(--cream);transform:rotate(45deg)}
+  .btn-secondary{font-family:'Inter',sans-serif;font-weight:500;font-size:13px;letter-spacing:0.08em;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:5px;text-transform:uppercase}
+
+  /* ——— lineup strip ——— */
+  .lineup{margin-top:58px;border-top:1px solid var(--line);padding-top:26px;max-width:580px}
+  .lineup .lbl{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.26em;text-transform:uppercase;color:var(--mut);margin-bottom:14px}
+  .lineup .row{display:flex;flex-wrap:wrap;gap:8px 0}
+  .lineup .n{font-family:'Fraunces',serif;font-weight:400;font-size:17px;color:var(--ink);font-style:italic;position:relative;padding-right:20px}
+  .lineup .n:not(:last-child)::after{content:"·";position:absolute;right:6px;top:50%;transform:translateY(-55%);color:var(--copper);font-style:normal;font-size:14px}
+
+  /* ——— RIGHT VISUAL ——— */
+  .hero-visual{position:relative;height:780px}
+
+  .bottle-stage{position:absolute;top:0;right:0;width:100%;height:620px;background:linear-gradient(180deg, var(--paper-warm) 0%, var(--cream) 70%, var(--cream) 100%);border:1px solid var(--line);overflow:hidden}
+  .bottle-stage::before{content:"";position:absolute;inset:0;background:
+    radial-gradient(circle at 25% 30%, rgba(200,129,51,.18) 0%, transparent 50%),
+    radial-gradient(circle at 75% 80%, rgba(122,63,18,.12) 0%, transparent 55%);
+    pointer-events:none}
+
+  /* hop illustration top-right corner */
+  .hop-decor{position:absolute;top:22px;right:24px;width:110px;height:110px;opacity:.45}
+
+  .stage-copy{position:absolute;top:36px;left:36px;z-index:3;max-width:220px}
+  .stage-copy .k{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.26em;text-transform:uppercase;color:var(--copper);margin-bottom:10px}
+  .stage-copy .v{font-family:'Fraunces',serif;font-weight:400;font-size:19px;color:var(--ink);line-height:1.35;letter-spacing:-0.01em}
+  .stage-copy .v em{font-style:italic;color:var(--copper)}
+
+  /* bottle trio */
+  .bottles{position:absolute;bottom:0;left:50%;transform:translateX(-50%);display:flex;align-items:flex-end;gap:42px;padding-bottom:40px}
+  .bottle{position:relative;display:flex;flex-direction:column;align-items:center}
+  .bottle svg{display:block;filter:drop-shadow(0 18px 22px rgba(26,19,12,.18))}
+  .bottle .cap{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--mut);margin-top:14px}
+  .bottle .name{font-family:'Fraunces',serif;font-weight:400;font-size:15px;color:var(--ink);font-style:italic;margin-top:4px;letter-spacing:-0.005em;text-align:center;max-width:120px;line-height:1.2}
+
+  /* award badge ——— bottom-left of visual */
+  .award-card{position:absolute;top:42px;right:-24px;background:var(--cream);padding:18px 22px;z-index:5;border:1px solid var(--line-strong);min-width:220px;box-shadow:0 18px 40px -20px rgba(26,19,12,.22)}
+  .award-card .yr{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.26em;text-transform:uppercase;color:var(--copper);margin-bottom:8px}
+  .award-card .tl{font-family:'Fraunces',serif;font-weight:400;font-size:17px;color:var(--ink);line-height:1.3;letter-spacing:-0.005em}
+  .award-card .tl em{font-style:italic;color:var(--copper)}
+  .award-card .src{font-family:'Inter',sans-serif;font-size:11px;color:var(--mut);margin-top:8px;letter-spacing:0.02em}
+
+  /* bottom-left card: sin gluten ——— */
+  .mini-card{position:absolute;bottom:140px;right:12px;background:var(--ink);color:var(--cream);padding:18px 22px;z-index:5;min-width:210px}
+  .mini-card .tag{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber-glow);margin-bottom:8px}
+  .mini-card .t{font-family:'Fraunces',serif;font-weight:400;font-size:16px;line-height:1.35;letter-spacing:-0.005em}
+  .mini-card .t em{font-style:italic;color:var(--amber-glow)}
+
+  /* ——— info bar ——— */
+  .info-bar{max-width:1680px;margin:56px auto 0;padding:0 56px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .info-item{padding:24px 28px 24px 0;border-right:1px solid var(--line)}
+  .info-item:last-child{border-right:none;padding-right:0}
+  .info-item .k{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.26em;text-transform:uppercase;color:var(--mut);margin-bottom:8px}
+  .info-item .v{font-family:'Fraunces',serif;font-weight:400;font-size:16px;color:var(--ink);line-height:1.4;letter-spacing:-0.005em}
+  .info-item .v a{color:var(--ink);text-decoration:none}
+  .info-item .v em{font-style:italic;color:var(--copper)}
+
+  /* ——— vertical label ——— */
+  .vtab{position:absolute;right:14px;top:520px;transform:rotate(-90deg);transform-origin:right top;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.34em;text-transform:uppercase;color:var(--mut);z-index:5;white-space:nowrap}
+
+  /* ——— section shared ——— */
+  .section{max-width:1680px;margin:0 auto;padding:120px 56px}
+  .section-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:72px;gap:80px;flex-wrap:wrap}
+  .section-head .left{max-width:720px}
+  .section-head .eyebrow-s{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.26em;text-transform:uppercase;color:var(--copper);margin-bottom:20px;display:flex;align-items:center;gap:12px}
+  .section-head .eyebrow-s::before{content:"";display:block;width:28px;height:1px;background:var(--copper)}
+  .section-head h2{font-family:'Fraunces',serif;font-weight:300;font-size:64px;line-height:0.98;letter-spacing:-0.03em;color:var(--ink)}
+  .section-head h2 em{font-style:italic;color:var(--copper);font-weight:300}
+  .section-head .intro{font-family:'Inter',sans-serif;font-weight:300;font-size:17px;line-height:1.65;color:var(--ink-soft);max-width:380px;letter-spacing:-0.005em}
+
+  /* ——— LAS CERVEZAS ——— */
+  .beers{background:linear-gradient(180deg, var(--paper) 0%, var(--paper-warm) 100%);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .beer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .beer-card{background:var(--cream);padding:36px 32px 40px;display:flex;flex-direction:column;min-height:280px;position:relative;transition:background .25s}
+  .beer-card:hover{background:var(--paper-warm)}
+  .beer-card .num{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.3em;color:var(--mut);margin-bottom:18px}
+  .beer-card .bn{font-family:'Fraunces',serif;font-weight:400;font-style:italic;font-size:28px;line-height:1.05;color:var(--ink);letter-spacing:-0.02em;margin-bottom:16px}
+  .beer-card .bn-2{font-size:24px}
+  .beer-card .style{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--copper);margin-bottom:14px}
+  .beer-card .style.empty{color:var(--mut)}
+  .beer-card .desc{font-family:'Inter',sans-serif;font-weight:300;font-size:13px;line-height:1.55;color:var(--ink-soft);margin-top:auto;letter-spacing:-0.005em}
+  .beer-card .rule{width:30px;height:1px;background:var(--copper);margin-bottom:14px}
+
+  /* ——— LA ABADÍA ——— */
+  .abadia{background:var(--ink);color:var(--cream);position:relative;overflow:hidden}
+  .abadia::before{content:"";position:absolute;inset:0;background:
+    radial-gradient(circle at 20% 30%, rgba(200,129,51,.12) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(160,90,31,.1) 0%, transparent 55%);
+    pointer-events:none}
+  .abadia .section-head h2{color:var(--cream)}
+  .abadia .section-head h2 em{color:var(--amber-glow)}
+  .abadia .section-head .eyebrow-s{color:var(--amber-glow)}
+  .abadia .section-head .eyebrow-s::before{background:var(--amber-glow)}
+  .abadia .section-head .intro{color:rgba(251,246,235,.72)}
+  .abadia-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:center;position:relative;z-index:2}
+  .abadia-visual{position:relative;height:460px;background:linear-gradient(180deg, rgba(200,129,51,.08) 0%, rgba(26,19,12,.4) 100%);border:1px solid rgba(225,166,90,.18);display:flex;align-items:center;justify-content:center}
+  .abadia-visual svg{max-width:80%;max-height:80%}
+  .abadia-info{display:flex;flex-direction:column;gap:36px}
+  .abadia-award{border:1px solid rgba(225,166,90,.28);padding:24px 28px;background:rgba(200,129,51,.06)}
+  .abadia-award .yr{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:var(--amber-glow);margin-bottom:10px}
+  .abadia-award .tl{font-family:'Fraunces',serif;font-weight:400;font-size:22px;line-height:1.3;letter-spacing:-0.01em;color:var(--cream)}
+  .abadia-award .tl em{font-style:italic;color:var(--amber-glow)}
+  .abadia-meta{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  .abadia-meta .m{border-top:1px solid rgba(225,166,90,.2);padding-top:16px}
+  .abadia-meta .m .k{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.26em;text-transform:uppercase;color:var(--amber-glow);margin-bottom:10px}
+  .abadia-meta .m .v{font-family:'Fraunces',serif;font-weight:400;font-size:17px;color:var(--cream);line-height:1.4;letter-spacing:-0.005em}
+  .abadia-cta{display:inline-flex;align-items:center;gap:14px;background:var(--amber-glow);color:var(--ink);font-family:'Inter',sans-serif;font-weight:500;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;padding:18px 30px;text-decoration:none;border-radius:1px;align-self:flex-start}
+  .abadia-cta .arr{width:18px;height:1px;background:var(--ink);position:relative}
+  .abadia-cta .arr::after{content:"";position:absolute;right:0;top:-3px;width:7px;height:7px;border-top:1px solid var(--ink);border-right:1px solid var(--ink);transform:rotate(45deg)}
+
+  /* ——— TERRITORIO ——— */
+  .territorio{background:var(--paper);position:relative}
+  .territorio-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:80px;align-items:start}
+  .territorio-copy{position:sticky;top:120px}
+  .territorio-copy p{font-family:'Inter',sans-serif;font-weight:300;font-size:17px;line-height:1.7;color:var(--ink-soft);margin-top:24px;letter-spacing:-0.005em;max-width:460px}
+  .territorio-copy p em{font-style:italic;color:var(--copper);font-family:'Fraunces',serif;font-weight:400}
+  .territorio-visual{position:relative;height:620px;background:var(--cream);border:1px solid var(--line);overflow:hidden}
+  .territorio-visual svg{width:100%;height:100%;display:block}
+  .territorio-pills{margin-top:36px;display:flex;flex-wrap:wrap;gap:10px}
+  .territorio-pills .p{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-soft);border:1px solid var(--line-strong);padding:9px 14px;border-radius:1px;background:var(--cream)}
+
+  /* ——— FOOTER ——— */
+  .site-footer{background:var(--ink);color:var(--cream);padding:90px 56px 36px;margin-top:0}
+  .footer-grid{max-width:1680px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:64px;padding-bottom:56px;border-bottom:1px solid rgba(251,246,235,.12)}
+  .footer-brand .logo-word .top{color:var(--cream)}
+  .footer-brand .logo-word .sub{color:var(--amber-glow)}
+  .footer-brand .ftxt{font-family:'Inter',sans-serif;font-weight:300;font-size:14px;line-height:1.7;color:rgba(251,246,235,.65);margin-top:20px;max-width:320px}
+  .footer-col h4{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:var(--amber-glow);margin-bottom:20px;font-weight:500}
+  .footer-col ul{list-style:none}
+  .footer-col li{font-family:'Inter',sans-serif;font-weight:300;font-size:14px;color:rgba(251,246,235,.72);margin-bottom:12px;letter-spacing:-0.005em;line-height:1.5}
+  .footer-col li a{color:inherit;text-decoration:none;transition:color .2s}
+  .footer-col li a:hover{color:var(--amber-glow)}
+  .footer-col li em{font-family:'Fraunces',serif;font-style:italic;font-weight:400;color:var(--cream)}
+  .footer-bottom{max-width:1680px;margin:28px auto 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+  .footer-bottom .copy{font-family:'Inter',sans-serif;font-size:11px;color:rgba(251,246,235,.45);letter-spacing:0.02em}
+  .footer-bottom .k-sign{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(251,246,235,.45)}
+  .footer-bottom .k-sign a{color:var(--amber-glow);text-decoration:none;border-bottom:1px solid rgba(225,166,90,.3);padding-bottom:2px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">
+    <div class="logo-mark">
+      <svg viewBox="0 0 32 32" fill="none">
+        <!-- simple stylized mountain + sun mark: Marina Alta geography -->
+        <path d="M4 24 L12 12 L16 17 L20 10 L28 24 Z" stroke="#a05a1f" stroke-width="1.6" stroke-linejoin="miter" fill="none"/>
+        <circle cx="22" cy="9" r="2" fill="#a05a1f"/>
+      </svg>
+    </div>
+    <div class="logo-word">
+      <span class="top">Marina Alta <em style="font-style:italic;color:#a05a1f;font-weight:400">Brewing</em></span>
+      <span class="sub">Cervecería artesanal · desde 2019</span>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#" class="active">La cervecería</a>
+    <a href="#">Las cervezas</a>
+    <a href="#">La Abadía</a>
+    <a href="#">Eventos</a>
+    <a href="#">Dónde comprar</a>
+    <a href="#">Blog</a>
+  </div>
+  <div class="nav-cta">
+    <div class="lang"><span class="act">ES</span><span>/</span><span>EN</span></div>
+    <a href="#" class="book-btn">Pedir en tienda</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid">
+
+    <!-- LEFT: headline block -->
+    <div class="hero-left">
+      <div class="eyebrow">
+        <span class="dot"></span>
+        <span>Cervecería artesanal · Marina Alta</span>
+      </div>
+
+      <h1 class="hero-title">
+        <span class="line">Cerveza hecha</span>
+        <span class="line">en los <em>33 pueblos</em></span>
+        <span class="line">de la Marina Alta.</span>
+      </h1>
+
+      <p class="hero-sub">
+        Elaboramos cerveza artesanal inspirada en el territorio que nos rodea: el Montgó, el Cabo de la Nau, los bancales de naranjas, las cerezas de la Vall de Gallinera. Cada receta cuenta un lugar.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#" class="btn-primary">
+          Conocer las cervezas
+          <span class="arr"></span>
+        </a>
+        <a href="#" class="btn-secondary">Dónde comprar</a>
+      </div>
+
+      <div class="lineup">
+        <div class="lbl">Referencias de la casa</div>
+        <div class="row">
+          <span class="n">La 33</span>
+          <span class="n">La Luna sobre el Montgó</span>
+          <span class="n">Cabo San Antonio</span>
+          <span class="n">La Xareta</span>
+          <span class="n">Verger</span>
+          <span class="n">Cap de la Nau</span>
+          <span class="n">El Penyón</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: visual composition -->
+    <div class="hero-visual">
+      <div class="bottle-stage">
+
+        <div class="stage-copy">
+          <div class="k">El manifiesto</div>
+          <div class="v">Cerveza honesta, hecha con <em>paciencia</em> y con nombre propio.</div>
+        </div>
+
+        <svg class="hop-decor" viewBox="0 0 100 100" fill="none">
+          <!-- editorial hop illustration -->
+          <g stroke="#5e6b34" stroke-width="1" stroke-linejoin="round">
+            <ellipse cx="50" cy="55" rx="14" ry="22" fill="#5e6b34" fill-opacity=".12"/>
+            <path d="M50 34 Q44 40 44 48 Q44 56 50 60 Q56 56 56 48 Q56 40 50 34 Z" fill="#5e6b34" fill-opacity=".2"/>
+            <path d="M50 44 Q46 50 46 58 Q46 66 50 70 Q54 66 54 58 Q54 50 50 44 Z" fill="#5e6b34" fill-opacity=".25"/>
+            <path d="M50 54 Q47 60 47 68 Q47 74 50 77 Q53 74 53 68 Q53 60 50 54 Z" fill="#5e6b34" fill-opacity=".3"/>
+            <line x1="50" y1="34" x2="50" y2="22" stroke-width="1"/>
+            <path d="M50 22 Q46 18 42 20" stroke-width="1" fill="none"/>
+            <path d="M50 22 Q54 18 58 20" stroke-width="1" fill="none"/>
+          </g>
+        </svg>
+
+        <!-- bottle trio: three silhouettes -->
+        <div class="bottles">
+
+          <!-- bottle 1 ——— pale / rubia -->
+          <div class="bottle">
+            <svg width="70" height="260" viewBox="0 0 70 260" fill="none">
+              <!-- cap -->
+              <rect x="28" y="6" width="14" height="16" rx="1" fill="#1a130c"/>
+              <!-- neck -->
+              <path d="M28 22 L28 62 Q28 72 20 80 L20 240 Q20 254 35 254 Q50 254 50 240 L50 80 Q42 72 42 62 L42 22 Z"
+                    fill="url(#g1)" stroke="#1a130c" stroke-width="1.2"/>
+              <!-- label -->
+              <rect x="22" y="140" width="26" height="80" fill="#fbf6eb" stroke="#1a130c" stroke-width="0.6"/>
+              <text x="35" y="160" text-anchor="middle" font-family="Fraunces" font-size="9" font-style="italic" fill="#1a130c">La 33</text>
+              <line x1="26" y1="166" x2="44" y2="166" stroke="#a05a1f" stroke-width="0.5"/>
+              <text x="35" y="180" text-anchor="middle" font-family="JetBrains Mono" font-size="5" letter-spacing="0.4" fill="#3a2f23">LAGER</text>
+              <text x="35" y="192" text-anchor="middle" font-family="JetBrains Mono" font-size="4" letter-spacing="0.3" fill="#7a3f12">MARINA ALTA</text>
+              <defs>
+                <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#4a3218"/>
+                  <stop offset="0.5" stop-color="#6b4420"/>
+                  <stop offset="1" stop-color="#3c2712"/>
+                </linearGradient>
+              </defs>
+            </svg>
+            <div class="cap">Nº 01 · Rubia</div>
+            <div class="name">La 33</div>
+          </div>
+
+          <!-- bottle 2 ——— amber / pale -->
+          <div class="bottle">
+            <svg width="80" height="290" viewBox="0 0 80 290" fill="none">
+              <rect x="33" y="6" width="14" height="18" rx="1" fill="#1a130c"/>
+              <path d="M33 24 L33 70 Q33 82 22 90 L22 268 Q22 282 40 282 Q58 282 58 268 L58 90 Q47 82 47 70 L47 24 Z"
+                    fill="url(#g2)" stroke="#1a130c" stroke-width="1.2"/>
+              <rect x="25" y="158" width="30" height="90" fill="#fbf6eb" stroke="#1a130c" stroke-width="0.6"/>
+              <text x="40" y="180" text-anchor="middle" font-family="Fraunces" font-size="10" font-style="italic" fill="#1a130c">Cap de</text>
+              <text x="40" y="193" text-anchor="middle" font-family="Fraunces" font-size="10" font-style="italic" fill="#1a130c">la Nau</text>
+              <line x1="28" y1="200" x2="52" y2="200" stroke="#a05a1f" stroke-width="0.5"/>
+              <text x="40" y="214" text-anchor="middle" font-family="JetBrains Mono" font-size="5" letter-spacing="0.4" fill="#3a2f23">BELGIAN IPA</text>
+              <text x="40" y="226" text-anchor="middle" font-family="JetBrains Mono" font-size="4" letter-spacing="0.3" fill="#7a3f12">DÉNIA · MED.</text>
+              <defs>
+                <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#2d1d0e"/>
+                  <stop offset="0.5" stop-color="#452a15"/>
+                  <stop offset="1" stop-color="#1f1409"/>
+                </linearGradient>
+              </defs>
+            </svg>
+            <div class="cap">Nº 02 · Tostada</div>
+            <div class="name">Cap de la Nau</div>
+          </div>
+
+          <!-- bottle 3 ——— dark stout -->
+          <div class="bottle">
+            <svg width="70" height="250" viewBox="0 0 70 250" fill="none">
+              <rect x="28" y="6" width="14" height="16" rx="1" fill="#1a130c"/>
+              <path d="M28 22 L28 62 Q28 72 20 80 L20 230 Q20 244 35 244 Q50 244 50 230 L50 80 Q42 72 42 62 L42 22 Z"
+                    fill="url(#g3)" stroke="#1a130c" stroke-width="1.2"/>
+              <rect x="22" y="132" width="26" height="80" fill="#fbf6eb" stroke="#1a130c" stroke-width="0.6"/>
+              <text x="35" y="152" text-anchor="middle" font-family="Fraunces" font-size="9" font-style="italic" fill="#1a130c">El Penyón</text>
+              <line x1="26" y1="158" x2="44" y2="158" stroke="#a05a1f" stroke-width="0.5"/>
+              <text x="35" y="172" text-anchor="middle" font-family="JetBrains Mono" font-size="5" letter-spacing="0.4" fill="#3a2f23">STOUT</text>
+              <text x="35" y="184" text-anchor="middle" font-family="JetBrains Mono" font-size="4" letter-spacing="0.3" fill="#7a3f12">CACAO · MIEL</text>
+              <defs>
+                <linearGradient id="g3" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#18100a"/>
+                  <stop offset="0.5" stop-color="#2a1b10"/>
+                  <stop offset="1" stop-color="#0f0a06"/>
+                </linearGradient>
+              </defs>
+            </svg>
+            <div class="cap">Nº 03 · Oscura</div>
+            <div class="name">El Penyón</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- award card (La Abadía premio real) -->
+      <div class="award-card">
+        <div class="yr">2022 · Restaurant Guru</div>
+        <div class="tl">Premio al <em>mejor pub y bar</em> · La Abadía de Dénia</div>
+        <div class="src">Nuestro brewpub asociado</div>
+      </div>
+
+      <!-- sin gluten card -->
+      <div class="mini-card">
+        <div class="tag">Certificada FACE</div>
+        <div class="t">Línea <em>Las Marinas</em> — cerveza sin gluten con certificación FACE.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <span class="vtab">Cervecería Marina Alta · EST. 2019</span>
+
+  <!-- info bar (datos reales) -->
+  <div class="info-bar">
+    <div class="info-item">
+      <div class="k">Dónde encontrarnos</div>
+      <div class="v">Brewpub <em>La Abadía</em> · Dénia</div>
+    </div>
+    <div class="info-item">
+      <div class="k">Pedidos · Reservas</div>
+      <div class="v"><a href="tel:+34697465997">+34 697 465 997</a></div>
+    </div>
+    <div class="info-item">
+      <div class="k">Email</div>
+      <div class="v"><a href="mailto:info@cerveceriamarinaalta.com">info@cerveceriamarinaalta.com</a></div>
+    </div>
+    <div class="info-item">
+      <div class="k">Síguenos</div>
+      <div class="v">IG <em>@cerveceriamarinaalta</em></div>
+    </div>
+  </div>
+</section>
+
+<!-- ——— SECTION: LAS CERVEZAS ——— -->
+<section class="section beers">
+  <div class="section-head">
+    <div class="left">
+      <div class="eyebrow-s">Las referencias de la casa</div>
+      <h2>Siete cervezas, <em>siete lugares</em> de la Marina Alta.</h2>
+    </div>
+    <p class="intro">Cada receta lleva el nombre de un rincón concreto del territorio. El pueblo, el cabo, el valle, la montaña. Bebés una zona, no una etiqueta.</p>
+  </div>
+
+  <div class="beer-grid">
+
+    <div class="beer-card">
+      <div class="num">Nº 01</div>
+      <div class="bn">La 33</div>
+      <div class="rule"></div>
+      <div class="style">Lager</div>
+      <div class="desc">La cerveza de todos los días. Limpia, seca, para acompañar una mesa larga.</div>
+    </div>
+
+    <div class="beer-card">
+      <div class="num">Nº 02</div>
+      <div class="bn bn-2">La Luna sobre el Montgó</div>
+      <div class="rule"></div>
+      <div class="style empty">Edición de la casa</div>
+      <div class="desc">Dedicada al macizo que vigila la comarca. Una cerveza para la noche y el silencio.</div>
+    </div>
+
+    <div class="beer-card">
+      <div class="num">Nº 03</div>
+      <div class="bn">Cabo San Antonio</div>
+      <div class="rule"></div>
+      <div class="style empty">Edición de la casa</div>
+      <div class="desc">El cabo, la reserva marina, la luz de la mañana. Una cerveza mediterránea.</div>
+    </div>
+
+    <div class="beer-card">
+      <div class="num">Nº 04</div>
+      <div class="bn">La Xareta</div>
+      <div class="rule"></div>
+      <div class="style empty">Edición de la casa</div>
+      <div class="desc">Homenaje a la Vall de Gallinera y sus cerezos en flor. Fruta, viento, interior.</div>
+    </div>
+
+    <div class="beer-card">
+      <div class="num">Nº 05</div>
+      <div class="bn">Verger</div>
+      <div class="rule"></div>
+      <div class="style empty">Edición de la casa</div>
+      <div class="desc">El bancal, el huerto, el naranjo. Una cerveza que huele a campo cuidado.</div>
+    </div>
+
+    <div class="beer-card">
+      <div class="num">Nº 06</div>
+      <div class="bn">Cap de la Nau</div>
+      <div class="rule"></div>
+      <div class="style">Belgian IPA</div>
+      <div class="desc">El cabo más al este de la península. Una cerveza con carácter y final largo.</div>
+    </div>
+
+    <div class="beer-card">
+      <div class="num">Nº 07</div>
+      <div class="bn">El Penyón</div>
+      <div class="rule"></div>
+      <div class="style">Stout · cacao · miel</div>
+      <div class="desc">Negra, densa, con cacao y miel. Pensada para sobremesa y frío.</div>
+    </div>
+
+    <div class="beer-card" style="background:var(--ink);color:var(--cream)">
+      <div class="num" style="color:var(--amber-glow)">Línea</div>
+      <div class="bn" style="color:var(--cream)">Las Marinas</div>
+      <div class="rule" style="background:var(--amber-glow)"></div>
+      <div class="style" style="color:var(--amber-glow)">Certificada FACE · sin gluten</div>
+      <div class="desc" style="color:rgba(251,246,235,.7)">Línea de cerveza sin gluten con certificación FACE. Para que nadie se quede fuera de la mesa.</div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ——— SECTION: LA ABADÍA ——— -->
+<section class="section abadia">
+  <div class="section-head">
+    <div class="left">
+      <div class="eyebrow-s">El brewpub · Dénia</div>
+      <h2>La Abadía — <em>la casa</em> de Marina Alta Brewing.</h2>
+    </div>
+    <p class="intro">El brewpub donde probás todo lo que hacemos, tirado de barril, en el sitio donde se piensa cada receta.</p>
+  </div>
+
+  <div class="abadia-grid">
+
+    <div class="abadia-visual">
+      <!-- editorial illustration: barra con grifos de cerveza + barriles -->
+      <svg viewBox="0 0 500 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="#e1a65a" stroke-width="1.4" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+          <!-- barra -->
+          <line x1="40" y1="260" x2="460" y2="260"/>
+          <line x1="40" y1="260" x2="40" y2="350"/>
+          <line x1="460" y1="260" x2="460" y2="350"/>
+          <line x1="40" y1="350" x2="460" y2="350"/>
+          <line x1="40" y1="280" x2="460" y2="280"/>
+          <!-- paneles barra -->
+          <line x1="145" y1="280" x2="145" y2="350"/>
+          <line x1="250" y1="280" x2="250" y2="350"/>
+          <line x1="355" y1="280" x2="355" y2="350"/>
+          <!-- pared trasera con estantes -->
+          <line x1="80" y1="80" x2="420" y2="80"/>
+          <line x1="80" y1="130" x2="420" y2="130"/>
+          <line x1="80" y1="180" x2="420" y2="180"/>
+          <line x1="80" y1="230" x2="420" y2="230"/>
+          <!-- grifos -->
+          <g stroke-width="1.8">
+            <path d="M120 230 L120 200 L135 200 L135 215"/>
+            <circle cx="120" cy="195" r="5" fill="#e1a65a" fill-opacity=".2"/>
+            <path d="M180 230 L180 200 L195 200 L195 215"/>
+            <circle cx="180" cy="195" r="5" fill="#e1a65a" fill-opacity=".2"/>
+            <path d="M240 230 L240 195 L255 195 L255 215"/>
+            <circle cx="240" cy="190" r="5" fill="#e1a65a" fill-opacity=".2"/>
+            <path d="M300 230 L300 200 L315 200 L315 215"/>
+            <circle cx="300" cy="195" r="5" fill="#e1a65a" fill-opacity=".2"/>
+            <path d="M360 230 L360 200 L375 200 L375 215"/>
+            <circle cx="360" cy="195" r="5" fill="#e1a65a" fill-opacity=".2"/>
+          </g>
+          <!-- botellas estante superior -->
+          <g stroke-width="1">
+            <rect x="105" y="90" width="10" height="35" fill="#e1a65a" fill-opacity=".1"/>
+            <rect x="130" y="90" width="10" height="35" fill="#e1a65a" fill-opacity=".1"/>
+            <rect x="155" y="90" width="10" height="35" fill="#e1a65a" fill-opacity=".1"/>
+            <rect x="180" y="90" width="10" height="35" fill="#e1a65a" fill-opacity=".1"/>
+            <rect x="290" y="90" width="10" height="35" fill="#e1a65a" fill-opacity=".1"/>
+            <rect x="315" y="90" width="10" height="35" fill="#e1a65a" fill-opacity=".1"/>
+            <rect x="340" y="90" width="10" height="35" fill="#e1a65a" fill-opacity=".1"/>
+            <rect x="365" y="90" width="10" height="35" fill="#e1a65a" fill-opacity=".1"/>
+          </g>
+          <!-- barrica lateral izquierda -->
+          <g stroke-width="1.2">
+            <ellipse cx="80" cy="310" rx="22" ry="8" fill="#c88133" fill-opacity=".1"/>
+            <path d="M58 310 L58 360 Q58 368 80 368 Q102 368 102 360 L102 310"/>
+            <ellipse cx="80" cy="360" rx="22" ry="8"/>
+            <line x1="60" y1="330" x2="100" y2="330"/>
+            <line x1="60" y1="348" x2="100" y2="348"/>
+          </g>
+          <!-- letrero "LA ABADÍA" -->
+          <text x="250" y="55" text-anchor="middle" font-family="Fraunces" font-size="22" font-style="italic" fill="#e1a65a" stroke="none">La Abadía</text>
+          <line x1="200" y1="65" x2="300" y2="65" stroke-width="0.6"/>
+          <text x="250" y="78" text-anchor="middle" font-family="JetBrains Mono" font-size="8" letter-spacing="4" fill="#e1a65a" stroke="none">DÉNIA · EST. 2019</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="abadia-info">
+
+      <div class="abadia-award">
+        <div class="yr">Restaurant Guru · 2022</div>
+        <div class="tl">Premio al <em>mejor pub y bar</em> de Dénia.</div>
+      </div>
+
+      <div class="abadia-meta">
+        <div class="m">
+          <div class="k">Ubicación</div>
+          <div class="v">Brewpub La Abadía<br>Dénia, Alicante</div>
+        </div>
+        <div class="m">
+          <div class="k">Reservas</div>
+          <div class="v"><a href="tel:+34697465997" style="color:inherit;text-decoration:none">+34 697 465 997</a></div>
+        </div>
+        <div class="m">
+          <div class="k">Qué vas a encontrar</div>
+          <div class="v">Nuestra carta de cervezas tiradas de barril.</div>
+        </div>
+        <div class="m">
+          <div class="k">Ambiente</div>
+          <div class="v">Brewpub de barrio, mesa larga, sin prisa.</div>
+        </div>
+      </div>
+
+      <a href="#" class="abadia-cta">
+        Visitar La Abadía
+        <span class="arr"></span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ——— SECTION: TERRITORIO ——— -->
+<section class="section territorio">
+  <div class="territorio-grid">
+
+    <div class="territorio-copy">
+      <div class="eyebrow-s" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.26em;text-transform:uppercase;color:var(--copper);margin-bottom:20px;display:flex;align-items:center;gap:12px">
+        <span style="display:block;width:28px;height:1px;background:var(--copper)"></span>
+        El territorio
+      </div>
+      <h2 style="font-family:'Fraunces',serif;font-weight:300;font-size:58px;line-height:0.98;letter-spacing:-0.03em;color:var(--ink)"><em style="font-style:italic;color:var(--copper);font-weight:300">33 pueblos</em>, una comarca, una cerveza.</h2>
+      <p>La Marina Alta no es una: son <em>33 pueblos</em> repartidos entre la costa y el interior. El <em>Montgó</em> marca el horizonte. Los bancales de naranjos bajan hasta el mar. En la <em>Vall de Gallinera</em> florecen los cerezos cada primavera.</p>
+      <p>Todo eso cabe en una botella. No como aroma añadido: como nombre, como historia, como excusa para contar de dónde somos.</p>
+
+      <div class="territorio-pills">
+        <span class="p">Dénia</span>
+        <span class="p">Jávea</span>
+        <span class="p">Calp</span>
+        <span class="p">Vall de Gallinera</span>
+        <span class="p">Montgó</span>
+        <span class="p">Cap de la Nau</span>
+        <span class="p">Pego</span>
+        <span class="p">Benissa</span>
+      </div>
+    </div>
+
+    <div class="territorio-visual">
+      <!-- mapa editorial simplificado de la Marina Alta -->
+      <svg viewBox="0 0 600 700" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" stroke-linejoin="miter" stroke-linecap="square">
+          <!-- fondo crema -->
+          <rect x="0" y="0" width="600" height="700" fill="#fbf6eb"/>
+
+          <!-- mar (derecha) -->
+          <g stroke="#a05a1f" stroke-width="0.5" stroke-opacity=".35">
+            <path d="M440 40 Q460 60 440 80 Q420 100 440 120 Q460 140 440 160 Q420 180 440 200 Q460 220 440 240 Q420 260 440 280 Q460 300 440 320 Q420 340 440 360 Q460 380 440 400 Q420 420 440 440 Q460 460 440 480 Q420 500 440 520 Q460 540 440 560 Q420 580 440 600 Q460 620 440 640 Q420 660 440 680" fill="none"/>
+            <path d="M480 60 Q500 80 480 100 Q460 120 480 140 Q500 160 480 180 Q460 200 480 220 Q500 240 480 260 Q460 280 480 300 Q500 320 480 340 Q460 360 480 380 Q500 400 480 420 Q460 440 480 460 Q500 480 480 500 Q460 520 480 540 Q500 560 480 580 Q460 600 480 620 Q500 640 480 660" fill="none"/>
+            <path d="M530 80 Q550 100 530 120 Q510 140 530 160 Q550 180 530 200 Q510 220 530 240 Q550 260 530 280 Q510 300 530 320 Q550 340 530 360 Q510 380 530 400 Q550 420 530 440 Q510 460 530 480 Q550 500 530 520 Q510 540 530 560 Q550 580 530 600 Q510 620 530 640" fill="none"/>
+          </g>
+
+          <!-- costa -->
+          <path d="M420 30 Q415 90 425 140 Q435 190 420 240 Q405 290 425 340 Q445 390 430 440 Q415 490 430 540 Q445 590 420 660 Q415 680 420 700"
+                stroke="#1a130c" stroke-width="1.5" fill="none"/>
+
+          <!-- contornos comarca (interior + costa lineal) -->
+          <path d="M80 120 Q130 90 200 110 Q260 130 310 110 Q360 85 420 120"
+                stroke="#1a130c" stroke-width="1.2" fill="none"/>
+          <path d="M60 620 Q120 640 200 620 Q280 600 340 630 Q400 655 420 640"
+                stroke="#1a130c" stroke-width="1.2" fill="none"/>
+          <path d="M60 120 Q40 260 70 400 Q100 530 60 620"
+                stroke="#1a130c" stroke-width="1.2" fill="none"/>
+
+          <!-- Montgó (montaña central) -->
+          <g stroke="#7a3f12" stroke-width="1.4" fill="#a05a1f" fill-opacity=".08">
+            <path d="M250 200 L290 145 L320 180 L350 150 L390 210 L250 210 Z"/>
+            <path d="M290 145 L300 135 L310 150" fill="none"/>
+          </g>
+          <text x="320" y="235" font-family="JetBrains Mono" font-size="9" letter-spacing="3" fill="#7a3f12">MONTGÓ</text>
+
+          <!-- Vall de Gallinera (valle oeste) -->
+          <g stroke="#5e6b34" stroke-width="1" fill="none">
+            <path d="M110 320 Q140 300 170 320 Q200 340 230 320"/>
+            <path d="M115 335 Q145 320 175 335 Q205 350 235 335"/>
+            <!-- cerezos punteados -->
+            <circle cx="130" cy="310" r="3" fill="#5e6b34" fill-opacity=".3"/>
+            <circle cx="160" cy="312" r="3" fill="#5e6b34" fill-opacity=".3"/>
+            <circle cx="190" cy="310" r="3" fill="#5e6b34" fill-opacity=".3"/>
+            <circle cx="220" cy="312" r="3" fill="#5e6b34" fill-opacity=".3"/>
+          </g>
+          <text x="110" y="365" font-family="JetBrains Mono" font-size="8" letter-spacing="2" fill="#5e6b34">VALL DE GALLINERA</text>
+
+          <!-- bancales de naranjos (sur) -->
+          <g stroke="#a05a1f" stroke-width="0.8" fill="none" stroke-opacity=".7">
+            <line x1="140" y1="460" x2="380" y2="460"/>
+            <line x1="150" y1="480" x2="380" y2="480"/>
+            <line x1="160" y1="500" x2="380" y2="500"/>
+            <line x1="170" y1="520" x2="380" y2="520"/>
+            <line x1="180" y1="540" x2="380" y2="540"/>
+          </g>
+          <text x="180" y="570" font-family="JetBrains Mono" font-size="8" letter-spacing="2" fill="#a05a1f">BANCALES · NARANJOS</text>
+
+          <!-- Cap de la Nau (cabo SE) -->
+          <g>
+            <circle cx="420" cy="500" r="4" fill="#1a130c"/>
+            <line x1="420" y1="500" x2="460" y2="510" stroke="#1a130c" stroke-width="0.8"/>
+            <text x="465" y="514" font-family="JetBrains Mono" font-size="8" letter-spacing="2" fill="#1a130c">CAP DE LA NAU</text>
+          </g>
+
+          <!-- Dénia (norte) -->
+          <g>
+            <circle cx="390" cy="135" r="4" fill="#1a130c"/>
+            <line x1="390" y1="135" x2="430" y2="125" stroke="#1a130c" stroke-width="0.8"/>
+            <text x="435" y="130" font-family="JetBrains Mono" font-size="8" letter-spacing="2" fill="#1a130c">DÉNIA</text>
+            <text x="395" y="150" font-family="Fraunces" font-size="10" font-style="italic" fill="#7a3f12">La Abadía</text>
+          </g>
+
+          <!-- Jávea (centro costa) -->
+          <g>
+            <circle cx="410" cy="360" r="3" fill="#1a130c"/>
+            <text x="418" y="364" font-family="JetBrains Mono" font-size="7" letter-spacing="2" fill="#3a2f23">JÁVEA</text>
+          </g>
+
+          <!-- Calp (sur costa) -->
+          <g>
+            <circle cx="400" cy="605" r="3" fill="#1a130c"/>
+            <text x="408" y="609" font-family="JetBrains Mono" font-size="7" letter-spacing="2" fill="#3a2f23">CALP</text>
+          </g>
+
+          <!-- Pego (interior norte) -->
+          <g>
+            <circle cx="190" cy="190" r="2.5" fill="#3a2f23"/>
+            <text x="196" y="193" font-family="JetBrains Mono" font-size="7" letter-spacing="2" fill="#3a2f23">PEGO</text>
+          </g>
+
+          <!-- Benissa (interior sur) -->
+          <g>
+            <circle cx="290" cy="560" r="2.5" fill="#3a2f23"/>
+            <text x="296" y="563" font-family="JetBrains Mono" font-size="7" letter-spacing="2" fill="#3a2f23">BENISSA</text>
+          </g>
+
+          <!-- rosa de vientos -->
+          <g stroke="#a05a1f" stroke-width="0.8" fill="none" transform="translate(75,75)">
+            <circle cx="0" cy="0" r="18"/>
+            <line x1="0" y1="-22" x2="0" y2="22"/>
+            <line x1="-22" y1="0" x2="22" y2="0"/>
+            <text x="0" y="-26" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#a05a1f">N</text>
+          </g>
+
+          <!-- escala -->
+          <g stroke="#1a130c" stroke-width="0.8">
+            <line x1="60" y1="675" x2="160" y2="675"/>
+            <line x1="60" y1="670" x2="60" y2="680"/>
+            <line x1="110" y1="672" x2="110" y2="678"/>
+            <line x1="160" y1="670" x2="160" y2="680"/>
+            <text x="110" y="692" text-anchor="middle" font-family="JetBrains Mono" font-size="7" letter-spacing="2" fill="#1a130c" stroke="none">MARINA ALTA</text>
+          </g>
+
+        </g>
+      </svg>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ——— FOOTER ——— -->
+<footer class="site-footer">
+  <div class="footer-grid">
+
+    <div class="footer-col footer-brand">
+      <div class="brand" style="align-items:flex-start">
+        <div class="logo-mark" style="background:rgba(225,166,90,.08);border-color:var(--amber-glow)">
+          <svg viewBox="0 0 32 32" fill="none">
+            <path d="M4 24 L12 12 L16 17 L20 10 L28 24 Z" stroke="#e1a65a" stroke-width="1.6" stroke-linejoin="miter" fill="none"/>
+            <circle cx="22" cy="9" r="2" fill="#e1a65a"/>
+          </svg>
+        </div>
+        <div class="logo-word">
+          <span class="top">Marina Alta <em style="font-style:italic;color:#e1a65a;font-weight:400">Brewing</em></span>
+          <span class="sub">Cervecería artesanal · desde 2019</span>
+        </div>
+      </div>
+      <p class="ftxt">Cerveza artesanal elaborada en la Marina Alta, con los nombres y las historias del territorio. Siete referencias fijas y una línea sin gluten certificada FACE.</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li><em>Brewpub La Abadía</em></li>
+        <li>Dénia, Alicante</li>
+        <li><a href="tel:+34697465997">+34 697 465 997</a></li>
+        <li><a href="mailto:info@cerveceriamarinaalta.com">info@cerveceriamarinaalta.com</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Distribución</h4>
+      <ul>
+        <li>HORECA · Marina Alta</li>
+        <li>Tienda en La Abadía</li>
+        <li>Pedidos por teléfono</li>
+        <li>Eventos y ferias</li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Redes · Legal</h4>
+      <ul>
+        <li><a href="#">Instagram <em>@cerveceriamarinaalta</em></a></li>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">Aviso legal</a></li>
+        <li><a href="#">Política de privacidad</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <span class="copy">© Cervecería Marina Alta Brewing · Cervezas artesanales de la Marina Alta</span>
+    <span class="k-sign">Diseño propuesto por <a href="https://kenaz.studio">Kenaz Studio</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

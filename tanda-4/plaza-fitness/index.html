@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<title>Plaza Fitness Calpe — Mockup propuesto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #0E0E0E;
+    --ink-soft: #1A1A1A;
+    --cream: #F4F0E8;
+    --cream-dim: #E9E3D6;
+    --line: rgba(255, 255, 255, 0.14);
+    --line-dark: rgba(14, 14, 14, 0.12);
+    --accent: #C7F244;
+    --muted: rgba(244, 240, 232, 0.62);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--ink);
+    color: var(--cream);
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: 'ss01', 'cv11';
+  }
+  .page { min-height: 100vh; display: flex; flex-direction: column; }
+
+  /* ─── Top bar */
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 56px;
+    border-bottom: 1px solid var(--line);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .topbar .brand {
+    display: flex; align-items: center; gap: 14px;
+    color: var(--cream);
+  }
+  .brand-mark {
+    width: 34px; height: 34px;
+    border: 1.5px solid var(--cream);
+    display: grid; place-items: center;
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 18px;
+  }
+  .brand-name {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 17px;
+    letter-spacing: 0.04em;
+    text-transform: none;
+  }
+  .brand-name em { font-weight: 700; font-style: italic; }
+  .nav { display: flex; gap: 34px; }
+  .nav a {
+    color: var(--muted);
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .nav a:hover, .nav a.active { color: var(--cream); }
+  .nav a.active::after {
+    content: ''; display: block;
+    height: 1px; background: var(--accent);
+    margin-top: 6px;
+  }
+  .topbar .cta {
+    padding: 10px 18px;
+    background: var(--accent);
+    color: var(--ink);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    font-size: 11px;
+  }
+
+  /* ─── Hero shell */
+  .hero {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    min-height: 0;
+  }
+
+  /* Left — editorial text column */
+  .hero-text {
+    padding: 72px 56px 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+  .eyebrow {
+    display: flex; align-items: center; gap: 14px;
+    font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 42px;
+  }
+  .eyebrow .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent);
+  }
+  h1.headline {
+    font-family: 'Fraunces', serif;
+    font-weight: 340;
+    font-size: clamp(64px, 6.4vw, 104px);
+    line-height: 0.96;
+    letter-spacing: -0.022em;
+    color: var(--cream);
+    margin-bottom: 28px;
+  }
+  h1.headline em {
+    font-style: italic;
+    font-weight: 340;
+    color: var(--accent);
+  }
+  h1.headline .thin {
+    font-weight: 200;
+  }
+  .sub {
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--muted);
+    max-width: 480px;
+    margin-bottom: 44px;
+  }
+  .cta-row {
+    display: flex; gap: 14px; align-items: center;
+    margin-bottom: 56px;
+  }
+  .btn {
+    padding: 16px 26px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 10px;
+    border: 1px solid transparent;
+    transition: all .2s;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: var(--ink);
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--cream);
+    border-color: var(--line);
+  }
+  .btn-ghost:hover { border-color: var(--cream); }
+  .btn .arrow { font-family: 'Fraunces', serif; font-size: 16px; }
+
+  /* Footer facts */
+  .facts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+  }
+  .fact .n {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 38px;
+    line-height: 1;
+    color: var(--cream);
+    letter-spacing: -0.02em;
+  }
+  .fact .n sup { font-size: 16px; top: -1em; color: var(--muted); }
+  .fact .l {
+    margin-top: 8px;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* Right — image panel */
+  .hero-visual {
+    position: relative;
+    background: var(--cream);
+    overflow: hidden;
+  }
+  .visual-frame {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(14,14,14,0.22) 0%, rgba(14,14,14,0.05) 35%, rgba(14,14,14,0.55) 100%),
+      url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2400&auto=format&fit=crop') center/cover no-repeat;
+  }
+  .visual-meta {
+    position: absolute;
+    left: 32px; right: 32px; bottom: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    color: var(--cream);
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  }
+  .visual-meta .ref {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-transform: none;
+    opacity: 0.85;
+  }
+
+  /* Schedule card overlapping the image */
+  .schedule-card {
+    position: absolute;
+    left: 32px;
+    top: 32px;
+    background: var(--ink);
+    color: var(--cream);
+    padding: 22px 26px;
+    min-width: 248px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .schedule-card .title {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .schedule-card .title .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px rgba(199,242,68,0.18);
+  }
+  .schedule-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 9px 0;
+    font-size: 13px;
+  }
+  .schedule-row + .schedule-row { border-top: 1px solid var(--line); }
+  .schedule-row .day { color: var(--cream); font-weight: 500; }
+  .schedule-row .time {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+  }
+  .schedule-cta {
+    margin-top: 14px; padding-top: 14px;
+    border-top: 1px solid var(--line);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    display: flex; justify-content: space-between; align-items: center;
+    color: var(--muted);
+  }
+  .schedule-cta span { color: var(--accent); }
+
+  /* ─── Sub strip below hero */
+  .substrip {
+    background: var(--cream);
+    color: var(--ink);
+    padding: 28px 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 48px;
+    border-top: 1px solid var(--line-dark);
+  }
+  .substrip .ticker {
+    display: flex; gap: 44px;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(14,14,14,0.72);
+  }
+  .substrip .ticker .sep {
+    color: rgba(14,14,14,0.3);
+  }
+  .substrip .addr {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 15px;
+    color: rgba(14,14,14,0.82);
+  }
+  .substrip .addr strong { font-weight: 600; font-style: normal; letter-spacing: 0.02em; }
+
+  /* ─── Footer signature */
+  .signature {
+    padding: 18px 56px;
+    border-top: 1px solid var(--line);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(244,240,232,0.42);
+    background: var(--ink);
+  }
+  .signature a { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(244,240,232,0.2); padding-bottom: 1px; }
+
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Top bar -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">P</div>
+      <div class="brand-name">Plaza Fitness <em>Calpe</em></div>
+    </div>
+    <nav class="nav">
+      <a href="#" class="active">Instalaciones</a>
+      <a href="#">Clases</a>
+      <a href="#">Entrenadores</a>
+      <a href="#">Tarifas</a>
+      <a href="#">Contacto</a>
+    </nav>
+    <a href="#" class="cta">Reservar visita</a>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+
+    <!-- Text column -->
+    <div class="hero-text">
+      <div>
+        <div class="eyebrow">
+          <span class="dot"></span>
+          <span>Centro fitness · Calpe</span>
+        </div>
+
+        <h1 class="headline">
+          <span class="thin">Un centro de</span><br/>
+          <em>600 m²</em> reales<br/>
+          en el corazón<br/>
+          de Calpe.
+        </h1>
+
+        <p class="sub">
+          Sala de musculación, dos salas de clases dirigidas y entrenamiento personal en Av. Diputación. Abierto de lunes a viernes, de siete de la mañana a diez de la noche.
+        </p>
+
+        <div class="cta-row">
+          <a href="#" class="btn btn-primary">Reservar primera visita <span class="arrow">→</span></a>
+          <a href="#" class="btn btn-ghost">Ver instalaciones</a>
+        </div>
+      </div>
+
+      <div class="facts">
+        <div class="fact">
+          <div class="n">600<sup>m²</sup></div>
+          <div class="l">Instalaciones</div>
+        </div>
+        <div class="fact">
+          <div class="n">3</div>
+          <div class="l">Salas · Musculación + 2 clases</div>
+        </div>
+        <div class="fact">
+          <div class="n">7–22<sup>h</sup></div>
+          <div class="l">Lunes a viernes</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Visual column -->
+    <div class="hero-visual">
+      <div class="visual-frame"></div>
+
+      <div class="schedule-card">
+        <div class="title">
+          <span class="dot"></span>
+          <span>Horario del centro</span>
+        </div>
+        <div class="schedule-row">
+          <span class="day">Lunes a viernes</span>
+          <span class="time">07:00 — 22:00</span>
+        </div>
+        <div class="schedule-row">
+          <span class="day">Sábado</span>
+          <span class="time">08:00 — 14:00</span>
+        </div>
+        <div class="schedule-cta">
+          <span>Ver calendario completo</span>
+          <span>→</span>
+        </div>
+      </div>
+
+      <div class="visual-meta">
+        <span>Imagen de referencia — sustituible por fotografía real</span>
+        <span class="ref">Av. Diputación 49-51</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Substrip -->
+  <div class="substrip">
+    <div class="ticker">
+      <span>Musculación</span>
+      <span class="sep">·</span>
+      <span>Clases dirigidas</span>
+      <span class="sep">·</span>
+      <span>Entrenador personal</span>
+      <span class="sep">·</span>
+      <span>App Trainingym</span>
+    </div>
+    <div class="addr">
+      <strong>653 698 880</strong> · info@plazafitnesscalpe.es
+    </div>
+  </div>
+
+  <!-- Kenaz minimal signature -->
+  <footer class="signature">
+    <span>Plaza Fitness Calpe · Av. Diputación 49-51, Calpe (Alicante)</span>
+    <span>Diseño propuesto por <a href="https://kenaz.studio">Kenaz Studio</a></span>
+  </footer>
+
+</div>
+</body>
+</html>

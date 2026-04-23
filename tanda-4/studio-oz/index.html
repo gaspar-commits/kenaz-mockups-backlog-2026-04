@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Studio OZ — Movement is for everyone</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1a1a1a;
+    --ink-soft:#3c3a36;
+    --cream:#f5f1ea;
+    --paper:#ede6da;
+    --gold:#c9a94d;
+    --gold-soft:#d8bf79;
+    --olive:#7a8a54;
+    --line:rgba(26,26,26,.14);
+    --mut:rgba(26,26,26,.58);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--cream);color:var(--ink);font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;font-feature-settings:"ss01","cv11"}
+  body{min-height:100vh;overflow-x:hidden}
+  .wrap{max-width:1680px;margin:0 auto;padding:0 56px}
+
+  /* ——— NAV ——— */
+  nav{position:absolute;top:0;left:0;right:0;z-index:30;padding:28px 56px;display:flex;align-items:center;justify-content:space-between}
+  .brand{display:flex;align-items:center;gap:14px}
+  .logo-mark{width:56px;height:56px;position:relative;display:flex;align-items:center;justify-content:center}
+  .logo-mark::before{content:"";position:absolute;right:-2px;width:46px;height:46px;border-radius:50%;border:2.5px solid var(--gold);}
+  .logo-mark .s{font-family:'Fraunces',serif;font-weight:400;font-size:30px;color:var(--ink);letter-spacing:-0.01em;z-index:2;position:relative;line-height:1}
+  .logo-word{display:flex;align-items:baseline;gap:6px}
+  .logo-word .st{font-family:'Fraunces',serif;font-weight:400;font-size:26px;color:var(--ink);letter-spacing:-0.01em;line-height:1}
+  .logo-word .oz{font-family:'Fraunces',serif;font-weight:500;font-size:26px;color:var(--gold);letter-spacing:0.02em;line-height:1;font-style:italic}
+  .nav-links{display:flex;gap:38px;align-items:center}
+  .nav-links a{font-family:'Inter',sans-serif;font-weight:400;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-soft);text-decoration:none;transition:color .2s}
+  .nav-links a:hover{color:var(--gold)}
+  .nav-cta{display:flex;align-items:center;gap:16px}
+  .lang{font-family:'Inter',sans-serif;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--mut);display:flex;gap:4px}
+  .lang .act{color:var(--ink);font-weight:500}
+  .book-btn{background:var(--ink);color:var(--cream);font-family:'Inter',sans-serif;font-weight:500;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;padding:13px 22px;border:none;cursor:pointer;border-radius:1px;transition:background .2s}
+  .book-btn:hover{background:var(--olive)}
+
+  /* ——— HERO ——— */
+  .hero{position:relative;padding:140px 0 100px;min-height:100vh}
+  .hero-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:72px;align-items:center}
+
+  .eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:36px}
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--gold)}
+  .eyebrow span{font-family:'Inter',sans-serif;font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-soft);font-weight:500}
+
+  h1.hero-title{font-family:'Fraunces',serif;font-weight:300;font-size:102px;line-height:0.95;letter-spacing:-0.035em;color:var(--ink);margin-bottom:0}
+  h1 .em{font-style:italic;font-weight:300;color:var(--gold);letter-spacing:-0.03em}
+  h1 .line{display:block}
+
+  .hero-sub{max-width:520px;font-family:'Inter',sans-serif;font-weight:300;font-size:18px;line-height:1.65;color:var(--ink-soft);margin-top:32px;letter-spacing:-0.005em}
+
+  .hero-actions{display:flex;align-items:center;gap:28px;margin-top:48px}
+  .btn-primary{background:var(--ink);color:var(--cream);font-family:'Inter',sans-serif;font-weight:500;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;padding:18px 30px;border:none;cursor:pointer;border-radius:1px;display:inline-flex;align-items:center;gap:10px}
+  .btn-primary .arrow{width:18px;height:1px;background:var(--cream);position:relative;transition:width .25s}
+  .btn-primary .arrow::after{content:"";position:absolute;right:0;top:-3px;width:7px;height:7px;border-top:1px solid var(--cream);border-right:1px solid var(--cream);transform:rotate(45deg)}
+  .btn-primary:hover .arrow{width:28px}
+  .btn-secondary{font-family:'Inter',sans-serif;font-weight:500;font-size:14px;letter-spacing:0.06em;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:4px}
+
+  /* ——— disciplines strip ——— */
+  .disciplines{margin-top:64px;display:flex;flex-wrap:wrap;align-items:center;gap:24px 0;border-top:1px solid var(--line);padding-top:28px;max-width:620px}
+  .disciplines .d{font-family:'Fraunces',serif;font-weight:400;font-size:17px;color:var(--ink);font-style:italic;position:relative;padding-right:24px}
+  .disciplines .d:not(:last-child)::after{content:"";position:absolute;right:8px;top:50%;transform:translateY(-50%);width:4px;height:4px;border-radius:50%;background:var(--gold)}
+
+  /* ——— RIGHT: photo composition ——— */
+  .hero-visual{position:relative;height:720px}
+  .photo-main{position:absolute;top:0;right:0;width:86%;height:100%;overflow:hidden;border-radius:2px}
+  .photo-main img{width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:contrast(1.02) saturate(1.02)}
+  .photo-frame{position:absolute;top:-8px;right:-8px;width:86%;height:100%;border:1px solid var(--gold);pointer-events:none;z-index:1;border-radius:2px}
+
+  .photo-second{position:absolute;bottom:-36px;left:0;width:42%;height:260px;overflow:hidden;border-radius:2px;box-shadow:0 24px 48px -20px rgba(26,26,26,.25);z-index:2}
+  .photo-second img{width:100%;height:100%;object-fit:cover}
+
+  /* ——— meta card ——— */
+  .meta-card{position:absolute;top:42px;left:-28px;background:var(--cream);padding:20px 24px;z-index:3;border:1px solid var(--line);min-width:220px}
+  .meta-card .label{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--mut);margin-bottom:10px}
+  .meta-card .value{font-family:'Fraunces',serif;font-weight:400;font-size:20px;color:var(--ink);line-height:1.25;letter-spacing:-0.01em}
+  .meta-card .value em{font-style:italic;color:var(--gold);font-weight:400}
+
+  /* ——— bottom info bar ——— */
+  .info-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:96px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .info-item{padding:28px 28px 28px 0;border-right:1px solid var(--line);position:relative}
+  .info-item:last-child{border-right:none;padding-right:0}
+  .info-item .k{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--mut);margin-bottom:8px}
+  .info-item .v{font-family:'Fraunces',serif;font-weight:400;font-size:18px;color:var(--ink);line-height:1.4;letter-spacing:-0.005em}
+  .info-item .v a{color:var(--ink);text-decoration:none}
+  .info-item .v em{font-style:italic;color:var(--gold)}
+
+  /* ——— texture, vertical label ——— */
+  .vertical-label{position:absolute;right:24px;top:50%;transform:translateY(-50%) rotate(-90deg);transform-origin:right center;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.32em;text-transform:uppercase;color:var(--mut);z-index:5;white-space:nowrap}
+
+  /* ——— section base ——— */
+  section.block{padding:140px 0;position:relative}
+  section.block.alt{background:var(--paper)}
+  .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:48px;margin-bottom:72px;border-bottom:1px solid var(--line);padding-bottom:32px}
+  .section-head .eye{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.26em;text-transform:uppercase;color:var(--mut);margin-bottom:14px}
+  .section-head h2{font-family:'Fraunces',serif;font-weight:300;font-size:64px;line-height:1.02;letter-spacing:-0.03em;color:var(--ink);max-width:760px}
+  .section-head h2 em{font-style:italic;color:var(--gold);font-weight:300}
+  .section-head .aside{font-family:'Inter',sans-serif;font-weight:300;font-size:15px;line-height:1.65;color:var(--ink-soft);max-width:360px;padding-bottom:10px}
+
+  /* ——— disciplines grid ——— */
+  .disc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .disc-cell{background:var(--cream);padding:40px 36px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between;position:relative;transition:background .25s}
+  .disc-cell:hover{background:var(--paper)}
+  .disc-cell .num{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.22em;color:var(--mut);font-weight:500}
+  .disc-cell h3{font-family:'Fraunces',serif;font-weight:400;font-size:30px;color:var(--ink);letter-spacing:-0.02em;margin:18px 0 12px;line-height:1.05}
+  .disc-cell h3 em{font-style:italic;color:var(--gold);font-weight:400}
+  .disc-cell p{font-family:'Inter',sans-serif;font-weight:300;font-size:14px;line-height:1.6;color:var(--ink-soft)}
+  .disc-cell.feature{background:var(--ink);color:var(--cream);grid-row:span 1}
+  .disc-cell.feature .num{color:var(--gold-soft)}
+  .disc-cell.feature h3{color:var(--cream)}
+  .disc-cell.feature h3 em{color:var(--gold)}
+  .disc-cell.feature p{color:rgba(245,241,234,.78)}
+
+  /* ——— schedule table ——— */
+  .sched-wrap{border:1px solid var(--line);background:var(--cream)}
+  .sched-note{display:flex;justify-content:space-between;align-items:center;padding:18px 28px;border-bottom:1px solid var(--line);background:var(--paper)}
+  .sched-note .tag{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.26em;text-transform:uppercase;color:var(--gold);font-weight:600}
+  .sched-note .note{font-family:'Inter',sans-serif;font-size:12px;font-style:italic;color:var(--ink-soft);font-weight:300}
+  .sched-grid{display:grid;grid-template-columns:120px repeat(7,1fr);gap:0}
+  .sched-cell{padding:18px 14px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-height:74px;display:flex;align-items:center;justify-content:center}
+  .sched-cell:nth-child(8n){border-right:none}
+  .sched-head{background:var(--paper);font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink);font-weight:500}
+  .sched-time{font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-size:15px;color:var(--mut);background:var(--paper);justify-content:flex-start;padding-left:22px}
+  .chip{display:inline-flex;flex-direction:column;align-items:center;gap:3px;padding:8px 12px;border:1px solid var(--line);font-family:'Inter',sans-serif;font-size:11px;font-weight:500;color:var(--ink);letter-spacing:0.04em;background:var(--cream);border-radius:2px;line-height:1;text-align:center;min-width:88px}
+  .chip .sub{font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-size:10px;color:var(--mut);letter-spacing:0}
+  .chip.gold{border-color:var(--gold);background:rgba(201,169,77,.08)}
+  .chip.gold .sub{color:var(--gold)}
+  .chip.ink{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+  .chip.ink .sub{color:var(--gold-soft)}
+  .sched-legend{display:flex;flex-wrap:wrap;gap:26px;padding:22px 28px;border-top:1px solid var(--line);background:var(--paper)}
+  .sched-legend span{font-family:'Inter',sans-serif;font-size:12px;color:var(--ink-soft);font-weight:400;display:flex;align-items:center;gap:8px}
+  .sched-legend span::before{content:"";width:8px;height:8px;background:var(--gold);border-radius:50%}
+
+  /* ——— team ——— */
+  .team-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:80px;align-items:center}
+  .team-photo{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:2px}
+  .team-photo img{width:100%;height:100%;object-fit:cover;filter:contrast(1.02)}
+  .team-photo .frame{position:absolute;top:-10px;left:-10px;right:20px;bottom:20px;border:1px solid var(--gold);pointer-events:none;z-index:1}
+  .team-copy h3{font-family:'Fraunces',serif;font-weight:300;font-size:54px;letter-spacing:-0.03em;line-height:1.02;margin-bottom:32px;color:var(--ink)}
+  .team-copy h3 em{font-style:italic;color:var(--gold);font-weight:300}
+  .team-copy .lede{font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-size:22px;line-height:1.45;color:var(--ink-soft);margin-bottom:28px;border-left:2px solid var(--gold);padding-left:20px}
+  .team-copy p{font-family:'Inter',sans-serif;font-weight:300;font-size:16px;line-height:1.7;color:var(--ink-soft);margin-bottom:20px}
+  .team-tags{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px;padding-top:32px;border-top:1px solid var(--line)}
+  .team-tags .t{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink);padding:9px 16px;border:1px solid var(--line);background:var(--cream);font-weight:500}
+
+  /* ——— contact ——— */
+  .contact-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:flex-start}
+  .contact-main h3{font-family:'Fraunces',serif;font-weight:300;font-size:72px;line-height:0.98;letter-spacing:-0.035em;margin-bottom:40px;color:var(--ink)}
+  .contact-main h3 em{font-style:italic;color:var(--gold);font-weight:300}
+  .contact-main .intro{font-family:'Inter',sans-serif;font-weight:300;font-size:17px;line-height:1.65;color:var(--ink-soft);max-width:480px;margin-bottom:40px}
+  .contact-details{display:grid;grid-template-columns:repeat(2,1fr);gap:32px 40px;border-top:1px solid var(--line);padding-top:36px}
+  .contact-details .row .k{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.24em;text-transform:uppercase;color:var(--mut);margin-bottom:10px;font-weight:500}
+  .contact-details .row .v{font-family:'Fraunces',serif;font-weight:400;font-size:19px;color:var(--ink);line-height:1.35;letter-spacing:-0.01em}
+  .contact-details .row .v a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px;transition:border-color .2s}
+  .contact-details .row .v a:hover{border-color:var(--gold)}
+  .contact-details .row .v em{font-style:italic;color:var(--gold)}
+
+  .map-card{background:var(--cream);border:1px solid var(--line);padding:36px 34px;position:relative}
+  .map-card .label{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.26em;text-transform:uppercase;color:var(--mut);margin-bottom:18px;font-weight:500}
+  .map-card h4{font-family:'Fraunces',serif;font-weight:400;font-size:28px;letter-spacing:-0.02em;line-height:1.1;color:var(--ink);margin-bottom:20px}
+  .map-card h4 em{font-style:italic;color:var(--gold);font-weight:400}
+  .map-card p{font-family:'Inter',sans-serif;font-weight:300;font-size:14px;line-height:1.6;color:var(--ink-soft);margin-bottom:24px}
+  .map-card .map-btn{display:inline-flex;align-items:center;gap:10px;font-family:'Inter',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:4px}
+  .map-card .map-btn .arrow{width:14px;height:1px;background:var(--ink);position:relative;transition:width .25s}
+  .map-card .map-btn .arrow::after{content:"";position:absolute;right:0;top:-3px;width:6px;height:6px;border-top:1px solid var(--ink);border-right:1px solid var(--ink);transform:rotate(45deg)}
+  .map-card .map-btn:hover .arrow{width:22px}
+  .hours-list{margin-top:32px;border-top:1px solid var(--line);padding-top:26px;display:flex;flex-direction:column;gap:10px}
+  .hours-list .row{display:flex;justify-content:space-between;align-items:baseline;font-family:'Inter',sans-serif;font-size:13px;color:var(--ink-soft);font-weight:400}
+  .hours-list .row .d{letter-spacing:0.08em;text-transform:uppercase;font-size:11px;color:var(--mut)}
+  .hours-list .row .h{font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-size:14px;color:var(--ink)}
+
+  /* ——— footer ——— */
+  footer{padding:20px 56px;background:var(--cream);border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+  footer .k-sign{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--mut)}
+  footer .k-sign a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--line)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">
+    <img src="img/banner.png" alt="Studio OZ" style="height:42px;width:auto;display:block">
+    <span style="font-family:'Inter';font-size:9.5px;letter-spacing:0.28em;text-transform:uppercase;color:var(--mut);margin-left:14px;padding-left:14px;border-left:1px solid var(--line)">L'Alfàs del Pi</span>
+  </div>
+
+  <div class="nav-links">
+    <a href="#">Classes</a>
+    <a href="#">Schedule</a>
+    <a href="#">Memberships</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </div>
+
+  <div class="nav-cta">
+    <div class="lang"><span class="act">EN</span><span>/</span><span>ES</span></div>
+    <button class="book-btn">Book a class</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+
+      <div class="hero-copy">
+        <div class="eyebrow">
+          <span class="dot"></span>
+          <span>Boutique Studio · Est. L'Alfàs del Pi</span>
+        </div>
+
+        <h1 class="hero-title">
+          <span class="line">Movement</span>
+          <span class="line">is <span class="em">for everyone</span>.</span>
+        </h1>
+
+        <p class="hero-sub">Yoga, Pilates, Barre and dance-based fitness in a boutique studio by the Mediterranean. Our classes cater to every level, and our teachers come from all over the world.</p>
+
+        <div class="hero-actions">
+          <button class="btn-primary">
+            Book a class
+            <span class="arrow"></span>
+          </button>
+          <a href="#" class="btn-secondary">View schedule</a>
+        </div>
+
+        <div class="disciplines">
+          <span class="d">Yoga</span>
+          <span class="d">Hot Yoga</span>
+          <span class="d">Barre</span>
+          <span class="d">Pilates</span>
+          <span class="d">Strength</span>
+          <span class="d">Stretch</span>
+          <span class="d">Zumba</span>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="meta-card">
+          <div class="label">Today · Studio A</div>
+          <div class="value">Vinyasa Flow <em>· 09:30</em></div>
+        </div>
+
+        <div class="photo-frame"></div>
+        <div class="photo-main">
+          <img src="img/studio-2.jpg" alt="Practitioner in a recovery session at Studio OZ">
+        </div>
+
+        <div class="photo-second">
+          <img src="img/studio-1.jpg" alt="Overhead view of mat practice at Studio OZ">
+        </div>
+      </div>
+
+    </div>
+
+    <div class="info-bar">
+      <div class="info-item">
+        <div class="k">Find us</div>
+        <div class="v">9 Passeig de la Mitja Llegua<br>03580 L'Alfàs del Pi</div>
+      </div>
+      <div class="info-item">
+        <div class="k">Reservations</div>
+        <div class="v"><a href="tel:+34604532305">+34 604 532 305</a></div>
+      </div>
+      <div class="info-item">
+        <div class="k">Write to us</div>
+        <div class="v"><a href="mailto:sally@studioOZalfas.com">sally@studioOZalfas.com</a></div>
+      </div>
+      <div class="info-item">
+        <div class="k">Approach</div>
+        <div class="v"><em>Every level</em>, every body, every day</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ——— SECTION 1 · DISCIPLINES ——— -->
+<section class="block" id="disciplines">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eye">01 · What we practise</div>
+        <h2>Seven disciplines, <em>one studio</em>.</h2>
+      </div>
+      <p class="aside">Yoga, Pilates, Barre and dance-based fitness under one roof. Classes are taught in English and welcome every body.</p>
+    </div>
+
+    <div class="disc-grid">
+      <div class="disc-cell">
+        <span class="num">01 — Breath & flow</span>
+        <div>
+          <h3>Yoga</h3>
+          <p>Slow vinyasa and grounded flows to move with breath. Open to students new to the mat as well as long-time practitioners.</p>
+        </div>
+      </div>
+
+      <div class="disc-cell feature">
+        <span class="num">02 — Heated room</span>
+        <div>
+          <h3>Hot <em>Yoga</em></h3>
+          <p>Practice in a warmer room to loosen muscles, deepen stretches and sweat out the week. Water and a mat are all you need.</p>
+        </div>
+      </div>
+
+      <div class="disc-cell">
+        <span class="num">03 — Ballet-inspired</span>
+        <div>
+          <h3>Barre</h3>
+          <p>Small, precise movements at the ballet barre to build long, toned muscles and posture without impact on the joints.</p>
+        </div>
+      </div>
+
+      <div class="disc-cell">
+        <span class="num">04 — Core & control</span>
+        <div>
+          <h3><em>Pilates</em></h3>
+          <p>Mat-based Pilates focused on the core, alignment and controlled breath. A practice for anyone rebuilding after injury.</p>
+        </div>
+      </div>
+
+      <div class="disc-cell">
+        <span class="num">05 — Build & tone</span>
+        <div>
+          <h3>Strength</h3>
+          <p>Functional strength work with bodyweight and small equipment. Designed to complement yoga and pilates, not replace them.</p>
+        </div>
+      </div>
+
+      <div class="disc-cell">
+        <span class="num">06 — Mobility</span>
+        <div>
+          <h3>Stretch</h3>
+          <p>A full session dedicated to mobility, releasing tight hips, shoulders and backs. Slow, restorative, deeply needed.</p>
+        </div>
+      </div>
+
+      <div class="disc-cell" style="grid-column:span 3;min-height:auto">
+        <div style="display:flex;justify-content:space-between;align-items:center;width:100%;gap:40px">
+          <div style="display:flex;align-items:baseline;gap:18px">
+            <span class="num">07 — Dance it out</span>
+            <h3 style="margin:0"><em>Zumba</em></h3>
+          </div>
+          <p style="max-width:560px;margin:0">Latin rhythms and choreography for a cardio session that doesn't feel like one. No experience needed, just come to move.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ——— SECTION 2 · SCHEDULE ——— -->
+<section class="block alt" id="schedule">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eye">02 · A week at the studio</div>
+        <h2>Morning flow, evening <em>release</em>.</h2>
+      </div>
+      <p class="aside">A proposed shape for the week, designed so you can build a rhythm with the studio instead of chasing individual classes.</p>
+    </div>
+
+    <div class="sched-wrap">
+      <div class="sched-note">
+        <span class="tag">Sample week · Propuesta</span>
+        <span class="note">Indicative structure — final times confirmed each month on the live schedule.</span>
+      </div>
+
+      <div class="sched-grid">
+        <div class="sched-cell sched-head">Hour</div>
+        <div class="sched-cell sched-head">Mon</div>
+        <div class="sched-cell sched-head">Tue</div>
+        <div class="sched-cell sched-head">Wed</div>
+        <div class="sched-cell sched-head">Thu</div>
+        <div class="sched-cell sched-head">Fri</div>
+        <div class="sched-cell sched-head">Sat</div>
+        <div class="sched-cell sched-head">Sun</div>
+
+        <div class="sched-cell sched-time">Morning</div>
+        <div class="sched-cell"><span class="chip gold">Yoga<span class="sub">flow</span></span></div>
+        <div class="sched-cell"><span class="chip">Pilates<span class="sub">mat</span></span></div>
+        <div class="sched-cell"><span class="chip gold">Hot Yoga<span class="sub">heated</span></span></div>
+        <div class="sched-cell"><span class="chip">Barre<span class="sub">tone</span></span></div>
+        <div class="sched-cell"><span class="chip gold">Yoga<span class="sub">flow</span></span></div>
+        <div class="sched-cell"><span class="chip ink">Zumba<span class="sub">dance</span></span></div>
+        <div class="sched-cell"><span class="chip">Stretch<span class="sub">mobility</span></span></div>
+
+        <div class="sched-cell sched-time">Midday</div>
+        <div class="sched-cell"><span class="chip">Stretch<span class="sub">mobility</span></span></div>
+        <div class="sched-cell"><span class="chip gold">Hot Yoga<span class="sub">heated</span></span></div>
+        <div class="sched-cell"><span class="chip">Strength<span class="sub">core</span></span></div>
+        <div class="sched-cell"><span class="chip gold">Yoga<span class="sub">slow</span></span></div>
+        <div class="sched-cell"><span class="chip">Pilates<span class="sub">mat</span></span></div>
+        <div class="sched-cell"><span class="chip gold">Yoga<span class="sub">flow</span></span></div>
+        <div class="sched-cell" style="color:var(--mut);font-family:'Fraunces',serif;font-style:italic;font-size:13px">Rest</div>
+
+        <div class="sched-cell sched-time">Evening</div>
+        <div class="sched-cell"><span class="chip ink">Zumba<span class="sub">dance</span></span></div>
+        <div class="sched-cell"><span class="chip">Barre<span class="sub">tone</span></span></div>
+        <div class="sched-cell"><span class="chip gold">Yoga<span class="sub">flow</span></span></div>
+        <div class="sched-cell"><span class="chip">Strength<span class="sub">core</span></span></div>
+        <div class="sched-cell"><span class="chip gold">Hot Yoga<span class="sub">heated</span></span></div>
+        <div class="sched-cell" style="color:var(--mut);font-family:'Fraunces',serif;font-style:italic;font-size:13px">Private</div>
+        <div class="sched-cell" style="color:var(--mut);font-family:'Fraunces',serif;font-style:italic;font-size:13px">Rest</div>
+      </div>
+
+      <div class="sched-legend">
+        <span>Signature classes (gold)</span>
+        <span style="color:var(--ink)">Foundational practice</span>
+        <span style="color:var(--ink)">Dance & strength</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ——— SECTION 3 · TEAM ——— -->
+<section class="block" id="team">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eye">03 · Who teaches here</div>
+        <h2>Meet Sally <em>& the team</em>.</h2>
+      </div>
+      <p class="aside">Studio OZ is led by Sally and supported by visiting teachers who bring their own lineage to the space.</p>
+    </div>
+
+    <div class="team-grid">
+      <div class="team-photo">
+        <div class="frame"></div>
+        <img src="img/studio-3.jpg" alt="Sally and a fellow teacher at Studio OZ">
+      </div>
+
+      <div class="team-copy">
+        <h3>Taught by people who have <em>practised elsewhere</em>.</h3>
+        <div class="lede">"Our teachers come from all over the world."</div>
+        <p>Sally founded Studio OZ to bring a boutique yoga and movement culture to L'Alfàs del Pi. The studio keeps class sizes small so instructors can actually see you, adjust you, and remember you the next time you come in.</p>
+        <p>Alongside Sally, a rotating circle of guest teachers joins the studio each season — each one bringing a different voice to the same consistent space.</p>
+
+        <div class="team-tags">
+          <span class="t">Small groups</span>
+          <span class="t">Every level</span>
+          <span class="t">English & Spanish</span>
+          <span class="t">Drop-in welcome</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ——— SECTION 4 · CONTACT ——— -->
+<section class="block alt" id="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eye">04 · Visit the studio</div>
+        <h2>Come by, <em>or write</em>.</h2>
+      </div>
+      <p class="aside">First class on us — message Sally to find the right slot for your week.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-main">
+        <h3>Two minutes from the <em>Albir promenade</em>.</h3>
+        <p class="intro">Studio OZ sits on the Passeig de la Mitja Llegua, steps from the beach. Parking on the street, no stairs at the entrance, mats provided.</p>
+
+        <div class="contact-details">
+          <div class="row">
+            <div class="k">Address</div>
+            <div class="v">9 Passeig de la Mitja Llegua<br>03580 L'Alfàs del Pi<br>Alicante, Spain</div>
+          </div>
+          <div class="row">
+            <div class="k">Phone</div>
+            <div class="v"><a href="tel:+34604532305">+34 604 532 305</a></div>
+          </div>
+          <div class="row">
+            <div class="k">Email</div>
+            <div class="v"><a href="mailto:sally@studioOZalfas.com">sally@studioOZalfas.com</a></div>
+          </div>
+          <div class="row">
+            <div class="k">Languages</div>
+            <div class="v"><em>English</em> · Español</div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="map-card">
+        <div class="label">Find the studio</div>
+        <h4>9 Passeig de la Mitja Llegua, <em>L'Alfàs del Pi</em></h4>
+        <p>Boutique studio tucked into the Albir promenade. Signage in the entrance — ring the bell if the door is closed.</p>
+        <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=9+Passeig+de+la+Mitja+Llegua+03580+L%27Alf%C3%A0s+del+Pi" target="_blank" rel="noopener">Open in Google Maps <span class="arrow"></span></a>
+
+        <div class="hours-list">
+          <div class="row"><span class="d">Classes</span><span class="h">Check schedule</span></div>
+          <div class="row"><span class="d">Private sessions</span><span class="h">By appointment</span></div>
+          <div class="row"><span class="d">Walk-ins</span><span class="h">Welcome before class</span></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="k-sign">Studio OZ · L'Alfàs del Pi · Costa Blanca</span>
+  <span class="k-sign">Mockup designed by <a href="https://kenaz.studio">Kenaz Studio</a></span>
+</footer>
+
+</body>
+</html>

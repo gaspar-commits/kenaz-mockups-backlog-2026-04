@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Construma — Arquitectura residencial y piscinas en la Costa Blanca</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bone: #F5F1EA;
+    --stone: #E8E0D3;
+    --sand: #D9CFBC;
+    --charcoal: #1F1D1A;
+    --ink: #2C2A26;
+    --muted: #6B665C;
+    --line: #C9BFA9;
+    --travertine: #5C6A66;
+    --water: #8FA6A2;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    background: var(--bone);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+  }
+
+  .display {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+  }
+
+  /* ── TOP BAR ─────────────────────────────────────────────── */
+  .topbar {
+    background: var(--charcoal);
+    color: var(--bone);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 10px 0;
+  }
+  .topbar-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .topbar-left { display: flex; gap: 32px; opacity: 0.82; }
+  .topbar-right { display: flex; gap: 20px; align-items: center; }
+  .lang {
+    display: inline-flex;
+    gap: 14px;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+  }
+  .lang span.active { color: var(--bone); }
+  .lang span { color: rgba(245, 241, 234, 0.45); cursor: pointer; }
+  .lang .sep { color: rgba(245, 241, 234, 0.25); }
+
+  /* ── HEADER ─────────────────────────────────────────────── */
+  header {
+    background: var(--bone);
+    border-bottom: 1px solid var(--line);
+    padding: 26px 0;
+  }
+  .header-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo-wrap {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .logo-mark {
+    width: 44px;
+    height: 44px;
+    border: 1.5px solid var(--charcoal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--charcoal);
+  }
+  .logo-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    letter-spacing: 0.18em;
+    color: var(--charcoal);
+    font-weight: 500;
+  }
+  .logo-sub {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.32em;
+    color: var(--muted);
+    margin-top: 2px;
+    text-transform: uppercase;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 38px;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  nav a {
+    color: var(--ink);
+    text-decoration: none;
+    transition: color .2s;
+    padding-bottom: 4px;
+    border-bottom: 1px solid transparent;
+  }
+  nav a:hover { border-bottom-color: var(--charcoal); }
+  .cta-small {
+    background: var(--charcoal);
+    color: var(--bone);
+    padding: 12px 22px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: opacity .2s;
+  }
+  .cta-small:hover { opacity: 0.85; }
+
+  /* ── HERO ────────────────────────────────────────────────── */
+  .hero {
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    gap: 72px;
+    padding: 80px 0 60px;
+    align-items: start;
+  }
+  .hero-text { padding-top: 20px; }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 34px;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 36px;
+    height: 1px;
+    background: var(--travertine);
+  }
+  h1.hero-title {
+    font-size: 76px;
+    line-height: 0.98;
+    margin-bottom: 28px;
+    color: var(--charcoal);
+    font-weight: 300;
+  }
+  h1.hero-title em {
+    font-style: italic;
+    color: var(--travertine);
+    font-weight: 400;
+  }
+  .hero-lede {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--ink);
+    max-width: 480px;
+    margin-bottom: 42px;
+    font-weight: 300;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 56px;
+  }
+  .btn-primary {
+    background: var(--charcoal);
+    color: var(--bone);
+    padding: 17px 32px;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all .25s;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .btn-primary:hover {
+    background: var(--ink);
+    letter-spacing: 0.28em;
+  }
+  .btn-primary .arrow { font-size: 14px; }
+  .btn-secondary {
+    color: var(--charcoal);
+    padding: 17px 0;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-bottom: 1px solid var(--charcoal);
+  }
+
+  /* ── AWARDS STRIP ────────────────────────────────────────── */
+  .awards {
+    padding-top: 36px;
+    border-top: 1px solid var(--line);
+  }
+  .awards-label {
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 18px;
+  }
+  .awards-list {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .award {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    color: var(--charcoal);
+    font-style: italic;
+    font-weight: 400;
+  }
+  .award-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+    margin-top: 3px;
+    font-style: normal;
+  }
+
+  /* ── HERO IMAGE ─────────────────────────────────────────── */
+  .hero-image-wrap {
+    position: relative;
+  }
+  .hero-image {
+    width: 100%;
+    height: 620px;
+    object-fit: cover;
+    display: block;
+  }
+  .hero-badge {
+    position: absolute;
+    bottom: 28px;
+    left: 28px;
+    background: var(--bone);
+    padding: 20px 26px;
+    max-width: 280px;
+  }
+  .hero-badge-label {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .hero-badge-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    line-height: 1.2;
+    color: var(--charcoal);
+    font-weight: 400;
+  }
+  .hero-badge-meta {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--line);
+    letter-spacing: 0.08em;
+  }
+
+  /* ── TERRITORY STRIP ────────────────────────────────────── */
+  .territory {
+    background: var(--stone);
+    padding: 48px 0;
+    border-top: 1px solid var(--line);
+  }
+  .territory-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 48px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 72px;
+    align-items: center;
+  }
+  .territory-label {
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .territory-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    line-height: 1.15;
+    color: var(--charcoal);
+    font-weight: 300;
+  }
+  .territory-title em {
+    font-style: italic;
+    color: var(--travertine);
+  }
+  .territory-list {
+    display: flex;
+    gap: 56px;
+    font-family: 'Cormorant Garamond', serif;
+    flex-wrap: wrap;
+  }
+  .territory-item {
+    display: flex;
+    flex-direction: column;
+  }
+  .territory-item strong {
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--charcoal);
+    letter-spacing: 0.02em;
+  }
+  .territory-item span {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  /* ── SERVICES ────────────────────────────────────────────── */
+  .services {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 110px 48px 40px;
+  }
+  .services-head {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 72px;
+    align-items: end;
+    margin-bottom: 64px;
+  }
+  .services-label {
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .services-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 46px;
+    line-height: 1.05;
+    color: var(--charcoal);
+    font-weight: 300;
+  }
+  .services-title em {
+    font-style: italic;
+    color: var(--travertine);
+  }
+  .services-lede {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--ink);
+    max-width: 440px;
+    font-weight: 300;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .service {
+    padding: 38px 28px 34px;
+    border-right: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .service:last-child { border-right: none; }
+  .service-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--travertine);
+    letter-spacing: 0.1em;
+  }
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    line-height: 1.15;
+    color: var(--charcoal);
+    font-weight: 400;
+    margin-top: 4px;
+  }
+  .service-desc {
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--muted);
+    font-weight: 300;
+    margin-top: 2px;
+  }
+
+  /* ── PROJECTS ────────────────────────────────────────────── */
+  .projects {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 110px 48px 80px;
+  }
+  .projects-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 56px;
+  }
+  .projects-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    line-height: 1;
+    color: var(--charcoal);
+    font-weight: 300;
+    max-width: 640px;
+  }
+  .projects-title em {
+    font-style: italic;
+    color: var(--travertine);
+  }
+  .projects-cta {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    text-decoration: none;
+    border-bottom: 1px solid var(--charcoal);
+    padding-bottom: 4px;
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 24px;
+  }
+  .project {
+    position: relative;
+    cursor: pointer;
+  }
+  .project:first-child { grid-column: span 1; grid-row: span 1; }
+  .project img {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    display: block;
+  }
+  .project:first-child img { aspect-ratio: 3/4; }
+  .project-meta {
+    padding: 18px 2px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .project-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: var(--charcoal);
+    font-weight: 400;
+    line-height: 1.25;
+  }
+  .project-loc {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+    padding-top: 6px;
+  }
+  .project-num {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    color: var(--bone);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    background: rgba(31, 29, 26, 0.55);
+    padding: 6px 12px;
+    backdrop-filter: blur(6px);
+  }
+
+  /* ── FOOTER ──────────────────────────────────────────────── */
+  footer {
+    background: var(--charcoal);
+    color: var(--bone);
+    padding: 72px 0 36px;
+    margin-top: 80px;
+  }
+  .footer-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.2fr;
+    gap: 56px;
+    padding-bottom: 56px;
+    border-bottom: 1px solid rgba(245, 241, 234, 0.12);
+  }
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    letter-spacing: 0.18em;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+  .footer-tag {
+    font-size: 13px;
+    line-height: 1.7;
+    opacity: 0.72;
+    max-width: 320px;
+  }
+  .footer-col h4 {
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-bottom: 18px;
+    font-weight: 500;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 10px; font-size: 13px; opacity: 0.82; }
+  .footer-col a { color: var(--bone); text-decoration: none; }
+  .footer-contact-line {
+    font-size: 13px;
+    line-height: 1.8;
+    opacity: 0.82;
+  }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 28px;
+    font-size: 11px;
+    opacity: 0.5;
+    letter-spacing: 0.1em;
+  }
+  .kenaz-credit {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .kenaz-credit a {
+    color: var(--bone);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(245, 241, 234, 0.3);
+    padding-bottom: 1px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ── TOP BAR ── -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-left">
+      <span>+34 966 46 19 74</span>
+      <span>info@construma.es</span>
+    </div>
+    <div class="topbar-right">
+      <div class="lang">
+        <span class="active">ES</span>
+        <span class="sep">/</span>
+        <span>EN</span>
+        <span class="sep">/</span>
+        <span>FR</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="header-inner">
+    <div class="logo-wrap">
+      <div>
+        <img src="img/logo-construma.svg" alt="Construma" style="height:28px;width:auto;filter:brightness(0);display:block;">
+        <span class="logo-sub">Construcción · Piscinas · Reformas</span>
+      </div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#">Proyectos</a></li>
+        <li><a href="#">Piscinas</a></li>
+        <li><a href="#">Reformas</a></li>
+        <li><a href="#">Pool Shop</a></li>
+        <li><a href="#">Nosotros</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul>
+    </nav>
+    <a href="#" class="cta-small">Consultar proyecto</a>
+  </div>
+</header>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-text">
+      <div class="eyebrow">Jávea · Moraira · Benitatxell · Calpe</div>
+      <h1 class="hero-title display">Villas y piscinas <em>concebidas para el paisaje</em> de la Costa Blanca.</h1>
+      <p class="hero-lede">Más de veinte años construyendo vivienda unifamiliar, piscinas y reformas integrales en el norte de Alicante. Proyectos pensados desde el terreno, ejecutados con oficio y entregados sin concesiones.</p>
+      <div class="hero-actions">
+        <a href="#" class="btn-primary">Ver proyectos <span class="arrow">→</span></a>
+        <a href="#" class="btn-secondary">Iniciar una obra</a>
+      </div>
+      <div class="awards">
+        <div class="awards-label">Reconocimientos recientes</div>
+        <div class="awards-list">
+          <div class="award">
+            Best Residential Pool 2025
+            <span class="award-sub">EUSA · Nocturna</span>
+          </div>
+          <div class="award">
+            Hydrosud Awards 2025
+            <span class="award-sub">Mejor piscina residencial</span>
+          </div>
+          <div class="award">
+            Premios ASOFAP 2024
+            <span class="award-sub">Asociación española del sector</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-image-wrap">
+      <img src="img/hero-arquitectura.jpg" alt="Villa con piscina infinity sobre el acantilado, Costa Blanca" class="hero-image">
+      <div class="hero-badge">
+        <div class="hero-badge-label">Proyecto destacado</div>
+        <div class="hero-badge-title">Vivienda unifamiliar con piscina desbordante</div>
+        <div class="hero-badge-meta">JÁVEA · OBRA ENTREGADA</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TERRITORY ── -->
+<section class="territory">
+  <div class="territory-inner">
+    <div>
+      <div class="territory-label">Territorio</div>
+      <div class="territory-title display">Trabajamos donde <em>conocemos el terreno</em>.</div>
+    </div>
+    <div class="territory-list">
+      <div class="territory-item">
+        <strong>Jávea</strong>
+        <span>Xàbia · Base de operaciones</span>
+      </div>
+      <div class="territory-item">
+        <strong>Moraira</strong>
+        <span>Teulada</span>
+      </div>
+      <div class="territory-item">
+        <strong>Benitatxell</strong>
+        <span>El Poble Nou</span>
+      </div>
+      <div class="territory-item">
+        <strong>Calpe</strong>
+        <span>Calp</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section class="services">
+  <div class="services-head">
+    <div>
+      <div class="services-label">Qué hacemos</div>
+      <h2 class="services-title display">Cuatro oficios, <em>una misma casa</em>.</h2>
+    </div>
+    <p class="services-lede">Proyectamos y ejecutamos en la Costa Blanca con equipos propios. Del movimiento de tierras a la entrega de llaves, cada fase pasa por las mismas manos.</p>
+  </div>
+
+  <div class="services-grid">
+    <div class="service">
+      <span class="service-num">— 01</span>
+      <div class="service-name">Vivienda unifamiliar</div>
+      <p class="service-desc">Villas de obra nueva pensadas desde el terreno y el paisaje.</p>
+    </div>
+    <div class="service">
+      <span class="service-num">— 02</span>
+      <div class="service-name">Piscinas residenciales</div>
+      <p class="service-desc">Desbordantes, infinity, wellness. Obra civil y acabado integral.</p>
+    </div>
+    <div class="service">
+      <span class="service-num">— 03</span>
+      <div class="service-name">Reformas integrales</div>
+      <p class="service-desc">Rehabilitación completa de vivienda existente, con dirección única.</p>
+    </div>
+    <div class="service">
+      <span class="service-num">— 04</span>
+      <div class="service-name">Pool Shop</div>
+      <p class="service-desc">Mantenimiento, equipamiento y servicio técnico para piscinas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROJECTS ── -->
+<section class="projects">
+  <div class="projects-head">
+    <h2 class="projects-title display">Obra reciente, entregada en <em>la zona que habita</em>.</h2>
+    <a href="#" class="projects-cta">Portfolio completo →</a>
+  </div>
+
+  <div class="project-grid">
+    <div class="project">
+      <span class="project-num">— 01</span>
+      <img src="img/piscina-infinity.jpg" alt="Villa con piscina infinity al anochecer, Jávea">
+      <div class="project-meta">
+        <div>
+          <div class="project-name">Villa Charlene</div>
+        </div>
+        <div class="project-loc">Jávea · 2024</div>
+      </div>
+    </div>
+
+    <div class="project">
+      <span class="project-num">— 02</span>
+      <img src="img/villa-tarraula.jpg" alt="Vivienda unifamiliar con piscina frente al Montgó">
+      <div class="project-meta">
+        <div>
+          <div class="project-name">Tarraula</div>
+        </div>
+        <div class="project-loc">Jávea · 2023</div>
+      </div>
+    </div>
+
+    <div class="project">
+      <span class="project-num">— 03</span>
+      <img src="img/piscina-desbordante.jpg" alt="Piscina desbordante con vistas al mar">
+      <div class="project-meta">
+        <div>
+          <div class="project-name">Carrer Blauet</div>
+        </div>
+        <div class="project-loc">Jávea · 2022</div>
+      </div>
+    </div>
+
+    <div class="project">
+      <span class="project-num">— 04</span>
+      <img src="img/piscina-wellness.jpg" alt="Piscina interior wellness">
+      <div class="project-meta">
+        <div>
+          <div class="project-name">Piscina wellness</div>
+        </div>
+        <div class="project-loc">Benitatxell · 2024</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <img src="img/logo-construma.svg" alt="Construma" style="height:34px;width:auto;margin-bottom:22px;display:block;">
+        <div class="footer-tag">Construcción, piscinas y reformas en el norte de Alicante. Más de veinte años al servicio del proyecto residencial.</div>
+      </div>
+      <div class="footer-col">
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="#">Vivienda unifamiliar</a></li>
+          <li><a href="#">Piscinas residenciales</a></li>
+          <li><a href="#">Reformas integrales</a></li>
+          <li><a href="#">Pool Shop</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Estudio</h4>
+        <ul>
+          <li><a href="#">Nosotros</a></li>
+          <li><a href="#">Proyectos</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <div class="footer-contact-line">
+          info@construma.es<br>
+          +34 966 46 19 74<br>
+          Jávea · Alicante<br>
+          Lunes a viernes, 9–18h
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© Construma · Todos los derechos reservados</div>
+      <div class="kenaz-credit">
+        <span>Diseño propuesto por</span>
+        <a href="https://kenaz.studio">Kenaz Studio</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

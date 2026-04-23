@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gourmet Point — Tienda gourmet en Dénia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --cream: #F5EFE4;
+    --cream-deep: #EBE2D0;
+    --ink: #1E1712;
+    --ink-soft: #3A2E24;
+    --wine: #5B1A1F;
+    --olive: #6B6A3A;
+    --sand: #B8A380;
+    --rule: rgba(30, 23, 18, 0.12);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* ===== TOP UTILITY BAR ===== */
+  .utility {
+    background: var(--ink);
+    color: var(--cream);
+    font-size: 11.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 9px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .utility .items { display: flex; gap: 32px; }
+  .utility .items span { opacity: 0.75; }
+  .utility .items span strong { color: var(--cream); font-weight: 500; opacity: 1; margin-right: 6px; }
+  .utility .right { display: flex; gap: 24px; align-items: center; }
+  .utility .right a { color: var(--cream); text-decoration: none; opacity: 0.85; }
+
+  /* ===== NAV ===== */
+  .nav {
+    padding: 26px 48px 22px;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    background: var(--cream);
+  }
+  .nav-left { display: flex; gap: 38px; font-size: 13px; letter-spacing: 0.02em; }
+  .nav-left a { color: var(--ink); text-decoration: none; font-weight: 500; }
+  .nav-left a.muted { opacity: 0.55; font-weight: 400; }
+  .brand {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1;
+  }
+  .brand .wordmark {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 30px;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+  }
+  .brand .wordmark em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--wine);
+  }
+  .brand .tag {
+    font-size: 9.5px;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-top: 7px;
+    opacity: 0.7;
+  }
+  .nav-right {
+    display: flex;
+    gap: 24px;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 13px;
+  }
+  .nav-right a {
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .nav-right .cart {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 9px 18px;
+    border-radius: 0;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    min-height: 760px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .hero-left {
+    padding: 64px 64px 48px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .eyebrow {
+    font-size: 10.5px;
+    letter-spacing: 0.36em;
+    text-transform: uppercase;
+    color: var(--wine);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 36px;
+    height: 1px;
+    background: var(--wine);
+  }
+  .headline {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 70px;
+    line-height: 1;
+    letter-spacing: -0.022em;
+    color: var(--ink);
+    max-width: 620px;
+  }
+  .headline em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--wine);
+  }
+  .headline .thin {
+    display: block;
+    font-weight: 300;
+  }
+  .sub {
+    margin-top: 22px;
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 480px;
+    font-weight: 400;
+  }
+  .cta-row {
+    margin-top: 34px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+  .btn-primary {
+    background: var(--ink);
+    color: var(--cream);
+    text-decoration: none;
+    padding: 16px 30px;
+    font-size: 12.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .btn-primary .arrow { display: inline-block; transform: translateX(0); transition: transform .3s ease; }
+  .btn-secondary {
+    color: var(--ink);
+    text-decoration: none;
+    padding: 16px 8px;
+    font-size: 12.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border-bottom: 1px solid var(--ink);
+  }
+  .meta-strip {
+    margin-top: 40px;
+    display: flex;
+    gap: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+  }
+  .meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .meta-item .num {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    line-height: 1;
+  }
+  .meta-item .lbl {
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    opacity: 0.7;
+  }
+
+  /* ===== HERO RIGHT — Bodegón editorial SVG ===== */
+  .hero-right {
+    background: var(--cream-deep);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-right::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 70% 40%, rgba(91, 26, 31, 0.08), transparent 60%),
+      radial-gradient(ellipse at 30% 80%, rgba(107, 106, 58, 0.10), transparent 55%);
+  }
+  .composition {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .composition svg { width: 100%; height: 100%; }
+
+  /* Tag de categoria sobre la imagen */
+  .hero-tag {
+    position: absolute;
+    top: 42px;
+    right: 42px;
+    padding: 11px 18px;
+    background: var(--cream);
+    border: 1px solid var(--rule);
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-weight: 500;
+    z-index: 5;
+  }
+  .hero-caption {
+    position: absolute;
+    bottom: 42px;
+    left: 48px;
+    right: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-size: 11.5px;
+    color: var(--ink-soft);
+    z-index: 5;
+  }
+  .hero-caption .num-ed {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--ink);
+  }
+  .hero-caption .caption-txt {
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-size: 10.5px;
+    max-width: 280px;
+    text-align: right;
+    line-height: 1.5;
+    opacity: 0.8;
+  }
+
+  /* ===== CATEGORY STRIP ===== */
+  .categories {
+    padding: 56px 48px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .cat {
+    padding: 0 32px;
+    border-left: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .cat:first-child { border-left: none; padding-left: 0; }
+  .cat:last-child { padding-right: 0; }
+  .cat .cat-num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 12px;
+    color: var(--wine);
+    letter-spacing: 0.1em;
+  }
+  .cat .cat-name {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 30px;
+    color: var(--ink);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+  .cat .cat-sub {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    opacity: 0.82;
+    margin-top: 4px;
+  }
+  .cat .cat-link {
+    margin-top: 14px;
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.9;
+  }
+
+  /* ===== DESTACADOS ===== */
+  .destacados {
+    padding: 96px 48px 88px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 56px;
+    gap: 48px;
+  }
+  .section-head .sh-left { max-width: 640px; }
+  .section-head .sh-eyebrow {
+    font-size: 10.5px;
+    letter-spacing: 0.36em;
+    text-transform: uppercase;
+    color: var(--wine);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+  .section-head .sh-eyebrow::before {
+    content: '';
+    width: 36px;
+    height: 1px;
+    background: var(--wine);
+  }
+  .section-head .sh-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 48px;
+    line-height: 1.05;
+    letter-spacing: -0.018em;
+    color: var(--ink);
+  }
+  .section-head .sh-title em {
+    font-style: italic;
+    color: var(--wine);
+    font-weight: 300;
+  }
+  .section-head .sh-right {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 360px;
+    text-align: right;
+  }
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .product-card {
+    background: var(--cream-deep);
+    border: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+  }
+  .product-visual {
+    aspect-ratio: 3 / 4;
+    background: linear-gradient(180deg, #EFE5D2 0%, #E1D5BE 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+    overflow: hidden;
+  }
+  .product-visual svg { width: 62%; height: 62%; }
+  .product-visual .pv-edition {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 11px;
+    color: var(--wine);
+    letter-spacing: 0.08em;
+  }
+  .product-body {
+    padding: 22px 22px 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .product-cat {
+    font-size: 9.5px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    opacity: 0.72;
+  }
+  .product-name {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 22px;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+  }
+  .product-tag {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    margin-top: 4px;
+  }
+  .product-cta {
+    margin-top: 14px;
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-top: 14px;
+    border-top: 1px solid var(--rule);
+  }
+
+  /* ===== LOTES CORPORATIVOS ===== */
+  .lotes {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    border-bottom: 1px solid var(--rule);
+    min-height: 560px;
+  }
+  .lotes-left {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 96px 72px 88px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .lotes-left .l-eyebrow {
+    font-size: 10.5px;
+    letter-spacing: 0.36em;
+    text-transform: uppercase;
+    color: var(--sand);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+  .lotes-left .l-eyebrow::before {
+    content: '';
+    width: 36px;
+    height: 1px;
+    background: var(--sand);
+  }
+  .lotes-left h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 56px;
+    line-height: 1.03;
+    letter-spacing: -0.02em;
+    max-width: 520px;
+  }
+  .lotes-left h2 em {
+    font-style: italic;
+    color: var(--sand);
+    font-weight: 300;
+  }
+  .lotes-left .l-copy {
+    margin-top: 24px;
+    font-size: 15px;
+    line-height: 1.65;
+    max-width: 480px;
+    color: rgba(245, 239, 228, 0.82);
+  }
+  .lotes-left .l-list {
+    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 12.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(245, 239, 228, 0.78);
+  }
+  .lotes-left .l-list span::before {
+    content: '—';
+    margin-right: 14px;
+    color: var(--sand);
+  }
+  .lotes-left .l-cta {
+    margin-top: 44px;
+    display: flex;
+    gap: 18px;
+    align-items: center;
+  }
+  .lotes-left .l-btn {
+    background: var(--cream);
+    color: var(--ink);
+    text-decoration: none;
+    padding: 16px 30px;
+    font-size: 12.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .lotes-left .l-mail {
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 12.5px;
+    letter-spacing: 0.12em;
+    border-bottom: 1px solid rgba(245, 239, 228, 0.4);
+    padding-bottom: 4px;
+  }
+  .lotes-right {
+    background: var(--cream-deep);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .lotes-right::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 50% 40%, rgba(91, 26, 31, 0.10), transparent 65%),
+      radial-gradient(ellipse at 30% 85%, rgba(107, 106, 58, 0.08), transparent 55%);
+  }
+  .lotes-right svg { width: 78%; height: 78%; position: relative; z-index: 1; }
+  .lotes-right .lr-tag {
+    position: absolute;
+    top: 42px;
+    right: 42px;
+    padding: 11px 18px;
+    background: var(--cream);
+    border: 1px solid var(--rule);
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-weight: 500;
+    z-index: 5;
+  }
+  .lotes-right .lr-caption {
+    position: absolute;
+    bottom: 42px;
+    left: 48px;
+    right: 48px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--ink-soft);
+    opacity: 0.85;
+    z-index: 5;
+  }
+
+  /* ===== FOOTER COMPLETO ===== */
+  .footer {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 88px 48px 0;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr 1fr 1fr;
+    gap: 56px;
+    padding-bottom: 64px;
+    border-bottom: 1px solid rgba(245, 239, 228, 0.12);
+  }
+  .footer-brand .fb-mark {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 30px;
+    letter-spacing: 0.01em;
+    color: var(--cream);
+    line-height: 1;
+  }
+  .footer-brand .fb-mark em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--sand);
+  }
+  .footer-brand .fb-tag {
+    margin-top: 10px;
+    font-size: 9.5px;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: rgba(245, 239, 228, 0.6);
+  }
+  .footer-brand .fb-addr {
+    margin-top: 28px;
+    font-size: 13px;
+    line-height: 1.7;
+    color: rgba(245, 239, 228, 0.72);
+    max-width: 260px;
+  }
+  .footer-col h4 {
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--sand);
+    font-weight: 500;
+    margin-bottom: 22px;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .footer-col a {
+    color: rgba(245, 239, 228, 0.78);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.01em;
+  }
+  .footer-copy {
+    padding: 22px 0 26px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(245, 239, 228, 0.5);
+  }
+  .footer-copy .fc-right {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    text-transform: none;
+  }
+  .footer-copy .fc-right a {
+    color: var(--sand);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(184, 163, 128, 0.35);
+    padding-bottom: 1px;
+    margin-left: 6px;
+  }
+
+</style>
+</head>
+<body>
+
+  <!-- Utility bar -->
+  <div class="utility">
+    <div class="items">
+      <span><strong>ENVÍOS</strong>Península, Baleares y UE</span>
+      <span><strong>RECOGIDA</strong>En tienda · C/ Cop 7, Dénia</span>
+      <span><strong>PAGO</strong>Tarjeta · Bizum · Transferencia</span>
+    </div>
+    <div class="right">
+      <a href="#">+34 865 510 036</a>
+    </div>
+  </div>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="nav-left">
+      <a href="#">Vino</a>
+      <a href="#">Cervezas</a>
+      <a href="#">Gourmet</a>
+      <a href="#" class="muted">Regalos &amp; lotes</a>
+    </div>
+    <div class="brand">
+      <div class="wordmark">Gourmet <em>Point</em></div>
+      <div class="tag">Delicatessen · Dénia</div>
+    </div>
+    <div class="nav-right">
+      <a href="#">Buscar</a>
+      <a href="#">Cuenta</a>
+      <a href="#" class="cart">Cesta · 0</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div>
+        <div class="eyebrow">Nueva temporada · Primavera 2026</div>
+        <h1 class="headline">
+          Con sabor <em>a sensaciones.</em>
+          <span class="thin">Vinos, cervezas artesanales</span>
+          <span class="thin">y despensa gourmet.</span>
+        </h1>
+        <p class="sub">
+          Tienda delicatessen en el centro de Dénia. Selección cuidada
+          de bodegas, cervezas artesanales y despensa gourmet, con envíos
+          a toda la Unión Europea y recogida en tienda en la Costa Blanca.
+        </p>
+        <div class="cta-row">
+          <a href="#" class="btn-primary">Explorar la tienda <span class="arrow">→</span></a>
+          <a href="#" class="btn-secondary">Lotes y regalos</a>
+        </div>
+      </div>
+
+      <div class="meta-strip">
+        <div class="meta-item">
+          <span class="num">+1000</span>
+          <span class="lbl">Referencias</span>
+        </div>
+        <div class="meta-item">
+          <span class="num">UE</span>
+          <span class="lbl">Envíos a domicilio</span>
+        </div>
+        <div class="meta-item">
+          <span class="num">Dénia</span>
+          <span class="lbl">Tienda física · C/ Cop 7</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <span class="hero-tag">Selección de la casa</span>
+
+      <div class="composition">
+        <!-- Bodegón editorial abstracto: botella + copa + forma orgánica -->
+        <svg viewBox="0 0 600 700" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <defs>
+            <linearGradient id="bottle" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#3A0E12" />
+              <stop offset="45%" stop-color="#5B1A1F" />
+              <stop offset="100%" stop-color="#2A0A0D" />
+            </linearGradient>
+            <linearGradient id="bottleGlass" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="rgba(255,255,255,0.25)" />
+              <stop offset="40%" stop-color="rgba(255,255,255,0)" />
+              <stop offset="100%" stop-color="rgba(0,0,0,0.15)" />
+            </linearGradient>
+            <linearGradient id="shadow" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="rgba(30,23,18,0.18)" />
+              <stop offset="100%" stop-color="rgba(30,23,18,0)" />
+            </linearGradient>
+            <radialGradient id="plate" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#C9B696" />
+              <stop offset="70%" stop-color="#B8A380" />
+              <stop offset="100%" stop-color="#9A8464" />
+            </radialGradient>
+            <linearGradient id="olive" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#7D7C46" />
+              <stop offset="100%" stop-color="#4A4A24" />
+            </linearGradient>
+          </defs>
+
+          <!-- Sombra plato -->
+          <ellipse cx="300" cy="600" rx="220" ry="16" fill="url(#shadow)" />
+
+          <!-- Plato / superficie de madera -->
+          <ellipse cx="300" cy="580" rx="240" ry="22" fill="url(#plate)" opacity="0.55" />
+
+          <!-- Botella de vino (centro) -->
+          <g transform="translate(260, 110)">
+            <!-- Cuerpo -->
+            <path d="M 30 480 L 30 180 L 28 150 Q 28 130 40 120 L 40 30 Q 40 20 45 20 L 75 20 Q 80 20 80 30 L 80 120 Q 92 130 92 150 L 90 180 L 90 480 Q 90 495 75 495 L 45 495 Q 30 495 30 480 Z"
+                  fill="url(#bottle)" />
+            <!-- Reflejo -->
+            <path d="M 40 180 L 40 470 Q 40 480 48 480 L 50 480 L 50 180 Z"
+                  fill="url(#bottleGlass)" opacity="0.6" />
+            <!-- Etiqueta -->
+            <rect x="38" y="275" width="44" height="140" fill="#F5EFE4" />
+            <rect x="38" y="275" width="44" height="140" fill="none" stroke="#1E1712" stroke-width="0.5" opacity="0.3" />
+            <!-- Texto etiqueta (decorativo, serif) -->
+            <text x="60" y="310" text-anchor="middle" fill="#5B1A1F" font-family="Fraunces, serif" font-size="8" font-style="italic" letter-spacing="0.05em">Selección</text>
+            <line x1="45" y1="322" x2="75" y2="322" stroke="#1E1712" stroke-width="0.4" opacity="0.4" />
+            <text x="60" y="345" text-anchor="middle" fill="#1E1712" font-family="Fraunces, serif" font-size="10" font-weight="500" letter-spacing="0.12em">DÉNIA</text>
+            <text x="60" y="362" text-anchor="middle" fill="#1E1712" font-family="Inter, sans-serif" font-size="5" letter-spacing="0.25em">TIERRA · MAR</text>
+            <circle cx="60" cy="388" r="6" fill="none" stroke="#5B1A1F" stroke-width="0.6" />
+            <text x="60" y="392" text-anchor="middle" fill="#5B1A1F" font-family="Fraunces, serif" font-size="6" font-style="italic">gp</text>
+            <line x1="45" y1="405" x2="75" y2="405" stroke="#1E1712" stroke-width="0.4" opacity="0.4" />
+            <!-- Corcho -->
+            <rect x="42" y="8" width="36" height="14" fill="#6B4E34" />
+            <rect x="42" y="8" width="36" height="14" fill="none" stroke="#3A2818" stroke-width="0.5" opacity="0.5" />
+          </g>
+
+          <!-- Copa a la izquierda -->
+          <g transform="translate(80, 320)">
+            <!-- Vino dentro -->
+            <path d="M 20 80 Q 20 50 60 50 Q 100 50 100 80 L 100 120 Q 100 160 60 165 Q 20 160 20 120 Z"
+                  fill="#5B1A1F" opacity="0.88" />
+            <!-- Copa contorno -->
+            <path d="M 14 60 Q 14 30 60 30 Q 106 30 106 60 L 106 130 Q 106 180 60 185 Q 14 180 14 130 Z"
+                  fill="none" stroke="#1E1712" stroke-width="1.2" opacity="0.35" />
+            <!-- Tallo -->
+            <line x1="60" y1="185" x2="60" y2="250" stroke="#1E1712" stroke-width="1.2" opacity="0.35" />
+            <!-- Base -->
+            <ellipse cx="60" cy="252" rx="28" ry="3" fill="#1E1712" opacity="0.35" />
+            <!-- Brillo -->
+            <path d="M 28 70 Q 24 90 28 110" stroke="rgba(245,239,228,0.3)" stroke-width="2" fill="none" stroke-linecap="round" />
+          </g>
+
+          <!-- Tablita con aceitunas / embutido a la derecha -->
+          <g transform="translate(410, 410)">
+            <!-- Tabla madera -->
+            <rect x="0" y="40" width="160" height="60" rx="6" fill="#8B6848" opacity="0.85" />
+            <rect x="0" y="40" width="160" height="60" rx="6" fill="none" stroke="#3A2818" stroke-width="0.6" opacity="0.4" />
+            <!-- Vetas madera -->
+            <line x1="10" y1="55" x2="150" y2="55" stroke="#6B4E34" stroke-width="0.5" opacity="0.5" />
+            <line x1="10" y1="75" x2="150" y2="75" stroke="#6B4E34" stroke-width="0.5" opacity="0.4" />
+            <line x1="10" y1="90" x2="150" y2="90" stroke="#6B4E34" stroke-width="0.5" opacity="0.5" />
+            <!-- Aceitunas -->
+            <ellipse cx="28" cy="60" rx="7" ry="9" fill="url(#olive)" />
+            <ellipse cx="25" cy="57" rx="2" ry="2.5" fill="rgba(245,239,228,0.25)" />
+            <ellipse cx="46" cy="65" rx="7" ry="9" fill="url(#olive)" />
+            <ellipse cx="43" cy="62" rx="2" ry="2.5" fill="rgba(245,239,228,0.25)" />
+            <!-- Rodajas embutido -->
+            <circle cx="85" cy="65" r="11" fill="#7A2F2C" />
+            <circle cx="85" cy="65" r="11" fill="none" stroke="#3A2818" stroke-width="0.4" opacity="0.5" />
+            <circle cx="82" cy="62" r="1" fill="#F5EFE4" opacity="0.4" />
+            <circle cx="88" cy="68" r="1" fill="#F5EFE4" opacity="0.4" />
+            <circle cx="110" cy="62" r="11" fill="#7A2F2C" />
+            <circle cx="110" cy="62" r="11" fill="none" stroke="#3A2818" stroke-width="0.4" opacity="0.5" />
+            <circle cx="107" cy="59" r="1" fill="#F5EFE4" opacity="0.4" />
+            <circle cx="113" cy="65" r="1" fill="#F5EFE4" opacity="0.4" />
+            <!-- Trozo queso -->
+            <path d="M 130 55 L 150 58 L 148 75 L 128 72 Z" fill="#E6D59E" />
+            <path d="M 130 55 L 150 58 L 148 75 L 128 72 Z" fill="none" stroke="#8B7A3A" stroke-width="0.5" opacity="0.6" />
+            <circle cx="138" cy="63" r="1" fill="#8B7A3A" opacity="0.4" />
+            <circle cx="143" cy="68" r="0.8" fill="#8B7A3A" opacity="0.4" />
+          </g>
+
+          <!-- Ramita olivo decorativa (esquina superior izquierda) -->
+          <g transform="translate(60, 80)" opacity="0.75">
+            <path d="M 0 50 Q 40 30 80 20" stroke="#6B6A3A" stroke-width="1.3" fill="none" />
+            <ellipse cx="20" cy="42" rx="8" ry="3" fill="#6B6A3A" transform="rotate(-20 20 42)" />
+            <ellipse cx="40" cy="32" rx="9" ry="3.5" fill="#7D7C46" transform="rotate(-15 40 32)" />
+            <ellipse cx="60" cy="25" rx="8" ry="3" fill="#6B6A3A" transform="rotate(-10 60 25)" />
+            <ellipse cx="28" cy="48" rx="7" ry="2.5" fill="#4A4A24" transform="rotate(25 28 48)" />
+            <ellipse cx="50" cy="38" rx="8" ry="3" fill="#4A4A24" transform="rotate(30 50 38)" />
+          </g>
+        </svg>
+      </div>
+
+      <div class="hero-caption">
+        <span class="num-ed">Nº 01 — Editorial</span>
+        <span class="caption-txt">Vino tinto, cerveza artesanal local y despensa de la Comunidad Valenciana</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories strip -->
+  <section class="categories">
+    <div class="cat">
+      <span class="cat-num">I.</span>
+      <span class="cat-name">Vino</span>
+      <span class="cat-sub">Tinto, blanco, rosado, cavas y champán.</span>
+      <span class="cat-link">Ver bodegas →</span>
+    </div>
+    <div class="cat">
+      <span class="cat-num">II.</span>
+      <span class="cat-name">Cervezas</span>
+      <span class="cat-sub">Artesanales: Tyris, Althaia, Birra &amp; Blues, ICA.</span>
+      <span class="cat-link">Ver cervezas →</span>
+    </div>
+    <div class="cat">
+      <span class="cat-num">III.</span>
+      <span class="cat-name">Despensa</span>
+      <span class="cat-sub">AOVE, conservas, embutido, miel, turrones.</span>
+      <span class="cat-link">Ver despensa →</span>
+    </div>
+    <div class="cat">
+      <span class="cat-num">IV.</span>
+      <span class="cat-name">Lotes</span>
+      <span class="cat-sub">Regalos personalizados y lotes corporativos.</span>
+      <span class="cat-link">Ver lotes →</span>
+    </div>
+  </section>
+
+  <!-- DESTACADOS DE LA SEMANA -->
+  <section class="destacados">
+    <div class="section-head">
+      <div class="sh-left">
+        <div class="sh-eyebrow">Destacados de la semana</div>
+        <h2 class="sh-title">Una <em>selección</em> que cambia<br/>con la temporada.</h2>
+      </div>
+      <p class="sh-right">
+        Rotamos la selección con nuevos vinos, cervezas y productos de despensa cada semana.
+        Lo que entra es lo que nos parece que vale la pena compartir.
+      </p>
+    </div>
+
+    <div class="products-grid">
+      <!-- CARD 1: Vino -->
+      <article class="product-card">
+        <div class="product-visual">
+          <span class="pv-edition">Nº 01</span>
+          <svg viewBox="0 0 160 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="b1" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#3A0E12"/>
+                <stop offset="50%" stop-color="#5B1A1F"/>
+                <stop offset="100%" stop-color="#2A0A0D"/>
+              </linearGradient>
+              <linearGradient id="b1g" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="rgba(255,255,255,0.22)"/>
+                <stop offset="50%" stop-color="rgba(255,255,255,0)"/>
+                <stop offset="100%" stop-color="rgba(0,0,0,0.14)"/>
+              </linearGradient>
+            </defs>
+            <ellipse cx="80" cy="208" rx="46" ry="4" fill="rgba(30,23,18,0.22)"/>
+            <path d="M 56 200 L 56 72 L 54 58 Q 54 44 64 38 L 64 14 Q 64 8 68 8 L 92 8 Q 96 8 96 14 L 96 38 Q 106 44 106 58 L 104 72 L 104 200 Q 104 208 94 208 L 66 208 Q 56 208 56 200 Z" fill="url(#b1)"/>
+            <path d="M 64 72 L 64 196 Q 64 202 70 202 L 72 202 L 72 72 Z" fill="url(#b1g)" opacity="0.55"/>
+            <rect x="62" y="110" width="36" height="70" fill="#F5EFE4"/>
+            <rect x="62" y="110" width="36" height="70" fill="none" stroke="#1E1712" stroke-width="0.5" opacity="0.3"/>
+            <text x="80" y="128" text-anchor="middle" fill="#5B1A1F" font-family="Fraunces, serif" font-size="7" font-style="italic">Selección</text>
+            <line x1="68" y1="134" x2="92" y2="134" stroke="#1E1712" stroke-width="0.3" opacity="0.4"/>
+            <text x="80" y="148" text-anchor="middle" fill="#1E1712" font-family="Fraunces, serif" font-size="8" font-weight="500" letter-spacing="0.12em">TINTO</text>
+            <circle cx="80" cy="165" r="4" fill="none" stroke="#5B1A1F" stroke-width="0.5"/>
+            <rect x="68" y="4" width="24" height="10" fill="#6B4E34"/>
+          </svg>
+        </div>
+        <div class="product-body">
+          <span class="product-cat">Vino</span>
+          <span class="product-name">Tintos &amp; crianzas</span>
+          <span class="product-tag">Desde la selección de bodegas nacionales.</span>
+          <span class="product-cta">Ver selección →</span>
+        </div>
+      </article>
+
+      <!-- CARD 2: Miel / despensa -->
+      <article class="product-card">
+        <div class="product-visual">
+          <span class="pv-edition">Nº 02</span>
+          <svg viewBox="0 0 160 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="jar1" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#E6B84A"/>
+                <stop offset="55%" stop-color="#C9921A"/>
+                <stop offset="100%" stop-color="#8B6410"/>
+              </linearGradient>
+            </defs>
+            <ellipse cx="80" cy="208" rx="54" ry="4" fill="rgba(30,23,18,0.22)"/>
+            <!-- Tapa -->
+            <rect x="46" y="30" width="68" height="16" rx="2" fill="#3A2818"/>
+            <rect x="48" y="32" width="64" height="4" fill="rgba(245,239,228,0.15)"/>
+            <!-- Cuello -->
+            <rect x="54" y="46" width="52" height="10" fill="#C9921A" opacity="0.4"/>
+            <!-- Cuerpo -->
+            <path d="M 44 56 Q 44 52 54 52 L 106 52 Q 116 52 116 56 L 116 196 Q 116 206 106 206 L 54 206 Q 44 206 44 196 Z" fill="url(#jar1)"/>
+            <!-- Brillo -->
+            <path d="M 52 70 Q 48 120 52 180" stroke="rgba(255,255,255,0.35)" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <!-- Etiqueta -->
+            <rect x="58" y="110" width="44" height="60" fill="#F5EFE4"/>
+            <rect x="58" y="110" width="44" height="60" fill="none" stroke="#1E1712" stroke-width="0.5" opacity="0.3"/>
+            <line x1="64" y1="120" x2="96" y2="120" stroke="#1E1712" stroke-width="0.3" opacity="0.4"/>
+            <text x="80" y="138" text-anchor="middle" fill="#1E1712" font-family="Fraunces, serif" font-size="7" font-style="italic">despensa</text>
+            <text x="80" y="152" text-anchor="middle" fill="#5B1A1F" font-family="Fraunces, serif" font-size="9" font-weight="500">miel</text>
+            <line x1="64" y1="160" x2="96" y2="160" stroke="#1E1712" stroke-width="0.3" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="product-body">
+          <span class="product-cat">Despensa gourmet</span>
+          <span class="product-name">Mieles &amp; dulces</span>
+          <span class="product-tag">Selección de la casa.</span>
+          <span class="product-cta">Ver selección →</span>
+        </div>
+      </article>
+
+      <!-- CARD 3: Aceite -->
+      <article class="product-card">
+        <div class="product-visual">
+          <span class="pv-edition">Nº 03</span>
+          <svg viewBox="0 0 160 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="can1" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#7D7C46"/>
+                <stop offset="60%" stop-color="#5A5A2A"/>
+                <stop offset="100%" stop-color="#3A3A18"/>
+              </linearGradient>
+            </defs>
+            <ellipse cx="80" cy="208" rx="48" ry="4" fill="rgba(30,23,18,0.22)"/>
+            <!-- Tapa con pico -->
+            <rect x="68" y="16" width="10" height="18" fill="#3A2818"/>
+            <rect x="64" y="32" width="36" height="8" fill="#2A1E14"/>
+            <!-- Cuerpo lata -->
+            <rect x="48" y="40" width="64" height="166" fill="url(#can1)"/>
+            <!-- Brillo -->
+            <rect x="52" y="44" width="4" height="158" fill="rgba(255,255,255,0.18)"/>
+            <rect x="106" y="44" width="4" height="158" fill="rgba(0,0,0,0.18)"/>
+            <!-- Etiqueta -->
+            <rect x="56" y="90" width="48" height="90" fill="#F5EFE4"/>
+            <rect x="56" y="90" width="48" height="90" fill="none" stroke="#1E1712" stroke-width="0.5" opacity="0.3"/>
+            <text x="80" y="108" text-anchor="middle" fill="#6B6A3A" font-family="Fraunces, serif" font-size="7" font-style="italic">aceite</text>
+            <line x1="62" y1="114" x2="98" y2="114" stroke="#1E1712" stroke-width="0.3" opacity="0.4"/>
+            <text x="80" y="134" text-anchor="middle" fill="#1E1712" font-family="Fraunces, serif" font-size="10" font-weight="500" letter-spacing="0.1em">AOVE</text>
+            <text x="80" y="148" text-anchor="middle" fill="#1E1712" font-family="Inter, sans-serif" font-size="5" letter-spacing="0.2em">SELECCIÓN</text>
+            <circle cx="80" cy="164" r="5" fill="none" stroke="#6B6A3A" stroke-width="0.5"/>
+          </svg>
+        </div>
+        <div class="product-body">
+          <span class="product-cat">Despensa gourmet</span>
+          <span class="product-name">Aceites de oliva</span>
+          <span class="product-tag">Recién llegado a tienda.</span>
+          <span class="product-cta">Ver selección →</span>
+        </div>
+      </article>
+
+      <!-- CARD 4: Tabla quesos -->
+      <article class="product-card">
+        <div class="product-visual">
+          <span class="pv-edition">Nº 04</span>
+          <svg viewBox="0 0 160 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="wood1" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#9B7A54"/>
+                <stop offset="100%" stop-color="#6B4E34"/>
+              </linearGradient>
+            </defs>
+            <ellipse cx="80" cy="200" rx="60" ry="6" fill="rgba(30,23,18,0.22)"/>
+            <!-- Tabla -->
+            <rect x="20" y="70" width="120" height="124" rx="10" fill="url(#wood1)"/>
+            <rect x="20" y="70" width="120" height="124" rx="10" fill="none" stroke="#3A2818" stroke-width="0.8" opacity="0.4"/>
+            <!-- Vetas -->
+            <line x1="28" y1="90" x2="132" y2="90" stroke="#5A3E24" stroke-width="0.6" opacity="0.5"/>
+            <line x1="28" y1="140" x2="132" y2="140" stroke="#5A3E24" stroke-width="0.6" opacity="0.4"/>
+            <line x1="28" y1="180" x2="132" y2="180" stroke="#5A3E24" stroke-width="0.6" opacity="0.5"/>
+            <!-- Cuña de queso -->
+            <path d="M 38 100 L 86 110 L 80 145 L 36 138 Z" fill="#E6D59E"/>
+            <path d="M 38 100 L 86 110 L 80 145 L 36 138 Z" fill="none" stroke="#8B7A3A" stroke-width="0.6" opacity="0.6"/>
+            <circle cx="54" cy="118" r="1.8" fill="#8B7A3A" opacity="0.5"/>
+            <circle cx="66" cy="126" r="1.3" fill="#8B7A3A" opacity="0.5"/>
+            <circle cx="60" cy="132" r="1" fill="#8B7A3A" opacity="0.4"/>
+            <!-- Cuña complementaria -->
+            <path d="M 92 120 L 128 128 L 124 160 L 90 154 Z" fill="#F2E4B8"/>
+            <path d="M 92 120 L 128 128 L 124 160 L 90 154 Z" fill="none" stroke="#8B7A3A" stroke-width="0.6" opacity="0.5"/>
+            <!-- Rodajas embutido -->
+            <circle cx="50" cy="170" r="9" fill="#7A2F2C"/>
+            <circle cx="50" cy="170" r="9" fill="none" stroke="#3A2818" stroke-width="0.4" opacity="0.5"/>
+            <circle cx="48" cy="168" r="1" fill="#F5EFE4" opacity="0.4"/>
+            <circle cx="72" cy="176" r="9" fill="#7A2F2C"/>
+            <circle cx="72" cy="176" r="9" fill="none" stroke="#3A2818" stroke-width="0.4" opacity="0.5"/>
+            <circle cx="70" cy="174" r="1" fill="#F5EFE4" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="product-body">
+          <span class="product-cat">Despensa gourmet</span>
+          <span class="product-name">Quesos &amp; embutidos</span>
+          <span class="product-tag">Selección de la casa.</span>
+          <span class="product-cta">Ver selección →</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- LOTES & REGALOS CORPORATIVOS -->
+  <section class="lotes">
+    <div class="lotes-left">
+      <div>
+        <div class="l-eyebrow">Lotes &amp; regalos corporativos</div>
+        <h2>Lotes a medida<br/>para <em>empresas,</em><br/>eventos y Navidad.</h2>
+        <p class="l-copy">
+          Armamos lotes personalizados corporativos combinando nuestra selección
+          de vinos, cervezas artesanales y despensa gourmet. Presentación cuidada,
+          dedicatoria incluida y envío a toda la Unión Europea.
+        </p>
+        <div class="l-list">
+          <span>Regalos de empresa</span>
+          <span>Eventos y celebraciones</span>
+          <span>Navidad y fin de año</span>
+          <span>Detalles con dedicatoria</span>
+        </div>
+      </div>
+
+      <div class="l-cta">
+        <a href="mailto:info@gourmet-point.com" class="l-btn">Pedir presupuesto →</a>
+        <a href="mailto:info@gourmet-point.com" class="l-mail">info@gourmet-point.com</a>
+      </div>
+    </div>
+
+    <div class="lotes-right">
+      <span class="lr-tag">Presentación</span>
+
+      <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+        <defs>
+          <linearGradient id="boxFront" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#C9B696"/>
+            <stop offset="100%" stop-color="#8B7350"/>
+          </linearGradient>
+          <linearGradient id="boxSide" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#A8946E"/>
+            <stop offset="100%" stop-color="#6F5B3C"/>
+          </linearGradient>
+          <linearGradient id="ribbonG" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#7A2226"/>
+            <stop offset="100%" stop-color="#3F1014"/>
+          </linearGradient>
+          <linearGradient id="bottleL" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#3A0E12"/>
+            <stop offset="50%" stop-color="#5B1A1F"/>
+            <stop offset="100%" stop-color="#2A0A0D"/>
+          </linearGradient>
+        </defs>
+
+        <!-- Sombra -->
+        <ellipse cx="300" cy="490" rx="220" ry="18" fill="rgba(30,23,18,0.22)"/>
+
+        <!-- Caja: cara frontal -->
+        <polygon points="130,220 470,220 440,470 160,470" fill="url(#boxFront)"/>
+        <!-- Tapa -->
+        <polygon points="130,220 470,220 450,200 150,200" fill="url(#boxSide)"/>
+        <polygon points="150,200 450,200 430,180 170,180" fill="#D8C4A0"/>
+        <!-- Borde interior de caja -->
+        <path d="M 160 470 L 440 470" stroke="#3A2818" stroke-width="1" opacity="0.3"/>
+
+        <!-- Paja / relleno -->
+        <path d="M 170 220 Q 200 235 230 225 Q 260 240 290 225 Q 320 240 350 225 Q 380 240 410 225 Q 430 235 460 220"
+              stroke="#A8946E" stroke-width="2" fill="none" opacity="0.7"/>
+        <path d="M 175 230 Q 205 245 235 235 Q 265 250 295 235 Q 325 250 355 235 Q 385 250 415 235 Q 435 245 455 230"
+              stroke="#8B7350" stroke-width="1.5" fill="none" opacity="0.6"/>
+
+        <!-- Botella principal al centro -->
+        <g transform="translate(270, 90)">
+          <path d="M 18 320 L 18 130 L 16 112 Q 16 100 24 94 L 24 22 Q 24 16 28 16 L 50 16 Q 54 16 54 22 L 54 94 Q 62 100 62 112 L 60 130 L 60 320 Q 60 328 52 328 L 26 328 Q 18 328 18 320 Z"
+                fill="url(#bottleL)"/>
+          <path d="M 24 130 L 24 316 Q 24 322 30 322 L 32 322 L 32 130 Z" fill="rgba(255,255,255,0.22)"/>
+          <rect x="25" y="190" width="30" height="90" fill="#F5EFE4"/>
+          <rect x="25" y="190" width="30" height="90" fill="none" stroke="#1E1712" stroke-width="0.4" opacity="0.3"/>
+          <text x="40" y="212" text-anchor="middle" fill="#5B1A1F" font-family="Fraunces, serif" font-size="6" font-style="italic">Selección</text>
+          <line x1="28" y1="218" x2="52" y2="218" stroke="#1E1712" stroke-width="0.3" opacity="0.4"/>
+          <text x="40" y="235" text-anchor="middle" fill="#1E1712" font-family="Fraunces, serif" font-size="7" font-weight="500" letter-spacing="0.12em">DÉNIA</text>
+          <circle cx="40" cy="252" r="4" fill="none" stroke="#5B1A1F" stroke-width="0.5"/>
+          <rect x="28" y="10" width="24" height="10" fill="#6B4E34"/>
+        </g>
+
+        <!-- Tarro a la izquierda -->
+        <g transform="translate(170, 230)">
+          <rect x="0" y="40" width="60" height="120" fill="#C9921A"/>
+          <rect x="0" y="40" width="60" height="120" fill="none" stroke="#8B6410" stroke-width="0.6" opacity="0.5"/>
+          <rect x="-2" y="26" width="64" height="14" fill="#3A2818"/>
+          <rect x="4" y="30" width="52" height="3" fill="rgba(245,239,228,0.2)"/>
+          <path d="M 6 60 Q 4 100 6 140" stroke="rgba(255,255,255,0.3)" stroke-width="2" fill="none"/>
+          <rect x="12" y="80" width="36" height="50" fill="#F5EFE4"/>
+          <rect x="12" y="80" width="36" height="50" fill="none" stroke="#1E1712" stroke-width="0.4" opacity="0.3"/>
+          <text x="30" y="100" text-anchor="middle" fill="#5B1A1F" font-family="Fraunces, serif" font-size="6" font-style="italic">miel</text>
+          <line x1="16" y1="108" x2="44" y2="108" stroke="#1E1712" stroke-width="0.3" opacity="0.4"/>
+        </g>
+
+        <!-- Lata aceite a la derecha -->
+        <g transform="translate(370, 230)">
+          <rect x="0" y="40" width="60" height="120" fill="#5A5A2A"/>
+          <rect x="2" y="42" width="4" height="116" fill="rgba(255,255,255,0.2)"/>
+          <rect x="54" y="42" width="4" height="116" fill="rgba(0,0,0,0.25)"/>
+          <rect x="20" y="22" width="8" height="18" fill="#3A2818"/>
+          <rect x="-2" y="38" width="64" height="6" fill="#2A1E14"/>
+          <rect x="10" y="80" width="40" height="54" fill="#F5EFE4"/>
+          <rect x="10" y="80" width="40" height="54" fill="none" stroke="#1E1712" stroke-width="0.4" opacity="0.3"/>
+          <text x="30" y="98" text-anchor="middle" fill="#6B6A3A" font-family="Fraunces, serif" font-size="6" font-style="italic">aceite</text>
+          <line x1="14" y1="104" x2="46" y2="104" stroke="#1E1712" stroke-width="0.3" opacity="0.4"/>
+          <text x="30" y="118" text-anchor="middle" fill="#1E1712" font-family="Fraunces, serif" font-size="7" font-weight="500" letter-spacing="0.1em">AOVE</text>
+        </g>
+
+        <!-- Cinta horizontal -->
+        <rect x="120" y="330" width="360" height="46" fill="url(#ribbonG)"/>
+        <!-- Nudo / lazo -->
+        <path d="M 300 330 L 260 300 Q 240 300 240 320 Q 240 340 270 340 Z" fill="url(#ribbonG)"/>
+        <path d="M 300 330 L 340 300 Q 360 300 360 320 Q 360 340 330 340 Z" fill="url(#ribbonG)"/>
+        <rect x="290" y="326" width="20" height="22" fill="#591519"/>
+        <!-- Colas de cinta -->
+        <path d="M 265 375 L 240 425 L 265 420 Z" fill="url(#ribbonG)"/>
+        <path d="M 335 375 L 360 425 L 335 420 Z" fill="url(#ribbonG)"/>
+
+        <!-- Ramita olivo decorativa -->
+        <g transform="translate(400, 150)" opacity="0.8">
+          <path d="M 0 40 Q 30 25 60 18" stroke="#6B6A3A" stroke-width="1.2" fill="none"/>
+          <ellipse cx="14" cy="34" rx="6" ry="2.4" fill="#6B6A3A" transform="rotate(-18 14 34)"/>
+          <ellipse cx="30" cy="26" rx="7" ry="2.8" fill="#7D7C46" transform="rotate(-12 30 26)"/>
+          <ellipse cx="46" cy="21" rx="6" ry="2.4" fill="#6B6A3A" transform="rotate(-8 46 21)"/>
+        </g>
+      </svg>
+
+      <p class="lr-caption">Presentación de referencia · composición orientativa</p>
+    </div>
+  </section>
+
+  <!-- FOOTER COMPLETO -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="fb-mark">Gourmet <em>Point</em></div>
+        <div class="fb-tag">Delicatessen · Dénia</div>
+        <p class="fb-addr">
+          C/ Cop 7<br/>
+          03700 Dénia · Alicante<br/>
+          +34 865 510 036<br/>
+          info@gourmet-point.com
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Tienda</h4>
+        <ul>
+          <li><a href="#">Vinos</a></li>
+          <li><a href="#">Cervezas artesanales</a></li>
+          <li><a href="#">Despensa gourmet</a></li>
+          <li><a href="#">Lotes</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Ayuda</h4>
+        <ul>
+          <li><a href="#">Envíos (UE)</a></li>
+          <li><a href="#">Recogida en tienda</a></li>
+          <li><a href="#">Devoluciones</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="#">Sobre Gourmet Point</a></li>
+          <li><a href="#">Visitarnos</a></li>
+          <li><a href="#">Nuestra selección</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Aviso legal</a></li>
+          <li><a href="#">Privacidad</a></li>
+          <li><a href="#">Cookies</a></li>
+          <li><a href="#">Términos</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-copy">
+      <span>© 2026 Gourmet Point · Todos los derechos reservados</span>
+      <span class="fc-right">Diseño propuesto por <a href="https://kenaz.studio" target="_blank" rel="noopener">Kenaz Studio</a></span>
+    </div>
+  </footer>
+
+</body>
+</html>
