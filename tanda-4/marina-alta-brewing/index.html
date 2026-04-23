@@ -79,22 +79,15 @@
   .bottle-stage::before{content:"";position:absolute;inset:0;background:
     radial-gradient(circle at 25% 30%, rgba(200,129,51,.18) 0%, transparent 50%),
     radial-gradient(circle at 75% 80%, rgba(122,63,18,.12) 0%, transparent 55%);
-    pointer-events:none}
+    pointer-events:none;z-index:2}
 
-  /* hop illustration top-right corner */
-  .hop-decor{position:absolute;top:22px;right:24px;width:110px;height:110px;opacity:.45}
-
-  .stage-copy{position:absolute;top:36px;left:36px;z-index:3;max-width:220px}
+  .stage-copy{position:absolute;top:36px;left:36px;z-index:4;max-width:220px}
   .stage-copy .k{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.26em;text-transform:uppercase;color:var(--copper);margin-bottom:10px}
   .stage-copy .v{font-family:'Fraunces',serif;font-weight:400;font-size:19px;color:var(--ink);line-height:1.35;letter-spacing:-0.01em}
   .stage-copy .v em{font-style:italic;color:var(--copper)}
 
-  /* bottle trio */
-  .bottles{position:absolute;bottom:0;left:50%;transform:translateX(-50%);display:flex;align-items:flex-end;gap:42px;padding-bottom:40px}
-  .bottle{position:relative;display:flex;flex-direction:column;align-items:center}
-  .bottle svg{display:block;filter:drop-shadow(0 18px 22px rgba(26,19,12,.18))}
-  .bottle .cap{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--mut);margin-top:14px}
-  .bottle .name{font-family:'Fraunces',serif;font-weight:400;font-size:15px;color:var(--ink);font-style:italic;margin-top:4px;letter-spacing:-0.005em;text-align:center;max-width:120px;line-height:1.2}
+  /* hero photo fills bottle-stage */
+  .hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:1}
 
   /* award badge ——— bottom-left of visual */
   .award-card{position:absolute;top:42px;right:-24px;background:var(--cream);padding:18px 22px;z-index:5;border:1px solid var(--line-strong);min-width:220px;box-shadow:0 18px 40px -20px rgba(26,19,12,.22)}
@@ -156,8 +149,8 @@
   .abadia .section-head .eyebrow-s::before{background:var(--amber-glow)}
   .abadia .section-head .intro{color:rgba(251,246,235,.72)}
   .abadia-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:center;position:relative;z-index:2}
-  .abadia-visual{position:relative;height:460px;background:linear-gradient(180deg, rgba(200,129,51,.08) 0%, rgba(26,19,12,.4) 100%);border:1px solid rgba(225,166,90,.18);display:flex;align-items:center;justify-content:center}
-  .abadia-visual svg{max-width:80%;max-height:80%}
+  .abadia-visual{position:relative;height:460px;background:linear-gradient(180deg, rgba(200,129,51,.08) 0%, rgba(26,19,12,.4) 100%);border:1px solid rgba(225,166,90,.18);display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .abadia-visual img{width:100%;height:100%;object-fit:cover;display:block}
   .abadia-info{display:flex;flex-direction:column;gap:36px}
   .abadia-award{border:1px solid rgba(225,166,90,.28);padding:24px 28px;background:rgba(200,129,51,.06)}
   .abadia-award .yr{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:var(--amber-glow);margin-bottom:10px}
@@ -276,101 +269,13 @@
     <div class="hero-visual">
       <div class="bottle-stage">
 
+        <img class="hero-photo" src="img/hero-cervezas.jpg" alt="Botellas de cerveza artesanal Marina Alta sobre mesa de madera" loading="lazy">
+
         <div class="stage-copy">
           <div class="k">El manifiesto</div>
           <div class="v">Cerveza honesta, hecha con <em>paciencia</em> y con nombre propio.</div>
         </div>
 
-        <svg class="hop-decor" viewBox="0 0 100 100" fill="none">
-          <!-- editorial hop illustration -->
-          <g stroke="#5e6b34" stroke-width="1" stroke-linejoin="round">
-            <ellipse cx="50" cy="55" rx="14" ry="22" fill="#5e6b34" fill-opacity=".12"/>
-            <path d="M50 34 Q44 40 44 48 Q44 56 50 60 Q56 56 56 48 Q56 40 50 34 Z" fill="#5e6b34" fill-opacity=".2"/>
-            <path d="M50 44 Q46 50 46 58 Q46 66 50 70 Q54 66 54 58 Q54 50 50 44 Z" fill="#5e6b34" fill-opacity=".25"/>
-            <path d="M50 54 Q47 60 47 68 Q47 74 50 77 Q53 74 53 68 Q53 60 50 54 Z" fill="#5e6b34" fill-opacity=".3"/>
-            <line x1="50" y1="34" x2="50" y2="22" stroke-width="1"/>
-            <path d="M50 22 Q46 18 42 20" stroke-width="1" fill="none"/>
-            <path d="M50 22 Q54 18 58 20" stroke-width="1" fill="none"/>
-          </g>
-        </svg>
-
-        <!-- bottle trio: three silhouettes -->
-        <div class="bottles">
-
-          <!-- bottle 1 ——— pale / rubia -->
-          <div class="bottle">
-            <svg width="70" height="260" viewBox="0 0 70 260" fill="none">
-              <!-- cap -->
-              <rect x="28" y="6" width="14" height="16" rx="1" fill="#1a130c"/>
-              <!-- neck -->
-              <path d="M28 22 L28 62 Q28 72 20 80 L20 240 Q20 254 35 254 Q50 254 50 240 L50 80 Q42 72 42 62 L42 22 Z"
-                    fill="url(#g1)" stroke="#1a130c" stroke-width="1.2"/>
-              <!-- label -->
-              <rect x="22" y="140" width="26" height="80" fill="#fbf6eb" stroke="#1a130c" stroke-width="0.6"/>
-              <text x="35" y="160" text-anchor="middle" font-family="Fraunces" font-size="9" font-style="italic" fill="#1a130c">La 33</text>
-              <line x1="26" y1="166" x2="44" y2="166" stroke="#a05a1f" stroke-width="0.5"/>
-              <text x="35" y="180" text-anchor="middle" font-family="JetBrains Mono" font-size="5" letter-spacing="0.4" fill="#3a2f23">LAGER</text>
-              <text x="35" y="192" text-anchor="middle" font-family="JetBrains Mono" font-size="4" letter-spacing="0.3" fill="#7a3f12">MARINA ALTA</text>
-              <defs>
-                <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0" stop-color="#4a3218"/>
-                  <stop offset="0.5" stop-color="#6b4420"/>
-                  <stop offset="1" stop-color="#3c2712"/>
-                </linearGradient>
-              </defs>
-            </svg>
-            <div class="cap">Nº 01 · Rubia</div>
-            <div class="name">La 33</div>
-          </div>
-
-          <!-- bottle 2 ——— amber / pale -->
-          <div class="bottle">
-            <svg width="80" height="290" viewBox="0 0 80 290" fill="none">
-              <rect x="33" y="6" width="14" height="18" rx="1" fill="#1a130c"/>
-              <path d="M33 24 L33 70 Q33 82 22 90 L22 268 Q22 282 40 282 Q58 282 58 268 L58 90 Q47 82 47 70 L47 24 Z"
-                    fill="url(#g2)" stroke="#1a130c" stroke-width="1.2"/>
-              <rect x="25" y="158" width="30" height="90" fill="#fbf6eb" stroke="#1a130c" stroke-width="0.6"/>
-              <text x="40" y="180" text-anchor="middle" font-family="Fraunces" font-size="10" font-style="italic" fill="#1a130c">Cap de</text>
-              <text x="40" y="193" text-anchor="middle" font-family="Fraunces" font-size="10" font-style="italic" fill="#1a130c">la Nau</text>
-              <line x1="28" y1="200" x2="52" y2="200" stroke="#a05a1f" stroke-width="0.5"/>
-              <text x="40" y="214" text-anchor="middle" font-family="JetBrains Mono" font-size="5" letter-spacing="0.4" fill="#3a2f23">BELGIAN IPA</text>
-              <text x="40" y="226" text-anchor="middle" font-family="JetBrains Mono" font-size="4" letter-spacing="0.3" fill="#7a3f12">DÉNIA · MED.</text>
-              <defs>
-                <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0" stop-color="#2d1d0e"/>
-                  <stop offset="0.5" stop-color="#452a15"/>
-                  <stop offset="1" stop-color="#1f1409"/>
-                </linearGradient>
-              </defs>
-            </svg>
-            <div class="cap">Nº 02 · Tostada</div>
-            <div class="name">Cap de la Nau</div>
-          </div>
-
-          <!-- bottle 3 ——— dark stout -->
-          <div class="bottle">
-            <svg width="70" height="250" viewBox="0 0 70 250" fill="none">
-              <rect x="28" y="6" width="14" height="16" rx="1" fill="#1a130c"/>
-              <path d="M28 22 L28 62 Q28 72 20 80 L20 230 Q20 244 35 244 Q50 244 50 230 L50 80 Q42 72 42 62 L42 22 Z"
-                    fill="url(#g3)" stroke="#1a130c" stroke-width="1.2"/>
-              <rect x="22" y="132" width="26" height="80" fill="#fbf6eb" stroke="#1a130c" stroke-width="0.6"/>
-              <text x="35" y="152" text-anchor="middle" font-family="Fraunces" font-size="9" font-style="italic" fill="#1a130c">El Penyón</text>
-              <line x1="26" y1="158" x2="44" y2="158" stroke="#a05a1f" stroke-width="0.5"/>
-              <text x="35" y="172" text-anchor="middle" font-family="JetBrains Mono" font-size="5" letter-spacing="0.4" fill="#3a2f23">STOUT</text>
-              <text x="35" y="184" text-anchor="middle" font-family="JetBrains Mono" font-size="4" letter-spacing="0.3" fill="#7a3f12">CACAO · MIEL</text>
-              <defs>
-                <linearGradient id="g3" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0" stop-color="#18100a"/>
-                  <stop offset="0.5" stop-color="#2a1b10"/>
-                  <stop offset="1" stop-color="#0f0a06"/>
-                </linearGradient>
-              </defs>
-            </svg>
-            <div class="cap">Nº 03 · Oscura</div>
-            <div class="name">El Penyón</div>
-          </div>
-
-        </div>
       </div>
 
       <!-- award card (La Abadía premio real) -->
@@ -505,62 +410,7 @@
   <div class="abadia-grid">
 
     <div class="abadia-visual">
-      <!-- editorial illustration: barra con grifos de cerveza + barriles -->
-      <svg viewBox="0 0 500 380" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g stroke="#e1a65a" stroke-width="1.4" fill="none" stroke-linecap="square" stroke-linejoin="miter">
-          <!-- barra -->
-          <line x1="40" y1="260" x2="460" y2="260"/>
-          <line x1="40" y1="260" x2="40" y2="350"/>
-          <line x1="460" y1="260" x2="460" y2="350"/>
-          <line x1="40" y1="350" x2="460" y2="350"/>
-          <line x1="40" y1="280" x2="460" y2="280"/>
-          <!-- paneles barra -->
-          <line x1="145" y1="280" x2="145" y2="350"/>
-          <line x1="250" y1="280" x2="250" y2="350"/>
-          <line x1="355" y1="280" x2="355" y2="350"/>
-          <!-- pared trasera con estantes -->
-          <line x1="80" y1="80" x2="420" y2="80"/>
-          <line x1="80" y1="130" x2="420" y2="130"/>
-          <line x1="80" y1="180" x2="420" y2="180"/>
-          <line x1="80" y1="230" x2="420" y2="230"/>
-          <!-- grifos -->
-          <g stroke-width="1.8">
-            <path d="M120 230 L120 200 L135 200 L135 215"/>
-            <circle cx="120" cy="195" r="5" fill="#e1a65a" fill-opacity=".2"/>
-            <path d="M180 230 L180 200 L195 200 L195 215"/>
-            <circle cx="180" cy="195" r="5" fill="#e1a65a" fill-opacity=".2"/>
-            <path d="M240 230 L240 195 L255 195 L255 215"/>
-            <circle cx="240" cy="190" r="5" fill="#e1a65a" fill-opacity=".2"/>
-            <path d="M300 230 L300 200 L315 200 L315 215"/>
-            <circle cx="300" cy="195" r="5" fill="#e1a65a" fill-opacity=".2"/>
-            <path d="M360 230 L360 200 L375 200 L375 215"/>
-            <circle cx="360" cy="195" r="5" fill="#e1a65a" fill-opacity=".2"/>
-          </g>
-          <!-- botellas estante superior -->
-          <g stroke-width="1">
-            <rect x="105" y="90" width="10" height="35" fill="#e1a65a" fill-opacity=".1"/>
-            <rect x="130" y="90" width="10" height="35" fill="#e1a65a" fill-opacity=".1"/>
-            <rect x="155" y="90" width="10" height="35" fill="#e1a65a" fill-opacity=".1"/>
-            <rect x="180" y="90" width="10" height="35" fill="#e1a65a" fill-opacity=".1"/>
-            <rect x="290" y="90" width="10" height="35" fill="#e1a65a" fill-opacity=".1"/>
-            <rect x="315" y="90" width="10" height="35" fill="#e1a65a" fill-opacity=".1"/>
-            <rect x="340" y="90" width="10" height="35" fill="#e1a65a" fill-opacity=".1"/>
-            <rect x="365" y="90" width="10" height="35" fill="#e1a65a" fill-opacity=".1"/>
-          </g>
-          <!-- barrica lateral izquierda -->
-          <g stroke-width="1.2">
-            <ellipse cx="80" cy="310" rx="22" ry="8" fill="#c88133" fill-opacity=".1"/>
-            <path d="M58 310 L58 360 Q58 368 80 368 Q102 368 102 360 L102 310"/>
-            <ellipse cx="80" cy="360" rx="22" ry="8"/>
-            <line x1="60" y1="330" x2="100" y2="330"/>
-            <line x1="60" y1="348" x2="100" y2="348"/>
-          </g>
-          <!-- letrero "LA ABADÍA" -->
-          <text x="250" y="55" text-anchor="middle" font-family="Fraunces" font-size="22" font-style="italic" fill="#e1a65a" stroke="none">La Abadía</text>
-          <line x1="200" y1="65" x2="300" y2="65" stroke-width="0.6"/>
-          <text x="250" y="78" text-anchor="middle" font-family="JetBrains Mono" font-size="8" letter-spacing="4" fill="#e1a65a" stroke="none">DÉNIA · EST. 2019</text>
-        </g>
-      </svg>
+      <img src="img/la-abadia-interior.jpg" alt="Interior del brewpub La Abadía en Dénia" loading="lazy">
     </div>
 
     <div class="abadia-info">
