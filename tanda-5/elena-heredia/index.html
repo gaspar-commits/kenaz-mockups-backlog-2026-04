@@ -1,0 +1,931 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Centro Médico-Estético Elena Heredia · Benidorm</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #1f1a17;
+    --ink-soft: #4a3f39;
+    --bone: #f6efe7;
+    --cream: #ede2d2;
+    --sand: #d9c6ad;
+    --terracotta: #b56a4a;
+    --terracotta-soft: #c9876a;
+    --line: #d8c9b6;
+    --gold: #a47b3f;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: var(--bone);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.55;
+  }
+  .display { font-family: 'Cormorant Garamond', 'Times New Roman', serif; font-weight: 400; letter-spacing: -0.005em; }
+  .display-italic { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; }
+  .micro {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-weight: 500;
+  }
+  .container { max-width: 1440px; margin: 0 auto; padding: 0 56px; }
+
+  /* ============ NAV ============ */
+  .nav {
+    position: relative;
+    padding: 22px 56px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    border-bottom: 1px solid var(--line);
+    background: var(--bone);
+  }
+  .nav-left, .nav-right { display: flex; align-items: center; gap: 28px; }
+  .nav-right { justify-content: flex-end; }
+  .nav-link {
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 500;
+  }
+  .nav-link:hover { color: var(--terracotta); }
+  .logo-wrap { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .logo-wrap img { height: 44px; width: auto; }
+  .lang {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .lang span { padding: 4px 6px; border-radius: 2px; }
+  .lang .active { color: var(--ink); border-bottom: 1px solid var(--terracotta); }
+  .cta-pill {
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    padding: 11px 22px;
+    text-decoration: none;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-weight: 500;
+    transition: all 0.3s;
+  }
+  .cta-pill:hover { background: var(--ink); color: var(--bone); }
+  .cta-pill.solid { background: var(--ink); color: var(--bone); }
+  .cta-pill.solid:hover { background: var(--terracotta); border-color: var(--terracotta); }
+
+  /* ============ HERO ============ */
+  .hero {
+    position: relative;
+    min-height: 720px;
+    background: var(--bone);
+    padding: 80px 0 60px;
+    overflow: hidden;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .hero-eyebrow {
+    color: var(--terracotta);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .hero-eyebrow::before {
+    content: "";
+    width: 28px;
+    height: 1px;
+    background: var(--terracotta);
+  }
+  .hero-title {
+    font-size: 84px;
+    line-height: 0.96;
+    color: var(--ink);
+    margin-bottom: 36px;
+    font-weight: 400;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--terracotta);
+    font-weight: 400;
+  }
+  .hero-lead {
+    font-size: 17px;
+    color: var(--ink-soft);
+    max-width: 520px;
+    margin-bottom: 44px;
+    font-weight: 300;
+    line-height: 1.65;
+  }
+  .hero-actions { display: flex; gap: 16px; align-items: center; margin-bottom: 56px; }
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--line);
+    padding-top: 28px;
+    gap: 24px;
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 44px;
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .stat-num em { color: var(--terracotta); font-style: italic; }
+  .stat-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+  .hero-image-wrap {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .hero-image-wrap img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-image-tag {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    background: var(--bone);
+    padding: 14px 18px;
+    border-left: 2px solid var(--terracotta);
+    max-width: 260px;
+  }
+  .hero-image-tag .display-italic { font-size: 22px; line-height: 1.15; color: var(--ink); margin-bottom: 4px; }
+  .hero-image-tag .micro { color: var(--ink-soft); font-size: 10px; }
+
+  .hero-decoration {
+    position: absolute;
+    top: 50%;
+    left: -120px;
+    transform: translateY(-50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--sand);
+    writing-mode: vertical-rl;
+    letter-spacing: 0.2em;
+  }
+
+  /* ============ LEGACY 35 YEARS ============ */
+  .legacy {
+    background: var(--cream);
+    padding: 110px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .legacy-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 90px;
+    align-items: center;
+  }
+  .legacy-image-wrap {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+  }
+  .legacy-image-wrap img { width: 100%; height: 100%; object-fit: cover; }
+  .legacy-number {
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 220px;
+    line-height: 0.85;
+    color: var(--terracotta);
+    font-weight: 300;
+    pointer-events: none;
+  }
+  .legacy-number small {
+    display: block;
+    font-size: 18px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-top: 14px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+  }
+  .legacy-eyebrow { color: var(--terracotta); margin-bottom: 28px; display: flex; align-items: center; gap: 14px; }
+  .legacy-eyebrow::before { content: ""; width: 28px; height: 1px; background: var(--terracotta); }
+  .legacy h2 {
+    font-size: 56px;
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 32px;
+    font-weight: 400;
+  }
+  .legacy h2 em { font-style: italic; color: var(--terracotta); }
+  .legacy-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 26px;
+    line-height: 1.4;
+    color: var(--ink);
+    margin-bottom: 32px;
+    padding-left: 28px;
+    border-left: 2px solid var(--terracotta);
+  }
+  .legacy p {
+    font-size: 16px;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+    max-width: 540px;
+    line-height: 1.7;
+  }
+  .legacy-attr {
+    margin-top: 36px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  .legacy-attr-line {
+    flex: 0 0 40px;
+    height: 1px;
+    background: var(--ink);
+  }
+  .legacy-attr-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-style: italic; }
+  .legacy-attr-role { color: var(--ink-soft); font-size: 12px; text-transform: uppercase; letter-spacing: 0.18em; }
+
+  /* ============ TREATMENTS ============ */
+  .treatments { padding: 120px 0; background: var(--bone); }
+  .section-head { text-align: center; margin-bottom: 80px; }
+  .section-head .micro { color: var(--terracotta); margin-bottom: 18px; }
+  .section-head h2 {
+    font-size: 64px;
+    line-height: 1.05;
+    color: var(--ink);
+    font-weight: 400;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .section-head h2 em { font-style: italic; color: var(--terracotta); }
+  .section-head p { color: var(--ink-soft); margin-top: 24px; max-width: 580px; margin-left: auto; margin-right: auto; font-size: 16px; }
+
+  .treatments-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+  .treatment {
+    background: var(--cream);
+    padding: 44px 40px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    transition: all 0.4s;
+  }
+  .treatment:hover { background: var(--bone); border-color: var(--terracotta); }
+  .treatment-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    color: var(--terracotta);
+    letter-spacing: 0.2em;
+    margin-bottom: 18px;
+    display: inline-block;
+  }
+  .treatment h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 16px;
+    font-weight: 400;
+  }
+  .treatment h3 em { font-style: italic; }
+  .treatment p {
+    color: var(--ink-soft);
+    font-size: 14px;
+    line-height: 1.65;
+    margin-bottom: 24px;
+    max-width: 460px;
+  }
+  .treatment-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+  .treatment-tag {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--ink);
+    padding: 6px 12px;
+    border: 1px solid var(--line);
+    background: var(--bone);
+    font-weight: 500;
+  }
+  .treatment-link {
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-weight: 500;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 4px;
+  }
+  .treatment-link:hover { color: var(--terracotta); border-color: var(--terracotta); }
+
+  .units-strip {
+    margin-top: 80px;
+    padding: 48px;
+    background: var(--ink);
+    color: var(--bone);
+    display: grid;
+    grid-template-columns: 1fr 2.5fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .units-strip h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 30px;
+    line-height: 1.15;
+    font-weight: 400;
+  }
+  .units-strip h3 em { color: var(--terracotta-soft); }
+  .units-list { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .unit-item {
+    border-left: 1px solid var(--ink-soft);
+    padding-left: 18px;
+  }
+  .unit-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: var(--bone);
+    margin-bottom: 4px;
+  }
+  .unit-doc {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--terracotta-soft);
+    font-weight: 500;
+  }
+
+  /* ============ TEAM ============ */
+  .team { padding: 120px 0; background: var(--cream); }
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .team-card {
+    background: var(--bone);
+    overflow: hidden;
+  }
+  .team-photo {
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    background: var(--sand);
+  }
+  .team-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .team-meta {
+    padding: 22px 24px 26px;
+    border-top: 1px solid var(--line);
+  }
+  .team-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    line-height: 1.1;
+    margin-bottom: 6px;
+    color: var(--ink);
+  }
+  .team-role {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--terracotta);
+    font-weight: 500;
+  }
+  .team-card.featured .team-meta { background: var(--ink); border-top-color: var(--ink); }
+  .team-card.featured .team-name { color: var(--bone); }
+  .team-card.featured .team-role { color: var(--terracotta-soft); }
+
+  /* ============ VISIT / CONTACT ============ */
+  .visit { padding: 120px 0; background: var(--ink); color: var(--bone); }
+  .visit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .visit .micro { color: var(--terracotta-soft); margin-bottom: 24px; }
+  .visit h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 60px;
+    line-height: 1.05;
+    color: var(--bone);
+    margin-bottom: 36px;
+    font-weight: 400;
+  }
+  .visit h2 em { font-style: italic; color: var(--terracotta-soft); }
+  .visit-lead {
+    font-size: 16px;
+    line-height: 1.65;
+    color: rgba(246, 239, 231, 0.7);
+    margin-bottom: 40px;
+    max-width: 480px;
+  }
+  .visit-contact-block {
+    border-top: 1px solid rgba(246, 239, 231, 0.18);
+    padding-top: 28px;
+    margin-bottom: 24px;
+  }
+  .contact-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: rgba(246, 239, 231, 0.5);
+    margin-bottom: 10px;
+  }
+  .contact-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    color: var(--bone);
+    line-height: 1.2;
+  }
+  .contact-value a { color: var(--bone); text-decoration: none; }
+  .contact-value a:hover { color: var(--terracotta-soft); }
+
+  .visit-card-stack { display: flex; flex-direction: column; gap: 20px; }
+  .visit-image {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+  }
+  .visit-image img { width: 100%; height: 100%; object-fit: cover; }
+  .visit-actions {
+    display: flex;
+    gap: 16px;
+    margin-top: 8px;
+  }
+  .cta-pill.light {
+    border-color: var(--bone);
+    color: var(--bone);
+  }
+  .cta-pill.light.solid {
+    background: var(--terracotta);
+    border-color: var(--terracotta);
+  }
+  .cta-pill.light.solid:hover { background: var(--terracotta-soft); border-color: var(--terracotta-soft); }
+  .cta-pill.light:hover { background: var(--bone); color: var(--ink); }
+
+  .visit-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 8px;
+  }
+  .visit-meta .contact-value { font-size: 18px; }
+  .visit-meta .contact-value strong { font-family: 'Inter', sans-serif; font-weight: 500; font-size: 13px; display: block; color: rgba(246, 239, 231, 0.85); margin-top: 4px; }
+
+  /* ============ FOOTER ============ */
+  .footer { background: #15110f; color: rgba(246, 239, 231, 0.75); padding: 64px 0 28px; }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(246, 239, 231, 0.12);
+  }
+  .footer-brand img { height: 38px; width: auto; filter: brightness(0) invert(1) opacity(0.85); margin-bottom: 18px; }
+  .footer-brand p { font-size: 13px; line-height: 1.65; max-width: 320px; color: rgba(246, 239, 231, 0.55); }
+  .footer-col h4 { font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--bone); margin-bottom: 18px; font-weight: 500; }
+  .footer-col ul { list-style: none; }
+  .footer-col li { font-size: 13px; margin-bottom: 9px; color: rgba(246, 239, 231, 0.6); }
+  .footer-col a { color: inherit; text-decoration: none; }
+  .footer-col a:hover { color: var(--terracotta-soft); }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 28px;
+    font-size: 11px;
+    color: rgba(246, 239, 231, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+  }
+  .footer-bottom a { color: var(--terracotta-soft); text-decoration: none; }
+
+  .upgrade-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    background: rgba(181, 106, 74, 0.12);
+    border: 1px solid rgba(181, 106, 74, 0.4);
+    color: var(--terracotta-soft);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-weight: 500;
+    border-radius: 2px;
+  }
+  .upgrade-tag::before {
+    content: "";
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--terracotta);
+  }
+</style>
+</head>
+<body>
+
+<!-- ================ NAV ================ -->
+<header class="nav">
+  <div class="nav-left">
+    <a href="#" class="nav-link">Belleza y bienestar</a>
+    <a href="#" class="nav-link">Tratamientos</a>
+    <a href="#" class="nav-link">Equipo</a>
+    <a href="#" class="nav-link">Experiencias</a>
+  </div>
+  <div class="logo-wrap">
+    <img src="img/logo-hi.jpg" alt="Centro Médico-Estético Elena Heredia" />
+  </div>
+  <div class="nav-right">
+    <div class="lang">
+      <span class="active">ES</span>
+      <span>EN</span>
+      <span>DE</span>
+      <span>RU</span>
+    </div>
+    <a href="#contacto" class="cta-pill solid">Reservar cita</a>
+  </div>
+</header>
+
+<!-- ================ HERO ================ -->
+<section class="hero">
+  <div class="hero-decoration">benidorm — desde hace treinta y cinco años</div>
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <div class="hero-eyebrow micro">Centro Médico-Estético · Benidorm</div>
+        <h1 class="display hero-title">
+          Realzamos<br/>la belleza<br/><em>natural.</em>
+        </h1>
+        <p class="hero-lead">
+          Belleza, bienestar y medicina estética en Benidorm. Transformamos tu piel y cuidamos de ti con tratamientos personalizados y tecnología de vanguardia.
+        </p>
+        <div class="hero-actions">
+          <a href="#contacto" class="cta-pill solid">Reservar cita</a>
+          <a href="#tratamientos" class="cta-pill">Ver tratamientos</a>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="stat-num display"><em>35</em></div>
+            <div class="stat-label">Años de trayectoria</div>
+          </div>
+          <div>
+            <div class="stat-num display">4,7<em>★</em></div>
+            <div class="stat-label">127 reseñas Google</div>
+          </div>
+          <div>
+            <div class="stat-num display">9</div>
+            <div class="stat-label">Profesionales en plantilla</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-image-wrap">
+        <img src="img/real-equipo.jpg" alt="Equipo del Centro Médico-Estético Elena Heredia" />
+        <div class="hero-image-tag">
+          <div class="display-italic">El equipo</div>
+          <div class="micro">Benidorm · Costa Blanca</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================ LEGACY 35 YEARS ================ -->
+<section class="legacy">
+  <div class="container">
+    <div class="legacy-grid">
+      <div class="legacy-image-wrap">
+        <img src="img/team-elena.jpg" alt="Elena Heredia, fundadora" />
+        <div class="legacy-number display">
+          35
+          <small>años</small>
+        </div>
+      </div>
+      <div class="legacy-text">
+        <div class="legacy-eyebrow micro">Trayectoria</div>
+        <h2 class="display">
+          Desde hace 35 años,<br/>la misma <em>pasión.</em>
+        </h2>
+        <blockquote class="legacy-quote">
+          «Treinta y cinco años. Y todavía cada cliente entra al centro con la misma ilusión que el primer día.»
+        </blockquote>
+        <p>
+          En el Centro Médico-Estético Elena Heredia trabajamos con tecnología avanzada y los mejores productos del mercado, garantizando resultados que cumplen con los más altos estándares de calidad y seguridad.
+        </p>
+        <p>
+          Aplicamos tratamientos personalizados basados en un diagnóstico previo, atendiendo de manera efectiva y segura las necesidades específicas de cada cliente.
+        </p>
+        <div class="legacy-attr">
+          <div class="legacy-attr-line"></div>
+          <div>
+            <div class="legacy-attr-name display-italic">Elena Heredia</div>
+            <div class="legacy-attr-role">Fundadora</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================ TREATMENTS ================ -->
+<section class="treatments" id="tratamientos">
+  <div class="container">
+    <div class="section-head">
+      <div class="micro">Servicios Elena Heredia</div>
+      <h2 class="display">Cuatro caminos hacia<br/>una piel <em>más sana</em>.</h2>
+      <p>Cada protocolo parte de un diagnóstico previo. Diseñamos un recorrido a medida con técnica, aparatología avanzada y un enfoque integral.</p>
+    </div>
+
+    <div class="treatments-grid">
+
+      <article class="treatment">
+        <span class="treatment-num display-italic">№ 01</span>
+        <h3>Tratamientos <em>faciales</em></h3>
+        <p>Diseñamos un protocolo adaptado a tu piel para conseguir un rostro sano y rejuvenecido. Diagnóstico previo, técnica y aparatología combinadas.</p>
+        <div class="treatment-tags">
+          <span class="treatment-tag">Higiene profunda</span>
+          <span class="treatment-tag">Peelings</span>
+          <span class="treatment-tag">Anti-edad</span>
+          <span class="treatment-tag">Microblading</span>
+        </div>
+        <a href="#" class="treatment-link">Ver faciales →</a>
+      </article>
+
+      <article class="treatment">
+        <span class="treatment-num display-italic">№ 02</span>
+        <h3>Tratamientos <em>corporales</em></h3>
+        <p>Combinamos técnica y aparatología para abordar tus objetivos con resultados excelentes y duraderos.</p>
+        <div class="treatment-tags">
+          <span class="treatment-tag">Depilación láser</span>
+          <span class="treatment-tag">Reducción</span>
+          <span class="treatment-tag">Reafirmante</span>
+          <span class="treatment-tag">Drenaje linfático</span>
+        </div>
+        <a href="#" class="treatment-link">Ver corporales →</a>
+      </article>
+
+      <article class="treatment">
+        <span class="treatment-num display-italic">№ 03</span>
+        <h3>Medicina <em>estética</em></h3>
+        <p>Una amplia oferta médica, desde aparatología hasta tratamientos de armonización. Atención personalizada que respeta la naturalidad y realza la belleza individual.</p>
+        <div class="treatment-tags">
+          <span class="treatment-tag">Botox</span>
+          <span class="treatment-tag">Armonización</span>
+          <span class="treatment-tag">Ácido hialurónico</span>
+          <span class="treatment-tag">Mesoterapia</span>
+        </div>
+        <a href="#" class="treatment-link">Ver tratamientos médicos →</a>
+      </article>
+
+      <article class="treatment">
+        <span class="treatment-num display-italic">№ 04</span>
+        <h3>Rituales <em>y experiencias</em></h3>
+        <p>Un entorno delicadamente preparado para la relajación. Disfruta del máximo bienestar con nuestros masajes y rituales faciales y corporales personalizados.</p>
+        <div class="treatment-tags">
+          <span class="treatment-tag">Rituales faciales</span>
+          <span class="treatment-tag">Masajes</span>
+          <span class="treatment-tag">Experiencia boda</span>
+          <span class="treatment-tag">Regalos</span>
+        </div>
+        <a href="#" class="treatment-link">Ver experiencias →</a>
+      </article>
+
+    </div>
+
+    <!-- UNITS STRIP -->
+    <div class="units-strip">
+      <h3>Cuatro unidades médicas <em>integradas</em></h3>
+      <div class="units-list">
+        <div class="unit-item">
+          <div class="unit-name display">Medicina estética</div>
+          <div class="unit-doc">Dra. Patricia Mayor · Dra. Beatriz Igualada</div>
+        </div>
+        <div class="unit-item">
+          <div class="unit-name display">Dermatología</div>
+          <div class="unit-doc">Dr. Joaquín Espiñeira</div>
+        </div>
+        <div class="unit-item">
+          <div class="unit-name display">Fisioterapia</div>
+          <div class="unit-doc">Laura Pérez</div>
+        </div>
+        <div class="unit-item">
+          <div class="unit-name display">Nutrición</div>
+          <div class="unit-doc">Consulta personalizada</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================ TEAM ================ -->
+<section class="team">
+  <div class="container">
+    <div class="section-head">
+      <div class="micro">Nuestro equipo</div>
+      <h2 class="display">Detrás de cada tratamiento,<br/>una mano <em>experta</em>.</h2>
+      <p>Nueve profesionales que entienden que cada piel es única y merece un cuidado especial.</p>
+    </div>
+
+    <div class="team-grid">
+      <div class="team-card featured">
+        <div class="team-photo"><img src="img/team-elena.jpg" alt="Elena Heredia" /></div>
+        <div class="team-meta">
+          <div class="team-name display">Elena Heredia</div>
+          <div class="team-role">Fundadora</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo"><img src="img/team-maria.jpg" alt="María Martínez Carmona" /></div>
+        <div class="team-meta">
+          <div class="team-name display">María Martínez</div>
+          <div class="team-role">CEO · 20 años sector</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo"><img src="img/team-patricia.jpg" alt="Dra. Patricia Mayor" /></div>
+        <div class="team-meta">
+          <div class="team-name display">Dra. Patricia Mayor</div>
+          <div class="team-role">Medicina estética</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo"><img src="img/team-beatriz.jpg" alt="Dra. Beatriz Igualada" /></div>
+        <div class="team-meta">
+          <div class="team-name display">Dra. Beatriz Igualada</div>
+          <div class="team-role">Medicina estética</div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-photo"><img src="img/team-joaquin.jpg" alt="Dr. Joaquín Espiñeira" /></div>
+        <div class="team-meta">
+          <div class="team-name display">Dr. Joaquín Espiñeira</div>
+          <div class="team-role">Dermatología</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo"><img src="img/team-laura.jpg" alt="Laura Pérez" /></div>
+        <div class="team-meta">
+          <div class="team-name display">Laura Pérez</div>
+          <div class="team-role">Fisioterapia</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo"><img src="img/team-begona.jpg" alt="Begoña" /></div>
+        <div class="team-meta">
+          <div class="team-name display">Begoña</div>
+          <div class="team-role">Estética</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo"><img src="img/team-roser.jpg" alt="Roser" /></div>
+        <div class="team-meta">
+          <div class="team-name display">Roser</div>
+          <div class="team-role">Micropigmentación</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo"><img src="img/team-camila.jpg" alt="Camila" /></div>
+        <div class="team-meta">
+          <div class="team-name display">Camila</div>
+          <div class="team-role">Recepción</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================ VISIT / CONTACT ================ -->
+<section class="visit" id="contacto">
+  <div class="container">
+    <div class="visit-grid">
+      <div class="visit-text">
+        <div class="micro">Visítanos</div>
+        <h2>Reserva tu primera <em>visita</em>.</h2>
+        <p class="visit-lead">
+          Cada cita comienza con un diagnóstico cuidadoso. Cuéntanos qué buscas y diseñaremos el camino contigo.
+        </p>
+
+        <div class="visit-contact-block">
+          <div class="contact-label">Llámanos</div>
+          <div class="contact-value">
+            <a href="tel:+34966803014">966 803 014</a> · <a href="tel:+34630535011">630 535 011</a>
+          </div>
+        </div>
+
+        <div class="visit-contact-block">
+          <div class="contact-label">Escríbenos</div>
+          <div class="contact-value"><a href="mailto:info@elenaheredia.com">info@elenaheredia.com</a></div>
+        </div>
+
+        <div class="visit-contact-block">
+          <div class="contact-label">Reserva online</div>
+          <div class="contact-value"><a href="#">Centro Médico-Estético Elena Heredia · Benidorm</a></div>
+        </div>
+
+        <div style="margin-top: 32px;">
+          <div class="upgrade-tag">Multiidioma propuesto · ES · EN · DE · RU</div>
+        </div>
+      </div>
+
+      <div class="visit-card-stack">
+        <div class="visit-image">
+          <img src="img/ambiente-wellness.jpg" alt="Sala de tratamientos del centro" />
+        </div>
+        <div class="visit-meta">
+          <div class="visit-contact-block" style="border:none;padding-top:0;margin-bottom:0;">
+            <div class="contact-label">Cómo llegar</div>
+            <div class="contact-value">Benidorm<br/><strong>centroelenaheredia.es</strong></div>
+          </div>
+          <div class="visit-contact-block" style="border:none;padding-top:0;margin-bottom:0;">
+            <div class="contact-label">Reseñas Google</div>
+            <div class="contact-value">4,7 ★<strong>127 valoraciones verificadas</strong></div>
+          </div>
+        </div>
+        <div class="visit-actions">
+          <a href="#" class="cta-pill light solid">Reservar cita</a>
+          <a href="#" class="cta-pill light">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================ FOOTER ================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="img/logo-hi.jpg" alt="Elena Heredia" />
+        <p>Centro Médico-Estético en Benidorm. Belleza, bienestar y medicina estética desde hace treinta y cinco años.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Tratamientos</h4>
+        <ul>
+          <li><a href="#">Faciales</a></li>
+          <li><a href="#">Corporales</a></li>
+          <li><a href="#">Medicina estética</a></li>
+          <li><a href="#">Rituales</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Unidades</h4>
+        <ul>
+          <li><a href="#">Dermatología</a></li>
+          <li><a href="#">Fisioterapia</a></li>
+          <li><a href="#">Nutrición</a></li>
+          <li><a href="#">Micropigmentación</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Centro</h4>
+        <ul>
+          <li>Benidorm</li>
+          <li>966 803 014</li>
+          <li>info@elenaheredia.com</li>
+          <li><a href="#">Reservar cita</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 Centro Médico-Estético Elena Heredia</div>
+      <div>Diseño propuesto por <a href="https://kenaz.studio">Kenaz Studio</a></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
