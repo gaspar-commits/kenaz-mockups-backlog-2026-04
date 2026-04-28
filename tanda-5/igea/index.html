@@ -11,15 +11,15 @@
     />
     <style>
       :root {
-        --primary: #6bb5c0;        /* turquesa Igea (color del logo real) */
-        --primary-deep: #3d7b85;   /* versión profunda */
+        --primary: #6bb5c0;
+        --primary-deep: #3d7b85;
         --primary-soft: #a9d3d8;
         --cream: #f5efe6;
         --cream-light: #faf7f1;
         --ink: #1f2a2d;
         --muted: #5a6669;
         --line: rgba(31, 42, 45, 0.12);
-        --accent: #c9a788;         /* nude cálido / wellness */
+        --accent: #c9a788;
       }
       * {
         box-sizing: border-box;
@@ -32,7 +32,6 @@
         color: var(--ink);
         font-family: "Inter", system-ui, sans-serif;
         font-weight: 400;
-        font-feature-settings: "ss01", "cv11";
         -webkit-font-smoothing: antialiased;
       }
       .display {
@@ -42,14 +41,11 @@
       }
       .mono {
         font-family: "Inter", monospace;
-        font-feature-settings: "tnum";
         letter-spacing: 0.16em;
         text-transform: uppercase;
         font-size: 11px;
         font-weight: 500;
       }
-
-      /* === LAYOUT === */
       .shell {
         max-width: 1440px;
         margin: 0 auto;
@@ -65,11 +61,6 @@
         max-width: 1440px;
         margin: 0 auto;
       }
-      .logo-wrap {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-      }
       .logo-wrap img {
         height: 56px;
         width: auto;
@@ -78,18 +69,12 @@
       .nav-links {
         display: flex;
         gap: 36px;
-        align-items: center;
       }
       .nav-links a {
         color: var(--ink);
         text-decoration: none;
         font-size: 13px;
         letter-spacing: 0.04em;
-        font-weight: 400;
-        transition: color 0.2s;
-      }
-      .nav-links a:hover {
-        color: var(--primary-deep);
       }
       .nav-right {
         display: flex;
@@ -121,24 +106,18 @@
         text-transform: uppercase;
         font-weight: 500;
         text-decoration: none;
-        transition: background 0.2s;
-      }
-      .cta-nav:hover {
-        background: var(--primary-deep);
       }
 
-      /* === HERO === */
+      /* === HERO (mismo que hero.html) === */
       .hero {
-        padding: 56px 64px 64px;
+        padding: 56px 64px 96px;
         max-width: 1440px;
         margin: 0 auto;
         display: grid;
         grid-template-columns: 1.05fr 0.95fr;
         gap: 72px;
         align-items: center;
-        min-height: calc(900px - 116px);
       }
-
       .hero-left .eyebrow {
         color: var(--primary-deep);
         margin-bottom: 28px;
@@ -152,14 +131,11 @@
         background: var(--primary);
         border-radius: 50%;
       }
-
       .hero h1 {
         font-size: clamp(56px, 6.5vw, 88px);
         line-height: 0.98;
         letter-spacing: -0.02em;
         margin-bottom: 28px;
-        color: var(--ink);
-        font-weight: 400;
       }
       .hero h1 em {
         font-style: italic;
@@ -172,9 +148,7 @@
         color: var(--muted);
         max-width: 510px;
         margin-bottom: 40px;
-        font-weight: 400;
       }
-
       .pillars {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -196,10 +170,8 @@
       .pillar-label {
         font-size: 12px;
         line-height: 1.45;
-        color: var(--ink);
         font-weight: 500;
       }
-
       .cta-row {
         display: flex;
         gap: 16px;
@@ -218,13 +190,6 @@
         display: inline-flex;
         align-items: center;
         gap: 12px;
-        transition: background 0.2s;
-      }
-      .cta-primary:hover {
-        background: var(--ink);
-      }
-      .cta-primary .arrow {
-        font-size: 18px;
       }
       .cta-secondary {
         color: var(--ink);
@@ -234,8 +199,6 @@
         border-bottom: 1px solid var(--ink);
         padding-bottom: 3px;
       }
-
-      /* === HERO RIGHT IMAGE === */
       .hero-right {
         position: relative;
         height: 720px;
@@ -285,7 +248,6 @@
         font-family: "Cormorant Garamond", serif;
         font-size: 22px;
         line-height: 1.2;
-        color: var(--ink);
       }
       .hero-card-title em {
         font-style: italic;
@@ -309,14 +271,12 @@
         color: var(--muted);
         font-weight: 500;
       }
-
       .corner-tag {
         position: absolute;
         top: 24px;
         left: 24px;
         background: rgba(31, 42, 45, 0.7);
         color: var(--cream-light);
-        backdrop-filter: blur(6px);
         padding: 8px 14px;
         font-size: 10px;
         letter-spacing: 0.18em;
@@ -324,9 +284,373 @@
         font-weight: 500;
         border-radius: 999px;
       }
+
+      /* === SECCIÓN: Metodología (banda crema) === */
+      .metodologia {
+        background: var(--cream);
+        padding: 120px 64px;
+      }
+      .metodologia .inner {
+        max-width: 1312px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 0.85fr 1.15fr;
+        gap: 80px;
+        align-items: start;
+      }
+      .metodologia .label {
+        color: var(--primary-deep);
+        margin-bottom: 24px;
+      }
+      .metodologia h2 {
+        font-size: 56px;
+        line-height: 1.05;
+        letter-spacing: -0.015em;
+        max-width: 460px;
+      }
+      .metodologia h2 em {
+        font-style: italic;
+        color: var(--primary-deep);
+      }
+      .metodologia .right p {
+        font-size: 17px;
+        line-height: 1.65;
+        color: var(--muted);
+        margin-bottom: 24px;
+      }
+      .pilares-grid {
+        margin-top: 56px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+      }
+      .pilar-card {
+        background: var(--cream-light);
+        padding: 36px 28px;
+        border-radius: 4px;
+        border: 1px solid var(--line);
+      }
+      .pilar-card .num {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 36px;
+        color: var(--primary-deep);
+        font-style: italic;
+        margin-bottom: 16px;
+        line-height: 1;
+      }
+      .pilar-card h3 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 24px;
+        line-height: 1.2;
+        margin-bottom: 12px;
+        font-weight: 500;
+      }
+      .pilar-card p {
+        font-size: 14px;
+        line-height: 1.55;
+        color: var(--muted);
+      }
+
+      /* === SECCIÓN: Tratamientos === */
+      .tratamientos {
+        padding: 120px 64px;
+        background: var(--cream-light);
+      }
+      .tratamientos .inner {
+        max-width: 1312px;
+        margin: 0 auto;
+      }
+      .section-head {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 48px;
+        align-items: end;
+        margin-bottom: 64px;
+      }
+      .section-head h2 {
+        font-size: 56px;
+        line-height: 1.05;
+        letter-spacing: -0.015em;
+        max-width: 600px;
+      }
+      .section-head h2 em {
+        font-style: italic;
+        color: var(--primary-deep);
+      }
+      .section-head .label {
+        color: var(--primary-deep);
+        margin-bottom: 16px;
+      }
+      .section-head a.see-all {
+        font-size: 13px;
+        letter-spacing: 0.04em;
+        color: var(--ink);
+        border-bottom: 1px solid var(--ink);
+        padding-bottom: 3px;
+        text-decoration: none;
+      }
+      .trat-grid {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 1fr;
+        gap: 24px;
+      }
+      .trat-card {
+        position: relative;
+        border-radius: 4px;
+        overflow: hidden;
+        background: var(--cream);
+      }
+      .trat-card .img {
+        height: 360px;
+        background-size: cover;
+        background-position: center;
+      }
+      .trat-card .body {
+        padding: 24px 24px 28px;
+      }
+      .trat-card .cat {
+        font-size: 10px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--primary-deep);
+        margin-bottom: 8px;
+        font-weight: 500;
+      }
+      .trat-card h3 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 26px;
+        line-height: 1.15;
+        margin-bottom: 8px;
+        font-weight: 500;
+      }
+      .trat-card p {
+        font-size: 13px;
+        line-height: 1.55;
+        color: var(--muted);
+      }
+      .trat-card.feat .img {
+        height: 460px;
+      }
+      .trat-card.feat h3 {
+        font-size: 32px;
+      }
+
+      /* === SECCIÓN: Tres clínicas === */
+      .clinicas {
+        background: var(--ink);
+        color: var(--cream-light);
+        padding: 120px 64px;
+      }
+      .clinicas .inner {
+        max-width: 1312px;
+        margin: 0 auto;
+      }
+      .clinicas .head {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        margin-bottom: 72px;
+        align-items: end;
+      }
+      .clinicas .label {
+        color: var(--primary-soft);
+        margin-bottom: 20px;
+      }
+      .clinicas h2 {
+        font-size: 56px;
+        line-height: 1.05;
+        letter-spacing: -0.015em;
+      }
+      .clinicas h2 em {
+        font-style: italic;
+        color: var(--primary-soft);
+      }
+      .clinicas .head p {
+        font-size: 16px;
+        line-height: 1.6;
+        color: rgba(245, 239, 230, 0.7);
+        max-width: 480px;
+      }
+      .clinicas-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+      }
+      .clinica {
+        border-top: 1px solid rgba(245, 239, 230, 0.18);
+        padding-top: 32px;
+      }
+      .clinica .city {
+        font-size: 11px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--primary-soft);
+        margin-bottom: 16px;
+        font-weight: 500;
+      }
+      .clinica h3 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 32px;
+        line-height: 1.1;
+        margin-bottom: 24px;
+        font-weight: 400;
+      }
+      .clinica .meta {
+        font-size: 13px;
+        line-height: 1.6;
+        color: rgba(245, 239, 230, 0.78);
+        margin-bottom: 8px;
+      }
+      .clinica .meta strong {
+        color: var(--cream-light);
+        font-weight: 500;
+        display: block;
+        margin-bottom: 2px;
+        font-size: 11px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+      .clinica .schedule {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(245, 239, 230, 0.12);
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+      }
+      .clinica .schedule .day {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 22px;
+        font-style: italic;
+        color: var(--primary-soft);
+      }
+      .clinica .schedule .hrs {
+        font-size: 12px;
+        color: rgba(245, 239, 230, 0.72);
+      }
+      .clinica .phone-link {
+        margin-top: 24px;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--cream-light);
+        text-decoration: none;
+        font-size: 14px;
+        border-bottom: 1px solid rgba(245, 239, 230, 0.4);
+        padding-bottom: 4px;
+      }
+
+      /* === SECCIÓN: Consulta CTA === */
+      .consulta {
+        background: var(--cream);
+        padding: 140px 64px;
+      }
+      .consulta .inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .consulta .label {
+        color: var(--primary-deep);
+        margin-bottom: 28px;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .consulta .label .dot {
+        width: 6px;
+        height: 6px;
+        background: var(--primary);
+        border-radius: 50%;
+      }
+      .consulta h2 {
+        font-size: 64px;
+        line-height: 1.05;
+        letter-spacing: -0.015em;
+        margin-bottom: 32px;
+      }
+      .consulta h2 em {
+        font-style: italic;
+        color: var(--primary-deep);
+      }
+      .consulta p {
+        font-size: 18px;
+        line-height: 1.55;
+        color: var(--muted);
+        max-width: 640px;
+        margin: 0 auto 48px;
+      }
+      .consulta .ctas {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* === FOOTER === */
+      footer {
+        background: var(--ink);
+        color: var(--cream-light);
+        padding: 80px 64px 40px;
+      }
+      footer .inner {
+        max-width: 1312px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 1fr 1fr;
+        gap: 48px;
+        margin-bottom: 64px;
+      }
+      footer h4 {
+        font-size: 11px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--primary-soft);
+        margin-bottom: 20px;
+        font-weight: 500;
+      }
+      footer ul {
+        list-style: none;
+      }
+      footer ul li {
+        margin-bottom: 12px;
+        font-size: 13px;
+        color: rgba(245, 239, 230, 0.78);
+      }
+      footer ul li a {
+        color: rgba(245, 239, 230, 0.78);
+        text-decoration: none;
+      }
+      footer .brand-block .logo-foot {
+        height: 64px;
+        margin-bottom: 20px;
+        filter: brightness(0) invert(1);
+        opacity: 0.92;
+      }
+      footer .brand-block p {
+        font-size: 13px;
+        line-height: 1.6;
+        color: rgba(245, 239, 230, 0.65);
+        max-width: 320px;
+      }
+      footer .bottom {
+        max-width: 1312px;
+        margin: 0 auto;
+        padding-top: 32px;
+        border-top: 1px solid rgba(245, 239, 230, 0.12);
+        display: flex;
+        justify-content: space-between;
+        font-size: 11px;
+        color: rgba(245, 239, 230, 0.5);
+        letter-spacing: 0.06em;
+      }
+      footer .bottom .kenaz {
+        color: rgba(245, 239, 230, 0.7);
+      }
     </style>
   </head>
   <body>
+    <!-- ============= NAV ============= -->
     <nav class="top">
       <div class="logo-wrap">
         <img src="./img/logo-hires.png" alt="Igea by Dra. Estefanía Sánchez de Gea" />
@@ -347,45 +671,36 @@
       </div>
     </nav>
 
+    <!-- ============= HERO ============= -->
     <section class="hero">
       <div class="hero-left">
         <div class="eyebrow mono">
           <span class="dot"></span>
           Medicina estética · Albir · Alicante · Elche
         </div>
-
         <h1 class="display">
           Belleza natural,<br />
           <em>cuidada con criterio médico.</em>
         </h1>
-
         <p class="lead">
           Diagnóstico clínico personalizado y plan de tratamiento adaptado por
           la Dra. Estefanía Sánchez de Gea. Medicina estética avanzada,
           armonización facial y salud integral desde una visión 360.
         </p>
-
         <div class="pillars">
           <div class="pillar">
             <div class="pillar-num">i.</div>
-            <div class="pillar-label">
-              Valoración<br />personalizada
-            </div>
+            <div class="pillar-label">Valoración<br />personalizada</div>
           </div>
           <div class="pillar">
             <div class="pillar-num">ii.</div>
-            <div class="pillar-label">
-              Tratamiento<br />avanzado 360
-            </div>
+            <div class="pillar-label">Tratamiento<br />avanzado 360</div>
           </div>
           <div class="pillar">
             <div class="pillar-num">iii.</div>
-            <div class="pillar-label">
-              Plan de<br />salud integral
-            </div>
+            <div class="pillar-label">Plan de<br />salud integral</div>
           </div>
         </div>
-
         <div class="cta-row">
           <a href="#reservar" class="cta-primary">
             Pedir primera consulta <span class="arrow">→</span>
@@ -393,7 +708,6 @@
           <a href="#tratamientos" class="cta-secondary">Ver tratamientos</a>
         </div>
       </div>
-
       <div class="hero-right">
         <div class="hero-image"></div>
         <div class="corner-tag">Centro Igea · Albir</div>
@@ -411,5 +725,265 @@
         </div>
       </div>
     </section>
+
+    <!-- ============= METODOLOGÍA ============= -->
+    <section id="metodologia" class="metodologia">
+      <div class="inner">
+        <div class="left">
+          <div class="label mono">— La metodología</div>
+          <h2 class="display">
+            Tres pilares que sostienen<br />
+            <em>cada plan de tratamiento.</em>
+          </h2>
+        </div>
+        <div class="right">
+          <p>
+            En Igea no se entiende la medicina estética como un retoque puntual.
+            La Dra. Sánchez de Gea trabaja desde una visión integrativa que
+            combina dermatología, armonización facial y salud general — la base
+            de la PNIE aplicada a la consulta clínica.
+          </p>
+          <p>
+            Cada paciente recibe un diagnóstico individualizado antes de
+            proponer cualquier tratamiento. Sin protocolos cerrados, sin
+            soluciones prefabricadas.
+          </p>
+        </div>
+      </div>
+      <div class="inner">
+        <div class="pilares-grid" style="grid-column: 1 / -1">
+          <div class="pilar-card">
+            <div class="num">i.</div>
+            <h3>Valoración personalizada</h3>
+            <p>
+              Análisis clínico facial, evaluación cutánea y conversación
+              detallada sobre objetivos antes de proponer ningún tratamiento.
+            </p>
+          </div>
+          <div class="pilar-card">
+            <div class="num">ii.</div>
+            <h3>Tratamiento avanzado 360</h3>
+            <p>
+              Técnicas de medicina estética actualizadas para armonización
+              facial, rejuvenecimiento y cuidado dermatológico — siempre con
+              criterio de naturalidad.
+            </p>
+          </div>
+          <div class="pilar-card">
+            <div class="num">iii.</div>
+            <h3>Plan de salud integral</h3>
+            <p>
+              Visión PNIE: la piel y el rostro son el reflejo del estado
+              general. Acompañamiento más allá del gabinete cuando el caso lo
+              requiere.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============= TRATAMIENTOS ============= -->
+    <section id="tratamientos" class="tratamientos">
+      <div class="inner">
+        <div class="section-head">
+          <div>
+            <div class="label mono">— Tratamientos</div>
+            <h2 class="display">
+              Medicina estética avanzada,<br />
+              <em>adaptada a cada paciente.</em>
+            </h2>
+          </div>
+          <a href="#" class="see-all">Ver todos los tratamientos →</a>
+        </div>
+        <div class="trat-grid">
+          <div class="trat-card feat">
+            <div
+              class="img"
+              style="background-image: url('./img/ambiente-recepcion.jpg')"
+            ></div>
+            <div class="body">
+              <div class="cat">Armonización facial</div>
+              <h3 class="display">
+                Equilibrio del rostro,<br />sin cambiar quién eres.
+              </h3>
+              <p>
+                Estudio de proporciones, técnica conservadora y resultados que
+                acompañan la expresión natural del rostro.
+              </p>
+            </div>
+          </div>
+          <div class="trat-card">
+            <div
+              class="img"
+              style="background-image: url('./img/detalle-equipamiento.jpg')"
+            ></div>
+            <div class="body">
+              <div class="cat">Rejuvenecimiento</div>
+              <h3 class="display">Cuidado avanzado de la piel.</h3>
+              <p>
+                Tratamientos para prevenir el envejecimiento y mejorar la
+                calidad dermatológica.
+              </p>
+            </div>
+          </div>
+          <div class="trat-card">
+            <div
+              class="img"
+              style="background-image: url('./img/detalle-cosmetico.jpg')"
+            ></div>
+            <div class="body">
+              <div class="cat">Salud integral · PNIE</div>
+              <h3 class="display">Belleza desde adentro.</h3>
+              <p>
+                Acompañamiento clínico que considera hábitos, descanso y
+                estado general como parte del plan estético.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============= CLÍNICAS ============= -->
+    <section id="clinicas" class="clinicas">
+      <div class="inner">
+        <div class="head">
+          <div>
+            <div class="label mono">— Tres consultas, una doctora</div>
+            <h2 class="display">
+              La Dra. Sánchez de Gea atiende<br />
+              <em>en tres centros de la provincia.</em>
+            </h2>
+          </div>
+          <p>
+            Consulta semanal en Albir, Alicante y Elche. Cada centro mantiene
+            su agenda y horario fijo — la primera valoración se reserva
+            directamente al teléfono del centro elegido.
+          </p>
+        </div>
+        <div class="clinicas-grid">
+          <div class="clinica">
+            <div class="city">Albir · L'Alfàs del Pi</div>
+            <h3 class="display">Centro Igea<br />en Clínica CAME</h3>
+            <div class="meta">
+              <strong>Dirección</strong>
+              Avenida de l'Albir, 151 · Local 4<br />
+              03581 — L'Alfàs del Pi, Alicante
+            </div>
+            <div class="schedule">
+              <span class="day">Jueves</span>
+              <span class="hrs">10:00 — 20:00 h</span>
+            </div>
+            <a href="tel:+34639061978" class="phone-link">
+              639 06 19 78 →
+            </a>
+          </div>
+          <div class="clinica">
+            <div class="city">Alicante · Capital</div>
+            <h3 class="display">Clínica CAME<br />Alicante</h3>
+            <div class="meta">
+              <strong>Dirección</strong>
+              C. San Juan Bautista, 3<br />
+              03005 — Alicante
+            </div>
+            <div class="schedule">
+              <span class="day">Lunes y viernes</span>
+              <span class="hrs">9:00 — 20:00 h</span>
+            </div>
+            <a href="tel:+34627800098" class="phone-link">
+              627 80 00 98 →
+            </a>
+          </div>
+          <div class="clinica">
+            <div class="city">Elche · Alacant</div>
+            <h3 class="display">Clínica Láser<br />Essenzia</h3>
+            <div class="meta">
+              <strong>Dirección</strong>
+              C. Pere Joan Perpinyà, 118<br />
+              03204 — Elx, Alacant
+            </div>
+            <div class="schedule">
+              <span class="day">Miércoles</span>
+              <span class="hrs">Consulta semanal</span>
+            </div>
+            <a href="tel:+34623223733" class="phone-link">
+              623 22 37 33 →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============= CONSULTA ============= -->
+    <section id="consulta" class="consulta">
+      <div class="inner">
+        <div class="label mono">
+          <span class="dot"></span>
+          Primera valoración
+        </div>
+        <h2 class="display">
+          Antes de cualquier tratamiento,<br />
+          <em>una conversación tranquila.</em>
+        </h2>
+        <p>
+          La primera consulta es para escuchar, observar y plantear opciones —
+          no para vender un protocolo. Si después de la valoración no hay un
+          plan que tenga sentido, se dice claro.
+        </p>
+        <div class="ctas">
+          <a href="#" class="cta-primary">
+            Reservar consulta <span class="arrow">→</span>
+          </a>
+          <a
+            href="mailto:hola@igea-med-estetica.com"
+            class="cta-secondary"
+            >hola@igea-med-estetica.com</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- ============= FOOTER ============= -->
+    <footer>
+      <div class="inner">
+        <div class="brand-block">
+          <img src="./img/logo-hires.png" alt="Igea" class="logo-foot" />
+          <p>
+            Medicina estética avanzada y armonización facial por la Dra.
+            Estefanía Sánchez de Gea. Consulta en Albir, Alicante y Elche.
+          </p>
+        </div>
+        <div>
+          <h4>Tratamientos</h4>
+          <ul>
+            <li><a href="#">Armonización facial</a></li>
+            <li><a href="#">Rejuvenecimiento</a></li>
+            <li><a href="#">Cuidado dermatológico</a></li>
+            <li><a href="#">Salud integral · PNIE</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Clínicas</h4>
+          <ul>
+            <li>Albir · jueves</li>
+            <li>Alicante · lun. y vie.</li>
+            <li>Elche · miércoles</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contacto</h4>
+          <ul>
+            <li>639 06 19 78 · Albir</li>
+            <li>627 80 00 98 · Alicante</li>
+            <li>623 22 37 33 · Elche</li>
+            <li>hola@igea-med-estetica.com</li>
+          </ul>
+        </div>
+      </div>
+      <div class="bottom">
+        <span>© Igea — Dra. Estefanía Sánchez de Gea · Medicina estética</span>
+        <span class="kenaz">Diseño propuesto por Kenaz Studio · kenaz.studio</span>
+      </div>
+    </footer>
   </body>
 </html>
