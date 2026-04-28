@@ -49,8 +49,8 @@
 
   /* ============ ANIMATIONS ============ */
   @keyframes moon-float {
-    0%, 100% { transform: translateY(-15px); }
-    50% { transform: translateY(15px); }
+    0%, 100% { transform: translate(-50%, calc(-50% - 15px)); }
+    50% { transform: translate(-50%, calc(-50% + 15px)); }
   }
   @keyframes nebula-drift {
     0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.55; }
@@ -298,10 +298,11 @@
   }
   .hero-visual .moon {
     position: absolute;
-    top: -90px;
-    right: -70px;
-    width: 340px;
-    height: 340px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 380px;
+    height: 380px;
     border-radius: 50%;
     background:
       radial-gradient(circle at 36% 32%, #f4ede0 0%, #d9d0bf 28%, #88806f 55%, #2a2520 80%, transparent 95%),
