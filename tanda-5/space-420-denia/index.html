@@ -29,6 +29,8 @@
     --gold: #C49A6C;
     --gold-soft: rgba(196,154,108,0.3);
     --nebula: #7B5BA8;
+    --nebula-soft: rgba(123,91,168,0.35);
+    --copper: #8C5A3D;
     --hairline: rgba(232,228,217,0.12);
   }
 
@@ -45,12 +47,30 @@
     color: var(--moon-dim);
   }
 
+  /* ============ ANIMATIONS ============ */
+  @keyframes moon-float {
+    0%, 100% { transform: translateY(-15px); }
+    50% { transform: translateY(15px); }
+  }
+  @keyframes nebula-drift {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.55; }
+    50% { transform: translate(30px, -20px) scale(1.08); opacity: 0.75; }
+  }
+  @keyframes star-twinkle {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+  @keyframes marquee-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
   /* ============ NAV ============ */
   .nav {
     position: absolute;
     top: 0; left: 0; right: 0;
     z-index: 50;
-    padding: 28px 56px;
+    padding: 24px 56px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -98,17 +118,42 @@
   .hero {
     position: relative;
     min-height: 100vh;
-    padding: 140px 56px 80px;
+    padding: 70px 56px 60px;
     display: grid;
     grid-template-columns: 1.05fr 0.95fr;
     gap: 72px;
     align-items: center;
-    background: radial-gradient(ellipse at 80% 20%, rgba(123,91,168,0.08) 0%, transparent 60%),
-                radial-gradient(ellipse at 10% 90%, rgba(196,154,108,0.06) 0%, transparent 50%),
-                var(--void);
+    background: var(--void);
+    overflow: hidden;
   }
 
-  /* Subtle starfield */
+  /* Rich nebula background — multiple layered gradients */
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 78% 18%, rgba(123,91,168,0.18) 0%, transparent 55%),
+      radial-gradient(ellipse 45% 40% at 12% 88%, rgba(196,154,108,0.10) 0%, transparent 55%),
+      radial-gradient(ellipse 30% 25% at 50% 50%, rgba(140,90,61,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 25% 20% at 85% 75%, rgba(123,91,168,0.12) 0%, transparent 60%);
+    z-index: 0;
+    pointer-events: none;
+    animation: nebula-drift 14s ease-in-out infinite;
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 20% 15% at 65% 35%, rgba(232,228,217,0.04) 0%, transparent 60%),
+      radial-gradient(ellipse 18% 12% at 25% 60%, rgba(123,91,168,0.08) 0%, transparent 60%);
+    filter: blur(40px);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* Subtle starfield with twinkle */
   .stars {
     position: absolute; inset: 0;
     background-image:
@@ -119,17 +164,21 @@
       radial-gradient(2px 2px at 75% 22%, rgba(232,228,217,0.7), transparent),
       radial-gradient(1px 1px at 88% 60%, rgba(232,228,217,0.5), transparent),
       radial-gradient(1px 1px at 18% 88%, rgba(232,228,217,0.45), transparent),
-      radial-gradient(1px 1px at 92% 8%, rgba(232,228,217,0.55), transparent);
+      radial-gradient(1px 1px at 92% 8%, rgba(232,228,217,0.55), transparent),
+      radial-gradient(1px 1px at 38% 38%, rgba(232,228,217,0.45), transparent),
+      radial-gradient(1px 1px at 58% 52%, rgba(232,228,217,0.35), transparent),
+      radial-gradient(2px 2px at 5% 50%, rgba(232,228,217,0.5), transparent);
     pointer-events: none;
-    z-index: 0;
+    z-index: 1;
+    animation: star-twinkle 5s ease-in-out infinite;
   }
 
-  .hero-text { position: relative; z-index: 2; max-width: 640px; }
+  .hero-text { position: relative; z-index: 3; max-width: 640px; }
   .hero-eyebrow {
     display: flex;
     align-items: center;
     gap: 14px;
-    margin-bottom: 36px;
+    margin-bottom: 32px;
     color: var(--moon-dim);
   }
   .hero-eyebrow::before {
@@ -142,11 +191,12 @@
   .hero h1 {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 400;
-    font-size: clamp(3rem, 6.2vw, 5.8rem);
+    font-size: clamp(3rem, 6.4vw, 6rem);
     line-height: 1.0;
     letter-spacing: -0.025em;
     color: var(--moon);
-    margin-bottom: 32px;
+    margin-bottom: 28px;
+    text-shadow: 0 0 30px rgba(196,154,108,0.15), 0 0 60px rgba(123,91,168,0.10);
   }
   .hero h1 .em {
     font-style: italic;
@@ -159,15 +209,23 @@
     color: var(--moon-dim);
     margin-top: 14px;
     font-style: italic;
+    text-shadow: none;
   }
   .hero-lede {
     font-size: 1.05rem;
     line-height: 1.7;
     color: var(--moon-dim);
-    max-width: 520px;
-    margin-bottom: 44px;
+    max-width: 540px;
+    margin-bottom: 18px;
   }
-  .hero-actions { display: flex; gap: 18px; align-items: center; margin-bottom: 56px; }
+  .hero-lede.first { margin-bottom: 14px; }
+  .hero-lede.first em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--moon);
+  }
+  .hero-lede.last { margin-bottom: 40px; color: var(--moon-faint); font-size: 0.98rem; }
+  .hero-actions { display: flex; gap: 18px; align-items: center; margin-bottom: 48px; }
   .btn-primary {
     background: var(--moon);
     color: var(--void);
@@ -193,7 +251,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 28px;
-    padding-top: 40px;
+    padding-top: 36px;
     border-top: 1px solid var(--hairline);
   }
   .meta-item .label {
@@ -214,9 +272,9 @@
   /* Hero visual */
   .hero-visual {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     aspect-ratio: 4/5;
-    max-height: 78vh;
+    max-height: 82vh;
   }
   .hero-visual .frame {
     position: relative;
@@ -228,32 +286,43 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: brightness(0.86) saturate(0.92);
+    filter: brightness(0.82) saturate(0.85);
   }
   .hero-visual .frame::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(10,14,26,0) 50%, rgba(10,14,26,0.55) 100%);
+    background: linear-gradient(180deg, rgba(10,14,26,0) 45%, rgba(10,14,26,0.6) 100%);
     z-index: 2;
     pointer-events: none;
   }
   .hero-visual .moon {
     position: absolute;
-    top: -38px;
-    right: -38px;
-    width: 220px;
-    height: 220px;
+    top: -90px;
+    right: -70px;
+    width: 340px;
+    height: 340px;
     border-radius: 50%;
     background:
       radial-gradient(circle at 36% 32%, #f4ede0 0%, #d9d0bf 28%, #88806f 55%, #2a2520 80%, transparent 95%),
       var(--void);
     box-shadow:
-      inset -20px -20px 60px rgba(0,0,0,0.5),
-      0 0 80px rgba(232,228,217,0.15),
-      0 0 160px rgba(232,228,217,0.08);
-    z-index: 3;
-    opacity: 0.92;
+      inset -22px -22px 70px rgba(0,0,0,0.55),
+      0 0 120px rgba(232,228,217,0.4),
+      0 0 200px rgba(123,91,168,0.3),
+      0 0 280px rgba(196,154,108,0.18);
+    z-index: 4;
+    opacity: 0.95;
+    animation: moon-float 6s ease-in-out infinite;
+  }
+  .hero-visual .moon::before {
+    content: "";
+    position: absolute;
+    inset: -12%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(123,91,168,0.18) 0%, transparent 60%);
+    z-index: -1;
+    filter: blur(20px);
   }
   .hero-visual .moon::after {
     content: "";
@@ -266,7 +335,9 @@
       radial-gradient(3px 3px at 65% 40%, rgba(0,0,0,0.2), transparent),
       radial-gradient(2px 2px at 48% 65%, rgba(0,0,0,0.22), transparent),
       radial-gradient(2px 2px at 78% 72%, rgba(0,0,0,0.18), transparent),
-      radial-gradient(1px 1px at 32% 78%, rgba(0,0,0,0.2), transparent);
+      radial-gradient(1px 1px at 32% 78%, rgba(0,0,0,0.2), transparent),
+      radial-gradient(2px 2px at 55% 22%, rgba(0,0,0,0.18), transparent),
+      radial-gradient(1px 1px at 18% 55%, rgba(0,0,0,0.2), transparent);
   }
   .hero-visual .caption {
     position: absolute;
@@ -293,11 +364,11 @@
   .coords {
     position: absolute;
     top: 50%;
-    right: -22px;
+    right: -10px;
     transform: translateY(-50%) rotate(90deg);
     transform-origin: center;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.64rem;
+    font-size: 0.62rem;
     letter-spacing: 0.32em;
     color: var(--moon-faint);
     text-transform: uppercase;
@@ -324,14 +395,18 @@
     font-size: 1.45rem;
     color: var(--moon-dim);
     white-space: nowrap;
+    width: max-content;
+    animation: marquee-scroll 22s linear infinite;
   }
-  .marquee-track span { display: flex; align-items: center; gap: 56px; }
-  .marquee-track .dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--gold);
+  .marquee-track > span { display: inline-flex; align-items: center; gap: 56px; }
+  .marquee-track .glyph {
     display: inline-block;
+    color: var(--gold);
+    font-style: normal;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    line-height: 1;
+    opacity: 0.85;
   }
 
   /* ============ SECTION: WHAT IS ============ */
@@ -350,6 +425,7 @@
     line-height: 1.05;
     letter-spacing: -0.02em;
     color: var(--moon);
+    text-shadow: 0 0 30px rgba(196,154,108,0.12);
   }
   .what-left h2 em { color: var(--gold); }
   .what-right p {
@@ -360,6 +436,17 @@
   }
   .what-right p:last-child { margin-bottom: 0; }
   .what-right strong { color: var(--moon); font-weight: 500; }
+  .what-right .pull {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    line-height: 1.4;
+    color: var(--moon);
+    padding: 24px 0 24px 28px;
+    border-left: 1px solid var(--gold);
+    margin: 8px 0 30px;
+  }
+  .what-right .pull em { color: var(--gold); font-style: italic; }
 
   /* ============ SECTION: GALLERY (the space) ============ */
   .space {
@@ -376,10 +463,11 @@
   .space-head h2 {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 400;
-    font-size: 2.6rem;
+    font-size: 2.8rem;
     line-height: 1.1;
     letter-spacing: -0.01em;
     color: var(--moon);
+    text-shadow: 0 0 30px rgba(196,154,108,0.12);
   }
   .space-head h2 em { color: var(--gold); font-style: italic; }
   .space-head .meta {
@@ -391,10 +479,74 @@
     text-transform: uppercase;
     line-height: 1.6;
   }
+
+  /* Cinematic asymmetric gallery: 1 hero + 4 secondary */
+  .space-hero {
+    position: relative;
+    width: 100%;
+    height: 540px;
+    overflow: hidden;
+    margin-bottom: 18px;
+    background: var(--deep);
+  }
+  .space-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.92) saturate(0.85);
+    transition: transform .6s ease, filter .6s ease;
+  }
+  .space-hero:hover img { transform: scale(1.03); filter: brightness(1.05) saturate(0.95); }
+  .space-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(10,14,26,0) 40%, rgba(10,14,26,0.7) 100%);
+    pointer-events: none;
+  }
+  .space-hero .tag {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--moon);
+    background: rgba(10,14,26,0.65);
+    padding: 8px 14px;
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--hairline);
+    z-index: 2;
+  }
+  .space-hero .label {
+    position: absolute;
+    bottom: 32px;
+    left: 32px;
+    z-index: 2;
+    color: var(--moon);
+  }
+  .space-hero .label .head {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 2.4rem;
+    line-height: 1.05;
+    margin-bottom: 6px;
+    text-shadow: 0 2px 18px rgba(0,0,0,0.6);
+  }
+  .space-hero .label .head em { color: var(--gold); }
+  .space-hero .label small {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--moon-dim);
+  }
+
   .space-grid {
     display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr;
-    grid-template-rows: 380px 380px;
+    grid-template-columns: 1.3fr 1fr 1fr 1.1fr;
+    grid-template-rows: 320px;
     gap: 18px;
   }
   .space-card {
@@ -406,45 +558,63 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: brightness(0.92);
-    transition: filter .35s;
+    filter: brightness(0.88) saturate(0.85);
+    transition: transform .5s ease, filter .5s ease;
   }
-  .space-card:hover img { filter: brightness(1); }
+  .space-card:hover img { transform: scale(1.03); filter: brightness(1.1) saturate(0.95); }
   .space-card .tag {
     position: absolute;
-    top: 22px;
-    left: 22px;
+    top: 18px;
+    left: 18px;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.64rem;
+    font-size: 0.62rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--moon);
-    background: rgba(10,14,26,0.62);
-    padding: 7px 12px;
+    background: rgba(10,14,26,0.65);
+    padding: 6px 11px;
     backdrop-filter: blur(8px);
     border: 1px solid var(--hairline);
+    z-index: 2;
   }
   .space-card .label {
     position: absolute;
-    bottom: 22px;
-    left: 22px;
+    bottom: 18px;
+    left: 18px;
     color: var(--moon);
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     line-height: 1.1;
-    text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+    text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+    z-index: 2;
   }
   .space-card .label small {
     display: block;
-    font-family: 'Inter', sans-serif;
+    font-family: 'JetBrains Mono', monospace;
     font-style: normal;
-    font-size: 0.74rem;
-    letter-spacing: 0.06em;
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
     color: var(--moon-dim);
-    margin-top: 4px;
+    margin-top: 5px;
   }
-  .space-card.tall { grid-row: 1 / span 2; }
+  .space-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(10,14,26,0) 50%, rgba(10,14,26,0.65) 100%);
+    pointer-events: none;
+  }
+  .space-disclaimer {
+    margin-top: 24px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--moon-faint);
+    text-align: right;
+  }
 
   /* ============ SECTION: AMENITIES ============ */
   .amenities {
@@ -466,6 +636,7 @@
     color: var(--moon);
     max-width: 720px;
     margin: 0 auto;
+    text-shadow: 0 0 30px rgba(196,154,108,0.12);
   }
   .amenities-head h2 em { color: var(--gold); }
   .amen-grid {
@@ -482,7 +653,9 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    transition: background .3s;
   }
+  .amen-cell:hover { background: #1f2538; }
   .amen-cell .num {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.7rem;
@@ -498,10 +671,126 @@
     color: var(--moon);
     margin-bottom: 14px;
   }
+  .amen-cell:hover .title { color: var(--nebula); transition: color .3s; }
   .amen-cell .desc {
     font-size: 0.86rem;
     line-height: 1.6;
     color: var(--moon-dim);
+  }
+
+  /* ============ SECTION: NEXT MISSIONS ============ */
+  .missions {
+    padding: 140px 56px;
+    background: var(--void);
+    position: relative;
+    overflow: hidden;
+  }
+  .missions::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 50% 40% at 80% 20%, rgba(123,91,168,0.10) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 30% at 15% 85%, rgba(196,154,108,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .missions-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 60px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--hairline);
+    position: relative;
+    z-index: 1;
+  }
+  .missions-head h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 2.8rem;
+    line-height: 1.05;
+    color: var(--moon);
+    text-shadow: 0 0 30px rgba(196,154,108,0.12);
+  }
+  .missions-head h2 em { color: var(--gold); font-style: italic; }
+  .missions-head .note {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--moon-faint);
+    text-align: right;
+    line-height: 1.7;
+    max-width: 280px;
+  }
+  .missions-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    position: relative;
+    z-index: 1;
+  }
+  .mission-card {
+    background: var(--deep);
+    border: 1px solid var(--hairline);
+    padding: 40px 32px;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    transition: border-color .3s, transform .3s;
+  }
+  .mission-card:hover { border-color: var(--nebula-soft); transform: translateY(-3px); }
+  .mission-card .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 4.2rem;
+    line-height: 1;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+  .mission-card .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--nebula);
+    margin-bottom: 14px;
+    display: block;
+  }
+  .mission-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.7rem;
+    line-height: 1.15;
+    color: var(--moon);
+    margin-bottom: 14px;
+  }
+  .mission-card p {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--moon-dim);
+    margin-top: auto;
+  }
+  .missions-foot {
+    margin-top: 44px;
+    padding-top: 28px;
+    border-top: 1px solid var(--hairline);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--moon-faint);
+    position: relative;
+    z-index: 1;
+  }
+  .missions-foot .cta {
+    color: var(--gold);
+    border-bottom: 1px solid var(--gold-soft);
+    padding-bottom: 4px;
   }
 
   /* ============ SECTION: HOW TO JOIN ============ */
@@ -520,6 +809,7 @@
     line-height: 1.05;
     color: var(--moon);
     margin-bottom: 28px;
+    text-shadow: 0 0 30px rgba(196,154,108,0.12);
   }
   .join-left h2 em { color: var(--gold); }
   .join-left p {
@@ -586,6 +876,7 @@
     line-height: 1.05;
     color: var(--moon);
     margin-bottom: 28px;
+    text-shadow: 0 0 30px rgba(196,154,108,0.12);
   }
   .contact-left h2 em { color: var(--gold); }
   .contact-left p {
@@ -711,6 +1002,31 @@
     color: var(--moon-dim);
   }
   .foot-bottom .kenaz a { color: var(--gold); }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 980px) {
+    .nav { padding: 22px 28px; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 110px 28px 60px; gap: 48px; }
+    .hero-visual { max-height: 60vh; aspect-ratio: 4/3; }
+    .hero-visual .moon { width: 220px; height: 220px; top: -50px; right: -40px; }
+    .what, .space, .amenities, .missions, .join, .contact { padding-left: 28px; padding-right: 28px; }
+    .what { grid-template-columns: 1fr; gap: 40px; padding: 90px 28px; }
+    .space-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 240px 240px; }
+    .space-hero { height: 380px; }
+    .amen-grid { grid-template-columns: 1fr 1fr; }
+    .missions-grid { grid-template-columns: 1fr; }
+    .join { grid-template-columns: 1fr; gap: 40px; padding: 90px 28px; }
+    .join-left { position: static; }
+    .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .foot-top { grid-template-columns: 1fr 1fr; gap: 36px; }
+  }
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 2.6rem; }
+    .space-grid { grid-template-columns: 1fr; grid-template-rows: repeat(4, 220px); }
+    .amen-grid { grid-template-columns: 1fr; }
+    .foot-top { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -726,7 +1042,7 @@
   <div class="nav-links">
     <a href="#">El espacio</a>
     <a href="#">Cómo funciona</a>
-    <a href="#">Actividades</a>
+    <a href="#">Misiones</a>
     <a href="#">FAQ</a>
     <a href="#">Contacto</a>
   </div>
@@ -751,11 +1067,13 @@
       bajo una <span class="em">luna<br>de tres metros.</span>
       <span class="small">Para socios mayores de 18 años.</span>
     </h1>
-    <p class="hero-lede">
-      Space 420 Dénia es una asociación privada para mayores de edad. Un espacio
-      pensado para socios: sala con vistas al mar, cine bajo las estrellas,
-      arcade, billar y consolas. Cultura cannábica responsable, en un entorno
-      cuidado.
+    <p class="hero-lede first">
+      Un punto de encuentro fuera del ruido, donde el tiempo afloja un poco.
+      <em>Naves y cohetes, no menús. Misiones espaciales, no consumo rápido.</em>
+    </p>
+    <p class="hero-lede last">
+      Sala con vistas al mar, cine bajo las estrellas, arcade, billar y
+      consolas. Cultura cannábica responsable, en un entorno cuidado.
     </p>
     <div class="hero-actions">
       <a href="#" class="btn-primary">Solicitar membresía</a>
@@ -786,21 +1104,30 @@
       </div>
     </div>
     <div class="moon" aria-hidden="true"></div>
-    <div class="coords">42.0 N · 0.0 E · ÓRBITA DÉNIA</div>
+    <div class="coords">38.84° N · 0.10° E · DÉNIA · MARINA ALTA</div>
   </div>
 </section>
 
 <!-- =================== MARQUEE =================== -->
 <div class="marquee">
   <div class="marquee-track">
-    <span>Sala con vistas al mar</span><span class="dot"></span>
-    <span>Cine bajo las estrellas</span><span class="dot"></span>
-    <span>Arcade y consolas</span><span class="dot"></span>
-    <span>Billar</span><span class="dot"></span>
-    <span>Eventos y actuaciones</span><span class="dot"></span>
-    <span>Cultura responsable</span><span class="dot"></span>
-    <span>Solo socios</span><span class="dot"></span>
-    <span>Sala con vistas al mar</span><span class="dot"></span>
+    <span>Sala con vistas al mar <span class="glyph">⌬</span></span>
+    <span>Cine bajo las estrellas <span class="glyph">◯</span></span>
+    <span>Arcade y consolas <span class="glyph">✦</span></span>
+    <span>Billar <span class="glyph">◐</span></span>
+    <span>Eventos y actuaciones <span class="glyph">⌬</span></span>
+    <span>Cultura responsable <span class="glyph">◯</span></span>
+    <span>Solo socios <span class="glyph">✦</span></span>
+    <span>Naves y cohetes <span class="glyph">◐</span></span>
+    <!-- duplicate for seamless loop -->
+    <span>Sala con vistas al mar <span class="glyph">⌬</span></span>
+    <span>Cine bajo las estrellas <span class="glyph">◯</span></span>
+    <span>Arcade y consolas <span class="glyph">✦</span></span>
+    <span>Billar <span class="glyph">◐</span></span>
+    <span>Eventos y actuaciones <span class="glyph">⌬</span></span>
+    <span>Cultura responsable <span class="glyph">◯</span></span>
+    <span>Solo socios <span class="glyph">✦</span></span>
+    <span>Naves y cohetes <span class="glyph">◐</span></span>
   </div>
 </div>
 
@@ -811,6 +1138,11 @@
     <h2>Una asociación. <em>No</em> una tienda. No un dispensario.</h2>
   </div>
   <div class="what-right">
+    <p class="pull">
+      No es un dispensario. No es un club nocturno.
+      Es un <em>universo privado de socios</em>, abierto a la cultura
+      cannábica responsable.
+    </p>
     <p>
       <strong>Space 420 Dénia</strong> es una asociación cannábica privada,
       legalmente constituida y sin ánimo de lucro. El acceso es exclusivo
@@ -840,48 +1172,53 @@
       Acceso solo a socios
     </div>
   </div>
-  <div class="space-grid">
-    <div class="space-card tall">
-      <img src="img/foto-A746481.jpg" alt="Sala principal con luna de 3 metros">
-      <span class="tag">01 / Sala principal</span>
-      <div class="label">
-        Bajo la luna<br>
-        <small>El símbolo de la casa</small>
-      </div>
+
+  <!-- Hero shot: la luna de 3 metros -->
+  <div class="space-hero">
+    <img src="img/foto-A746481.jpg" alt="Sala principal con luna de tres metros">
+    <span class="tag">00 · El símbolo de la casa</span>
+    <div class="label">
+      <div class="head">Bajo la <em>luna</em> de tres metros</div>
+      <small>Sala principal · Marina Alta</small>
     </div>
+  </div>
+
+  <!-- 4 fotos secundarias en grid asimétrico -->
+  <div class="space-grid">
     <div class="space-card">
       <img src="img/foto-A746511.jpg" alt="Zona de juegos y arcade">
-      <span class="tag">02 / Ocio</span>
+      <span class="tag">01 / Ocio</span>
       <div class="label">
-        Arcade y consolas<br>
+        Arcade y consolas
         <small>PS5 · Xbox · Recreativas</small>
       </div>
     </div>
     <div class="space-card">
       <img src="img/space-zona-1.jpg" alt="Sala con vistas al mar">
-      <span class="tag">03 / Vistas</span>
+      <span class="tag">02 / Vistas</span>
       <div class="label">
-        Sala con vistas al mar<br>
+        Sala con mar
         <small>Marina Alta</small>
       </div>
     </div>
     <div class="space-card">
       <img src="img/space-zona-4.jpg" alt="Eventos y actuaciones">
-      <span class="tag">04 / Eventos</span>
+      <span class="tag">03 / Eventos</span>
       <div class="label">
-        Cine y actuaciones<br>
+        Cine y actuaciones
         <small>Programación regular</small>
       </div>
     </div>
     <div class="space-card">
-      <img src="img/space-zona-stock.jpg" alt="Zona socios">
-      <span class="tag">05 / Comunidad</span>
+      <img src="img/space-zona-stock.jpg" alt="Encuentro entre socios">
+      <span class="tag">04 / Comunidad</span>
       <div class="label">
-        Encuentro entre socios<br>
+        Encuentro entre socios
         <small>Acceso privado</small>
       </div>
     </div>
   </div>
+  <div class="space-disclaimer">Imágenes referenciales del espacio · Acceso previa inscripción</div>
 </section>
 
 <!-- =================== AMENITIES =================== -->
@@ -947,6 +1284,42 @@
       </div>
       <div class="desc">Castellano, inglés y alemán. Comunidad internacional en la Marina Alta.</div>
     </div>
+  </div>
+</section>
+
+<!-- =================== NEXT MISSIONS =================== -->
+<section class="missions">
+  <div class="missions-head">
+    <h2>Próximas <em>misiones</em>.</h2>
+    <div class="note">
+      Programación interna<br>
+      Calendario disponible<br>
+      en privado para socios
+    </div>
+  </div>
+  <div class="missions-grid">
+    <div class="mission-card">
+      <div class="num">01</div>
+      <span class="tag">Charlas educativas</span>
+      <h3>Cultura cannábica con criterio</h3>
+      <p>Sesiones formativas sobre variedades, uso responsable y aplicaciones terapéuticas. Conducidas por especialistas invitados de la comunidad asociativa.</p>
+    </div>
+    <div class="mission-card">
+      <div class="num">02</div>
+      <span class="tag">Cine bajo la luna</span>
+      <h3>Noches de proyección privada</h3>
+      <p>Cine de autor, partidos en pantalla grande y ciclos temáticos. La sala principal se transforma para que los socios disfruten en formato íntimo.</p>
+    </div>
+    <div class="mission-card">
+      <div class="num">03</div>
+      <span class="tag">Sesiones en azotea</span>
+      <h3>Cocina y conversación</h3>
+      <p>Encuentros gastronómicos pensados para reunir a la comunidad de socios alrededor de una mesa, una vista y una conversación que no tiene prisa.</p>
+    </div>
+  </div>
+  <div class="missions-foot">
+    <span>Próximas misiones · Consultar calendario en privado</span>
+    <a href="#" class="cta">Solicitar agenda interna →</a>
   </div>
 </section>
 
@@ -1062,7 +1435,7 @@
       <h4>Asociación</h4>
       <a href="#">El espacio</a>
       <a href="#">Cómo funciona</a>
-      <a href="#">Actividades</a>
+      <a href="#">Próximas misiones</a>
       <a href="#">FAQ legal</a>
     </div>
     <div class="foot-col">
