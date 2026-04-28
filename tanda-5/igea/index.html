@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Igea — Dra. Estefanía Sánchez de Gea · Medicina estética</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #6bb5c0;        /* turquesa Igea (color del logo real) */
+        --primary-deep: #3d7b85;   /* versión profunda */
+        --primary-soft: #a9d3d8;
+        --cream: #f5efe6;
+        --cream-light: #faf7f1;
+        --ink: #1f2a2d;
+        --muted: #5a6669;
+        --line: rgba(31, 42, 45, 0.12);
+        --accent: #c9a788;         /* nude cálido / wellness */
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        background: var(--cream-light);
+        color: var(--ink);
+        font-family: "Inter", system-ui, sans-serif;
+        font-weight: 400;
+        font-feature-settings: "ss01", "cv11";
+        -webkit-font-smoothing: antialiased;
+      }
+      .display {
+        font-family: "Cormorant Garamond", "Times New Roman", serif;
+        font-weight: 400;
+        letter-spacing: -0.012em;
+      }
+      .mono {
+        font-family: "Inter", monospace;
+        font-feature-settings: "tnum";
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-size: 11px;
+        font-weight: 500;
+      }
+
+      /* === LAYOUT === */
+      .shell {
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 0 64px;
+      }
+
+      /* === NAV === */
+      nav.top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 28px 64px 0;
+        max-width: 1440px;
+        margin: 0 auto;
+      }
+      .logo-wrap {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .logo-wrap img {
+        height: 56px;
+        width: auto;
+        display: block;
+      }
+      .nav-links {
+        display: flex;
+        gap: 36px;
+        align-items: center;
+      }
+      .nav-links a {
+        color: var(--ink);
+        text-decoration: none;
+        font-size: 13px;
+        letter-spacing: 0.04em;
+        font-weight: 400;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover {
+        color: var(--primary-deep);
+      }
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+      }
+      .lang-switch {
+        display: flex;
+        gap: 4px;
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        color: var(--muted);
+        font-weight: 500;
+      }
+      .lang-switch .active {
+        color: var(--primary-deep);
+        font-weight: 600;
+      }
+      .lang-switch span:not(.active) {
+        opacity: 0.5;
+      }
+      .cta-nav {
+        background: var(--ink);
+        color: var(--cream-light);
+        padding: 12px 22px;
+        border-radius: 999px;
+        font-size: 12px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-weight: 500;
+        text-decoration: none;
+        transition: background 0.2s;
+      }
+      .cta-nav:hover {
+        background: var(--primary-deep);
+      }
+
+      /* === HERO === */
+      .hero {
+        padding: 56px 64px 64px;
+        max-width: 1440px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 72px;
+        align-items: center;
+        min-height: calc(900px - 116px);
+      }
+
+      .hero-left .eyebrow {
+        color: var(--primary-deep);
+        margin-bottom: 28px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .eyebrow .dot {
+        width: 6px;
+        height: 6px;
+        background: var(--primary);
+        border-radius: 50%;
+      }
+
+      .hero h1 {
+        font-size: clamp(56px, 6.5vw, 88px);
+        line-height: 0.98;
+        letter-spacing: -0.02em;
+        margin-bottom: 28px;
+        color: var(--ink);
+        font-weight: 400;
+      }
+      .hero h1 em {
+        font-style: italic;
+        color: var(--primary-deep);
+        font-weight: 300;
+      }
+      .hero p.lead {
+        font-size: 17px;
+        line-height: 1.55;
+        color: var(--muted);
+        max-width: 510px;
+        margin-bottom: 40px;
+        font-weight: 400;
+      }
+
+      .pillars {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin-bottom: 44px;
+        max-width: 540px;
+      }
+      .pillar {
+        border-top: 1px solid var(--line);
+        padding-top: 16px;
+      }
+      .pillar-num {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 22px;
+        color: var(--primary-deep);
+        font-style: italic;
+        margin-bottom: 6px;
+      }
+      .pillar-label {
+        font-size: 12px;
+        line-height: 1.45;
+        color: var(--ink);
+        font-weight: 500;
+      }
+
+      .cta-row {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+      }
+      .cta-primary {
+        background: var(--primary-deep);
+        color: var(--cream-light);
+        padding: 17px 32px;
+        border-radius: 999px;
+        font-size: 13px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-weight: 500;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        transition: background 0.2s;
+      }
+      .cta-primary:hover {
+        background: var(--ink);
+      }
+      .cta-primary .arrow {
+        font-size: 18px;
+      }
+      .cta-secondary {
+        color: var(--ink);
+        font-size: 13px;
+        letter-spacing: 0.04em;
+        text-decoration: none;
+        border-bottom: 1px solid var(--ink);
+        padding-bottom: 3px;
+      }
+
+      /* === HERO RIGHT IMAGE === */
+      .hero-right {
+        position: relative;
+        height: 720px;
+      }
+      .hero-image {
+        position: absolute;
+        inset: 0;
+        background-image: url("./img/hero-clinica.jpg");
+        background-size: cover;
+        background-position: center;
+        border-radius: 4px;
+      }
+      .hero-image::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          transparent 60%,
+          rgba(31, 42, 45, 0.18)
+        );
+        border-radius: 4px;
+      }
+      .hero-card {
+        position: absolute;
+        bottom: 28px;
+        left: 28px;
+        right: 28px;
+        background: rgba(245, 239, 230, 0.96);
+        backdrop-filter: blur(8px);
+        padding: 22px 26px;
+        border-radius: 4px;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 24px;
+        align-items: center;
+      }
+      .hero-card-label {
+        font-size: 10px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 6px;
+        font-weight: 500;
+      }
+      .hero-card-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 22px;
+        line-height: 1.2;
+        color: var(--ink);
+      }
+      .hero-card-title em {
+        font-style: italic;
+        color: var(--primary-deep);
+      }
+      .hero-card-side {
+        text-align: right;
+      }
+      .hero-card-side .num {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 26px;
+        line-height: 1;
+        color: var(--primary-deep);
+        font-style: italic;
+        margin-bottom: 4px;
+      }
+      .hero-card-side .lab {
+        font-size: 10px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--muted);
+        font-weight: 500;
+      }
+
+      .corner-tag {
+        position: absolute;
+        top: 24px;
+        left: 24px;
+        background: rgba(31, 42, 45, 0.7);
+        color: var(--cream-light);
+        backdrop-filter: blur(6px);
+        padding: 8px 14px;
+        font-size: 10px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        font-weight: 500;
+        border-radius: 999px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="top">
+      <div class="logo-wrap">
+        <img src="./img/logo-hires.png" alt="Igea by Dra. Estefanía Sánchez de Gea" />
+      </div>
+      <div class="nav-links">
+        <a href="#tratamientos">Tratamientos</a>
+        <a href="#metodologia">Metodología</a>
+        <a href="#consulta">Consulta</a>
+        <a href="#clinicas">Clínicas</a>
+      </div>
+      <div class="nav-right">
+        <div class="lang-switch">
+          <span class="active">ES</span>
+          <span>·</span>
+          <span>EN</span>
+        </div>
+        <a href="#reservar" class="cta-nav">Reservar consulta</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-left">
+        <div class="eyebrow mono">
+          <span class="dot"></span>
+          Medicina estética · Albir · Alicante · Elche
+        </div>
+
+        <h1 class="display">
+          Belleza natural,<br />
+          <em>cuidada con criterio médico.</em>
+        </h1>
+
+        <p class="lead">
+          Diagnóstico clínico personalizado y plan de tratamiento adaptado por
+          la Dra. Estefanía Sánchez de Gea. Medicina estética avanzada,
+          armonización facial y salud integral desde una visión 360.
+        </p>
+
+        <div class="pillars">
+          <div class="pillar">
+            <div class="pillar-num">i.</div>
+            <div class="pillar-label">
+              Valoración<br />personalizada
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-num">ii.</div>
+            <div class="pillar-label">
+              Tratamiento<br />avanzado 360
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-num">iii.</div>
+            <div class="pillar-label">
+              Plan de<br />salud integral
+            </div>
+          </div>
+        </div>
+
+        <div class="cta-row">
+          <a href="#reservar" class="cta-primary">
+            Pedir primera consulta <span class="arrow">→</span>
+          </a>
+          <a href="#tratamientos" class="cta-secondary">Ver tratamientos</a>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-image"></div>
+        <div class="corner-tag">Centro Igea · Albir</div>
+        <div class="hero-card">
+          <div>
+            <div class="hero-card-label">Próxima consulta disponible</div>
+            <div class="hero-card-title display">
+              <em>Jueves</em> · Albir<br />de 10:00 a 20:00 h
+            </div>
+          </div>
+          <div class="hero-card-side">
+            <div class="num">639 06 19 78</div>
+            <div class="lab">Reservas directas</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

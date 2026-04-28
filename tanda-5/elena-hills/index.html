@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Elena Hills — Altea Hills, Costa Blanca</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --brand:#9C7E3F;          /* oro champán refinado, derivado de su #C3A153 */
+    --brand-dark:#5C4A22;
+    --brand-soft:#E9DCBE;
+    --ink:#1A1814;            /* casi negro cálido */
+    --ink-2:#3A352C;
+    --paper:#F6F1E8;          /* crema editorial */
+    --paper-2:#EDE5D2;
+    --line:#D9CDB1;
+    --white:#FCFAF4;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;font-weight:300;-webkit-font-smoothing:antialiased;letter-spacing:.005em}
+  .serif{font-family:'Cormorant Garamond',serif;font-weight:400;letter-spacing:-.005em}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+
+  /* ====== TOP BAR ====== */
+  .topbar{
+    background:var(--ink);color:var(--paper-2);
+    font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+    padding:10px 56px;display:flex;justify-content:space-between;align-items:center;
+  }
+  .topbar .langs{display:flex;gap:18px;color:var(--brand-soft)}
+  .topbar .langs span{opacity:.55;cursor:pointer;transition:.2s}
+  .topbar .langs span.on{opacity:1;color:var(--brand)}
+  .topbar .contact{display:flex;gap:28px;color:var(--brand-soft)}
+  .topbar .contact a{display:inline-flex;align-items:center;gap:8px}
+  .topbar .contact .dot{width:5px;height:5px;border-radius:50%;background:var(--brand);display:inline-block}
+
+  /* ====== NAV ====== */
+  nav.main{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:22px 56px;background:var(--paper);border-bottom:1px solid var(--line);
+    position:relative;z-index:5;
+  }
+  nav .brand{display:flex;align-items:center;gap:14px}
+  nav .brand .logo{height:54px;width:auto;display:block}
+  nav .brand .wm{display:flex;flex-direction:column;line-height:1}
+  nav .brand .wm .name{font-family:'Cormorant Garamond',serif;font-size:28px;letter-spacing:.04em;color:var(--ink)}
+  nav .brand .wm .tag{font-size:9.5px;letter-spacing:.4em;text-transform:uppercase;color:var(--brand);margin-top:6px}
+  nav ul{display:flex;list-style:none;gap:38px;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2)}
+  nav ul a{padding:6px 0;border-bottom:1px solid transparent;transition:.2s}
+  nav ul a.active{color:var(--ink);border-bottom-color:var(--brand)}
+  nav ul a:hover{color:var(--ink)}
+  nav .cta{display:flex;align-items:center;gap:14px}
+  nav .cta .icon{width:38px;height:38px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;color:var(--ink-2);transition:.2s;cursor:pointer}
+  nav .cta .icon:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  nav .cta .reserve{
+    background:var(--ink);color:var(--paper);
+    font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;
+    padding:14px 22px;border:none;cursor:pointer;
+  }
+
+  /* ====== HERO ====== */
+  .hero{
+    position:relative;height:760px;overflow:hidden;background:#1a1814;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background:url('img/altea_new.jpg') center/cover no-repeat;
+    filter:saturate(.92) brightness(.78);
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;
+    background:
+      linear-gradient(180deg, rgba(26,24,20,.55) 0%, rgba(26,24,20,.15) 38%, rgba(26,24,20,.55) 100%),
+      linear-gradient(90deg, rgba(26,24,20,.55) 0%, rgba(26,24,20,0) 42%);
+  }
+  .hero-grid{position:relative;z-index:2;height:100%;padding:64px 56px 56px;display:grid;grid-template-columns:1.15fr .85fr;gap:48px}
+
+  .hero-left{display:flex;flex-direction:column;justify-content:space-between;color:var(--paper)}
+  .eyebrow{display:flex;align-items:center;gap:14px;font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:var(--brand-soft)}
+  .eyebrow .ln{width:48px;height:1px;background:var(--brand)}
+  .hero h1{
+    font-family:'Cormorant Garamond',serif;font-weight:400;
+    font-size:96px;line-height:.95;letter-spacing:-.015em;color:var(--white);
+    margin-top:24px;max-width:780px;
+  }
+  .hero h1 em{font-style:italic;color:var(--brand-soft);font-weight:300}
+  .hero .lede{
+    font-size:17px;line-height:1.7;color:rgba(252,250,244,.82);
+    max-width:560px;margin-top:36px;font-weight:300;
+  }
+  .hero .actions{display:flex;gap:14px;margin-top:42px;align-items:center}
+  .hero .actions .pri{
+    background:var(--brand);color:var(--ink);font-weight:500;
+    padding:18px 32px;font-size:12px;letter-spacing:.24em;text-transform:uppercase;cursor:pointer;border:none;
+  }
+  .hero .actions .sec{
+    background:transparent;color:var(--paper);
+    padding:18px 22px;font-size:12px;letter-spacing:.24em;text-transform:uppercase;
+    border:1px solid rgba(252,250,244,.4);cursor:pointer;display:inline-flex;align-items:center;gap:12px;
+  }
+  .hero .actions .sec .arr{width:14px;height:1px;background:var(--paper);position:relative}
+  .hero .actions .sec .arr::after{content:"";position:absolute;right:-1px;top:-3px;width:7px;height:7px;border-top:1px solid var(--paper);border-right:1px solid var(--paper);transform:rotate(45deg)}
+
+  .hero-foot{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
+    border-top:1px solid rgba(233,220,190,.22);padding-top:24px;margin-top:32px;
+  }
+  .hero-foot .stat .n{font-family:'Cormorant Garamond',serif;font-size:42px;color:var(--brand-soft);line-height:1}
+  .hero-foot .stat .l{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:rgba(233,220,190,.7);margin-top:8px}
+
+  /* ====== SEARCH PANEL ====== */
+  .hero-right{display:flex;flex-direction:column;justify-content:flex-end;gap:24px}
+  .panel{
+    background:rgba(252,250,244,.96);backdrop-filter:blur(8px);
+    padding:34px 32px 30px;
+    border-top:3px solid var(--brand);
+  }
+  .panel h3{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--ink);font-weight:500;margin-bottom:4px}
+  .panel .sub{font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--brand-dark);margin-bottom:22px}
+  .tabs{display:flex;gap:0;margin-bottom:18px;border-bottom:1px solid var(--line)}
+  .tab{
+    flex:1;padding:10px 0;text-align:center;
+    font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-2);
+    cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;
+  }
+  .tab.on{color:var(--ink);border-bottom-color:var(--brand);font-weight:500}
+  .field{margin-bottom:14px}
+  .field label{display:block;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-2);margin-bottom:6px}
+  .field .val{
+    width:100%;padding:12px 14px;border:1px solid var(--line);background:var(--white);
+    font-family:'Inter',sans-serif;font-size:13px;color:var(--ink);
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .field .val .car{color:var(--brand);font-size:10px}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .panel .submit{
+    width:100%;background:var(--ink);color:var(--paper);padding:16px;border:none;cursor:pointer;
+    font-size:12px;letter-spacing:.26em;text-transform:uppercase;margin-top:8px;
+  }
+
+  /* ====== STRIP ====== */
+  .strip{
+    background:var(--ink);color:var(--paper-2);padding:18px 56px;
+    display:flex;justify-content:space-between;align-items:center;
+    font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+  }
+  .strip .zones{display:flex;gap:32px;flex-wrap:wrap;color:rgba(246,241,232,.7)}
+  .strip .zones b{color:var(--brand-soft);font-weight:400}
+
+  /* ====== PORTFOLIO ====== */
+  .portfolio{padding:96px 56px 80px;background:var(--paper)}
+  .section-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;border-bottom:1px solid var(--line);padding-bottom:24px}
+  .section-head .left .eb{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--brand);margin-bottom:14px}
+  .section-head .left h2{font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:400;line-height:1;color:var(--ink);max-width:680px;letter-spacing:-.005em}
+  .section-head .left h2 em{font-style:italic;color:var(--brand)}
+  .section-head .right{text-align:right}
+  .section-head .right .count{font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--ink-2);font-style:italic}
+  .section-head .right .all{margin-top:10px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink);border-bottom:1px solid var(--brand);padding-bottom:4px;display:inline-block}
+
+  .grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;grid-template-rows:auto auto;gap:24px}
+  .card{position:relative;overflow:hidden;background:var(--ink-2);cursor:pointer}
+  .card .ph{aspect-ratio:4/3;width:100%;height:100%;background:#222;background-size:cover;background-position:center}
+  .card.tall{grid-row:span 2}
+  .card.tall .ph{aspect-ratio:auto;height:100%;min-height:540px}
+  .card .meta{
+    position:absolute;left:0;right:0;bottom:0;padding:22px 24px 20px;
+    background:linear-gradient(180deg,transparent 0%,rgba(26,24,20,.85) 70%);color:var(--paper);
+  }
+  .card .ref{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--brand-soft);margin-bottom:8px}
+  .card .ttl{font-family:'Cormorant Garamond',serif;font-size:24px;line-height:1.15;color:var(--white);margin-bottom:10px}
+  .card.tall .ttl{font-size:34px}
+  .card .feats{display:flex;gap:16px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(252,250,244,.78)}
+  .card .feats span{display:inline-flex;align-items:center;gap:6px}
+  .card .price-tag{
+    position:absolute;top:18px;left:18px;background:var(--paper);color:var(--ink);
+    padding:8px 14px;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;
+  }
+  .card .price-tag b{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:500;letter-spacing:0;text-transform:none;display:inline-block;margin-left:6px}
+  .card .badge{
+    position:absolute;top:18px;right:18px;
+    background:var(--brand);color:var(--ink);font-size:9.5px;letter-spacing:.28em;text-transform:uppercase;padding:6px 11px;
+  }
+
+  /* ====== TRUST / ABOUT ====== */
+  .about{padding:110px 56px;background:var(--paper-2);display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+  .about .visual{position:relative}
+  .about .visual img{width:100%;aspect-ratio:4/5;object-fit:cover;filter:saturate(.95)}
+  .about .visual .badge{
+    position:absolute;bottom:-32px;right:-32px;width:200px;height:200px;
+    background:var(--brand);color:var(--ink);display:grid;place-items:center;text-align:center;
+    border-radius:50%;
+  }
+  .about .visual .badge .n{font-family:'Cormorant Garamond',serif;font-size:74px;line-height:.85;font-weight:500}
+  .about .visual .badge .l{font-size:9.5px;letter-spacing:.32em;text-transform:uppercase;margin-top:6px}
+  .about .copy .eb{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--brand);margin-bottom:18px}
+  .about .copy h2{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:54px;line-height:1.05;color:var(--ink);letter-spacing:-.005em;max-width:540px}
+  .about .copy h2 em{font-style:italic;color:var(--brand-dark)}
+  .about .copy p{font-size:16px;line-height:1.75;color:var(--ink-2);margin-top:28px;max-width:540px;font-weight:300}
+  .about .copy ul{list-style:none;margin-top:34px;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:18px 28px;max-width:540px}
+  .about .copy ul li{font-size:13px;color:var(--ink-2);display:flex;gap:10px;align-items:flex-start;letter-spacing:.01em}
+  .about .copy ul li::before{content:"";width:6px;height:6px;background:var(--brand);margin-top:8px;flex-shrink:0;border-radius:50%}
+  .about .copy .sig{margin-top:38px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--ink);border-top:1px solid var(--line);padding-top:22px;max-width:420px}
+
+  /* ====== ZONES (instead of inventing ratings) ====== */
+  .zones{padding:90px 56px;background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .zones .head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:42px}
+  .zones h3{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:400;color:var(--ink)}
+  .zones h3 em{font-style:italic;color:var(--brand)}
+  .zones .head .meta{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-2)}
+  .zones .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .zones .z{position:relative;aspect-ratio:3/4;overflow:hidden;background:#1a1814;cursor:pointer}
+  .zones .z .bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:saturate(.85) brightness(.85)}
+  .zones .z::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(26,24,20,.85) 100%)}
+  .zones .z .lab{position:absolute;left:22px;right:22px;bottom:24px;color:var(--paper);z-index:2}
+  .zones .z .lab .n{font-family:'Cormorant Garamond',serif;font-size:32px;font-style:italic;color:var(--brand-soft);line-height:1}
+  .zones .z .lab .ttl{font-family:'Cormorant Garamond',serif;font-size:30px;color:var(--white);margin-top:6px;line-height:1.1}
+  .zones .z .lab .sub{font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:rgba(252,250,244,.75);margin-top:10px}
+
+  /* ====== FOOTER ====== */
+  footer{background:var(--ink);color:var(--paper-2);padding:80px 56px 36px}
+  .ftop{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:60px;padding-bottom:54px;border-bottom:1px solid rgba(233,220,190,.18)}
+  .ftop h4{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--brand);margin-bottom:18px}
+  .ftop p,.ftop a{font-size:13.5px;line-height:1.85;color:rgba(246,241,232,.78);font-weight:300}
+  .ftop ul{list-style:none}
+  .ftop .brandcard{}
+  .ftop .brandcard .nm{font-family:'Cormorant Garamond',serif;font-size:38px;color:var(--paper);letter-spacing:.02em;line-height:1}
+  .ftop .brandcard .tg{font-size:10px;letter-spacing:.4em;text-transform:uppercase;color:var(--brand);margin-top:8px}
+  .ftop .brandcard p{margin-top:22px;max-width:340px}
+  .fbot{display:flex;justify-content:space-between;align-items:center;padding-top:28px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(246,241,232,.5)}
+  .fbot .kenaz{display:flex;align-items:center;gap:10px}
+  .fbot .kenaz .rune{font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--brand)}
+
+  /* ====== ICONS ====== */
+  .ic{width:14px;height:14px;display:inline-block;flex-shrink:0}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="langs">
+    <span class="on">ES</span><span>EN</span><span>DE</span><span>NL</span><span>FR</span><span>NO</span><span>RU</span><span>PL</span>
+  </div>
+  <div class="contact">
+    <a href="tel:+34966888996"><span class="dot"></span>+34 966 888 996</a>
+    <a href="mailto:info@elenahills.com"><span class="dot"></span>info@elenahills.com</a>
+    <a><span class="dot"></span>Urb. Altea Hills · Calle Suecia, 4</a>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="main">
+  <div class="brand">
+    <img class="logo" src="img/logo_elenahills.png" alt="Elena Hills" />
+  </div>
+  <ul>
+    <li><a class="active">Inicio</a></li>
+    <li><a>Comprar</a></li>
+    <li><a>Alquilar</a></li>
+    <li><a>Altea Hills</a></li>
+    <li><a>Servicios</a></li>
+    <li><a>Diario</a></li>
+    <li><a>Contacto</a></li>
+  </ul>
+  <div class="cta">
+    <div class="icon" title="Buscar">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+    </div>
+    <div class="icon" title="Favoritos">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg>
+    </div>
+    <button class="reserve">Visita privada</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+
+    <div class="hero-left">
+      <div>
+        <div class="eyebrow"><span class="ln"></span> Altea Hills · Costa Blanca · Mediterráneo</div>
+        <h1>El barrio<br/>se conoce <em>caminándolo.</em><br/>Después se elige.</h1>
+        <p class="lede">Más de veinte años vendiendo y alquilando villas en una de las urbanizaciones más exclusivas de España. Conocemos cada calle, cada vista, cada parcela. No mostramos catálogo: acompañamos.</p>
+        <div class="actions">
+          <button class="pri">Ver portfolio</button>
+          <button class="sec">Concertar visita <span class="arr"></span></button>
+        </div>
+      </div>
+
+      <div class="hero-foot">
+        <div class="stat"><div class="n">20+</div><div class="l">Años en Altea Hills</div></div>
+        <div class="stat"><div class="n">8</div><div class="l">Idiomas de atención</div></div>
+        <div class="stat"><div class="n">1</div><div class="l">Oficina · misma zona</div></div>
+        <div class="stat"><div class="n">Costa</div><div class="l">Blanca · Alicante</div></div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="panel">
+        <h3>Encontrar una propiedad</h3>
+        <div class="sub">Búsqueda por zona y operación</div>
+        <div class="tabs">
+          <div class="tab on">Comprar</div>
+          <div class="tab">Alquilar</div>
+          <div class="tab">Inversión</div>
+        </div>
+        <div class="field">
+          <label>Zona</label>
+          <div class="val">Altea Hills <span class="car">▾</span></div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label>Tipología</label>
+            <div class="val">Villa <span class="car">▾</span></div>
+          </div>
+          <div class="field">
+            <label>Dormitorios</label>
+            <div class="val">4+ <span class="car">▾</span></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label>Presupuesto desde</label>
+            <div class="val">— <span class="car">▾</span></div>
+          </div>
+          <div class="field">
+            <label>Hasta</label>
+            <div class="val">— <span class="car">▾</span></div>
+          </div>
+        </div>
+        <button class="submit">Mostrar propiedades</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ZONES STRIP -->
+<div class="strip">
+  <div class="zones">
+    <b>Altea Hills</b> · Sierra de Altea · Sierra Altea Golf · Villa Gadea · Mascarat · Campomanes · Pueblo Marinero · Calpe · Moraira · Benissa · Jávea
+  </div>
+  <div>Solo Costa Blanca</div>
+</div>
+
+<!-- PORTFOLIO -->
+<section class="portfolio">
+
+  <div class="section-head">
+    <div class="left">
+      <div class="eb">— Selección actual</div>
+      <h2>Villas con vistas<br/><em>al Mediterráneo.</em></h2>
+    </div>
+    <div class="right">
+      <div class="count">Una selección curada del portfolio activo</div>
+      <a class="all">Ver todas las propiedades →</a>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="card tall">
+      <div class="ph" style="background-image:url('img/villa_578396_14.jpg')"></div>
+      <div class="badge">Destacada</div>
+      <div class="meta">
+        <div class="ref">Ref. B463 · Altea Hills</div>
+        <div class="ttl">Bungalow con vistas al mar y a la sierra</div>
+        <div class="feats">
+          <span>Altea Hills</span>
+          <span>· Vistas mar</span>
+          <span>· Costa Blanca</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="ph" style="background-image:url('img/villa_46480.jpg')"></div>
+      <div class="meta">
+        <div class="ref">Ref. T604 · Altea Hills</div>
+        <div class="ttl">Parcela con proyecto de villa nueva</div>
+        <div class="feats"><span>Parcela edificable</span><span>· Vista panorámica</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="ph" style="background-image:url('img/villa_578396_15.jpg')"></div>
+      <div class="meta">
+        <div class="ref">Ref. B463 · Altea Hills</div>
+        <div class="ttl">Interior y terraza orientada al mar</div>
+        <div class="feats"><span>Costa Blanca</span><span>· Sierra</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="ph" style="background-image:url('img/villa_54234.jpg')"></div>
+      <div class="meta">
+        <div class="ref">Ref. T605 · Altea</div>
+        <div class="ttl">Villa independiente con vistas</div>
+        <div class="feats"><span>Altea</span><span>· Independiente</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="ph" style="background-image:url('img/villa_578396_18.jpg')"></div>
+      <div class="meta">
+        <div class="ref">Ref. B463 · Altea Hills</div>
+        <div class="ttl">Detalle exterior · piscina y vistas</div>
+        <div class="feats"><span>Piscina</span><span>· Mediterráneo</span></div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="visual">
+    <img src="img/sales_bg.jpg" alt="Vista de Altea Hills desde una de las propiedades del portfolio" />
+    <div class="badge">
+      <div>
+        <div class="n">20+</div>
+        <div class="l">Años · Altea Hills</div>
+      </div>
+    </div>
+  </div>
+  <div class="copy">
+    <div class="eb">— La agencia</div>
+    <h2>Una sola oficina.<br/>El <em>mismo barrio</em><br/>desde el primer día.</h2>
+    <p>Estamos en la urbanización Altea Hills, calle Suecia local 4, a 25 metros de la recepción del hotel ZEM Altea Wellness Retreat. Vivimos aquí, vendemos aquí. Llevamos más de dos décadas acompañando compras y ventas en una de las urbanizaciones más exclusivas de España, y en zonas afines de la Costa Blanca: Sierra de Altea, Mascarat, Campomanes, Moraira, Calpe, Jávea.</p>
+    <ul>
+      <li>Atención en ocho idiomas</li>
+      <li>Compraventa y alquiler</li>
+      <li>Parcelas y proyectos a medida</li>
+      <li>Acompañamiento legal y notarial</li>
+      <li>Gestión integral del proceso</li>
+      <li>Conocimiento real de la zona</li>
+    </ul>
+    <div class="sig">— Equipo Elena Hills, Altea Hills</div>
+  </div>
+</section>
+
+<!-- ZONES -->
+<section class="zones">
+  <div class="head">
+    <h3>Donde <em>operamos</em></h3>
+    <div class="meta">Costa Blanca · Alicante</div>
+  </div>
+  <div class="grid4">
+    <div class="z">
+      <div class="bg" style="background-image:url('img/altea_new.webp')"></div>
+      <div class="lab"><div class="n">01</div><div class="ttl">Altea</div><div class="sub">Casco antiguo · Bahía</div></div>
+    </div>
+    <div class="z">
+      <div class="bg" style="background-image:url('img/calpe_new.webp')"></div>
+      <div class="lab"><div class="n">02</div><div class="ttl">Calpe</div><div class="sub">Peñón · Costa</div></div>
+    </div>
+    <div class="z">
+      <div class="bg" style="background-image:url('img/benidorm_new.webp')"></div>
+      <div class="lab"><div class="n">03</div><div class="ttl">Benidorm</div><div class="sub">Skyline · Mediterráneo</div></div>
+    </div>
+    <div class="z">
+      <div class="bg" style="background-image:url('img/benissa_new.webp')"></div>
+      <div class="lab"><div class="n">04</div><div class="ttl">Benissa · Moraira</div><div class="sub">Costa norte · Cala</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ftop">
+    <div class="brandcard">
+      <div class="nm">Elena Hills</div>
+      <div class="tg">Luxury Properties · Costa Blanca</div>
+      <p>Inmobiliaria con base en la urbanización Altea Hills. Más de veinte años trabajando en la compraventa y alquiler de propiedades en la Costa Blanca.</p>
+    </div>
+    <div>
+      <h4>Oficina</h4>
+      <p>Urbanización Altea Hills<br/>Calle Suecia, local 4<br/>03599 Alicante · España</p>
+    </div>
+    <div>
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="tel:+34966888996">+34 966 888 996</a></li>
+        <li><a href="mailto:info@elenahills.com">info@elenahills.com</a></li>
+        <li><a>WhatsApp directo</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Síganos</h4>
+      <ul>
+        <li><a>Instagram · @elenahillsluxuryproperties</a></li>
+        <li><a>Facebook · Elena Hills Luxury Properties</a></li>
+        <li><a>YouTube · Elena Hills Luxury Properties</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fbot">
+    <div>© Elena Hills · Todos los derechos reservados</div>
+    <div class="kenaz">
+      <span class="rune">ᚲ</span>
+      <span>Diseño propuesto por Kenaz Studio · kenaz.studio</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

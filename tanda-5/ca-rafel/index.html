@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Ca Rafel — Cocina tradicional valenciana en Pego desde 1986</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --crema: #f3ece0;
+    --crema-suave: #ebe1d0;
+    --hueso: #f8f3e8;
+    --tinta: #1c1612;
+    --tinta-suave: #3a302a;
+    --terracota: #8a3a22;
+    --ocre: #c08a3e;
+    --oliva: #4a4a2c;
+    --linea: rgba(28,22,18,0.14);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--crema);color:var(--tinta);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
+  body{font-weight:400;font-size:16px;line-height:1.55}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .serif{font-family:'Cormorant Garamond',serif;font-weight:500}
+
+  /* ============ NAV ============ */
+  .nav{
+    position:absolute;top:0;left:0;right:0;z-index:10;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:28px 56px;
+  }
+  .logo{display:flex;align-items:center;gap:14px}
+  .logo-mark{
+    font-family:'Cormorant Garamond',serif;font-weight:600;font-style:italic;
+    font-size:34px;letter-spacing:0.01em;color:var(--tinta);line-height:1;
+  }
+  .logo-mark .amp{color:var(--terracota)}
+  .logo-sub{
+    font-family:'Inter',sans-serif;font-size:10px;font-weight:500;
+    text-transform:uppercase;letter-spacing:0.32em;color:var(--tinta-suave);
+    border-left:1px solid var(--linea);padding-left:14px;
+  }
+  .nav-links{display:flex;gap:38px;font-size:13px;font-weight:500;letter-spacing:0.04em}
+  .nav-links a{color:var(--tinta-suave);transition:color .2s}
+  .nav-links a:hover{color:var(--terracota)}
+  .nav-cta{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:11px 22px;border:1px solid var(--tinta);
+    font-size:12px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;
+    background:var(--tinta);color:var(--crema);transition:all .2s;
+  }
+  .nav-cta:hover{background:var(--terracota);border-color:var(--terracota)}
+
+  /* ============ HERO ============ */
+  .hero{
+    position:relative;min-height:100vh;
+    display:grid;grid-template-columns:1fr 1.15fr;gap:0;
+  }
+  .hero-text{
+    padding:160px 64px 80px 56px;
+    display:flex;flex-direction:column;justify-content:center;
+    background:var(--crema);
+    position:relative;
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:14px;
+    font-size:11px;font-weight:600;letter-spacing:0.28em;text-transform:uppercase;
+    color:var(--terracota);margin-bottom:36px;
+  }
+  .eyebrow::before{content:"";display:block;width:36px;height:1px;background:var(--terracota)}
+  h1.hero-title{
+    font-family:'Cormorant Garamond',serif;font-weight:500;
+    font-size:84px;line-height:0.98;letter-spacing:-0.012em;
+    color:var(--tinta);margin-bottom:30px;
+  }
+  h1.hero-title em{font-style:italic;color:var(--terracota);font-weight:500}
+  .hero-lede{
+    font-size:17px;line-height:1.65;color:var(--tinta-suave);
+    max-width:46ch;margin-bottom:44px;font-weight:400;
+  }
+  .hero-actions{display:flex;gap:16px;align-items:center;margin-bottom:48px}
+  .btn-primary{
+    display:inline-flex;align-items:center;gap:12px;
+    padding:16px 28px;background:var(--tinta);color:var(--crema);
+    font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;
+    transition:all .2s;
+  }
+  .btn-primary:hover{background:var(--terracota)}
+  .btn-secondary{
+    display:inline-flex;align-items:center;gap:12px;
+    padding:16px 4px;color:var(--tinta);
+    font-size:13px;font-weight:500;letter-spacing:0.06em;
+    border-bottom:1px solid var(--tinta);
+  }
+  .hero-meta{
+    display:flex;gap:48px;padding-top:32px;
+    border-top:1px solid var(--linea);
+  }
+  .meta-item{display:flex;flex-direction:column;gap:4px}
+  .meta-label{font-size:10px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--tinta-suave)}
+  .meta-value{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;color:var(--tinta);line-height:1.1}
+  .meta-value.small{font-size:18px}
+
+  /* ============ HERO IMG ============ */
+  .hero-img{
+    position:relative;overflow:hidden;background:var(--tinta);
+  }
+  .hero-img img{
+    width:100%;height:100%;object-fit:cover;
+  }
+  .solete-badge{
+    position:absolute;top:96px;right:32px;
+    display:inline-flex;align-items:baseline;gap:10px;
+    background:var(--hueso);padding:10px 18px;
+    border:1px solid var(--ocre);
+  }
+  .solete-badge strong{
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:15px;font-weight:600;color:var(--tinta);line-height:1;
+    letter-spacing:0.01em;
+  }
+  .solete-badge .sep{
+    display:inline-block;width:14px;height:1px;background:var(--ocre);
+    transform:translateY(-3px);
+  }
+  .solete-badge span{
+    font-family:'Inter',sans-serif;font-size:10px;font-weight:500;
+    letter-spacing:0.22em;text-transform:uppercase;color:var(--tinta-suave);
+    line-height:1;
+  }
+
+  .hero-quote{
+    position:absolute;left:32px;bottom:32px;right:32px;
+    background:rgba(28,22,18,0.78);backdrop-filter:blur(6px);
+    color:var(--crema);padding:24px 28px;
+    display:flex;flex-direction:column;gap:8px;max-width:520px;
+  }
+  .hero-quote p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;line-height:1.4;color:var(--hueso)}
+  .hero-quote cite{font-style:normal;font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--ocre)}
+
+  /* ============ STRIP ============ */
+  .strip{
+    background:var(--tinta);color:var(--crema);
+    padding:32px 56px;
+    display:flex;justify-content:space-between;align-items:center;gap:48px;
+    font-size:13px;
+  }
+  .strip-item{display:flex;align-items:center;gap:14px;color:var(--crema-suave)}
+  .strip-item strong{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--ocre);font-weight:500;line-height:1}
+  .strip-divider{width:1px;height:32px;background:rgba(243,236,224,0.2)}
+
+  /* ============ CARTA ============ */
+  .seccion{padding:120px 56px}
+  .seccion-header{display:grid;grid-template-columns:1fr 1.4fr;gap:80px;margin-bottom:72px}
+  .seccion-eyebrow{font-size:11px;font-weight:600;letter-spacing:0.28em;text-transform:uppercase;color:var(--terracota);margin-bottom:24px}
+  .seccion-title{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:56px;line-height:1.02;letter-spacing:-0.01em;color:var(--tinta)}
+  .seccion-title em{font-style:italic;color:var(--terracota)}
+  .seccion-intro{font-size:16px;line-height:1.7;color:var(--tinta-suave);max-width:54ch;align-self:end}
+
+  .menus{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--linea)}
+  .menu-card{
+    padding:48px 36px;
+    border-right:1px solid var(--linea);
+    border-bottom:1px solid var(--linea);
+    display:flex;flex-direction:column;gap:18px;
+    background:var(--hueso);transition:background .25s;
+  }
+  .menu-card:last-child{border-right:none}
+  .menu-card:hover{background:var(--crema-suave)}
+  .menu-tag{font-size:10px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--tinta-suave)}
+  .menu-name{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:38px;line-height:1;color:var(--tinta);margin-top:-4px}
+  .menu-desc{font-size:14px;line-height:1.6;color:var(--tinta-suave);margin-top:6px;flex:1}
+  .menu-precio{
+    display:flex;align-items:baseline;gap:8px;margin-top:18px;
+    border-top:1px solid var(--linea);padding-top:18px;
+  }
+  .menu-precio .num{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:600;color:var(--terracota);line-height:1}
+  .menu-precio .euro{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:500;color:var(--terracota)}
+  .menu-precio .iva{font-size:10px;color:var(--tinta-suave);letter-spacing:0.14em;text-transform:uppercase;margin-left:6px}
+
+  /* ============ ESPECIALIDADES ============ */
+  .especialidades{
+    background:var(--crema-suave);padding:120px 56px;
+  }
+  .esp-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:center}
+  .esp-img{position:relative;aspect-ratio:4/5;overflow:hidden}
+  .esp-img img{width:100%;height:100%;object-fit:cover}
+  .esp-img-tag{
+    position:absolute;left:0;bottom:0;
+    background:var(--terracota);color:var(--hueso);
+    padding:14px 22px;font-size:11px;font-weight:600;
+    letter-spacing:0.22em;text-transform:uppercase;
+  }
+  .esp-content h2{font-family:'Cormorant Garamond',serif;font-size:54px;line-height:1.02;font-weight:500;letter-spacing:-0.01em;margin-bottom:28px}
+  .esp-content h2 em{font-style:italic;color:var(--terracota)}
+  .esp-content > p{font-size:16px;line-height:1.7;color:var(--tinta-suave);margin-bottom:32px;max-width:52ch}
+  .esp-list{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--linea)}
+  .esp-item{
+    display:grid;grid-template-columns:auto 1fr auto;gap:24px;
+    padding:22px 0;border-bottom:1px solid var(--linea);align-items:baseline;
+  }
+  .esp-item-num{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--terracota);width:32px}
+  .esp-item-name{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:500;color:var(--tinta);line-height:1.2}
+  .esp-item-name small{display:block;font-family:'Inter',sans-serif;font-size:12px;font-weight:400;color:var(--tinta-suave);margin-top:4px;letter-spacing:0.04em}
+  .esp-item-day{font-size:11px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--tinta-suave);white-space:nowrap}
+
+  /* ============ EQUIPO ============ */
+  .equipo{padding:120px 56px;background:var(--hueso)}
+  .equipo-grid{display:grid;grid-template-columns:1fr 1fr;gap:96px;align-items:start}
+  .equipo-text h2{font-family:'Cormorant Garamond',serif;font-size:54px;line-height:1.02;font-weight:500;letter-spacing:-0.01em;margin-bottom:28px}
+  .equipo-text h2 em{font-style:italic;color:var(--terracota)}
+  .equipo-text p{font-size:16px;line-height:1.7;color:var(--tinta-suave);margin-bottom:20px;max-width:50ch}
+  .equipo-roles{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--linea)}
+  .rol{display:grid;grid-template-columns:1fr 1.5fr;gap:24px;padding:24px 0;border-bottom:1px solid var(--linea)}
+  .rol-titulo{font-size:11px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--tinta-suave);padding-top:6px}
+  .rol-nombre{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;color:var(--tinta);line-height:1.3}
+  .rol-nombre span{display:block;font-size:18px;color:var(--tinta-suave);font-style:italic}
+
+  /* ============ VISITA ============ */
+  .visita{
+    display:grid;grid-template-columns:1fr 1fr;
+    background:var(--tinta);color:var(--crema);
+  }
+  .visita-img{position:relative;min-height:560px;overflow:hidden}
+  .visita-img img{width:100%;height:100%;object-fit:cover}
+  .visita-info{padding:88px 64px;display:flex;flex-direction:column;justify-content:center}
+  .visita-info .seccion-eyebrow{color:var(--ocre)}
+  .visita-info h2{font-family:'Cormorant Garamond',serif;font-size:52px;line-height:1.02;font-weight:500;letter-spacing:-0.01em;margin-bottom:36px;color:var(--hueso)}
+  .visita-info h2 em{font-style:italic;color:var(--ocre)}
+  .visita-bloque{display:grid;grid-template-columns:140px 1fr;gap:24px;padding:22px 0;border-bottom:1px solid rgba(243,236,224,0.16)}
+  .visita-bloque:first-of-type{border-top:1px solid rgba(243,236,224,0.16)}
+  .visita-bloque dt{font-size:11px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--ocre)}
+  .visita-bloque dd{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--hueso);line-height:1.4}
+  .visita-bloque dd small{display:block;font-family:'Inter',sans-serif;font-size:13px;color:var(--crema-suave);margin-top:4px;letter-spacing:0.02em}
+  .visita-cta{margin-top:36px;display:flex;gap:16px;flex-wrap:wrap}
+  .btn-ocre{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:16px 26px;background:var(--ocre);color:var(--tinta);
+    font-size:12px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;
+    transition:all .2s;
+  }
+  .btn-ocre:hover{background:var(--hueso)}
+  .btn-line{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:16px 26px;border:1px solid var(--crema);color:var(--crema);
+    font-size:12px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;
+  }
+
+  /* ============ FOOTER ============ */
+  footer{
+    background:var(--crema-suave);padding:48px 56px 32px;
+    border-top:1px solid var(--linea);
+  }
+  .footer-top{
+    display:flex;justify-content:space-between;align-items:center;gap:32px;
+    font-size:11px;color:var(--tinta-suave);letter-spacing:0.04em;
+  }
+  .footer-disclaimer{
+    margin-top:28px;padding-top:20px;border-top:1px solid var(--linea);
+    font-size:11px;line-height:1.6;color:var(--tinta-suave);max-width:72ch;
+    font-style:italic;
+  }
+  footer .logo-mark{font-size:24px}
+  .kenaz-firma{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--tinta-suave)}
+  .kenaz-firma a{color:var(--terracota);font-weight:600;text-decoration:none}
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <nav class="nav">
+    <div class="logo">
+      <span class="logo-mark">Ca <em class="amp">·</em> Rafel</span>
+      <span class="logo-sub">Pego · 1986</span>
+    </div>
+    <div class="nav-links">
+      <a href="#carta">La carta</a>
+      <a href="#cocina">La cocina</a>
+      <a href="#casa">La casa</a>
+      <a href="#visita">Cómo llegar</a>
+    </div>
+    <a class="nav-cta" href="#reserva">Reservar mesa</a>
+  </nav>
+
+  <div class="hero-text">
+    <span class="eyebrow">Cocina tradicional valenciana</span>
+    <h1 class="hero-title">El sabor de Pego, <em>cocinado en casa</em> desde 1986.</h1>
+    <p class="hero-lede">
+      Una casa familiar en el corazón de la Marina Alta. Arroces por encargo,
+      Puchero Pegolino los jueves, postres caseros y producto de la tierra
+      tratado con honestidad. Cuarenta años cocinando lo mismo, cada vez mejor.
+    </p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#reserva">Reservar mesa →</a>
+      <a class="btn-secondary" href="#carta">Ver la carta</a>
+    </div>
+    <div class="hero-meta">
+      <div class="meta-item">
+        <span class="meta-label">Desde</span>
+        <span class="meta-value">1986</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Servicio</span>
+        <span class="meta-value small">Sólo mediodía</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Reservas</span>
+        <span class="meta-value small">965 57 12 36</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-img">
+    <img src="img/hero-arroz.jpg" alt="Arroz al horno valenciano · plato emblemático de la casa" />
+    <div class="solete-badge" aria-label="Reconocimiento Solete Repsol Primavera 2026">
+      <strong>Solete Repsol</strong>
+      <i class="sep" aria-hidden="true"></i>
+      <span>Primavera 2026</span>
+    </div>
+    <blockquote class="hero-quote">
+      <p>“Productos de cercanía elaborados con cariño y de manera honesta con la tierra.”</p>
+      <cite>— Guía Repsol</cite>
+    </blockquote>
+  </div>
+</header>
+
+<!-- ============ STRIP ============ -->
+<section class="strip">
+  <div class="strip-item"><strong>40</strong><span>años cocinando<br/>en Pego</span></div>
+  <div class="strip-divider"></div>
+  <div class="strip-item"><strong>3</strong><span>menús diarios<br/>desde 14 €</span></div>
+  <div class="strip-divider"></div>
+  <div class="strip-item"><strong>·</strong><span>Solete Repsol<br/>Primavera 2026</span></div>
+  <div class="strip-divider"></div>
+  <div class="strip-item"><strong>↑</strong><span>Producto local<br/>de la Marina Alta</span></div>
+</section>
+
+<!-- ============ CARTA ============ -->
+<section class="seccion" id="carta">
+  <div class="seccion-header">
+    <div>
+      <div class="seccion-eyebrow">La carta</div>
+      <h2 class="seccion-title">Tres menús, <em>una misma honestidad</em>.</h2>
+    </div>
+    <p class="seccion-intro">
+      Trabajamos sólo al mediodía y con producto del día. La carta cambia con la
+      huerta y el mercado. Estos son los menús con los que abrimos cada semana
+      en nuestra casa de la avenida de Fontilles.
+    </p>
+  </div>
+
+  <div class="menus">
+    <article class="menu-card">
+      <span class="menu-tag">Lunes · Martes · Viernes</span>
+      <h3 class="menu-name">Menú del día</h3>
+      <p class="menu-desc">Pan y all i oli, primero y segundo a elegir, postre casero. La fórmula clásica para comer bien sin pensarlo dos veces.</p>
+      <div class="menu-precio">
+        <span class="num">14</span><span class="euro">€</span>
+        <span class="iva">por persona</span>
+      </div>
+    </article>
+    <article class="menu-card">
+      <span class="menu-tag">Para compartir</span>
+      <h3 class="menu-name">Menú Tapas</h3>
+      <p class="menu-desc">Siete tapas elegidas por la cocina según mercado y temporada. Pensado para mesa larga, sobremesa y conversación.</p>
+      <div class="menu-precio">
+        <span class="num">25,80</span><span class="euro">€</span>
+        <span class="iva">por persona</span>
+      </div>
+    </article>
+    <article class="menu-card">
+      <span class="menu-tag">Bajo encargo</span>
+      <h3 class="menu-name">Menú Degustación</h3>
+      <p class="menu-desc">Cuatro entradas de la casa, principal a elegir entre carne, pescado o arroz, y postre casero. Reservar con antelación.</p>
+      <div class="menu-precio">
+        <span class="num">33,80</span><span class="euro">€</span>
+        <span class="iva">por persona</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ ESPECIALIDADES ============ -->
+<section class="especialidades" id="cocina">
+  <div class="esp-grid">
+    <div class="esp-img">
+      <img src="img/puchero.jpg" alt="Puchero Pegolino tradicional servido en cazuela de barro" />
+      <span class="esp-img-tag">Los jueves</span>
+    </div>
+    <div class="esp-content">
+      <div class="seccion-eyebrow">La cocina</div>
+      <h2>Lo que cocinamos cuando <em>nadie nos pide modernidad</em>.</h2>
+      <p>
+        Recetas de aquí, sin reinterpretar. Arroces por encargo en pasos contados,
+        guisos largos, postres que llevan tiempo. La cocina tiene el ritmo de Pego,
+        no el del turismo.
+      </p>
+      <ul class="esp-list">
+        <li class="esp-item">
+          <span class="esp-item-num">01</span>
+          <span class="esp-item-name">Arroz al horno
+            <small>Por encargo · de pato, de setas y castañas, o con costra</small>
+          </span>
+          <span class="esp-item-day">Reservar</span>
+        </li>
+        <li class="esp-item">
+          <span class="esp-item-num">02</span>
+          <span class="esp-item-name">Puchero Pegolino
+            <small>El cocido tradicional de Pego, a fuego lento</small>
+          </span>
+          <span class="esp-item-day">Jueves</span>
+        </li>
+        <li class="esp-item">
+          <span class="esp-item-num">03</span>
+          <span class="esp-item-name">Rabo de toro
+            <small>Recomendación de la Guía Repsol</small>
+          </span>
+          <span class="esp-item-day">Carta</span>
+        </li>
+        <li class="esp-item">
+          <span class="esp-item-num">04</span>
+          <span class="esp-item-name">Postres caseros
+            <small>Elaboración propia diaria</small>
+          </span>
+          <span class="esp-item-day">Diario</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EQUIPO ============ -->
+<section class="equipo" id="casa">
+  <div class="equipo-grid">
+    <div class="equipo-text">
+      <div class="seccion-eyebrow">La casa</div>
+      <h2>Una familia, <em>tres oficios</em>.</h2>
+      <p>
+        Ca Rafel abrió en 1986 y desde entonces se sostiene en una idea simple:
+        que la sala y la cocina hablen el mismo idioma. La cocina manda, la sala
+        traduce, el comensal decide.
+      </p>
+      <p>
+        Por eso seguimos sólo al mediodía y por eso no abrimos los miércoles.
+        Para cocinar lo que se sirve hace falta tiempo.
+      </p>
+    </div>
+    <div class="equipo-roles">
+      <div class="rol">
+        <span class="rol-titulo">Sala</span>
+        <span class="rol-nombre">Rafel Frau Navalón <span>Director de sala</span></span>
+      </div>
+      <div class="rol">
+        <span class="rol-titulo">Cocina</span>
+        <span class="rol-nombre">Maguie Garcés Zambrano <span>Jefa de cocina</span></span>
+      </div>
+      <div class="rol">
+        <span class="rol-titulo">Cocina</span>
+        <span class="rol-nombre">Nataliya Pitsur <span>Jefa de cocina</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISITA ============ -->
+<section class="visita" id="visita">
+  <div class="visita-img">
+    <img src="img/interior.jpg" alt="Comedor tradicional valenciano · referencia visual" />
+  </div>
+  <div class="visita-info">
+    <div class="seccion-eyebrow">La visita</div>
+    <h2>Av. de Fontilles 11, <em>Pego</em>.</h2>
+    <dl>
+      <div class="visita-bloque">
+        <dt>Dirección</dt>
+        <dd>Av. de Fontilles, 11 <small>03780 Pego, Alicante</small></dd>
+      </div>
+      <div class="visita-bloque">
+        <dt>Horario</dt>
+        <dd>Lunes a sábado, mediodía
+          <small>Lun–Jue 8:00–17:00 · Vie–Sáb 8:00–17:30 · Dom 13:30–17:30 · Miércoles cerrado</small>
+        </dd>
+      </div>
+      <div class="visita-bloque">
+        <dt>Reservas</dt>
+        <dd>965 57 12 36 <small>WhatsApp 607 579 922 · rafeldepego@me.com</small></dd>
+      </div>
+      <div class="visita-bloque">
+        <dt>Servicios</dt>
+        <dd>Terraza, accesible, mascotas, comida para llevar
+          <small>Tronas y cambiador para bebés · Reservas para grupos</small>
+        </dd>
+      </div>
+    </dl>
+    <div class="visita-cta">
+      <a class="btn-ocre" href="#reserva">Reservar mesa →</a>
+      <a class="btn-line" href="https://maps.google.com">Cómo llegar</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-top">
+    <div class="logo">
+      <span class="logo-mark">Ca <em class="amp">·</em> Rafel</span>
+    </div>
+    <div class="kenaz-firma">
+      Diseño propuesto por <a href="https://kenaz.studio">Kenaz Studio</a>
+    </div>
+  </div>
+  <p class="footer-disclaimer">
+    Algunas imágenes son referenciales. La sesión fotográfica del local y de los platos forma parte del servicio Kenaz.
+  </p>
+</footer>
+
+</body>
+</html>

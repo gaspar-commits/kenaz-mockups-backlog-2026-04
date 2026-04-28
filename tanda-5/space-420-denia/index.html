@@ -1,0 +1,1089 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Space 420 Dénia — Asociación cannábica privada</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: #0A0E1A;
+    color: #E8E4D9;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  :root {
+    --void: #0A0E1A;
+    --deep: #1A1F2E;
+    --slate: #404858;
+    --moon: #E8E4D9;
+    --moon-dim: rgba(232,228,217,0.62);
+    --moon-faint: rgba(232,228,217,0.32);
+    --gold: #C49A6C;
+    --gold-soft: rgba(196,154,108,0.3);
+    --nebula: #7B5BA8;
+    --hairline: rgba(232,228,217,0.12);
+  }
+
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+
+  .display { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; letter-spacing: -0.01em; }
+  .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--moon-dim);
+  }
+
+  /* ============ NAV ============ */
+  .nav {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    padding: 28px 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .nav-brand { display: flex; align-items: center; gap: 14px; }
+  .nav-brand img { width: 46px; height: 46px; }
+  .nav-brand .wordmark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-style: italic;
+    letter-spacing: 0.04em;
+    color: var(--moon);
+  }
+  .nav-brand .wordmark .light { color: var(--moon-dim); font-style: normal; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; display:block; line-height: 1; margin-top: 2px;}
+  .nav-links { display: flex; gap: 38px; align-items: center; }
+  .nav-links a {
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    color: var(--moon-dim);
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--moon); }
+  .nav-langs {
+    display: flex;
+    gap: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    color: var(--moon-faint);
+  }
+  .nav-langs .active { color: var(--gold); }
+  .nav-cta {
+    border: 1px solid var(--moon-faint);
+    padding: 11px 22px;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--moon);
+    transition: all .25s;
+  }
+  .nav-cta:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ============ HERO ============ */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    padding: 140px 56px 80px;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 72px;
+    align-items: center;
+    background: radial-gradient(ellipse at 80% 20%, rgba(123,91,168,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 10% 90%, rgba(196,154,108,0.06) 0%, transparent 50%),
+                var(--void);
+  }
+
+  /* Subtle starfield */
+  .stars {
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 12% 18%, rgba(232,228,217,0.7), transparent),
+      radial-gradient(1px 1px at 27% 65%, rgba(232,228,217,0.5), transparent),
+      radial-gradient(1px 1px at 47% 12%, rgba(232,228,217,0.6), transparent),
+      radial-gradient(1px 1px at 62% 84%, rgba(232,228,217,0.4), transparent),
+      radial-gradient(2px 2px at 75% 22%, rgba(232,228,217,0.7), transparent),
+      radial-gradient(1px 1px at 88% 60%, rgba(232,228,217,0.5), transparent),
+      radial-gradient(1px 1px at 18% 88%, rgba(232,228,217,0.45), transparent),
+      radial-gradient(1px 1px at 92% 8%, rgba(232,228,217,0.55), transparent);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-text { position: relative; z-index: 2; max-width: 640px; }
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 36px;
+    color: var(--moon-dim);
+  }
+  .hero-eyebrow::before {
+    content: "";
+    display: block;
+    width: 48px;
+    height: 1px;
+    background: var(--gold);
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(3rem, 6.2vw, 5.8rem);
+    line-height: 1.0;
+    letter-spacing: -0.025em;
+    color: var(--moon);
+    margin-bottom: 32px;
+  }
+  .hero h1 .em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .hero h1 .small {
+    display: block;
+    font-size: 0.55em;
+    letter-spacing: 0.04em;
+    color: var(--moon-dim);
+    margin-top: 14px;
+    font-style: italic;
+  }
+  .hero-lede {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--moon-dim);
+    max-width: 520px;
+    margin-bottom: 44px;
+  }
+  .hero-actions { display: flex; gap: 18px; align-items: center; margin-bottom: 56px; }
+  .btn-primary {
+    background: var(--moon);
+    color: var(--void);
+    padding: 16px 32px;
+    font-size: 0.82rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: all .25s;
+  }
+  .btn-primary:hover { background: var(--gold); }
+  .btn-ghost {
+    color: var(--moon);
+    padding: 16px 4px;
+    font-size: 0.82rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--moon-faint);
+  }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-meta {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    padding-top: 40px;
+    border-top: 1px solid var(--hairline);
+  }
+  .meta-item .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--moon-faint);
+    margin-bottom: 8px;
+  }
+  .meta-item .value {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--moon);
+  }
+
+  /* Hero visual */
+  .hero-visual {
+    position: relative;
+    z-index: 1;
+    aspect-ratio: 4/5;
+    max-height: 78vh;
+  }
+  .hero-visual .frame {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  .hero-visual .frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.86) saturate(0.92);
+  }
+  .hero-visual .frame::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(10,14,26,0) 50%, rgba(10,14,26,0.55) 100%);
+    z-index: 2;
+    pointer-events: none;
+  }
+  .hero-visual .moon {
+    position: absolute;
+    top: -38px;
+    right: -38px;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 36% 32%, #f4ede0 0%, #d9d0bf 28%, #88806f 55%, #2a2520 80%, transparent 95%),
+      var(--void);
+    box-shadow:
+      inset -20px -20px 60px rgba(0,0,0,0.5),
+      0 0 80px rgba(232,228,217,0.15),
+      0 0 160px rgba(232,228,217,0.08);
+    z-index: 3;
+    opacity: 0.92;
+  }
+  .hero-visual .moon::after {
+    content: "";
+    position: absolute;
+    inset: 14%;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 30% 30%, transparent 60%, rgba(0,0,0,0.18) 78%, rgba(0,0,0,0.4) 100%),
+      radial-gradient(2px 2px at 22% 28%, rgba(0,0,0,0.25), transparent),
+      radial-gradient(3px 3px at 65% 40%, rgba(0,0,0,0.2), transparent),
+      radial-gradient(2px 2px at 48% 65%, rgba(0,0,0,0.22), transparent),
+      radial-gradient(2px 2px at 78% 72%, rgba(0,0,0,0.18), transparent),
+      radial-gradient(1px 1px at 32% 78%, rgba(0,0,0,0.2), transparent);
+  }
+  .hero-visual .caption {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    z-index: 4;
+    color: var(--moon);
+  }
+  .hero-visual .caption .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--moon-dim);
+    margin-bottom: 6px;
+  }
+  .hero-visual .caption .place {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.4rem;
+    line-height: 1.1;
+  }
+
+  .coords {
+    position: absolute;
+    top: 50%;
+    right: -22px;
+    transform: translateY(-50%) rotate(90deg);
+    transform-origin: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.64rem;
+    letter-spacing: 0.32em;
+    color: var(--moon-faint);
+    text-transform: uppercase;
+    white-space: nowrap;
+    z-index: 5;
+  }
+
+  /* ============ MARQUEE STRIP ============ */
+  .marquee {
+    background: var(--deep);
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+    padding: 22px 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 4;
+  }
+  .marquee-track {
+    display: flex;
+    gap: 56px;
+    align-items: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.45rem;
+    color: var(--moon-dim);
+    white-space: nowrap;
+  }
+  .marquee-track span { display: flex; align-items: center; gap: 56px; }
+  .marquee-track .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    display: inline-block;
+  }
+
+  /* ============ SECTION: WHAT IS ============ */
+  .what {
+    padding: 140px 56px;
+    display: grid;
+    grid-template-columns: 0.5fr 0.5fr;
+    gap: 100px;
+    align-items: start;
+  }
+  .what-left .eyebrow { margin-bottom: 28px; }
+  .what-left h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 3.2rem;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--moon);
+  }
+  .what-left h2 em { color: var(--gold); }
+  .what-right p {
+    color: var(--moon-dim);
+    font-size: 1.02rem;
+    line-height: 1.8;
+    margin-bottom: 22px;
+  }
+  .what-right p:last-child { margin-bottom: 0; }
+  .what-right strong { color: var(--moon); font-weight: 500; }
+
+  /* ============ SECTION: GALLERY (the space) ============ */
+  .space {
+    padding: 0 56px 140px;
+  }
+  .space-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 56px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .space-head h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 2.6rem;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--moon);
+  }
+  .space-head h2 em { color: var(--gold); font-style: italic; }
+  .space-head .meta {
+    text-align: right;
+    color: var(--moon-faint);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    line-height: 1.6;
+  }
+  .space-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    grid-template-rows: 380px 380px;
+    gap: 18px;
+  }
+  .space-card {
+    position: relative;
+    overflow: hidden;
+    background: var(--deep);
+  }
+  .space-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.92);
+    transition: filter .35s;
+  }
+  .space-card:hover img { filter: brightness(1); }
+  .space-card .tag {
+    position: absolute;
+    top: 22px;
+    left: 22px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.64rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--moon);
+    background: rgba(10,14,26,0.62);
+    padding: 7px 12px;
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--hairline);
+  }
+  .space-card .label {
+    position: absolute;
+    bottom: 22px;
+    left: 22px;
+    color: var(--moon);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.4rem;
+    line-height: 1.1;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+  }
+  .space-card .label small {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-size: 0.74rem;
+    letter-spacing: 0.06em;
+    color: var(--moon-dim);
+    margin-top: 4px;
+  }
+  .space-card.tall { grid-row: 1 / span 2; }
+
+  /* ============ SECTION: AMENITIES ============ */
+  .amenities {
+    background: var(--deep);
+    padding: 120px 56px;
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .amenities-head {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+  .amenities-head .eyebrow { display: inline-block; margin-bottom: 22px; }
+  .amenities-head h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 3rem;
+    line-height: 1.1;
+    color: var(--moon);
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .amenities-head h2 em { color: var(--gold); }
+  .amen-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--hairline);
+    border: 1px solid var(--hairline);
+  }
+  .amen-cell {
+    background: var(--deep);
+    padding: 36px 28px;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .amen-cell .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+    margin-bottom: 18px;
+  }
+  .amen-cell .title {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.7rem;
+    line-height: 1.05;
+    color: var(--moon);
+    margin-bottom: 14px;
+  }
+  .amen-cell .desc {
+    font-size: 0.86rem;
+    line-height: 1.6;
+    color: var(--moon-dim);
+  }
+
+  /* ============ SECTION: HOW TO JOIN ============ */
+  .join {
+    padding: 140px 56px;
+    display: grid;
+    grid-template-columns: 0.6fr 1fr;
+    gap: 100px;
+  }
+  .join-left { position: sticky; top: 60px; align-self: start; }
+  .join-left .eyebrow { margin-bottom: 24px; }
+  .join-left h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 3rem;
+    line-height: 1.05;
+    color: var(--moon);
+    margin-bottom: 28px;
+  }
+  .join-left h2 em { color: var(--gold); }
+  .join-left p {
+    color: var(--moon-dim);
+    font-size: 0.98rem;
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+  .join-left .legal {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    color: var(--moon-faint);
+    line-height: 1.6;
+    padding-top: 24px;
+    border-top: 1px solid var(--hairline);
+  }
+
+  .steps { display: flex; flex-direction: column; }
+  .step {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 32px;
+    padding: 36px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .step:last-child { border-bottom: none; }
+  .step .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 3rem;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .step h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: var(--moon);
+    margin-bottom: 10px;
+  }
+  .step p {
+    color: var(--moon-dim);
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  /* ============ SECTION: CONTACT ============ */
+  .contact {
+    background: var(--deep);
+    padding: 120px 56px;
+    border-top: 1px solid var(--hairline);
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .contact-left h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 3rem;
+    line-height: 1.05;
+    color: var(--moon);
+    margin-bottom: 28px;
+  }
+  .contact-left h2 em { color: var(--gold); }
+  .contact-left p {
+    color: var(--moon-dim);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 36px;
+    max-width: 480px;
+  }
+  .contact-channels { display: flex; flex-direction: column; gap: 22px; }
+  .channel {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 24px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--hairline);
+    align-items: center;
+  }
+  .channel .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--moon-faint);
+  }
+  .channel .value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: var(--moon);
+  }
+  .channel .value small {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    color: var(--moon-dim);
+    margin-top: 4px;
+  }
+
+  .contact-right {
+    border: 1px solid var(--hairline);
+    padding: 48px 40px;
+    background: var(--void);
+  }
+  .contact-right .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 18px;
+  }
+  .contact-right h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 1.8rem;
+    line-height: 1.2;
+    color: var(--moon);
+    margin-bottom: 16px;
+  }
+  .contact-right p {
+    color: var(--moon-dim);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+  .contact-right .btn-primary { display: inline-block; }
+
+  /* ============ FOOTER ============ */
+  footer {
+    background: var(--void);
+    padding: 80px 56px 36px;
+    border-top: 1px solid var(--hairline);
+  }
+  .foot-top {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 60px;
+  }
+  .foot-brand { display: flex; flex-direction: column; gap: 18px; }
+  .foot-brand .row { display: flex; align-items: center; gap: 14px; }
+  .foot-brand img { width: 42px; height: 42px; }
+  .foot-brand .name {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--moon);
+  }
+  .foot-brand p {
+    color: var(--moon-faint);
+    font-size: 0.86rem;
+    line-height: 1.6;
+    max-width: 320px;
+  }
+  .foot-col h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 18px;
+    font-weight: 400;
+  }
+  .foot-col a, .foot-col span {
+    display: block;
+    color: var(--moon-dim);
+    font-size: 0.88rem;
+    line-height: 2;
+  }
+  .foot-col a:hover { color: var(--moon); }
+  .foot-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 28px;
+    border-top: 1px solid var(--hairline);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--moon-faint);
+  }
+  .foot-bottom .kenaz {
+    color: var(--moon-dim);
+  }
+  .foot-bottom .kenaz a { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-brand">
+    <img src="img/logo.png" alt="Space 420 Dénia">
+    <div>
+      <div class="wordmark">Space 420</div>
+      <span class="light">Dénia · Asociación privada</span>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#">El espacio</a>
+    <a href="#">Cómo funciona</a>
+    <a href="#">Actividades</a>
+    <a href="#">FAQ</a>
+    <a href="#">Contacto</a>
+  </div>
+  <div style="display:flex; align-items:center; gap:32px;">
+    <div class="nav-langs">
+      <span class="active">ES</span>
+      <span>EN</span>
+      <span>DE</span>
+    </div>
+    <a href="#" class="nav-cta">Hazte socio</a>
+  </div>
+</nav>
+
+<!-- =================== HERO =================== -->
+<section class="hero">
+  <div class="stars"></div>
+
+  <div class="hero-text">
+    <div class="hero-eyebrow eyebrow">Asociación cannábica · Dénia, Marina Alta</div>
+    <h1>
+      Un club privado<br>
+      bajo una <span class="em">luna<br>de tres metros.</span>
+      <span class="small">Para socios mayores de 18 años.</span>
+    </h1>
+    <p class="hero-lede">
+      Space 420 Dénia es una asociación privada para mayores de edad. Un espacio
+      pensado para socios: sala con vistas al mar, cine bajo las estrellas,
+      arcade, billar y consolas. Cultura cannábica responsable, en un entorno
+      cuidado.
+    </p>
+    <div class="hero-actions">
+      <a href="#" class="btn-primary">Solicitar membresía</a>
+      <a href="#" class="btn-ghost">Conocer el espacio →</a>
+    </div>
+    <div class="hero-meta">
+      <div class="meta-item">
+        <div class="label">Ubicación</div>
+        <div class="value">Dénia, Marina Alta</div>
+      </div>
+      <div class="meta-item">
+        <div class="label">Acceso</div>
+        <div class="value">Solo socios · 18+</div>
+      </div>
+      <div class="meta-item">
+        <div class="label">Idiomas</div>
+        <div class="value">ES · EN · DE</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="frame">
+      <img src="img/foto-A746465.jpg" alt="Interior de Space 420 Dénia">
+      <div class="caption">
+        <div class="label">Sala principal</div>
+        <div class="place">Naves y cohetes</div>
+      </div>
+    </div>
+    <div class="moon" aria-hidden="true"></div>
+    <div class="coords">42.0 N · 0.0 E · ÓRBITA DÉNIA</div>
+  </div>
+</section>
+
+<!-- =================== MARQUEE =================== -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Sala con vistas al mar</span><span class="dot"></span>
+    <span>Cine bajo las estrellas</span><span class="dot"></span>
+    <span>Arcade y consolas</span><span class="dot"></span>
+    <span>Billar</span><span class="dot"></span>
+    <span>Eventos y actuaciones</span><span class="dot"></span>
+    <span>Cultura responsable</span><span class="dot"></span>
+    <span>Solo socios</span><span class="dot"></span>
+    <span>Sala con vistas al mar</span><span class="dot"></span>
+  </div>
+</div>
+
+<!-- =================== WHAT IS =================== -->
+<section class="what">
+  <div class="what-left">
+    <div class="eyebrow">01 · Qué es Space 420</div>
+    <h2>Una asociación. <em>No</em> una tienda. No un dispensario.</h2>
+  </div>
+  <div class="what-right">
+    <p>
+      <strong>Space 420 Dénia</strong> es una asociación cannábica privada,
+      legalmente constituida y sin ánimo de lucro. El acceso es exclusivo
+      para socios mayores de edad inscritos formalmente. No es un local
+      abierto al público ni un punto de venta.
+    </p>
+    <p>
+      La asociación existe para que personas adultas compartan, en un entorno
+      privado y seguro, la cultura cannábica: sus tradiciones, su uso responsable
+      y la convivencia que se forma alrededor. El consumo se realiza únicamente
+      dentro del local, entre socios, en un espacio diseñado para estar bien.
+    </p>
+    <p>
+      El nombre y la estética temática espacial reflejan la idea de la asociación:
+      un punto de encuentro fuera del ruido, donde el tiempo afloja un poco. La
+      luna de tres metros que preside la sala principal es el símbolo de la casa.
+    </p>
+  </div>
+</section>
+
+<!-- =================== SPACE / GALLERY =================== -->
+<section class="space">
+  <div class="space-head">
+    <h2>Recorre el <em>universo</em><br>Space 420.</h2>
+    <div class="meta">
+      Calle reservada · Dénia<br>
+      Acceso solo a socios
+    </div>
+  </div>
+  <div class="space-grid">
+    <div class="space-card tall">
+      <img src="img/foto-A746481.jpg" alt="Sala principal con luna de 3 metros">
+      <span class="tag">01 / Sala principal</span>
+      <div class="label">
+        Bajo la luna<br>
+        <small>El símbolo de la casa</small>
+      </div>
+    </div>
+    <div class="space-card">
+      <img src="img/foto-A746511.jpg" alt="Zona de juegos y arcade">
+      <span class="tag">02 / Ocio</span>
+      <div class="label">
+        Arcade y consolas<br>
+        <small>PS5 · Xbox · Recreativas</small>
+      </div>
+    </div>
+    <div class="space-card">
+      <img src="img/space-zona-1.jpg" alt="Sala con vistas al mar">
+      <span class="tag">03 / Vistas</span>
+      <div class="label">
+        Sala con vistas al mar<br>
+        <small>Marina Alta</small>
+      </div>
+    </div>
+    <div class="space-card">
+      <img src="img/space-zona-4.jpg" alt="Eventos y actuaciones">
+      <span class="tag">04 / Eventos</span>
+      <div class="label">
+        Cine y actuaciones<br>
+        <small>Programación regular</small>
+      </div>
+    </div>
+    <div class="space-card">
+      <img src="img/space-zona-stock.jpg" alt="Zona socios">
+      <span class="tag">05 / Comunidad</span>
+      <div class="label">
+        Encuentro entre socios<br>
+        <small>Acceso privado</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== AMENITIES =================== -->
+<section class="amenities">
+  <div class="amenities-head">
+    <span class="eyebrow">02 · Lo que ofrece la casa</span>
+    <h2>Un espacio pensado para estar, <em>no para pasar.</em></h2>
+  </div>
+  <div class="amen-grid">
+    <div class="amen-cell">
+      <div>
+        <div class="num">A · 01</div>
+        <div class="title">Sala principal</div>
+      </div>
+      <div class="desc">Luna de tres metros, asientos cómodos, ambiente bajo. El corazón del local.</div>
+    </div>
+    <div class="amen-cell">
+      <div>
+        <div class="num">A · 02</div>
+        <div class="title">Vistas al mar</div>
+      </div>
+      <div class="desc">Sala con ventanal abierto a la Marina Alta. Pensada para pasar tarde y noche.</div>
+    </div>
+    <div class="amen-cell">
+      <div>
+        <div class="num">A · 03</div>
+        <div class="title">Cine privado</div>
+      </div>
+      <div class="desc">Proyecciones programadas para socios. Películas, partidos, eventos especiales.</div>
+    </div>
+    <div class="amen-cell">
+      <div>
+        <div class="num">A · 04</div>
+        <div class="title">Arcade y billar</div>
+      </div>
+      <div class="desc">Máquinas recreativas, billar, torneos internos. Ocio sin pantalla constante.</div>
+    </div>
+    <div class="amen-cell">
+      <div>
+        <div class="num">A · 05</div>
+        <div class="title">PS5 · Xbox</div>
+      </div>
+      <div class="desc">Consolas de última generación. Sesiones libres y campeonatos entre socios.</div>
+    </div>
+    <div class="amen-cell">
+      <div>
+        <div class="num">A · 06</div>
+        <div class="title">Actuaciones en vivo</div>
+      </div>
+      <div class="desc">DJs, músicos invitados, sesiones en formato íntimo. Calendario abierto.</div>
+    </div>
+    <div class="amen-cell">
+      <div>
+        <div class="num">A · 07</div>
+        <div class="title">Charlas y talleres</div>
+      </div>
+      <div class="desc">Cultura cannábica con criterio: uso responsable, variedades, terapéutico.</div>
+    </div>
+    <div class="amen-cell">
+      <div>
+        <div class="num">A · 08</div>
+        <div class="title">Atención multilingüe</div>
+      </div>
+      <div class="desc">Castellano, inglés y alemán. Comunidad internacional en la Marina Alta.</div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== HOW TO JOIN =================== -->
+<section class="join">
+  <div class="join-left">
+    <div class="eyebrow">03 · Cómo se entra</div>
+    <h2>Hacerse socio<br>es un <em>proceso</em>,<br>no un trámite.</h2>
+    <p>
+      Space 420 es una asociación privada. Por su naturaleza legal, el acceso
+      requiere inscripción formal, mayoría de edad acreditada y aceptación de
+      las normas internas. No hay acceso público ni venta directa.
+    </p>
+    <div class="legal">
+      Asociación sin ánimo de lucro · Socios mayores de 18 años · Acceso
+      exclusivo previa inscripción · El consumo se realiza únicamente dentro
+      del local, entre socios.
+    </div>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="num">01</div>
+      <div>
+        <h3>Solicitud previa</h3>
+        <p>Envía tu interés por WhatsApp o correo. Hablamos contigo, resolvemos dudas y te explicamos cómo funciona la asociación. Sin compromiso.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="num">02</div>
+      <div>
+        <h3>Cita para inscripción</h3>
+        <p>Acudes al local en cita acordada, con DNI o pasaporte vigente. Completas el formulario de socio y firmas las normas internas.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="num">03</div>
+      <div>
+        <h3>Cuota anual</h3>
+        <p>Aceptación formal de socio y cuota anual. A partir de ahí, acceso al local y a todas las actividades programadas.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="num">04</div>
+      <div>
+        <h3>Comunidad activa</h3>
+        <p>Eventos, charlas, torneos, proyecciones. Como socio recibes la programación mensual y participas con voz en la vida de la asociación.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== CONTACT =================== -->
+<section class="contact">
+  <div class="contact-grid">
+    <div class="contact-left">
+      <span class="eyebrow">04 · Hablar con la asociación</span>
+      <h2 style="margin-top:18px;">¿Pensando en <em>visitar</em>?<br>Empieza por escribirnos.</h2>
+      <p>
+        Para resolver dudas o iniciar la inscripción, escríbenos directamente.
+        Respondemos en castellano, English y Deutsch. No publicamos la dirección
+        del local: la facilitamos al concertar la cita previa.
+      </p>
+      <div class="contact-channels">
+        <div class="channel">
+          <span class="label">WhatsApp</span>
+          <span class="value">+49 0176 21720209<small>Respuesta en 24h en horario europeo</small></span>
+        </div>
+        <div class="channel">
+          <span class="label">Email</span>
+          <span class="value">asociacion@space420denia.com</span>
+        </div>
+        <div class="channel">
+          <span class="label">Redes</span>
+          <span class="value">Instagram · Facebook<small>@space420denia</small></span>
+        </div>
+        <div class="channel">
+          <span class="label">Idiomas</span>
+          <span class="value">Español · English · Deutsch</span>
+        </div>
+      </div>
+    </div>
+    <div class="contact-right">
+      <div class="label">Aviso para visitantes</div>
+      <h3>Acceso solo previa cita.<br>El local no recibe público sin inscripción previa.</h3>
+      <p>
+        Si te encuentras en la zona y quieres conocer la asociación, escríbenos
+        antes de pasar. La inscripción es presencial pero requiere cita acordada.
+        Mayores de 18 años, con identificación válida.
+      </p>
+      <a href="#" class="btn-primary">Solicitar cita previa</a>
+    </div>
+  </div>
+</section>
+
+<!-- =================== FOOTER =================== -->
+<footer>
+  <div class="foot-top">
+    <div class="foot-brand">
+      <div class="row">
+        <img src="img/logo.png" alt="Space 420">
+        <div>
+          <div class="name">Space 420 Dénia</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:0.66rem; letter-spacing:0.18em; color:var(--moon-faint); text-transform:uppercase;">Asociación cannábica privada</div>
+        </div>
+      </div>
+      <p>
+        Asociación sin ánimo de lucro registrada en la Comunitat Valenciana.
+        Espacio privado para socios mayores de 18 años. La asociación promueve
+        la cultura cannábica responsable y el consumo informado.
+      </p>
+    </div>
+    <div class="foot-col">
+      <h4>Asociación</h4>
+      <a href="#">El espacio</a>
+      <a href="#">Cómo funciona</a>
+      <a href="#">Actividades</a>
+      <a href="#">FAQ legal</a>
+    </div>
+    <div class="foot-col">
+      <h4>Socios</h4>
+      <a href="#">Inscripción</a>
+      <a href="#">Programación</a>
+      <a href="#">Normas internas</a>
+      <a href="#">Política de privacidad</a>
+    </div>
+    <div class="foot-col">
+      <h4>Contacto</h4>
+      <span>+49 0176 21720209</span>
+      <span>asociacion@<br>space420denia.com</span>
+      <span>Dénia, Marina Alta</span>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <div>© 2026 Space 420 Dénia · Asociación cannábica privada</div>
+    <div class="kenaz">Diseño propuesto por <a href="https://kenaz.studio">Kenaz Studio</a></div>
+  </div>
+</footer>
+
+</body>
+</html>

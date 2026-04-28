@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Restaurante Xortà — Cocina mediterránea en Guadalest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #2a1f17;
+    --paper: #f4ecdf;
+    --paper-2: #ece1cf;
+    --ochre: #b8762a;
+    --burnt: #8a3a1f;
+    --olive: #4a4a2c;
+    --line: rgba(42, 31, 23, 0.18);
+    --muted: rgba(42, 31, 23, 0.65);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body { overflow-x: hidden; }
+
+  .display { font-family: 'Cormorant Garamond', 'Times New Roman', serif; font-weight: 500; letter-spacing: -0.01em; }
+  .italic  { font-style: italic; font-weight: 400; }
+  .mono    { font-family: 'Inter', system-ui, sans-serif; font-feature-settings: "tnum"; letter-spacing: 0.04em; text-transform: uppercase; font-size: 11px; font-weight: 500; }
+
+  /* ============ NAV ============ */
+  .nav {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    z-index: 20;
+    padding: 28px 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--paper);
+  }
+  .brand {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+  .brand .wm {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 30px;
+    letter-spacing: 0.01em;
+  }
+  .brand .wm em { font-style: italic; font-weight: 500; }
+  .brand .sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    margin-top: 6px;
+    opacity: 0.85;
+  }
+  .nav-links {
+    display: flex;
+    gap: 38px;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .nav-links a {
+    color: var(--paper);
+    text-decoration: none;
+    opacity: 0.9;
+  }
+  .nav-lang {
+    display: flex;
+    gap: 14px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-left: 16px;
+    padding-left: 22px;
+    border-left: 1px solid rgba(244, 236, 223, 0.35);
+  }
+  .nav-lang a { color: var(--paper); opacity: 0.6; text-decoration: none; }
+  .nav-lang a.active { opacity: 1; }
+  .reservar-btn {
+    border: 1px solid rgba(244, 236, 223, 0.5);
+    padding: 12px 22px;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--paper);
+    text-decoration: none;
+    transition: all .25s ease;
+  }
+  .reservar-btn:hover { background: var(--paper); color: var(--ink); }
+
+  /* ============ HERO ============ */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 820px;
+    width: 100%;
+    overflow: hidden;
+  }
+  .hero-img {
+    position: absolute;
+    inset: 0;
+    background-image: url('img/exterior-real.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: saturate(1.02) contrast(1.02);
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(20,12,6,0.62) 0%, rgba(20,12,6,0.30) 30%, rgba(20,12,6,0.28) 55%, rgba(20,12,6,0.85) 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    height: 100%;
+    padding: 130px 56px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: var(--paper);
+  }
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    font-weight: 500;
+    opacity: 0.92;
+  }
+  .eyebrow .dot {
+    width: 6px; height: 6px;
+    background: var(--ochre);
+    border-radius: 50%;
+  }
+  .headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 116px;
+    line-height: 0.96;
+    letter-spacing: -0.02em;
+    font-weight: 500;
+    margin-top: 22px;
+    max-width: 1100px;
+  }
+  .headline em {
+    font-style: italic;
+    font-weight: 400;
+    color: #f0d6a8;
+  }
+  .deck {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.45;
+    margin-top: 28px;
+    max-width: 540px;
+    opacity: 0.92;
+  }
+
+  .hero-foot {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 40px;
+    align-items: end;
+    border-top: 1px solid rgba(244, 236, 223, 0.22);
+    padding-top: 30px;
+    margin-top: 40px;
+  }
+  .meta-block { display: flex; flex-direction: column; gap: 8px; }
+  .meta-label {
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    font-weight: 500;
+    opacity: 0.7;
+  }
+  .meta-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.25;
+  }
+  .meta-value.italic { font-style: italic; font-weight: 400; }
+
+  .scroll-cue {
+    position: absolute;
+    bottom: 32px;
+    right: 56px;
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--paper);
+    opacity: 0.7;
+    z-index: 11;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .scroll-cue::before {
+    content: '';
+    width: 38px;
+    height: 1px;
+    background: var(--paper);
+    opacity: 0.6;
+  }
+
+  /* ============ INTRO STRIP ============ */
+  .intro {
+    background: var(--paper);
+    padding: 110px 56px 90px;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 90px;
+    align-items: start;
+    border-bottom: 1px solid var(--line);
+  }
+  .intro-label {
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--burnt);
+  }
+  .intro-label::before {
+    content: '';
+    display: inline-block;
+    width: 26px;
+    height: 1px;
+    background: var(--burnt);
+    margin-right: 14px;
+    vertical-align: middle;
+  }
+  .intro-h {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    line-height: 1.05;
+    letter-spacing: -0.012em;
+    font-weight: 500;
+    margin-top: 26px;
+  }
+  .intro-h em { font-style: italic; font-weight: 400; color: var(--burnt); }
+  .intro-body {
+    font-size: 16.5px;
+    line-height: 1.7;
+    color: var(--ink);
+    max-width: 640px;
+  }
+  .intro-body p + p { margin-top: 18px; }
+  .intro-body .lead::first-letter {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px;
+    line-height: 0.85;
+    float: left;
+    padding: 8px 12px 0 0;
+    font-weight: 500;
+    color: var(--burnt);
+  }
+
+  /* ============ FEATURE GRID ============ */
+  .features {
+    background: var(--paper);
+    padding: 0 56px 110px;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 28px;
+  }
+  .feature {
+    position: relative;
+    overflow: hidden;
+    background: #ddd;
+  }
+  .feature.tall { grid-row: span 2; min-height: 720px; }
+  .feature.short { min-height: 346px; }
+  .feature-img {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 1s ease;
+  }
+  .feature:hover .feature-img { transform: scale(1.03); }
+  .feature-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(20,12,6,0) 30%, rgba(20,12,6,0.65) 100%);
+  }
+  .feature-cap {
+    position: absolute;
+    bottom: 28px;
+    left: 30px;
+    right: 30px;
+    color: var(--paper);
+    z-index: 5;
+  }
+  .feature-cap .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    opacity: 0.85;
+    margin-bottom: 6px;
+  }
+  .feature-cap .title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    line-height: 1.1;
+    font-weight: 500;
+  }
+  .feature-cap .desc {
+    font-size: 13px;
+    line-height: 1.55;
+    margin-top: 8px;
+    opacity: 0.9;
+    max-width: 360px;
+  }
+
+  /* ============ CIERRE ============ */
+  .closing {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 90px 56px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 60px;
+    align-items: end;
+  }
+  .closing-h {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px;
+    line-height: 1.05;
+    letter-spacing: -0.012em;
+    font-weight: 500;
+    max-width: 760px;
+  }
+  .closing-h em { font-style: italic; font-weight: 400; color: #e7b56a; }
+  .closing-cta-block { text-align: right; }
+  .closing-tel {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: 0.005em;
+  }
+  .closing-tel .lbl {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    opacity: 0.65;
+    margin-bottom: 8px;
+  }
+  .closing-cta {
+    display: inline-block;
+    margin-top: 24px;
+    border: 1px solid rgba(244, 236, 223, 0.45);
+    background: var(--ochre);
+    border-color: var(--ochre);
+    color: var(--paper);
+    padding: 16px 30px;
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  /* ============ FOOTER ============ */
+  .foot {
+    background: #1c140d;
+    color: rgba(244, 236, 223, 0.72);
+    padding: 50px 56px 28px;
+    font-size: 12px;
+    line-height: 1.7;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr 1fr;
+    gap: 50px;
+  }
+  .foot h4 {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--paper);
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    font-style: italic;
+  }
+  .foot a { color: rgba(244, 236, 223, 0.72); text-decoration: none; }
+  .foot-note {
+    grid-column: 1 / -1;
+    margin-top: 26px;
+    padding-top: 18px;
+    border-top: 1px dashed rgba(244, 236, 223, 0.18);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    line-height: 1.55;
+    color: rgba(244, 236, 223, 0.55);
+    max-width: 720px;
+  }
+  .foot-bottom {
+    grid-column: 1 / -1;
+    margin-top: 22px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(244, 236, 223, 0.12);
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    opacity: 0.55;
+  }
+  .foot-bottom a { color: rgba(244, 236, 223, 0.55); }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-overlay"></div>
+
+  <nav class="nav">
+    <div class="brand">
+      <span class="wm">Xort<em>à</em></span>
+      <span class="sub">Restaurante &middot; Guadalest</span>
+    </div>
+    <div class="nav-links">
+      <a href="#">La casa</a>
+      <a href="#">Carta</a>
+      <a href="#">Arroces</a>
+      <a href="#">Vinos</a>
+      <a href="#">Reservar</a>
+      <span class="nav-lang">
+        <a href="#" class="active">ES</a>
+        <a href="#">EN</a>
+      </span>
+      <a href="#" class="reservar-btn">Reservar mesa</a>
+    </div>
+  </nav>
+
+  <div class="hero-content">
+    <div>
+      <div class="eyebrow"><span class="dot"></span> Cocina mediterránea &middot; Desde 1970</div>
+      <h1 class="headline">Comer despacio<br/><em>frente al valle</em>.</h1>
+      <p class="deck">Un comedor con chimenea y un ventanal abierto al valle de Guadalest. La cocina, la del Mediterráneo de siempre: arroces, producto local y servicio sin prisa.</p>
+    </div>
+
+    <div class="hero-foot">
+      <div class="meta-block">
+        <span class="meta-label">Dónde</span>
+        <span class="meta-value italic">Carretera Callosa<br/>Km. 12</span>
+      </div>
+      <div class="meta-block">
+        <span class="meta-label">Reservas</span>
+        <span class="meta-value">965 88 51 87</span>
+      </div>
+      <div class="meta-block">
+        <span class="meta-label">Comedor</span>
+        <span class="meta-value italic">Hasta 80 comensales</span>
+      </div>
+      <div class="meta-block">
+        <span class="meta-label">Tradición</span>
+        <span class="meta-value italic">55 años<br/>en la montaña</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-cue">Scroll</div>
+</section>
+
+<!-- ============ INTRO ============ -->
+<section class="intro">
+  <div>
+    <div class="intro-label">La casa</div>
+    <h2 class="intro-h">Un comedor que mira al<br/><em>valle y al mar</em>.</h2>
+  </div>
+  <div class="intro-body">
+    <p class="lead">Xortà abrió en 1970 a un kilómetro del castillo de Guadalest, en la Carretera de Callosa. Cincuenta y cinco años después sigue siendo un comedor amplio, con un gran ventanal que da al valle, una chimenea central que en invierno calienta toda la sala y un ambiente tranquilo.</p>
+    <p>La cocina es la mediterránea de la zona, sin atajos: arroces hechos al momento, la <em>olleta de blat</em> de la casa, producto del día y la pausa que pide una comida en la montaña. El servicio es familiar, como siempre lo ha sido.</p>
+  </div>
+</section>
+
+<!-- ============ FEATURE GRID ============ -->
+<section class="features">
+  <div class="feature tall">
+    <div class="feature-img" style="background-image:url('img/plato-arroz.jpg');"></div>
+    <div class="feature-overlay"></div>
+    <div class="feature-cap">
+      <div class="num">i.</div>
+      <div class="title">Arroces<br/>al momento</div>
+      <div class="desc">El arroz nunca se adelanta. Se empieza cuando llega la mesa y se sirve en la paella. Reserva con una hora de margen.</div>
+    </div>
+  </div>
+  <div class="feature short">
+    <div class="feature-img" style="background-image:url('img/chimenea.jpg');"></div>
+    <div class="feature-overlay"></div>
+    <div class="feature-cap">
+      <div class="num">ii.</div>
+      <div class="title">La chimenea</div>
+      <div class="desc">En el centro del salón, encendida en invierno. La sala entera huele a leña.</div>
+    </div>
+  </div>
+  <div class="feature short">
+    <div class="feature-img" style="background-image:url('img/local-real.jpg'); background-position: left center;"></div>
+    <div class="feature-overlay"></div>
+    <div class="feature-cap">
+      <div class="num">iii.</div>
+      <div class="title">Vistas al valle</div>
+      <div class="desc">El embalse de Guadalest y, los días claros, el Mediterráneo al fondo.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CIERRE ============ -->
+<section class="closing">
+  <h2 class="closing-h">Si subes a Guadalest,<br/>quédate a comer <em>como se debe</em>.</h2>
+  <div class="closing-cta-block">
+    <div class="closing-tel">
+      <span class="lbl">Reservas</span>
+      965 88 51 87
+    </div>
+    <a href="mailto:rxorta@hotmail.com" class="closing-cta">Reservar mesa</a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div>
+    <h4>Restaurante Xortà</h4>
+    Cocina mediterránea desde Guadalest.<br/>
+    El Castell de Guadalest, Alicante.
+  </div>
+  <div>
+    <h4>Visítanos</h4>
+    Carretera Callosa, Km. 12<br/>
+    03517 El Castell de Guadalest<br/>
+    Alicante, España
+  </div>
+  <div>
+    <h4>Reservas</h4>
+    <a href="tel:+34965885187">965 88 51 87</a><br/>
+    <a href="mailto:rxorta@hotmail.com">rxorta@hotmail.com</a>
+  </div>
+  <div>
+    <h4>Idiomas</h4>
+    Español · English<br/>
+    <span style="opacity:0.55; font-size: 11px;">Multiidioma propuesto<br/>en el rediseño Kenaz</span>
+  </div>
+  <div class="foot-note">
+    Algunas imágenes son referenciales. La sesión fotográfica del local y los platos forma parte del servicio Kenaz.
+  </div>
+  <div class="foot-bottom">
+    <span>© Restaurante Xortà · Guadalest</span>
+    <span>Diseño propuesto por <a href="https://kenaz.studio">Kenaz Studio</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

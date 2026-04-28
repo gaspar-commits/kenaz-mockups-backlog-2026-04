@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Grupo García — Inmobiliaria Costa Blanca Norte desde 1996</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --terra: #b07a3b;
+    --terra-deep: #8a5a25;
+    --olive: #3a4a2e;
+    --olive-deep: #2a3520;
+    --cream: #f4ede0;
+    --paper: #faf6ee;
+    --ink: #1c1a16;
+    --ink-soft: #514c44;
+    --line: #d9cfbb;
+    --gold: #c79a4f;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;font-weight:400;line-height:1.5;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%;height:auto}
+
+  .display{font-family:'Cormorant Garamond',serif;font-weight:400;letter-spacing:-0.005em;line-height:1.02}
+  .eyebrow{font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--terra-deep)}
+  .rule{display:inline-block;width:36px;height:1px;background:var(--terra-deep);vertical-align:middle;margin-right:14px}
+
+  .top-bar{background:var(--olive-deep);color:var(--cream);font-size:12px;letter-spacing:0.06em}
+  .top-bar-inner{max-width:1480px;margin:0 auto;padding:10px 56px;display:flex;justify-content:space-between;align-items:center}
+  .top-meta{display:flex;gap:32px}
+  .top-meta span{display:inline-flex;align-items:center;gap:8px}
+  .top-meta svg{width:13px;height:13px}
+  .langs{display:flex;gap:14px;font-weight:500}
+  .langs .active{color:var(--gold);position:relative}
+  .langs .active::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:1px;background:var(--gold)}
+
+  header.nav{background:var(--paper);border-bottom:1px solid var(--line)}
+  .nav-inner{max-width:1480px;margin:0 auto;padding:26px 56px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:48px}
+  .nav-left,.nav-right{display:flex;gap:38px;font-size:13px;font-weight:500;letter-spacing:0.04em;color:var(--ink)}
+  .nav-right{justify-content:flex-end}
+  .nav-left a:hover,.nav-right a:hover{color:var(--terra-deep)}
+  .logo{display:flex;align-items:center}
+  .logo svg{height:62px;width:auto}
+  .logo img{height:62px;width:auto;display:block}
+
+  .hero{position:relative;background:var(--paper)}
+  .hero-grid{max-width:1480px;margin:0 auto;padding:64px 56px 84px;display:grid;grid-template-columns:1.05fr 1fr;gap:80px;align-items:center}
+  .hero-copy h1{font-size:96px;line-height:0.98;letter-spacing:-0.015em;margin-bottom:34px;color:var(--ink);font-family:'Cormorant Garamond',serif;font-weight:400}
+  .hero-copy h1 em{font-style:italic;font-weight:400;color:var(--terra-deep)}
+  .hero-copy .lede{font-size:18px;line-height:1.55;color:var(--ink-soft);max-width:520px;margin-bottom:42px}
+  .meta-row{display:flex;gap:42px;padding:22px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:38px;max-width:560px}
+  .meta-row > div{flex:1}
+  .meta-row .label{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px}
+  .meta-row .value{font-family:'Cormorant Garamond',serif;font-size:30px;color:var(--olive);font-weight:500;line-height:1}
+  .meta-row .value sup{font-size:14px;font-weight:400;color:var(--terra-deep);vertical-align:top}
+  .ctas{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:16px 28px;font-size:13px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;border-radius:0;transition:all .2s;cursor:pointer;border:none}
+  .btn-primary{background:var(--olive-deep);color:var(--cream)}
+  .btn-primary:hover{background:var(--olive)}
+  .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--cream)}
+
+  .hero-visual{position:relative;height:600px}
+  .hero-img-main{position:absolute;top:0;right:0;width:88%;height:88%;background:url('img/villa-1.jpg') center/cover no-repeat;box-shadow:0 30px 70px -20px rgba(28,26,22,0.35)}
+  .hero-img-sub{position:absolute;bottom:0;left:0;width:48%;height:42%;background:url('img/villa-3.jpg') center/cover no-repeat;border:8px solid var(--paper);box-shadow:0 20px 50px -15px rgba(28,26,22,0.4)}
+  .hero-tag{position:absolute;top:42px;left:0;background:var(--paper);padding:18px 22px;max-width:260px;border-left:3px solid var(--terra-deep);box-shadow:0 10px 40px -12px rgba(28,26,22,0.18)}
+  .hero-tag .ref{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--terra-deep);font-weight:600;margin-bottom:8px}
+  .hero-tag .ref-title{font-family:'Cormorant Garamond',serif;font-size:22px;line-height:1.15;color:var(--ink);margin-bottom:6px}
+  .hero-tag .ref-loc{font-size:12px;color:var(--ink-soft);letter-spacing:0.04em}
+
+  .trust-band{background:var(--cream);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .trust-inner{max-width:1480px;margin:0 auto;padding:36px 56px;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px;align-items:center}
+  .trust-stmt{font-family:'Cormorant Garamond',serif;font-size:24px;font-style:italic;color:var(--olive-deep);line-height:1.25}
+  .trust-stmt::before{content:"« ";color:var(--terra-deep);font-style:normal}
+  .trust-stmt::after{content:" »";color:var(--terra-deep);font-style:normal}
+  .trust-item{border-left:1px solid var(--line);padding-left:32px}
+  .trust-item .num{font-family:'Cormorant Garamond',serif;font-size:42px;color:var(--terra-deep);line-height:1;font-weight:500;margin-bottom:6px}
+  .trust-item .lbl{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-soft)}
+
+  .editorial{background:var(--paper);padding:104px 0 96px}
+  .editorial-head{max-width:1480px;margin:0 auto 64px;padding:0 56px;display:flex;justify-content:space-between;align-items:flex-end;gap:60px}
+  .editorial-head .left{max-width:680px}
+  .editorial-head h2{font-family:'Cormorant Garamond',serif;font-size:64px;line-height:1.02;letter-spacing:-0.01em;color:var(--ink);margin-top:18px;font-weight:400}
+  .editorial-head h2 em{font-style:italic;color:var(--terra-deep)}
+  .editorial-head .right{display:flex;gap:24px;align-items:center}
+  .pager{display:flex;gap:8px}
+  .pager button{width:46px;height:46px;border:1px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;font-size:14px;display:inline-flex;align-items:center;justify-content:center;transition:all .2s}
+  .pager button:hover{background:var(--ink);color:var(--cream)}
+
+  .grid-villas{max-width:1480px;margin:0 auto;padding:0 56px;display:grid;grid-template-columns:repeat(3,1fr);gap:36px}
+  .villa-card{background:var(--paper);cursor:pointer}
+  .villa-card .photo{position:relative;aspect-ratio:4/5;background:var(--cream);overflow:hidden;margin-bottom:18px}
+  .villa-card .photo img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+  .villa-card:hover .photo img{transform:scale(1.04)}
+  .villa-card .ref-badge{position:absolute;top:18px;left:18px;background:var(--paper);padding:6px 12px;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink);font-weight:600}
+  .villa-card .save{position:absolute;top:14px;right:14px;width:38px;height:38px;background:rgba(250,246,238,0.95);display:flex;align-items:center;justify-content:center;border-radius:50%}
+  .villa-card .save svg{width:16px;height:16px;stroke:var(--ink);fill:none;stroke-width:1.5}
+  .villa-card .meta-loc{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--terra-deep);margin-bottom:8px;font-weight:500}
+  .villa-card h3{font-family:'Cormorant Garamond',serif;font-size:28px;line-height:1.1;color:var(--ink);margin-bottom:12px;letter-spacing:-0.005em;font-weight:500}
+  .villa-card .specs{display:flex;gap:18px;font-size:13px;color:var(--ink-soft);padding-top:14px;border-top:1px solid var(--line)}
+  .villa-card .specs span{display:inline-flex;align-items:center;gap:6px}
+  .villa-card .specs svg{width:14px;height:14px;stroke:var(--ink-soft);fill:none;stroke-width:1.5}
+
+  /* SEARCH BAR FLOTANTE — propuesta búsqueda inteligente */
+  .search-strip{background:var(--paper);padding:0 0 80px}
+  .search-inner{max-width:1480px;margin:0 auto;padding:0 56px}
+  .search-card{background:var(--ink);color:var(--cream);padding:48px 56px;display:grid;grid-template-columns:1fr 2.4fr auto;gap:40px;align-items:center;box-shadow:0 30px 80px -30px rgba(28,26,22,0.3)}
+  .search-card h3{font-family:'Cormorant Garamond',serif;font-size:38px;line-height:1.05;font-weight:400}
+  .search-card h3 em{font-style:italic;color:var(--gold)}
+  .search-card .filters{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(244,237,224,0.18)}
+  .search-card .filter{background:var(--ink);padding:14px 18px}
+  .search-card .filter .lbl{font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;font-weight:600}
+  .search-card .filter .val{font-size:14px;color:var(--cream);display:flex;justify-content:space-between;align-items:center}
+  .search-card .filter .val svg{width:11px;height:11px}
+  .search-btn{background:var(--gold);color:var(--ink);padding:18px 24px;border:none;cursor:pointer;display:flex;align-items:center;gap:10px;font-weight:600;font-size:13px;letter-spacing:0.12em;text-transform:uppercase}
+  .search-btn:hover{background:var(--terra)}
+
+  /* SECTION EMPRESA FAMILIAR 360 */
+  .family{background:var(--olive-deep);color:var(--cream);padding:120px 0}
+  .family-inner{max-width:1480px;margin:0 auto;padding:0 56px;display:grid;grid-template-columns:1fr 1fr;gap:96px;align-items:center}
+  .family h2{font-family:'Cormorant Garamond',serif;font-size:72px;line-height:1.02;letter-spacing:-0.01em;margin-top:18px;margin-bottom:30px;font-weight:400}
+  .family h2 em{font-style:italic;color:var(--gold)}
+  .family p.lede{font-size:17px;line-height:1.65;opacity:0.85;margin-bottom:36px;max-width:540px}
+  .family .eyebrow{color:var(--gold)}
+  .family .rule{background:var(--gold)}
+  .services-list{list-style:none;padding:0}
+  .services-list li{display:flex;justify-content:space-between;align-items:center;padding:22px 0;border-bottom:1px solid rgba(244,237,224,0.18)}
+  .services-list li:first-child{border-top:1px solid rgba(244,237,224,0.18)}
+  .services-list .s-name{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;letter-spacing:-0.005em}
+  .services-list .s-num{font-size:11px;letter-spacing:0.2em;color:var(--gold);font-weight:500}
+
+  .family-photo{position:relative;height:580px}
+  .family-photo .pic{width:100%;height:100%;background:url('img/office.jpg') center/cover no-repeat;filter:saturate(0.95)}
+  .family-photo .quote{position:absolute;bottom:-40px;left:-32px;background:var(--paper);color:var(--ink);padding:34px 38px;max-width:380px;box-shadow:0 30px 60px -20px rgba(0,0,0,0.4)}
+  .family-photo .quote .q-text{font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;line-height:1.32;color:var(--olive-deep);margin-bottom:18px}
+  .family-photo .quote .q-author{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--terra-deep);font-weight:600;line-height:1.5}
+  .family-photo .quote .q-author span{display:block;color:var(--ink-soft);font-weight:400;letter-spacing:0.08em;text-transform:none;font-size:12px;margin-top:4px}
+
+  /* SECTION ZONA EDITORIAL — guías Costa Blanca */
+  .zonas{background:var(--paper);padding:120px 0 100px}
+  .zonas-inner{max-width:1480px;margin:0 auto;padding:0 56px}
+  .zonas-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:60px;gap:60px}
+  .zonas-head .left{max-width:680px}
+  .zonas-head h2{font-family:'Cormorant Garamond',serif;font-size:64px;line-height:1.02;letter-spacing:-0.01em;color:var(--ink);margin-top:18px;font-weight:400}
+  .zonas-head h2 em{font-style:italic;color:var(--terra-deep)}
+  .zonas-head p{font-size:15px;color:var(--ink-soft);max-width:480px;line-height:1.6;margin-top:14px}
+  .zonas-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:24px}
+  .zona-card{position:relative;aspect-ratio:4/5;overflow:hidden;cursor:pointer}
+  .zona-card.large{aspect-ratio:auto;height:100%;min-height:560px}
+  .zona-card .img{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .8s ease}
+  .zona-card:hover .img{transform:scale(1.04)}
+  .zona-card .overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(28,26,22,0.85) 100%)}
+  .zona-card .content{position:absolute;bottom:32px;left:32px;right:32px;color:var(--cream)}
+  .zona-card .content .eyebrow{color:var(--gold);margin-bottom:10px;display:block}
+  .zona-card .content h3{font-family:'Cormorant Garamond',serif;font-size:38px;line-height:1.05;letter-spacing:-0.01em;font-weight:500;margin-bottom:8px}
+  .zona-card.large .content h3{font-size:48px}
+  .zona-card .content p{font-size:13px;opacity:0.85;line-height:1.5}
+
+  /* TESTIMONIO BAND */
+  .testi{background:var(--cream);padding:104px 0}
+  .testi-inner{max-width:1100px;margin:0 auto;padding:0 56px;text-align:center}
+  .testi .stars{color:var(--terra-deep);font-size:18px;letter-spacing:0.3em;margin-bottom:24px}
+  .testi blockquote{font-family:'Cormorant Garamond',serif;font-size:42px;line-height:1.2;font-style:italic;color:var(--olive-deep);margin-bottom:32px;font-weight:400}
+  .testi blockquote::before{content:"" "";color:var(--terra-deep);font-style:normal}
+  .testi .author{font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-soft);font-weight:600}
+  .testi .author span{color:var(--terra-deep);margin:0 10px}
+  .testi-meta{margin-top:40px;display:flex;justify-content:center;gap:40px;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-soft)}
+  .testi-meta strong{color:var(--olive-deep);font-weight:600}
+
+  /* CTA FINAL */
+  .cta-final{background:var(--paper);padding:120px 0}
+  .cta-inner{max-width:1480px;margin:0 auto;padding:0 56px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:stretch}
+  .cta-block{padding:64px 56px;border:1px solid var(--line);background:var(--paper);position:relative;display:flex;flex-direction:column;justify-content:space-between;min-height:420px}
+  .cta-block.dark{background:var(--ink);color:var(--cream);border:none}
+  .cta-block h3{font-family:'Cormorant Garamond',serif;font-size:48px;line-height:1.05;letter-spacing:-0.01em;font-weight:400;margin-bottom:18px}
+  .cta-block h3 em{font-style:italic;color:var(--terra-deep)}
+  .cta-block.dark h3 em{color:var(--gold)}
+  .cta-block p{font-size:15px;line-height:1.6;color:var(--ink-soft);margin-bottom:36px;max-width:440px}
+  .cta-block.dark p{color:rgba(244,237,224,0.85)}
+  .cta-block .btn{align-self:flex-start}
+  .cta-block.dark .btn-primary{background:var(--gold);color:var(--ink)}
+  .cta-block.dark .btn-primary:hover{background:var(--terra)}
+
+  footer{background:var(--ink);color:var(--cream);padding:80px 56px 36px}
+  .footer-inner{max-width:1480px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:60px;padding-bottom:48px;border-bottom:1px solid rgba(244,237,224,0.12)}
+  .footer-brand .f-logo{font-family:'Cormorant Garamond',serif;font-size:34px;letter-spacing:-0.01em;margin-bottom:10px;color:var(--cream);font-weight:500}
+  .footer-brand .f-tag{font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;font-weight:500}
+  .footer-brand p{font-size:13px;opacity:0.7;line-height:1.6;max-width:340px;margin-bottom:24px}
+  .footer-brand .socials{display:flex;gap:14px}
+  .footer-brand .socials a{width:36px;height:36px;border:1px solid rgba(244,237,224,0.3);display:flex;align-items:center;justify-content:center;transition:all .2s}
+  .footer-brand .socials a:hover{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+  .footer-brand .socials svg{width:14px;height:14px}
+  .footer-col h4{font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;font-weight:600}
+  .footer-col ul{list-style:none}
+  .footer-col li{font-size:13px;margin-bottom:10px;opacity:0.78}
+  .footer-col li a:hover{opacity:1;color:var(--gold)}
+  .footer-col .office{margin-bottom:22px}
+  .footer-col .office strong{display:block;font-size:12px;color:var(--gold);font-weight:600;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:6px}
+  .footer-col .office p{font-size:13px;opacity:0.78;line-height:1.55}
+  .footer-bottom{max-width:1480px;margin:32px auto 0;display:flex;justify-content:space-between;align-items:center;font-size:11px;letter-spacing:0.1em;opacity:0.55}
+  .footer-bottom .kenaz-mark{color:var(--gold);opacity:0.85}
+  .footer-bottom .kenaz-mark a{color:var(--gold)}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="top-meta">
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.33 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +34 966 482 480
+      </span>
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        info@grupo-garcia.es
+      </span>
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Jalón · Jávea · Moraira
+      </span>
+    </div>
+    <div class="langs">
+      <span class="active">ES</span>
+      <a href="#">EN</a>
+      <a href="#">FR</a>
+      <a href="#">NL</a>
+    </div>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <nav class="nav-left">
+      <a href="#">Villas</a>
+      <a href="#">Apartamentos</a>
+      <a href="#">Obra nueva</a>
+      <a href="#">Lujo</a>
+    </nav>
+    <a href="#" class="logo" aria-label="Grupo García Inmobiliaria">
+      <img src="img/logo.svg" alt="Grupo García Inmobiliaria" />
+    </a>
+    <nav class="nav-right">
+      <a href="#">Servicios</a>
+      <a href="#">Empresa</a>
+      <a href="#">Vender</a>
+      <a href="#">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow"><span class="rule"></span>Costa Blanca Norte · desde 1996</span>
+      <h1>La casa que <em>imaginas</em><br/>en el lugar que <em>recuerdas</em>.</h1>
+      <p class="lede">Tres décadas seleccionando villas, parcelas y apartamentos entre el mar de Jávea y los valles de Jalón y Orba. Atención cercana, asesoramiento legal propio y red internacional en cuatro idiomas.</p>
+
+      <div class="meta-row">
+        <div>
+          <div class="label">Experiencia</div>
+          <div class="value">30<sup>+</sup></div>
+        </div>
+        <div>
+          <div class="label">Reseñas Google</div>
+          <div class="value">4,9<sup>★</sup></div>
+        </div>
+        <div>
+          <div class="label">Idiomas</div>
+          <div class="value">ES · EN · FR · NL</div>
+        </div>
+      </div>
+
+      <div class="ctas">
+        <button class="btn btn-primary">
+          Ver propiedades
+          <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5h12m0 0L9 1m4 4L9 9" stroke="currentColor" stroke-width="1.5"/></svg>
+        </button>
+        <button class="btn btn-ghost">Vender mi propiedad</button>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-img-main"></div>
+      <div class="hero-img-sub"></div>
+      <div class="hero-tag">
+        <div class="ref">Ejemplo de selección</div>
+        <div class="ref-title">Villa Mediterránea, Valle de Jalón</div>
+        <div class="ref-loc">Vista panorámica al valle</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trust-band">
+  <div class="trust-inner">
+    <div class="trust-stmt">Líderes en el sector inmobiliario en la Costa Blanca Norte desde 1996.</div>
+    <div class="trust-item"><div class="num">3</div><div class="lbl">Oficinas · Jalón, Jávea y Moraira</div></div>
+    <div class="trust-item"><div class="num">126</div><div class="lbl">Reseñas verificadas Google</div></div>
+    <div class="trust-item"><div class="num">4</div><div class="lbl">Idiomas atendidos</div></div>
+  </div>
+</div>
+
+<!-- SEARCH STRIP -->
+<section class="search-strip">
+  <div class="search-inner">
+    <div class="search-card">
+      <h3>Encuentra tu villa<br/><em>en cuatro pasos.</em></h3>
+      <div class="filters">
+        <div class="filter"><div class="lbl">Zona</div><div class="val">Jávea / Jalón <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4l4 4 4-4"/></svg></div></div>
+        <div class="filter"><div class="lbl">Tipo</div><div class="val">Villa de lujo <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4l4 4 4-4"/></svg></div></div>
+        <div class="filter"><div class="lbl">Dormitorios</div><div class="val">3 — 5 <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4l4 4 4-4"/></svg></div></div>
+        <div class="filter"><div class="lbl">Presupuesto</div><div class="val">600k — 1,5M € <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4l4 4 4-4"/></svg></div></div>
+      </div>
+      <button class="search-btn">
+        Explorar
+        <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5h12m0 0L9 1m4 4L9 9" stroke="currentColor" stroke-width="1.6"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- EDITORIAL: SELECCION DE PROPIEDADES -->
+<section class="editorial">
+  <div class="editorial-head">
+    <div class="left">
+      <span class="eyebrow"><span class="rule"></span>Selección de la temporada</span>
+      <h2>Propiedades elegidas <em>una a una</em>, no listadas en serie.</h2>
+    </div>
+    <div class="right">
+      <a href="#" style="font-size:13px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;border-bottom:1px solid var(--ink);padding-bottom:4px">Ver todas</a>
+      <div class="pager">
+        <button>‹</button>
+        <button>›</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-villas">
+    <article class="villa-card">
+      <div class="photo">
+        <img src="img/villa-2.jpg" alt="Villa con piscina en Jávea, Costa Blanca">
+        <div class="ref-badge">Selección 01</div>
+        <div class="save"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></div>
+      </div>
+      <div class="meta-loc">Jávea · Pinosol</div>
+      <h3>Villa moderna con vistas al Montgó</h3>
+      <div class="specs">
+        <span><svg viewBox="0 0 24 24"><path d="M2 9l10-6 10 6"/><path d="M5 22v-9h14v9"/></svg>200-300 m²</span>
+        <span><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="9"/><path d="M5 11V7a3 3 0 0 1 6 0v4"/></svg>3-4 dorm.</span>
+        <span><svg viewBox="0 0 24 24"><path d="M3 18s2-2 9-2 9 2 9 2"/><path d="M3 12s2-2 9-2 9 2 9 2"/><path d="M3 6s2-2 9-2 9 2 9 2"/></svg>Piscina</span>
+      </div>
+    </article>
+
+    <article class="villa-card">
+      <div class="photo">
+        <img src="img/villa-4.jpg" alt="Villa mediterránea con piscina en Moraira">
+        <div class="ref-badge">Selección 02</div>
+        <div class="save"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></div>
+      </div>
+      <div class="meta-loc">Moraira · El Portet</div>
+      <h3>Casa Mediterránea junto a cala</h3>
+      <div class="specs">
+        <span><svg viewBox="0 0 24 24"><path d="M2 9l10-6 10 6"/><path d="M5 22v-9h14v9"/></svg>200-300 m²</span>
+        <span><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="9"/><path d="M5 11V7a3 3 0 0 1 6 0v4"/></svg>4-5 dorm.</span>
+        <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/></svg>Vistas mar</span>
+      </div>
+    </article>
+
+    <article class="villa-card">
+      <div class="photo">
+        <img src="img/villa-5.jpg" alt="Villa con jardín en el Valle de Jalón">
+        <div class="ref-badge">Selección 03</div>
+        <div class="save"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></div>
+      </div>
+      <div class="meta-loc">Valle de Jalón · Lliber</div>
+      <h3>Finca tradicional con olivar</h3>
+      <div class="specs">
+        <span><svg viewBox="0 0 24 24"><path d="M2 9l10-6 10 6"/><path d="M5 22v-9h14v9"/></svg>150-200 m²</span>
+        <span><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="9"/><path d="M5 11V7a3 3 0 0 1 6 0v4"/></svg>2-3 dorm.</span>
+        <span><svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/></svg>Parcela amplia</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- EMPRESA FAMILIAR 360 -->
+<section class="family">
+  <div class="family-inner">
+    <div>
+      <span class="eyebrow"><span class="rule"></span>Empresa familiar · 360°</span>
+      <h2>Una <em>casa</em><br/>se vende una vez.<br/>Después <em>se vive en ella.</em></h2>
+      <p class="lede">Por eso, además de la intermediación, gestionamos todo lo que ocurre antes y después de las llaves: obra, jardín, piscina, asesoría legal y cambio de divisas. Un único interlocutor, en cuatro idiomas, durante tantos años como necesites.</p>
+
+      <ul class="services-list">
+        <li><span class="s-name">Construcción y reformas</span><span class="s-num">01</span></li>
+        <li><span class="s-name">Jardinería y mantenimiento</span><span class="s-num">02</span></li>
+        <li><span class="s-name">Mantenimiento de piscinas</span><span class="s-num">03</span></li>
+        <li><span class="s-name">Fontanería y electricidad</span><span class="s-num">04</span></li>
+        <li><span class="s-name">Asesoría jurídica e inmobiliaria</span><span class="s-num">05</span></li>
+        <li><span class="s-name">Cambio de divisas</span><span class="s-num">06</span></li>
+      </ul>
+    </div>
+
+    <div class="family-photo">
+      <div class="pic"></div>
+      <div class="quote">
+        <div class="q-text">Empresa familiar fundada en el Valle de Jalón en 1996, con presencia continuada en la Costa Blanca Norte desde sus inicios.</div>
+        <div class="q-author">Grupo García<span>Inmobiliaria · Costa Blanca Norte</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ZONAS / GUIAS -->
+<section class="zonas">
+  <div class="zonas-inner">
+    <div class="zonas-head">
+      <div class="left">
+        <span class="eyebrow"><span class="rule"></span>Guías de la zona</span>
+        <h2>Conocemos la Costa Blanca Norte<br/><em>como sólo se conoce una casa.</em></h2>
+        <p>De Altea al Cap de la Nau, del Valle de Jalón a Dénia. Cada propiedad existe dentro de un lugar — y ese lugar también lo asesoramos.</p>
+      </div>
+    </div>
+
+    <div class="zonas-grid">
+      <article class="zona-card large">
+        <div class="img" style="background-image:url('img/villa-7.jpg')"></div>
+        <div class="overlay"></div>
+        <div class="content">
+          <span class="eyebrow">Costa</span>
+          <h3>Jávea &amp; Moraira</h3>
+          <p>El Mediterráneo en versión clásica: calas, pinares y arquitectura blanca.</p>
+        </div>
+      </article>
+      <article class="zona-card">
+        <div class="img" style="background-image:url('img/villa-6.jpg')"></div>
+        <div class="overlay"></div>
+        <div class="content">
+          <span class="eyebrow">Interior</span>
+          <h3>Valle de Jalón</h3>
+          <p>Viñedos, almendros y casas de campo restauradas.</p>
+        </div>
+      </article>
+      <article class="zona-card">
+        <div class="img" style="background-image:url('img/villa-8.jpg')"></div>
+        <div class="overlay"></div>
+        <div class="content">
+          <span class="eyebrow">Costa</span>
+          <h3>Altea &amp; Dénia</h3>
+          <p>Pueblos blancos, marina y puerto histórico.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIO -->
+<section class="testi">
+  <div class="testi-inner">
+    <div class="stars">★★★★★</div>
+    <blockquote>"Ha vendido la propiedad en tiempo récord y una atención extraordinaria hasta el día de la firma en Notaría. Sin duda les recomiendo al 100%."</blockquote>
+    <div class="author">Reseña verificada <span>·</span> Google</div>
+    <div class="testi-meta">
+      <span><strong>4,9 / 5</strong> · 126 reseñas</span>
+      <span>Reseñas verificadas <strong>Google</strong></span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <div class="cta-inner">
+    <div class="cta-block">
+      <div>
+        <span class="eyebrow"><span class="rule"></span>Compradores</span>
+        <h3>Encontramos la casa <em>antes</em> que aparezca en el portal.</h3>
+        <p>Cartera privada de propiedades fuera de mercado para clientes que buscan algo concreto. Cuéntanos qué imaginas y empezamos a buscar.</p>
+      </div>
+      <button class="btn btn-primary">Solicitar búsqueda <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5h12m0 0L9 1m4 4L9 9" stroke="currentColor" stroke-width="1.5"/></svg></button>
+    </div>
+
+    <div class="cta-block dark">
+      <div>
+        <span class="eyebrow" style="color:var(--gold)"><span class="rule" style="background:var(--gold)"></span>Vendedores</span>
+        <h3>Vender bien <em>es vender al precio justo,</em> en el plazo justo.</h3>
+        <p>Valoración basada en 30 años de operaciones cerradas en la zona. Sin compromiso, en castellano, inglés, francés u holandés.</p>
+      </div>
+      <button class="btn btn-primary">Valorar mi propiedad <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5h12m0 0L9 1m4 4L9 9" stroke="currentColor" stroke-width="1.5"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="f-logo">Grupo García</div>
+      <div class="f-tag">Inmobiliaria · desde 1996</div>
+      <p>Empresa familiar de servicios inmobiliarios integrales en la Costa Blanca Norte. Compraventa, alquiler, obra y asesoría legal.</p>
+      <div class="socials">
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 1 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Oficinas</h4>
+      <div class="office">
+        <strong>Jalón</strong>
+        <p>Av. Madrid<br/>03727 · Alicante</p>
+      </div>
+      <div class="office">
+        <strong>Jávea</strong>
+        <p>Ctra. Cabo La Nao Pla, 122<br/>03730 · Alicante</p>
+      </div>
+      <div class="office">
+        <strong>Moraira</strong>
+        <p>Teulada-Moraira<br/>03724 · Alicante</p>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Propiedades</h4>
+      <ul>
+        <li><a href="#">Villas de lujo</a></li>
+        <li><a href="#">Villas</a></li>
+        <li><a href="#">Apartamentos</a></li>
+        <li><a href="#">Obra nueva</a></li>
+        <li><a href="#">Parcelas</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Empresa</h4>
+      <ul>
+        <li><a href="#">Sobre nosotros</a></li>
+        <li><a href="#">Nuestro equipo</a></li>
+        <li><a href="#">Servicios integrales</a></li>
+        <li><a href="#">Blog y guías</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2026 Grupo García Inmobiliaria · Todos los derechos reservados</span>
+    <span class="kenaz-mark">Diseño propuesto por <a href="https://kenaz.studio">Kenaz Studio</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
