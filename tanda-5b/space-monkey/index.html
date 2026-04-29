@@ -1531,24 +1531,50 @@
   moon.rotation.y = -0.4;
   scene.add(moon);
 
-  // Try to upgrade texture to a real moon map (CC0 / open).
-  // Primary: three.js example texture. Fallback: keep procedural.
-  const TEXTURE_URL = 'https://unpkg.com/three@0.160.0/examples/textures/planets/moon_1024.jpg';
+  // Upgrade to real moon textures: color + bump map (NASA SVS LDEM).
+  // Local files for reliability; bumpMap gives real crater relief.
   const loader = new THREE.TextureLoader();
   loader.setCrossOrigin('anonymous');
+  const maxAniso = renderer.capabilities.getMaxAnisotropy
+    ? renderer.capabilities.getMaxAnisotropy()
+    : 1;
+
+  // Color map (real moon photo)
   loader.load(
-    TEXTURE_URL,
+    'img/moon-color.jpg',
     (tex) => {
       if ('colorSpace' in tex) tex.colorSpace = THREE.SRGBColorSpace;
-      else tex.encoding = 3001; // sRGBEncoding fallback
-      tex.anisotropy = renderer.capabilities.getMaxAnisotropy
-        ? renderer.capabilities.getMaxAnisotropy()
-        : 1;
+      else tex.encoding = 3001;
+      tex.anisotropy = maxAniso;
       material.map = tex;
+      material.color = new THREE.Color(0xffffff); // remove warm tint, let texture speak
       material.needsUpdate = true;
     },
     undefined,
-    () => { /* keep procedural */ }
+    () => {
+      // Fallback to CDN texture if local fails
+      loader.load(
+        'https://unpkg.com/three@0.160.0/examples/textures/planets/moon_1024.jpg',
+        (tex) => {
+          if ('colorSpace' in tex) tex.colorSpace = THREE.SRGBColorSpace;
+          else tex.encoding = 3001;
+          tex.anisotropy = maxAniso;
+          material.map = tex;
+          material.needsUpdate = true;
+        }
+      );
+    }
+  );
+
+  // Bump map (NASA SVS LDEM elevation — real crater depth)
+  loader.load(
+    'img/moon-bump.jpg',
+    (tex) => {
+      tex.anisotropy = maxAniso;
+      material.bumpMap = tex;
+      material.bumpScale = 0.025;
+      material.needsUpdate = true;
+    }
   );
 
   // Lighting — dramatic side light from the left
