@@ -1,0 +1,718 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bourne International — Villas de lujo en Moraira y Costa Blanca</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f4efe8;
+    --cream-soft: #ede5d6;
+    --sand: #e6dccc;
+    --navy: #1f2a3d;
+    --navy-soft: #2a3550;
+    --taupe: #a89377;
+    --taupe-deep: #6f5e48;
+    --terracotta: #b76b3f;
+    --ink: #1a1d24;
+    --ink-soft: #4d4a45;
+    --line: rgba(31, 42, 61, 0.12);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--cream); color: var(--ink); -webkit-font-smoothing: antialiased; }
+  body { font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; }
+
+  .display { font-family: 'Cormorant Garamond', serif; font-weight: 400; letter-spacing: -0.01em; }
+  .micro { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; }
+  .italic-serif { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; }
+
+  /* ---------- TOP BAR ---------- */
+  .topbar {
+    background: var(--navy);
+    color: var(--cream);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    padding: 9px 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .topbar .langs { display: flex; gap: 18px; }
+  .topbar .langs span { opacity: 0.55; cursor: default; }
+  .topbar .langs span.active { opacity: 1; color: var(--terracotta); }
+  .topbar .meta { display: flex; gap: 28px; opacity: 0.78; }
+  .topbar .meta a { color: inherit; text-decoration: none; }
+
+  /* ---------- HEADER / NAV ---------- */
+  .header {
+    padding: 26px 56px 22px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    background: var(--cream);
+    border-bottom: 1px solid var(--line);
+  }
+  .header nav.left, .header nav.right {
+    display: flex;
+    gap: 30px;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+  .header nav.left { justify-content: flex-start; }
+  .header nav.right { justify-content: flex-end; }
+  .header nav a { color: inherit; text-decoration: none; transition: color 0.2s; }
+  .header nav a:hover { color: var(--terracotta); }
+  .header nav a.dot { color: var(--ink); font-weight: 600; }
+
+  .brand-mark {
+    text-align: center;
+    line-height: 1;
+  }
+  .brand-mark .word {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 30px;
+    letter-spacing: 0.32em;
+    color: var(--navy);
+    padding-left: 0.32em;
+  }
+  .brand-mark .sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.42em;
+    color: var(--taupe-deep);
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative;
+    height: 720px;
+    background: var(--navy);
+    overflow: hidden;
+  }
+  .hero .bg {
+    position: absolute; inset: 0;
+    background-image: url('img/asset-10.jpg');
+    background-size: cover;
+    background-position: center 35%;
+    filter: saturate(1.05) contrast(1.02);
+  }
+  .hero .grad {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, rgba(15,20,32,0.42) 0%, rgba(15,20,32,0.0) 32%, rgba(15,20,32,0.0) 55%, rgba(15,20,32,0.62) 100%),
+      linear-gradient(90deg, rgba(15,20,32,0.45) 0%, rgba(15,20,32,0.0) 55%);
+  }
+  .hero .content {
+    position: relative;
+    height: 100%;
+    padding: 56px 56px 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: var(--cream);
+  }
+  .hero .meta-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .hero .micro-tag {
+    color: rgba(244, 239, 232, 0.78);
+  }
+  .hero .micro-tag .dash {
+    display: inline-block;
+    width: 38px;
+    height: 1px;
+    background: var(--terracotta);
+    vertical-align: middle;
+    margin-right: 14px;
+  }
+  .hero .index {
+    color: rgba(244, 239, 232, 0.55);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 92px;
+    line-height: 0.98;
+    letter-spacing: -0.015em;
+    max-width: 980px;
+    margin-bottom: 28px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: #e8d5c0;
+    font-weight: 300;
+  }
+  .hero .lede {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 1.45;
+    color: rgba(244, 239, 232, 0.85);
+    max-width: 620px;
+    margin-bottom: 36px;
+  }
+  .hero .actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 30px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.25s;
+    cursor: pointer;
+    border: 1px solid transparent;
+  }
+  .btn-primary {
+    background: var(--terracotta);
+    color: var(--cream);
+  }
+  .btn-primary:hover { background: #a35e36; }
+  .btn-ghost {
+    background: transparent;
+    color: var(--cream);
+    border-color: rgba(244, 239, 232, 0.4);
+  }
+  .btn-ghost:hover { border-color: var(--cream); }
+  .btn .arrow { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; letter-spacing: 0; text-transform: none; }
+
+  /* ---------- HERO STATS STRIP ---------- */
+  .strip {
+    background: var(--navy);
+    color: var(--cream);
+    border-top: 1px solid rgba(244, 239, 232, 0.08);
+    padding: 36px 56px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .strip .item { padding: 0 32px; border-right: 1px solid rgba(244, 239, 232, 0.12); }
+  .strip .item:first-child { padding-left: 0; }
+  .strip .item:last-child { border-right: none; padding-right: 0; }
+  .strip .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 48px;
+    line-height: 1;
+    color: #e8d5c0;
+    margin-bottom: 8px;
+  }
+  .strip .num em { font-style: italic; }
+  .strip .lbl {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(244, 239, 232, 0.72);
+    line-height: 1.4;
+  }
+
+  /* ---------- INTRO SECTION ---------- */
+  .intro {
+    padding: 110px 56px 90px;
+    background: var(--cream);
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .intro .label {
+    color: var(--terracotta);
+    margin-bottom: 18px;
+    font-weight: 600;
+  }
+  .intro h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 56px;
+    line-height: 1.05;
+    color: var(--navy);
+    letter-spacing: -0.01em;
+  }
+  .intro h2 em { font-style: italic; color: var(--taupe-deep); }
+  .intro .body p {
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    margin-bottom: 22px;
+  }
+  .intro .body p:first-child::first-letter {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 64px;
+    float: left;
+    line-height: 0.85;
+    margin: 6px 12px 0 0;
+    color: var(--terracotta);
+  }
+  .intro .signature {
+    margin-top: 32px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .intro .signature .who .name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: var(--navy);
+    line-height: 1.1;
+  }
+  .intro .signature .who .role {
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--taupe-deep);
+    margin-top: 4px;
+  }
+
+  /* ---------- PORTFOLIO ---------- */
+  .portfolio {
+    padding: 80px 56px 100px;
+    background: var(--cream-soft);
+  }
+  .portfolio .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 56px;
+  }
+  .portfolio .head h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 1;
+    color: var(--navy);
+    letter-spacing: -0.01em;
+  }
+  .portfolio .head h3 em { font-style: italic; }
+  .portfolio .head .label { color: var(--terracotta); margin-bottom: 12px; }
+  .portfolio .head .right {
+    text-align: right;
+    color: var(--ink-soft);
+    max-width: 360px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .pf-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    grid-template-rows: 360px 360px;
+    gap: 18px;
+  }
+  .pf-card {
+    position: relative;
+    overflow: hidden;
+    background: var(--navy);
+    cursor: pointer;
+  }
+  .pf-card img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s;
+  }
+  .pf-card:hover img { transform: scale(1.04); }
+  .pf-card .overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(15,20,32,0.0) 50%, rgba(15,20,32,0.85) 100%);
+  }
+  .pf-card .info {
+    position: absolute;
+    left: 24px; right: 24px; bottom: 22px;
+    color: var(--cream);
+  }
+  .pf-card .ref {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 8px;
+  }
+  .pf-card .ttl {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    line-height: 1.05;
+    margin-bottom: 8px;
+  }
+  .pf-card .meta {
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: rgba(244, 239, 232, 0.78);
+  }
+  .pf-card .meta span { display: inline-block; margin-right: 14px; }
+  .pf-card .meta span::after { content: '·'; margin-left: 14px; opacity: 0.5; }
+  .pf-card .meta span:last-child::after { content: ''; }
+  .pf-card.feature { grid-row: 1 / 3; }
+
+  /* ---------- CONCIERGE PILLARS ---------- */
+  .pillars {
+    padding: 100px 56px;
+    background: var(--cream);
+  }
+  .pillars .head { text-align: center; margin-bottom: 64px; }
+  .pillars .head .label { color: var(--terracotta); margin-bottom: 18px; }
+  .pillars .head h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 52px;
+    line-height: 1.05;
+    color: var(--navy);
+    max-width: 780px;
+    margin: 0 auto;
+  }
+  .pillars .head h3 em { font-style: italic; }
+  .pillars .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 56px;
+  }
+  .pill {
+    text-align: left;
+  }
+  .pill .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 32px;
+    color: var(--terracotta);
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 16px;
+  }
+  .pill h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 26px;
+    color: var(--navy);
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+  .pill p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- FOOTER ---------- */
+  .footer {
+    background: var(--navy);
+    color: var(--cream);
+    padding: 70px 56px 36px;
+  }
+  .footer .row {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 56px;
+    padding-bottom: 50px;
+    border-bottom: 1px solid rgba(244, 239, 232, 0.12);
+  }
+  .footer h5 {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(244, 239, 232, 0.55);
+    margin-bottom: 18px;
+    font-weight: 500;
+  }
+  .footer .word {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    letter-spacing: 0.32em;
+    color: var(--cream);
+    padding-left: 0.32em;
+    margin-bottom: 14px;
+  }
+  .footer .desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.5;
+    color: rgba(244, 239, 232, 0.78);
+    max-width: 380px;
+  }
+  .footer ul { list-style: none; }
+  .footer ul li { font-size: 14px; line-height: 2; color: rgba(244, 239, 232, 0.82); }
+  .footer ul li a { color: inherit; text-decoration: none; }
+  .footer .contact {
+    font-size: 14px;
+    line-height: 1.85;
+    color: rgba(244, 239, 232, 0.82);
+  }
+  .footer .contact strong { color: var(--cream); font-weight: 600; letter-spacing: 0.02em; }
+  .footer .legal {
+    margin-top: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgba(244, 239, 232, 0.5);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+  }
+  .footer .legal .signature {
+    color: rgba(244, 239, 232, 0.65);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .footer .legal .signature em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    text-transform: none;
+    letter-spacing: 0.04em;
+    margin-left: 6px;
+    color: rgba(244, 239, 232, 0.85);
+  }
+
+</style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="langs">
+      <span class="active">ES</span>
+      <span>EN</span>
+      <span>FR</span>
+      <span>NL</span>
+    </div>
+    <div class="meta">
+      <a href="#">Calle Doctor Calatayud 43-A · 03724 Moraira</a>
+      <a href="#">+34 604 47 25 90</a>
+      <a href="#">Acceso clientes</a>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="header">
+    <nav class="left">
+      <a href="#">Propiedades</a>
+      <a href="#">Moraira</a>
+      <a href="#">Costa Blanca</a>
+      <a href="#">Ibiza</a>
+    </nav>
+    <div class="brand-mark">
+      <div class="word">BOURNE</div>
+      <div class="sub">International · Estate Agency</div>
+    </div>
+    <nav class="right">
+      <a href="#">Concierge</a>
+      <a href="#">Vender</a>
+      <a href="#">Sobre nosotros</a>
+      <a href="#" class="dot">Contacto</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="bg"></div>
+    <div class="grad"></div>
+    <div class="content">
+      <div class="meta-top">
+        <div class="micro micro-tag"><span class="dash"></span>Boutique Estate Agency · Moraira</div>
+        <div class="index">Edición n.º 01 — Primavera</div>
+      </div>
+      <div>
+        <h1>Villas escogidas <em>una a una</em><br>en la Costa Blanca norte.</h1>
+        <p class="lede">Tres décadas de experiencia local conectando compradores internacionales con las propiedades más singulares de Moraira, Jávea y su entorno.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#">Ver portfolio <span class="arrow">→</span></a>
+          <a class="btn btn-ghost" href="#">Concierge privado</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS STRIP -->
+  <section class="strip">
+    <div class="item">
+      <div class="num"><em>30+</em></div>
+      <div class="lbl">Años de experiencia<br>en Costa Blanca norte</div>
+    </div>
+    <div class="item">
+      <div class="num">04</div>
+      <div class="lbl">Idiomas de atención<br>ES · EN · FR · NL</div>
+    </div>
+    <div class="item">
+      <div class="num">06</div>
+      <div class="lbl">Localidades cubiertas<br>Moraira · Jávea · Calpe · Benissa · Benitachell · Ibiza</div>
+    </div>
+    <div class="item">
+      <div class="num"><em>UK</em></div>
+      <div class="lbl">Red internacional<br>Bourne Estate Agents</div>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="intro">
+    <div>
+      <div class="micro label">— Nuestra filosofía</div>
+      <h2>Asesoría <em>personal</em>,<br>no transacciones<br>en serie.</h2>
+    </div>
+    <div class="body">
+      <p>Bourne International es una agencia inmobiliaria boutique con base en Moraira, brazo español de una red británica consolidada. Cada propiedad se selecciona, se documenta y se presenta con criterio: no listamos lo que no recomendaríamos a un amigo.</p>
+      <p>Trabajamos con compradores que buscan algo concreto — la villa con vistas al Peñón, el apartamento junto al puerto, el proyecto llave en mano en una parcela que aún no existe en ningún portal. Lo que no encontramos publicado, lo localizamos a través de nuestra red privada.</p>
+      <div class="signature">
+        <div class="who">
+          <div class="name">María José Martínez <span class="italic-serif" style="color:var(--taupe-deep);font-size:18px;">&amp; Stuart Mitchell</span></div>
+          <div class="role">Co-fundadores</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section class="portfolio">
+    <div class="head">
+      <div>
+        <div class="micro label">— Selección actual</div>
+        <h3>Propiedades <em>destacadas</em></h3>
+      </div>
+      <div class="right">
+        Villas, apartamentos y proyectos llave en mano en las localidades más exclusivas del norte de la Costa Blanca.
+      </div>
+    </div>
+    <div class="pf-grid">
+      <div class="pf-card feature">
+        <img src="img/asset-18.jpg" alt="Villa con vistas al mar">
+        <div class="overlay"></div>
+        <div class="info">
+          <div class="ref">Ref. MOR · Moraira</div>
+          <div class="ttl">Villa con vistas abiertas<br>al Mediterráneo</div>
+          <div class="meta"><span>Costa Blanca norte</span><span>Obra nueva</span></div>
+        </div>
+      </div>
+      <div class="pf-card">
+        <img src="img/asset-15.jpg" alt="Propiedad con piscina">
+        <div class="overlay"></div>
+        <div class="info">
+          <div class="ref">Ref. JAV · Jávea</div>
+          <div class="ttl">Propiedad junto al mar</div>
+          <div class="meta"><span>Reventa</span></div>
+        </div>
+      </div>
+      <div class="pf-card">
+        <img src="img/asset-07.jpg" alt="Villa contemporánea">
+        <div class="overlay"></div>
+        <div class="info">
+          <div class="ref">Ref. BNS · Benissa</div>
+          <div class="ttl">Diseño contemporáneo</div>
+          <div class="meta"><span>Llave en mano</span></div>
+        </div>
+      </div>
+      <div class="pf-card">
+        <img src="img/asset-09.jpg" alt="Interior editorial">
+        <div class="overlay"></div>
+        <div class="info">
+          <div class="ref">Ref. CAL · Calpe</div>
+          <div class="ttl">Detalle interior</div>
+          <div class="meta"><span>Reforma integral</span></div>
+        </div>
+      </div>
+      <div class="pf-card">
+        <img src="img/asset-13.jpg" alt="Vivienda con carácter">
+        <div class="overlay"></div>
+        <div class="info">
+          <div class="ref">Ref. BTC · Benitachell</div>
+          <div class="ttl">Residencia con carácter</div>
+          <div class="meta"><span>Exclusiva</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONCIERGE PILLARS -->
+  <section class="pillars">
+    <div class="head">
+      <div class="micro label">— El servicio Bourne</div>
+      <h3>Más que una transacción.<br><em>Acompañamiento de principio a fin.</em></h3>
+    </div>
+    <div class="grid">
+      <div class="pill">
+        <div class="num">i.</div>
+        <h4>Búsqueda dirigida</h4>
+        <p>Definimos el perfil exacto de la propiedad — orientación, parcela, vistas, vecindario — y la encontramos, aunque no esté publicada. Acceso a nuestra red privada de propietarios y desarrolladores.</p>
+      </div>
+      <div class="pill">
+        <div class="num">ii.</div>
+        <h4>Asesoría completa</h4>
+        <p>Apoyo legal, fiscal y financiero. Gestión de NIE, hipoteca, notaría y registro. Coordinación con arquitectos, interioristas y constructores cuando hace falta reforma o proyecto nuevo.</p>
+      </div>
+      <div class="pill">
+        <div class="num">iii.</div>
+        <h4>Servicio post-venta</h4>
+        <p>Mantenimiento, gestión de alquileres, asistencia en residencia. Una sola persona que conoce su propiedad y a usted, accesible directamente, en su idioma.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="row">
+      <div>
+        <div class="word">BOURNE</div>
+        <div class="desc">Boutique estate agency con sede en Moraira, brazo español de Bourne Estate Agents (Reino Unido).</div>
+      </div>
+      <div>
+        <h5>Localidades</h5>
+        <ul>
+          <li><a href="#">Moraira</a></li>
+          <li><a href="#">Jávea</a></li>
+          <li><a href="#">Calpe</a></li>
+          <li><a href="#">Benissa</a></li>
+          <li><a href="#">Benitachell</a></li>
+          <li><a href="#">Ibiza · Formentera</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Servicios</h5>
+        <ul>
+          <li><a href="#">Compra</a></li>
+          <li><a href="#">Venta</a></li>
+          <li><a href="#">Obra nueva</a></li>
+          <li><a href="#">Concierge</a></li>
+          <li><a href="#">Valoraciones</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contacto</h5>
+        <div class="contact">
+          <strong>+34 604 47 25 90</strong><br>
+          Calle Doctor Calatayud 43-A<br>
+          03724 Moraira, Alicante<br>
+          <span style="color:rgba(244,239,232,0.6);">Lun a Vie · 10:00 – 18:00</span><br>
+          <a href="#" style="color:var(--terracotta);text-decoration:none;">@bourneinternationalspain</a>
+        </div>
+      </div>
+    </div>
+    <div class="legal">
+      <div>© 2026 Bourne International — Boutique Estate Agency</div>
+      <div class="signature">Diseño propuesto por <em>Kenaz Studio</em></div>
+    </div>
+  </footer>
+
+</body>
+</html>

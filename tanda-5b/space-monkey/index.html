@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Space Monkey Calpe — Asociación cannábica privada</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Fraunces:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #05080f;
+    --ink-2: #0b101c;
+    --ink-3: #131a2c;
+    --line: rgba(255,255,255,0.08);
+    --line-2: rgba(255,255,255,0.16);
+    --paper: #f4f1ea;
+    --mute: #9aa3b8;
+    --cyan: #7fd1d9;
+    --cyan-soft: #a6e3e9;
+    --gold: #d9b878;
+    --gold-soft: #ead7af;
+    --moon-1: #f7eedd;
+    --moon-2: #d8c9a4;
+    --moon-3: #6b5e44;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: "Space Grotesk", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    overflow-x: hidden;
+  }
+  .display { font-family: "Fraunces", serif; font-weight: 300; letter-spacing: -0.02em; }
+  .mono { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+
+  /* ── NAV ─────────────────────────────────────────────── */
+  .nav {
+    position: absolute; top: 0; left: 0; right: 0;
+    z-index: 30;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 28px 56px;
+    gap: 24px;
+  }
+  .nav-left { display: flex; align-items: center; gap: 14px; }
+  .nav-right { display: flex; align-items: center; gap: 28px; justify-content: flex-end; }
+  .nav-right a { color: var(--paper); text-decoration: none; opacity: 0.78; transition: opacity 0.2s; }
+  .nav-right a:hover { opacity: 1; }
+  .brand {
+    display: flex; align-items: center; gap: 14px;
+    color: var(--paper);
+    text-decoration: none;
+  }
+  .brand-mark {
+    width: 42px; height: 42px;
+    border: 1px solid var(--line-2);
+    border-radius: 50%;
+    display: grid; place-items: center;
+    position: relative;
+    background:
+      radial-gradient(circle at 35% 35%, rgba(247,238,221,0.25), transparent 55%),
+      radial-gradient(circle at 60% 70%, rgba(247,238,221,0.12), transparent 55%),
+      var(--ink-2);
+  }
+  .brand-mark::after {
+    content: ""; position: absolute; inset: 0;
+    border-radius: 50%;
+    box-shadow: inset 0 0 14px rgba(247,238,221,0.18);
+  }
+  .brand-mark svg { width: 22px; height: 22px; position: relative; z-index: 1; }
+  .brand-name { font-family: "Fraunces", serif; font-weight: 400; font-size: 18px; letter-spacing: 0.02em; }
+  .brand-name em { font-style: italic; color: var(--moon-2); }
+
+  .nav-status {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 14px;
+    border: 1px solid var(--line-2);
+    border-radius: 999px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cyan-soft);
+    background: rgba(127, 209, 217, 0.06);
+  }
+  .nav-status .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--cyan);
+    box-shadow: 0 0 8px var(--cyan), 0 0 16px rgba(127,209,217,0.5);
+  }
+
+  /* ── HERO ────────────────────────────────────────────── */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 880px;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background-image: url("./img/hero-lounge.jpg");
+    background-size: cover;
+    background-position: center;
+    filter: saturate(0.85) contrast(1.05);
+    transform: scale(1.04);
+  }
+  .hero-bg::after {
+    content: ""; position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 45%, rgba(5,8,15,0) 0%, rgba(5,8,15,0.35) 55%, rgba(5,8,15,0.85) 100%),
+      linear-gradient(180deg, rgba(5,8,15,0.55) 0%, rgba(5,8,15,0.2) 35%, rgba(5,8,15,0.85) 100%);
+  }
+
+  /* ─ MOON: centered, dominant ─ */
+  .moon {
+    position: absolute;
+    top: 46%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 420px; height: 420px;
+    border-radius: 50%;
+    z-index: 1;
+    background:
+      radial-gradient(circle at 38% 32%, #fdf6e1 0%, #ecdcb2 28%, #c3ad7d 55%, #6e5d3e 85%, #3d3220 100%);
+    box-shadow:
+      inset -30px -40px 80px rgba(40, 28, 12, 0.55),
+      inset 20px 18px 40px rgba(255, 244, 210, 0.18),
+      0 0 80px rgba(247, 238, 221, 0.18),
+      0 0 180px rgba(247, 238, 221, 0.10),
+      0 0 360px rgba(247, 238, 221, 0.06);
+    opacity: 0.92;
+  }
+  .moon::before {
+    /* craters */
+    content: "";
+    position: absolute; inset: 0;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 28% 38%, rgba(60,48,28,0.55) 0 8px, transparent 9px),
+      radial-gradient(circle at 62% 30%, rgba(60,48,28,0.45) 0 12px, transparent 13px),
+      radial-gradient(circle at 70% 60%, rgba(60,48,28,0.5) 0 6px, transparent 7px),
+      radial-gradient(circle at 40% 68%, rgba(60,48,28,0.35) 0 14px, transparent 15px),
+      radial-gradient(circle at 52% 50%, rgba(60,48,28,0.3) 0 5px, transparent 6px),
+      radial-gradient(circle at 22% 60%, rgba(60,48,28,0.4) 0 9px, transparent 10px);
+    mix-blend-mode: multiply;
+    opacity: 0.85;
+  }
+  .moon::after {
+    /* atmospheric halo */
+    content: "";
+    position: absolute;
+    inset: -120px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(247,238,221,0.10) 0%, rgba(247,238,221,0.04) 35%, transparent 65%);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  /* ─ Orbit ring ─ */
+  .orbit {
+    position: absolute;
+    top: 46%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 720px; height: 720px;
+    border-radius: 50%;
+    border: 1px solid rgba(247, 238, 221, 0.12);
+    z-index: 1;
+    pointer-events: none;
+  }
+  .orbit::before {
+    content: ""; position: absolute;
+    top: 8%; left: 50%;
+    transform: translateX(-50%);
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--cyan);
+    box-shadow: 0 0 8px var(--cyan), 0 0 16px var(--cyan-soft);
+  }
+
+  /* ─ Hero content ─ */
+  .hero-content {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: end;
+    padding: 0 56px 80px;
+    gap: 48px;
+  }
+  .hero-headline {
+    align-self: end;
+  }
+  .hero-eyebrow {
+    color: var(--cyan-soft);
+    margin-bottom: 24px;
+    display: inline-flex; align-items: center; gap: 12px;
+  }
+  .hero-eyebrow::before {
+    content: ""; width: 28px; height: 1px; background: var(--cyan-soft);
+  }
+  .hero-title {
+    font-size: clamp(52px, 6.4vw, 96px);
+    line-height: 0.96;
+    color: var(--paper);
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--moon-2);
+    font-weight: 300;
+  }
+  .hero-title .accent {
+    color: var(--cyan-soft);
+    font-style: italic;
+    font-weight: 300;
+  }
+  .hero-sub {
+    margin-top: 28px;
+    font-size: 17px;
+    line-height: 1.55;
+    color: rgba(244, 241, 234, 0.72);
+    max-width: 480px;
+  }
+  .hero-cta {
+    margin-top: 36px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 24px;
+    border-radius: 999px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: transform 0.2s, background 0.2s, border-color 0.2s;
+  }
+  .btn-primary {
+    background: var(--paper);
+    color: var(--ink);
+    border: 1px solid var(--paper);
+  }
+  .btn-primary:hover { transform: translateY(-1px); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--paper);
+    border: 1px solid var(--line-2);
+  }
+  .btn-ghost:hover { border-color: var(--paper); }
+
+  .hero-meta {
+    align-self: end;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    padding-bottom: 6px;
+    border-top: 1px solid var(--line);
+    padding-top: 32px;
+  }
+  .meta-block .mono { color: var(--mute); margin-bottom: 10px; }
+  .meta-block p { font-family: "Fraunces", serif; font-weight: 300; font-size: 18px; line-height: 1.45; color: var(--paper); }
+  .meta-block p strong { font-weight: 500; color: var(--cyan-soft); }
+
+  /* ── COORDINATES STRIP ────────────────────────────── */
+  .coords {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 4;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--mute);
+    writing-mode: vertical-rl;
+  }
+  .coords.left { left: 22px; }
+  .coords.right { right: 22px; transform: translateY(-50%) rotate(180deg); }
+
+  /* ── BELOW-HERO SECTION (continuity for full page) ─ */
+  .section {
+    background: var(--ink);
+    padding: 120px 56px;
+    border-top: 1px solid var(--line);
+  }
+  .section-header {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 80px;
+    margin-bottom: 80px;
+  }
+  .section-eyebrow { color: var(--mute); margin-bottom: 16px; }
+  .section-title {
+    font-size: clamp(36px, 4vw, 56px);
+    line-height: 1.05;
+    color: var(--paper);
+  }
+  .section-title em { color: var(--moon-2); font-style: italic; font-weight: 300; }
+  .section-lead {
+    font-size: 17px;
+    line-height: 1.6;
+    color: rgba(244,241,234,0.72);
+    max-width: 560px;
+  }
+  .principles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .principle {
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 36px 32px;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0) 100%),
+      var(--ink-2);
+    position: relative;
+  }
+  .principle .num {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: var(--cyan);
+    margin-bottom: 28px;
+  }
+  .principle h3 {
+    font-family: "Fraunces", serif;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.25;
+    margin-bottom: 14px;
+    color: var(--paper);
+  }
+  .principle h3 em { font-style: italic; color: var(--moon-2); }
+  .principle p {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: rgba(244,241,234,0.66);
+  }
+
+  /* ── ACCESS / FOOTER ─────────────────────────────── */
+  .access {
+    background: var(--ink-2);
+    padding: 100px 56px;
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .access h2 {
+    font-family: "Fraunces", serif;
+    font-weight: 300;
+    font-size: clamp(36px, 4.4vw, 56px);
+    line-height: 1.05;
+    color: var(--paper);
+  }
+  .access h2 em { font-style: italic; color: var(--moon-2); }
+  .access p { margin-top: 20px; font-size: 16px; line-height: 1.6; color: rgba(244,241,234,0.7); max-width: 540px; }
+  .steps {
+    display: grid;
+    gap: 0;
+    border-top: 1px solid var(--line);
+  }
+  .step {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: center;
+  }
+  .step .num {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--cyan);
+  }
+  .step h4 {
+    font-family: "Fraunces", serif;
+    font-weight: 400;
+    font-size: 17px;
+    color: var(--paper);
+    margin-bottom: 4px;
+  }
+  .step p { font-size: 13.5px; color: rgba(244,241,234,0.6); line-height: 1.5; margin: 0; }
+
+  .footer {
+    background: var(--ink);
+    padding: 40px 56px 32px;
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+  .footer-brand { display: flex; align-items: center; gap: 12px; }
+  .footer-brand .brand-name { font-size: 16px; }
+  .footer-meta { font-family: "JetBrains Mono", monospace; font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mute); text-align: center; }
+  .footer-kenaz {
+    text-align: right;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mute);
+  }
+  .footer-kenaz a { color: var(--paper); text-decoration: none; border-bottom: 1px solid var(--line-2); padding-bottom: 1px; }
+  .footer-kenaz a:hover { border-color: var(--paper); }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-left">
+    <a href="#" class="brand" aria-label="Space Monkey Calpe">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="16" r="11" stroke="#f4f1ea" stroke-width="1.2" opacity="0.85"/>
+          <circle cx="12" cy="13" r="1.4" fill="#f4f1ea" opacity="0.7"/>
+          <circle cx="20" cy="18" r="1" fill="#f4f1ea" opacity="0.5"/>
+          <circle cx="14" cy="20" r="0.8" fill="#f4f1ea" opacity="0.6"/>
+        </svg>
+      </span>
+      <span class="brand-name">Space Monkey <em>Calpe</em></span>
+    </a>
+  </div>
+  <div class="nav-status">
+    <span class="dot"></span>
+    <span>Acceso reservado a socios — +18</span>
+  </div>
+  <div class="nav-right">
+    <a href="#asociacion">Asociación</a>
+    <a href="#cultura">Cultura</a>
+    <a href="#acceso">Hazte socio</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" role="img" aria-label="Interior del lounge privado de Space Monkey en Calpe"></div>
+
+  <div class="moon" aria-hidden="true"></div>
+  <div class="orbit" aria-hidden="true"></div>
+
+  <div class="coords left">38° 38′ 41″ N · Calpe</div>
+  <div class="coords right">0° 03′ 49″ E · Mediterráneo</div>
+
+  <div class="hero-content">
+    <div class="hero-headline">
+      <div class="hero-eyebrow mono">Asociación cannábica privada · Calpe</div>
+      <h1 class="display hero-title">
+        Un club <em>privado</em><br/>
+        bajo la <span class="accent">misma luna</span>.
+      </h1>
+      <p class="hero-sub">
+        Asociación sin ánimo de lucro para mayores de 18 años. Cultivo
+        compartido, cultura cannábica responsable y comunidad. Acceso
+        únicamente a socios registrados conforme a la normativa vigente.
+      </p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#acceso">
+          <span>Solicitar acceso</span>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8m0 0L6.5 2.5M10 6 6.5 9.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="#asociacion">Conocer la asociación</a>
+      </div>
+    </div>
+
+    <aside class="hero-meta" aria-label="Información del club">
+      <div class="meta-block">
+        <div class="mono">Ubicación</div>
+        <p>Av. Ejército Español<br/><strong>Edif. Apolo VII · Local 10</strong><br/>Calpe, Alicante</p>
+      </div>
+      <div class="meta-block">
+        <div class="mono">Contacto directo</div>
+        <p>WhatsApp <strong>+34 633 328 104</strong><br/>Instagram <strong>@spacemonkeycalpe</strong></p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- PRINCIPIOS -->
+<section class="section" id="asociacion">
+  <header class="section-header">
+    <div>
+      <div class="section-eyebrow mono">/ La asociación</div>
+    </div>
+    <div>
+      <h2 class="section-title">Un espacio común, una <em>cultura compartida</em>.</h2>
+      <p class="section-lead">
+        Space Monkey nace en Calpe como punto de encuentro para
+        consumidores adultos que buscan un entorno cuidado, legal y
+        privado. No somos un comercio: somos una asociación que
+        organiza el cultivo y reparto entre sus socios bajo la
+        normativa española.
+      </p>
+    </div>
+  </header>
+
+  <div class="principles">
+    <article class="principle">
+      <div class="num">/ 01</div>
+      <h3>Sin ánimo de <em>lucro</em></h3>
+      <p>
+        Funcionamos con cuota anual. Los recursos cubren cultivo,
+        local y actividades. Cuentas claras, gobernanza compartida.
+      </p>
+    </article>
+    <article class="principle">
+      <div class="num">/ 02</div>
+      <h3>Acceso <em>privado</em></h3>
+      <p>
+        Solo socios mayores de 18 años, registrados previamente. La
+        dirección no se publica abiertamente; se comparte tras la
+        validación de la solicitud.
+      </p>
+    </article>
+    <article class="principle">
+      <div class="num">/ 03</div>
+      <h3>Cultura <em>responsable</em></h3>
+      <p>
+        Charlas, catas, cine y eventos en torno a la cultura
+        cannábica. Espacio sin presión, sin cliché, pensado para
+        socios que valoran el detalle.
+      </p>
+    </article>
+  </div>
+</section>
+
+<!-- ACCESO -->
+<section class="access" id="acceso">
+  <div>
+    <div class="section-eyebrow mono" style="margin-bottom:18px;">/ Hacerse socio</div>
+    <h2>Tres pasos para <em>entrar en órbita</em>.</h2>
+    <p>
+      El proceso de alta está pensado para garantizar que la
+      asociación sigue siendo un entorno privado y seguro. No se
+      vende a no socios. No se admite acceso por redes ni en puerta
+      sin solicitud previa.
+    </p>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="num">01</div>
+      <div>
+        <h4>Solicitud por WhatsApp</h4>
+        <p>Escríbenos al +34 633 328 104. Te enviamos el formulario y resolvemos dudas.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="num">02</div>
+      <div>
+        <h4>Verificación de edad</h4>
+        <p>Necesitamos DNI o documento de identidad válido. Edad mínima: 18 años.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="num">03</div>
+      <div>
+        <h4>Bienvenida y cuota</h4>
+        <p>Reunión breve en el local, firma de estatutos y abono de la cuota anual.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" id="contacto">
+  <div class="footer-brand">
+    <span class="brand-mark" aria-hidden="true">
+      <svg viewBox="0 0 32 32" fill="none">
+        <circle cx="16" cy="16" r="11" stroke="#f4f1ea" stroke-width="1.2" opacity="0.85"/>
+        <circle cx="12" cy="13" r="1.4" fill="#f4f1ea" opacity="0.7"/>
+        <circle cx="20" cy="18" r="1" fill="#f4f1ea" opacity="0.5"/>
+      </svg>
+    </span>
+    <span class="brand-name">Space Monkey <em>Calpe</em></span>
+  </div>
+  <div class="footer-meta">+18 · Acceso reservado a socios · Calpe, Alicante</div>
+  <div class="footer-kenaz">
+    Diseño propuesto por <a href="https://kenaz.studio" target="_blank" rel="noopener">Kenaz Studio</a>
+  </div>
+</footer>
+
+</body>
+</html>
