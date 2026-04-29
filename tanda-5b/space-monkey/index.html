@@ -3,103 +3,156 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Space Monkey Calpe — Asociación cannábica privada</title>
+<title>Space Monkey Calpe — Asociacion cannabica privada</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Fraunces:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --ink: #05080f;
-    --ink-2: #0b101c;
-    --ink-3: #131a2c;
-    --line: rgba(255,255,255,0.08);
-    --line-2: rgba(255,255,255,0.16);
-    --paper: #f4f1ea;
-    --mute: #9aa3b8;
-    --cyan: #7fd1d9;
-    --cyan-soft: #a6e3e9;
+    --void: #05080f;
+    --void-2: #0a0e1a;
+    --void-3: #11162a;
+    --line: rgba(244,237,224,0.08);
+    --line-2: rgba(244,237,224,0.18);
+    --cream: #f4ede0;
+    --cream-soft: rgba(244,237,224,0.74);
+    --cream-mute: rgba(244,237,224,0.52);
+    --copper: #c49a6c;
+    --copper-soft: #d8b48a;
     --gold: #d9b878;
-    --gold-soft: #ead7af;
-    --moon-1: #f7eedd;
-    --moon-2: #d8c9a4;
-    --moon-3: #6b5e44;
+    --nebula: #7B5BA8;
+    --nebula-soft: #a78cd1;
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html, body {
-    background: var(--ink);
-    color: var(--paper);
-    font-family: "Space Grotesk", system-ui, sans-serif;
+    background: var(--void);
+    color: var(--cream);
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    font-weight: 400;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-  }
-  body {
     overflow-x: hidden;
   }
-  .display { font-family: "Fraunces", serif; font-weight: 300; letter-spacing: -0.02em; }
-  .mono { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+  ::selection { background: var(--copper); color: var(--void); }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
 
-  /* ── NAV ─────────────────────────────────────────────── */
+  .display { font-family: "Fraunces", "Times New Roman", serif; font-weight: 300; letter-spacing: -0.022em; }
+  .display em { font-style: italic; font-weight: 300; color: var(--copper-soft); }
+  .mono {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--cream-mute);
+  }
+
+  /* ── COSMIC ATMOSPHERE LAYER (global decorative) ───── */
+  .cosmos {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 18% 20%, rgba(123,91,168,0.10) 0%, transparent 60%),
+      radial-gradient(ellipse 70% 50% at 85% 80%, rgba(196,154,108,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 30% at 50% 50%, rgba(123,91,168,0.04) 0%, transparent 70%);
+    filter: blur(40px);
+  }
+  .stars {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background-image:
+      radial-gradient(1px 1px at 12% 18%, rgba(244,237,224,0.85) 50%, transparent 100%),
+      radial-gradient(1px 1px at 28% 64%, rgba(244,237,224,0.55) 50%, transparent 100%),
+      radial-gradient(1.4px 1.4px at 47% 22%, rgba(244,237,224,0.7) 50%, transparent 100%),
+      radial-gradient(1px 1px at 62% 81%, rgba(244,237,224,0.5) 50%, transparent 100%),
+      radial-gradient(1px 1px at 78% 12%, rgba(244,237,224,0.65) 50%, transparent 100%),
+      radial-gradient(1.2px 1.2px at 88% 56%, rgba(244,237,224,0.6) 50%, transparent 100%),
+      radial-gradient(1px 1px at 7% 92%, rgba(244,237,224,0.45) 50%, transparent 100%),
+      radial-gradient(1px 1px at 35% 38%, rgba(217,184,120,0.55) 50%, transparent 100%),
+      radial-gradient(1px 1px at 95% 33%, rgba(244,237,224,0.55) 50%, transparent 100%),
+      radial-gradient(1px 1px at 55% 92%, rgba(244,237,224,0.4) 50%, transparent 100%);
+    background-size: 100% 100%;
+    animation: twinkle 9s ease-in-out infinite alternate;
+    opacity: 0.55;
+  }
+  @keyframes twinkle {
+    0%   { opacity: 0.35; }
+    50%  { opacity: 0.65; }
+    100% { opacity: 0.45; }
+  }
+  .grain {
+    position: fixed; inset: 0; pointer-events: none; z-index: 1;
+    opacity: 0.05; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.96 0 0 0 0 0.93 0 0 0 0 0.88 0 0 0 0.6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  /* ── NAV ──────────────────────────────────────────── */
   .nav {
     position: absolute; top: 0; left: 0; right: 0;
     z-index: 30;
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    padding: 28px 56px;
+    padding: 30px 56px;
     gap: 24px;
   }
-  .nav-left { display: flex; align-items: center; gap: 14px; }
-  .nav-right { display: flex; align-items: center; gap: 28px; justify-content: flex-end; }
-  .nav-right a { color: var(--paper); text-decoration: none; opacity: 0.78; transition: opacity 0.2s; }
-  .nav-right a:hover { opacity: 1; }
-  .brand {
-    display: flex; align-items: center; gap: 14px;
-    color: var(--paper);
-    text-decoration: none;
+  .nav-left  { display: flex; align-items: center; gap: 14px; }
+  .nav-right { display: flex; align-items: center; gap: 30px; justify-content: flex-end; }
+  .nav-right a {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cream-soft);
+    transition: color 0.25s ease;
   }
+  .nav-right a:hover { color: var(--copper-soft); }
+
+  .brand { display: flex; align-items: center; gap: 14px; color: var(--cream); }
   .brand-mark {
-    width: 42px; height: 42px;
+    width: 44px; height: 44px;
     border: 1px solid var(--line-2);
     border-radius: 50%;
     display: grid; place-items: center;
     position: relative;
     background:
-      radial-gradient(circle at 35% 35%, rgba(247,238,221,0.25), transparent 55%),
-      radial-gradient(circle at 60% 70%, rgba(247,238,221,0.12), transparent 55%),
-      var(--ink-2);
+      radial-gradient(circle at 35% 32%, rgba(244,237,224,0.32), transparent 55%),
+      radial-gradient(circle at 62% 70%, rgba(244,237,224,0.15), transparent 55%),
+      var(--void-2);
+    box-shadow: inset 0 0 18px rgba(244,237,224,0.12), 0 0 24px rgba(123,91,168,0.10);
   }
-  .brand-mark::after {
-    content: ""; position: absolute; inset: 0;
-    border-radius: 50%;
-    box-shadow: inset 0 0 14px rgba(247,238,221,0.18);
-  }
-  .brand-mark svg { width: 22px; height: 22px; position: relative; z-index: 1; }
-  .brand-name { font-family: "Fraunces", serif; font-weight: 400; font-size: 18px; letter-spacing: 0.02em; }
-  .brand-name em { font-style: italic; color: var(--moon-2); }
+  .brand-mark svg { width: 22px; height: 22px; }
+  .brand-name { font-family: "Fraunces", serif; font-weight: 400; font-size: 18px; letter-spacing: 0.01em; }
+  .brand-name em { font-style: italic; color: var(--copper-soft); }
 
   .nav-status {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 8px 14px;
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 9px 16px;
     border: 1px solid var(--line-2);
     border-radius: 999px;
     font-family: "JetBrains Mono", monospace;
     font-size: 10px;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--cyan-soft);
-    background: rgba(127, 209, 217, 0.06);
+    color: var(--copper-soft);
+    background: rgba(196,154,108,0.05);
+    backdrop-filter: blur(8px);
   }
   .nav-status .dot {
     width: 6px; height: 6px; border-radius: 50%;
-    background: var(--cyan);
-    box-shadow: 0 0 8px var(--cyan), 0 0 16px rgba(127,209,217,0.5);
+    background: var(--copper);
+    box-shadow: 0 0 8px var(--copper), 0 0 18px rgba(196,154,108,0.6);
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: 0.55; transform: scale(0.85); }
   }
 
-  /* ── HERO ────────────────────────────────────────────── */
+  /* ── HERO ─────────────────────────────────────────── */
   .hero {
     position: relative;
+    min-height: 100vh;
     height: 100vh;
-    min-height: 880px;
     overflow: hidden;
     isolation: isolate;
   }
@@ -108,316 +161,734 @@
     background-image: url("./img/hero-lounge.jpg");
     background-size: cover;
     background-position: center;
-    filter: saturate(0.85) contrast(1.05);
+    filter: saturate(0.92) contrast(1.06);
     transform: scale(1.04);
+    animation: drift 22s ease-in-out infinite alternate;
+  }
+  @keyframes drift {
+    0%   { transform: scale(1.04) translate(0, 0); }
+    100% { transform: scale(1.07) translate(-1%, -0.8%); }
   }
   .hero-bg::after {
     content: ""; position: absolute; inset: 0;
     background:
-      radial-gradient(ellipse 80% 60% at 50% 45%, rgba(5,8,15,0) 0%, rgba(5,8,15,0.35) 55%, rgba(5,8,15,0.85) 100%),
-      linear-gradient(180deg, rgba(5,8,15,0.55) 0%, rgba(5,8,15,0.2) 35%, rgba(5,8,15,0.85) 100%);
+      radial-gradient(ellipse 90% 65% at 50% 38%, rgba(5,8,15,0) 0%, rgba(5,8,15,0.32) 50%, rgba(5,8,15,0.88) 100%),
+      linear-gradient(180deg, rgba(5,8,15,0.55) 0%, rgba(5,8,15,0.18) 30%, rgba(5,8,15,0.92) 100%);
   }
 
-  /* ─ MOON: centered, dominant ─ */
-  .moon {
+  /* Vertical coordinate strips */
+  .coords {
     position: absolute;
-    top: 46%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 420px; height: 420px;
-    border-radius: 50%;
-    z-index: 1;
-    background:
-      radial-gradient(circle at 38% 32%, #fdf6e1 0%, #ecdcb2 28%, #c3ad7d 55%, #6e5d3e 85%, #3d3220 100%);
-    box-shadow:
-      inset -30px -40px 80px rgba(40, 28, 12, 0.55),
-      inset 20px 18px 40px rgba(255, 244, 210, 0.18),
-      0 0 80px rgba(247, 238, 221, 0.18),
-      0 0 180px rgba(247, 238, 221, 0.10),
-      0 0 360px rgba(247, 238, 221, 0.06);
-    opacity: 0.92;
+    top: 50%; transform: translateY(-50%);
+    z-index: 4;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--cream-mute);
+    writing-mode: vertical-rl;
+    display: flex; align-items: center; gap: 14px;
   }
-  .moon::before {
-    /* craters */
-    content: "";
-    position: absolute; inset: 0;
-    border-radius: 50%;
-    background:
-      radial-gradient(circle at 28% 38%, rgba(60,48,28,0.55) 0 8px, transparent 9px),
-      radial-gradient(circle at 62% 30%, rgba(60,48,28,0.45) 0 12px, transparent 13px),
-      radial-gradient(circle at 70% 60%, rgba(60,48,28,0.5) 0 6px, transparent 7px),
-      radial-gradient(circle at 40% 68%, rgba(60,48,28,0.35) 0 14px, transparent 15px),
-      radial-gradient(circle at 52% 50%, rgba(60,48,28,0.3) 0 5px, transparent 6px),
-      radial-gradient(circle at 22% 60%, rgba(60,48,28,0.4) 0 9px, transparent 10px);
-    mix-blend-mode: multiply;
-    opacity: 0.85;
-  }
-  .moon::after {
-    /* atmospheric halo */
-    content: "";
-    position: absolute;
-    inset: -120px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(247,238,221,0.10) 0%, rgba(247,238,221,0.04) 35%, transparent 65%);
-    pointer-events: none;
-    z-index: -1;
+  .coords.left  { left: 22px; }
+  .coords.right { right: 22px; transform: translateY(-50%) rotate(180deg); }
+  .coords::before {
+    content: ""; width: 1px; height: 60px;
+    background: linear-gradient(180deg, transparent, var(--copper-soft), transparent);
   }
 
-  /* ─ Orbit ring ─ */
-  .orbit {
-    position: absolute;
-    top: 46%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 720px; height: 720px;
-    border-radius: 50%;
-    border: 1px solid rgba(247, 238, 221, 0.12);
-    z-index: 1;
-    pointer-events: none;
-  }
-  .orbit::before {
-    content: ""; position: absolute;
-    top: 8%; left: 50%;
-    transform: translateX(-50%);
-    width: 4px; height: 4px;
-    border-radius: 50%;
-    background: var(--cyan);
-    box-shadow: 0 0 8px var(--cyan), 0 0 16px var(--cyan-soft);
-  }
-
-  /* ─ Hero content ─ */
   .hero-content {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
+    position: absolute; inset: 0;
+    z-index: 3;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: end;
-    padding: 0 56px 80px;
-    gap: 48px;
+    grid-template-rows: 1fr auto;
+    padding: 0 56px 64px;
   }
   .hero-headline {
     align-self: end;
+    max-width: 940px;
+    animation: rise 1.4s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: 0.15s;
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
   .hero-eyebrow {
-    color: var(--cyan-soft);
-    margin-bottom: 24px;
-    display: inline-flex; align-items: center; gap: 12px;
+    display: inline-flex; align-items: center; gap: 14px;
+    margin-bottom: 30px;
+    color: var(--copper-soft);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
   }
   .hero-eyebrow::before {
-    content: ""; width: 28px; height: 1px; background: var(--cyan-soft);
+    content: ""; width: 32px; height: 1px; background: var(--copper-soft);
   }
+  .hero-eyebrow .glyph { color: var(--cream-soft); font-size: 14px; }
   .hero-title {
-    font-size: clamp(52px, 6.4vw, 96px);
+    font-size: clamp(54px, 6.6vw, 108px);
     line-height: 0.96;
-    color: var(--paper);
-  }
-  .hero-title em {
-    font-style: italic;
-    color: var(--moon-2);
+    color: var(--cream);
     font-weight: 300;
   }
-  .hero-title .accent {
-    color: var(--cyan-soft);
-    font-style: italic;
-    font-weight: 300;
-  }
+  .hero-title em { font-style: italic; color: var(--copper-soft); font-weight: 300; }
+  .hero-title .accent { font-style: italic; color: var(--gold); font-weight: 300; }
   .hero-sub {
     margin-top: 28px;
     font-size: 17px;
-    line-height: 1.55;
-    color: rgba(244, 241, 234, 0.72);
-    max-width: 480px;
+    line-height: 1.6;
+    color: var(--cream-soft);
+    max-width: 540px;
+    font-weight: 300;
   }
   .hero-cta {
-    margin-top: 36px;
-    display: flex; align-items: center; gap: 16px;
+    margin-top: 38px;
+    display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
   }
   .btn {
     display: inline-flex; align-items: center; gap: 10px;
-    padding: 14px 24px;
+    padding: 15px 24px;
     border-radius: 999px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+    backdrop-filter: blur(6px);
+  }
+  .btn-primary {
+    background: var(--cream);
+    color: var(--void);
+    border: 1px solid var(--cream);
+  }
+  .btn-primary:hover { transform: translateY(-2px); background: var(--copper-soft); border-color: var(--copper-soft); }
+  .btn-ghost {
+    background: rgba(244,237,224,0.04);
+    color: var(--cream);
+    border: 1px solid var(--line-2);
+  }
+  .btn-ghost:hover { border-color: var(--copper-soft); color: var(--copper-soft); }
+
+  .hero-meta {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 36px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line);
+    align-items: end;
+    animation: rise 1.4s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: 0.45s;
+  }
+  .meta-block .mono { color: var(--cream-mute); margin-bottom: 8px; font-size: 10px; }
+  .meta-block p {
+    font-family: "Fraunces", serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.45;
+    color: var(--cream);
+  }
+  .meta-block p strong { font-weight: 500; color: var(--copper-soft); }
+  .meta-block.mission p { font-style: italic; color: var(--cream-soft); }
+
+  /* ── MARQUEE ───────────────────────────────────────── */
+  .marquee {
+    position: relative;
+    background: var(--void-2);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    overflow: hidden;
+    padding: 22px 0;
+  }
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: scroll 42s linear infinite;
+    gap: 60px;
+    padding-right: 60px;
+  }
+  .marquee-track span {
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 1;
+    letter-spacing: 0.01em;
+    color: var(--cream-soft);
+    white-space: nowrap;
+    display: inline-flex; align-items: center; gap: 60px;
+  }
+  .marquee-track span::after {
+    content: "◐";
+    color: var(--copper);
+    font-size: 16px;
+    font-style: normal;
+  }
+  .marquee-track span.alt { color: var(--copper-soft); }
+  .marquee-track span.alt::after { content: "✦"; color: var(--gold); }
+  .marquee-track span.glyph::after { content: "⌬"; color: var(--nebula-soft); }
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* ── SECTIONS BASE ─────────────────────────────────── */
+  section { position: relative; z-index: 2; }
+
+  .section {
+    padding: 140px 56px;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+  .section.tight { padding: 120px 56px; }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 80px;
+    margin-bottom: 88px;
+    align-items: end;
+  }
+  .section-head .left .mono { display: block; margin-bottom: 18px; color: var(--cream-mute); }
+  .section-head .left h2 {
+    font-family: "Fraunces", serif;
+    font-weight: 300;
+    font-size: clamp(40px, 4.6vw, 72px);
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+  }
+  .section-head .left h2 em { font-style: italic; color: var(--copper-soft); }
+  .section-head .right p {
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--cream-soft);
+    max-width: 560px;
+    font-weight: 300;
+  }
+  .section-head .right p + p { margin-top: 14px; }
+
+  .hairline {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--copper-soft), transparent);
+    opacity: 0.5;
+    margin: 0 auto;
+    max-width: 60%;
+  }
+
+  /* ── MANIFESTO ─────────────────────────────────────── */
+  .manifesto {
+    background: linear-gradient(180deg, var(--void) 0%, var(--void-2) 100%);
+    padding: 160px 56px;
+    text-align: left;
+  }
+  .manifesto-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .manifesto .mono { color: var(--copper-soft); margin-bottom: 12px; }
+  .manifesto h2 {
+    font-family: "Fraunces", serif;
+    font-weight: 300;
+    font-size: clamp(36px, 4.4vw, 64px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+  }
+  .manifesto h2 em { font-style: italic; color: var(--copper-soft); }
+  .manifesto-text {
+    font-family: "Fraunces", serif;
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 1.55;
+    color: var(--cream);
+  }
+  .manifesto-text p + p { margin-top: 22px; }
+  .manifesto-text em { color: var(--copper-soft); font-style: italic; }
+  .manifesto-text strong { color: var(--cream); font-weight: 500; font-style: normal; }
+  .manifesto-aside {
+    margin-top: 36px;
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
     font-family: "JetBrains Mono", monospace;
     font-size: 11px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    text-decoration: none;
-    transition: transform 0.2s, background 0.2s, border-color 0.2s;
+    color: var(--cream-mute);
+    display: flex; gap: 48px;
   }
-  .btn-primary {
-    background: var(--paper);
-    color: var(--ink);
-    border: 1px solid var(--paper);
-  }
-  .btn-primary:hover { transform: translateY(-1px); }
-  .btn-ghost {
-    background: transparent;
-    color: var(--paper);
-    border: 1px solid var(--line-2);
-  }
-  .btn-ghost:hover { border-color: var(--paper); }
 
-  .hero-meta {
-    align-self: end;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 28px;
-    padding-bottom: 6px;
-    border-top: 1px solid var(--line);
-    padding-top: 32px;
+  /* ── UNIVERSE GALLERY ─────────────────────────────── */
+  .universe {
+    background: var(--void);
+    padding: 140px 0 0;
   }
-  .meta-block .mono { color: var(--mute); margin-bottom: 10px; }
-  .meta-block p { font-family: "Fraunces", serif; font-weight: 300; font-size: 18px; line-height: 1.45; color: var(--paper); }
-  .meta-block p strong { font-weight: 500; color: var(--cyan-soft); }
-
-  /* ── COORDINATES STRIP ────────────────────────────── */
-  .coords {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 4;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 10px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--mute);
-    writing-mode: vertical-rl;
-  }
-  .coords.left { left: 22px; }
-  .coords.right { right: 22px; transform: translateY(-50%) rotate(180deg); }
-
-  /* ── BELOW-HERO SECTION (continuity for full page) ─ */
-  .section {
-    background: var(--ink);
-    padding: 120px 56px;
-    border-top: 1px solid var(--line);
-  }
-  .section-header {
+  .universe-head {
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 80px;
+    align-items: end;
+    padding: 0 56px;
     margin-bottom: 80px;
   }
-  .section-eyebrow { color: var(--mute); margin-bottom: 16px; }
-  .section-title {
-    font-size: clamp(36px, 4vw, 56px);
-    line-height: 1.05;
-    color: var(--paper);
+  .universe-head .mono { margin-bottom: 16px; }
+  .universe-head h2 {
+    font-family: "Fraunces", serif;
+    font-weight: 300;
+    font-size: clamp(40px, 4.6vw, 72px);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    color: var(--cream);
   }
-  .section-title em { color: var(--moon-2); font-style: italic; font-weight: 300; }
-  .section-lead {
-    font-size: 17px;
-    line-height: 1.6;
-    color: rgba(244,241,234,0.72);
-    max-width: 560px;
+  .universe-head h2 em { font-style: italic; color: var(--copper-soft); }
+  .universe-head .lead {
+    font-size: 17px; line-height: 1.65;
+    color: var(--cream-soft); max-width: 560px;
+    font-weight: 300;
   }
-  .principles {
+  .universe-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 4px;
+    padding: 0 4px;
+  }
+  .tile {
+    position: relative;
+    overflow: hidden;
+    background: var(--void-2);
+    aspect-ratio: 4/3;
+  }
+  .tile.tall { aspect-ratio: 4/5; }
+  .tile.wide { aspect-ratio: 16/9; }
+  .tile.hero-tile { grid-row: span 2; aspect-ratio: 4/5; }
+  .tile img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1), filter 0.9s ease;
+    filter: saturate(0.92) contrast(1.06) brightness(0.95);
+  }
+  .tile:hover img { transform: scale(1.04); filter: saturate(1) contrast(1.1) brightness(1.05); }
+  .tile-tag {
+    position: absolute;
+    top: 22px; left: 22px;
+    z-index: 2;
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 7px 12px;
+    border: 1px solid var(--line-2);
+    border-radius: 999px;
+    background: rgba(5,8,15,0.55);
+    backdrop-filter: blur(8px);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cream-soft);
+  }
+  .tile-tag .num { color: var(--copper-soft); }
+  .tile-caption {
+    position: absolute;
+    bottom: 22px; left: 22px; right: 22px;
+    z-index: 2;
+    display: flex; align-items: end; justify-content: space-between;
+    gap: 24px;
+    color: var(--cream);
+  }
+  .tile-caption h3 {
+    font-family: "Fraunces", serif;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+  .tile-caption h3 em { font-style: italic; color: var(--copper-soft); }
+  .tile-caption .mono { color: var(--cream-mute); }
+  .tile-caption p {
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--cream-soft);
+    max-width: 280px;
+    font-weight: 300;
+  }
+  .tile::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(5,8,15,0.25) 0%, transparent 30%, transparent 60%, rgba(5,8,15,0.85) 100%);
+    pointer-events: none;
+  }
+
+  /* ── MISSIONS ──────────────────────────────────────── */
+  .missions {
+    padding: 160px 56px;
+    background: linear-gradient(180deg, var(--void-2) 0%, var(--void) 100%);
+    border-top: 1px solid var(--line);
+  }
+  .missions-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 32px;
+    margin-top: 80px;
   }
-  .principle {
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    padding: 36px 32px;
-    background:
-      linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0) 100%),
-      var(--ink-2);
+  .mission {
     position: relative;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 36px 32px 32px;
+    background:
+      linear-gradient(180deg, rgba(196,154,108,0.04) 0%, rgba(244,237,224,0) 100%),
+      var(--void-2);
+    transition: transform 0.4s ease, border-color 0.4s ease;
+    overflow: hidden;
+    opacity: 0;
+    animation: rise-slow 1s ease-out both;
   }
-  .principle .num {
+  .mission:nth-child(1) { animation-delay: 0.1s; }
+  .mission:nth-child(2) { animation-delay: 0.25s; }
+  .mission:nth-child(3) { animation-delay: 0.4s; }
+  .mission:nth-child(4) { animation-delay: 0.55s; }
+  .mission:nth-child(5) { animation-delay: 0.7s; }
+  @keyframes rise-slow {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .mission:hover {
+    transform: translateY(-3px);
+    border-color: var(--line-2);
+  }
+  .mission::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--copper-soft), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  .mission:hover::before { opacity: 0.65; }
+  .mission .mission-num {
     font-family: "JetBrains Mono", monospace;
     font-size: 11px;
     letter-spacing: 0.22em;
-    color: var(--cyan);
-    margin-bottom: 28px;
+    color: var(--copper-soft);
+    margin-bottom: 32px;
+    display: flex; align-items: center; gap: 12px;
   }
-  .principle h3 {
+  .mission .mission-num::after {
+    content: ""; flex: 1; height: 1px; background: var(--line);
+  }
+  .mission h3 {
     font-family: "Fraunces", serif;
     font-weight: 400;
-    font-size: 22px;
-    line-height: 1.25;
+    font-size: 26px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
     margin-bottom: 14px;
-    color: var(--paper);
+    color: var(--cream);
   }
-  .principle h3 em { font-style: italic; color: var(--moon-2); }
-  .principle p {
+  .mission h3 em { font-style: italic; color: var(--copper-soft); }
+  .mission p {
     font-size: 14.5px;
-    line-height: 1.6;
-    color: rgba(244,241,234,0.66);
+    line-height: 1.65;
+    color: var(--cream-soft);
+    margin-bottom: 24px;
+    font-weight: 300;
   }
-
-  /* ── ACCESS / FOOTER ─────────────────────────────── */
-  .access {
-    background: var(--ink-2);
-    padding: 100px 56px;
+  .mission .meta {
+    display: flex; align-items: center; gap: 14px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cream-mute);
+    padding-top: 20px;
     border-top: 1px solid var(--line);
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 64px;
-    align-items: center;
   }
-  .access h2 {
+  .mission .meta .glyph { color: var(--gold); font-size: 13px; }
+  .missions-aside {
+    margin-top: 56px;
+    padding: 28px 32px;
+    border: 1px dashed var(--line-2);
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 32px;
+    background: rgba(123,91,168,0.05);
+  }
+  .missions-aside p {
     font-family: "Fraunces", serif;
     font-weight: 300;
-    font-size: clamp(36px, 4.4vw, 56px);
-    line-height: 1.05;
-    color: var(--paper);
+    font-style: italic;
+    font-size: 18px;
+    color: var(--cream);
   }
-  .access h2 em { font-style: italic; color: var(--moon-2); }
-  .access p { margin-top: 20px; font-size: 16px; line-height: 1.6; color: rgba(244,241,234,0.7); max-width: 540px; }
-  .steps {
-    display: grid;
-    gap: 0;
+  .missions-aside p em { color: var(--copper-soft); }
+  .missions-aside .mono {
+    color: var(--copper-soft);
+    flex-shrink: 0;
+  }
+
+  /* ── ACCESS / STEPS ────────────────────────────────── */
+  .access {
+    background: var(--void);
+    padding: 160px 56px;
     border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 100px;
+    align-items: start;
   }
+  .access-left { position: sticky; top: 80px; }
+  .access-left .mono { margin-bottom: 18px; color: var(--cream-mute); }
+  .access-left h2 {
+    font-family: "Fraunces", serif;
+    font-weight: 300;
+    font-size: clamp(40px, 4.6vw, 72px);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+  }
+  .access-left h2 em { font-style: italic; color: var(--copper-soft); }
+  .access-left p {
+    margin-top: 26px;
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--cream-soft);
+    max-width: 480px;
+    font-weight: 300;
+  }
+  .access-left .lead-quote {
+    margin-top: 36px;
+    padding-left: 22px;
+    border-left: 1px solid var(--copper-soft);
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--cream);
+  }
+
+  .steps { display: grid; gap: 0; border-top: 1px solid var(--line); }
   .step {
     display: grid;
-    grid-template-columns: 56px 1fr;
-    padding: 22px 0;
-    border-bottom: 1px solid var(--line);
+    grid-template-columns: 80px 1fr auto;
     align-items: center;
+    gap: 32px;
+    padding: 32px 0;
+    border-bottom: 1px solid var(--line);
+    transition: padding-left 0.3s ease, background 0.3s ease;
   }
+  .step:hover { padding-left: 12px; background: rgba(196,154,108,0.03); }
   .step .num {
     font-family: "JetBrains Mono", monospace;
     font-size: 11px;
-    letter-spacing: 0.18em;
-    color: var(--cyan);
+    letter-spacing: 0.22em;
+    color: var(--copper-soft);
   }
   .step h4 {
     font-family: "Fraunces", serif;
     font-weight: 400;
-    font-size: 17px;
-    color: var(--paper);
-    margin-bottom: 4px;
+    font-size: 22px;
+    line-height: 1.2;
+    color: var(--cream);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
   }
-  .step p { font-size: 13.5px; color: rgba(244,241,234,0.6); line-height: 1.5; margin: 0; }
+  .step h4 em { font-style: italic; color: var(--copper-soft); }
+  .step p {
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--cream-soft);
+    font-weight: 300;
+    max-width: 480px;
+  }
+  .step .arrow {
+    width: 32px; height: 32px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    display: grid; place-items: center;
+    color: var(--cream-mute);
+    transition: border-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  }
+  .step:hover .arrow { border-color: var(--copper-soft); color: var(--copper-soft); transform: translateX(4px); }
 
-  .footer {
-    background: var(--ink);
-    padding: 40px 56px 32px;
+  /* ── FAQ ───────────────────────────────────────────── */
+  .faq {
+    padding: 160px 56px;
+    background: linear-gradient(180deg, var(--void) 0%, var(--void-2) 100%);
     border-top: 1px solid var(--line);
+  }
+  .faq-head {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 80px;
+    margin-bottom: 60px;
+    align-items: end;
+  }
+  .faq-head .mono { color: var(--cream-mute); margin-bottom: 16px; }
+  .faq-head h2 {
+    font-family: "Fraunces", serif;
+    font-weight: 300;
+    font-size: clamp(36px, 4.2vw, 60px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+  }
+  .faq-head h2 em { font-style: italic; color: var(--copper-soft); }
+  .faq-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px 64px;
+    max-width: 1200px;
+  }
+  .faq-item h4 {
+    font-family: "Fraunces", serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1.2;
+    color: var(--copper-soft);
+    margin-bottom: 14px;
+    letter-spacing: -0.01em;
+  }
+  .faq-item p {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--cream-soft);
+    font-weight: 300;
+  }
+  .faq-item p strong { color: var(--cream); font-weight: 500; }
+
+  /* ── CONTACT ───────────────────────────────────────── */
+  .contact {
+    padding: 140px 56px 100px;
+    background: var(--void-2);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 96px;
+    align-items: center;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .contact-left .mono { color: var(--cream-mute); margin-bottom: 18px; }
+  .contact-left h2 {
+    font-family: "Fraunces", serif;
+    font-weight: 300;
+    font-size: clamp(44px, 5.2vw, 80px);
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+    color: var(--cream);
+  }
+  .contact-left h2 em { font-style: italic; color: var(--copper-soft); }
+  .contact-left p {
+    margin-top: 24px;
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--cream-soft);
+    max-width: 460px;
+    font-weight: 300;
+  }
+  .contact-card {
+    border: 1px solid var(--line-2);
+    border-radius: 22px;
+    padding: 40px 36px;
+    background:
+      radial-gradient(ellipse 70% 50% at 100% 0%, rgba(196,154,108,0.10) 0%, transparent 60%),
+      var(--void);
+    display: grid; gap: 26px;
+  }
+  .contact-row { display: grid; gap: 6px; }
+  .contact-row .mono { color: var(--cream-mute); font-size: 10px; }
+  .contact-row .value {
+    font-family: "Fraunces", serif;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.25;
+    color: var(--cream);
+    letter-spacing: -0.01em;
+  }
+  .contact-row .value strong { color: var(--copper-soft); font-weight: 400; }
+  .contact-row .value em { font-style: italic; color: var(--copper-soft); }
+  .contact-divider {
+    height: 1px;
+    background: var(--line);
+  }
+
+  /* ── FOOTER ────────────────────────────────────────── */
+  .footer {
+    background: var(--void);
+    padding: 48px 56px 36px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 32px;
     align-items: center;
   }
-  .footer-brand { display: flex; align-items: center; gap: 12px; }
+  .footer-brand { display: flex; align-items: center; gap: 14px; }
   .footer-brand .brand-name { font-size: 16px; }
-  .footer-meta { font-family: "JetBrains Mono", monospace; font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mute); text-align: center; }
+  .footer-meta {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cream-mute);
+    text-align: center;
+  }
   .footer-kenaz {
     text-align: right;
     font-family: "JetBrains Mono", monospace;
     font-size: 10.5px;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--mute);
+    color: var(--cream-mute);
   }
-  .footer-kenaz a { color: var(--paper); text-decoration: none; border-bottom: 1px solid var(--line-2); padding-bottom: 1px; }
-  .footer-kenaz a:hover { border-color: var(--paper); }
+  .footer-kenaz a {
+    color: var(--cream);
+    border-bottom: 1px solid var(--line-2);
+    padding-bottom: 1px;
+    transition: border-color 0.25s ease, color 0.25s ease;
+  }
+  .footer-kenaz a:hover { color: var(--copper-soft); border-color: var(--copper-soft); }
 
+  /* ── RESPONSIVE ───────────────────────────────────── */
+  @media (max-width: 1100px) {
+    .nav { grid-template-columns: 1fr 1fr; gap: 16px; padding: 22px 28px; }
+    .nav-status { display: none; }
+    .nav-right { gap: 18px; }
+    .hero-content { padding: 0 28px 40px; }
+    .hero-meta { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .section, .manifesto, .missions, .access, .faq, .contact { padding-left: 28px; padding-right: 28px; }
+    .universe-head { padding: 0 28px; grid-template-columns: 1fr; gap: 32px; }
+    .universe-grid { grid-template-columns: 1fr; }
+    .tile.hero-tile { grid-row: auto; aspect-ratio: 16/10; }
+    .section-head, .faq-head { grid-template-columns: 1fr; gap: 32px; }
+    .manifesto-inner { grid-template-columns: 1fr; gap: 36px; }
+    .access { grid-template-columns: 1fr; gap: 56px; }
+    .access-left { position: static; }
+    .missions-grid { grid-template-columns: 1fr; }
+    .faq-list { grid-template-columns: 1fr; gap: 32px; }
+    .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+    .footer { grid-template-columns: 1fr; gap: 18px; text-align: center; }
+    .footer-brand { justify-content: center; }
+    .footer-kenaz { text-align: center; }
+    .coords { display: none; }
+  }
+  @media (max-width: 640px) {
+    .nav-right { display: none; }
+    .hero-title { font-size: 48px; }
+    .marquee-track span { font-size: 22px; }
+    .step { grid-template-columns: 60px 1fr; }
+    .step .arrow { display: none; }
+  }
 </style>
 </head>
 <body>
+
+<div class="cosmos" aria-hidden="true"></div>
+<div class="stars" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
 
 <!-- NAV -->
 <nav class="nav">
@@ -425,10 +896,10 @@
     <a href="#" class="brand" aria-label="Space Monkey Calpe">
       <span class="brand-mark" aria-hidden="true">
         <svg viewBox="0 0 32 32" fill="none">
-          <circle cx="16" cy="16" r="11" stroke="#f4f1ea" stroke-width="1.2" opacity="0.85"/>
-          <circle cx="12" cy="13" r="1.4" fill="#f4f1ea" opacity="0.7"/>
-          <circle cx="20" cy="18" r="1" fill="#f4f1ea" opacity="0.5"/>
-          <circle cx="14" cy="20" r="0.8" fill="#f4f1ea" opacity="0.6"/>
+          <circle cx="16" cy="16" r="11" stroke="#f4ede0" stroke-width="1.2" opacity="0.85"/>
+          <circle cx="12" cy="13" r="1.4" fill="#f4ede0" opacity="0.7"/>
+          <circle cx="20" cy="18" r="1" fill="#f4ede0" opacity="0.5"/>
+          <circle cx="14" cy="20" r="0.8" fill="#f4ede0" opacity="0.6"/>
         </svg>
       </span>
       <span class="brand-name">Space Monkey <em>Calpe</em></span>
@@ -436,160 +907,460 @@
   </div>
   <div class="nav-status">
     <span class="dot"></span>
-    <span>Acceso reservado a socios — +18</span>
+    <span>Acceso reservado a socios &nbsp;·&nbsp; +18</span>
   </div>
   <div class="nav-right">
-    <a href="#asociacion">Asociación</a>
-    <a href="#cultura">Cultura</a>
-    <a href="#acceso">Hazte socio</a>
+    <a href="#manifiesto">Asociacion</a>
+    <a href="#universo">El universo</a>
+    <a href="#misiones">Proximas misiones</a>
+    <a href="#acceso">Hacerse socio</a>
     <a href="#contacto">Contacto</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg" role="img" aria-label="Interior del lounge privado de Space Monkey en Calpe"></div>
+  <div class="hero-bg" role="img" aria-label="Sala privada de Space Monkey Calpe con mural lunar iluminado y vista al Mediterraneo"></div>
 
-  <div class="moon" aria-hidden="true"></div>
-  <div class="orbit" aria-hidden="true"></div>
-
-  <div class="coords left">38° 38′ 41″ N · Calpe</div>
-  <div class="coords right">0° 03′ 49″ E · Mediterráneo</div>
+  <div class="coords left">38°38'41" N &nbsp;·&nbsp; Calpe, Alicante</div>
+  <div class="coords right">0°03'49" E &nbsp;·&nbsp; Mediterraneo</div>
 
   <div class="hero-content">
     <div class="hero-headline">
-      <div class="hero-eyebrow mono">Asociación cannábica privada · Calpe</div>
+      <div class="hero-eyebrow">
+        <span class="glyph">◐</span>
+        <span>Asociacion cannabica privada &nbsp;·&nbsp; Estacion Calpe</span>
+      </div>
       <h1 class="display hero-title">
-        Un club <em>privado</em><br/>
-        bajo la <span class="accent">misma luna</span>.
+        Bajo la <em>misma luna</em>,<br/>
+        un club <span class="accent">privado</span><br/>
+        para los que <em>orbitan despacio</em>.
       </h1>
       <p class="hero-sub">
-        Asociación sin ánimo de lucro para mayores de 18 años. Cultivo
-        compartido, cultura cannábica responsable y comunidad. Acceso
-        únicamente a socios registrados conforme a la normativa vigente.
+        Asociacion sin animo de lucro para mayores de 18 anos.
+        Cultivo compartido, cultura cannabica responsable y comunidad.
+        Acceso unicamente a socios registrados, conforme a la normativa
+        espanola.
       </p>
       <div class="hero-cta">
         <a class="btn btn-primary" href="#acceso">
           <span>Solicitar acceso</span>
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8m0 0L6.5 2.5M10 6 6.5 9.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+            <path d="M2 6h8m0 0L6.5 2.5M10 6 6.5 9.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
         </a>
-        <a class="btn btn-ghost" href="#asociacion">Conocer la asociación</a>
+        <a class="btn btn-ghost" href="#manifiesto">Conocer la asociacion</a>
       </div>
     </div>
 
-    <aside class="hero-meta" aria-label="Información del club">
-      <div class="meta-block">
-        <div class="mono">Ubicación</div>
-        <p>Av. Ejército Español<br/><strong>Edif. Apolo VII · Local 10</strong><br/>Calpe, Alicante</p>
+    <aside class="hero-meta" aria-label="Coordenadas del club">
+      <div class="meta-block mission">
+        <div class="mono">Mision en curso</div>
+        <p>Cultura cannabica responsable, sin prisa, entre adultos.</p>
       </div>
       <div class="meta-block">
-        <div class="mono">Contacto directo</div>
-        <p>WhatsApp <strong>+34 633 328 104</strong><br/>Instagram <strong>@spacemonkeycalpe</strong></p>
+        <div class="mono">Coordenadas</div>
+        <p>Av. Ejercito Espanol<br/><strong>Edif. Apolo VII · Local 10</strong></p>
+      </div>
+      <div class="meta-block">
+        <div class="mono">Estacion</div>
+        <p>Calpe, Alicante<br/><strong>Penon de Ifach</strong></p>
+      </div>
+      <div class="meta-block">
+        <div class="mono">Comunicacion</div>
+        <p>WhatsApp <strong>+34 633 328 104</strong><br/>IG <strong>@spacemonkeycalpe</strong></p>
       </div>
     </aside>
   </div>
 </section>
 
-<!-- PRINCIPIOS -->
-<section class="section" id="asociacion">
-  <header class="section-header">
-    <div>
-      <div class="section-eyebrow mono">/ La asociación</div>
-    </div>
-    <div>
-      <h2 class="section-title">Un espacio común, una <em>cultura compartida</em>.</h2>
-      <p class="section-lead">
-        Space Monkey nace en Calpe como punto de encuentro para
-        consumidores adultos que buscan un entorno cuidado, legal y
-        privado. No somos un comercio: somos una asociación que
-        organiza el cultivo y reparto entre sus socios bajo la
-        normativa española.
-      </p>
-    </div>
-  </header>
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Acceso reservado a socios</span>
+    <span class="alt">Mayores de 18 anos</span>
+    <span class="glyph">Asociacion sin animo de lucro</span>
+    <span>Calpe · Mediterraneo</span>
+    <span class="alt">Cultivo compartido</span>
+    <span class="glyph">Cultura cannabica responsable</span>
+    <span>Acceso reservado a socios</span>
+    <span class="alt">Mayores de 18 anos</span>
+    <span class="glyph">Asociacion sin animo de lucro</span>
+    <span>Calpe · Mediterraneo</span>
+    <span class="alt">Cultivo compartido</span>
+    <span class="glyph">Cultura cannabica responsable</span>
+  </div>
+</div>
 
-  <div class="principles">
-    <article class="principle">
-      <div class="num">/ 01</div>
-      <h3>Sin ánimo de <em>lucro</em></h3>
-      <p>
-        Funcionamos con cuota anual. Los recursos cubren cultivo,
-        local y actividades. Cuentas claras, gobernanza compartida.
-      </p>
-    </article>
-    <article class="principle">
-      <div class="num">/ 02</div>
-      <h3>Acceso <em>privado</em></h3>
-      <p>
-        Solo socios mayores de 18 años, registrados previamente. La
-        dirección no se publica abiertamente; se comparte tras la
-        validación de la solicitud.
-      </p>
-    </article>
-    <article class="principle">
-      <div class="num">/ 03</div>
-      <h3>Cultura <em>responsable</em></h3>
-      <p>
-        Charlas, catas, cine y eventos en torno a la cultura
-        cannábica. Espacio sin presión, sin cliché, pensado para
-        socios que valoran el detalle.
-      </p>
-    </article>
+<!-- MANIFIESTO -->
+<section class="manifesto" id="manifiesto">
+  <div class="manifesto-inner">
+    <div>
+      <div class="mono">/ Manifiesto</div>
+      <h2>No somos un<br/><em>dispensario</em>.</h2>
+    </div>
+    <div>
+      <div class="manifesto-text">
+        <p>
+          Space Monkey es una <strong>asociacion sin animo de lucro</strong>.
+          No vendemos. No abrimos al publico. No exhibimos producto.
+        </p>
+        <p>
+          Lo que organizamos es un <em>cultivo compartido</em> entre
+          socios mayores de edad, en un local privado de Calpe pensado
+          como punto de encuentro: lounge, gaming, vista al Mediterraneo
+          y eventos en torno a la cultura cannabica.
+        </p>
+        <p>
+          Es <em>privado por diseno</em>. La direccion completa, los
+          horarios y el funcionamiento se comparten con cada socio
+          tras la validacion de su solicitud. No por misterio &mdash;
+          por respeto a la legislacion espanola y a las personas que
+          ya forman parte.
+        </p>
+      </div>
+      <div class="manifesto-aside">
+        <span>Cultivo · Cultura · Comunidad</span>
+        <span>Calpe, 38° N</span>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ACCESO -->
-<section class="access" id="acceso">
-  <div>
-    <div class="section-eyebrow mono" style="margin-bottom:18px;">/ Hacerse socio</div>
-    <h2>Tres pasos para <em>entrar en órbita</em>.</h2>
-    <p>
-      El proceso de alta está pensado para garantizar que la
-      asociación sigue siendo un entorno privado y seguro. No se
-      vende a no socios. No se admite acceso por redes ni en puerta
-      sin solicitud previa.
+<!-- UNIVERSE -->
+<section class="universe" id="universo">
+  <div class="universe-head">
+    <div>
+      <div class="mono">/ El universo</div>
+      <h2>Un local pensado<br/>como una <em>nave</em>.</h2>
+    </div>
+    <p class="lead">
+      Iluminacion calida, cuero, madera, una luna real en la pared y
+      la ventana abierta al Mediterraneo. Cada esquina del local esta
+      pensada para que ningun socio se sienta de paso.
     </p>
   </div>
+
+  <div class="universe-grid">
+    <article class="tile hero-tile">
+      <span class="tile-tag"><span class="num">/01</span> Sala principal</span>
+      <img src="./img/hero-lounge.jpg" alt="Lounge principal de Space Monkey con luna iluminada en la pared" />
+      <div class="tile-caption">
+        <h3>La luna como <em>centro</em><br/>de gravedad.</h3>
+        <span class="mono">/ 03 m de diametro</span>
+      </div>
+    </article>
+
+    <div style="display: grid; grid-template-rows: 1fr 1fr; gap: 4px;">
+      <article class="tile">
+        <span class="tile-tag"><span class="num">/02</span> Detalle gaming</span>
+        <img src="./img/detail-gaming.jpg" alt="Maquina arcade vintage del lounge de Space Monkey" />
+        <div class="tile-caption">
+          <h3>Arcade <em>vintage</em>.</h3>
+          <p>Una sala paralela para los socios que prefieren las luces de neon.</p>
+        </div>
+      </article>
+      <article class="tile">
+        <span class="tile-tag"><span class="num">/03</span> Vista exterior</span>
+        <img src="./img/detail-window.jpg" alt="Ventana al Mediterraneo y al Penon de Ifach desde el lounge" />
+        <div class="tile-caption">
+          <h3>El <em>Penon</em> al fondo.</h3>
+          <p>Mediterraneo, luna llena y la ciudad en pausa. La mejor decoracion es la que ya esta ahi fuera.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- MISIONES -->
+<section class="missions" id="misiones">
+  <div class="section-head">
+    <div class="left">
+      <span class="mono">/ Proximas misiones</span>
+      <h2>Lo que ocurre <em>dentro</em>.</h2>
+    </div>
+    <div class="right">
+      <p>
+        El club no se agota en lo evidente. La agenda interna combina
+        encuentros culturales, proyecciones, sesiones gastronomicas y
+        charlas educativas. Calendario completo en privado.
+      </p>
+      <p>
+        Aqui debajo, una muestra del tipo de mision que organizamos a
+        lo largo del ano.
+      </p>
+    </div>
+  </div>
+
+  <div class="missions-grid">
+    <article class="mission">
+      <div class="mission-num">/ Mision 01</div>
+      <h3>Noches de <em>cine</em><br/>en orbita.</h3>
+      <p>
+        Proyecciones mensuales para socios. Ciencia ficcion, documental,
+        clasicos restaurados. Pantalla grande, sonido cuidado, butaca
+        a medida.
+      </p>
+      <div class="meta">
+        <span class="glyph">◐</span>
+        <span>Mensual · Solo socios</span>
+      </div>
+    </article>
+
+    <article class="mission">
+      <div class="mission-num">/ Mision 02</div>
+      <h3>Catas y charlas<br/><em>educativas</em>.</h3>
+      <p>
+        Sesiones tematicas con productores, expertos y socios. Cultura
+        cannabica seria, sin postureo. Aprender, escuchar, discutir
+        sin prisa.
+      </p>
+      <div class="meta">
+        <span class="glyph">✦</span>
+        <span>Trimestral · Aforo limitado</span>
+      </div>
+    </article>
+
+    <article class="mission">
+      <div class="mission-num">/ Mision 03</div>
+      <h3>Mesa larga<br/>en la <em>azotea</em>.</h3>
+      <p>
+        Cenas privadas en formato mesa larga, con vista al Mediterraneo
+        y al Penon. Un cocinero invitado, un menu corto, una noche que
+        se queda.
+      </p>
+      <div class="meta">
+        <span class="glyph">⌬</span>
+        <span>Estacional · Reserva previa</span>
+      </div>
+    </article>
+
+    <article class="mission">
+      <div class="mission-num">/ Mision 04</div>
+      <h3>Sesiones de <em>vinilos</em><br/>y conversacion.</h3>
+      <p>
+        Tardes lentas, vinilos, lectura compartida y conversacion
+        sin pantallas. El club como antitesis del scroll.
+      </p>
+      <div class="meta">
+        <span class="glyph">◐</span>
+        <span>Quincenal · Acceso libre socios</span>
+      </div>
+    </article>
+
+    <article class="mission">
+      <div class="mission-num">/ Mision 05</div>
+      <h3>Talleres de <em>cultivo</em><br/>responsable.</h3>
+      <p>
+        Formacion practica para socios que quieran entender el cultivo
+        compartido desde dentro. Cero ventas, cero promesas, mucho
+        oficio.
+      </p>
+      <div class="meta">
+        <span class="glyph">✦</span>
+        <span>Por convocatoria · Cupos cerrados</span>
+      </div>
+    </article>
+
+    <article class="mission">
+      <div class="mission-num">/ Mision 06</div>
+      <h3>Exposiciones y<br/><em>arte invitado</em>.</h3>
+      <p>
+        Artistas locales y de paso por la Costa Blanca. Pintura,
+        fotografia, pequenas instalaciones. Una rotacion lenta para
+        que el espacio respire.
+      </p>
+      <div class="meta">
+        <span class="glyph">⌬</span>
+        <span>Variable · Calendario cerrado</span>
+      </div>
+    </article>
+  </div>
+
+  <div class="missions-aside">
+    <p>El calendario completo se comparte con los socios. <em>Consultar agenda en privado.</em></p>
+    <span class="mono">→ WhatsApp +34 633 328 104</span>
+  </div>
+</section>
+
+<div class="hairline"></div>
+
+<!-- ACCESO -->
+<section class="access" id="acceso">
+  <div class="access-left">
+    <div class="mono">/ Hacerse socio</div>
+    <h2>Cuatro pasos<br/>para <em>entrar en orbita</em>.</h2>
+    <p>
+      No vendemos a no socios. No se admite acceso por redes ni en
+      puerta sin solicitud previa. El alta esta pensada para preservar
+      el club como un entorno privado, seguro y conforme a la
+      normativa espanola.
+    </p>
+    <div class="lead-quote">
+      "Un club privado no es un tramite. Es un acuerdo entre personas que comparten un espacio."
+    </div>
+  </div>
+
   <div class="steps">
     <div class="step">
-      <div class="num">01</div>
+      <div class="num">/ 01</div>
       <div>
-        <h4>Solicitud por WhatsApp</h4>
-        <p>Escríbenos al +34 633 328 104. Te enviamos el formulario y resolvemos dudas.</p>
+        <h4>Solicitud por <em>WhatsApp</em></h4>
+        <p>Escribinos al +34 633 328 104. Te enviamos el formulario interno y resolvemos cualquier duda antes del siguiente paso.</p>
+      </div>
+      <div class="arrow">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8m0 0L6.5 2.5M10 6 6.5 9.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
       </div>
     </div>
     <div class="step">
-      <div class="num">02</div>
+      <div class="num">/ 02</div>
       <div>
-        <h4>Verificación de edad</h4>
-        <p>Necesitamos DNI o documento de identidad válido. Edad mínima: 18 años.</p>
+        <h4>Validacion de <em>edad e identidad</em></h4>
+        <p>Necesitamos DNI o documento de identidad valido. Edad minima: 18 anos. Verificacion confidencial, datos protegidos.</p>
+      </div>
+      <div class="arrow">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8m0 0L6.5 2.5M10 6 6.5 9.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
       </div>
     </div>
     <div class="step">
-      <div class="num">03</div>
+      <div class="num">/ 03</div>
       <div>
-        <h4>Bienvenida y cuota</h4>
-        <p>Reunión breve en el local, firma de estatutos y abono de la cuota anual.</p>
+        <h4>Reunion de <em>bienvenida</em> y firma de estatutos</h4>
+        <p>Encuentro breve en el local. Te explicamos el funcionamiento, firmas los estatutos y abonas la cuota anual.</p>
+      </div>
+      <div class="arrow">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8m0 0L6.5 2.5M10 6 6.5 9.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      </div>
+    </div>
+    <div class="step">
+      <div class="num">/ 04</div>
+      <div>
+        <h4>Acceso <em>completo</em> al club</h4>
+        <p>Carnet de socio, acceso al local, calendario interno, reservas y aforo de eventos. Bienvenida oficial al universo.</p>
+      </div>
+      <div class="arrow">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8m0 0L6.5 2.5M10 6 6.5 9.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="faq-head">
+    <div>
+      <div class="mono">/ FAQ</div>
+      <h2>Preguntas que<br/>nos hacen <em>siempre</em>.</h2>
+    </div>
+    <p style="font-size: 16px; line-height: 1.65; color: var(--cream-soft); font-weight: 300;">
+      Cuatro respuestas para que no haya confusion. Si lo que necesitas
+      no esta aqui, lo resolvemos por WhatsApp en el momento.
+    </p>
+  </div>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <h4>¿Esto es legal?</h4>
+      <p>
+        Si. Funcionamos como <strong>asociacion privada sin animo
+        de lucro</strong> bajo la normativa espanola, con cultivo
+        compartido entre socios mayores de edad. No somos un comercio
+        ni un dispensario.
+      </p>
+    </div>
+    <div class="faq-item">
+      <h4>¿Quien puede entrar?</h4>
+      <p>
+        Solo socios <strong>mayores de 18 anos</strong> registrados
+        previamente. No admitimos acceso espontaneo en puerta ni por
+        redes sociales.
+      </p>
+    </div>
+    <div class="faq-item">
+      <h4>¿Cuanto cuesta?</h4>
+      <p>
+        Funcionamos con <strong>cuota anual</strong>, no por consumicion.
+        El importe exacto y el desglose se comunican durante el proceso
+        de alta.
+      </p>
+    </div>
+    <div class="faq-item">
+      <h4>¿Que pasa dentro?</h4>
+      <p>
+        Lounge, gaming, eventos culturales, charlas, catas, cine,
+        cenas tematicas. <strong>Cero presion comercial.</strong> Un
+        sitio para estar.
+      </p>
+    </div>
+    <div class="faq-item">
+      <h4>¿Por que no esta la direccion completa publicada?</h4>
+      <p>
+        Por <strong>diseno legal y de privacidad</strong>. La direccion
+        exacta se comparte con cada socio tras la validacion de su
+        solicitud, igual que en cualquier club privado.
+      </p>
+    </div>
+    <div class="faq-item">
+      <h4>¿Puedo invitar a alguien?</h4>
+      <p>
+        Solo si tu invitado <strong>completa el alta de socio</strong>.
+        Sin excepciones. Es lo que mantiene al club siendo lo que es.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contacto">
+  <div class="contact-inner">
+    <div class="contact-left">
+      <div class="mono">/ Contacto directo</div>
+      <h2>El primer paso<br/>es <em>preguntar</em>.</h2>
+      <p>
+        Toda la conversacion ocurre por WhatsApp e Instagram. Te
+        respondemos en horario diurno. Sin formularios largos, sin
+        bots, sin promesas raras.
+      </p>
+    </div>
+    <div class="contact-card">
+      <div class="contact-row">
+        <span class="mono">WhatsApp</span>
+        <span class="value"><strong>+34 633 328 104</strong></span>
+      </div>
+      <div class="contact-divider"></div>
+      <div class="contact-row">
+        <span class="mono">Instagram</span>
+        <span class="value">@<strong>spacemonkeycalpe</strong></span>
+      </div>
+      <div class="contact-divider"></div>
+      <div class="contact-row">
+        <span class="mono">Estacion</span>
+        <span class="value">Calpe, Alicante &nbsp;<em>· Espana</em></span>
+      </div>
+      <div class="contact-divider"></div>
+      <div class="contact-row">
+        <span class="mono">Acceso</span>
+        <span class="value">Reservado a socios &nbsp;<em>· +18</em></span>
       </div>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="footer" id="contacto">
+<footer class="footer">
   <div class="footer-brand">
     <span class="brand-mark" aria-hidden="true">
       <svg viewBox="0 0 32 32" fill="none">
-        <circle cx="16" cy="16" r="11" stroke="#f4f1ea" stroke-width="1.2" opacity="0.85"/>
-        <circle cx="12" cy="13" r="1.4" fill="#f4f1ea" opacity="0.7"/>
-        <circle cx="20" cy="18" r="1" fill="#f4f1ea" opacity="0.5"/>
+        <circle cx="16" cy="16" r="11" stroke="#f4ede0" stroke-width="1.2" opacity="0.85"/>
+        <circle cx="12" cy="13" r="1.4" fill="#f4ede0" opacity="0.7"/>
+        <circle cx="20" cy="18" r="1" fill="#f4ede0" opacity="0.5"/>
       </svg>
     </span>
     <span class="brand-name">Space Monkey <em>Calpe</em></span>
   </div>
-  <div class="footer-meta">+18 · Acceso reservado a socios · Calpe, Alicante</div>
+  <div class="footer-meta">+18 &nbsp;·&nbsp; Acceso reservado a socios &nbsp;·&nbsp; Calpe, Alicante</div>
   <div class="footer-kenaz">
-    Diseño propuesto por <a href="https://kenaz.studio" target="_blank" rel="noopener">Kenaz Studio</a>
+    Diseno propuesto por <a href="https://kenaz.studio" target="_blank" rel="noopener">Kenaz Studio</a>
   </div>
 </footer>
 
