@@ -616,6 +616,309 @@
     line-height: 1.6;
     font-weight: 300;
   }
+
+  /* ===========================
+     RESPONSIVE — TABLET (<=768px)
+     =========================== */
+  @media (max-width: 768px) {
+    /* NAV */
+    .nav {
+      padding: 20px 24px;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .nav-brand { gap: 10px; flex-wrap: wrap; }
+    .brand-mark { font-size: 22px; }
+    .brand-tag { font-size: 9px; letter-spacing: 0.18em; }
+    .nav-links {
+      gap: 22px;
+      font-size: 12px;
+      width: 100%;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+    .nav-lang {
+      padding-left: 16px;
+      border-left: 1px solid rgba(245, 241, 234, 0.25);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+    }
+
+    /* HERO */
+    .hero-content {
+      padding: 140px 28px 140px;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    h1.headline {
+      font-size: clamp(40px, 8.5vw, 64px);
+      margin-bottom: 28px;
+    }
+    .lede {
+      font-size: 16px;
+      margin-bottom: 36px;
+      max-width: none;
+    }
+    .eyebrow { margin-bottom: 24px; font-size: 10px; letter-spacing: 0.2em; }
+    .cta-row { gap: 12px; }
+    .btn-primary, .btn-secondary {
+      padding: 16px 24px;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+    }
+    .awards-card { padding: 32px 28px; }
+    .award-year { font-size: 22px; }
+    .award-label { font-size: 11px; }
+
+    /* HERO META */
+    .hero-meta {
+      padding: 20px 24px 18px;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-start;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+    }
+    .hero-meta-left { gap: 18px; flex-wrap: wrap; }
+    .hero-meta-right { gap: 18px; flex-wrap: wrap; }
+
+    /* SECTIONS general */
+    section { padding: 80px 28px; }
+
+    .section-head {
+      grid-template-columns: 1fr;
+      gap: 18px;
+      margin-bottom: 48px;
+      align-items: start;
+    }
+    .section-title { font-size: clamp(32px, 5.6vw, 48px); }
+
+    /* OWNERS */
+    .owners {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+    .owners-figure { aspect-ratio: 4/4; }
+    .owners-text { padding: 0; }
+    .owners-names { font-size: 34px; }
+    .owners-role { margin-bottom: 24px; }
+    .owners-bio p { font-size: 15px; line-height: 1.65; }
+    .owners-stats {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 32px;
+      padding-top: 24px;
+    }
+    .stat-num { font-size: 36px; }
+    .stat-label { font-size: 9px; letter-spacing: 0.18em; }
+
+    /* AWARDS TIMELINE — 2x2 */
+    .awards-section { padding: 80px 28px; }
+    .timeline {
+      grid-template-columns: repeat(2, 1fr);
+      border-top: 1px solid rgba(212, 184, 138, 0.25);
+    }
+    .tl-cell {
+      padding: 32px 20px 36px;
+      min-height: 220px;
+      border-bottom: 1px solid rgba(212, 184, 138, 0.15);
+    }
+    .tl-cell:nth-child(2n) { border-right: none; }
+    .tl-cell:nth-child(n+3) { border-bottom: none; }
+    .tl-cell-year { font-size: 48px; margin-bottom: 18px; }
+    .tl-cell-title { font-size: 19px; }
+
+    /* PROPERTIES — 1 col mobile */
+    .properties {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+    .property-name { font-size: 26px; }
+    .property-price { font-size: 20px; }
+    .property-info { padding: 22px 4px 0; gap: 16px; }
+
+    /* MULTILANG */
+    .multilang-section { padding: 80px 28px; }
+    .multilang-inner {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    .ml-text h2 { font-size: clamp(30px, 5.2vw, 44px); margin: 18px 0 22px; }
+    .ml-text p { font-size: 15px; }
+    .ml-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+    }
+    .ml-tile { padding: 14px; }
+    .ml-tile-flag { font-size: 26px; margin-bottom: 6px; }
+    .ml-tile-label { font-size: 8px; letter-spacing: 0.18em; }
+    .ml-tile-status { font-size: 7px; margin-top: 6px; }
+
+    /* CONTACT */
+    .contact-section { padding: 80px 28px; }
+    .contact-inner {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    .contact-lede { font-size: 16px; margin: 24px 0 36px; max-width: none; }
+    .contact-info {
+      grid-template-columns: 1fr 1fr;
+      gap: 28px 24px;
+    }
+    .ci-block .value { font-size: 19px; }
+    .ci-block .value small { font-size: 13px; }
+    .contact-card { padding: 36px 28px; }
+    .contact-card h3 { font-size: 26px; }
+
+    /* FOOTER */
+    footer { padding: 40px 28px 28px; }
+    .footer-inner {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 18px;
+      font-size: 9px;
+      letter-spacing: 0.16em;
+    }
+    .footer-disclaimer { font-size: 10px; line-height: 1.55; }
+  }
+
+  /* ===========================
+     RESPONSIVE — PHONE (<=480px)
+     =========================== */
+  @media (max-width: 480px) {
+    /* NAV */
+    .nav { padding: 18px 18px; }
+    .nav-links {
+      gap: 16px;
+      font-size: 11px;
+    }
+    .brand-mark { font-size: 20px; }
+    .brand-tag { display: none; }
+
+    /* HERO */
+    .hero-content {
+      padding: 120px 20px 130px;
+      gap: 40px;
+    }
+    h1.headline {
+      font-size: clamp(34px, 9vw, 48px);
+      margin-bottom: 22px;
+    }
+    .lede { font-size: 15px; margin-bottom: 30px; }
+    .cta-row { flex-direction: column; align-items: stretch; gap: 10px; }
+    .btn-primary, .btn-secondary {
+      width: 100%;
+      justify-content: center;
+      padding: 15px 20px;
+    }
+    .awards-card { padding: 26px 22px; }
+    .awards-card-eyebrow { font-size: 9px; letter-spacing: 0.2em; margin-bottom: 20px; }
+    .award-row { padding: 12px 0; }
+    .award-year { font-size: 20px; }
+    .award-label { font-size: 10px; }
+    .awards-card-foot { font-size: 10px; }
+
+    /* HERO META */
+    .hero-meta { padding: 18px 20px 16px; }
+    .hero-meta-left { gap: 12px; }
+    .hero-meta-right { gap: 12px; }
+
+    /* SECTIONS */
+    section { padding: 64px 20px; }
+    .section-head { margin-bottom: 36px; }
+    .section-eyebrow { font-size: 10px; letter-spacing: 0.18em; }
+    .section-title { font-size: clamp(28px, 7.5vw, 36px); }
+
+    /* OWNERS */
+    .owners { gap: 28px; }
+    .owners-names { font-size: 28px; }
+    .owners-role { font-size: 10px; letter-spacing: 0.18em; margin-bottom: 20px; }
+    .owners-bio p { font-size: 14px; }
+    .owners-stats {
+      grid-template-columns: 1fr;
+      gap: 18px;
+      text-align: left;
+    }
+    .stat-num { font-size: 32px; margin-bottom: 6px; }
+
+    /* AWARDS TIMELINE — STACK */
+    .awards-section { padding: 64px 20px; }
+    .timeline {
+      grid-template-columns: 1fr;
+    }
+    .tl-cell {
+      padding: 28px 4px 30px;
+      min-height: auto;
+      border-right: none;
+      border-bottom: 1px solid rgba(212, 184, 138, 0.15);
+    }
+    .tl-cell:last-child { border-bottom: none; }
+    .tl-cell:nth-child(2n) { border-right: none; }
+    .tl-cell-year { font-size: 42px; }
+    .tl-cell-title { font-size: 18px; }
+    .tl-cell-desc { font-size: 12.5px; }
+    .tl-cell-tag { font-size: 9px; letter-spacing: 0.18em; }
+
+    /* PROPERTIES */
+    .properties { gap: 28px; }
+    .property-figure { aspect-ratio: 4/3; }
+    .property-tag { top: 14px; left: 14px; font-size: 9px; padding: 6px 11px; }
+    .property-info {
+      grid-template-columns: 1fr;
+      gap: 14px;
+      padding: 20px 0 0;
+      align-items: start;
+    }
+    .property-loc { font-size: 9px; letter-spacing: 0.18em; }
+    .property-name { font-size: 23px; }
+    .property-desc { font-size: 13.5px; }
+    .property-price {
+      font-size: 19px;
+      text-align: left;
+    }
+    .property-price small { display: inline-block; margin-right: 8px; margin-bottom: 0; }
+
+    /* MULTILANG — 1 col */
+    .multilang-section { padding: 64px 20px; }
+    .multilang-inner { gap: 36px; }
+    .ml-text h2 { font-size: clamp(26px, 7vw, 34px); }
+    .ml-text p { font-size: 14px; }
+    .ml-grid {
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }
+    .ml-tile {
+      aspect-ratio: auto;
+      flex-direction: row;
+      justify-content: flex-start;
+      gap: 16px;
+      padding: 16px 20px;
+      text-align: left;
+    }
+    .ml-tile-flag { font-size: 22px; margin-bottom: 0; min-width: 36px; }
+    .ml-tile-label { font-size: 10px; letter-spacing: 0.18em; flex: 1; }
+    .ml-tile-status { font-size: 8px; margin-top: 0; margin-left: auto; }
+
+    /* CONTACT */
+    .contact-section { padding: 64px 20px 56px; }
+    .contact-info { grid-template-columns: 1fr; gap: 24px; }
+    .contact-lede { font-size: 15px; margin: 20px 0 30px; }
+    .ci-block .value { font-size: 18px; }
+    .ci-block .value small { font-size: 12.5px; }
+    .contact-card { padding: 30px 22px; }
+    .contact-card h3 { font-size: 23px; margin-bottom: 20px; }
+    .form-row { margin-bottom: 18px; }
+    .form-row label { font-size: 9px; letter-spacing: 0.18em; }
+    .form-row input, .form-row textarea { font-size: 14px; }
+    .form-submit { padding: 14px; font-size: 11px; letter-spacing: 0.16em; }
+
+    /* FOOTER */
+    footer { padding: 32px 20px 24px; }
+    .footer-inner { font-size: 8.5px; }
+    .footer-brand em { font-size: 13px; }
+    .footer-disclaimer { font-size: 9.5px; padding-top: 20px; margin-top: 20px; }
+  }
 </style>
 </head>
 <body>

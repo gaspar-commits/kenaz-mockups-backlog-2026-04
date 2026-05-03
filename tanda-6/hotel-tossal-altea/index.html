@@ -371,6 +371,224 @@
   .footer-bottom .kenaz{color:rgba(245,239,230,.55);text-transform:uppercase;letter-spacing:.22em}
   .footer-bottom .kenaz a{color:var(--cream);border-bottom:1px solid rgba(245,239,230,.3);padding-bottom:1px}
 
+  /* ───────────────────────────────────────────────
+     RESPONSIVE — TABLET / MOBILE
+     ─────────────────────────────────────────────── */
+  @media (max-width: 1024px){
+    .container{padding:0 32px}
+    .topbar-inner{padding:10px 32px}
+    .nav{padding:22px 32px}
+    .hero{grid-template-columns:1fr}
+    .hero-text{padding:64px 32px 56px}
+    .hero-title{font-size:clamp(44px, 7vw, 72px)}
+    .hero-photo{min-height:420px}
+    .story-grid{grid-template-columns:1fr;gap:56px}
+    .story-images .img-tall{height:420px}
+    .story-images .img-square{height:280px;margin-top:48px}
+    .rooms-grid{grid-template-columns:repeat(2,1fr);gap:28px}
+    .restaurant-grid{grid-template-columns:1fr;gap:56px}
+    .events-grid{grid-template-columns:1fr;gap:56px}
+    .events-photo{height:480px}
+    .location-grid{grid-template-columns:1fr 1fr;gap:48px}
+    .footer-grid{grid-template-columns:1fr 1fr;gap:48px}
+  }
+
+  @media (max-width: 768px){
+    .container{padding:0 22px}
+
+    /* Topbar — wrap and hide non-essential pieces */
+    .topbar{font-size:11px}
+    .topbar-inner{
+      flex-wrap:wrap;gap:8px 16px;
+      padding:10px 22px;
+    }
+    .topbar-left{gap:14px;flex-wrap:wrap;font-size:11px}
+    .topbar-left span:nth-child(2),
+    .topbar-left span:nth-child(3){display:none}
+    .topbar-right{gap:14px;flex-wrap:wrap}
+    .lang{font-size:10px;letter-spacing:.14em}
+    .topbar-right a.book{padding:6px 12px;font-size:9.5px;letter-spacing:.12em}
+
+    /* Nav */
+    .nav{
+      flex-wrap:wrap;gap:14px;
+      padding:18px 22px;
+    }
+    .brand-mark{width:44px;height:44px}
+    .brand-mark svg{width:24px;height:24px}
+    .brand-text .name{font-size:18px}
+    .brand-text .tag{font-size:9px;letter-spacing:.22em}
+    .nav-links{display:none}
+    .nav-cta{gap:12px;margin-left:auto}
+    .nav-cta .phone{display:none}
+    .nav-cta .reserve{padding:11px 18px;font-size:10px;letter-spacing:.14em}
+
+    /* Hero */
+    .hero{grid-template-columns:1fr}
+    .hero-text{padding:56px 22px 48px}
+    .hero-meta{margin-bottom:24px;gap:12px;flex-wrap:wrap}
+    .hero-title{
+      font-size:clamp(36px, 9vw, 48px);
+      line-height:1.05;
+    }
+    .hero-title .small{font-size:clamp(18px, 4vw, 22px);margin-top:10px}
+    .hero-lede{font-size:15px;line-height:1.65;margin-top:24px;max-width:none}
+    .hero-actions{
+      margin-top:32px;flex-wrap:wrap;gap:18px;
+    }
+    .btn-primary{padding:16px 24px;font-size:10.5px;letter-spacing:.18em;width:100%;justify-content:center}
+    .btn-secondary{font-size:11px}
+    .hero-promo{
+      margin-top:40px;padding-top:24px;
+      grid-template-columns:1fr;gap:18px;max-width:none;
+    }
+    .hero-photo{min-height:340px}
+    .hero-side-card{
+      right:18px;bottom:18px;left:18px;max-width:none;
+      padding:20px 22px;
+    }
+    .hero-side-card .value{font-size:30px}
+    .photo-credit{left:18px;bottom:18px;font-size:9px;letter-spacing:.18em}
+
+    /* Story */
+    .story{padding:64px 0 60px}
+    .story-grid{grid-template-columns:1fr;gap:48px}
+    .story-images{grid-template-columns:1fr 1fr;gap:12px}
+    .story-images .img-tall{height:280px}
+    .story-images .img-square{height:200px;margin-top:32px}
+    .story-stamp{
+      width:96px;height:96px;
+      left:-8px;top:-8px;padding:12px;
+    }
+    .story-stamp .num{font-size:24px}
+    .story-stamp .lbl{font-size:7.5px;letter-spacing:.18em;margin-top:4px}
+    .story-text h2{font-size:clamp(36px, 8vw, 44px);margin-bottom:22px}
+    .story-text p{font-size:14.5px;line-height:1.75;max-width:none}
+    .story-meta{
+      grid-template-columns:repeat(3,1fr);gap:16px;
+      margin-top:32px;padding-top:24px;
+    }
+    .story-meta .item .num{font-size:24px}
+    .story-meta .item .lbl{font-size:9.5px;letter-spacing:.14em;margin-top:6px}
+
+    /* Rooms */
+    .rooms{padding:64px 0 60px}
+    .rooms-head{
+      flex-direction:column;align-items:flex-start;
+      gap:18px;margin-bottom:36px;
+    }
+    .rooms-head h2{font-size:clamp(34px, 8vw, 42px)}
+    .rooms-head .right{text-align:left;font-size:13.5px;max-width:none}
+    .rooms-grid{grid-template-columns:1fr;gap:28px}
+    .room-card .img{aspect-ratio:4/3}
+    .room-card .name{font-size:22px}
+
+    /* Restaurant */
+    .restaurant{padding:64px 0}
+    .restaurant-grid{grid-template-columns:1fr;gap:40px}
+    .restaurant-imgs .big{height:300px}
+    .restaurant-imgs .small{height:180px;width:70%;margin-top:-100px;border-width:6px}
+    .restaurant-text h2{font-size:clamp(36px, 8vw, 46px)}
+    .restaurant-text .name{font-size:32px;margin-bottom:22px}
+    .restaurant-text p{font-size:14.5px;line-height:1.75;max-width:none}
+    .restaurant-list{
+      grid-template-columns:1fr;gap:14px;
+      margin-top:28px;padding-top:24px;max-width:none;
+    }
+    .restaurant-text .actions{margin-top:32px;flex-wrap:wrap;gap:18px}
+    .restaurant-text .actions .btn{padding:14px 22px;font-size:10.5px;letter-spacing:.18em}
+
+    /* Events */
+    .events{padding:64px 0}
+    .events-grid{grid-template-columns:1fr;gap:40px}
+    .events-text h2{font-size:clamp(36px, 8vw, 46px);margin-bottom:18px}
+    .events-text p{font-size:14.5px;line-height:1.75;max-width:none}
+    .events-types{margin-top:28px}
+    .events-types .row{
+      flex-direction:column;align-items:flex-start;gap:6px;
+      padding:14px 0;
+    }
+    .events-types .row .lbl{font-size:20px}
+    .events-types .row .desc{text-align:left;font-size:12.5px;max-width:none}
+    .events-photo{height:380px}
+    .events-photo .overlay-card{
+      left:16px;right:16px;bottom:16px;
+      flex-direction:column;align-items:flex-start;
+      padding:22px 22px;gap:18px;
+    }
+    .events-photo .overlay-card .quote{font-size:17px;line-height:1.4;max-width:none}
+    .events-photo .overlay-card .cta{padding:13px 20px;font-size:10.5px;letter-spacing:.16em}
+
+    /* Location */
+    .location{padding:64px 0}
+    .location-grid{grid-template-columns:1fr;gap:40px}
+    .loc-col h3{font-size:26px}
+    .loc-col p{font-size:13.5px}
+    .loc-col .distance .num{font-size:26px}
+
+    /* Footer */
+    .footer{padding:60px 0 30px}
+    .footer-grid{
+      grid-template-columns:1fr;gap:36px;
+      padding-bottom:36px;
+    }
+    .footer-brand p{max-width:none}
+    .footer-bottom{
+      flex-direction:column;align-items:flex-start;gap:10px;
+      padding-top:22px;font-size:10.5px;
+    }
+  }
+
+  @media (max-width: 480px){
+    .container{padding:0 18px}
+
+    .topbar-inner{padding:10px 18px}
+    .topbar-right{width:100%;justify-content:space-between}
+
+    .nav{padding:16px 18px}
+    .brand{gap:12px}
+    .brand-text .name{font-size:16px}
+    .nav-cta .reserve{padding:10px 14px;font-size:9.5px;letter-spacing:.12em}
+
+    .hero-text{padding:44px 18px 40px}
+    .hero-title{font-size:clamp(30px, 9vw, 38px)}
+    .hero-title .small{font-size:16px}
+    .hero-photo{min-height:280px}
+    .hero-side-card{padding:16px 18px}
+    .hero-side-card .value{font-size:26px}
+
+    .story{padding:52px 0}
+    .story-images .img-tall{height:220px}
+    .story-images .img-square{height:160px;margin-top:24px}
+    .story-stamp{width:80px;height:80px;padding:10px}
+    .story-stamp .num{font-size:20px}
+    .story-stamp .lbl{font-size:7px}
+    .story-text h2{font-size:clamp(28px, 8.5vw, 36px)}
+    .story-meta{grid-template-columns:1fr;gap:14px}
+    .story-meta .item{display:flex;align-items:baseline;gap:14px}
+    .story-meta .item .lbl{margin-top:0}
+
+    .rooms{padding:52px 0}
+    .rooms-head h2{font-size:clamp(28px, 8.5vw, 34px)}
+
+    .restaurant{padding:52px 0}
+    .restaurant-imgs .big{height:240px}
+    .restaurant-imgs .small{height:140px;width:78%;margin-top:-72px;border-width:5px}
+    .restaurant-text h2{font-size:clamp(30px, 8.5vw, 38px)}
+    .restaurant-text .name{font-size:26px}
+
+    .events{padding:52px 0}
+    .events-text h2{font-size:clamp(30px, 8.5vw, 38px)}
+    .events-photo{height:320px}
+    .events-photo .overlay-card .quote{font-size:15.5px}
+
+    .location{padding:52px 0}
+    .loc-col h3{font-size:24px}
+
+    .footer{padding:48px 0 28px}
+    .footer-brand h3{font-size:26px}
+  }
+
 </style>
 </head>
 <body>

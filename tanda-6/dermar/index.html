@@ -389,6 +389,260 @@
     width: 16px; height: 16px;
     display: inline-block;
   }
+
+  /* === RESPONSIVE: TABLET (≤ 768px) === */
+  @media (max-width: 768px) {
+    /* Header */
+    header.site {
+      padding: 18px 22px 0 22px;
+      grid-template-columns: auto auto;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    nav.primary {
+      grid-column: 1 / -1;
+      order: 3;
+      flex-wrap: wrap;
+      gap: 16px 22px;
+      justify-content: flex-start;
+      padding-top: 14px;
+      border-top: 1px solid var(--rule);
+      margin-top: 8px;
+      width: 100%;
+    }
+    nav.primary a { font-size: 11px; letter-spacing: 0.14em; }
+    .header-actions { gap: 12px; }
+    .lang { gap: 8px; }
+    .cta-pill { padding: 9px 16px; font-size: 10px; letter-spacing: 0.14em; }
+    .brand-name { font-size: 19px; }
+    .brand-tag { font-size: 9px; letter-spacing: 0.18em; }
+
+    /* Hero — single column, image first then copy */
+    .hero { min-height: 0; }
+    .hero-grid {
+      grid-template-columns: 1fr;
+      min-height: 0;
+      padding-top: 110px;
+    }
+    .hero-copy {
+      padding: 40px 28px 48px 28px;
+      order: 2;
+    }
+    .hero-visual {
+      order: 1;
+      min-height: 380px;
+      aspect-ratio: 4/3;
+    }
+    .hero-overlay-card {
+      bottom: 22px; left: 22px; right: 22px;
+      max-width: none;
+      padding: 18px 20px;
+    }
+    .hero-overlay-card .quote { font-size: 16px; }
+
+    h1.headline { font-size: 52px; line-height: 1; }
+    .lede { margin-top: 22px; font-size: 14.5px; }
+    .hero-meta {
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 18px; margin-top: 40px; padding-top: 22px;
+      max-width: none;
+    }
+    .meta-cell .num { font-size: 28px; }
+    .meta-cell .lbl { font-size: 9.5px; letter-spacing: 0.14em; }
+    .hero-cta-row { margin-top: 30px; gap: 18px; flex-wrap: wrap; }
+    .cta-primary { padding: 14px 22px; font-size: 11px; }
+
+    /* Info bar — stack vertically */
+    .info-bar {
+      grid-template-columns: 1fr 1fr;
+      gap: 18px 24px;
+      padding: 22px 28px;
+    }
+    .info-bar .val { font-size: 12px; }
+
+    /* Doctora — single column */
+    .doctora {
+      grid-template-columns: 1fr;
+      gap: 48px;
+      padding: 80px 28px;
+    }
+    .doctora-copy h2 { font-size: 42px; }
+    .doctora-copy p { font-size: 15px; }
+    .credenciales { margin-top: 32px; }
+
+    /* Especialidades */
+    .especialidades { padding: 80px 28px; }
+    .section-head {
+      grid-template-columns: 1fr;
+      gap: 24px; margin-bottom: 48px; align-items: start;
+    }
+    .section-head h2 { font-size: 42px; }
+    .section-head p { font-size: 14.5px; max-width: none; }
+    .esp-grid { grid-template-columns: 1fr 1fr; }
+    .esp-card {
+      padding: 28px 18px 28px 0;
+      min-height: 220px;
+    }
+    .esp-card:nth-child(n+2) { padding-left: 18px; }
+    .esp-card:nth-child(2) { border-right: none; }
+    .esp-card:nth-child(1), .esp-card:nth-child(2) { border-bottom: 1px solid var(--rule); }
+    .esp-title { font-size: 22px; }
+    .esp-desc { font-size: 13px; }
+
+    /* Ambiente — stack */
+    .ambiente {
+      grid-template-columns: 1fr;
+      min-height: 0;
+    }
+    .ambiente-img { min-height: 320px; aspect-ratio: 4/3; }
+    .ambiente-copy { padding: 60px 28px; }
+    .ambiente-copy h2 { font-size: 38px; }
+    .ambiente-copy p { font-size: 14.5px; }
+
+    /* Booking */
+    .booking { padding: 80px 28px; }
+    .booking-grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    .booking h2 { font-size: 48px; }
+    .booking p.intro { font-size: 15px; }
+    .channel {
+      grid-template-columns: 1fr;
+      gap: 8px;
+      padding: 22px 0;
+    }
+    .channel .ch-action {
+      justify-self: start;
+      padding: 10px 18px;
+    }
+    .channel .ch-value { font-size: 20px; }
+    .booking-card { padding: 28px 22px; }
+    .booking-card h3 { font-size: 24px; }
+
+    /* Footer */
+    footer.site { padding: 60px 28px 28px 28px; }
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 36px 32px;
+      padding-bottom: 40px;
+    }
+    .footer-brand {
+      grid-column: 1 / -1;
+      max-width: none;
+    }
+    .footer-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 10px;
+    }
+  }
+
+  /* === RESPONSIVE: PHONE (≤ 480px) === */
+  @media (max-width: 480px) {
+    /* Header — even tighter */
+    header.site {
+      padding: 16px 18px 0 18px;
+      gap: 10px;
+    }
+    nav.primary { gap: 12px 18px; padding-top: 12px; }
+    nav.primary a { font-size: 10.5px; letter-spacing: 0.12em; }
+    .brand-mark { width: 38px; height: 38px; }
+    .brand-mark img { width: 32px; height: 32px; }
+    .brand-name { font-size: 17px; }
+    .header-actions .lang { display: none; }
+    .cta-pill { padding: 8px 14px; font-size: 9.5px; }
+
+    /* Hero */
+    .hero-grid { padding-top: 96px; }
+    .hero-copy { padding: 32px 20px 40px 20px; }
+    .hero-visual { min-height: 300px; }
+    .hero-overlay-card {
+      bottom: 16px; left: 16px; right: 16px;
+      padding: 16px 18px;
+    }
+    .hero-overlay-card .quote { font-size: 14.5px; }
+
+    h1.headline { font-size: 40px; line-height: 1.02; }
+    .lede { font-size: 14px; }
+    .hero-meta {
+      grid-template-columns: 1fr;
+      gap: 14px;
+      padding-top: 18px;
+    }
+    .meta-cell {
+      display: flex; align-items: baseline; gap: 16px;
+      padding-bottom: 14px; border-bottom: 1px solid var(--rule);
+    }
+    .meta-cell:last-child { border-bottom: none; padding-bottom: 0; }
+    .meta-cell .num { font-size: 26px; min-width: 56px; }
+    .meta-cell .lbl { margin-top: 0; font-size: 9px; line-height: 1.4; }
+    .hero-cta-row { gap: 14px; }
+    .cta-primary { padding: 13px 18px; font-size: 10.5px; width: 100%; text-align: center; }
+    .cta-secondary { font-size: 11px; }
+
+    /* Info bar — single column */
+    .info-bar {
+      grid-template-columns: 1fr;
+      gap: 14px;
+      padding: 20px 22px;
+    }
+
+    /* Doctora */
+    .doctora { padding: 64px 20px; gap: 36px; }
+    .doctora-copy h2 { font-size: 34px; }
+    .doctora-copy p { font-size: 14.5px; }
+    .doctora-visual .badge { font-size: 9.5px; padding: 10px 14px; top: 16px; left: 16px; }
+    .credenciales { grid-template-columns: 1fr; }
+    .cred-row {
+      padding: 18px 0 !important;
+      border-right: none !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+    .cred-value { font-size: 19px; }
+
+    /* Especialidades — single col */
+    .especialidades { padding: 64px 20px; }
+    .section-head h2 { font-size: 34px; }
+    .esp-grid { grid-template-columns: 1fr; }
+    .esp-card {
+      padding: 24px 0 !important;
+      border-right: none !important;
+      border-bottom: 1px solid var(--rule);
+      min-height: 0;
+    }
+    .esp-card:last-child { border-bottom: none; }
+    .esp-title { font-size: 22px; }
+
+    /* Ambiente */
+    .ambiente-img { min-height: 260px; }
+    .ambiente-copy { padding: 48px 20px; }
+    .ambiente-copy h2 { font-size: 30px; }
+    .ambiente-copy p { font-size: 14px; }
+
+    /* Booking */
+    .booking { padding: 64px 20px; }
+    .booking h2 { font-size: 38px; }
+    .booking-card { padding: 24px 18px; }
+    .booking-card h3 { font-size: 21px; }
+    .channel .ch-value { font-size: 18px; }
+    .booking-card li {
+      flex-direction: column;
+      gap: 4px;
+      padding: 14px 0;
+    }
+    .booking-card li span:last-child { font-size: 10.5px; }
+
+    /* Footer */
+    footer.site { padding: 48px 20px 24px 20px; }
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      padding-bottom: 32px;
+    }
+  }
 </style>
 </head>
 <body>

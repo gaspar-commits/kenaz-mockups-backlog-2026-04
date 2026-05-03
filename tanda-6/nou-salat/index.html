@@ -714,6 +714,301 @@
     margin-left: 6px;
     opacity: 0.85;
   }
+
+  /* ================= RESPONSIVE — TABLET / MOBILE ================= */
+  @media (max-width: 1024px) {
+    .nav { padding: 24px 32px; }
+    .nav-links { gap: 24px; }
+    .hero-content { padding: 0 32px 80px 32px; }
+    .hero h1 { font-size: 72px; }
+    .historia, .carta, .valle, .grupos, .contacto { padding: 100px 32px; }
+    .historia-grid, .valle-grid, .grupos-inner, .contacto-inner {
+      gap: 60px;
+    }
+    .historia-text h2 { font-size: 52px; }
+    .carta-header h2 { font-size: 56px; }
+    .valle-text h2 { font-size: 48px; }
+    .grupos-text h2 { font-size: 44px; }
+    .contacto-left h2 { font-size: 64px; }
+    .footer { padding: 32px; }
+  }
+
+  @media (max-width: 768px) {
+    /* ---- NAV ---- */
+    .nav {
+      padding: 20px 24px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .brand .wm { font-size: 22px; }
+    .brand .sub { font-size: 9px; letter-spacing: 0.3em; margin-top: 5px; }
+    .nav-links {
+      display: none;
+    }
+    .nav-links .reservar-btn,
+    .nav > .reservar-btn {
+      display: inline-block;
+    }
+    /* show only reservar button as mobile CTA */
+    .nav-links {
+      display: flex;
+      gap: 0;
+      margin-left: auto;
+    }
+    .nav-links a:not(.reservar-btn),
+    .nav-lang {
+      display: none;
+    }
+    .reservar-btn {
+      margin-left: 0;
+      padding: 11px 18px;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+    }
+
+    /* ---- HERO ---- */
+    .hero {
+      min-height: 680px;
+      height: auto;
+      min-height: 100svh;
+    }
+    .hero-content {
+      padding: 120px 24px 60px 24px;
+    }
+    .hero-meta {
+      flex-wrap: wrap;
+      gap: 10px 14px;
+      margin-bottom: 22px;
+    }
+    .hero-meta .label { font-size: 10px; letter-spacing: 0.26em; }
+    .hero h1 {
+      font-size: 44px;
+      line-height: 1.02;
+      letter-spacing: -0.015em;
+      max-width: 100%;
+    }
+    .hero-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 28px;
+      margin-top: 36px;
+    }
+    .hero-lede {
+      max-width: 100%;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .hero-actions {
+      flex-direction: column;
+      align-items: stretch;
+      width: 100%;
+      gap: 12px;
+    }
+    .btn-primary, .btn-ghost {
+      text-align: center;
+      width: 100%;
+      padding: 15px 20px;
+      font-size: 11px;
+    }
+    .btn-ghost {
+      padding: 14px 0;
+    }
+
+    /* ---- STRIP MARQUEE ---- */
+    .strip { padding: 16px 0; }
+    .strip-row {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px 24px;
+      padding: 0 24px;
+      font-size: 10px;
+      letter-spacing: 0.24em;
+      white-space: normal;
+    }
+    .strip-row span.sep {
+      font-size: 14px;
+    }
+
+    /* ---- HISTORIA ---- */
+    .historia { padding: 80px 24px; }
+    .historia-grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    .historia-text h2 {
+      font-size: 38px;
+      margin-bottom: 24px;
+    }
+    .historia-text h2 br { display: none; }
+    .historia-text p {
+      font-size: 15px;
+      line-height: 1.7;
+      max-width: 100%;
+    }
+    .historia-stats {
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 36px;
+      padding-top: 28px;
+      max-width: 100%;
+    }
+    .stat .num { font-size: 42px; }
+    .stat .desc { font-size: 10px; letter-spacing: 0.18em; }
+    .historia-img { aspect-ratio: 4 / 5; }
+
+    /* ---- CARTA ---- */
+    .carta { padding: 80px 24px; }
+    .carta-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    .carta-header h2 {
+      font-size: 40px;
+      max-width: 100%;
+    }
+    .carta-header h2 br { display: none; }
+    .carta-header .lede {
+      font-size: 14px;
+      max-width: 100%;
+    }
+    .carta-grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    .dish-img { aspect-ratio: 4 / 5; margin-bottom: 18px; }
+    .dish h3 { font-size: 24px; }
+    .dish p { font-size: 14px; max-width: 100%; }
+
+    /* ---- VALLE ---- */
+    .valle { padding: 80px 24px; }
+    .valle-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .valle-img { aspect-ratio: 5 / 6; }
+    .valle-text h2 {
+      font-size: 36px;
+      margin-bottom: 24px;
+    }
+    .valle-text h2 br { display: none; }
+    .valle-text p {
+      font-size: 15px;
+      max-width: 100%;
+    }
+    .valle-list { margin-top: 28px; }
+    .valle-list li {
+      padding: 14px 0;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .valle-list li .name { font-size: 17px; }
+    .valle-list li .alt {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-align: right;
+    }
+
+    /* ---- GRUPOS ---- */
+    .grupos { padding: 80px 24px; }
+    .grupos-inner {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .grupos-text h2 {
+      font-size: 34px;
+      margin-bottom: 22px;
+    }
+    .grupos-text h2 br { display: none; }
+    .grupos-text p {
+      font-size: 15px;
+      max-width: 100%;
+    }
+    .grupos-img { aspect-ratio: 6 / 5; }
+
+    /* ---- CONTACTO ---- */
+    .contacto { padding: 80px 24px 50px 24px; }
+    .contacto::before {
+      width: 100%;
+      opacity: 0.08;
+    }
+    .contacto-inner {
+      grid-template-columns: 1fr;
+      gap: 50px;
+    }
+    .contacto-left h2 {
+      font-size: 48px;
+      margin-bottom: 28px;
+    }
+    .contacto-left h2 br { display: none; }
+    .contacto-left .lede {
+      font-size: 15px;
+      max-width: 100%;
+      margin-bottom: 30px;
+    }
+    .contacto-left .btn-primary {
+      display: block;
+      text-align: center;
+      width: 100%;
+      padding: 16px 24px;
+    }
+    .contacto-right { gap: 28px; }
+    .info-block .val { font-size: 19px; }
+    .info-block .sub { font-size: 13px; }
+
+    /* ---- FOOTER ---- */
+    .footer { padding: 28px 24px 32px 24px; }
+    .footer-inner {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+    }
+    .footer-credit { font-size: 9px; }
+    .footer-credit em { font-size: 11px; }
+  }
+
+  @media (max-width: 480px) {
+    .nav { padding: 16px 18px; }
+    .brand .wm { font-size: 20px; }
+    .reservar-btn {
+      padding: 10px 14px;
+      font-size: 9px;
+      letter-spacing: 0.18em;
+    }
+
+    .hero-content { padding: 110px 18px 50px 18px; }
+    .hero h1 { font-size: 36px; line-height: 1.04; }
+    .hero-meta .label { font-size: 9px; letter-spacing: 0.22em; }
+    .hero-lede { font-size: 13px; }
+
+    .strip-row {
+      gap: 10px 18px;
+      padding: 0 18px;
+      font-size: 9px;
+    }
+
+    .historia, .carta, .valle, .grupos { padding: 64px 18px; }
+    .contacto { padding: 64px 18px 40px 18px; }
+    .footer { padding: 24px 18px 28px 18px; }
+
+    .historia-text h2 { font-size: 32px; }
+    .carta-header h2 { font-size: 34px; }
+    .valle-text h2 { font-size: 30px; }
+    .grupos-text h2 { font-size: 28px; }
+    .contacto-left h2 { font-size: 38px; }
+
+    .stat .num { font-size: 36px; }
+    .dish h3 { font-size: 22px; }
+    .valle-list li .name { font-size: 16px; }
+    .valle-list li .alt {
+      width: 100%;
+      text-align: left;
+    }
+    .info-block .val { font-size: 17px; }
+  }
 </style>
 </head>
 <body>

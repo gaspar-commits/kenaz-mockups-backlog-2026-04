@@ -300,6 +300,8 @@
     color: var(--ash-soft);
   }
 
+  .meta-stat-label span { display: block; }
+
   .hero-visual {
     position: relative;
     aspect-ratio: 4 / 5;
@@ -892,7 +894,7 @@
     color: var(--ash-soft);
   }
 
-  /* ---------- MOBILE ---------- */
+  /* ---------- TABLET ---------- */
   @media (max-width: 880px) {
     .nav, .cta-top { display: none; }
     .hero-grid, .section-head, .booking-grid, .footer-grid, .studio-big {
@@ -903,6 +905,129 @@
     .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
     .faq-grid { grid-template-columns: 1fr; }
     .studio-facts { grid-template-columns: 1fr; }
+    .studio-copy { padding-left: 0; }
+    .topbar { padding: 18px 1.25rem; gap: 1rem; }
+    .brand { gap: 12px; }
+    .brand-mark { width: 40px; height: 40px; }
+    .brand-mark svg { width: 40px; height: 40px; }
+  }
+
+  /* ---------- MOBILE ---------- */
+  @media (max-width: 600px) {
+    section { padding: 3.25rem 1.25rem; }
+    .hero { padding: 2.5rem 1.25rem 3rem; }
+
+    /* Brand: shrink wordmark to fit narrow viewports */
+    .brand-mark { width: 36px; height: 36px; }
+    .brand-mark svg { width: 36px; height: 36px; }
+    .wordmark-main { font-size: 17px; letter-spacing: 0.04em; }
+    .wordmark-sub { font-size: 9px; letter-spacing: 0.24em; }
+
+    /* Hero typography */
+    .hero-tag { font-size: 10px; letter-spacing: 0.24em; margin-bottom: 1.25rem; }
+    .hero-tag::before { width: 22px; }
+    .hero h1 { font-size: 2.75rem; line-height: 1; margin-bottom: 1.25rem; }
+    .hero-lead { font-size: 15.5px; line-height: 1.6; margin-bottom: 1.75rem; }
+    .hero-actions { gap: 0.75rem; margin-bottom: 2.25rem; }
+    .btn-primary, .btn-ghost { padding: 13px 20px; font-size: 10px; letter-spacing: 0.18em; }
+    .btn-primary { width: 100%; justify-content: center; }
+    .btn-ghost { width: 100%; justify-content: center; }
+
+    /* Hero meta — stack to 1 column with horizontal stat layout */
+    .hero-meta {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      padding-top: 1.5rem;
+    }
+    .meta-stat {
+      flex-direction: row;
+      align-items: baseline;
+      gap: 14px;
+    }
+    .meta-stat-num { font-size: 30px; }
+    .meta-stat-label { font-size: 9.5px; letter-spacing: 0.18em; }
+    /* On mobile labels read inline */
+    .meta-stat-label span { display: inline; }
+
+    .hero-visual { aspect-ratio: 4 / 5; }
+    .hero-visual-caption { font-size: 9px; left: 14px; bottom: 14px; padding: 8px 11px; }
+
+    /* Section heads */
+    .section-eyebrow { font-size: 10px; letter-spacing: 0.24em; }
+    .section-title { font-size: 2.1rem; }
+    .section-lead { font-size: 15.5px; line-height: 1.6; }
+
+    /* Artists */
+    .artist-card { padding: 1.75rem 1.5rem; gap: 1rem; }
+    .artist-name { font-size: 26px; }
+    .artist-name em { font-size: 19px; }
+    .artist-bio { font-size: 14px; }
+
+    /* Portfolio */
+    .portfolio-filters { gap: 0.5rem; margin-bottom: 1.75rem; padding-bottom: 1.5rem; }
+    .filter-btn { padding: 8px 14px; font-size: 9px; letter-spacing: 0.18em; }
+    .portfolio-count {
+      margin-left: 0;
+      flex-basis: 100%;
+      align-self: flex-start;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+    }
+    .portfolio-grid { grid-template-columns: 1fr; gap: 10px; }
+    .portfolio-item-meta { font-size: 8.5px; left: 10px; bottom: 10px; padding: 7px 10px; }
+    .editorial-tile-inner { padding: 1.5rem 1.25rem; }
+    .editorial-tile-num { font-size: 3.5rem; }
+    .editorial-tile-glyph { width: 64px; height: 64px; }
+
+    /* Studio */
+    .studio-big-img { aspect-ratio: 4 / 5; }
+    .studio-copy h2 { font-size: 1.85rem; margin-bottom: 1.25rem; }
+    .studio-copy p { font-size: 15px; line-height: 1.65; }
+    .studio-facts { gap: 1.25rem; margin-top: 1.5rem; padding-top: 1.5rem; }
+    .studio-fact-value { font-size: 19px; }
+
+    /* Booking / channels — fix overflow */
+    .booking-big { font-size: 2.25rem; margin-bottom: 1rem; }
+    .booking-sub { font-size: 15px; margin-bottom: 1.75rem; }
+    .channel {
+      grid-template-columns: auto 1fr;
+      gap: 0.9rem;
+      padding: 16px 16px;
+    }
+    .channel-icon { width: 36px; height: 36px; }
+    .channel-icon svg { width: 16px; height: 16px; }
+    .channel-arrow { display: none; }
+    .channel-label { font-size: 9px; letter-spacing: 0.18em; margin-bottom: 3px; }
+    .channel-value {
+      font-size: 16px;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+      letter-spacing: -0.01em;
+    }
+
+    /* FAQ */
+    .faq-item { padding: 1.5rem 1.25rem; }
+    .faq-q { font-size: 19px; }
+    .faq-a { font-size: 13.5px; line-height: 1.65; }
+
+    /* Footer */
+    footer { padding: 2.5rem 1.25rem 1.5rem; }
+    .footer-grid { gap: 2rem; margin-bottom: 2rem; }
+    .footer-brand .wordmark-main { font-size: 18px; letter-spacing: 0.04em; }
+    .footer-tagline { font-size: 15px; }
+    .footer-col h4 { font-size: 9.5px; letter-spacing: 0.22em; }
+    .footer-col li { font-size: 13px; }
+    .footer-bar { font-size: 9px; letter-spacing: 0.18em; gap: 0.75rem; }
+  }
+
+  /* ---------- MOBILE SMALL ---------- */
+  @media (max-width: 380px) {
+    .wordmark-main { font-size: 15px; }
+    .hero h1 { font-size: 2.4rem; }
+    .booking-big { font-size: 2rem; }
+    .section-title { font-size: 1.85rem; }
+    .channel-value { font-size: 14.5px; }
+    .meta-stat-num { font-size: 26px; }
   }
 </style>
 </head>
@@ -974,15 +1099,15 @@
         <div class="hero-meta">
           <div class="meta-stat">
             <div class="meta-stat-num">9 <em>años</em></div>
-            <div class="meta-stat-label">Tatuando<br/>en Benidorm</div>
+            <div class="meta-stat-label"><span>Tatuando</span> <span>en Benidorm</span></div>
           </div>
           <div class="meta-stat">
             <div class="meta-stat-num">8.8<em>k</em></div>
-            <div class="meta-stat-label">Seguidores<br/>Instagram</div>
+            <div class="meta-stat-label"><span>Seguidores</span> <span>Instagram</span></div>
           </div>
           <div class="meta-stat">
             <div class="meta-stat-num">2</div>
-            <div class="meta-stat-label">Artistas<br/>residentes</div>
+            <div class="meta-stat-label"><span>Artistas</span> <span>residentes</span></div>
           </div>
         </div>
       </div>

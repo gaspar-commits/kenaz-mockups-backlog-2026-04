@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=1440, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Clínica Miramar Costa Blanca — Medicina estética y bienestar</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -173,6 +173,156 @@
 
   /* tiny ornaments */
   .ornament-line{display:block;width:1px;height:60px;background:var(--gold);margin:0 auto 32px}
+
+  /* ============ RESPONSIVE — TABLET 768px ============ */
+  @media (max-width: 768px){
+    body{font-size:14px}
+    .wrap{padding:0 28px}
+    section{padding:80px 0}
+
+    /* topbar */
+    .topbar-in{height:auto;padding:10px 0;flex-direction:column;gap:6px;font-size:10px;letter-spacing:0.12em;text-align:center}
+    .topbar-in .lang span{margin-left:10px}
+
+    /* nav */
+    .nav-in{grid-template-columns:1fr;height:auto;padding:20px 0;gap:18px;justify-items:center}
+    .nav-l, .nav-r{flex-wrap:wrap;justify-content:center;gap:18px 22px}
+    .nav-r .cta-call{order:99}
+    .brand .mark{font-size:26px}
+    .nav-l a, .nav-r a{font-size:11px;letter-spacing:0.14em}
+
+    /* HERO */
+    .hero{padding:48px 0 64px}
+    .hero-grid{grid-template-columns:1fr;gap:48px;align-items:start}
+    .hero-l{padding-bottom:0}
+    .eyebrow{margin-bottom:24px;font-size:10px;letter-spacing:0.24em;flex-wrap:wrap}
+    h1.head{font-size:54px;line-height:1.02;margin-bottom:24px}
+    .lede{font-size:15px;max-width:none}
+    .hero-actions{flex-wrap:wrap;gap:12px;margin-top:32px}
+    .btn-primary, .btn-ghost{padding:16px 22px;font-size:10px;letter-spacing:0.20em}
+    .hero-meta{margin-top:40px;grid-template-columns:1fr;gap:22px;padding-top:24px}
+    .hero-meta .val{font-size:20px}
+
+    .hero-r{margin-top:8px}
+    .hero-img{aspect-ratio:4/4.4}
+    .hero-caption{left:0;bottom:24px;padding:18px 22px;max-width:78%}
+    .hero-caption .who{font-size:19px}
+    .hero-decor{width:60px;height:60px;top:-14px;right:-14px}
+    .hero-tag{top:18px;right:18px;padding:10px 14px}
+    .hero-tag .n{font-size:26px}
+    .hero-tag .t{font-size:8px;letter-spacing:0.20em}
+
+    /* SECTION head */
+    .sec-head{grid-template-columns:1fr;gap:24px;margin-bottom:48px;align-items:start}
+    .sec-title{font-size:38px;line-height:1.08}
+    .sec-lede{font-size:14px;max-width:none}
+    .ornament-line{height:42px;margin:0 0 18px}
+
+    /* FOUNDER */
+    .founder{padding:90px 0}
+    .founder-grid{grid-template-columns:1fr;gap:48px}
+    .founder-img{aspect-ratio:4/5;max-width:420px}
+    .founder-quote{font-size:30px}
+    .founder-quote::before{margin-bottom:24px}
+    .founder-meta{margin-top:36px;flex-wrap:wrap;gap:18px}
+    .founder-divider{display:none}
+
+    /* SERVICES */
+    .svc-grid{grid-template-columns:repeat(2,1fr)}
+    .svc{padding:36px 26px 40px;min-height:240px}
+    .svc h3{font-size:24px}
+
+    /* HIFU */
+    .hifu{padding:90px 0}
+    .hifu-grid{grid-template-columns:1fr;gap:48px;margin-top:36px}
+    .hifu-img{aspect-ratio:4/3}
+    .hifu-points{gap:28px}
+    .hifu-pt{grid-template-columns:48px 1fr;gap:18px;padding-bottom:24px}
+    .hifu-pt .pn{font-size:30px}
+    .hifu-pt h4{font-size:21px}
+
+    /* PROCESS */
+    .proc-grid{grid-template-columns:repeat(2,1fr);gap:36px 28px}
+    .proc-step h4{font-size:22px}
+
+    /* CONTACT */
+    .contact{padding:90px 0}
+    .contact-grid{grid-template-columns:1fr;gap:56px}
+    .contact-l h2{font-size:42px;margin-bottom:24px}
+    .contact-row{grid-template-columns:1fr;gap:6px;padding-bottom:18px}
+    .contact-row .lab{padding-top:0}
+    .contact-row .val{font-size:19px}
+    .book-cta{margin-top:32px;padding:20px 24px;font-size:11px;letter-spacing:0.20em}
+
+    /* FOOTER */
+    footer{padding:60px 0 28px}
+    .foot-grid{grid-template-columns:1fr 1fr;gap:36px 28px;padding-bottom:40px}
+    .foot-brand{grid-column:1 / -1}
+    .foot-brand .mark{font-size:28px}
+    .foot-bot{flex-direction:column;gap:10px;text-align:center;font-size:10px;letter-spacing:0.12em}
+  }
+
+  /* ============ RESPONSIVE — PHONE 480px ============ */
+  @media (max-width: 480px){
+    .wrap{padding:0 20px}
+    section{padding:64px 0}
+
+    /* hide secondary nav items to fit */
+    .nav-l a:nth-child(n+3), .nav-r a:nth-child(n+2){display:none}
+    .nav-l, .nav-r{gap:16px}
+    .brand .mark{font-size:24px}
+    .brand .sub{font-size:8px;letter-spacing:0.32em}
+
+    /* HERO */
+    h1.head{font-size:40px;line-height:1.04;margin-bottom:20px}
+    .lede{font-size:14.5px;line-height:1.65}
+    .hero-actions{flex-direction:column;align-items:stretch;gap:10px}
+    .btn-primary, .btn-ghost{justify-content:center;width:100%;text-align:center}
+    .hero-meta .val{font-size:18px}
+    .hero-meta .val em{font-size:15px;display:block;margin-top:2px}
+    .hero-caption{position:static;margin-top:18px;max-width:none;border-left:0;border-top:2px solid var(--gold);padding:16px 0 0;box-shadow:none;background:transparent}
+    .hero-caption .who{font-size:18px}
+    .hero-decor{display:none}
+    .hero-tag{top:14px;right:14px;padding:8px 12px}
+    .hero-tag .n{font-size:22px}
+
+    /* SECTION head */
+    .sec-title{font-size:30px;line-height:1.1}
+    .sec-lede{font-size:13.5px}
+
+    /* FOUNDER */
+    .founder{padding:72px 0}
+    .founder-quote{font-size:24px;line-height:1.22}
+    .founder-name{font-size:20px}
+    .founder-role{font-size:10px;letter-spacing:0.20em}
+
+    /* SERVICES — single column on phone */
+    .svc-grid{grid-template-columns:1fr}
+    .svc{padding:32px 22px 36px;min-height:0}
+    .svc h3{font-size:22px}
+
+    /* HIFU */
+    .hifu{padding:72px 0}
+    .hifu-pt{grid-template-columns:40px 1fr;gap:14px}
+    .hifu-pt .pn{font-size:26px}
+    .hifu-pt h4{font-size:19px}
+
+    /* PROCESS — single column */
+    .proc-grid{grid-template-columns:1fr;gap:28px}
+    .proc-step h4{font-size:20px}
+
+    /* CONTACT */
+    .contact{padding:72px 0}
+    .contact-l h2{font-size:32px}
+    .contact-l p{font-size:14px}
+    .contact-row .val{font-size:17px}
+    .contact-row .val span{font-size:12px}
+    .book-cta{width:100%;justify-content:center;padding:18px 20px;font-size:10.5px;letter-spacing:0.18em}
+
+    /* FOOTER */
+    .foot-grid{grid-template-columns:1fr;gap:32px}
+    .foot-brand{grid-column:auto}
+  }
 </style>
 </head>
 <body>
