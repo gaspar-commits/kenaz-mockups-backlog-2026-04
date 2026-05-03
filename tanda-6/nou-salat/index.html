@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Restaurante Nou Salat — Cocina valenciana frente al valle de Guadalest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #1f2418;            /* verde-oliva muy oscuro, casi negro */
+    --paper: #efe7d6;           /* crema piedra cálida */
+    --paper-2: #e6dcc7;         /* crema piedra más profunda */
+    --olive: #4a5535;           /* verde oliva sierra */
+    --olive-deep: #2f3825;      /* verde sierra profundo */
+    --ochre: #b8823a;           /* ocre tierra */
+    --ochre-deep: #8b5e25;      /* tierra quemada */
+    --stone: #8a8472;           /* piedra valle */
+    --line: rgba(31, 36, 24, 0.18);
+    --muted: rgba(31, 36, 24, 0.62);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body { overflow-x: hidden; }
+
+  .display {
+    font-family: 'Fraunces', 'Times New Roman', serif;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    font-variation-settings: "opsz" 144, "SOFT" 50;
+  }
+  .italic { font-style: italic; font-weight: 400; }
+  .label {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-feature-settings: "tnum";
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 500;
+  }
+
+  /* ================= NAV ================= */
+  .nav {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    z-index: 30;
+    padding: 30px 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--paper);
+  }
+  .brand {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+  .brand .wm {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 28px;
+    letter-spacing: 0;
+    font-variation-settings: "opsz" 144;
+  }
+  .brand .wm em {
+    font-style: italic;
+    font-weight: 400;
+  }
+  .brand .sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    margin-top: 7px;
+    opacity: 0.85;
+  }
+  .nav-links {
+    display: flex;
+    gap: 38px;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .nav-links a {
+    color: var(--paper);
+    text-decoration: none;
+    opacity: 0.92;
+    transition: opacity .2s ease;
+  }
+  .nav-links a:hover { opacity: 1; }
+  .nav-lang {
+    display: flex;
+    gap: 14px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-left: 18px;
+    padding-left: 22px;
+    border-left: 1px solid rgba(239, 231, 214, 0.32);
+  }
+  .nav-lang a { color: var(--paper); opacity: 0.55; text-decoration: none; }
+  .nav-lang a.active { opacity: 1; }
+  .reservar-btn {
+    border: 1px solid rgba(239, 231, 214, 0.55);
+    padding: 13px 24px;
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--paper);
+    text-decoration: none;
+    transition: all .25s ease;
+    margin-left: 18px;
+  }
+  .reservar-btn:hover { background: var(--paper); color: var(--ink); }
+
+  /* ================= HERO ================= */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 820px;
+    width: 100%;
+    overflow: hidden;
+  }
+  .hero-img {
+    position: absolute;
+    inset: 0;
+    background: url('img/hero-valle.jpg') center 55% / cover no-repeat;
+    transform: scale(1.04);
+  }
+  .hero-img::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(31,36,24,0.45) 0%, rgba(31,36,24,0.15) 30%, rgba(31,36,24,0.05) 55%, rgba(31,36,24,0.78) 100%),
+      radial-gradient(ellipse at 70% 40%, rgba(184,130,58,0.12) 0%, transparent 60%);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    height: 100%;
+    padding: 0 64px 100px 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: var(--paper);
+  }
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 28px;
+  }
+  .hero-meta .dot {
+    width: 5px; height: 5px;
+    background: var(--paper);
+    border-radius: 50%;
+    opacity: 0.7;
+  }
+  .hero-meta .label { opacity: 0.92; }
+
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 96px;
+    line-height: 0.96;
+    letter-spacing: -0.02em;
+    max-width: 1100px;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+  }
+  .hero h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: rgba(239, 231, 214, 0.92);
+  }
+  .hero h1 .ampersand {
+    font-style: italic;
+    font-weight: 400;
+    font-size: 0.95em;
+    margin: 0 0.04em;
+    opacity: 0.9;
+  }
+
+  .hero-bottom {
+    margin-top: 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 60px;
+  }
+  .hero-lede {
+    max-width: 460px;
+    font-size: 15px;
+    line-height: 1.65;
+    color: rgba(239, 231, 214, 0.92);
+    font-weight: 400;
+  }
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .btn-primary {
+    background: var(--paper);
+    color: var(--ink);
+    padding: 16px 28px;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all .25s ease;
+    border: 1px solid var(--paper);
+  }
+  .btn-primary:hover { background: transparent; color: var(--paper); }
+  .btn-ghost {
+    color: var(--paper);
+    padding: 16px 0;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(239, 231, 214, 0.5);
+    transition: border-color .2s ease;
+  }
+  .btn-ghost:hover { border-color: var(--paper); }
+
+  /* ================= STRIP MARQUEE ================= */
+  .strip {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 22px 0;
+    border-top: 1px solid rgba(239,231,214,0.08);
+    border-bottom: 1px solid rgba(239,231,214,0.08);
+    overflow: hidden;
+  }
+  .strip-row {
+    display: flex;
+    gap: 56px;
+    align-items: center;
+    white-space: nowrap;
+    padding: 0 64px;
+    font-size: 12px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: rgba(239,231,214,0.72);
+  }
+  .strip-row span.sep {
+    color: var(--ochre);
+    font-style: italic;
+    font-family: 'Fraunces', serif;
+    text-transform: lowercase;
+    letter-spacing: 0;
+    font-size: 18px;
+    font-weight: 400;
+    opacity: 0.75;
+  }
+
+  /* ================= HISTORIA (4 décadas) ================= */
+  .historia {
+    background: var(--paper);
+    padding: 140px 64px;
+    position: relative;
+  }
+  .historia-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    max-width: 1500px;
+    margin: 0 auto;
+    align-items: center;
+  }
+  .historia-text .label { color: var(--ochre-deep); margin-bottom: 28px; display: block; }
+  .historia-text h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 1.02;
+    letter-spacing: -0.018em;
+    color: var(--ink);
+    font-variation-settings: "opsz" 144, "SOFT" 50;
+    margin-bottom: 36px;
+  }
+  .historia-text h2 em { font-style: italic; font-weight: 400; color: var(--olive); }
+  .historia-text p {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--muted);
+    margin-bottom: 22px;
+    max-width: 520px;
+  }
+  .historia-text p strong { color: var(--ink); font-weight: 500; }
+
+  .historia-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 48px;
+    padding-top: 36px;
+    border-top: 1px solid var(--line);
+    max-width: 480px;
+  }
+  .stat .num {
+    font-family: 'Fraunces', serif;
+    font-size: 56px;
+    font-weight: 400;
+    color: var(--olive-deep);
+    line-height: 1;
+    font-variation-settings: "opsz" 144;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .stat .num em { font-style: italic; font-weight: 400; }
+  .stat .desc {
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  .historia-img {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+  }
+  .historia-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .historia-img .caption {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    right: 24px;
+    color: var(--paper);
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+  }
+
+  /* ================= CARTA / COCINA ================= */
+  .carta {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 140px 64px;
+    position: relative;
+    overflow: hidden;
+  }
+  .carta::before {
+    content: "";
+    position: absolute;
+    top: -10%;
+    right: -5%;
+    width: 50%;
+    height: 60%;
+    background: radial-gradient(ellipse at center, rgba(184,130,58,0.10) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .carta-header {
+    max-width: 1500px;
+    margin: 0 auto 80px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 60px;
+  }
+  .carta-header .label { color: var(--ochre); display: block; margin-bottom: 24px; }
+  .carta-header h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 72px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+    max-width: 720px;
+  }
+  .carta-header h2 em {
+    font-style: italic;
+    font-weight: 400;
+    color: rgba(184,130,58,0.95);
+  }
+  .carta-header .lede {
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(239,231,214,0.72);
+    max-width: 380px;
+  }
+
+  .carta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 28px;
+    max-width: 1500px;
+    margin: 0 auto;
+  }
+  .dish {
+    position: relative;
+  }
+  .dish-img {
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    margin-bottom: 24px;
+    background: rgba(239,231,214,0.04);
+  }
+  .dish-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .8s ease;
+  }
+  .dish:hover .dish-img img { transform: scale(1.04); }
+
+  .dish .num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--ochre);
+    font-weight: 400;
+    margin-bottom: 6px;
+    display: block;
+  }
+  .dish h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    margin-bottom: 12px;
+    font-variation-settings: "opsz" 144;
+  }
+  .dish h3 em { font-style: italic; font-weight: 400; }
+  .dish p {
+    font-size: 14px;
+    line-height: 1.65;
+    color: rgba(239,231,214,0.72);
+    max-width: 360px;
+  }
+
+  /* ================= VALLE ================= */
+  .valle {
+    background: var(--paper);
+    padding: 140px 64px;
+  }
+  .valle-grid {
+    max-width: 1500px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .valle-img {
+    aspect-ratio: 5 / 6;
+    overflow: hidden;
+    position: relative;
+  }
+  .valle-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .valle-text .label { color: var(--olive); display: block; margin-bottom: 24px; }
+  .valle-text h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 60px;
+    line-height: 1.02;
+    letter-spacing: -0.018em;
+    color: var(--ink);
+    margin-bottom: 32px;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+  }
+  .valle-text h2 em { font-style: italic; font-weight: 400; color: var(--olive); }
+  .valle-text p {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--muted);
+    margin-bottom: 22px;
+    max-width: 520px;
+  }
+  .valle-text p strong { color: var(--ink); font-weight: 500; }
+
+  .valle-list {
+    margin-top: 36px;
+    border-top: 1px solid var(--line);
+  }
+  .valle-list li {
+    list-style: none;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+  }
+  .valle-list li .name {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    font-weight: 500;
+    color: var(--ink);
+    font-variation-settings: "opsz" 144;
+  }
+  .valle-list li .name em { font-style: italic; font-weight: 400; }
+  .valle-list li .alt {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  /* ================= EVENTOS / GRUPOS ================= */
+  .grupos {
+    background: var(--paper-2);
+    padding: 130px 64px;
+    position: relative;
+  }
+  .grupos-inner {
+    max-width: 1500px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .grupos-text .label { color: var(--ochre-deep); display: block; margin-bottom: 22px; }
+  .grupos-text h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 56px;
+    line-height: 1.04;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin-bottom: 28px;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+    max-width: 520px;
+  }
+  .grupos-text h2 em { font-style: italic; font-weight: 400; color: var(--ochre-deep); }
+  .grupos-text p {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--muted);
+    margin-bottom: 18px;
+    max-width: 480px;
+  }
+  .grupos-text .cta {
+    display: inline-block;
+    margin-top: 22px;
+    color: var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 4px;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .grupos-img {
+    aspect-ratio: 6 / 5;
+    overflow: hidden;
+    position: relative;
+  }
+  .grupos-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ================= CONTACTO / RESERVAR ================= */
+  .contacto {
+    background: var(--olive-deep);
+    color: var(--paper);
+    padding: 140px 64px 60px 64px;
+    position: relative;
+    overflow: hidden;
+  }
+  .contacto::before {
+    content: "";
+    position: absolute;
+    top: 0; right: 0;
+    width: 40%;
+    height: 100%;
+    background: url('img/detalle-mesa.jpg') center / cover no-repeat;
+    opacity: 0.18;
+    mix-blend-mode: luminosity;
+  }
+  .contacto-inner {
+    position: relative;
+    max-width: 1500px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 100px;
+    align-items: flex-start;
+  }
+  .contacto-left .label { color: rgba(184,130,58,0.95); display: block; margin-bottom: 28px; }
+  .contacto-left h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 80px;
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    margin-bottom: 38px;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+  }
+  .contacto-left h2 em { font-style: italic; font-weight: 400; color: rgba(239,231,214,0.85); }
+  .contacto-left .lede {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(239,231,214,0.78);
+    max-width: 480px;
+    margin-bottom: 40px;
+  }
+  .contacto-left .btn-primary {
+    background: var(--paper);
+    color: var(--olive-deep);
+    padding: 18px 32px;
+  }
+  .contacto-left .btn-primary:hover {
+    background: transparent;
+    color: var(--paper);
+    border-color: var(--paper);
+  }
+
+  .contacto-right {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+  .info-block .lbl {
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: rgba(184,130,58,0.95);
+    font-weight: 500;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .info-block .val {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--paper);
+    line-height: 1.35;
+    font-variation-settings: "opsz" 144;
+  }
+  .info-block .val a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(239,231,214,0.3);
+    padding-bottom: 2px;
+  }
+  .info-block .sub {
+    font-size: 14px;
+    color: rgba(239,231,214,0.65);
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+
+  /* ================= FOOTER ================= */
+  .footer {
+    background: var(--olive-deep);
+    color: rgba(239,231,214,0.55);
+    padding: 36px 64px 44px 64px;
+    border-top: 1px solid rgba(239,231,214,0.1);
+    position: relative;
+  }
+  .footer-inner {
+    max-width: 1500px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .footer-inner a { color: inherit; text-decoration: none; }
+  .footer-inner a:hover { color: var(--paper); }
+  .footer-credit {
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    opacity: 0.65;
+  }
+  .footer-credit em {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    text-transform: none;
+    letter-spacing: 0.04em;
+    font-size: 12px;
+    margin-left: 6px;
+    opacity: 0.85;
+  }
+</style>
+</head>
+<body>
+
+<!-- =============== NAV =============== -->
+<nav class="nav">
+  <div class="brand">
+    <span class="wm">Nou <em>Salat</em></span>
+    <span class="sub">Guadalest · cuatro décadas</span>
+  </div>
+  <div class="nav-links">
+    <a href="#historia">Historia</a>
+    <a href="#carta">Carta</a>
+    <a href="#valle">El valle</a>
+    <a href="#grupos">Grupos</a>
+    <a href="#contacto">Contacto</a>
+    <div class="nav-lang">
+      <a href="#" class="active">ES</a>
+      <a href="#">EN</a>
+    </div>
+    <a href="#contacto" class="reservar-btn">Reservar mesa</a>
+  </div>
+</nav>
+
+<!-- =============== HERO =============== -->
+<section class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-content">
+    <div class="hero-meta">
+      <span class="label">Castell de Guadalest</span>
+      <span class="dot"></span>
+      <span class="label">Cocina valenciana</span>
+      <span class="dot"></span>
+      <span class="label">Cuatro décadas</span>
+    </div>
+    <h1 class="display">
+      Cuatro décadas de cocina valenciana<br>
+      <em>frente al valle de Aitana</em>
+    </h1>
+    <div class="hero-bottom">
+      <p class="hero-lede">
+        En el kilómetro 2 de la carretera a Guadalest, una sala con vistas al valle, a la sierra de Bernia y, los días claros, al mar. Arroces al horno, olleta de blat y los platos del interior valenciano que aquí se hacen igual desde hace cuarenta años.
+      </p>
+      <div class="hero-actions">
+        <a href="#contacto" class="btn-primary">Reservar mesa</a>
+        <a href="#carta" class="btn-ghost">Ver la carta</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== STRIP =============== -->
+<div class="strip">
+  <div class="strip-row">
+    <span>Arroz al horno</span>
+    <span class="sep">&amp;</span>
+    <span>Olleta de blat</span>
+    <span class="sep">&amp;</span>
+    <span>Cordero al horno</span>
+    <span class="sep">&amp;</span>
+    <span>Vistas a Aitana</span>
+    <span class="sep">&amp;</span>
+    <span>Cocina del valle</span>
+    <span class="sep">&amp;</span>
+    <span>Mesa para grupos</span>
+  </div>
+</div>
+
+<!-- =============== HISTORIA =============== -->
+<section class="historia" id="historia">
+  <div class="historia-grid">
+    <div class="historia-text">
+      <span class="label">La casa</span>
+      <h2 class="display">
+        Una casa<br>
+        <em>de cuarenta años</em><br>
+        en la carretera<br>
+        de Guadalest.
+      </h2>
+      <p>
+        Hace cuatro décadas que Nou Salat abrió en el kilómetro 2 de la carretera entre Callosa d'en Sarrià y Guadalest. La sala mira al mismo valle, las recetas siguen el mismo orden y los arroces salen del mismo horno de leña.
+      </p>
+      <p>
+        <strong>Cocina valenciana del interior</strong>, sin invención y sin discurso: olleta los días fríos, arroz al horno los domingos, cordero cuando toca. Y una mesa larga al fondo de la sala para los que vienen en grupo.
+      </p>
+      <div class="historia-stats">
+        <div class="stat">
+          <span class="num">40<em>+</em></span>
+          <span class="desc">Años en la casa</span>
+        </div>
+        <div class="stat">
+          <span class="num">4,5</span>
+          <span class="desc">800+ reseñas Google</span>
+        </div>
+      </div>
+    </div>
+    <div class="historia-img">
+      <img src="img/comedor.jpg" alt="Comedor del restaurante con vista al valle">
+      <span class="caption">Sala principal · Vista al valle de Guadalest</span>
+    </div>
+  </div>
+</section>
+
+<!-- =============== CARTA =============== -->
+<section class="carta" id="carta">
+  <div class="carta-header">
+    <div>
+      <span class="label">La carta</span>
+      <h2 class="display">
+        Lo que se cocina<br>
+        <em>cuando se cocina bien.</em>
+      </h2>
+    </div>
+    <p class="lede">
+      Tres platos que resumen lo que es Nou Salat. Recetas valencianas del interior, hechas con tiempo y con la materia prima del valle.
+    </p>
+  </div>
+  <div class="carta-grid">
+    <div class="dish">
+      <div class="dish-img"><img src="img/arroz.jpg" alt="Arroz al horno valenciano"></div>
+      <span class="num">I.</span>
+      <h3 class="display">Arroz <em>al horno</em></h3>
+      <p>
+        Arroz, garbanzos, costilla, morcilla, tomate y la cabeza de ajos en el centro. Cazuela de barro al horno hasta que el arroz se asienta y se dora por arriba.
+      </p>
+    </div>
+    <div class="dish">
+      <div class="dish-img"><img src="img/olleta.jpg" alt="Olleta de blat valenciana"></div>
+      <span class="num">II.</span>
+      <h3 class="display">Olleta <em>de blat</em></h3>
+      <p>
+        Trigo pelado, alubias, embutido del valle y verduras. Un cocido valenciano de invierno que se hace despacio y se sirve caliente, como se ha servido siempre.
+      </p>
+    </div>
+    <div class="dish">
+      <div class="dish-img"><img src="img/detalle-mesa.jpg" alt="Detalle de mesa con almendras y vino"></div>
+      <span class="num">III.</span>
+      <h3 class="display">Mesa <em>de la casa</em></h3>
+      <p>
+        Almendra del valle, aceite de la sierra, embutido propio y un vaso de vino blanco fresco. Lo que se pone en la mesa antes de empezar.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- =============== VALLE =============== -->
+<section class="valle" id="valle">
+  <div class="valle-grid">
+    <div class="valle-img">
+      <img src="img/hero-valle.jpg" alt="Vista panorámica del valle de Guadalest">
+    </div>
+    <div class="valle-text">
+      <span class="label">El valle</span>
+      <h2 class="display">
+        La mesa con<br>
+        <em>la mejor vista</em><br>
+        del interior.
+      </h2>
+      <p>
+        Estamos a la salida del Castell de Guadalest, en el km 2 de la carretera hacia Callosa. La sala está orientada al sur: a un lado, la silueta de la sierra de Aitana; al otro, las primeras estribaciones de la Bernia. En el medio, el valle.
+      </p>
+      <p>
+        En días claros el mar se ve desde la mesa.
+      </p>
+      <ul class="valle-list">
+        <li>
+          <span class="name">Sierra de <em>Aitana</em></span>
+          <span class="alt">1.558 m · al fondo</span>
+        </li>
+        <li>
+          <span class="name">Sierra de <em>Bernia</em></span>
+          <span class="alt">1.128 m · al sur</span>
+        </li>
+        <li>
+          <span class="name">Embalse de <em>Guadalest</em></span>
+          <span class="alt">a 3 km</span>
+        </li>
+        <li>
+          <span class="name">Castell de <em>Guadalest</em></span>
+          <span class="alt">pueblo medieval · a 2 km</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- =============== GRUPOS =============== -->
+<section class="grupos" id="grupos">
+  <div class="grupos-inner">
+    <div class="grupos-text">
+      <span class="label">Grupos &amp; celebraciones</span>
+      <h2 class="display">
+        Comuniones, bodas pequeñas,<br>
+        <em>comidas de empresa.</em>
+      </h2>
+      <p>
+        Una sala con capacidad para grupos grandes y un menú cerrado que se trabaja con tiempo. Familias del valle, comidas de empresa de la Marina Baixa, y la sobremesa larga que pide la montaña.
+      </p>
+      <p>
+        <strong>Reservas con antelación</strong> para que la cocina pueda preparar los arroces y la olleta como tienen que prepararse: sin prisa.
+      </p>
+      <a href="#contacto" class="cta">Pedir presupuesto</a>
+    </div>
+    <div class="grupos-img">
+      <img src="img/comedor.jpg" alt="Sala preparada para grupo">
+    </div>
+  </div>
+</section>
+
+<!-- =============== CONTACTO =============== -->
+<section class="contacto" id="contacto">
+  <div class="contacto-inner">
+    <div class="contacto-left">
+      <span class="label">Reservar</span>
+      <h2 class="display">
+        Una mesa<br>
+        <em>frente al valle.</em>
+      </h2>
+      <p class="lede">
+        Llámanos para reservar mesa, consultar disponibilidad de grupos o pedir el menú del día.
+      </p>
+      <a href="tel:+34965885019" class="btn-primary">Llamar al restaurante</a>
+    </div>
+    <div class="contacto-right">
+      <div class="info-block">
+        <span class="lbl">Teléfono</span>
+        <span class="val"><a href="tel:+34965885019">+34 965 88 50 19</a></span>
+      </div>
+      <div class="info-block">
+        <span class="lbl">Dónde estamos</span>
+        <span class="val">Carretera Callosa–Guadalest, km 2</span>
+        <span class="sub">03517 El Castell de Guadalest, Alicante</span>
+      </div>
+      <div class="info-block">
+        <span class="lbl">Email</span>
+        <span class="val"><a href="mailto:nou.salat@gmail.com">nou.salat@gmail.com</a></span>
+      </div>
+      <div class="info-block">
+        <span class="lbl">Horario</span>
+        <span class="val">Reservas por teléfono</span>
+        <span class="sub">Consultar disponibilidad y menú del día</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== FOOTER =============== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <span>Restaurante Nou Salat · Castell de Guadalest</span>
+    <span class="footer-credit">Diseño propuesto por <em>Kenaz Studio</em></span>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,1019 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<title>Xcellence Properties — Boutique luxury real estate, Costa Blanca norte</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bone: #f5f1ea;            /* blanco hueso */
+    --sand: #e8dfd1;            /* arena clara */
+    --sand-dark: #c9bda8;       /* arena oscura */
+    --ink: #1a2a3a;             /* azul tinta profundo */
+    --sea: #14304a;             /* azul mediterraneo */
+    --sea-deep: #0d2335;        /* azul profundo */
+    --gold: #b89968;            /* dorado champagne */
+    --gold-soft: #d4b88a;
+    --line: rgba(26, 42, 58, 0.14);
+    --muted: #5a6470;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bone); color: var(--ink); -webkit-font-smoothing: antialiased; }
+  body { font-family: 'Inter', -apple-system, system-ui, sans-serif; font-weight: 400; line-height: 1.5; }
+
+  .display { font-family: 'Cormorant Garamond', 'Times New Roman', serif; font-weight: 400; letter-spacing: -0.01em; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+
+  /* ===========================
+     NAV
+     =========================== */
+  .nav {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 50;
+    padding: 28px 64px;
+    display: flex; align-items: center; justify-content: space-between;
+    color: var(--bone);
+  }
+  .nav-brand {
+    display: flex; align-items: baseline; gap: 14px;
+  }
+  .brand-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500; font-size: 26px; letter-spacing: 0.02em;
+    color: var(--bone);
+  }
+  .brand-mark em {
+    font-style: italic; font-weight: 400; color: var(--gold-soft);
+  }
+  .brand-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(245, 241, 234, 0.7);
+  }
+  .nav-links {
+    display: flex; gap: 36px;
+    font-size: 13px; letter-spacing: 0.04em;
+    color: rgba(245, 241, 234, 0.85);
+  }
+  .nav-links a { color: inherit; text-decoration: none; transition: color .2s; }
+  .nav-links a:hover { color: var(--gold-soft); }
+  .nav-lang {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.18em;
+    color: var(--gold-soft);
+    border-left: 1px solid rgba(245, 241, 234, 0.25);
+    padding-left: 24px;
+  }
+  .nav-lang span { opacity: 0.45; }
+  .nav-lang span.active { opacity: 1; color: var(--bone); font-weight: 500; }
+
+  /* ===========================
+     HERO
+     =========================== */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    background: var(--sea-deep);
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background-image: url('img/hero-villa.jpg');
+    background-size: cover; background-position: center;
+    z-index: 0;
+  }
+  .hero-bg::after {
+    content: ''; position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, rgba(13, 35, 53, 0.55) 0%, rgba(13, 35, 53, 0.25) 35%, rgba(13, 35, 53, 0.65) 100%),
+      linear-gradient(90deg, rgba(13, 35, 53, 0.45) 0%, rgba(13, 35, 53, 0.05) 60%);
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 180px 64px 96px;
+    max-width: 1640px; margin: 0 auto;
+    color: var(--bone);
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 120px;
+    align-items: end;
+    min-height: 100vh;
+  }
+
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--gold-soft);
+    margin-bottom: 36px;
+  }
+  .eyebrow::before {
+    content: ''; width: 28px; height: 1px; background: var(--gold-soft);
+  }
+
+  h1.headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(56px, 6.4vw, 104px);
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+    color: var(--bone);
+    margin-bottom: 36px;
+  }
+  h1.headline em {
+    font-style: italic; font-weight: 300;
+    color: var(--gold-soft);
+  }
+
+  .lede {
+    font-size: 18px; line-height: 1.55;
+    color: rgba(245, 241, 234, 0.86);
+    max-width: 580px;
+    margin-bottom: 48px;
+    font-weight: 300;
+  }
+
+  .cta-row {
+    display: flex; gap: 16px; align-items: center;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 18px 32px;
+    background: var(--gold);
+    color: var(--sea-deep);
+    font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500;
+    text-decoration: none;
+    border: 1px solid var(--gold);
+    transition: all .2s ease;
+  }
+  .btn-primary:hover { background: var(--gold-soft); border-color: var(--gold-soft); }
+  .btn-primary svg { width: 14px; height: 14px; }
+
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 18px 32px;
+    background: transparent;
+    color: var(--bone);
+    font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500;
+    text-decoration: none;
+    border: 1px solid rgba(245, 241, 234, 0.35);
+    transition: all .2s ease;
+  }
+  .btn-secondary:hover { border-color: var(--bone); }
+
+  /* AWARDS BLOCK (right side of hero) */
+  .awards-card {
+    background: rgba(13, 35, 53, 0.55);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(212, 184, 138, 0.25);
+    padding: 40px 36px;
+    color: var(--bone);
+  }
+  .awards-card-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.26em; text-transform: uppercase;
+    color: var(--gold-soft);
+    margin-bottom: 28px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .awards-card-eyebrow::before { content: '★'; color: var(--gold); font-size: 12px; letter-spacing: 0; }
+  .award-row {
+    display: flex; align-items: baseline; justify-content: space-between;
+    padding: 14px 0;
+    border-top: 1px solid rgba(212, 184, 138, 0.18);
+  }
+  .award-row:last-child { border-bottom: 1px solid rgba(212, 184, 138, 0.18); }
+  .award-year {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 400;
+    color: var(--gold-soft);
+    line-height: 1;
+  }
+  .award-label {
+    font-size: 12px; letter-spacing: 0.04em;
+    color: rgba(245, 241, 234, 0.85);
+    text-align: right;
+    line-height: 1.4;
+  }
+  .awards-card-foot {
+    margin-top: 24px; font-size: 11px;
+    color: rgba(245, 241, 234, 0.6);
+    line-height: 1.5;
+  }
+
+  /* HERO META BAR */
+  .hero-meta {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(180deg, rgba(13, 35, 53, 0) 0%, rgba(13, 35, 53, 0.95) 100%);
+    padding: 32px 64px 28px;
+    display: flex; justify-content: space-between; align-items: center;
+    color: rgba(245, 241, 234, 0.75);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    z-index: 3;
+  }
+  .hero-meta-left { display: flex; gap: 36px; }
+  .hero-meta-right { display: flex; gap: 28px; align-items: center; }
+  .hero-meta strong { color: var(--gold-soft); font-weight: 500; }
+
+  /* ===========================
+     SECTION: OWNERS
+     =========================== */
+  section { padding: 128px 64px; max-width: 1640px; margin: 0 auto; }
+
+  .section-head {
+    display: grid; grid-template-columns: 280px 1fr;
+    gap: 96px;
+    margin-bottom: 80px;
+    align-items: end;
+  }
+  .section-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold);
+  }
+  .section-eyebrow::before {
+    content: ''; display: inline-block; width: 20px; height: 1px;
+    background: var(--gold); vertical-align: middle; margin-right: 12px;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(40px, 4.4vw, 68px);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--sea);
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  .owners {
+    display: grid; grid-template-columns: 1.1fr 1fr;
+    gap: 72px;
+    align-items: stretch;
+  }
+  .owners-figure {
+    position: relative;
+    aspect-ratio: 4/5;
+    background: var(--sand);
+    overflow: hidden;
+  }
+  .owners-figure img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .owners-figure-label {
+    position: absolute; bottom: 24px; left: 24px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--bone);
+    background: rgba(13, 35, 53, 0.7);
+    padding: 8px 14px;
+  }
+  .owners-text { padding: 24px 0; display: flex; flex-direction: column; justify-content: center; }
+  .owners-names {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 44px; font-weight: 400;
+    color: var(--sea);
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .owners-names em { font-style: italic; color: var(--gold); font-weight: 400; }
+  .owners-role {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 32px;
+  }
+  .owners-bio p {
+    font-size: 16px; line-height: 1.7;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+  .owners-stats {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px; font-weight: 400;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ===========================
+     SECTION: AWARDS TIMELINE
+     =========================== */
+  .awards-section {
+    background: var(--sea-deep);
+    color: var(--bone);
+    margin: 0; max-width: none;
+    padding: 128px 64px;
+  }
+  .awards-section-inner { max-width: 1640px; margin: 0 auto; }
+  .awards-section .section-title { color: var(--bone); }
+  .awards-section .section-title em { color: var(--gold-soft); }
+  .awards-section .section-eyebrow { color: var(--gold-soft); }
+  .awards-section .section-eyebrow::before { background: var(--gold-soft); }
+
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid rgba(212, 184, 138, 0.25);
+  }
+  .tl-cell {
+    padding: 48px 28px 56px;
+    border-right: 1px solid rgba(212, 184, 138, 0.15);
+    display: flex; flex-direction: column;
+    min-height: 280px;
+  }
+  .tl-cell:last-child { border-right: none; }
+  .tl-cell-year {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px; font-weight: 300;
+    color: var(--gold-soft);
+    line-height: 1;
+    margin-bottom: 24px;
+  }
+  .tl-cell-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 400;
+    color: var(--bone);
+    line-height: 1.25;
+    margin-bottom: 12px;
+  }
+  .tl-cell-desc {
+    font-size: 13px; line-height: 1.6;
+    color: rgba(245, 241, 234, 0.7);
+    margin-top: auto;
+  }
+  .tl-cell-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  /* ===========================
+     SECTION: PROPERTIES
+     =========================== */
+  .properties {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 48px;
+  }
+  .property-card {
+    background: var(--bone);
+    transition: transform .3s ease;
+  }
+  .property-figure {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: var(--sand);
+  }
+  .property-figure img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .property-tag {
+    position: absolute; top: 20px; left: 20px;
+    background: var(--bone);
+    color: var(--sea);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 8px 14px;
+  }
+  .property-info {
+    padding: 28px 4px 0;
+    display: grid; grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: end;
+  }
+  .property-loc {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .property-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px; font-weight: 400;
+    color: var(--sea);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .property-desc {
+    font-size: 14px; color: var(--muted); line-height: 1.5;
+  }
+  .property-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 400;
+    color: var(--gold);
+    white-space: nowrap;
+    text-align: right;
+  }
+  .property-price small {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 400;
+    margin-bottom: 4px;
+  }
+
+  /* ===========================
+     SECTION: MULTILINGUAL
+     =========================== */
+  .multilang-section { background: var(--sand); margin: 0; max-width: none; padding: 128px 64px; }
+  .multilang-inner { max-width: 1640px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.2fr; gap: 96px; align-items: center; }
+  .ml-text .section-eyebrow { color: var(--sea); }
+  .ml-text .section-eyebrow::before { background: var(--sea); }
+  .ml-text h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(36px, 3.8vw, 56px);
+    line-height: 1.08;
+    color: var(--sea);
+    margin: 24px 0 28px;
+  }
+  .ml-text h2 em { font-style: italic; color: var(--gold); }
+  .ml-text p {
+    font-size: 16px; line-height: 1.7;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+  .ml-grid {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 4px;
+  }
+  .ml-tile {
+    aspect-ratio: 1;
+    background: var(--bone);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 16px;
+    text-align: center;
+    border: 1px solid var(--line);
+  }
+  .ml-tile.active { background: var(--sea); color: var(--bone); border-color: var(--sea); }
+  .ml-tile.proposal { background: var(--bone); color: var(--sea); border: 1px dashed var(--gold); }
+  .ml-tile-flag {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px; font-weight: 500;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .ml-tile.active .ml-tile-flag { color: var(--gold-soft); }
+  .ml-tile.proposal .ml-tile-flag { color: var(--gold); }
+  .ml-tile-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase;
+  }
+  .ml-tile-status {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase;
+    margin-top: 8px;
+    opacity: 0.7;
+  }
+
+  /* ===========================
+     CONTACT SECTION
+     =========================== */
+  .contact-section {
+    background: var(--sea-deep);
+    color: var(--bone);
+    margin: 0; max-width: none;
+    padding: 128px 64px 96px;
+  }
+  .contact-inner {
+    max-width: 1640px; margin: 0 auto;
+    display: grid; grid-template-columns: 1.2fr 1fr;
+    gap: 96px;
+    align-items: start;
+  }
+  .contact-section .section-title { color: var(--bone); }
+  .contact-section .section-title em { color: var(--gold-soft); }
+  .contact-section .section-eyebrow { color: var(--gold-soft); }
+  .contact-section .section-eyebrow::before { background: var(--gold-soft); }
+  .contact-lede {
+    font-size: 18px; line-height: 1.6;
+    color: rgba(245, 241, 234, 0.85);
+    margin: 32px 0 48px;
+    max-width: 540px;
+    font-weight: 300;
+  }
+  .contact-info {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 36px 48px;
+  }
+  .ci-block .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold-soft);
+    margin-bottom: 12px;
+  }
+  .ci-block .value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 400;
+    color: var(--bone);
+    line-height: 1.3;
+  }
+  .ci-block .value a { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(212, 184, 138, 0.4); padding-bottom: 2px; }
+  .ci-block .value small {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; color: rgba(245, 241, 234, 0.7);
+    display: block; margin-top: 4px;
+    font-weight: 300;
+  }
+
+  .contact-card {
+    background: rgba(245, 241, 234, 0.04);
+    border: 1px solid rgba(212, 184, 138, 0.25);
+    padding: 48px 40px;
+  }
+  .contact-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px; font-weight: 400;
+    color: var(--bone);
+    margin-bottom: 24px;
+    line-height: 1.2;
+  }
+  .contact-card h3 em { font-style: italic; color: var(--gold-soft); }
+  .form-row { margin-bottom: 22px; }
+  .form-row label {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold-soft);
+    margin-bottom: 10px;
+  }
+  .form-row input, .form-row textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(212, 184, 138, 0.3);
+    padding: 8px 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: var(--bone);
+    outline: none;
+  }
+  .form-row input::placeholder { color: rgba(245, 241, 234, 0.4); }
+  .form-submit {
+    margin-top: 12px;
+    width: 100%;
+    padding: 16px;
+    background: var(--gold);
+    border: none;
+    color: var(--sea-deep);
+    font-family: 'Inter', sans-serif;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+    cursor: pointer;
+    transition: background .2s;
+  }
+  .form-submit:hover { background: var(--gold-soft); }
+
+  /* ===========================
+     FOOTER
+     =========================== */
+  footer {
+    background: var(--sea-deep);
+    color: rgba(245, 241, 234, 0.65);
+    padding: 56px 64px 36px;
+    border-top: 1px solid rgba(212, 184, 138, 0.18);
+  }
+  .footer-inner {
+    max-width: 1640px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  }
+  .footer-brand { color: var(--bone); }
+  .footer-brand em { color: var(--gold-soft); font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 14px; letter-spacing: 0.04em; text-transform: none; }
+  .footer-credit { color: rgba(245, 241, 234, 0.45); }
+  .footer-credit a { color: var(--gold-soft); text-decoration: none; }
+  .footer-disclaimer {
+    max-width: 1640px; margin: 28px auto 0;
+    padding-top: 24px;
+    border-top: 1px solid rgba(212, 184, 138, 0.1);
+    font-size: 11px;
+    color: rgba(245, 241, 234, 0.45);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+</style>
+</head>
+<body>
+
+<!-- =========================
+     NAV
+     ========================= -->
+<nav class="nav">
+  <div class="nav-brand">
+    <span class="brand-mark">Xcellence <em>Properties</em></span>
+    <span class="brand-tag">Costa Blanca · Est. Jávea</span>
+  </div>
+  <div class="nav-links">
+    <a href="#villas">Properties</a>
+    <a href="#awards">Awards</a>
+    <a href="#owners">About</a>
+    <a href="#contact">Contact</a>
+    <span class="nav-lang">
+      <span class="active">EN</span> <span>·</span>
+      <span class="active">ES</span> <span>·</span>
+      <span>DE</span> <span>·</span>
+      <span>NL</span> <span>·</span>
+      <span>FR</span>
+    </span>
+  </div>
+</nav>
+
+<!-- =========================
+     HERO
+     ========================= -->
+<header class="hero">
+  <div class="hero-bg" role="img" aria-label="Vista de villa moderna mediterránea sobre el mar en la Costa Blanca norte"></div>
+
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="eyebrow">Boutique luxury real estate · Costa Blanca norte</div>
+      <h1 class="headline">
+        Three consecutive<br>
+        awards. <em>One discreet</em><br>
+        <em>boutique agency.</em>
+      </h1>
+      <p class="lede">
+        Veinte años acompañando a compradores europeos en villas premium de
+        Jávea, Moraira, Dénia, Calpe, Altea y Benissa. Selección curada,
+        trato directo con los dueños, sin franquicias ni intermediarios.
+      </p>
+      <div class="cta-row">
+        <a href="#villas" class="btn-primary">
+          View featured villas
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M13 5l7 7-7 7"/>
+          </svg>
+        </a>
+        <a href="#owners" class="btn-secondary">Meet the owners</a>
+      </div>
+    </div>
+
+    <aside class="awards-card">
+      <div class="awards-card-eyebrow">Luxury Lifestyle Awards</div>
+      <div class="award-row">
+        <span class="award-year">2025</span>
+        <span class="award-label">Best Luxury Real Estate<br>Agency · Costa Blanca</span>
+      </div>
+      <div class="award-row">
+        <span class="award-year">2023</span>
+        <span class="award-label">Best Luxury Real Estate<br>Agency · Costa Blanca</span>
+      </div>
+      <div class="award-row">
+        <span class="award-year">2022</span>
+        <span class="award-label">Best Luxury Real Estate<br>Agency · Costa Blanca</span>
+      </div>
+      <p class="awards-card-foot">
+        Reconocimiento internacional otorgado por Luxury Lifestyle Awards en
+        tres ediciones consecutivas.
+      </p>
+    </aside>
+  </div>
+
+  <div class="hero-meta">
+    <div class="hero-meta-left">
+      <span>Jávea · Xàbia</span>
+      <span>Moraira</span>
+      <span>Dénia</span>
+      <span>Calpe</span>
+      <span>Altea</span>
+      <span>Benissa</span>
+    </div>
+    <div class="hero-meta-right">
+      <span>Featured on <strong>A Place in the Sun</strong> · Channel 4</span>
+    </div>
+  </div>
+</header>
+
+<!-- =========================
+     OWNERS
+     ========================= -->
+<section id="owners">
+  <div class="section-head">
+    <div class="section-eyebrow">The owners</div>
+    <h2 class="section-title">Una agencia <em>boutique</em><br>con dueños presentes.</h2>
+  </div>
+
+  <div class="owners">
+    <figure class="owners-figure">
+      <img src="img/oficina-boutique.jpg" alt="Interior de la oficina boutique de Xcellence Properties en Jávea">
+      <figcaption class="owners-figure-label">Carrer de la Dauradella · Jávea</figcaption>
+    </figure>
+
+    <div class="owners-text">
+      <div class="owners-names">
+        Marjolein Groot <em>&amp;</em> Steve Roberts
+      </div>
+      <div class="owners-role">Co-fundadores · Costa Blanca norte</div>
+
+      <div class="owners-bio">
+        <p>
+          Veinte años acompañando a familias y compradores internacionales que
+          buscan una segunda residencia o una primera vida en el Mediterráneo.
+          Cada propiedad pasa primero por sus manos antes de aparecer en la
+          selección.
+        </p>
+        <p>
+          La agencia opera desde una oficina única en Jávea. Sin franquicias,
+          sin equipos rotativos, sin intermediarios. El comprador trata con
+          quien firma cada operación.
+        </p>
+      </div>
+
+      <div class="owners-stats">
+        <div>
+          <div class="stat-num">20+</div>
+          <div class="stat-label">Años en la<br>Costa Blanca</div>
+        </div>
+        <div>
+          <div class="stat-num">3×</div>
+          <div class="stat-label">Premios Luxury<br>Lifestyle Awards</div>
+        </div>
+        <div>
+          <div class="stat-num">6</div>
+          <div class="stat-label">Localidades<br>cubiertas</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================
+     AWARDS TIMELINE
+     ========================= -->
+<section class="awards-section" id="awards">
+  <div class="awards-section-inner">
+    <div class="section-head">
+      <div class="section-eyebrow">Recognition</div>
+      <h2 class="section-title">Tres ediciones consecutivas.<br><em>Una sola dirección.</em></h2>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-cell">
+        <div class="tl-cell-tag">Edición 2022</div>
+        <div class="tl-cell-year">2022</div>
+        <div class="tl-cell-title">Best Luxury Real Estate Agency · Costa Blanca</div>
+        <p class="tl-cell-desc">
+          Primera edición ganada. Otorgado por Luxury Lifestyle Awards,
+          jurado internacional independiente.
+        </p>
+      </div>
+      <div class="tl-cell">
+        <div class="tl-cell-tag">Edición 2023</div>
+        <div class="tl-cell-year">2023</div>
+        <div class="tl-cell-title">Best Luxury Real Estate Agency · Costa Blanca</div>
+        <p class="tl-cell-desc">
+          Reconfirmación al año siguiente. Mismo galardón,
+          mismo nivel de exigencia.
+        </p>
+      </div>
+      <div class="tl-cell">
+        <div class="tl-cell-tag">Edición 2025</div>
+        <div class="tl-cell-year">2025</div>
+        <div class="tl-cell-title">Best Luxury Real Estate Agency · Costa Blanca</div>
+        <p class="tl-cell-desc">
+          Tercera edición ganada. Reconocimiento sostenido en el
+          tiempo, no un episodio aislado.
+        </p>
+      </div>
+      <div class="tl-cell">
+        <div class="tl-cell-tag">Prensa internacional</div>
+        <div class="tl-cell-year"><em style="font-style: italic;">UK · TV</em></div>
+        <div class="tl-cell-title">A Place in the Sun</div>
+        <p class="tl-cell-desc">
+          Aparición en el programa británico de referencia para
+          compradores internacionales en España.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================
+     PROPERTIES
+     ========================= -->
+<section id="villas">
+  <div class="section-head">
+    <div class="section-eyebrow">Featured villas</div>
+    <h2 class="section-title">Selección <em>curada</em> de la Costa Blanca norte.</h2>
+  </div>
+
+  <div class="properties">
+    <article class="property-card">
+      <div class="property-figure">
+        <img src="img/villa-detalle-01.jpg" alt="Vista aérea de cala mediterránea con villa de lujo en acantilado, Cabo de la Nao Jávea">
+        <span class="property-tag">Cabo de la Nao · Jávea</span>
+      </div>
+      <div class="property-info">
+        <div>
+          <div class="property-loc">Frente al mar · 1ª línea</div>
+          <div class="property-name">Villa Mirador del Cap</div>
+          <p class="property-desc">Villa contemporánea sobre acantilado con piscina infinita y acceso privado a cala.</p>
+        </div>
+        <div class="property-price"><small>Desde</small>2.850.000 €</div>
+      </div>
+    </article>
+
+    <article class="property-card">
+      <div class="property-figure">
+        <img src="img/villa-detalle-02.jpg" alt="Salón interior de villa minimalista mediterránea con vistas al mar">
+        <span class="property-tag">Moraira · El Portet</span>
+      </div>
+      <div class="property-info">
+        <div>
+          <div class="property-loc">Vistas panorámicas</div>
+          <div class="property-name">Casa Portet</div>
+          <p class="property-desc">Arquitectura abierta, doble altura, integración total con el paisaje mediterráneo.</p>
+        </div>
+        <div class="property-price"><small>Desde</small>1.690.000 €</div>
+      </div>
+    </article>
+
+    <article class="property-card">
+      <div class="property-figure">
+        <img src="img/villa-detalle-03.jpg" alt="Fachada exterior de villa contemporánea blanca al atardecer en la Costa Blanca">
+        <span class="property-tag">Benissa Costa</span>
+      </div>
+      <div class="property-info">
+        <div>
+          <div class="property-loc">Urbanización privada</div>
+          <div class="property-name">Villa Les Bassetes</div>
+          <p class="property-desc">Líneas limpias, espejo de agua, cipreses centenarios. Discreción absoluta.</p>
+        </div>
+        <div class="property-price"><small>Desde</small>2.190.000 €</div>
+      </div>
+    </article>
+
+    <article class="property-card">
+      <div class="property-figure">
+        <img src="img/villa-detalle-04.jpg" alt="Detalle de terraza con tumbona y vista al mar Mediterráneo en hora dorada">
+        <span class="property-tag">Altea Hills</span>
+      </div>
+      <div class="property-info">
+        <div>
+          <div class="property-loc">Hora dorada · Mar abierto</div>
+          <div class="property-name">Villa Bellavista</div>
+          <p class="property-desc">Terrazas escalonadas, materiales naturales, orientación sureste para sol todo el día.</p>
+        </div>
+        <div class="property-price"><small>Desde</small>1.450.000 €</div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- =========================
+     MULTILINGUAL
+     ========================= -->
+<section class="multilang-section">
+  <div class="multilang-inner">
+    <div class="ml-text">
+      <div class="section-eyebrow">Propuesta de rediseño</div>
+      <h2>Cinco idiomas para el <em>comprador real</em> de la Costa Blanca norte.</h2>
+      <p>
+        En Jávea, Moraira y Dénia, cuatro de cada diez compradores premium son
+        alemanes, holandeses o franceses. La web actual de Xcellence atiende
+        en inglés y español. La nueva web hablaría a todos.
+      </p>
+      <p style="color: var(--muted); font-size: 14px; margin-top: 24px;">
+        Inglés y español ya operativos. Alemán, neerlandés y francés se
+        sumarían en el rediseño propuesto por Kenaz.
+      </p>
+    </div>
+
+    <div class="ml-grid">
+      <div class="ml-tile active">
+        <div class="ml-tile-flag">EN</div>
+        <div class="ml-tile-label">English</div>
+        <div class="ml-tile-status">Activo</div>
+      </div>
+      <div class="ml-tile active">
+        <div class="ml-tile-flag">ES</div>
+        <div class="ml-tile-label">Español</div>
+        <div class="ml-tile-status">Activo</div>
+      </div>
+      <div class="ml-tile proposal">
+        <div class="ml-tile-flag">DE</div>
+        <div class="ml-tile-label">Deutsch</div>
+        <div class="ml-tile-status">Propuesto</div>
+      </div>
+      <div class="ml-tile proposal">
+        <div class="ml-tile-flag">NL</div>
+        <div class="ml-tile-label">Nederlands</div>
+        <div class="ml-tile-status">Propuesto</div>
+      </div>
+      <div class="ml-tile proposal">
+        <div class="ml-tile-flag">FR</div>
+        <div class="ml-tile-label">Français</div>
+        <div class="ml-tile-status">Propuesto</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================
+     CONTACT
+     ========================= -->
+<section class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div>
+      <div class="section-eyebrow">Get in touch</div>
+      <h2 class="section-title">Conversación <em>directa</em><br>con los dueños.</h2>
+      <p class="contact-lede">
+        Sin formularios genéricos, sin call centers. Marjolein y Steve
+        responden personalmente cada consulta cualificada.
+      </p>
+
+      <div class="contact-info">
+        <div class="ci-block">
+          <div class="label">Oficina</div>
+          <div class="value">
+            Carrer de la Dauradella, 4
+            <small>03730 Jávea (Xàbia), Alicante</small>
+          </div>
+        </div>
+        <div class="ci-block">
+          <div class="label">Teléfono</div>
+          <div class="value">
+            <a href="tel:+34600441139">+34 600 441 139</a>
+            <small>Lun a vie, horario comercial</small>
+          </div>
+        </div>
+        <div class="ci-block">
+          <div class="label">Email</div>
+          <div class="value">
+            <a href="mailto:info@xcellence.es">info@xcellence.es</a>
+            <small>Respuesta en 24 h</small>
+          </div>
+        </div>
+        <div class="ci-block">
+          <div class="label">Cobertura</div>
+          <div class="value">
+            Costa Blanca norte
+            <small>Jávea · Moraira · Dénia · Calpe · Altea · Benissa</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <form class="contact-card" onsubmit="event.preventDefault();">
+      <h3>Solicite una <em>selección privada</em></h3>
+      <div class="form-row">
+        <label>Nombre</label>
+        <input type="text" placeholder="Su nombre" />
+      </div>
+      <div class="form-row">
+        <label>Email</label>
+        <input type="email" placeholder="email@ejemplo.com" />
+      </div>
+      <div class="form-row">
+        <label>Zona y presupuesto orientativo</label>
+        <input type="text" placeholder="Ej. Moraira, 1.5 – 2.5 M €" />
+      </div>
+      <button class="form-submit">Solicitar selección</button>
+    </form>
+  </div>
+</section>
+
+<!-- =========================
+     FOOTER
+     ========================= -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <em>Xcellence Properties</em> · Boutique luxury real estate
+    </div>
+    <div class="footer-credit">
+      Diseño propuesto por <a href="https://kenaz.studio">Kenaz Studio</a>
+    </div>
+  </div>
+  <div class="footer-disclaimer">
+    Mockup conceptual elaborado por Kenaz Studio sobre la marca real Xcellence Properties para fines comparativos. Los premios Luxury Lifestyle Awards 2022, 2023 y 2025, la dirección, el teléfono, el email y la aparición en el programa A Place in the Sun son datos verificados públicamente. Las propiedades, precios e imágenes son ilustrativas y no representan inventario real de la agencia.
+  </div>
+</footer>
+
+</body>
+</html>

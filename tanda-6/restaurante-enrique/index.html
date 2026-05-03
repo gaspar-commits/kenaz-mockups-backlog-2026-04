@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Restaurante Enrique — Arroces y mariscos frente al mar de Albir</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #1f1812;
+    --paper: #f5ecd9;
+    --paper-2: #ede1c8;
+    --sand: #e3d4b6;
+    --azul: #1e3a52;
+    --azul-deep: #122734;
+    --azafran: #c8842a;
+    --terracotta: #9a3f24;
+    --line: rgba(31, 24, 18, 0.18);
+    --muted: rgba(31, 24, 18, 0.62);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body { overflow-x: hidden; }
+
+  .display { font-family: 'Cormorant Garamond', 'Times New Roman', serif; font-weight: 500; letter-spacing: -0.01em; }
+  .italic  { font-style: italic; font-weight: 400; }
+  .mono    { font-family: 'Inter', system-ui, sans-serif; font-feature-settings: "tnum"; letter-spacing: 0.04em; text-transform: uppercase; font-size: 11px; font-weight: 500; }
+
+  /* ============ NAV ============ */
+  .nav {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    z-index: 20;
+    padding: 28px 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--paper);
+  }
+  .brand {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+  .brand .wm {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 32px;
+    letter-spacing: 0.005em;
+  }
+  .brand .wm em { font-style: italic; font-weight: 500; color: #f0d6a8; }
+  .brand .sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    margin-top: 7px;
+    opacity: 0.85;
+  }
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .nav-links a {
+    color: var(--paper);
+    text-decoration: none;
+    opacity: 0.92;
+  }
+  .nav-lang {
+    display: flex;
+    gap: 12px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-left: 14px;
+    padding-left: 22px;
+    border-left: 1px solid rgba(245, 236, 217, 0.32);
+  }
+  .nav-lang a { color: var(--paper); opacity: 0.55; text-decoration: none; }
+  .nav-lang a.active { opacity: 1; }
+  .reservar-btn {
+    border: 1px solid rgba(245, 236, 217, 0.5);
+    padding: 12px 22px;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--paper);
+    text-decoration: none;
+    transition: all .25s ease;
+  }
+  .reservar-btn:hover { background: var(--paper); color: var(--ink); }
+
+  /* ============ HERO ============ */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 820px;
+    width: 100%;
+    overflow: hidden;
+  }
+  .hero-img {
+    position: absolute;
+    inset: 0;
+    background-image: url('img/hero-paella.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: saturate(1.04) contrast(1.02);
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(15, 22, 30, 0.62) 0%, rgba(15, 22, 30, 0.28) 28%, rgba(15, 22, 30, 0.30) 55%, rgba(15, 22, 30, 0.88) 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    height: 100%;
+    padding: 130px 56px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: var(--paper);
+  }
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    font-weight: 500;
+    opacity: 0.92;
+  }
+  .eyebrow .dot {
+    width: 6px; height: 6px;
+    background: var(--azafran);
+    border-radius: 50%;
+  }
+  .headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 118px;
+    line-height: 0.96;
+    letter-spacing: -0.02em;
+    font-weight: 500;
+    margin-top: 22px;
+    max-width: 1180px;
+  }
+  .headline em {
+    font-style: italic;
+    font-weight: 400;
+    color: #f0d6a8;
+  }
+  .deck {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.45;
+    margin-top: 28px;
+    max-width: 560px;
+    opacity: 0.94;
+  }
+
+  .hero-foot {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 40px;
+    align-items: end;
+    border-top: 1px solid rgba(245, 236, 217, 0.22);
+    padding-top: 30px;
+    margin-top: 40px;
+  }
+  .meta-block { display: flex; flex-direction: column; gap: 8px; }
+  .meta-label {
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    font-weight: 500;
+    opacity: 0.7;
+  }
+  .meta-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.25;
+  }
+  .meta-value.italic { font-style: italic; font-weight: 400; }
+
+  .scroll-cue {
+    position: absolute;
+    bottom: 32px;
+    right: 56px;
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--paper);
+    opacity: 0.7;
+    z-index: 11;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .scroll-cue::before {
+    content: '';
+    width: 38px;
+    height: 1px;
+    background: var(--paper);
+    opacity: 0.6;
+  }
+
+  /* ============ INTRO STRIP ============ */
+  .intro {
+    background: var(--paper);
+    padding: 110px 56px 90px;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 90px;
+    align-items: start;
+    border-bottom: 1px solid var(--line);
+  }
+  .intro-label {
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--terracotta);
+  }
+  .intro-label::before {
+    content: '';
+    display: inline-block;
+    width: 26px;
+    height: 1px;
+    background: var(--terracotta);
+    margin-right: 14px;
+    vertical-align: middle;
+  }
+  .intro-h {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 54px;
+    line-height: 1.05;
+    letter-spacing: -0.012em;
+    font-weight: 500;
+    margin-top: 26px;
+  }
+  .intro-h em { font-style: italic; font-weight: 400; color: var(--terracotta); }
+  .intro-body {
+    font-size: 16.5px;
+    line-height: 1.7;
+    color: var(--ink);
+    max-width: 640px;
+  }
+  .intro-body p + p { margin-top: 18px; }
+  .intro-body .lead::first-letter {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px;
+    line-height: 0.85;
+    float: left;
+    padding: 8px 12px 0 0;
+    font-weight: 500;
+    color: var(--terracotta);
+  }
+
+  /* ============ FEATURE GRID ============ */
+  .features {
+    background: var(--paper);
+    padding: 0 56px 110px;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 28px;
+  }
+  .feature {
+    position: relative;
+    overflow: hidden;
+    background: #ddd;
+  }
+  .feature.tall { grid-row: span 2; min-height: 740px; }
+  .feature.short { min-height: 356px; }
+  .feature-img {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 1s ease;
+  }
+  .feature:hover .feature-img { transform: scale(1.03); }
+  .feature-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(15,22,30,0) 30%, rgba(15,22,30,0.72) 100%);
+  }
+  .feature-cap {
+    position: absolute;
+    bottom: 28px;
+    left: 30px;
+    right: 30px;
+    color: var(--paper);
+    z-index: 5;
+  }
+  .feature-cap .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    opacity: 0.85;
+    margin-bottom: 6px;
+  }
+  .feature-cap .title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    line-height: 1.1;
+    font-weight: 500;
+  }
+  .feature-cap .desc {
+    font-size: 13px;
+    line-height: 1.55;
+    margin-top: 8px;
+    opacity: 0.92;
+    max-width: 380px;
+  }
+
+  /* ============ COMEDOR BAND ============ */
+  .comedor {
+    position: relative;
+    height: 720px;
+    overflow: hidden;
+  }
+  .comedor-img {
+    position: absolute;
+    inset: 0;
+    background-image: url('img/comedor-mediterraneo.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: saturate(1.02);
+  }
+  .comedor-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(15,22,30,0.78) 0%, rgba(15,22,30,0.42) 50%, rgba(15,22,30,0.20) 100%);
+  }
+  .comedor-content {
+    position: relative;
+    z-index: 5;
+    height: 100%;
+    padding: 0 56px;
+    display: flex;
+    align-items: center;
+    color: var(--paper);
+  }
+  .comedor-inner { max-width: 720px; }
+  .comedor-label {
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #f0d6a8;
+    opacity: 0.92;
+  }
+  .comedor-label::before {
+    content: '';
+    display: inline-block;
+    width: 26px;
+    height: 1px;
+    background: #f0d6a8;
+    margin-right: 14px;
+    vertical-align: middle;
+    opacity: 0.6;
+  }
+  .comedor-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 56px;
+    line-height: 1.1;
+    letter-spacing: -0.012em;
+    margin-top: 24px;
+  }
+  .comedor-quote .open, .comedor-quote .close {
+    font-size: 84px;
+    line-height: 0;
+    color: #f0d6a8;
+    opacity: 0.6;
+    vertical-align: -0.15em;
+  }
+  .comedor-attr {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    margin-top: 30px;
+    opacity: 0.78;
+    font-weight: 500;
+  }
+
+  /* ============ IDIOMAS / MULTIIDIOMA ============ */
+  .langs {
+    background: var(--azul);
+    color: var(--paper);
+    padding: 90px 56px;
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .langs-label {
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    font-weight: 500;
+    opacity: 0.75;
+  }
+  .langs-label::before {
+    content: '';
+    display: inline-block;
+    width: 26px;
+    height: 1px;
+    background: var(--azafran);
+    margin-right: 14px;
+    vertical-align: middle;
+  }
+  .langs-h {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 50px;
+    line-height: 1.06;
+    letter-spacing: -0.012em;
+    font-weight: 500;
+    margin-top: 22px;
+    max-width: 520px;
+  }
+  .langs-h em { font-style: italic; font-weight: 400; color: #f0d6a8; }
+  .langs-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    border-left: 1px solid rgba(245, 236, 217, 0.18);
+    padding-left: 60px;
+  }
+  .lang-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .lang-card .code {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-weight: 500;
+    line-height: 1;
+    color: var(--paper);
+  }
+  .lang-card .name {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+  .lang-card .greeting {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15px;
+    line-height: 1.35;
+    opacity: 0.82;
+    margin-top: 4px;
+  }
+
+  /* ============ CIERRE ============ */
+  .closing {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 90px 56px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 60px;
+    align-items: end;
+  }
+  .closing-h {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px;
+    line-height: 1.05;
+    letter-spacing: -0.012em;
+    font-weight: 500;
+    max-width: 780px;
+  }
+  .closing-h em { font-style: italic; font-weight: 400; color: #e7b56a; }
+  .closing-cta-block { text-align: right; }
+  .closing-tel {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: 0.005em;
+  }
+  .closing-tel .lbl {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    opacity: 0.65;
+    margin-bottom: 8px;
+  }
+  .closing-cta {
+    display: inline-block;
+    margin-top: 24px;
+    border: 1px solid var(--azafran);
+    background: var(--azafran);
+    color: #1a1208;
+    padding: 16px 32px;
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  /* ============ FOOTER ============ */
+  .foot {
+    background: #16110c;
+    color: rgba(245, 236, 217, 0.72);
+    padding: 50px 56px 28px;
+    font-size: 12px;
+    line-height: 1.7;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr 1fr;
+    gap: 50px;
+  }
+  .foot h4 {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--paper);
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    font-style: italic;
+  }
+  .foot a { color: rgba(245, 236, 217, 0.72); text-decoration: none; }
+  .foot-note {
+    grid-column: 1 / -1;
+    margin-top: 26px;
+    padding-top: 18px;
+    border-top: 1px dashed rgba(245, 236, 217, 0.18);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    line-height: 1.55;
+    color: rgba(245, 236, 217, 0.55);
+    max-width: 760px;
+  }
+  .foot-bottom {
+    grid-column: 1 / -1;
+    margin-top: 22px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(245, 236, 217, 0.12);
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    opacity: 0.55;
+  }
+  .foot-bottom a { color: rgba(245, 236, 217, 0.55); }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-overlay"></div>
+
+  <nav class="nav">
+    <div class="brand">
+      <span class="wm">Restaurante <em>Enrique</em></span>
+      <span class="sub">Arroces &middot; Albir</span>
+    </div>
+    <div class="nav-links">
+      <a href="#">La casa</a>
+      <a href="#">Arroces</a>
+      <a href="#">Mariscos</a>
+      <a href="#">Carta</a>
+      <a href="#">Reservar</a>
+      <span class="nav-lang">
+        <a href="#" class="active">ES</a>
+        <a href="#">EN</a>
+      </span>
+      <a href="#" class="reservar-btn">Reservar mesa</a>
+    </div>
+  </nav>
+
+  <div class="hero-content">
+    <div>
+      <div class="eyebrow"><span class="dot"></span> Arroces y mariscos &middot; Playa del Albir</div>
+      <h1 class="headline">El arroz, despacio,<br/><em>frente al mar</em>.</h1>
+      <p class="deck">Una casa de arroces y mariscos a un paso de la playa del Albir. Producto del día, servicio sin prisa y vistas a la Sierra Helada.</p>
+    </div>
+
+    <div class="hero-foot">
+      <div class="meta-block">
+        <span class="meta-label">Dónde</span>
+        <span class="meta-value italic">Playa del Albir<br/>L'Alfàs del Pi</span>
+      </div>
+      <div class="meta-block">
+        <span class="meta-label">Reservas</span>
+        <span class="meta-value">966 868 098</span>
+      </div>
+      <div class="meta-block">
+        <span class="meta-label">Cocina</span>
+        <span class="meta-value italic">Arroces<br/>al momento</span>
+      </div>
+      <div class="meta-block">
+        <span class="meta-label">Idiomas</span>
+        <span class="meta-value italic">ES · EN<br/><span style="font-size: 0.7em; opacity: 0.65;">NO · NL propuestos</span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-cue">Scroll</div>
+</section>
+
+<!-- ============ INTRO ============ -->
+<section class="intro">
+  <div>
+    <div class="intro-label">La casa</div>
+    <h2 class="intro-h">Una casa de arroces<br/><em>en la playa del Albir</em>.</h2>
+  </div>
+  <div class="intro-body">
+    <p class="lead">Restaurante Enrique trabaja la cocina mediterránea de la Costa Blanca como se ha trabajado siempre: arroces hechos al momento en paella, marisco fresco del día y la pausa que pide una comida frente al mar.</p>
+    <p>El comedor da a la playa del Albir, con la Sierra Helada al fondo. La carta cambia con la lonja y la temporada, y el servicio es atento, sin teatro. Quien viene a comer arroz, vuelve.</p>
+  </div>
+</section>
+
+<!-- ============ FEATURE GRID ============ -->
+<section class="features">
+  <div class="feature tall">
+    <div class="feature-img" style="background-image:url('img/arroz-detalle.jpg');"></div>
+    <div class="feature-overlay"></div>
+    <div class="feature-cap">
+      <div class="num">i.</div>
+      <div class="title">Arroces<br/>hechos al momento</div>
+      <div class="desc">Cada arroz se empieza cuando llega la mesa y se sirve en la paella. Reserva con una hora de margen para que llegue en su punto.</div>
+    </div>
+  </div>
+  <div class="feature short">
+    <div class="feature-img" style="background-image:url('img/marisco-plato.jpg');"></div>
+    <div class="feature-overlay"></div>
+    <div class="feature-cap">
+      <div class="num">ii.</div>
+      <div class="title">Mariscos del día</div>
+      <div class="desc">Gamba roja, langostinos y producto fresco según la lonja del día.</div>
+    </div>
+  </div>
+  <div class="feature short">
+    <div class="feature-img" style="background-image:url('img/playa-albir.jpg'); background-position: center;"></div>
+    <div class="feature-overlay"></div>
+    <div class="feature-cap">
+      <div class="num">iii.</div>
+      <div class="title">Frente al Albir</div>
+      <div class="desc">A unos pasos del paseo y la playa de cantos blancos. La Sierra Helada al fondo.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMEDOR BAND ============ -->
+<section class="comedor">
+  <div class="comedor-img"></div>
+  <div class="comedor-overlay"></div>
+  <div class="comedor-content">
+    <div class="comedor-inner">
+      <div class="comedor-label">El comedor</div>
+      <p class="comedor-quote"><span class="open">&ldquo;</span>Comer arroz con tiempo, frente al mar, en una mesa puesta sin prisa.<span class="close">&rdquo;</span></p>
+      <div class="comedor-attr">Playa del Albir &middot; Costa Blanca</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ IDIOMAS ============ -->
+<section class="langs">
+  <div>
+    <div class="langs-label">Idiomas</div>
+    <h2 class="langs-h">Pensado para <em>huéspedes internacionales</em>.</h2>
+    <p style="font-size: 14px; opacity: 0.65; margin-top: 16px; max-width: 600px;">Albir recibe a una comunidad fuerte de noruegos, holandeses, británicos y ucranianos. La capacidad multiidioma del restaurante hoy y la propuesta del rediseño Kenaz para acompañarla.</p>
+  </div>
+  <div class="langs-grid">
+    <div class="lang-card">
+      <span class="code">ES</span>
+      <span class="name">Español</span>
+      <span class="greeting italic">Bienvenidos.</span>
+      <span style="font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.7; margin-top: 8px; display: block;">Activo</span>
+    </div>
+    <div class="lang-card">
+      <span class="code">EN</span>
+      <span class="name">English</span>
+      <span class="greeting italic">Welcome.</span>
+      <span style="font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.7; margin-top: 8px; display: block;">Activo</span>
+    </div>
+    <div class="lang-card" style="opacity: 0.55; border-style: dashed;">
+      <span class="code">NO</span>
+      <span class="name">Norsk</span>
+      <span class="greeting italic">Velkommen.</span>
+      <span style="font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.85; margin-top: 8px; display: block;">Propuesto</span>
+    </div>
+    <div class="lang-card" style="opacity: 0.55; border-style: dashed;">
+      <span class="code">NL</span>
+      <span class="name">Nederlands</span>
+      <span class="greeting italic">Welkom.</span>
+      <span style="font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.85; margin-top: 8px; display: block;">Propuesto</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CIERRE ============ -->
+<section class="closing">
+  <h2 class="closing-h">Si vienes al Albir,<br/>quédate a comer arroz <em>como se debe</em>.</h2>
+  <div class="closing-cta-block">
+    <div class="closing-tel">
+      <span class="lbl">Reservas</span>
+      966 868 098
+    </div>
+    <a href="mailto:info@restauranteenrique.com" class="closing-cta">Reservar mesa</a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div>
+    <h4>Restaurante Enrique</h4>
+    Arroces y mariscos<br/>
+    frente al mar de Albir.
+  </div>
+  <div>
+    <h4>Visítanos</h4>
+    Playa del Albir<br/>
+    03581 L'Alfàs del Pi<br/>
+    Alicante, España
+  </div>
+  <div>
+    <h4>Reservas</h4>
+    <a href="tel:+34966868098">966 868 098</a><br/>
+    <a href="mailto:info@restauranteenrique.com">info@restauranteenrique.com</a>
+  </div>
+  <div>
+    <h4>Idiomas</h4>
+    Español · English<br/>
+    <span style="opacity:0.55; font-size: 11px;">Norsk · Nederlands propuestos<br/>en el rediseño Kenaz</span>
+  </div>
+  <div class="foot-note">
+    Algunas imágenes son referenciales. La sesión fotográfica del local, los platos y el equipo forma parte del servicio Kenaz.
+  </div>
+  <div class="foot-bottom">
+    <span>© Restaurante Enrique · Albir</span>
+    <span>Diseño propuesto por <a href="https://kenaz.studio">Kenaz Studio</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

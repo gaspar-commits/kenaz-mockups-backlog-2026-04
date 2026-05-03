@@ -1,0 +1,783 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Finca el Tossal — Boutique Hotel adults-only · Bolulla, Costa Blanca</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --stone:       #f3ecdf;
+    --stone-dark:  #e7ddc9;
+    --sand:        #d8c8b3;
+    --terracotta:  #b86c4a;
+    --terracotta-d:#9a5638;
+    --olive:       #5a6849;
+    --olive-d:     #3f4a32;
+    --ink:         #2a2522;
+    --ink-soft:    #4f4641;
+    --line:        rgba(42, 37, 34, 0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: var(--stone); color: var(--ink); font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  body { overflow-x: hidden; }
+
+  .display { font-family: 'Cormorant Garamond', 'Times New Roman', serif; font-weight: 400; letter-spacing: -0.01em; }
+  .label   { font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 500; }
+
+  /* ============= NAV ============= */
+  .nav {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 50;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 28px 56px;
+    color: var(--stone);
+  }
+  .brand { display: flex; align-items: center; gap: 14px; }
+  .brand .mark {
+    width: 42px; height: 42px;
+    border: 1.5px solid var(--stone);
+    display: grid; place-items: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-style: italic; line-height: 1;
+    padding-top: 3px;
+  }
+  .brand .name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; line-height: 1.1;
+    letter-spacing: 0.04em;
+  }
+  .brand .name small {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 9px; letter-spacing: 0.32em; font-weight: 500;
+    margin-top: 3px; opacity: 0.78;
+  }
+  .nav-links { display: flex; gap: 38px; }
+  .nav-links a {
+    color: var(--stone); text-decoration: none;
+    font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+    opacity: 0.92;
+  }
+  .nav-side { display: flex; align-items: center; gap: 24px; }
+  .lang { display: flex; gap: 10px; font-size: 11px; letter-spacing: 0.18em; }
+  .lang span { opacity: 0.5; }
+  .lang .active { opacity: 1; border-bottom: 1px solid var(--stone); padding-bottom: 2px; }
+  .btn-reserve {
+    background: var(--terracotta); color: var(--stone);
+    padding: 12px 22px; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 600;
+    text-decoration: none; border: none;
+  }
+  .btn-reserve:hover { background: var(--terracotta-d); }
+
+  /* ============= HERO ============= */
+  .hero { position: relative; height: 100vh; min-height: 760px; overflow: hidden; }
+  .hero-bg { position: absolute; inset: 0; }
+  .hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-bg::after {
+    content: ''; position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, rgba(20,16,12,0.55) 0%, rgba(20,16,12,0.18) 28%, rgba(20,16,12,0.05) 55%, rgba(20,16,12,0.65) 100%);
+  }
+  .hero-content {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    padding: 0 56px 80px;
+    color: var(--stone);
+  }
+  .hero-meta {
+    display: flex; align-items: center; gap: 18px;
+    margin-bottom: 28px;
+  }
+  .hero-meta .label { color: var(--stone); opacity: 0.85; }
+  .hero-meta .dot { width: 4px; height: 4px; background: var(--stone); opacity: 0.5; border-radius: 50%; }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(56px, 7vw, 108px);
+    line-height: 0.96;
+    letter-spacing: -0.02em;
+    max-width: 1180px;
+  }
+  .hero h1 em {
+    font-style: italic; font-weight: 400; color: #f5d9bf;
+  }
+  .hero-row {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    margin-top: 48px; gap: 60px;
+  }
+  .hero-sub {
+    max-width: 460px;
+    font-size: 16px; line-height: 1.55; font-weight: 400;
+    color: rgba(243, 236, 223, 0.92);
+  }
+  .hero-cta {
+    display: flex; align-items: center; gap: 18px;
+  }
+  .btn-primary {
+    background: var(--stone); color: var(--ink);
+    padding: 18px 32px;
+    font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; font-weight: 600;
+    text-decoration: none;
+  }
+  .btn-ghost {
+    color: var(--stone); border: 1px solid rgba(243, 236, 223, 0.55);
+    padding: 17px 30px;
+    font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; font-weight: 500;
+    text-decoration: none;
+  }
+
+  /* ============= STAT STRIP ============= */
+  .stat-strip {
+    background: var(--ink);
+    color: var(--stone);
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid rgba(243, 236, 223, 0.08);
+  }
+  .stat-strip .cell {
+    padding: 38px 40px;
+    border-right: 1px solid rgba(243, 236, 223, 0.08);
+  }
+  .stat-strip .cell:last-child { border-right: none; }
+  .stat-strip .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px; font-weight: 300; line-height: 1;
+    color: #e7c8a8;
+    margin-bottom: 6px;
+  }
+  .stat-strip .lbl {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(243, 236, 223, 0.7);
+    line-height: 1.5;
+  }
+
+  /* ============= SECTION GENERIC ============= */
+  section { padding: 120px 56px; }
+  .section-eyebrow {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 28px;
+  }
+  .section-eyebrow .line { flex: 0 0 48px; height: 1px; background: var(--terracotta); }
+  .section-eyebrow .label { color: var(--terracotta); }
+  .section-h {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(40px, 4.6vw, 68px);
+    line-height: 1.04; letter-spacing: -0.015em;
+    color: var(--ink);
+    max-width: 880px;
+  }
+  .section-h em { font-style: italic; color: var(--terracotta-d); }
+
+  /* ============= LA FINCA ============= */
+  .finca {
+    background: var(--stone);
+    display: grid; grid-template-columns: 1fr 1.05fr;
+    gap: 96px;
+    align-items: center;
+  }
+  .finca .text p {
+    font-size: 17px; line-height: 1.7;
+    color: var(--ink-soft);
+    margin-top: 32px; max-width: 520px;
+  }
+  .finca .text p + p { margin-top: 18px; }
+  .finca .meta-grid {
+    margin-top: 56px;
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    max-width: 480px;
+  }
+  .meta-item .label { color: var(--olive); margin-bottom: 6px; }
+  .meta-item .val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; line-height: 1.25;
+  }
+  .finca .visual {
+    position: relative; aspect-ratio: 4/5;
+  }
+  .finca .visual img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .finca .visual .small {
+    position: absolute; bottom: -60px; left: -60px;
+    width: 46%; aspect-ratio: 1/1;
+    border: 8px solid var(--stone);
+  }
+  .finca .visual .small img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* ============= LA MESA ============= */
+  .mesa {
+    background: var(--ink);
+    color: var(--stone);
+    position: relative;
+  }
+  .mesa .section-h { color: var(--stone); }
+  .mesa .section-h em { color: #e7c8a8; }
+  .mesa .section-eyebrow .line { background: #e7c8a8; }
+  .mesa .section-eyebrow .label { color: #e7c8a8; }
+  .mesa-grid {
+    display: grid; grid-template-columns: 1.1fr 1fr;
+    gap: 80px;
+    margin-top: 80px;
+    align-items: start;
+  }
+  .mesa-grid .photo { aspect-ratio: 5/6; }
+  .mesa-grid .photo img { width: 100%; height: 100%; object-fit: cover; }
+  .mesa-grid .text p {
+    font-size: 17px; line-height: 1.7;
+    color: rgba(243, 236, 223, 0.82);
+    margin-bottom: 22px;
+  }
+  .mesa-grid .menu {
+    margin-top: 44px;
+    border-top: 1px solid rgba(243, 236, 223, 0.18);
+  }
+  .mesa-grid .menu-item {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 22px 0;
+    border-bottom: 1px solid rgba(243, 236, 223, 0.12);
+    gap: 32px;
+  }
+  .mesa-grid .menu-item .name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 400;
+  }
+  .mesa-grid .menu-item .name small {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px; font-weight: 400; letter-spacing: 0.04em;
+    color: rgba(243, 236, 223, 0.55);
+    margin-top: 4px;
+  }
+  .mesa-grid .menu-item .price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; color: #e7c8a8;
+    font-style: italic;
+  }
+  .mesa-note {
+    margin-top: 36px;
+    padding: 20px 24px;
+    background: rgba(231, 200, 168, 0.08);
+    border-left: 2px solid #e7c8a8;
+    font-size: 14px; line-height: 1.6;
+    color: rgba(243, 236, 223, 0.82);
+  }
+
+  /* ============= HABITACIONES ============= */
+  .rooms { background: var(--stone-dark); }
+  .rooms-head { display: flex; justify-content: space-between; align-items: end; gap: 60px; margin-bottom: 80px; }
+  .rooms-head p { max-width: 420px; font-size: 16px; line-height: 1.65; color: var(--ink-soft); }
+  .rooms-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .room {
+    background: var(--stone);
+    overflow: hidden;
+  }
+  .room .img { aspect-ratio: 4/3; overflow: hidden; }
+  .room .img img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s ease; }
+  .room:hover .img img { transform: scale(1.04); }
+  .room .body { padding: 28px 28px 32px; }
+  .room .label { color: var(--olive); margin-bottom: 10px; }
+  .room h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400; font-size: 28px; line-height: 1.15;
+    margin-bottom: 8px;
+  }
+  .room p { font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+  .room .feats {
+    margin-top: 18px; display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .room .feats span {
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ink-soft);
+    border: 1px solid var(--line);
+    padding: 5px 10px;
+  }
+  .room .foot {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 24px;
+    padding-top: 18px; border-top: 1px solid var(--line);
+  }
+  .room .foot .from {
+    font-size: 11px; color: var(--ink-soft); letter-spacing: 0.04em;
+  }
+  .room .foot a {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--terracotta); text-decoration: none; font-weight: 600;
+    border-bottom: 1px solid currentColor; padding-bottom: 2px;
+  }
+
+  /* ============= EL VALLE ============= */
+  .valley {
+    background: var(--olive);
+    color: var(--stone);
+    padding: 0;
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+    min-height: 640px;
+  }
+  .valley .text { padding: 120px 64px; }
+  .valley .text .section-h { color: var(--stone); }
+  .valley .text .section-h em { color: #e7c8a8; font-style: italic; }
+  .valley .text .section-eyebrow .line { background: #e7c8a8; }
+  .valley .text .section-eyebrow .label { color: #e7c8a8; }
+  .valley .text p {
+    font-size: 17px; line-height: 1.7;
+    color: rgba(243, 236, 223, 0.86);
+    margin-top: 30px; max-width: 480px;
+  }
+  .valley .points {
+    margin-top: 44px;
+    display: grid; gap: 20px;
+  }
+  .valley .point {
+    display: grid; grid-template-columns: 64px 1fr; gap: 18px;
+    align-items: baseline;
+  }
+  .valley .point .km {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; line-height: 1; color: #e7c8a8;
+    font-style: italic;
+  }
+  .valley .point h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px; font-weight: 500; margin-bottom: 4px;
+  }
+  .valley .point p {
+    font-size: 13px; line-height: 1.55; margin: 0;
+    color: rgba(243, 236, 223, 0.7);
+  }
+  .valley .photo { position: relative; }
+  .valley .photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+  /* ============= RESERVAR (DIRECTO) ============= */
+  .direct { background: var(--stone); padding: 110px 56px; }
+  .direct-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; max-width: 1320px; margin: 0 auto; }
+  .direct h2 { color: var(--ink); }
+  .direct h2 em { color: var(--terracotta); }
+  .direct p { font-size: 17px; line-height: 1.7; color: var(--ink-soft); margin-top: 24px; max-width: 460px; }
+  .direct .perks { margin-top: 36px; display: grid; gap: 14px; }
+  .direct .perk {
+    display: grid; grid-template-columns: 28px 1fr; gap: 16px;
+    align-items: baseline;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  .direct .perk:last-child { border-bottom: none; }
+  .direct .perk .ic {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; color: var(--terracotta); line-height: 1;
+  }
+  .direct .perk .pt { font-size: 15px; line-height: 1.5; color: var(--ink); font-weight: 500; }
+  .direct .perk .pt small { display: block; font-weight: 400; color: var(--ink-soft); margin-top: 4px; font-size: 13px; }
+  .direct .form-card {
+    background: var(--ink); color: var(--stone);
+    padding: 56px 52px;
+  }
+  .direct .form-card .label { color: #e7c8a8; margin-bottom: 28px; }
+  .direct .form-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px; font-weight: 400; line-height: 1.15;
+    margin-bottom: 32px;
+  }
+  .direct .form-card h3 em { color: #e7c8a8; font-style: italic; }
+  .direct .field { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .direct .field .f {
+    border: 1px solid rgba(243, 236, 223, 0.22);
+    padding: 14px 16px;
+  }
+  .direct .field .f .label { font-size: 9px; letter-spacing: 0.2em; color: rgba(243, 236, 223, 0.55); margin-bottom: 6px; }
+  .direct .field .f .v {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+  }
+  .direct .form-card .btn-block {
+    margin-top: 18px;
+    background: var(--terracotta); color: var(--stone);
+    text-align: center; padding: 18px;
+    font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; font-weight: 600;
+    text-decoration: none; display: block;
+  }
+  .direct .form-card .alt {
+    text-align: center; margin-top: 18px;
+    font-size: 12px; color: rgba(243, 236, 223, 0.7);
+  }
+
+  /* ============= FOOTER ============= */
+  footer { background: var(--ink); color: rgba(243, 236, 223, 0.7); padding: 80px 56px 36px; }
+  .foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 60px; max-width: 1320px; margin: 0 auto; }
+  .foot-grid .brand-block .name { color: var(--stone); font-size: 28px; }
+  .foot-grid .brand-block p { font-size: 14px; line-height: 1.6; margin-top: 18px; max-width: 320px; }
+  .foot-col h5 { color: var(--stone); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 18px; }
+  .foot-col a, .foot-col p { color: rgba(243, 236, 223, 0.7); font-size: 14px; line-height: 1.8; text-decoration: none; display: block; }
+  .foot-bottom {
+    margin-top: 64px; padding-top: 28px; border-top: 1px solid rgba(243, 236, 223, 0.1);
+    display: flex; justify-content: space-between; align-items: center;
+    max-width: 1320px; margin-left: auto; margin-right: auto;
+    font-size: 11px; letter-spacing: 0.04em;
+  }
+  .foot-bottom .kenaz { color: rgba(243, 236, 223, 0.45); letter-spacing: 0.18em; text-transform: uppercase; font-size: 10px; }
+  .foot-bottom .kenaz a { color: rgba(243, 236, 223, 0.7); border-bottom: 1px solid currentColor; padding-bottom: 1px; }
+</style>
+</head>
+<body>
+
+<!-- ============= HERO ============= -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="img/finca-pool.jpg" alt="Piscina exterior de Finca el Tossal con vista al valle · Bolulla">
+  </div>
+
+  <nav class="nav">
+    <div class="brand">
+      <div class="mark">T</div>
+      <div class="name">Finca el Tossal<small>Bolulla · Costa Blanca</small></div>
+    </div>
+    <div class="nav-links">
+      <a href="#finca">La finca</a>
+      <a href="#mesa">La mesa</a>
+      <a href="#habitaciones">Habitaciones</a>
+      <a href="#valle">El valle</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <div class="nav-side">
+      <div class="lang">
+        <span class="active">ES</span>
+        <span>EN</span>
+      </div>
+      <a class="btn-reserve" href="#reservar">Reservar</a>
+    </div>
+  </nav>
+
+  <div class="hero-content">
+    <div class="hero-meta">
+      <span class="label">Boutique hotel · Adults only</span>
+      <span class="dot"></span>
+      <span class="label">Once habitaciones</span>
+      <span class="dot"></span>
+      <span class="label">Mesa propia cada noche</span>
+    </div>
+    <h1>Una mesa propia.<br>Un valle. <em>Once habitaciones.</em></h1>
+    <div class="hero-row">
+      <p class="hero-sub">A trescientos metros de altitud, entre Altea y la sierra de Bernia, una finca rural pensada para parejas que buscan silencio, vistas y una cena distinta cada noche.</p>
+      <div class="hero-cta">
+        <a href="#reservar" class="btn-primary">Comprobar disponibilidad</a>
+        <a href="#mesa" class="btn-ghost">Ver la mesa</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= STAT STRIP ============= -->
+<div class="stat-strip">
+  <div class="cell">
+    <div class="num">11</div>
+    <div class="lbl">Habitaciones<br>todas con vistas</div>
+  </div>
+  <div class="cell">
+    <div class="num">300m</div>
+    <div class="lbl">de altitud<br>sobre el valle</div>
+  </div>
+  <div class="cell">
+    <div class="num">+18</div>
+    <div class="lbl">Adults-only<br>silencio garantizado</div>
+  </div>
+  <div class="cell">
+    <div class="num">4,5</div>
+    <div class="lbl">Booking · 641 reseñas<br>verificadas</div>
+  </div>
+</div>
+
+<!-- ============= LA FINCA ============= -->
+<section class="finca" id="finca">
+  <div class="text">
+    <div class="section-eyebrow">
+      <span class="line"></span>
+      <span class="label">La finca</span>
+    </div>
+    <h2 class="section-h">Una casa rural reformada para quien busca <em>tiempo lento</em>.</h2>
+    <p>Finca el Tossal está en Bolulla, un pueblo de menos de cuatrocientos habitantes en el interior de la Costa Blanca. Veinte minutos de coche desde Altea, los suficientes para dejar atrás el ruido de la costa.</p>
+    <p>La casa principal y los jardines se renovaron recientemente. La piedra original, las vigas de madera y la cal blanca conviven con habitaciones equipadas al detalle, jacuzzi exterior y una piscina rodeada de olivos.</p>
+
+    <div class="meta-grid">
+      <div class="meta-item">
+        <div class="label">Ubicación</div>
+        <div class="val">Bolulla<br>Costa Blanca</div>
+      </div>
+      <div class="meta-item">
+        <div class="label">Acceso</div>
+        <div class="val">20 min de Altea<br>1h de Alicante</div>
+      </div>
+      <div class="meta-item">
+        <div class="label">Política</div>
+        <div class="val">Adults only<br>+18 años</div>
+      </div>
+      <div class="meta-item">
+        <div class="label">Idiomas</div>
+        <div class="val">Español · English</div>
+      </div>
+    </div>
+  </div>
+  <div class="visual">
+    <img src="img/finca-pool.jpg" alt="Piscina exterior con olivos en Finca el Tossal">
+    <div class="small">
+      <img src="img/finca-detail.jpg" alt="Detalle de la finca, piedra y cal">
+    </div>
+  </div>
+</section>
+
+<!-- ============= LA MESA ============= -->
+<section class="mesa" id="mesa">
+  <div class="section-eyebrow">
+    <span class="line"></span>
+    <span class="label">La mesa · Restaurante interno</span>
+  </div>
+  <h2 class="section-h">Cena exclusiva,<br><em>cada noche de la semana.</em></h2>
+
+  <div class="mesa-grid">
+    <div class="photo">
+      <img src="img/restaurant-long.jpg" alt="Comedor de Finca el Tossal con mesa preparada y vista al valle">
+    </div>
+    <div class="text">
+      <p>El restaurante de Finca el Tossal no es un servicio externo. Es la mesa de la casa: cocina propia, menú propio que cambia con la temporada, y la posibilidad de cenar mirando al valle todas las noches del año.</p>
+      <p>La cena está incluida en algunas estancias y disponible para huéspedes en otras. La carta cambia según producto de temporada del Marina Baixa.</p>
+
+      <div class="menu">
+        <div class="menu-item">
+          <div class="name">Entrante de temporada<small>Producto local · varía cada semana</small></div>
+          <div class="price">— Incluido</div>
+        </div>
+        <div class="menu-item">
+          <div class="name">Principal a elegir<small>Pescado del día · carne de la sierra · opción vegetariana</small></div>
+          <div class="price">— Incluido</div>
+        </div>
+        <div class="menu-item">
+          <div class="name">Postre de la casa<small>Repostería propia</small></div>
+          <div class="price">— Incluido</div>
+        </div>
+        <div class="menu-item">
+          <div class="name">Maridaje opcional<small>Selección de vinos de la Marina Alta</small></div>
+          <div class="price">— Consultar</div>
+        </div>
+      </div>
+
+      <div class="mesa-note">
+        Reserva la mesa al confirmar la habitación. Cocina abierta cada noche del año, también para huéspedes que no la incluyan en la tarifa.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= HABITACIONES ============= -->
+<section class="rooms" id="habitaciones">
+  <div class="rooms-head">
+    <div>
+      <div class="section-eyebrow">
+        <span class="line"></span>
+        <span class="label">Once habitaciones</span>
+      </div>
+      <h2 class="section-h">Todas miran<br>al valle, todas con <em>vistas propias.</em></h2>
+    </div>
+    <p>Cuatro categorías. Once estancias. La diferencia está en el espacio, la terraza y si se prefiere jacuzzi privado o compartir el exterior.</p>
+  </div>
+
+  <div class="rooms-grid">
+    <article class="room">
+      <div class="img"><img src="img/executive-suite.jpg" alt="Suite Executive con jacuzzi privado"></div>
+      <div class="body">
+        <div class="label">Categoría superior</div>
+        <h3>Suite Executive</h3>
+        <p>Habitación más amplia de la finca. Jacuzzi privado en terraza, salón separado y vista frontal al valle.</p>
+        <div class="feats">
+          <span>Jacuzzi privado</span>
+          <span>Terraza</span>
+          <span>Salón</span>
+        </div>
+        <div class="foot">
+          <span class="from">Desde / consultar tarifa</span>
+          <a href="#">Ver detalles</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="room">
+      <div class="img"><img src="img/room-suite.jpg" alt="King Suite Finca el Tossal"></div>
+      <div class="body">
+        <div class="label">Categoría suite</div>
+        <h3>King Suite</h3>
+        <p>Estancia con cama king-size, baño con bañera independiente y terraza orientada al sur con vistas amplias.</p>
+        <div class="feats">
+          <span>King size</span>
+          <span>Bañera</span>
+          <span>Terraza sur</span>
+        </div>
+        <div class="foot">
+          <span class="from">Desde / consultar tarifa</span>
+          <a href="#">Ver detalles</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="room">
+      <div class="img"><img src="img/room-superior.jpg" alt="Suite Superior con jacuzzi"></div>
+      <div class="body">
+        <div class="label">Categoría superior</div>
+        <h3>Suite Superior</h3>
+        <p>Junior suite con jacuzzi en la terraza privada. Pensada para estancias largas o escapadas en pareja.</p>
+        <div class="feats">
+          <span>Jacuzzi</span>
+          <span>Terraza privada</span>
+          <span>Junior suite</span>
+        </div>
+        <div class="foot">
+          <span class="from">Desde / consultar tarifa</span>
+          <a href="#">Ver detalles</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============= EL VALLE ============= -->
+<section class="valley" id="valle">
+  <div class="text">
+    <div class="section-eyebrow">
+      <span class="line"></span>
+      <span class="label">El valle</span>
+    </div>
+    <h2 class="section-h">A veinte minutos del mar, <em>a cien años del ruido.</em></h2>
+    <p>Bolulla está en el corazón de la Marina Baixa. Desde la finca se ve la sierra de Bernia, los almendros del valle y, los días claros, una franja del Mediterráneo.</p>
+
+    <div class="points">
+      <div class="point">
+        <div class="km">20'</div>
+        <div>
+          <h4>Altea casco antiguo</h4>
+          <p>Calles blancas, galerías y restaurantes con vista al puerto.</p>
+        </div>
+      </div>
+      <div class="point">
+        <div class="km">25'</div>
+        <div>
+          <h4>Calas de Benidorm y Albir</h4>
+          <p>Cala del Tío Ximo, playa del Albir, faro y paseo natural.</p>
+        </div>
+      </div>
+      <div class="point">
+        <div class="km">35'</div>
+        <div>
+          <h4>Sierra de Bernia y Guadalest</h4>
+          <p>Senderismo por el circular del fuerte y embalse turquesa.</p>
+        </div>
+      </div>
+      <div class="point">
+        <div class="km">1h</div>
+        <div>
+          <h4>Aeropuerto de Alicante</h4>
+          <p>Conexión directa, traslado privado disponible bajo petición.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="photo">
+    <img src="img/views-terrace.jpg" alt="Vista al valle desde la terraza de Finca el Tossal">
+  </div>
+</section>
+
+<!-- ============= RESERVAR DIRECTO ============= -->
+<section class="direct" id="reservar">
+  <div class="direct-grid">
+    <div>
+      <div class="section-eyebrow">
+        <span class="line"></span>
+        <span class="label">Reservar</span>
+      </div>
+      <h2 class="section-h">Mejor precio garantizado <em>reservando directo.</em></h2>
+      <p>Reservar en fincaeltossal.com siempre es más barato que en plataformas externas. Sin comisión, con cancelación flexible y atención directa con el hotel.</p>
+
+      <div class="perks">
+        <div class="perk">
+          <div class="ic">·</div>
+          <div class="pt">5% de descuento con código DIRECTBOOKING5<small>Aplicable a habitaciones seleccionadas, todo el año.</small></div>
+        </div>
+        <div class="perk">
+          <div class="ic">·</div>
+          <div class="pt">Cancelación según política del hotel<small>Condiciones aplicables al confirmar la reserva.</small></div>
+        </div>
+        <div class="perk">
+          <div class="ic">·</div>
+          <div class="pt">Atención directa con el hotel<small>Sin intermediarios. Consultas, traslados y cena por el mismo canal.</small></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <div class="label">Disponibilidad en directo</div>
+      <h3>Comprobar fechas y <em>tarifa</em></h3>
+      <div class="field">
+        <div class="f">
+          <div class="label">Entrada</div>
+          <div class="v">Vie 8 may</div>
+        </div>
+        <div class="f">
+          <div class="label">Salida</div>
+          <div class="v">Dom 10 may</div>
+        </div>
+      </div>
+      <div class="field">
+        <div class="f">
+          <div class="label">Adultos</div>
+          <div class="v">2 huéspedes</div>
+        </div>
+        <div class="f">
+          <div class="label">Habitación</div>
+          <div class="v">A elegir</div>
+        </div>
+      </div>
+      <a class="btn-block" href="#">Ver disponibilidad</a>
+      <div class="alt">o escribir a la dirección de contacto del hotel</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= FOOTER ============= -->
+<footer id="contacto">
+  <div class="foot-grid">
+    <div class="brand-block">
+      <div class="brand">
+        <div class="mark" style="border-color: var(--stone); color: var(--stone);">T</div>
+        <div class="name" style="color: var(--stone);">Finca el Tossal<small>Bolulla · Costa Blanca</small></div>
+      </div>
+      <p>Boutique hotel rural adults-only en el interior de la Marina Baixa. Once habitaciones, restaurante propio y vistas a la sierra de Bernia.</p>
+    </div>
+    <div class="foot-col">
+      <h5>Visitar</h5>
+      <p>Partida la Foya, 5</p>
+      <p>03518 Bolulla</p>
+      <p>Alicante, España</p>
+    </div>
+    <div class="foot-col">
+      <h5>Contacto</h5>
+      <a href="tel:+34965972183">+34 965 972 183</a>
+      <a href="mailto:info@finca-el-tossal.com">info@finca-el-tossal.com</a>
+      <a href="https://fincaeltossal.com">fincaeltossal.com</a>
+    </div>
+    <div class="foot-col">
+      <h5>Web</h5>
+      <a href="#finca">La finca</a>
+      <a href="#mesa">La mesa</a>
+      <a href="#habitaciones">Habitaciones</a>
+      <a href="#valle">El valle</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© Finca el Tossal · Boutique Hotel</span>
+    <span class="kenaz">Diseño propuesto por <a href="https://kenaz.studio">Kenaz Studio</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

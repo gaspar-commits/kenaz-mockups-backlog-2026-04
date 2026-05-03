@@ -1,0 +1,791 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hotel Tossal d'Altea — Almazara del s. XIX en Altea</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:        #2C2620;
+    --stone:      #5A4938;
+    --terracotta: #8B6F47;
+    --olive:      #6B7549;
+    --paper:      #FAF7F2;
+    --cream:      #F5EFE6;
+    --cream-dark: #E8DFCF;
+    --line:       rgba(44,38,32,.14);
+    --muted:      rgba(44,38,32,.62);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--paper);color:var(--ink);font-family:'Inter',system-ui,sans-serif;font-weight:400;line-height:1.55;-webkit-font-smoothing:antialiased}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .display{font-family:'Cormorant Garamond',serif;font-weight:400;letter-spacing:-.005em;line-height:1.05}
+  .italic{font-style:italic}
+  .eyebrow{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;color:var(--stone)}
+  .container{max-width:1640px;margin:0 auto;padding:0 56px}
+
+  /* ───── TOPBAR ───── */
+  .topbar{
+    background:var(--ink);color:var(--cream);
+    font-size:12px;letter-spacing:.04em;
+  }
+  .topbar-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:10px 56px;
+  }
+  .topbar-left{display:flex;gap:28px;color:rgba(245,239,230,.75)}
+  .topbar-left span{display:inline-flex;align-items:center;gap:8px}
+  .topbar-left svg{width:13px;height:13px;opacity:.75}
+  .topbar-right{display:flex;align-items:center;gap:22px}
+  .lang{display:flex;gap:10px;color:rgba(245,239,230,.55);font-size:11px;letter-spacing:.18em}
+  .lang .active{color:var(--cream)}
+  .topbar-right a.book{
+    background:var(--olive);color:var(--cream);
+    padding:7px 18px;letter-spacing:.16em;text-transform:uppercase;font-size:10px;font-weight:600;
+  }
+
+  /* ───── NAV ───── */
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:26px 56px;border-bottom:1px solid var(--line);
+    background:var(--paper);
+  }
+  .brand{display:flex;align-items:center;gap:16px}
+  .brand-mark{
+    width:54px;height:54px;border:1px solid var(--stone);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--stone);
+  }
+  .brand-mark svg{width:30px;height:30px}
+  .brand-text{display:flex;flex-direction:column;line-height:1.05}
+  .brand-text .name{font-family:'Cormorant Garamond',serif;font-size:22px;letter-spacing:.01em;color:var(--ink)}
+  .brand-text .tag{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+  .nav-links{display:flex;gap:34px;font-size:13px;letter-spacing:.06em;color:var(--ink)}
+  .nav-links a{position:relative;padding:4px 0}
+  .nav-links a.active{color:var(--terracotta)}
+  .nav-links a.active::after{
+    content:"";position:absolute;left:0;right:0;bottom:-6px;height:1px;background:var(--terracotta);
+  }
+  .nav-cta{display:flex;align-items:center;gap:18px}
+  .nav-cta .phone{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--ink)}
+  .nav-cta .reserve{
+    background:var(--ink);color:var(--cream);
+    padding:13px 26px;letter-spacing:.18em;text-transform:uppercase;font-size:11px;font-weight:600;
+    border:1px solid var(--ink);
+  }
+
+  /* ───── HERO ───── */
+  .hero{
+    position:relative;display:grid;grid-template-columns:1.05fr 1.25fr;
+    background:var(--paper);
+  }
+  .hero-text{
+    padding:96px 64px 96px 56px;display:flex;flex-direction:column;justify-content:center;
+    position:relative;
+  }
+  .hero-meta{display:flex;align-items:center;gap:18px;margin-bottom:36px}
+  .hero-meta .stars{color:var(--terracotta);letter-spacing:.18em;font-size:13px}
+  .hero-meta .sep{width:24px;height:1px;background:var(--stone);opacity:.5}
+  .hero-meta .since{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--stone);font-weight:500}
+  .hero-title{
+    font-family:'Cormorant Garamond',serif;font-weight:300;
+    font-size:88px;line-height:.98;letter-spacing:-.012em;color:var(--ink);
+  }
+  .hero-title em{font-style:italic;color:var(--terracotta);font-weight:400}
+  .hero-title .small{display:block;font-size:30px;letter-spacing:.005em;margin-top:14px;color:var(--stone);font-weight:400}
+  .hero-lede{
+    margin-top:34px;max-width:520px;
+    font-size:16px;line-height:1.7;color:var(--stone);
+  }
+  .hero-actions{
+    margin-top:46px;display:flex;align-items:center;gap:22px;
+  }
+  .btn-primary{
+    background:var(--ink);color:var(--cream);
+    padding:18px 32px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;
+    display:inline-flex;align-items:center;gap:14px;
+  }
+  .btn-primary svg{width:14px;height:14px;transition:transform .3s ease}
+  .btn-secondary{
+    color:var(--ink);border-bottom:1px solid var(--ink);
+    padding:6px 0 8px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;
+  }
+  .hero-promo{
+    margin-top:56px;padding-top:30px;border-top:1px solid var(--line);
+    display:grid;grid-template-columns:1fr 1fr;gap:24px;
+    max-width:520px;
+  }
+  .promo{display:flex;gap:14px;align-items:flex-start}
+  .promo-icon{
+    width:34px;height:34px;flex-shrink:0;
+    border:1px solid var(--stone);display:flex;align-items:center;justify-content:center;
+    color:var(--stone);
+  }
+  .promo-icon svg{width:16px;height:16px}
+  .promo-body{font-size:12px;line-height:1.5;color:var(--stone)}
+  .promo-body strong{display:block;color:var(--ink);font-size:12px;letter-spacing:.05em;margin-bottom:3px;font-weight:600}
+
+  .hero-photo{
+    position:relative;overflow:hidden;
+  }
+  .hero-photo img{
+    width:100%;height:100%;object-fit:cover;
+  }
+  .hero-photo::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(115deg, rgba(44,38,32,.18) 0%, rgba(44,38,32,0) 45%);
+  }
+  .photo-credit{
+    position:absolute;left:24px;bottom:24px;
+    color:var(--cream);font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+    z-index:2;display:flex;align-items:center;gap:10px;
+  }
+  .photo-credit::before{content:"";width:18px;height:1px;background:var(--cream);opacity:.7}
+  .hero-side-card{
+    position:absolute;right:48px;bottom:48px;
+    background:var(--paper);padding:28px 32px;
+    border:1px solid var(--line);
+    max-width:300px;z-index:3;
+  }
+  .hero-side-card .label{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--stone);margin-bottom:10px}
+  .hero-side-card .value{font-family:'Cormorant Garamond',serif;font-size:36px;line-height:1;color:var(--ink);margin-bottom:8px}
+  .hero-side-card .value em{font-style:italic;color:var(--terracotta)}
+  .hero-side-card .desc{font-size:12px;color:var(--stone);line-height:1.55}
+
+  /* ───── STORY (almazara → hotel) ───── */
+  .story{
+    padding:140px 0 130px;background:var(--cream);
+    position:relative;
+  }
+  .story-grid{
+    display:grid;grid-template-columns:1fr 1.1fr;gap:96px;align-items:center;
+  }
+  .story-images{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .story-images .img-tall{grid-column:1;height:520px;overflow:hidden}
+  .story-images .img-square{grid-column:2;height:340px;margin-top:80px;overflow:hidden}
+  .story-images img{width:100%;height:100%;object-fit:cover}
+  .story-stamp{
+    position:absolute;left:-40px;top:-20px;
+    width:140px;height:140px;border-radius:50%;
+    background:var(--ink);color:var(--cream);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:20px;z-index:3;
+  }
+  .story-stamp .num{font-family:'Cormorant Garamond',serif;font-size:42px;line-height:1;font-weight:400}
+  .story-stamp .lbl{font-size:9px;letter-spacing:.24em;text-transform:uppercase;margin-top:6px;opacity:.85}
+  .story-text .eyebrow{margin-bottom:24px;display:block}
+  .story-text h2{
+    font-family:'Cormorant Garamond',serif;font-weight:300;
+    font-size:62px;line-height:1.05;color:var(--ink);
+    margin-bottom:32px;
+  }
+  .story-text h2 em{font-style:italic;color:var(--terracotta);font-weight:400}
+  .story-text p{
+    font-size:15.5px;line-height:1.85;color:var(--stone);
+    margin-bottom:18px;max-width:540px;
+  }
+  .story-meta{
+    margin-top:46px;display:grid;grid-template-columns:repeat(3,1fr);
+    gap:32px;padding-top:32px;border-top:1px solid var(--line);max-width:540px;
+  }
+  .story-meta .item .num{font-family:'Cormorant Garamond',serif;font-size:34px;color:var(--ink);line-height:1}
+  .story-meta .item .lbl{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+
+  /* ───── HABITACIONES ───── */
+  .rooms{padding:140px 0 130px;background:var(--paper)}
+  .rooms-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:64px}
+  .rooms-head .left{max-width:560px}
+  .rooms-head h2{
+    font-family:'Cormorant Garamond',serif;font-weight:300;
+    font-size:56px;line-height:1.05;color:var(--ink);margin-top:18px;
+  }
+  .rooms-head h2 em{font-style:italic;color:var(--terracotta);font-weight:400}
+  .rooms-head .right{
+    font-size:14px;line-height:1.7;color:var(--stone);max-width:340px;text-align:right;
+  }
+  .rooms-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
+  }
+  .room-card{display:flex;flex-direction:column;cursor:pointer}
+  .room-card .img{
+    aspect-ratio:3/4;overflow:hidden;background:var(--cream);position:relative;
+  }
+  .room-card .img img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+  .room-card:hover .img img{transform:scale(1.04)}
+  .room-card .badge{
+    position:absolute;top:18px;left:18px;
+    background:var(--paper);color:var(--ink);
+    padding:6px 12px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;
+  }
+  .room-card .body{padding:22px 0 0}
+  .room-card .name{font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--ink);line-height:1.15}
+  .room-card .meta{
+    display:flex;align-items:center;gap:14px;margin-top:10px;
+    font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+  }
+  .room-card .meta .dot{width:3px;height:3px;background:var(--muted);border-radius:50%}
+  .room-card .price{
+    margin-top:18px;display:flex;justify-content:space-between;align-items:baseline;
+    padding-top:14px;border-top:1px solid var(--line);
+  }
+  .room-card .price .label{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .room-card .price .value{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--ink)}
+
+  /* ───── RESTAURANTE ───── */
+  .restaurant{
+    padding:140px 0;background:var(--ink);color:var(--cream);position:relative;
+  }
+  .restaurant .container{position:relative}
+  .restaurant-grid{
+    display:grid;grid-template-columns:1.15fr 1fr;gap:80px;align-items:center;
+  }
+  .restaurant-imgs{position:relative;display:grid;grid-template-rows:auto auto;gap:18px}
+  .restaurant-imgs .big{height:520px;overflow:hidden}
+  .restaurant-imgs .small{height:230px;width:62%;margin-left:auto;margin-top:-160px;position:relative;z-index:2;border:8px solid var(--ink);overflow:hidden}
+  .restaurant-imgs img{width:100%;height:100%;object-fit:cover}
+  .restaurant-text .eyebrow{color:var(--terracotta);margin-bottom:22px;display:block}
+  .restaurant-text h2{
+    font-family:'Cormorant Garamond',serif;font-weight:300;
+    font-size:64px;line-height:1.02;color:var(--cream);margin-bottom:18px;
+  }
+  .restaurant-text .name{
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-size:48px;
+    color:var(--terracotta);font-weight:400;line-height:1;margin-bottom:32px;
+  }
+  .restaurant-text p{
+    font-size:15.5px;line-height:1.8;color:rgba(245,239,230,.78);
+    max-width:480px;margin-bottom:18px;
+  }
+  .restaurant-list{
+    margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:20px 32px;
+    padding-top:32px;border-top:1px solid rgba(245,239,230,.16);max-width:480px;
+  }
+  .restaurant-list .li{
+    display:flex;gap:14px;align-items:flex-start;
+    font-size:13px;line-height:1.5;color:rgba(245,239,230,.85);
+  }
+  .restaurant-list .li::before{
+    content:"";width:6px;height:6px;background:var(--terracotta);
+    margin-top:7px;flex-shrink:0;
+  }
+  .restaurant-text .actions{margin-top:40px;display:flex;gap:22px;align-items:center}
+  .restaurant-text .actions .btn{
+    background:var(--terracotta);color:var(--cream);
+    padding:16px 28px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;
+  }
+  .restaurant-text .actions .ghost{
+    color:var(--cream);border-bottom:1px solid rgba(245,239,230,.4);
+    padding:6px 0 8px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+  }
+
+  /* ───── EVENTOS ───── */
+  .events{padding:140px 0;background:var(--cream)}
+  .events-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:80px;align-items:center}
+  .events-text .eyebrow{margin-bottom:22px;display:block}
+  .events-text h2{
+    font-family:'Cormorant Garamond',serif;font-weight:300;
+    font-size:60px;line-height:1.05;color:var(--ink);margin-bottom:24px;
+  }
+  .events-text h2 em{font-style:italic;color:var(--terracotta);font-weight:400}
+  .events-text p{font-size:15.5px;line-height:1.8;color:var(--stone);max-width:440px;margin-bottom:22px}
+  .events-types{
+    margin-top:36px;display:flex;flex-direction:column;gap:0;
+    border-top:1px solid var(--line);
+  }
+  .events-types .row{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:18px 0;border-bottom:1px solid var(--line);
+  }
+  .events-types .row .lbl{font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--ink)}
+  .events-types .row .desc{font-size:12px;color:var(--muted);text-align:right;max-width:240px}
+  .events-photo{position:relative;height:580px;overflow:hidden}
+  .events-photo img{width:100%;height:100%;object-fit:cover}
+  .events-photo .overlay-card{
+    position:absolute;left:32px;bottom:32px;right:32px;
+    background:var(--paper);padding:32px 36px;
+    display:flex;align-items:center;justify-content:space-between;gap:32px;
+  }
+  .events-photo .overlay-card .quote{
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;
+    line-height:1.35;color:var(--ink);max-width:420px;
+  }
+  .events-photo .overlay-card .quote::before{
+    content:"";display:block;width:32px;height:1px;background:var(--terracotta);margin-bottom:14px;
+  }
+  .events-photo .overlay-card .cta{
+    background:var(--ink);color:var(--cream);padding:16px 26px;
+    font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;flex-shrink:0;
+  }
+
+  /* ───── ENTORNO / UBICACION ───── */
+  .location{padding:130px 0;background:var(--paper)}
+  .location-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:60px}
+  .loc-col h3{
+    font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:400;
+    line-height:1.1;margin-bottom:16px;color:var(--ink);
+  }
+  .loc-col h3 em{font-style:italic;color:var(--terracotta)}
+  .loc-col p{font-size:14px;line-height:1.7;color:var(--stone);margin-bottom:14px}
+  .loc-col .distance{
+    display:flex;align-items:baseline;gap:14px;
+    padding:18px 0;border-top:1px solid var(--line);
+  }
+  .loc-col .distance .num{font-family:'Cormorant Garamond',serif;font-size:32px;color:var(--ink);line-height:1}
+  .loc-col .distance .lbl{font-size:12px;color:var(--muted);letter-spacing:.05em}
+
+  /* ───── FOOTER ───── */
+  .footer{
+    background:var(--ink);color:var(--cream);
+    padding:90px 0 40px;
+  }
+  .footer-grid{
+    display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:60px;
+    padding-bottom:60px;border-bottom:1px solid rgba(245,239,230,.15);
+  }
+  .footer-brand .mark{
+    width:54px;height:54px;border:1px solid rgba(245,239,230,.35);
+    display:flex;align-items:center;justify-content:center;color:var(--cream);
+    margin-bottom:22px;
+  }
+  .footer-brand .mark svg{width:30px;height:30px}
+  .footer-brand h3{
+    font-family:'Cormorant Garamond',serif;font-size:30px;color:var(--cream);
+    font-weight:400;margin-bottom:14px;
+  }
+  .footer-brand p{font-size:13px;line-height:1.7;color:rgba(245,239,230,.65);max-width:300px}
+  .footer-col h4{
+    font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--terracotta);
+    font-weight:600;margin-bottom:22px;
+  }
+  .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+  .footer-col li{font-size:13.5px;color:rgba(245,239,230,.78);line-height:1.5}
+  .footer-col li strong{display:block;color:rgba(245,239,230,.55);font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;margin-bottom:4px}
+  .footer-bottom{
+    padding-top:30px;display:flex;justify-content:space-between;align-items:center;
+    font-size:11px;letter-spacing:.14em;color:rgba(245,239,230,.45);
+  }
+  .footer-bottom .kenaz{color:rgba(245,239,230,.55);text-transform:uppercase;letter-spacing:.22em}
+  .footer-bottom .kenaz a{color:var(--cream);border-bottom:1px solid rgba(245,239,230,.3);padding-bottom:1px}
+
+</style>
+</head>
+<body>
+
+  <!-- ═══════ TOPBAR ═══════ -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-left">
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          (+34) 966 88 31 83
+        </span>
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          info@hoteltossalaltea.com
+        </span>
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Partida el Pla de Castell, 96 — Altea
+        </span>
+      </div>
+      <div class="topbar-right">
+        <div class="lang">
+          <span class="active">ES</span><span>EN</span><span>CA</span>
+        </div>
+        <a href="#" class="book">Reserva directa · 10% TOSSAL10</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════ NAV ═══════ -->
+  <nav class="nav">
+    <div class="brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5">
+          <!-- Hoja de olivo estilizada + arco de almazara -->
+          <path d="M12 50 C 12 30, 32 18, 52 18 C 52 38, 32 50, 12 50 Z" stroke-linejoin="round"/>
+          <path d="M12 50 L 52 18" stroke-linecap="round"/>
+          <circle cx="32" cy="34" r="2.2" fill="currentColor" stroke="none"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <span class="name">Hotel Tossal d'Altea</span>
+        <span class="tag">Almazara · s. XIX</span>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#" class="active">Hotel</a>
+      <a href="#">Habitaciones</a>
+      <a href="#">Almàssera de Guillem</a>
+      <a href="#">Eventos &amp; Bodas</a>
+      <a href="#">Historia</a>
+      <a href="#">Entorno</a>
+      <a href="#">Contacto</a>
+    </div>
+    <div class="nav-cta">
+      <span class="phone">966 88 31 83</span>
+      <a href="#" class="reserve">Reservar</a>
+    </div>
+  </nav>
+
+  <!-- ═══════ HERO ═══════ -->
+  <section class="hero">
+    <div class="hero-text">
+      <div class="hero-meta">
+        <span class="stars">★★★★</span>
+        <span class="sep"></span>
+        <span class="since">Almazara restaurada · s. XIX</span>
+      </div>
+      <h1 class="hero-title">
+        Una almazara<br/>
+        <em>de aceite</em><br/>
+        convertida en hotel.
+        <span class="small">A 500 m del Casco Antiguo de Altea.</span>
+      </h1>
+      <p class="hero-lede">
+        Edificio tradicional de mediados del siglo XIX, antigua finca de olivos, almendros y algarrobos
+        de la familia Lledó. Hoy, hotel de cuatro estrellas con gestión familiar, restaurante propio
+        y jardines en un entorno rural a pocos pasos del centro histórico.
+      </p>
+      <div class="hero-actions">
+        <a href="#" class="btn-primary">
+          Reservar habitación
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#" class="btn-secondary">Ver disponibilidad &amp; tarifas</a>
+      </div>
+
+      <div class="hero-promo">
+        <div class="promo">
+          <div class="promo-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <div class="promo-body">
+            <strong>Mejor precio web</strong>
+            10% de descuento con el código TOSSAL10 al reservar directamente.
+          </div>
+        </div>
+        <div class="promo">
+          <div class="promo-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 12V8H6a2 2 0 010-4h12v4"/><path d="M4 6v12a2 2 0 002 2h14v-4"/><path d="M18 12a2 2 0 100 4h4v-4z"/></svg>
+          </div>
+          <div class="promo-body">
+            <strong>Regalo de bienvenida</strong>
+            Botella de AOVE virgen extra en estancias de 2 noches o más.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-photo">
+      <img src="img/slider-3.jpg" alt="Patio interior del Hotel Tossal d'Altea, antigua almazara restaurada" />
+      <div class="photo-credit">Patio · Almazara restaurada</div>
+      <div class="hero-side-card">
+        <div class="label">Reseñas verificadas</div>
+        <div class="value"><em>4,0</em> / 5</div>
+        <div class="desc">904 valoraciones de huéspedes en plataformas independientes.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ STORY ═══════ -->
+  <section class="story">
+    <div class="container">
+      <div class="story-grid">
+        <div class="story-images">
+          <div class="story-stamp">
+            <span class="num">s. XIX</span>
+            <span class="lbl">Almazara<br/>original</span>
+          </div>
+          <div class="img-tall"><img src="img/slider-2.jpg" alt="Salón con elementos arquitectónicos originales de la almazara" /></div>
+          <div class="img-square"><img src="img/slider-6.jpg" alt="Detalle de muros y vigas tradicionales de Hotel Tossal d'Altea" /></div>
+        </div>
+        <div class="story-text">
+          <span class="eyebrow">Historia · Patrimonio</span>
+          <h2>De finca de olivos<br/>a <em>casa que recibe</em>.</h2>
+          <p>
+            La <strong>Almàssera de Guillem</strong> debe su nombre a Guillermo Lledó Berdín,
+            propietario original de esta antigua casa de labranza enclavada entre olivos,
+            almendros y algarrobos. La finca producía aceite de oliva en una almazara
+            tradicional de mediados del siglo XIX.
+          </p>
+          <p>
+            Hoy, el edificio conserva muros, arcos y vigas originales. La rehabilitación
+            respetó la atmósfera de tiempos pasados: piedra vista, madera trabajada
+            y la luz mediterránea que entra por los patios. Una hospedería que defiende
+            los valores históricos y la memoria local.
+          </p>
+          <div class="story-meta">
+            <div class="item">
+              <div class="num">s. XIX</div>
+              <div class="lbl">Edificio<br/>original</div>
+            </div>
+            <div class="item">
+              <div class="num">500 m</div>
+              <div class="lbl">Casco antiguo<br/>de Altea</div>
+            </div>
+            <div class="item">
+              <div class="num">200 m</div>
+              <div class="lbl">Palau Altea<br/>Centre d'Arts</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ HABITACIONES ═══════ -->
+  <section class="rooms">
+    <div class="container">
+      <div class="rooms-head">
+        <div class="left">
+          <span class="eyebrow">Alojamiento</span>
+          <h2>Habitaciones con<br/>el <em>carácter</em> de la casa.</h2>
+        </div>
+        <div class="right">
+          Cada habitación conserva detalles propios del edificio.
+          Pago directo en hotel, flexibilidad en cancelaciones y
+          early check-in cuando es posible.
+        </div>
+      </div>
+      <div class="rooms-grid">
+
+        <div class="room-card">
+          <div class="img">
+            <span class="badge">Más reservada</span>
+            <img src="img/room-superior.jpg" alt="Habitación doble superior con detalles tradicionales" />
+          </div>
+          <div class="body">
+            <div class="name">Doble Superior</div>
+            <div class="meta">
+              <span>2 personas</span><span class="dot"></span><span>Cama king</span>
+            </div>
+            <div class="price">
+              <span class="label">Desde</span>
+              <span class="value">consultar</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="room-card">
+          <div class="img">
+            <img src="img/room-suite.jpg" alt="Suite king-size en Hotel Tossal d'Altea" />
+          </div>
+          <div class="body">
+            <div class="name">Suite King-Size</div>
+            <div class="meta">
+              <span>2 personas</span><span class="dot"></span><span>Salón</span>
+            </div>
+            <div class="price">
+              <span class="label">Desde</span>
+              <span class="value">consultar</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="room-card">
+          <div class="img">
+            <img src="img/room-atico.jpg" alt="Doble matrimonial ático con terraza" />
+          </div>
+          <div class="body">
+            <div class="name">Ático con terraza</div>
+            <div class="meta">
+              <span>2 personas</span><span class="dot"></span><span>Balcón</span>
+            </div>
+            <div class="price">
+              <span class="label">Desde</span>
+              <span class="value">consultar</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="room-card">
+          <div class="img">
+            <img src="img/room-classic.jpg" alt="Habitación clásica doble individual" />
+          </div>
+          <div class="body">
+            <div class="name">Clásica Individual</div>
+            <div class="meta">
+              <span>1 persona</span><span class="dot"></span><span>Tradicional</span>
+            </div>
+            <div class="price">
+              <span class="label">Desde</span>
+              <span class="value">consultar</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ RESTAURANTE ═══════ -->
+  <section class="restaurant">
+    <div class="container">
+      <div class="restaurant-grid">
+        <div class="restaurant-imgs">
+          <div class="big"><img src="img/restaurant-1.jpg" alt="Sala del restaurante Almàssera de Guillem en el Hotel Tossal d'Altea" /></div>
+          <div class="small"><img src="img/restaurant-2.jpg" alt="Plato del restaurante Almàssera de Guillem" /></div>
+        </div>
+        <div class="restaurant-text">
+          <span class="eyebrow">El restaurante de la casa</span>
+          <h2>Cocina mediterránea<br/>en el corazón de la</h2>
+          <div class="name">Almàssera de Guillem</div>
+          <p>
+            Un espacio gastronómico montado en la antigua almazara de aceite de mediados del
+            siglo XIX. Combina elementos rústicos originales con un tratamiento contemporáneo,
+            terraza cubierta en contacto con la naturaleza y comedores climatizados.
+          </p>
+          <p>
+            La carta gira en torno al producto de proximidad, la tradición valenciana y una
+            selección de aceites de oliva virgen extra de la región.
+          </p>
+          <div class="restaurant-list">
+            <div class="li">Paellas y arroces melosos</div>
+            <div class="li">Producto de proximidad</div>
+            <div class="li">Selección de AOVE de la región</div>
+            <div class="li">Opciones para dietas especiales</div>
+          </div>
+          <div class="actions">
+            <a href="#" class="btn">Reservar mesa</a>
+            <a href="#" class="ghost">Ver carta</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ EVENTOS ═══════ -->
+  <section class="events">
+    <div class="container">
+      <div class="events-grid">
+        <div class="events-text">
+          <span class="eyebrow">Bodas · Celebraciones · Empresa</span>
+          <h2>Un escenario con<br/><em>memoria</em> para tu día.</h2>
+          <p>
+            Jardines, salones interiores de distintos aforos y una terraza cubierta en
+            contacto con la naturaleza. Menús a medida con cóctel, banquete, barra libre
+            y extras de animación o música en directo.
+          </p>
+          <p>
+            Tarifa reducida para invitados que se alojen en el hotel: tu celebración
+            empieza la noche anterior y termina cuando vosotros decidáis.
+          </p>
+          <div class="events-types">
+            <div class="row">
+              <span class="lbl">Bodas</span>
+              <span class="desc">Cóctel en jardín · banquete en salón · barra libre</span>
+            </div>
+            <div class="row">
+              <span class="lbl">Celebraciones</span>
+              <span class="desc">Comuniones, aniversarios, cumpleaños familiares</span>
+            </div>
+            <div class="row">
+              <span class="lbl">Eventos de empresa</span>
+              <span class="desc">Conferencias, presentaciones y banquetes corporativos</span>
+            </div>
+          </div>
+        </div>
+        <div class="events-photo">
+          <img src="img/slider-4.jpg" alt="Espacio de eventos del Hotel Tossal d'Altea" />
+          <div class="overlay-card">
+            <div class="quote">
+              Un sitio con historia para celebrar lo importante,
+              y un equipo que cuida cada detalle.
+            </div>
+            <a href="#" class="cta">Solicitar dossier</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ ENTORNO ═══════ -->
+  <section class="location">
+    <div class="container">
+      <div class="location-grid">
+        <div class="loc-col">
+          <h3>Casco Antiguo<br/><em>de Altea</em></h3>
+          <p>
+            Bien de Interés Cultural. Iglesia parroquial con su cúpula de tejas vidriadas
+            azules y blancas, casas de fachada blanca, callejuelas empedradas y
+            miradores con vistas a la bahía.
+          </p>
+          <div class="distance"><span class="num">500</span><span class="lbl">metros<br/>caminando</span></div>
+        </div>
+        <div class="loc-col">
+          <h3>Palau Altea<br/><em>Centre d'Arts</em></h3>
+          <p>
+            Recinto local de teatro, conciertos y exposiciones. Una buena excusa para
+            terminar la tarde con un espectáculo y volver al hotel andando.
+          </p>
+          <div class="distance"><span class="num">200</span><span class="lbl">metros<br/>del hotel</span></div>
+        </div>
+        <div class="loc-col">
+          <h3>Sierra Bernia<br/><em>&amp; río Algar</em></h3>
+          <p>
+            Senderos que atraviesan el paisaje rural alicantino. Calas de aguas cristalinas,
+            playas amplias y rutas que combinan naturaleza, gastronomía y mar.
+          </p>
+          <div class="distance"><span class="num">15 min</span><span class="lbl">en coche<br/>al inicio de rutas</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ FOOTER ═══════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="mark">
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 50 C 12 30, 32 18, 52 18 C 52 38, 32 50, 12 50 Z" stroke-linejoin="round"/>
+              <path d="M12 50 L 52 18" stroke-linecap="round"/>
+              <circle cx="32" cy="34" r="2.2" fill="currentColor" stroke="none"/>
+            </svg>
+          </div>
+          <h3>Hotel Tossal d'Altea</h3>
+          <p>Almazara del siglo XIX restaurada. Hotel de gestión familiar a 500 m del Casco Antiguo de Altea, con restaurante propio y jardines.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <ul>
+            <li><strong>Teléfono</strong>(+34) 966 88 31 83</li>
+            <li><strong>Email</strong>info@hoteltossalaltea.com</li>
+            <li><strong>Dirección</strong>Partida el Pla de Castell, 96<br/>03590 Altea (Alicante)</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Hotel</h4>
+          <ul>
+            <li><strong>Check-in</strong>15:00 h</li>
+            <li><strong>Check-out</strong>12:00 h</li>
+            <li><strong>Reservas web</strong>10% con TOSSAL10</li>
+            <li><strong>Idiomas</strong>ES · EN · CA</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Explora</h4>
+          <ul>
+            <li>Habitaciones</li>
+            <li>Almàssera de Guillem</li>
+            <li>Bodas y eventos</li>
+            <li>Historia de la casa</li>
+            <li>Entorno y rutas</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Hotel Tossal d'Altea · Todos los derechos reservados</span>
+        <span class="kenaz">Diseño propuesto por <a href="https://kenaz.studio">Kenaz Studio</a></span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
