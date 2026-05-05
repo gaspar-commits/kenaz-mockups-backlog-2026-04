@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>El Cantonet — Arrocería y cocina mediterránea en Calpe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink:        #14202b;
+    --ink-soft:   #2a3744;
+    --paper:      #f4ece0;
+    --paper-2:    #ebe1d0;
+    --piedra:     #d8cab2;
+    --azul-mar:   #1c4660;
+    --azul-deep:  #0e2738;
+    --azafran:    #c08a2e;
+    --ocre:       #a86d22;
+    --line:       rgba(20, 32, 43, 0.18);
+    --muted:      rgba(20, 32, 43, 0.62);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body { overflow-x: hidden; }
+  img { max-width: 100%; display: block; }
+
+  .display { font-family: 'Cormorant Garamond', 'Times New Roman', serif; font-weight: 500; letter-spacing: -0.01em; }
+  .italic  { font-style: italic; font-weight: 400; }
+  .mono    { font-family: 'Inter', sans-serif; font-feature-settings: "tnum"; letter-spacing: 0.18em; text-transform: uppercase; font-size: 11px; font-weight: 500; }
+
+  .container {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 56px;
+  }
+
+  /* ============ NAV ============ */
+  .nav {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    z-index: 20;
+    padding: 28px 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--paper);
+    gap: 16px;
+  }
+  .brand { display: flex; flex-direction: column; line-height: 1; }
+  .brand .wm {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 30px;
+    letter-spacing: 0.005em;
+  }
+  .brand .wm em { font-style: italic; font-weight: 500; color: #f0d6a8; }
+  .brand .sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    margin-top: 7px;
+    opacity: 0.85;
+  }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    flex-wrap: wrap;
+  }
+  .nav-links a { color: var(--paper); text-decoration: none; opacity: 0.92; }
+  .nav-lang {
+    display: flex;
+    gap: 10px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-left: 14px;
+    padding-left: 22px;
+    border-left: 1px solid rgba(244, 236, 224, 0.32);
+    align-items: center;
+  }
+  .nav-lang a {
+    color: var(--paper);
+    opacity: 0.55;
+    text-decoration: none;
+    padding: 2px 4px;
+  }
+  .nav-lang a.active { opacity: 1; }
+  .nav-lang a.proposed {
+    border: 1px dashed rgba(244, 236, 224, 0.45);
+    border-radius: 2px;
+    opacity: 0.55;
+    padding: 2px 6px;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+  }
+  .reservar-btn {
+    border: 1px solid rgba(244, 236, 224, 0.55);
+    padding: 12px 22px;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--paper);
+    text-decoration: none;
+    transition: all .25s ease;
+    white-space: nowrap;
+  }
+  .reservar-btn:hover { background: var(--paper); color: var(--ink); }
+
+  /* ============ HERO ============ */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 800px;
+    width: 100%;
+    overflow: hidden;
+    background: var(--ink);
+  }
+  .hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.78) saturate(1.02);
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(14, 39, 56, 0.55) 0%, rgba(14, 39, 56, 0.18) 38%, rgba(20, 32, 43, 0.78) 100%);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 5;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 56px 96px;
+    color: var(--paper);
+  }
+  .hero-meta {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+    margin-bottom: 26px;
+    flex-wrap: wrap;
+  }
+  .hero-meta .dot {
+    width: 4px; height: 4px;
+    background: var(--azafran);
+    border-radius: 50%;
+  }
+  .hero-meta span { opacity: 0.92; }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: clamp(40px, 7vw, 96px);
+    line-height: 0.98;
+    letter-spacing: -0.012em;
+    max-width: 980px;
+    margin-bottom: 28px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: #f0d6a8;
+  }
+  .hero-lede {
+    font-size: clamp(15px, 1.3vw, 18px);
+    line-height: 1.55;
+    max-width: 580px;
+    opacity: 0.92;
+    font-weight: 300;
+    margin-bottom: 38px;
+  }
+  .hero-cta-row {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .cta-primary {
+    background: var(--paper);
+    color: var(--ink);
+    padding: 16px 30px;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all .25s ease;
+  }
+  .cta-primary:hover { background: var(--azafran); color: var(--paper); }
+  .cta-secondary {
+    color: var(--paper);
+    padding: 16px 4px;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(244, 236, 224, 0.55);
+  }
+
+  /* rating tag flotante */
+  .hero-rating {
+    position: absolute;
+    right: 56px;
+    bottom: 96px;
+    z-index: 6;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: flex-end;
+    color: var(--paper);
+    text-align: right;
+  }
+  .hero-rating .score {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 56px;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    color: #f0d6a8;
+  }
+  .hero-rating .lab {
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    opacity: 0.85;
+    max-width: 180px;
+    line-height: 1.5;
+  }
+
+  /* ============ TIRA INFO ============ */
+  .info-strip {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 28px 56px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 36px;
+    border-top: 1px solid rgba(244, 236, 224, 0.08);
+    border-bottom: 1px solid rgba(244, 236, 224, 0.08);
+  }
+  .info-strip .item .lab {
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    margin-bottom: 8px;
+  }
+  .info-strip .item .val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+  }
+  .info-strip .item .val small {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+    opacity: 0.65;
+    display: block;
+    margin-top: 4px;
+  }
+
+  /* ============ HISTORIA ============ */
+  .historia {
+    padding: 120px 56px 100px;
+    background: var(--paper);
+    position: relative;
+  }
+  .historia-grid {
+    max-width: 1320px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 96px;
+    align-items: center;
+  }
+  .historia-text .eyebrow {
+    color: var(--ocre);
+    margin-bottom: 28px;
+  }
+  .historia-text h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: clamp(34px, 4vw, 56px);
+    line-height: 1.04;
+    letter-spacing: -0.012em;
+    margin-bottom: 32px;
+  }
+  .historia-text h2 em { font-style: italic; color: var(--ocre); font-weight: 400; }
+  .historia-text p {
+    font-size: 16px;
+    line-height: 1.72;
+    color: var(--ink-soft);
+    margin-bottom: 22px;
+    max-width: 540px;
+  }
+  .historia-timeline {
+    margin-top: 44px;
+    display: flex;
+    gap: 48px;
+    border-top: 1px solid var(--line);
+    padding-top: 28px;
+  }
+  .historia-timeline .year {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .historia-timeline .year .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 500;
+    color: var(--azul-mar);
+    line-height: 1;
+  }
+  .historia-timeline .year .lab {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .historia-img {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+  }
+  .historia-img img { width: 100%; height: 100%; object-fit: cover; }
+  .historia-img .caption {
+    position: absolute;
+    bottom: 18px; left: 22px;
+    color: var(--paper);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 17px;
+    text-shadow: 0 2px 18px rgba(14, 39, 56, 0.55);
+  }
+
+  /* ============ CARTA — ARROCES ============ */
+  .carta {
+    padding: 120px 56px;
+    background: var(--paper-2);
+  }
+  .carta-head {
+    max-width: 1320px;
+    margin: 0 auto 68px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .carta-head h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: clamp(34px, 4vw, 56px);
+    line-height: 1.04;
+    letter-spacing: -0.012em;
+    max-width: 580px;
+  }
+  .carta-head h2 em { font-style: italic; color: var(--ocre); font-weight: 400; }
+  .carta-head .meta {
+    color: var(--muted);
+    max-width: 360px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .carta-grid {
+    max-width: 1320px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 32px;
+  }
+  .carta-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .carta-card .img-wrap {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: var(--piedra);
+  }
+  .carta-card.signature .img-wrap { aspect-ratio: 4 / 5; }
+  .carta-card img { width: 100%; height: 100%; object-fit: cover; }
+  .carta-card .body {
+    padding: 28px 30px 32px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .carta-card .tag {
+    color: var(--ocre);
+    margin-bottom: 14px;
+  }
+  .carta-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.1;
+    letter-spacing: -0.005em;
+    margin-bottom: 14px;
+  }
+  .carta-card h3 em { font-style: italic; color: var(--ocre); font-weight: 400; }
+  .carta-card p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 22px;
+  }
+  .carta-card .foot {
+    margin-top: auto;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ============ RESERVAS PROPUESTO ============ */
+  .reservas {
+    padding: 120px 56px;
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .reservas-wrap {
+    max-width: 1320px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.05fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .reservas-wrap .eyebrow { color: var(--azafran); margin-bottom: 24px; }
+  .reservas-wrap h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: clamp(32px, 3.6vw, 48px);
+    line-height: 1.06;
+    letter-spacing: -0.012em;
+    margin-bottom: 28px;
+  }
+  .reservas-wrap h2 em { font-style: italic; color: #f0d6a8; font-weight: 400; }
+  .reservas-wrap p {
+    font-size: 15px;
+    line-height: 1.7;
+    opacity: 0.78;
+    max-width: 480px;
+    margin-bottom: 16px;
+  }
+  .reservas-card {
+    background: rgba(244, 236, 224, 0.04);
+    border: 1px solid rgba(244, 236, 224, 0.16);
+    padding: 36px 38px;
+  }
+  .reservas-card .lab {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    margin-bottom: 22px;
+  }
+  .reservas-form { display: flex; flex-direction: column; gap: 18px; }
+  .reservas-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field label {
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    opacity: 0.62;
+  }
+  .field .val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 10px 0 12px;
+    border-bottom: 1px solid rgba(244, 236, 224, 0.22);
+    color: var(--paper);
+  }
+  .field .val.placeholder { opacity: 0.45; font-style: italic; font-weight: 400; }
+  .reservas-card .submit {
+    margin-top: 14px;
+    background: var(--paper);
+    color: var(--ink);
+    border: none;
+    padding: 16px 22px;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .reservas-card .lang-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 22px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .reservas-card .lang-row .lab-2 {
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    opacity: 0.55;
+  }
+  .reservas-card .chip {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border: 1px solid rgba(244, 236, 224, 0.32);
+  }
+  .reservas-card .chip.active { background: var(--azafran); border-color: var(--azafran); color: var(--ink); font-weight: 600; }
+  .reservas-card .chip.proposed { border-style: dashed; opacity: 0.6; }
+  .proposed-tag {
+    display: inline-block;
+    font-size: 9px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--azafran);
+    border: 1px solid var(--azafran);
+    padding: 3px 8px;
+    margin-left: 10px;
+    vertical-align: middle;
+    font-weight: 600;
+  }
+
+  /* ============ CONTACTO ============ */
+  .contacto {
+    padding: 120px 56px 80px;
+    background: var(--paper);
+  }
+  .contacto-grid {
+    max-width: 1320px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 80px;
+    align-items: stretch;
+  }
+  .contacto-text .eyebrow { color: var(--ocre); margin-bottom: 22px; }
+  .contacto-text h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: clamp(34px, 4vw, 56px);
+    line-height: 1.04;
+    letter-spacing: -0.012em;
+    margin-bottom: 32px;
+  }
+  .contacto-text h2 em { font-style: italic; color: var(--ocre); font-weight: 400; }
+  .contacto-list {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+  }
+  .contacto-row {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 24px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: baseline;
+  }
+  .contacto-row .lab {
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .contacto-row .val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.25;
+  }
+  .contacto-row .val small {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    text-transform: none;
+    font-weight: 400;
+    margin-top: 4px;
+  }
+  .contacto-img {
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    position: relative;
+  }
+  .contacto-img img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* ============ FOOTER ============ */
+  .footer {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 70px 56px 40px;
+  }
+  .footer-grid {
+    max-width: 1320px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 60px;
+    padding-bottom: 56px;
+    border-bottom: 1px solid rgba(244, 236, 224, 0.14);
+  }
+  .footer .brand-block .wm {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 14px;
+    letter-spacing: 0.005em;
+  }
+  .footer .brand-block .wm em { font-style: italic; color: #f0d6a8; font-weight: 500; }
+  .footer .brand-block p {
+    font-size: 13px;
+    line-height: 1.7;
+    opacity: 0.65;
+    max-width: 320px;
+  }
+  .footer .col h4 {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    margin-bottom: 18px;
+    font-weight: 500;
+  }
+  .footer .col ul { list-style: none; }
+  .footer .col li { font-size: 13px; line-height: 1.95; opacity: 0.85; }
+  .footer .col li a { color: var(--paper); text-decoration: none; }
+  .footer-note {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding-top: 28px;
+    font-size: 11px;
+    line-height: 1.6;
+    letter-spacing: 0.04em;
+    text-transform: none;
+    opacity: 0.5;
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+  }
+  .footer-bottom {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.55;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .footer-bottom a { color: var(--paper); text-decoration: none; opacity: 0.85; }
+
+  /* ============ RESPONSIVE — TABLET ============ */
+  @media (max-width: 1100px) {
+    .nav { padding: 22px 36px; }
+    .hero-content { padding: 0 36px 76px; }
+    .hero-rating { right: 36px; bottom: 76px; }
+    .info-strip { padding: 24px 36px; gap: 24px; }
+    .historia, .carta, .reservas, .contacto { padding-left: 36px; padding-right: 36px; }
+    .historia-grid { gap: 56px; }
+    .carta-grid { grid-template-columns: 1fr 1fr; }
+    .carta-card.signature { grid-column: 1 / -1; }
+    .carta-card.signature .img-wrap { aspect-ratio: 16 / 9; }
+    .reservas-wrap { grid-template-columns: 1fr; gap: 48px; }
+    .contacto-grid { grid-template-columns: 1fr; gap: 56px; }
+    .footer { padding: 56px 36px 32px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 44px; }
+  }
+
+  /* ============ RESPONSIVE — MOBILE 768 ============ */
+  @media (max-width: 768px) {
+    .nav {
+      padding: 18px 20px;
+      gap: 12px;
+    }
+    .nav-links { display: none; }
+    .nav-lang {
+      margin-left: 0;
+      padding-left: 0;
+      border-left: none;
+      gap: 6px;
+    }
+    .nav-lang a { font-size: 10px; letter-spacing: 0.16em; padding: 2px 3px; }
+    .nav-lang a.proposed { font-size: 9px; padding: 2px 5px; letter-spacing: 0.12em; }
+    .reservar-btn { padding: 10px 16px; font-size: 10px; letter-spacing: 0.18em; }
+    .brand .wm { font-size: 24px; }
+    .brand .sub { font-size: 9px; letter-spacing: 0.28em; }
+
+    .hero { min-height: 720px; height: auto; padding-bottom: 0; }
+    .hero-content {
+      padding: 120px 22px 56px;
+      min-height: 720px;
+    }
+    .hero-meta {
+      gap: 12px;
+      margin-bottom: 22px;
+      font-size: 10px;
+      letter-spacing: 0.16em;
+    }
+    .hero h1 { font-size: clamp(34px, 11vw, 52px); margin-bottom: 22px; }
+    .hero-lede { font-size: 14px; margin-bottom: 30px; }
+    .hero-cta-row { gap: 12px; flex-direction: column; align-items: stretch; }
+    .cta-primary { padding: 14px 20px; font-size: 11px; text-align: center; }
+    .cta-secondary { padding: 8px 0; text-align: left; align-self: flex-start; }
+    .hero-rating {
+      position: static;
+      flex-direction: row;
+      align-items: center;
+      gap: 16px;
+      margin-top: 36px;
+      text-align: left;
+    }
+    .hero-rating .score { font-size: 38px; }
+    .hero-rating .lab { font-size: 9px; letter-spacing: 0.2em; max-width: none; }
+
+    .info-strip {
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      padding: 24px 22px;
+    }
+    .info-strip .item .val { font-size: 16px; }
+    .info-strip .item .val small { font-size: 10px; letter-spacing: 0.14em; }
+
+    .historia {
+      padding: 72px 22px 64px;
+    }
+    .historia-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .historia-text h2 { font-size: clamp(28px, 8vw, 38px); }
+    .historia-text p { font-size: 15px; }
+    .historia-timeline { gap: 28px; flex-wrap: wrap; }
+    .historia-timeline .year .num { font-size: 28px; }
+    .historia-img { aspect-ratio: 4 / 5; max-height: 480px; }
+
+    .carta {
+      padding: 72px 22px;
+    }
+    .carta-head {
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 44px;
+      gap: 18px;
+    }
+    .carta-head h2 { font-size: clamp(28px, 8vw, 38px); }
+    .carta-head .meta { font-size: 13px; }
+    .carta-grid { grid-template-columns: 1fr; gap: 22px; }
+    .carta-card.signature { grid-column: auto; }
+    .carta-card.signature .img-wrap { aspect-ratio: 4 / 3; }
+    .carta-card .body { padding: 22px 22px 26px; }
+    .carta-card h3 { font-size: 22px; }
+    .carta-card p { font-size: 13px; }
+
+    .reservas {
+      padding: 72px 22px;
+    }
+    .reservas-wrap { gap: 40px; }
+    .reservas-wrap h2 { font-size: clamp(26px, 8vw, 36px); }
+    .reservas-wrap p { font-size: 14px; }
+    .reservas-card { padding: 26px 22px; }
+    .reservas-row { grid-template-columns: 1fr; gap: 18px; }
+    .field .val { font-size: 16px; }
+    .reservas-card .submit { padding: 14px 18px; font-size: 11px; }
+    .reservas-card .lang-row { gap: 8px; }
+    .reservas-card .chip { font-size: 10px; padding: 4px 8px; letter-spacing: 0.16em; }
+
+    .contacto {
+      padding: 72px 22px 56px;
+    }
+    .contacto-grid { gap: 40px; }
+    .contacto-text h2 { font-size: clamp(26px, 8vw, 36px); }
+    .contacto-row {
+      grid-template-columns: 1fr;
+      gap: 6px;
+      padding: 14px 0;
+    }
+    .contacto-row .val { font-size: 18px; }
+    .contacto-row .val small { font-size: 11px; }
+    .contacto-img { aspect-ratio: 4 / 3; }
+
+    .footer { padding: 48px 22px 28px; }
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 36px;
+      padding-bottom: 36px;
+    }
+    .footer .brand-block .wm { font-size: 26px; }
+    .footer .col h4 { font-size: 9px; letter-spacing: 0.24em; }
+    .footer-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+    }
+  }
+
+  /* ============ RESPONSIVE — SMALL MOBILE 480 ============ */
+  @media (max-width: 480px) {
+    .nav { padding: 14px 16px; gap: 8px; }
+    .reservar-btn { padding: 9px 12px; font-size: 9px; letter-spacing: 0.14em; }
+    .brand .wm { font-size: 21px; }
+    .brand .sub { font-size: 8px; letter-spacing: 0.24em; }
+    .nav-lang a { font-size: 9px; }
+    .nav-lang a.proposed { display: none; }
+
+    .hero-content { padding: 110px 16px 48px; min-height: 640px; }
+    .hero { min-height: 640px; }
+    .hero h1 { font-size: clamp(30px, 11vw, 42px); }
+    .hero-lede { font-size: 13px; }
+    .hero-rating .score { font-size: 32px; }
+
+    .info-strip { padding: 20px 16px; gap: 18px; }
+    .info-strip .item .val { font-size: 14px; }
+
+    .historia, .carta, .reservas, .contacto { padding-left: 16px; padding-right: 16px; }
+    .historia-text h2, .carta-head h2, .reservas-wrap h2, .contacto-text h2 {
+      font-size: clamp(24px, 8.5vw, 32px);
+    }
+
+    .footer { padding: 40px 16px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <img class="hero-img" src="img/hero-paella-bogavante.jpg" alt="Imagen referencial · paella melosa mediterránea" />
+  <div class="hero-overlay"></div>
+
+  <header class="nav">
+    <div class="brand">
+      <div class="wm">El <em>Cantonet</em></div>
+      <div class="sub">Calpe · Costa Blanca</div>
+    </div>
+    <nav class="nav-links">
+      <a href="#historia">Historia</a>
+      <a href="#carta">Carta</a>
+      <a href="#reservas">Reservas</a>
+      <a href="#contacto">Contacto</a>
+      <div class="nav-lang">
+        <a href="#" class="active">ES</a>
+        <a href="#" class="proposed" title="Idioma propuesto">EN</a>
+        <a href="#" class="proposed" title="Idioma propuesto">DE</a>
+        <a href="#" class="proposed" title="Idioma propuesto">NL</a>
+      </div>
+    </nav>
+    <a href="#reservas" class="reservar-btn">Reservar mesa</a>
+  </header>
+
+  <div class="hero-content">
+    <div class="hero-meta mono">
+      <span>Avda. Isla Formentera, 5 · Calpe</span>
+      <span class="dot"></span>
+      <span>Tripadvisor #10 / 346</span>
+      <span class="dot"></span>
+      <span>Cocina mediterránea · Arroces</span>
+    </div>
+    <h1>El sabor del <em>Mediterráneo</em><br/>se cocina a fuego lento.</h1>
+    <p class="hero-lede">
+      Paellas y arroces melosos, pescado fresco de lonja y pastelería artesana propia.
+      Una arrocería familiar al pie del Peñón de Ifach, con oficio desde 2009 con
+      El Cantal y desde 2018 con El Cantonet.
+    </p>
+    <div class="hero-cta-row">
+      <a href="#reservas" class="cta-primary">Reservar mesa</a>
+      <a href="#carta" class="cta-secondary">Ver la carta →</a>
+    </div>
+  </div>
+
+  <div class="hero-rating">
+    <div class="score">4,7 / 5</div>
+    <div class="lab">232 reseñas en Google · 4,8 en Tripadvisor</div>
+  </div>
+</section>
+
+<!-- ============ TIRA INFO ============ -->
+<section class="info-strip">
+  <div class="item">
+    <div class="lab">Cocina</div>
+    <div class="val">Mediterránea<small>Arroces · Lonja · Pastelería</small></div>
+  </div>
+  <div class="item">
+    <div class="lab">Reservas</div>
+    <div class="val">965 832 830<small>Reserva recomendada</small></div>
+  </div>
+  <div class="item">
+    <div class="lab">Ubicación</div>
+    <div class="val">Calpe<small>Avda. Isla Formentera, 5</small></div>
+  </div>
+  <div class="item">
+    <div class="lab">Reconocimiento</div>
+    <div class="val">#10 / 346<small>Tripadvisor Calpe</small></div>
+  </div>
+</section>
+
+<!-- ============ HISTORIA ============ -->
+<section class="historia" id="historia">
+  <div class="historia-grid">
+    <div class="historia-text">
+      <div class="eyebrow mono">Historia</div>
+      <h2>De El Cantal a <em>El Cantonet</em>:<br/>oficio que se hereda.</h2>
+      <p>
+        Empezamos en 2009 con un primer proyecto familiar: El Cantal. Una cocina pequeña,
+        de arroces y producto local, que nos enseñó a escuchar el mar y a respetar los
+        tiempos del fuego.
+      </p>
+      <p>
+        En 2018 nació El Cantonet. Mismo oficio, otra mesa: una arrocería más íntima en
+        el centro de Calpe donde refinar lo aprendido y sumar pastelería propia.
+        Más de quince años después seguimos cocinando con la misma idea: producto,
+        paciencia, casa.
+      </p>
+      <div class="historia-timeline">
+        <div class="year">
+          <div class="num">2009</div>
+          <div class="lab">El Cantal</div>
+        </div>
+        <div class="year">
+          <div class="num">2018</div>
+          <div class="lab">El Cantonet</div>
+        </div>
+        <div class="year">
+          <div class="num">+15</div>
+          <div class="lab">Años de oficio</div>
+        </div>
+      </div>
+    </div>
+    <div class="historia-img">
+      <img src="img/comedor-cantonet.jpg" alt="Imagen referencial · ambiente comedor mediterráneo" />
+      <div class="caption">Comedor principal — Avda. Isla Formentera, 5</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CARTA ============ -->
+<section class="carta" id="carta">
+  <div class="carta-head">
+    <h2>Arroces, pescado y <em>pastelería</em> de la casa.</h2>
+    <p class="meta">
+      Carta breve, de temporada, escrita cada semana sobre lo que llega de la lonja
+      de Calpe y del campo de la Marina Alta.
+    </p>
+  </div>
+
+  <div class="carta-grid">
+    <article class="carta-card signature">
+      <div class="img-wrap"><img src="img/arroz-meloso-detalle.jpg" alt="Imagen referencial · arroz meloso mediterráneo" /></div>
+      <div class="body">
+        <div class="tag mono">Plato signature</div>
+        <h3>Paella melosa con <em>bogavante</em></h3>
+        <p>
+          Plato signature de la casa, uno de los más recomendados por nuestros
+          clientes en Google y Tripadvisor. Servido en su punto justo de melosidad.
+        </p>
+        <div class="foot">
+          <span>Min. 2 pers.</span>
+          <span>Precio según mercado</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="carta-card">
+      <div class="img-wrap"><img src="img/penon-ifach-calpe.jpg" alt="Imagen referencial · costa mediterránea" /></div>
+      <div class="body">
+        <div class="tag mono">Cocina del mar</div>
+        <h3>Pescado de lonja a la <em>sal</em></h3>
+        <p>
+          Lo que ha entrado por la mañana en la lonja de Calpe: dorada, lubina o pargo,
+          horneado en costra de sal con hierbas y servido a la mesa al filo del momento.
+        </p>
+        <div class="foot">
+          <span>Pescado del día</span>
+          <span>Para compartir</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="carta-card">
+      <div class="img-wrap"><img src="img/pasteleria-postre.jpg" alt="Imagen referencial · pastelería artesana" /></div>
+      <div class="body">
+        <div class="tag mono">Pastelería propia</div>
+        <h3>Tartas y postres <em>de la casa</em></h3>
+        <p>
+          Pastelería propia: tartas y postres clásicos elaborados cada día en
+          nuestro obrador, para cerrar la mesa con la misma calma con la que
+          se cocina.
+        </p>
+        <div class="foot">
+          <span>Postre del día</span>
+          <span>Hecho en casa</span>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ RESERVAS ============ -->
+<section class="reservas" id="reservas">
+  <div class="reservas-wrap">
+    <div>
+      <div class="eyebrow mono">Reservas online <span class="proposed-tag">Propuesto</span></div>
+      <h2>Una mesa para los que <em>vienen a propósito</em>.</h2>
+      <p>
+        Calpe es destino. Quien os busca lo hace con tiempo: por la noche desde su
+        hotel, antes de subir al Peñón, o desde el extranjero mientras planea el viaje.
+      </p>
+      <p>
+        Una agenda de reservas en tiempo real, en cuatro idiomas y con confirmación
+        automática, recoge esa intención cuando llega: a las 23:40 de un martes,
+        en alemán, sin que nadie tenga que estar al teléfono.
+      </p>
+    </div>
+
+    <div class="reservas-card">
+      <div class="lab">Reserva — vista previa</div>
+      <form class="reservas-form" onsubmit="return false;">
+        <div class="reservas-row">
+          <div class="field">
+            <label>Día</label>
+            <div class="val">Sáb · 09 may</div>
+          </div>
+          <div class="field">
+            <label>Hora</label>
+            <div class="val">21:00</div>
+          </div>
+        </div>
+        <div class="reservas-row">
+          <div class="field">
+            <label>Comensales</label>
+            <div class="val">4 personas</div>
+          </div>
+          <div class="field">
+            <label>Sala</label>
+            <div class="val">Comedor principal</div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Nombre</label>
+          <div class="val placeholder">Su nombre</div>
+        </div>
+        <button type="button" class="submit">Confirmar reserva</button>
+        <div class="lang-row">
+          <span class="lab-2">Idiomas</span>
+          <span class="chip active">ES</span>
+          <span class="chip proposed">EN</span>
+          <span class="chip proposed">DE</span>
+          <span class="chip proposed">NL</span>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section class="contacto" id="contacto">
+  <div class="contacto-grid">
+    <div class="contacto-text">
+      <div class="eyebrow mono">Contacto</div>
+      <h2>Encuéntranos al pie del <em>Peñón</em>.</h2>
+      <div class="contacto-list">
+        <div class="contacto-row">
+          <div class="lab">Dirección</div>
+          <div class="val">Avda. Isla Formentera, 5<small>03710 Calpe, Alicante</small></div>
+        </div>
+        <div class="contacto-row">
+          <div class="lab">Teléfono</div>
+          <div class="val">+34 965 832 830<small>Reservas y consultas</small></div>
+        </div>
+        <div class="contacto-row">
+          <div class="lab">Correo</div>
+          <div class="val">reservas@elcantonetrestaurante.es<small>Email profesional <span class="proposed-tag">Propuesto</span></small></div>
+        </div>
+        <div class="contacto-row">
+          <div class="lab">Reseñas</div>
+          <div class="val">4,7 / 5 · 232 opiniones<small>Google · Tripadvisor #10 de 346</small></div>
+        </div>
+      </div>
+    </div>
+    <div class="contacto-img">
+      <img src="img/penon-ifach-calpe.jpg" alt="Imagen referencial · costa mediterránea al atardecer" />
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="brand-block">
+      <div class="wm">El <em>Cantonet</em></div>
+      <p>
+        Arrocería y cocina mediterránea en Calpe. Cocina familiar, producto de
+        proximidad y pastelería propia desde 2018.
+      </p>
+    </div>
+    <div class="col">
+      <h4>Restaurante</h4>
+      <ul>
+        <li><a href="#historia">Historia</a></li>
+        <li><a href="#carta">Carta</a></li>
+        <li><a href="#reservas">Reservas</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+    <div class="col">
+      <h4>Visítanos</h4>
+      <ul>
+        <li>Avda. Isla Formentera, 5</li>
+        <li>03710 Calpe · Alicante</li>
+        <li>+34 965 832 830</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h4>Idiomas</h4>
+      <ul>
+        <li>Español</li>
+        <li>English <span class="proposed-tag">Propuesto</span></li>
+        <li>Deutsch <span class="proposed-tag">Propuesto</span></li>
+        <li>Nederlands <span class="proposed-tag">Propuesto</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-note">
+    Imágenes referenciales. La sesión fotográfica del local, los platos signature y el equipo forma parte del servicio Kenaz.
+  </div>
+  <div class="footer-bottom">
+    <span>© El Cantonet Restaurante · Calpe</span>
+    <span>Diseño propuesto por <a href="https://kenaz.studio">Kenaz Studio</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

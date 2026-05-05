@@ -1,0 +1,1439 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Calpesala — Inmobiliaria boutique en Calpe desde hace medio siglo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bone: #f3ede2;
+        --bone-deep: #e9e0cf;
+        --ochre: #b58a4f;
+        --ochre-soft: #c9a874;
+        --champagne: #d8bd86;
+        --sea: #2f5f76;
+        --sea-deep: #1f4253;
+        --ink: #2a2620;
+        --ink-soft: #555047;
+        --line: rgba(42, 38, 32, 0.14);
+        --display: 'Cormorant Garamond', 'EB Garamond', serif;
+        --body: 'Inter', system-ui, sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        background: var(--bone);
+        color: var(--ink);
+        font-family: var(--body);
+        font-size: 16px;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 0 40px;
+      }
+
+      /* ============== NAV ============== */
+      nav.nav {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        padding: 28px 0;
+        color: var(--bone);
+      }
+
+      .nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+
+      .brand {
+        display: flex;
+        align-items: baseline;
+        gap: 14px;
+      }
+
+      .brand-mark {
+        font-family: var(--display);
+        font-weight: 500;
+        font-size: 30px;
+        letter-spacing: 0.02em;
+      }
+
+      .brand-tag {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.28em;
+        opacity: 0.78;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 28px;
+        font-size: 13px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        flex-wrap: wrap;
+      }
+
+      .nav-links a {
+        opacity: 0.85;
+        transition: opacity 0.2s;
+      }
+
+      .nav-links a:hover {
+        opacity: 1;
+      }
+
+      .lang-switch {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        font-size: 11px;
+        letter-spacing: 0.18em;
+      }
+
+      .lang-switch .active {
+        font-weight: 600;
+      }
+
+      .lang-switch span {
+        opacity: 0.55;
+      }
+
+      /* ============== HERO ============== */
+      .hero {
+        position: relative;
+        min-height: 100vh;
+        color: var(--bone);
+        display: flex;
+        align-items: flex-end;
+        overflow: hidden;
+      }
+
+      .hero-bg {
+        position: absolute;
+        inset: 0;
+        background-image: url('img/hero-penon.jpg');
+        background-size: cover;
+        background-position: center;
+        z-index: 0;
+      }
+
+      .hero-bg::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(31, 66, 83, 0.55) 0%,
+          rgba(31, 66, 83, 0.18) 32%,
+          rgba(42, 38, 32, 0.05) 55%,
+          rgba(42, 38, 32, 0.78) 100%
+        );
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        padding-bottom: 110px;
+      }
+
+      .hero-eyebrow {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.34em;
+        color: var(--champagne);
+        margin-bottom: 28px;
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .hero-eyebrow::before {
+        content: '';
+        width: 38px;
+        height: 1px;
+        background: var(--champagne);
+        opacity: 0.7;
+      }
+
+      .hero h1 {
+        font-family: var(--display);
+        font-weight: 400;
+        font-size: clamp(40px, 6.4vw, 88px);
+        line-height: 1.04;
+        letter-spacing: -0.012em;
+        max-width: 14ch;
+        margin-bottom: 26px;
+      }
+
+      .hero h1 em {
+        font-style: italic;
+        color: var(--champagne);
+      }
+
+      .hero-sub {
+        font-size: clamp(15px, 1.3vw, 17px);
+        line-height: 1.6;
+        max-width: 50ch;
+        opacity: 0.92;
+        margin-bottom: 40px;
+        font-weight: 300;
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin-bottom: 56px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        padding: 16px 28px;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-weight: 500;
+        border: 1px solid currentColor;
+        transition: all 0.25s;
+        cursor: pointer;
+      }
+
+      .btn-primary {
+        background: var(--champagne);
+        color: var(--ink);
+        border-color: var(--champagne);
+      }
+
+      .btn-primary:hover {
+        background: transparent;
+        color: var(--champagne);
+      }
+
+      .btn-ghost {
+        background: transparent;
+        color: var(--bone);
+      }
+
+      .btn-ghost:hover {
+        background: var(--bone);
+        color: var(--ink);
+      }
+
+      .btn .arrow {
+        font-size: 14px;
+      }
+
+      .hero-meta {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0;
+        border-top: 1px solid rgba(243, 237, 226, 0.22);
+        padding-top: 28px;
+        max-width: 880px;
+      }
+
+      .hero-meta-item {
+        padding-right: 28px;
+      }
+
+      .hero-meta-item + .hero-meta-item {
+        padding-left: 28px;
+        border-left: 1px solid rgba(243, 237, 226, 0.14);
+      }
+
+      .hero-meta-num {
+        font-family: var(--display);
+        font-size: 36px;
+        line-height: 1;
+        color: var(--champagne);
+        margin-bottom: 8px;
+      }
+
+      .hero-meta-lbl {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        opacity: 0.78;
+        line-height: 1.4;
+      }
+
+      /* ============== SECCIONES BASE ============== */
+      section {
+        padding: 120px 0;
+      }
+
+      .eyebrow {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.32em;
+        color: var(--ochre);
+        margin-bottom: 24px;
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .eyebrow::before {
+        content: '';
+        width: 32px;
+        height: 1px;
+        background: var(--ochre);
+      }
+
+      h2 {
+        font-family: var(--display);
+        font-weight: 400;
+        font-size: clamp(32px, 4.6vw, 60px);
+        line-height: 1.08;
+        letter-spacing: -0.01em;
+        margin-bottom: 24px;
+      }
+
+      h2 em {
+        font-style: italic;
+        color: var(--ochre);
+      }
+
+      h3 {
+        font-family: var(--display);
+        font-weight: 500;
+        font-size: 22px;
+        margin-bottom: 8px;
+      }
+
+      p.lead {
+        font-size: 18px;
+        line-height: 1.6;
+        max-width: 60ch;
+        color: var(--ink-soft);
+        font-weight: 300;
+      }
+
+      /* ============== HISTORIA ============== */
+      .historia {
+        background: var(--bone);
+      }
+
+      .historia-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 80px;
+        align-items: center;
+      }
+
+      .historia-text p + p {
+        margin-top: 18px;
+      }
+
+      .historia-text p {
+        font-size: 16px;
+        color: var(--ink-soft);
+        line-height: 1.75;
+      }
+
+      .historia-image {
+        position: relative;
+      }
+
+      .historia-image img {
+        width: 100%;
+        aspect-ratio: 4/5;
+        object-fit: cover;
+      }
+
+      .historia-image .badge {
+        position: absolute;
+        top: -14px;
+        right: -14px;
+        background: var(--ink);
+        color: var(--bone);
+        padding: 22px 26px;
+        text-align: center;
+        line-height: 1.1;
+      }
+
+      .historia-image .badge .num {
+        font-family: var(--display);
+        font-size: 38px;
+        color: var(--champagne);
+        display: block;
+      }
+
+      .historia-image .badge .lbl {
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        margin-top: 4px;
+      }
+
+      .timeline {
+        margin-top: 40px;
+        display: grid;
+        gap: 18px;
+        border-top: 1px solid var(--line);
+        padding-top: 28px;
+      }
+
+      .timeline-row {
+        display: grid;
+        grid-template-columns: 110px 1fr;
+        gap: 24px;
+        font-size: 14px;
+      }
+
+      .timeline-row .yr {
+        font-family: var(--display);
+        color: var(--ochre);
+        font-size: 16px;
+      }
+
+      .timeline-row .ev {
+        color: var(--ink-soft);
+        line-height: 1.5;
+      }
+
+      /* ============== PORTFOLIO ============== */
+      .portfolio {
+        background: var(--bone-deep);
+      }
+
+      .portfolio-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 40px;
+        margin-bottom: 56px;
+        flex-wrap: wrap;
+      }
+
+      .portfolio-head .head-text {
+        max-width: 640px;
+      }
+
+      .filter-pills {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .pill {
+        padding: 9px 18px;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        border: 1px solid var(--line);
+        background: transparent;
+        color: var(--ink-soft);
+        cursor: pointer;
+      }
+
+      .pill.active {
+        background: var(--ink);
+        color: var(--bone);
+        border-color: var(--ink);
+      }
+
+      .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+      }
+
+      .property {
+        background: var(--bone);
+        position: relative;
+      }
+
+      .property-image {
+        position: relative;
+        overflow: hidden;
+        aspect-ratio: 4/3;
+      }
+
+      .property-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .property:hover .property-image img {
+        transform: scale(1.04);
+      }
+
+      .property-tag {
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        background: var(--bone);
+        color: var(--ink);
+        padding: 7px 12px;
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+      }
+
+      .property-tag.alquiler {
+        background: var(--sea);
+        color: var(--bone);
+      }
+
+      .property-body {
+        padding: 24px 24px 28px;
+      }
+
+      .property-loc {
+        font-size: 11px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--ochre);
+        margin-bottom: 10px;
+      }
+
+      .property h3 {
+        font-size: 22px;
+        margin-bottom: 8px;
+        font-weight: 500;
+      }
+
+      .property-desc {
+        font-size: 13px;
+        color: var(--ink-soft);
+        margin-bottom: 18px;
+        line-height: 1.55;
+      }
+
+      .property-meta {
+        display: flex;
+        gap: 18px;
+        font-size: 12px;
+        color: var(--ink-soft);
+        padding-top: 16px;
+        border-top: 1px solid var(--line);
+      }
+
+      .property-meta strong {
+        color: var(--ink);
+        font-weight: 500;
+      }
+
+      .property-price {
+        font-family: var(--display);
+        font-size: 20px;
+        color: var(--ink);
+        margin-top: 14px;
+      }
+
+      .portfolio-cta {
+        margin-top: 56px;
+        text-align: center;
+      }
+
+      /* ============== IDIOMAS ============== */
+      .idiomas {
+        background: var(--ink);
+        color: var(--bone);
+      }
+
+      .idiomas-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+      }
+
+      .idiomas .eyebrow {
+        color: var(--champagne);
+      }
+
+      .idiomas .eyebrow::before {
+        background: var(--champagne);
+      }
+
+      .idiomas h2 em {
+        color: var(--champagne);
+      }
+
+      .idiomas p.lead {
+        color: rgba(243, 237, 226, 0.78);
+      }
+
+      .lang-card {
+        background: rgba(243, 237, 226, 0.05);
+        border: 1px solid rgba(243, 237, 226, 0.12);
+        padding: 36px 32px;
+      }
+
+      .lang-active,
+      .lang-prop {
+        margin-bottom: 28px;
+      }
+
+      .lang-section-lbl {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.24em;
+        color: var(--champagne);
+        margin-bottom: 18px;
+        display: block;
+      }
+
+      .lang-list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        list-style: none;
+      }
+
+      .lang-list li {
+        padding: 16px 14px;
+        text-align: center;
+        font-family: var(--display);
+        font-size: 22px;
+        line-height: 1;
+        background: rgba(243, 237, 226, 0.06);
+        border: 1px solid rgba(243, 237, 226, 0.14);
+      }
+
+      .lang-list li small {
+        display: block;
+        font-family: var(--body);
+        font-size: 10px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        opacity: 0.6;
+        margin-top: 6px;
+        font-weight: 400;
+      }
+
+      .lang-list.proposed li {
+        border: 1px dashed rgba(216, 189, 134, 0.45);
+        background: transparent;
+        opacity: 0.7;
+      }
+
+      .lang-list.proposed li small {
+        color: var(--champagne);
+        opacity: 0.85;
+      }
+
+      /* ============== EQUIPO / CONTACTO ============== */
+      .contacto {
+        background: var(--bone);
+      }
+
+      .contacto-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: stretch;
+      }
+
+      .contacto-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        min-height: 480px;
+      }
+
+      .contacto-text h2 {
+        margin-bottom: 24px;
+      }
+
+      .contacto-info {
+        display: grid;
+        gap: 22px;
+        margin-top: 36px;
+        border-top: 1px solid var(--line);
+        padding-top: 32px;
+      }
+
+      .info-row {
+        display: grid;
+        grid-template-columns: 130px 1fr;
+        gap: 24px;
+        align-items: baseline;
+      }
+
+      .info-lbl {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+        color: var(--ochre);
+      }
+
+      .info-val {
+        font-size: 16px;
+        color: var(--ink);
+      }
+
+      .info-val small {
+        display: block;
+        font-size: 13px;
+        color: var(--ink-soft);
+        margin-top: 4px;
+      }
+
+      .contacto-cta {
+        margin-top: 36px;
+      }
+
+      .btn-dark {
+        background: var(--ink);
+        color: var(--bone);
+        border-color: var(--ink);
+      }
+
+      .btn-dark:hover {
+        background: transparent;
+        color: var(--ink);
+      }
+
+      /* ============== FOOTER ============== */
+      footer {
+        background: var(--ink);
+        color: rgba(243, 237, 226, 0.78);
+        padding: 64px 0 28px;
+        font-size: 13px;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 1fr 1fr;
+        gap: 48px;
+        margin-bottom: 56px;
+      }
+
+      footer h4 {
+        font-family: var(--display);
+        font-size: 18px;
+        font-weight: 500;
+        color: var(--bone);
+        margin-bottom: 18px;
+      }
+
+      footer ul {
+        list-style: none;
+      }
+
+      footer ul li {
+        margin-bottom: 10px;
+      }
+
+      footer ul li a:hover {
+        color: var(--champagne);
+      }
+
+      .footer-brand .brand-mark {
+        font-family: var(--display);
+        font-size: 28px;
+        color: var(--bone);
+        margin-bottom: 10px;
+        display: block;
+      }
+
+      .footer-brand p {
+        max-width: 32ch;
+        line-height: 1.6;
+        color: rgba(243, 237, 226, 0.6);
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(243, 237, 226, 0.12);
+        padding-top: 24px;
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+        flex-wrap: wrap;
+        font-size: 12px;
+        color: rgba(243, 237, 226, 0.5);
+      }
+
+      .footer-bottom .kenaz {
+        color: rgba(243, 237, 226, 0.55);
+        letter-spacing: 0.06em;
+      }
+
+      .footer-bottom .kenaz a {
+        color: var(--champagne);
+      }
+
+      /* ============== MOBILE ============== */
+      @media (max-width: 980px) {
+        .historia-grid,
+        .idiomas-grid,
+        .contacto-grid {
+          grid-template-columns: 1fr;
+          gap: 56px;
+        }
+
+        .portfolio-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 40px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 0 24px;
+        }
+
+        section {
+          padding: 80px 0;
+        }
+
+        nav.nav {
+          padding: 20px 0;
+        }
+
+        .nav-inner {
+          gap: 14px;
+        }
+
+        .brand-mark {
+          font-size: 24px;
+        }
+
+        .brand-tag {
+          display: none;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .lang-switch {
+          font-size: 11px;
+        }
+
+        .hero-content {
+          padding-bottom: 64px;
+        }
+
+        .hero-eyebrow {
+          font-size: 10px;
+          letter-spacing: 0.28em;
+          margin-bottom: 22px;
+        }
+
+        .hero-eyebrow::before {
+          width: 28px;
+        }
+
+        .hero h1 {
+          font-size: clamp(36px, 9vw, 52px);
+          line-height: 1.05;
+          margin-bottom: 22px;
+        }
+
+        .hero-sub {
+          font-size: 15px;
+          margin-bottom: 30px;
+        }
+
+        .hero-actions {
+          flex-direction: column;
+          align-items: stretch;
+          margin-bottom: 40px;
+          gap: 12px;
+        }
+
+        .btn {
+          justify-content: center;
+          padding: 16px 20px;
+          font-size: 11px;
+        }
+
+        .hero-meta {
+          grid-template-columns: 1fr 1fr;
+          gap: 0;
+          padding-top: 22px;
+        }
+
+        .hero-meta-item {
+          padding: 16px 16px 16px 0;
+          border-bottom: 1px solid rgba(243, 237, 226, 0.14);
+        }
+
+        .hero-meta-item + .hero-meta-item {
+          padding-left: 0;
+          border-left: none;
+        }
+
+        .hero-meta-item:nth-child(2),
+        .hero-meta-item:nth-child(4) {
+          padding-left: 16px;
+          border-left: 1px solid rgba(243, 237, 226, 0.14);
+        }
+
+        .hero-meta-item:nth-last-child(-n + 2) {
+          border-bottom: none;
+        }
+
+        .hero-meta-num {
+          font-size: 28px;
+        }
+
+        .hero-meta-lbl {
+          font-size: 10px;
+          letter-spacing: 0.16em;
+        }
+
+        h2 {
+          font-size: clamp(30px, 7vw, 40px);
+        }
+
+        p.lead {
+          font-size: 16px;
+        }
+
+        .historia-image .badge {
+          right: 0;
+          padding: 16px 18px;
+        }
+
+        .historia-image .badge .num {
+          font-size: 28px;
+        }
+
+        .timeline-row {
+          grid-template-columns: 70px 1fr;
+          gap: 14px;
+        }
+
+        .portfolio-head {
+          margin-bottom: 36px;
+          gap: 20px;
+        }
+
+        .filter-pills {
+          gap: 8px;
+        }
+
+        .pill {
+          padding: 7px 12px;
+          font-size: 10px;
+        }
+
+        .portfolio-grid {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+
+        .property-body {
+          padding: 20px;
+        }
+
+        .lang-card {
+          padding: 28px 22px;
+        }
+
+        .lang-list {
+          grid-template-columns: 1fr 1fr;
+          gap: 10px;
+        }
+
+        .lang-list li {
+          font-size: 18px;
+          padding: 14px 10px;
+        }
+
+        .contacto-image img {
+          min-height: 320px;
+          aspect-ratio: 4/3;
+        }
+
+        .info-row {
+          grid-template-columns: 1fr;
+          gap: 4px;
+        }
+
+        .info-val {
+          font-size: 15px;
+        }
+
+        .footer-grid {
+          grid-template-columns: 1fr;
+          gap: 32px;
+          margin-bottom: 36px;
+        }
+
+        .footer-bottom {
+          flex-direction: column;
+          gap: 12px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 0 20px;
+        }
+
+        section {
+          padding: 64px 0;
+        }
+
+        .hero-eyebrow {
+          font-size: 9px;
+          margin-bottom: 18px;
+        }
+
+        .hero h1 {
+          font-size: clamp(32px, 10vw, 44px);
+        }
+
+        .hero-sub {
+          font-size: 14px;
+          line-height: 1.55;
+        }
+
+        h2 {
+          font-size: 28px;
+        }
+
+        p.lead {
+          font-size: 15px;
+        }
+
+        .lang-list {
+          grid-template-columns: 1fr;
+        }
+
+        .property-meta {
+          font-size: 11px;
+          gap: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ====================== HERO ====================== -->
+    <header class="hero">
+      <div class="hero-bg" role="img" aria-label="Imagen referencial · vista del Peñón de Ifach desde una terraza en Calpe"></div>
+
+      <nav class="nav">
+        <div class="container nav-inner">
+          <div class="brand">
+            <span class="brand-mark">Calpesala</span>
+            <span class="brand-tag">est. — Construcciones Sala</span>
+          </div>
+          <div class="nav-links">
+            <a href="#historia">Historia</a>
+            <a href="#propiedades">Propiedades</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#contacto">Contacto</a>
+          </div>
+          <div class="lang-switch">
+            <span class="active">ES</span>
+            <span>·</span>
+            <span>EN</span>
+            <span>·</span>
+            <span>DE</span>
+            <span>·</span>
+            <span>NL</span>
+          </div>
+        </div>
+      </nav>
+
+      <div class="container hero-content">
+        <span class="hero-eyebrow">Calpe · Avenida de Ifach 3</span>
+        <h1>
+          Medio siglo<br />
+          eligiendo casas<br />
+          <em>en Calpe.</em>
+        </h1>
+        <p class="hero-sub">
+          Calpesala es una inmobiliaria boutique de la familia Sala. Empezamos hace
+          medio siglo como Construcciones Sala, levantando algunas de las
+          primeras villas de la costa. Hoy ayudamos a quien busca casa frente al
+          Peñón con la misma calma de entonces.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#propiedades">
+            Ver propiedades <span class="arrow">→</span>
+          </a>
+          <a class="btn btn-ghost" href="#historia">Conocer la familia Sala</a>
+        </div>
+        <div class="hero-meta">
+          <div class="hero-meta-item">
+            <div class="hero-meta-num">50+</div>
+            <div class="hero-meta-lbl">Años en Calpe</div>
+          </div>
+          <div class="hero-meta-item">
+            <div class="hero-meta-num">Sala</div>
+            <div class="hero-meta-lbl">Familia al frente del despacho</div>
+          </div>
+          <div class="hero-meta-item">
+            <div class="hero-meta-num">ES · EN</div>
+            <div class="hero-meta-lbl">Idiomas hoy</div>
+          </div>
+          <div class="hero-meta-item">
+            <div class="hero-meta-num">DE · NL</div>
+            <div class="hero-meta-lbl">Próxima incorporación</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ====================== HISTORIA ====================== -->
+    <section id="historia" class="historia">
+      <div class="container">
+        <div class="historia-grid">
+          <div class="historia-text">
+            <span class="eyebrow">Nuestra historia</span>
+            <h2>De <em>Construcciones Sala</em> a Calpesala.</h2>
+            <p class="lead">
+              Calpe, hace medio siglo, era distinto. Las primeras urbanizaciones
+              empezaban a dibujarse al pie del Peñón y la familia Sala participó
+              de aquel comienzo levantando algunas de las casas que aún hoy se
+              ven desde el paseo.
+            </p>
+            <p>
+              Con raíces en Construcciones Sala, conocer cómo se levanta una
+              casa cambió la manera de venderla: hoy revisamos cada propiedad
+              como quien la ha hecho con sus manos.
+            </p>
+            <p>
+              Cuando el ciclo cambió, la familia decidió quedarse en Calpe pero
+              centrarse en lo que mejor sabía hacer: acompañar a quien viene a
+              vivir aquí. Esa transición —de constructora a inmobiliaria
+              boutique— es la que hoy lleva el nombre de Calpesala.
+            </p>
+
+            <div class="timeline">
+              <div class="timeline-row">
+                <span class="yr">Origen</span>
+                <span class="ev">
+                  Nace Construcciones Sala. Primeras villas y edificios de la
+                  costa de Calpe.
+                </span>
+              </div>
+              <div class="timeline-row">
+                <span class="yr">Décadas</span>
+                <span class="ev">
+                  Promoción de viviendas familiares en el casco urbano y la zona
+                  norte de Calpe.
+                </span>
+              </div>
+              <div class="timeline-row">
+                <span class="yr">Inmob.</span>
+                <span class="ev">
+                  Apertura de la oficina inmobiliaria en Avenida de Ifach 3.
+                </span>
+              </div>
+              <div class="timeline-row">
+                <span class="yr">Hoy</span>
+                <span class="ev">
+                  La familia Sala sigue al frente del despacho de Avenida de Ifach.
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="historia-image">
+            <img
+              src="img/heritage-detail.jpg"
+              alt="Imagen referencial · plano arquitectónico y llaves antiguas sobre escritorio de madera"
+            />
+            <div class="badge">
+              <span class="num">+50</span>
+              <span class="lbl">años en Calpe</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================== PORTFOLIO ====================== -->
+    <section id="propiedades" class="portfolio">
+      <div class="container">
+        <div class="portfolio-head">
+          <div class="head-text">
+            <span class="eyebrow">Selección actual</span>
+            <h2>Casas que <em>elegimos</em> antes de mostrarlas.</h2>
+            <p class="lead">
+              No publicamos toda propiedad que cae en la oficina. La que llega a
+              esta web es la que recomendaríamos a un amigo.
+            </p>
+          </div>
+          <div class="filter-pills">
+            <button class="pill active">Todas</button>
+            <button class="pill">Venta</button>
+            <button class="pill">Alquiler</button>
+            <button class="pill">Casco antiguo</button>
+            <button class="pill">Frente al mar</button>
+          </div>
+        </div>
+
+        <div class="portfolio-grid">
+          <article class="property">
+            <div class="property-image">
+              <img
+                src="img/property-villa-mediterranean.jpg"
+                alt="Imagen referencial · villa mediterránea con piscina, Costa Blanca"
+              />
+              <span class="property-tag">Venta</span>
+            </div>
+            <div class="property-body">
+              <div class="property-loc">Selección editorial · ejemplo</div>
+              <h3>Villa</h3>
+              <p class="property-desc">
+                Construcción reciente, parcela amplia, piscina orientada al sur.
+              </p>
+              <div class="property-price">Detalles a consultar</div>
+            </div>
+          </article>
+
+          <article class="property">
+            <div class="property-image">
+              <img
+                src="img/property-apartment-seaview.jpg"
+                alt="Imagen referencial · apartamento luminoso con ventanales al Mediterráneo"
+              />
+              <span class="property-tag">Venta</span>
+            </div>
+            <div class="property-body">
+              <div class="property-loc">Selección editorial · ejemplo</div>
+              <h3>Apartamento</h3>
+              <p class="property-desc">
+                Salón con ventanal corrido y vistas abiertas al Mediterráneo.
+              </p>
+              <div class="property-price">Detalles a consultar</div>
+            </div>
+          </article>
+
+          <article class="property">
+            <div class="property-image">
+              <img
+                src="img/property-townhouse-old.jpg"
+                alt="Imagen referencial · casa tradicional encalada con persianas azules"
+              />
+              <span class="property-tag alquiler">Alquiler</span>
+            </div>
+            <div class="property-body">
+              <div class="property-loc">Selección editorial · ejemplo</div>
+              <h3>Casa de pueblo</h3>
+              <p class="property-desc">
+                Vivienda tradicional rehabilitada con materiales nobles y patio interior.
+              </p>
+              <div class="property-price">Detalles a consultar</div>
+            </div>
+          </article>
+        </div>
+
+        <p
+          style="margin-top: 28px; font-size: 12px; color: var(--ink-soft); opacity: 0.78; max-width: 70ch;"
+        >
+          Imágenes referenciales. La fotografía profesional del catálogo real
+          forma parte del servicio Kenaz.
+        </p>
+
+        <div class="portfolio-cta">
+          <a class="btn btn-dark" href="#">
+            Ver el catálogo completo <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================== IDIOMAS ====================== -->
+    <section id="idiomas" class="idiomas">
+      <div class="container">
+        <div class="idiomas-grid">
+          <div>
+            <span class="eyebrow">Multiidioma</span>
+            <h2>Calpe se vende en <em>cuatro idiomas</em>, no en dos.</h2>
+            <p class="lead">
+              Calpesala atiende hoy en español e inglés. La realidad de la
+              avenida es que entran clientes alemanes, holandeses y franceses
+              cada semana. La próxima versión de la web los recibe en su idioma.
+            </p>
+            <p
+              class="lead"
+              style="margin-top: 18px; font-size: 15px; opacity: 0.78"
+            >
+              No traducción automática: redacción nativa por mercado, con la
+              terminología legal de compraventa y arrendamiento que cada
+              comprador espera ver.
+            </p>
+          </div>
+
+          <div class="lang-card">
+            <div class="lang-active">
+              <span class="lang-section-lbl">Activo hoy</span>
+              <ul class="lang-list">
+                <li>
+                  ES
+                  <small>Español</small>
+                </li>
+                <li>
+                  EN
+                  <small>English</small>
+                </li>
+              </ul>
+            </div>
+            <div class="lang-prop">
+              <span class="lang-section-lbl">Propuesta Kenaz</span>
+              <ul class="lang-list proposed">
+                <li>
+                  DE
+                  <small>Deutsch</small>
+                </li>
+                <li>
+                  NL
+                  <small>Nederlands</small>
+                </li>
+                <li>
+                  FR
+                  <small>Français</small>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================== CONTACTO ====================== -->
+    <section id="contacto" class="contacto">
+      <div class="container">
+        <div class="contacto-grid">
+          <div class="contacto-image">
+            <img
+              src="img/office-interior.jpg"
+              alt="Imagen referencial · interior cálido de oficina inmobiliaria boutique"
+            />
+          </div>
+          <div class="contacto-text">
+            <span class="eyebrow">Hablar con la familia Sala</span>
+            <h2>Una conversación, <em>no un formulario.</em></h2>
+            <p class="lead">
+              La oficina está en Avenida de Ifach 3, a un paseo del Peñón. Si
+              prefiere llamar antes, le atendemos sin intermediarios.
+            </p>
+
+            <div class="contacto-info">
+              <div class="info-row">
+                <span class="info-lbl">Oficina</span>
+                <span class="info-val"
+                  >Avenida de Ifach, 3 · 03710 Calpe (Alicante)</span
+                >
+              </div>
+              <div class="info-row">
+                <span class="info-lbl">Teléfono</span>
+                <span class="info-val">+34 965 83 69 30</span>
+              </div>
+              <div class="info-row">
+                <span class="info-lbl">Email</span>
+                <span class="info-val">info@calpesala.com</span>
+              </div>
+              <div class="info-row">
+                <span class="info-lbl">Atención</span>
+                <span class="info-val"
+                  >En persona, con cita previa
+                  <small>Visitas a propiedad fuera del horario de oficina si conviene.</small></span
+                >
+              </div>
+            </div>
+
+            <div class="contacto-cta">
+              <a class="btn btn-dark" href="mailto:info@calpesala.com">
+                Escribir a la oficina <span class="arrow">→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================== FOOTER ====================== -->
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <span class="brand-mark">Calpesala</span>
+            <p>
+              Inmobiliaria boutique de la familia Sala. Calpe, Costa Blanca, desde
+              hace medio siglo.
+            </p>
+          </div>
+          <div>
+            <h4>Explorar</h4>
+            <ul>
+              <li><a href="#historia">Nuestra historia</a></li>
+              <li><a href="#propiedades">Propiedades</a></li>
+              <li><a href="#idiomas">Idiomas</a></li>
+              <li><a href="#contacto">Contacto</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Servicios</h4>
+            <ul>
+              <li><a href="#">Compraventa</a></li>
+              <li><a href="#">Alquiler larga temporada</a></li>
+              <li><a href="#">Tasación</a></li>
+              <li><a href="#">Asesoría legal</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Oficina</h4>
+            <ul>
+              <li>Avenida de Ifach, 3</li>
+              <li>03710 Calpe</li>
+              <li>+34 965 83 69 30</li>
+              <li>info@calpesala.com</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2026 Calpesala — Familia Sala</span>
+          <span class="kenaz"
+            >Diseño propuesto por
+            <a href="https://kenaz.studio">Kenaz Studio</a></span
+          >
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

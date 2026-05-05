@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>M. Aniorte Inmobiliaria — Calpe desde 1985</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ============ TOKENS ============ */
+  :root{
+    --bone:#f6f1e8;        /* blanco hueso */
+    --sand:#e6dcc7;        /* arena clara */
+    --sand-deep:#c9b894;   /* arena saturada */
+    --ink:#0e2438;         /* azul Mediterráneo profundo */
+    --ink-soft:#1d3a55;    /* azul medio */
+    --ink-mute:#5a6f85;    /* azul desaturado para body */
+    --gold:#b89968;        /* dorado champagne */
+    --gold-soft:#d6bf94;   /* dorado claro */
+    --line:rgba(14,36,56,.14);
+    --line-strong:rgba(14,36,56,.28);
+
+    --serif:'Cormorant Garamond', Georgia, serif;
+    --sans:'Inter', system-ui, sans-serif;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bone);color:var(--ink);font-family:var(--sans);font-weight:400;-webkit-font-smoothing:antialiased;line-height:1.5}
+  body{overflow-x:hidden}
+
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+
+  .wrap{max-width:1440px;margin:0 auto;padding:0 56px}
+  @media(max-width:768px){ .wrap{padding:0 22px} }
+  @media(max-width:480px){ .wrap{padding:0 18px} }
+
+  /* ============ NAV ============ */
+  .nav{
+    position:absolute;inset:0 0 auto 0;z-index:10;
+    padding:28px 0;
+  }
+  .nav-row{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  .brand{display:flex;align-items:baseline;gap:12px;color:var(--bone)}
+  .brand-mark{
+    font-family:var(--serif);font-style:italic;font-weight:500;
+    font-size:30px;letter-spacing:.01em;line-height:1;
+  }
+  .brand-mark .ampersand{color:var(--gold-soft)}
+  .brand-tag{
+    font-family:var(--sans);font-size:10px;letter-spacing:.32em;text-transform:uppercase;
+    color:var(--gold-soft);font-weight:500;
+  }
+  .nav-links{display:flex;gap:34px;align-items:center;color:var(--bone)}
+  .nav-links a{
+    font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:400;
+    opacity:.85;transition:opacity .2s
+  }
+  .nav-links a:hover{opacity:1;color:var(--gold-soft)}
+  .nav-cta{
+    border:1px solid rgba(246,241,232,.4);padding:11px 20px;
+    font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone);
+    transition:background .25s,border-color .25s;
+  }
+  .nav-cta:hover{background:var(--gold);border-color:var(--gold)}
+  @media(max-width:980px){
+    .nav-links{display:none}
+  }
+  @media(max-width:768px){
+    .nav{padding:18px 0}
+    .nav-row{justify-content:space-between;gap:12px}
+    .brand-mark{font-size:24px}
+    .brand-tag{font-size:9px;letter-spacing:.24em}
+    .nav-cta{padding:9px 14px;font-size:10px;letter-spacing:.18em}
+  }
+  @media(max-width:480px){
+    .brand-tag{display:none}
+  }
+
+  /* ============ HERO ============ */
+  .hero{
+    position:relative;
+    min-height:760px;
+    background:
+      linear-gradient(180deg, rgba(14,36,56,.55) 0%, rgba(14,36,56,.30) 45%, rgba(14,36,56,.78) 100%),
+      url('img/penyon-calpe.jpg') center 38% / cover no-repeat,
+      var(--ink);
+    color:var(--bone);
+    overflow:hidden;
+  }
+  .hero-grid{
+    position:relative;z-index:2;
+    display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:end;
+    padding:200px 0 80px;
+  }
+  .hero-eyebrow{
+    display:flex;align-items:center;gap:14px;
+    font-size:11px;letter-spacing:.34em;text-transform:uppercase;
+    color:var(--gold-soft);font-weight:500;margin-bottom:24px;
+  }
+  .hero-eyebrow .line{flex:0 0 48px;height:1px;background:var(--gold-soft);opacity:.6}
+
+  .hero-h1{
+    font-family:var(--serif);font-weight:400;
+    font-size:clamp(44px, 6.4vw, 96px);
+    line-height:.98;letter-spacing:-.012em;
+    color:var(--bone);
+  }
+  .hero-h1 em{
+    font-style:italic;font-weight:300;color:var(--gold-soft);
+    display:block;
+  }
+  .hero-lede{
+    margin-top:30px;max-width:520px;
+    font-size:17px;line-height:1.65;color:rgba(246,241,232,.82);font-weight:300;
+  }
+
+  .hero-meta{
+    border-left:1px solid rgba(246,241,232,.25);
+    padding:6px 0 6px 28px;
+    display:flex;flex-direction:column;gap:22px;
+    align-self:end;
+  }
+  .meta-block .k{
+    font-size:10px;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--gold-soft);margin-bottom:8px;font-weight:500;
+  }
+  .meta-block .v{
+    font-family:var(--serif);font-size:22px;font-weight:400;color:var(--bone);line-height:1.25;
+  }
+  .meta-block .v small{
+    display:block;font-family:var(--sans);font-size:13px;font-weight:300;
+    color:rgba(246,241,232,.7);margin-top:4px;letter-spacing:.02em;
+  }
+
+  .hero-actions{
+    margin-top:46px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;
+  }
+  .btn-gold{
+    background:var(--gold);color:var(--ink);
+    padding:16px 30px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;
+    transition:background .25s,transform .2s;
+    border:1px solid var(--gold);
+  }
+  .btn-gold:hover{background:var(--gold-soft);transform:translateY(-1px)}
+  .btn-ghost{
+    color:var(--bone);border:1px solid rgba(246,241,232,.4);
+    padding:16px 26px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:400;
+    transition:border-color .25s,background .25s;
+  }
+  .btn-ghost:hover{border-color:var(--bone);background:rgba(246,241,232,.06)}
+
+  /* hero scroll cue */
+  .scroll-cue{
+    position:absolute;left:56px;bottom:30px;z-index:3;
+    display:flex;align-items:center;gap:12px;
+    font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(246,241,232,.7);
+  }
+  .scroll-cue .bar{width:38px;height:1px;background:rgba(246,241,232,.5)}
+
+  @media(max-width:980px){
+    .hero-grid{grid-template-columns:1fr;gap:42px;padding:150px 0 70px}
+    .hero-meta{border-left:none;border-top:1px solid rgba(246,241,232,.18);padding:26px 0 0;flex-direction:row;flex-wrap:wrap;gap:26px 36px}
+    .meta-block{min-width:160px}
+  }
+  @media(max-width:768px){
+    .hero{min-height:auto}
+    .hero-grid{padding:130px 0 60px;gap:30px}
+    .hero-lede{font-size:15px;margin-top:22px}
+    .hero-meta{padding-top:22px;gap:20px 28px}
+    .meta-block{min-width:140px}
+    .meta-block .v{font-size:18px}
+    .meta-block .v small{font-size:12px}
+    .hero-actions{margin-top:32px;width:100%}
+    .btn-gold,.btn-ghost{flex:1 1 auto;text-align:center;padding:14px 18px;font-size:11px;letter-spacing:.18em}
+    .scroll-cue{display:none}
+    .hero-eyebrow{font-size:10px;letter-spacing:.28em;gap:10px}
+    .hero-eyebrow .line{flex-basis:32px}
+  }
+  @media(max-width:480px){
+    .hero-grid{padding:120px 0 50px}
+    .hero-meta{flex-direction:column;gap:18px}
+    .meta-block{min-width:0}
+  }
+
+  /* ============ SECCIÓN — 40 AÑOS / FAMILIA ============ */
+  .legacy{
+    background:var(--bone);padding:130px 0 110px;position:relative;
+  }
+  .legacy:before{
+    content:"";position:absolute;left:50%;top:-1px;width:1px;height:64px;background:var(--gold);
+  }
+  .legacy-eyebrow{
+    text-align:center;font-size:11px;letter-spacing:.36em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:26px;font-weight:500;
+  }
+  .legacy-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center;
+    margin-top:70px;
+  }
+  .legacy-h2{
+    font-family:var(--serif);font-weight:400;
+    font-size:clamp(36px, 4.2vw, 60px);
+    line-height:1.05;letter-spacing:-.01em;color:var(--ink);
+  }
+  .legacy-h2 em{font-style:italic;font-weight:300;color:var(--gold)}
+  .legacy-lede{
+    margin-top:26px;font-size:16px;line-height:1.75;color:var(--ink-mute);font-weight:300;
+    max-width:480px;
+  }
+  .legacy-stats{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:36px 28px;margin-top:48px;
+  }
+  .stat .num{
+    font-family:var(--serif);font-size:54px;font-weight:400;color:var(--ink);line-height:1;
+  }
+  .stat .num em{font-style:italic;color:var(--gold);font-weight:300}
+  .stat .lbl{
+    font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-mute);
+    margin-top:10px;font-weight:500;
+  }
+  .legacy-photo{
+    aspect-ratio:4/5;background:url('img/oficina-aniorte.jpg') center/cover var(--sand);
+    position:relative;
+  }
+  .legacy-photo:after{
+    content:"Imagen referencial · ambiente Costa Blanca";
+    position:absolute;left:0;bottom:-44px;
+    font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-mute);
+  }
+
+  @media(max-width:980px){
+    .legacy{padding:90px 0 110px}
+    .legacy-grid{grid-template-columns:1fr;gap:50px}
+    .legacy-photo{order:-1;max-width:520px;margin:0 auto}
+  }
+  @media(max-width:768px){
+    .legacy{padding:70px 0 90px}
+    .legacy-grid{margin-top:48px;gap:40px}
+    .legacy-stats{gap:30px 22px;margin-top:38px}
+    .stat .num{font-size:42px}
+    .stat .lbl{font-size:10px;letter-spacing:.18em}
+    .legacy-lede{font-size:15px}
+    .legacy-photo:after{font-size:10px;letter-spacing:.18em;bottom:-34px}
+  }
+  @media(max-width:480px){
+    .legacy{padding:60px 0 80px}
+    .legacy-stats{grid-template-columns:1fr 1fr;gap:24px 16px}
+    .stat .num{font-size:36px}
+  }
+
+  /* ============ PORTFOLIO EDITORIAL ============ */
+  .portfolio{
+    background:var(--ink);color:var(--bone);padding:130px 0 130px;
+  }
+  .portfolio-head{
+    display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:60px;
+  }
+  .portfolio h2{
+    font-family:var(--serif);font-weight:400;
+    font-size:clamp(34px, 4vw, 56px);line-height:1.05;letter-spacing:-.01em;
+  }
+  .portfolio h2 em{font-style:italic;color:var(--gold-soft);font-weight:300}
+  .portfolio-eyebrow{
+    font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-soft);
+    margin-bottom:22px;font-weight:500;
+  }
+  .portfolio-meta{
+    text-align:right;font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+    color:rgba(246,241,232,.6);font-weight:400;line-height:1.7;
+  }
+  .portfolio-meta strong{color:var(--gold-soft);font-weight:500}
+
+  .grid-villas{
+    display:grid;grid-template-columns:1.4fr 1fr 1fr;grid-template-rows:auto auto;gap:24px;
+  }
+  .villa{
+    position:relative;background:#1a3148;overflow:hidden;
+    aspect-ratio:4/5;display:flex;flex-direction:column;justify-content:flex-end;
+    padding:24px 22px;color:var(--bone);
+    transition:transform .35s ease;
+  }
+  .villa:hover{transform:translateY(-4px)}
+  .villa:before{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(14,36,56,.05) 30%, rgba(14,36,56,.85) 100%);
+    z-index:1;
+  }
+  .villa > *{position:relative;z-index:2}
+  .villa-tag{
+    display:inline-block;font-size:10px;letter-spacing:.26em;text-transform:uppercase;
+    color:var(--gold-soft);margin-bottom:12px;font-weight:500;
+  }
+  .villa-name{
+    font-family:var(--serif);font-size:24px;font-weight:400;line-height:1.15;
+  }
+  .villa-meta{
+    margin-top:10px;display:flex;gap:16px;font-size:12px;letter-spacing:.06em;
+    color:rgba(246,241,232,.78);font-weight:300;
+  }
+  .villa-meta span:not(:last-child):after{content:"·";margin-left:16px;color:var(--gold-soft)}
+  .villa-price{
+    margin-top:16px;font-family:var(--serif);font-size:20px;font-weight:500;color:var(--gold-soft);
+    letter-spacing:.01em;
+  }
+  .villa.featured{
+    grid-row:span 2;aspect-ratio:auto;min-height:560px;
+    background-image:url('img/villa-1.jpg');background-size:cover;background-position:center;
+  }
+  .villa.featured .villa-name{font-size:34px;line-height:1.05}
+  .villa.featured .villa-price{font-size:26px}
+  .villa.v2{background-image:url('img/villa-2.jpg');background-size:cover;background-position:center}
+  .villa.v3{background-image:url('img/villa-3.jpg');background-size:cover;background-position:center}
+  .villa.v4{background-image:url('img/villa-4.jpg');background-size:cover;background-position:center}
+  .villa.v5{background-image:url('img/villa-5.jpg');background-size:cover;background-position:center}
+
+  .portfolio-foot{
+    margin-top:60px;display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap;
+    padding-top:30px;border-top:1px solid rgba(246,241,232,.14);
+  }
+  .portfolio-foot p{font-size:13px;color:rgba(246,241,232,.7);font-weight:300;max-width:520px;line-height:1.6}
+  .portfolio-foot a{
+    color:var(--gold-soft);font-size:11px;letter-spacing:.26em;text-transform:uppercase;
+    border-bottom:1px solid var(--gold-soft);padding-bottom:4px;
+  }
+
+  @media(max-width:980px){
+    .portfolio{padding:90px 0 90px}
+    .grid-villas{grid-template-columns:1fr 1fr}
+    .villa.featured{grid-row:span 1;min-height:0;aspect-ratio:4/5}
+  }
+  @media(max-width:768px){
+    .portfolio{padding:70px 0 80px}
+    .portfolio-head{flex-direction:column;align-items:flex-start;gap:18px;margin-bottom:42px}
+    .portfolio-meta{text-align:left}
+    .grid-villas{grid-template-columns:1fr 1fr;gap:14px}
+    .villa{padding:18px 16px;aspect-ratio:3/4}
+    .villa-name{font-size:18px}
+    .villa.featured .villa-name{font-size:22px}
+    .villa-meta{font-size:11px;gap:10px}
+    .villa-meta span:not(:last-child):after{margin-left:10px}
+    .villa-price{font-size:16px;margin-top:10px}
+    .villa.featured .villa-price{font-size:18px}
+    .villa-tag{font-size:9px;letter-spacing:.2em}
+  }
+  @media(max-width:480px){
+    .grid-villas{grid-template-columns:1fr;gap:14px}
+    .villa{aspect-ratio:5/4;min-height:240px}
+    .villa.featured{aspect-ratio:5/4}
+  }
+
+  /* ============ MULTIIDIOMA CURADO ============ */
+  .languages{
+    background:var(--sand);padding:120px 0 110px;color:var(--ink);
+  }
+  .lang-grid{
+    display:grid;grid-template-columns:.9fr 1.1fr;gap:80px;align-items:center;
+  }
+  .languages h2{
+    font-family:var(--serif);font-weight:400;
+    font-size:clamp(34px, 4vw, 56px);line-height:1.05;letter-spacing:-.01em;
+  }
+  .languages h2 em{font-style:italic;color:var(--gold);font-weight:300}
+  .lang-eyebrow{
+    font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);
+    margin-bottom:22px;font-weight:500;
+  }
+  .lang-lede{
+    margin-top:24px;font-size:15px;line-height:1.7;color:var(--ink-mute);font-weight:300;max-width:440px;
+  }
+
+  .lang-list{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
+  }
+  .lang-card{
+    background:var(--bone);padding:24px 22px;border:1px solid var(--line);
+    display:flex;flex-direction:column;gap:8px;
+    position:relative;
+  }
+  .lang-card .code{
+    font-family:var(--serif);font-size:30px;font-weight:500;color:var(--ink);
+    letter-spacing:.04em;line-height:1;
+  }
+  .lang-card .label{
+    font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute);font-weight:500;
+  }
+  .lang-card .status{
+    font-size:9px;letter-spacing:.24em;text-transform:uppercase;font-weight:600;
+    margin-top:8px;
+  }
+  .lang-card.active .status{color:var(--gold)}
+  .lang-card.proposed{
+    border:1px dashed var(--line-strong);background:transparent;opacity:.55;
+  }
+  .lang-card.proposed .status{color:var(--ink-mute)}
+
+  .lang-foot{
+    grid-column:1/-1;margin-top:8px;font-size:12px;color:var(--ink-mute);
+    line-height:1.6;font-weight:300;
+  }
+  .lang-foot strong{color:var(--ink);font-weight:500}
+
+  @media(max-width:980px){
+    .languages{padding:90px 0 90px}
+    .lang-grid{grid-template-columns:1fr;gap:50px}
+  }
+  @media(max-width:768px){
+    .languages{padding:70px 0 80px}
+    .lang-list{grid-template-columns:repeat(3,1fr);gap:10px}
+    .lang-card{padding:16px 12px}
+    .lang-card .code{font-size:22px}
+    .lang-card .label{font-size:9px;letter-spacing:.14em}
+    .lang-card .status{font-size:8px;letter-spacing:.18em}
+    .lang-lede{font-size:14px}
+  }
+  @media(max-width:480px){
+    .lang-list{grid-template-columns:repeat(2,1fr);gap:10px}
+  }
+
+  /* ============ CONTACTO ============ */
+  .contact{
+    background:var(--bone);padding:120px 0 60px;color:var(--ink);
+  }
+  .contact-grid{
+    display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:start;
+  }
+  .contact h2{
+    font-family:var(--serif);font-weight:400;
+    font-size:clamp(36px, 4.4vw, 64px);line-height:1.02;letter-spacing:-.01em;
+  }
+  .contact h2 em{font-style:italic;color:var(--gold);font-weight:300}
+  .contact-eyebrow{
+    font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);
+    margin-bottom:22px;font-weight:500;
+  }
+  .contact-lede{
+    margin-top:28px;font-size:16px;line-height:1.7;color:var(--ink-mute);font-weight:300;max-width:460px;
+  }
+
+  .contact-info{
+    background:var(--ink);color:var(--bone);padding:46px 42px;
+    display:flex;flex-direction:column;gap:30px;
+  }
+  .info-block{display:flex;flex-direction:column;gap:6px;padding-bottom:24px;border-bottom:1px solid rgba(246,241,232,.14)}
+  .info-block:last-of-type{border-bottom:none;padding-bottom:0}
+  .info-block .k{
+    font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-soft);font-weight:500;
+  }
+  .info-block .v{
+    font-family:var(--serif);font-size:22px;font-weight:400;color:var(--bone);line-height:1.3;
+  }
+  .info-block .v small{
+    display:block;font-family:var(--sans);font-size:13px;font-weight:300;
+    color:rgba(246,241,232,.7);margin-top:4px;
+  }
+
+  @media(max-width:980px){
+    .contact{padding:90px 0 50px}
+    .contact-grid{grid-template-columns:1fr;gap:42px}
+  }
+  @media(max-width:768px){
+    .contact{padding:70px 0 40px}
+    .contact-info{padding:32px 26px;gap:22px}
+    .info-block{padding-bottom:18px}
+    .info-block .v{font-size:18px}
+    .info-block .v small{font-size:12px}
+    .contact-lede{font-size:15px}
+  }
+
+  /* ============ FOOTER ============ */
+  .footer{
+    background:var(--bone);padding:50px 0 36px;border-top:1px solid var(--line);
+  }
+  .footer-row{
+    display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;
+  }
+  .footer .brand-mark{font-size:24px;color:var(--ink)}
+  .footer .brand-mark .ampersand{color:var(--gold)}
+  .footer-meta{
+    font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute);font-weight:400;
+  }
+  .footer-meta a{color:var(--ink);border-bottom:1px solid var(--gold);padding-bottom:2px}
+
+  @media(max-width:768px){
+    .footer{padding:36px 0 28px}
+    .footer-row{flex-direction:column;align-items:flex-start;gap:14px}
+    .footer-meta{font-size:10px;letter-spacing:.14em}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV (sobre HERO) ============ -->
+<nav class="nav">
+  <div class="wrap nav-row">
+    <a href="#" class="brand">
+      <span class="brand-mark">M.<span class="ampersand">·</span>Aniorte</span>
+      <span class="brand-tag">Inmobiliaria · Calpe</span>
+    </a>
+    <div class="nav-links">
+      <a href="#legado">Trayectoria</a>
+      <a href="#portfolio">Propiedades</a>
+      <a href="#idiomas">Idiomas</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <a href="#contacto" class="nav-cta">Concertar visita</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <div class="hero-eyebrow">
+        <span class="line"></span>
+        <span>Calpe · Costa Blanca</span>
+      </div>
+      <h1 class="hero-h1">
+        Cuatro décadas
+        <em>al pie del Peñón.</em>
+      </h1>
+      <p class="hero-lede">
+        Inmobiliaria familiar en el corazón de Calpe. Venta y alquiler de villas,
+        apartamentos y parcelas seleccionadas, con el criterio de quien conoce
+        cada calle desde 1985.
+      </p>
+      <div class="hero-actions">
+        <a href="#portfolio" class="btn-gold">Ver propiedades</a>
+        <a href="#contacto" class="btn-ghost">Hablar con nosotros</a>
+      </div>
+    </div>
+
+    <aside class="hero-meta">
+      <div class="meta-block">
+        <div class="k">Trayectoria</div>
+        <div class="v">40 años en Calpe<small>Asociada Inmocalpe</small></div>
+      </div>
+      <div class="meta-block">
+        <div class="k">Sede</div>
+        <div class="v">Edif. Apolo IV<small>Calle Pintor Sorolla — Local 2</small></div>
+      </div>
+      <div class="meta-block">
+        <div class="k">Atención</div>
+        <div class="v">+34 965 83 26 62<small>info@aniorte.es</small></div>
+      </div>
+    </aside>
+  </div>
+
+  <div class="scroll-cue">
+    <span class="bar"></span>
+    <span>Descubrir</span>
+  </div>
+</section>
+
+<!-- ============ LEGADO / 40 AÑOS ============ -->
+<section class="legacy" id="legado">
+  <div class="wrap">
+    <div class="legacy-eyebrow">— La casa Aniorte —</div>
+    <div class="legacy-grid">
+      <div>
+        <h2 class="legacy-h2">
+          Una inmobiliaria<br>
+          <em>de generaciones.</em>
+        </h2>
+        <p class="legacy-lede">
+          Empezamos cuando Calpe tenía menos calles que apellidos conocidos.
+          Cuarenta años después seguimos en el mismo edificio, escuchando lo que
+          cada cliente busca antes de mostrarle un solo metro cuadrado. Esa es
+          la diferencia entre un portal y una inmobiliaria.
+        </p>
+        <div class="legacy-stats">
+          <div class="stat">
+            <div class="num">40<em>+</em></div>
+            <div class="lbl">Años operando</div>
+          </div>
+          <div class="stat">
+            <div class="num">5,0<em>/5</em></div>
+            <div class="lbl">Reseñas Google</div>
+          </div>
+          <div class="stat">
+            <div class="num">1<em>985</em></div>
+            <div class="lbl">Año fundación</div>
+          </div>
+          <div class="stat">
+            <div class="num">Apolo<em> IV</em></div>
+            <div class="lbl">Sede histórica</div>
+          </div>
+        </div>
+      </div>
+      <div class="legacy-photo" role="img" aria-label="Imagen referencial · ambiente Costa Blanca"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PORTFOLIO ============ -->
+<section class="portfolio" id="portfolio">
+  <div class="wrap">
+    <div class="portfolio-head">
+      <div>
+        <div class="portfolio-eyebrow">— Selección actual —</div>
+        <h2>Propiedades<br><em>seleccionadas a mano.</em></h2>
+      </div>
+      <div class="portfolio-meta">
+        Venta · Alquiler · Parcelas<br>
+        <strong>Calpe · Benissa · Altea</strong>
+      </div>
+    </div>
+
+    <div class="grid-villas">
+      <article class="villa featured">
+        <span class="villa-tag">Destacada · Venta</span>
+        <h3 class="villa-name">Villa en Calpe</h3>
+        <div class="villa-meta">
+          <span>Datos a consultar</span>
+        </div>
+        <div class="villa-price">Consultar precio</div>
+      </article>
+
+      <article class="villa v2">
+        <span class="villa-tag">Venta</span>
+        <h3 class="villa-name">Apartamento</h3>
+        <div class="villa-meta">
+          <span>Datos a consultar</span>
+        </div>
+        <div class="villa-price">Consultar precio</div>
+      </article>
+
+      <article class="villa v3">
+        <span class="villa-tag">Alquiler larga estancia</span>
+        <h3 class="villa-name">Casa con piscina</h3>
+        <div class="villa-meta">
+          <span>Datos a consultar</span>
+        </div>
+        <div class="villa-price">Consultar precio</div>
+      </article>
+
+      <article class="villa v4">
+        <span class="villa-tag">Venta</span>
+        <h3 class="villa-name">Parcela edificable</h3>
+        <div class="villa-meta">
+          <span>Datos a consultar</span>
+        </div>
+        <div class="villa-price">Consultar precio</div>
+      </article>
+
+      <article class="villa v5">
+        <span class="villa-tag">Venta</span>
+        <h3 class="villa-name">Villa Costa Blanca</h3>
+        <div class="villa-meta">
+          <span>Datos a consultar</span>
+        </div>
+        <div class="villa-price">Consultar precio</div>
+      </article>
+    </div>
+
+    <div class="portfolio-foot">
+      <p>El portfolio completo —incluyendo propiedades exclusivas que no publicamos en portales— está disponible bajo cita.</p>
+      <a href="#contacto">Solicitar portfolio completo</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ IDIOMAS CURADOS ============ -->
+<section class="languages" id="idiomas">
+  <div class="wrap lang-grid">
+    <div>
+      <div class="lang-eyebrow">— Atención multilingüe —</div>
+      <h2>Atendemos<br><em>en su idioma.</em></h2>
+      <p class="lang-lede">
+        Calpe es internacional, pero un mal traductor automático genera
+        más distancia que confianza. Curamos seis idiomas con traducción
+        humana y atención real, en lugar de doce traducciones aproximadas.
+      </p>
+    </div>
+
+    <div class="lang-list">
+      <div class="lang-card active">
+        <div class="code">ES</div>
+        <div class="label">Castellano</div>
+        <div class="status">— Activo</div>
+      </div>
+      <div class="lang-card active">
+        <div class="code">EN</div>
+        <div class="label">English</div>
+        <div class="status">— Activo</div>
+      </div>
+      <div class="lang-card active">
+        <div class="code">DE</div>
+        <div class="label">Deutsch</div>
+        <div class="status">— Activo</div>
+      </div>
+      <div class="lang-card proposed">
+        <div class="code">NL</div>
+        <div class="label">Nederlands</div>
+        <div class="status">— Propuesto</div>
+      </div>
+      <div class="lang-card proposed">
+        <div class="code">FR</div>
+        <div class="label">Français</div>
+        <div class="status">— Propuesto</div>
+      </div>
+      <div class="lang-card proposed">
+        <div class="code">RU</div>
+        <div class="label">Русский</div>
+        <div class="status">— Propuesto</div>
+      </div>
+      <div class="lang-foot">
+        <strong>Activo</strong> — traducción humana lista. <strong>Propuesto</strong> — recomendado por perfil de comprador en Costa Blanca; sustituye los doce idiomas automáticos del sitio actual.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section class="contact" id="contacto">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="contact-eyebrow">— Concertar visita —</div>
+      <h2>Pase por<br>la oficina<br><em>cuando quiera.</em></h2>
+      <p class="contact-lede">
+        Estamos en Pintor Sorolla, en el edificio Apolo IV, desde 1985.
+        Llame, escriba o pase: lo recibimos como recibimos a quien viene
+        a comprar o vender una casa, no a hacer un trámite.
+      </p>
+    </div>
+
+    <aside class="contact-info">
+      <div class="info-block">
+        <div class="k">Oficina</div>
+        <div class="v">Edif. Apolo IV<small>Calle Pintor Sorolla, Local 2 — 03710 Calpe (Alicante)</small></div>
+      </div>
+      <div class="info-block">
+        <div class="k">Teléfono</div>
+        <div class="v">+34 965 83 26 62<small>Móvil: +34 655 84 10 82</small></div>
+      </div>
+      <div class="info-block">
+        <div class="k">Correo</div>
+        <div class="v">info@aniorte.es<small>Respuesta el mismo día laborable</small></div>
+      </div>
+      <div class="info-block">
+        <div class="k">Asociación</div>
+        <div class="v">Inmocalpe<small>Miembro fundador del cluster inmobiliario local</small></div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="wrap footer-row">
+    <span class="brand-mark">M.<span class="ampersand">·</span>Aniorte <span style="font-family:var(--sans);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-mute);margin-left:14px;font-weight:500">Inmobiliaria</span></span>
+    <span class="footer-meta">Diseño propuesto por <a href="https://kenaz.studio">Kenaz Studio</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

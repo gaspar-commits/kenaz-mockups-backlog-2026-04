@@ -1,0 +1,1452 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>QuiroBeautique — Wellness integral en Calpe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bone: #f5f1ea;
+        --bone-2: #ebe5da;
+        --ivory: #fbf9f4;
+        --sage: #6f7d6a;
+        --sage-deep: #4f5c4a;
+        --gold: #b8985a;
+        --gold-soft: #d8c69a;
+        --ink: #2a2a28;
+        --ink-soft: #4a4a45;
+        --line: rgba(42, 42, 40, 0.12);
+        --line-soft: rgba(42, 42, 40, 0.06);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: var(--ivory);
+        color: var(--ink);
+        font-family: "Inter", -apple-system, sans-serif;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .display {
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-weight: 400;
+        letter-spacing: -0.01em;
+      }
+
+      .eyebrow {
+        font-family: "Inter", sans-serif;
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--sage-deep);
+      }
+
+      .container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 48px;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      /* ===== TOP BAR ===== */
+      .topbar {
+        background: var(--ink);
+        color: var(--bone);
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        padding: 8px 0;
+      }
+      .topbar .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .topbar .langs {
+        display: flex;
+        gap: 14px;
+      }
+      .topbar .langs a {
+        opacity: 0.6;
+        transition: opacity 0.2s;
+      }
+      .topbar .langs a.active {
+        opacity: 1;
+        color: var(--gold-soft);
+      }
+      .topbar .info {
+        display: flex;
+        gap: 22px;
+        opacity: 0.85;
+      }
+
+      /* ===== HEADER ===== */
+      header {
+        background: var(--ivory);
+        border-bottom: 1px solid var(--line-soft);
+        position: relative;
+        z-index: 10;
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 22px 0;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .brand img {
+        width: 54px;
+        height: auto;
+      }
+      .brand .word {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.05;
+      }
+      .brand .word .name {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 22px;
+        font-weight: 500;
+        letter-spacing: 0.02em;
+        color: var(--ink);
+      }
+      .brand .word .tag {
+        font-size: 10px;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--sage-deep);
+        margin-top: 2px;
+      }
+      nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 32px;
+      }
+      nav ul a {
+        font-size: 13px;
+        letter-spacing: 0.04em;
+        color: var(--ink-soft);
+        font-weight: 400;
+        transition: color 0.2s;
+      }
+      nav ul a:hover {
+        color: var(--sage-deep);
+      }
+      .cta-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 22px;
+        background: var(--ink);
+        color: var(--bone);
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-weight: 500;
+        border-radius: 999px;
+        transition: background 0.2s;
+      }
+      .cta-pill:hover {
+        background: var(--sage-deep);
+      }
+      .cta-pill::after {
+        content: "→";
+        font-size: 14px;
+      }
+
+      /* ===== HERO ===== */
+      .hero {
+        background: var(--ivory);
+        padding: 56px 0 80px;
+      }
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.05fr 1fr;
+        gap: 64px;
+        align-items: center;
+      }
+      .hero-copy .eyebrow {
+        margin-bottom: 24px;
+      }
+      .hero h1 {
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 400;
+        font-size: clamp(44px, 5.6vw, 84px);
+        line-height: 1.02;
+        letter-spacing: -0.015em;
+        color: var(--ink);
+        margin: 0 0 24px;
+      }
+      .hero h1 em {
+        font-style: italic;
+        color: var(--sage-deep);
+        font-weight: 400;
+      }
+      .hero .lead {
+        font-size: 17px;
+        line-height: 1.65;
+        color: var(--ink-soft);
+        max-width: 480px;
+        margin: 0 0 32px;
+        font-weight: 300;
+      }
+      .hero-actions {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .btn-ghost {
+        font-size: 13px;
+        letter-spacing: 0.06em;
+        color: var(--ink-soft);
+        border-bottom: 1px solid var(--ink);
+        padding-bottom: 4px;
+        transition: color 0.2s, border-color 0.2s;
+      }
+      .btn-ghost:hover {
+        color: var(--sage-deep);
+        border-color: var(--sage-deep);
+      }
+
+      .hero-meta {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin-top: 56px;
+        padding-top: 32px;
+        border-top: 1px solid var(--line-soft);
+      }
+      .hero-meta .item .num {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 32px;
+        line-height: 1;
+        color: var(--ink);
+        font-weight: 400;
+      }
+      .hero-meta .item .lbl {
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--sage-deep);
+        margin-top: 8px;
+      }
+
+      .hero-visual {
+        position: relative;
+      }
+      .hero-visual .frame {
+        position: relative;
+        aspect-ratio: 4 / 5;
+        overflow: hidden;
+        background: var(--bone-2);
+      }
+      .hero-visual .frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .hero-visual .badge {
+        position: absolute;
+        top: 24px;
+        left: 24px;
+        background: rgba(251, 249, 244, 0.94);
+        backdrop-filter: blur(6px);
+        padding: 14px 18px;
+        border-left: 2px solid var(--gold);
+      }
+      .hero-visual .badge .k {
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--sage-deep);
+      }
+      .hero-visual .badge .v {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 19px;
+        color: var(--ink);
+        margin-top: 4px;
+        line-height: 1.1;
+      }
+      .hero-visual .caption {
+        position: absolute;
+        bottom: 24px;
+        right: 24px;
+        background: var(--ink);
+        color: var(--bone);
+        padding: 14px 20px;
+        max-width: 240px;
+      }
+      .hero-visual .caption .k {
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        opacity: 0.65;
+      }
+      .hero-visual .caption .v {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 17px;
+        margin-top: 4px;
+        line-height: 1.25;
+      }
+
+      /* ===== CONCEPT ===== */
+      .concept {
+        background: var(--bone);
+        padding: 96px 0;
+      }
+      .concept-grid {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 80px;
+        align-items: start;
+      }
+      .concept h2 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(34px, 3.6vw, 52px);
+        font-weight: 400;
+        line-height: 1.1;
+        letter-spacing: -0.01em;
+        margin: 16px 0 0;
+        color: var(--ink);
+      }
+      .concept h2 em {
+        font-style: italic;
+        color: var(--sage-deep);
+      }
+      .concept-text p {
+        font-size: 16px;
+        line-height: 1.75;
+        color: var(--ink-soft);
+        margin: 0 0 18px;
+      }
+      .concept-text p:first-child::first-letter {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 56px;
+        float: left;
+        line-height: 0.9;
+        padding: 6px 10px 0 0;
+        color: var(--sage-deep);
+      }
+
+      /* ===== INDIBA SHOWCASE ===== */
+      .indiba {
+        background: var(--ink);
+        color: var(--bone);
+        padding: 110px 0;
+      }
+      .indiba-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 72px;
+        align-items: center;
+      }
+      .indiba .eyebrow {
+        color: var(--gold-soft);
+      }
+      .indiba h2 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(36px, 4vw, 60px);
+        font-weight: 400;
+        line-height: 1.05;
+        letter-spacing: -0.01em;
+        margin: 18px 0 28px;
+      }
+      .indiba h2 em {
+        font-style: italic;
+        color: var(--gold-soft);
+      }
+      .indiba p {
+        font-size: 16px;
+        line-height: 1.7;
+        color: rgba(245, 241, 234, 0.78);
+        font-weight: 300;
+        margin: 0 0 16px;
+      }
+      .indiba-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+        margin-top: 40px;
+        padding-top: 32px;
+        border-top: 1px solid rgba(245, 241, 234, 0.14);
+      }
+      .indiba-stats .stat .k {
+        font-size: 11px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--gold-soft);
+      }
+      .indiba-stats .stat .v {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 22px;
+        margin-top: 6px;
+        color: var(--bone);
+      }
+      .indiba-visual {
+        position: relative;
+        aspect-ratio: 4 / 5;
+        overflow: hidden;
+      }
+      .indiba-visual img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .indiba-visual::after {
+        content: "INDIBA · Centro Oficial";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 18px 24px;
+        font-size: 11px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--gold-soft);
+        background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.6));
+      }
+
+      /* ===== TREATMENTS ===== */
+      .treatments {
+        background: var(--ivory);
+        padding: 110px 0;
+      }
+      .treatments-head {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 64px;
+        align-items: end;
+        margin-bottom: 56px;
+      }
+      .treatments-head h2 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(34px, 3.6vw, 52px);
+        font-weight: 400;
+        line-height: 1.08;
+        margin: 14px 0 0;
+        letter-spacing: -0.01em;
+      }
+      .treatments-head h2 em {
+        font-style: italic;
+        color: var(--sage-deep);
+      }
+      .treatments-head p {
+        font-size: 15px;
+        line-height: 1.7;
+        color: var(--ink-soft);
+        margin: 0;
+      }
+      .treatments-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: var(--line);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+      .treatments-grid .item {
+        background: var(--ivory);
+        padding: 36px 28px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        min-height: 220px;
+      }
+      .treatments-grid .num {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 14px;
+        color: var(--gold);
+        letter-spacing: 0.1em;
+      }
+      .treatments-grid h3 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 26px;
+        font-weight: 400;
+        line-height: 1.15;
+        margin: 0;
+        color: var(--ink);
+      }
+      .treatments-grid p {
+        font-size: 14px;
+        line-height: 1.6;
+        color: var(--ink-soft);
+        margin: 0;
+        font-weight: 300;
+      }
+      .treatments-grid .arrow {
+        margin-top: auto;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--sage-deep);
+      }
+
+      /* ===== EXPERIENCE / DETAIL ===== */
+      .experience {
+        background: var(--bone);
+        padding: 110px 0;
+      }
+      .experience-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 56px;
+        align-items: stretch;
+      }
+      .experience .visual {
+        aspect-ratio: 4 / 5;
+        overflow: hidden;
+      }
+      .experience .visual img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .experience .copy {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 24px 0;
+      }
+      .experience h2 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(32px, 3.4vw, 48px);
+        font-weight: 400;
+        line-height: 1.1;
+        margin: 14px 0 24px;
+        color: var(--ink);
+      }
+      .experience h2 em {
+        font-style: italic;
+        color: var(--sage-deep);
+      }
+      .experience p {
+        font-size: 16px;
+        line-height: 1.7;
+        color: var(--ink-soft);
+        margin: 0 0 16px;
+      }
+      .experience .quote {
+        margin-top: 32px;
+        padding: 24px 28px;
+        border-left: 2px solid var(--gold);
+        background: rgba(251, 249, 244, 0.6);
+      }
+      .experience .quote p {
+        font-family: "Cormorant Garamond", serif;
+        font-style: italic;
+        font-size: 19px;
+        line-height: 1.45;
+        color: var(--ink);
+        margin: 0;
+      }
+      .experience .quote .src {
+        font-size: 11px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--sage-deep);
+        margin-top: 12px;
+      }
+
+      /* ===== CONTACT ===== */
+      .contact {
+        background: var(--ivory);
+        padding: 110px 0 90px;
+        border-top: 1px solid var(--line-soft);
+      }
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 64px;
+        align-items: start;
+      }
+      .contact h2 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(34px, 3.6vw, 52px);
+        font-weight: 400;
+        line-height: 1.1;
+        margin: 14px 0 24px;
+      }
+      .contact h2 em {
+        font-style: italic;
+        color: var(--sage-deep);
+      }
+      .contact p {
+        font-size: 15px;
+        line-height: 1.7;
+        color: var(--ink-soft);
+        margin: 0 0 28px;
+      }
+      .contact-info {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+        margin-top: 32px;
+      }
+      .contact-info .block .k {
+        font-size: 11px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--sage-deep);
+        margin-bottom: 8px;
+      }
+      .contact-info .block .v {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 19px;
+        color: var(--ink);
+        line-height: 1.3;
+      }
+      .contact-info .block .v small {
+        display: block;
+        font-family: "Inter", sans-serif;
+        font-size: 13px;
+        font-weight: 300;
+        color: var(--ink-soft);
+        margin-top: 4px;
+      }
+      .contact-actions {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-top: 36px;
+      }
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        padding: 16px 28px;
+        background: var(--ink);
+        color: var(--bone);
+        font-size: 12px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-weight: 500;
+        border-radius: 999px;
+        transition: background 0.2s;
+      }
+      .btn-primary::after {
+        content: "→";
+      }
+      .btn-primary:hover {
+        background: var(--sage-deep);
+      }
+      .btn-outline {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 16px 26px;
+        border: 1px solid var(--ink);
+        color: var(--ink);
+        font-size: 12px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-weight: 500;
+        border-radius: 999px;
+        transition: background 0.2s, color 0.2s;
+      }
+      .btn-outline:hover {
+        background: var(--ink);
+        color: var(--bone);
+      }
+
+      .contact-visual {
+        aspect-ratio: 4 / 5;
+        overflow: hidden;
+        background: var(--bone-2);
+      }
+      .contact-visual img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* ===== FOOTER ===== */
+      footer {
+        background: var(--ink);
+        color: var(--bone);
+        padding: 56px 0 32px;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 1fr 1fr;
+        gap: 48px;
+        margin-bottom: 48px;
+      }
+      footer .brand-block .word .name {
+        color: var(--bone);
+      }
+      footer .brand-block .word .tag {
+        color: var(--gold-soft);
+      }
+      footer .brand-block p {
+        font-size: 13px;
+        line-height: 1.65;
+        color: rgba(245, 241, 234, 0.65);
+        margin: 18px 0 0;
+        max-width: 320px;
+      }
+      .footer-col h4 {
+        font-size: 11px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--gold-soft);
+        margin: 0 0 18px;
+        font-weight: 500;
+      }
+      .footer-col ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .footer-col li {
+        font-size: 13px;
+        color: rgba(245, 241, 234, 0.78);
+      }
+      .footer-note {
+        font-size: 11px;
+        line-height: 1.6;
+        letter-spacing: 0.04em;
+        color: rgba(245, 241, 234, 0.55);
+        font-style: italic;
+        margin: 0 0 20px;
+        max-width: 720px;
+      }
+      .footer-bottom {
+        border-top: 1px solid rgba(245, 241, 234, 0.12);
+        padding-top: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        color: rgba(245, 241, 234, 0.5);
+      }
+      .footer-bottom a {
+        color: var(--gold-soft);
+      }
+
+      /* ====================================== */
+      /* ============ MOBILE <= 768 =========== */
+      /* ====================================== */
+      @media (max-width: 768px) {
+        body {
+          font-size: 15px;
+        }
+        .container {
+          padding: 0 22px;
+        }
+
+        .topbar .row {
+          justify-content: center;
+          gap: 10px;
+        }
+        .topbar .info {
+          display: none;
+        }
+
+        .nav {
+          padding: 16px 0;
+          gap: 14px;
+        }
+        .brand img {
+          width: 44px;
+        }
+        .brand .word .name {
+          font-size: 18px;
+        }
+        .brand .word .tag {
+          font-size: 9px;
+          letter-spacing: 0.22em;
+        }
+        nav ul {
+          display: none;
+        }
+        .cta-pill {
+          padding: 10px 16px;
+          font-size: 11px;
+        }
+
+        .hero {
+          padding: 36px 0 56px;
+        }
+        .hero-grid {
+          grid-template-columns: 1fr;
+          gap: 36px;
+        }
+        .hero h1 {
+          font-size: clamp(38px, 9.5vw, 54px);
+        }
+        .hero .lead {
+          font-size: 15px;
+          max-width: 100%;
+        }
+        .hero-actions {
+          gap: 18px;
+        }
+        .hero-meta {
+          margin-top: 36px;
+          padding-top: 24px;
+          gap: 18px;
+        }
+        .hero-meta .item .num {
+          font-size: 26px;
+        }
+        .hero-meta .item .lbl {
+          font-size: 10px;
+          letter-spacing: 0.1em;
+        }
+        .hero-visual .badge {
+          top: 16px;
+          left: 16px;
+          padding: 10px 14px;
+        }
+        .hero-visual .badge .v {
+          font-size: 16px;
+        }
+        .hero-visual .caption {
+          bottom: 16px;
+          right: 16px;
+          padding: 10px 14px;
+          max-width: 200px;
+        }
+        .hero-visual .caption .v {
+          font-size: 14px;
+        }
+
+        .concept {
+          padding: 64px 0;
+        }
+        .concept-grid {
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+        .concept h2 {
+          font-size: clamp(30px, 7.5vw, 44px);
+        }
+        .concept-text p {
+          font-size: 15px;
+        }
+        .concept-text p:first-child::first-letter {
+          font-size: 44px;
+        }
+
+        .indiba {
+          padding: 72px 0;
+        }
+        .indiba-grid {
+          grid-template-columns: 1fr;
+          gap: 36px;
+        }
+        .indiba h2 {
+          font-size: clamp(30px, 7.5vw, 44px);
+        }
+        .indiba p {
+          font-size: 15px;
+        }
+        .indiba-stats {
+          margin-top: 28px;
+          gap: 22px;
+        }
+        .indiba-visual::after {
+          font-size: 10px;
+          padding: 14px 18px;
+        }
+
+        .treatments {
+          padding: 72px 0;
+        }
+        .treatments-head {
+          grid-template-columns: 1fr;
+          gap: 18px;
+          margin-bottom: 36px;
+        }
+        .treatments-head h2 {
+          font-size: clamp(28px, 7vw, 42px);
+        }
+        .treatments-grid {
+          grid-template-columns: 1fr;
+        }
+        .treatments-grid .item {
+          padding: 28px 22px;
+          min-height: auto;
+        }
+        .treatments-grid h3 {
+          font-size: 23px;
+        }
+
+        .experience {
+          padding: 72px 0;
+        }
+        .experience-grid {
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+        .experience h2 {
+          font-size: clamp(28px, 7vw, 42px);
+        }
+        .experience .quote p {
+          font-size: 17px;
+        }
+
+        .contact {
+          padding: 72px 0 64px;
+        }
+        .contact-grid {
+          grid-template-columns: 1fr;
+          gap: 36px;
+        }
+        .contact h2 {
+          font-size: clamp(28px, 7vw, 42px);
+        }
+        .contact-info {
+          grid-template-columns: 1fr;
+          gap: 22px;
+          margin-top: 24px;
+        }
+        .contact-actions {
+          flex-direction: column;
+          align-items: stretch;
+          gap: 12px;
+        }
+        .btn-primary,
+        .btn-outline {
+          justify-content: center;
+        }
+
+        footer {
+          padding: 44px 0 28px;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr;
+          gap: 32px;
+          margin-bottom: 32px;
+        }
+        .footer-bottom {
+          font-size: 10px;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 8px;
+        }
+      }
+
+      /* ====================================== */
+      /* ============ MOBILE <= 480 =========== */
+      /* ====================================== */
+      @media (max-width: 480px) {
+        .container {
+          padding: 0 18px;
+        }
+        .topbar {
+          font-size: 10px;
+        }
+        .topbar .langs {
+          gap: 10px;
+        }
+
+        .brand .word .tag {
+          display: none;
+        }
+        .cta-pill {
+          padding: 9px 14px;
+          font-size: 10px;
+          letter-spacing: 0.1em;
+        }
+        .cta-pill::after {
+          display: none;
+        }
+
+        .hero h1 {
+          font-size: 38px;
+          line-height: 1.05;
+        }
+        .hero .lead {
+          font-size: 14.5px;
+        }
+
+        .hero-visual .badge {
+          padding: 8px 12px;
+        }
+        .hero-visual .badge .k {
+          font-size: 9px;
+        }
+        .hero-visual .badge .v {
+          font-size: 14px;
+        }
+        .hero-visual .caption {
+          padding: 8px 12px;
+          max-width: 170px;
+        }
+        .hero-visual .caption .k {
+          font-size: 9px;
+        }
+        .hero-visual .caption .v {
+          font-size: 12.5px;
+        }
+
+        .indiba-stats {
+          grid-template-columns: 1fr;
+          gap: 18px;
+        }
+
+        .treatments-grid h3 {
+          font-size: 21px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- TOP BAR -->
+    <div class="topbar">
+      <div class="container">
+        <div class="row">
+          <div class="langs">
+            <a href="#" class="active">ES</a>
+            <a href="#">EN</a>
+            <a href="#">DE</a>
+            <a href="#">NL</a>
+            <a href="#">FR</a>
+            <a href="#">RU</a>
+          </div>
+          <div class="info">
+            <span>Lunes a sábado · Cita previa</span>
+            <span>Pintor Sorolla 1, Calpe</span>
+            <span>+34 635 05 52 18</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HEADER -->
+    <header>
+      <div class="container">
+        <div class="nav">
+          <a class="brand" href="#">
+            <img src="img/logo.png" alt="QuiroBeautique" />
+            <span class="word">
+              <span class="name">QuiroBeautique</span>
+              <span class="tag">Wellness · Calpe</span>
+            </span>
+          </a>
+          <nav>
+            <ul>
+              <li><a href="#concepto">Centro</a></li>
+              <li><a href="#indiba">INDIBA</a></li>
+              <li><a href="#tratamientos">Tratamientos</a></li>
+              <li><a href="#experiencia">Experiencia</a></li>
+              <li><a href="#contacto">Contacto</a></li>
+            </ul>
+          </nav>
+          <a class="cta-pill" href="#contacto">Reservar</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow">Centro de bienestar integral · Calpe</div>
+            <h1>
+              Cuerpo, piel y descanso<br />
+              en un mismo <em>gesto</em>.
+            </h1>
+            <p class="lead">
+              Osteopatía, medicina estética avanzada y tecnología INDIBA en
+              un centro pensado para acompañar tu salud y tu imagen con la
+              misma calma con la que se cuida una casa propia.
+            </p>
+            <div class="hero-actions">
+              <a class="cta-pill" href="#contacto">Reservar consulta</a>
+              <a class="btn-ghost" href="#tratamientos">Ver tratamientos</a>
+            </div>
+            <div class="hero-meta">
+              <div class="item">
+                <div class="num">3</div>
+                <div class="lbl">Disciplinas integradas</div>
+              </div>
+              <div class="item">
+                <div class="num">INDIBA</div>
+                <div class="lbl">Centro oficial</div>
+              </div>
+              <div class="item">
+                <div class="num">ES · EN · DE · NL</div>
+                <div class="lbl">Atención multilingüe</div>
+              </div>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <div class="frame">
+              <img
+                src="img/hero-room.jpg"
+                alt="Imagen referencial · ambiente wellness en tonos hueso y eucalipto"
+              />
+            </div>
+            <div class="badge">
+              <div class="k">Calpe · Pintor Sorolla 1</div>
+              <div class="v">Wellness integral</div>
+            </div>
+            <div class="caption">
+              <div class="k">Imagen referencial</div>
+              <div class="v">Ambiente wellness</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONCEPTO -->
+    <section class="concept" id="concepto">
+      <div class="container">
+        <div class="concept-grid">
+          <div>
+            <div class="eyebrow">Nuestro enfoque</div>
+            <h2>
+              Tres disciplinas,<br />
+              una misma <em>idea</em> de cuidado.
+            </h2>
+          </div>
+          <div class="concept-text">
+            <p>
+              QuiroBeautique nació para ofrecer en Calpe lo que no suele
+              encontrarse junto: una mirada osteopática que escucha el cuerpo,
+              tratamientos de medicina estética con criterio médico y la
+              tecnología INDIBA aplicada con manos expertas.
+            </p>
+            <p>
+              Trabajamos sin prisas. Cada visita empieza con una valoración,
+              continúa con un plan a tu medida y se mantiene en el tiempo. La
+              estética que proponemos respeta tus rasgos: el objetivo nunca es
+              cambiar lo que eres, sino devolverle el tono.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INDIBA SHOWCASE -->
+    <section class="indiba" id="indiba">
+      <div class="container">
+        <div class="indiba-grid">
+          <div>
+            <div class="eyebrow">Tecnología INDIBA · Centro oficial</div>
+            <h2>
+              Radiofrecuencia profunda,<br />
+              resultados <em>visibles</em> sin cirugía.
+            </h2>
+            <p>
+              INDIBA es la radiofrecuencia que utilizan equipos médicos y
+              deportivos profesionales en toda Europa. Activa el metabolismo
+              celular, mejora la circulación y ayuda al tejido a recuperarse
+              desde dentro. La aplicamos tanto en estética facial y corporal
+              como en recuperación física y postoperatoria.
+            </p>
+            <div class="indiba-stats">
+              <div class="stat">
+                <div class="k">Indicación</div>
+                <div class="v">Estética · Fisioterapia · Recuperación</div>
+              </div>
+              <div class="stat">
+                <div class="k">Duración media</div>
+                <div class="v">45 a 60 minutos por sesión</div>
+              </div>
+              <div class="stat">
+                <div class="k">Sensación</div>
+                <div class="v">Calor profundo, sin dolor</div>
+              </div>
+              <div class="stat">
+                <div class="k">Resultado</div>
+                <div class="v">Progresivo y acumulativo</div>
+              </div>
+            </div>
+          </div>
+          <div class="indiba-visual">
+            <img
+              src="img/indiba-detail.jpg"
+              alt="Aplicación facial con cabezal INDIBA en QuiroBeautique"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRATAMIENTOS -->
+    <section class="treatments" id="tratamientos">
+      <div class="container">
+        <div class="treatments-head">
+          <div>
+            <div class="eyebrow">Servicios</div>
+            <h2>
+              Varios caminos,<br />
+              un mismo <em>resultado</em>.
+            </h2>
+          </div>
+          <p>
+            Tratamientos diseñados para integrarse entre sí. Podemos combinar
+            osteopatía con INDIBA para recuperación, o medicina estética con
+            radiofrecuencia para resultados más duraderos. Cada plan se
+            diseña en consulta.
+          </p>
+        </div>
+        <div class="treatments-grid">
+          <div class="item">
+            <div class="num">01</div>
+            <h3>Osteopatía</h3>
+            <p>
+              Diagnóstico manual y tratamiento de dolores crónicos,
+              contracturas, lesiones deportivas y postura. Sesiones de
+              cincuenta minutos.
+            </p>
+            <div class="arrow">Ver más →</div>
+          </div>
+          <div class="item">
+            <div class="num">02</div>
+            <h3>Medicina estética</h3>
+            <p>
+              Toxina, ácido hialurónico y tratamientos faciales con criterio
+              médico. Resultados naturales y valoración previa siempre.
+            </p>
+            <div class="arrow">Ver más →</div>
+          </div>
+          <div class="item">
+            <div class="num">03</div>
+            <h3>INDIBA estética</h3>
+            <p>
+              Radiofrecuencia para reafirmar piel, reducir flacidez, modelar
+              contorno corporal y mejorar el aspecto de la celulitis.
+            </p>
+            <div class="arrow">Ver más →</div>
+          </div>
+          <div class="item">
+            <div class="num">04</div>
+            <h3>INDIBA recuperación</h3>
+            <p>
+              Acelera la cicatrización postquirúrgica, alivia el dolor
+              muscular y reduce la inflamación en lesiones agudas y
+              crónicas.
+            </p>
+            <div class="arrow">Ver más →</div>
+          </div>
+          <div class="item">
+            <div class="num">05</div>
+            <h3>Tratamientos faciales</h3>
+            <p>
+              Limpiezas profundas, peelings y protocolos personalizados con
+              productos de cabina profesionales y diagnóstico previo.
+            </p>
+            <div class="arrow">Ver más →</div>
+          </div>
+          <div class="item">
+            <div class="num">06</div>
+            <h3>Programas a medida</h3>
+            <p>
+              Bonos cerrados de varias sesiones que combinan disciplinas
+              para objetivos concretos: pre-evento, postoperatorio,
+              mantenimiento.
+            </p>
+            <div class="arrow">Ver más →</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCIA -->
+    <section class="experience" id="experiencia">
+      <div class="container">
+        <div class="experience-grid">
+          <div class="visual">
+            <img
+              src="img/osteopath-hands.jpg"
+              alt="Sesión de tratamiento manual en QuiroBeautique"
+            />
+          </div>
+          <div class="copy">
+            <div class="eyebrow">La experiencia QuiroBeautique</div>
+            <h2>
+              Tiempo, escucha<br />
+              y un plan <em>realista</em>.
+            </h2>
+            <p>
+              Reservamos sesiones largas para que nada se haga apurado.
+              Empezamos por una valoración completa: qué duele, qué te
+              gustaría mejorar, cuánto tiempo tienes. De ahí sale un plan
+              honesto, con número de sesiones estimadas y precio cerrado.
+            </p>
+            <p>
+              Si conviene combinar disciplinas, lo decimos. Si una sola
+              alcanza, también. La promesa es siempre la misma: que salgas
+              entendiendo lo que se te hizo y por qué.
+            </p>
+            <div class="quote">
+              <p>
+                "Warm welcome and very professional staff — the treatment
+                room felt calm from the moment we walked in."
+              </p>
+              <div class="src">Reseña verificada · Tripadvisor</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="contact" id="contacto">
+      <div class="container">
+        <div class="contact-grid">
+          <div>
+            <div class="eyebrow">Reservas y consultas</div>
+            <h2>
+              Visítanos en el<br />
+              centro de <em>Calpe</em>.
+            </h2>
+            <p>
+              Atendemos solo con cita previa para poder dedicarle a cada
+              persona el tiempo que merece. Puedes reservar online o
+              escribirnos por WhatsApp y te respondemos el mismo día.
+            </p>
+            <div class="contact-info">
+              <div class="block">
+                <div class="k">Dirección</div>
+                <div class="v">
+                  Pintor Sorolla 1
+                  <small>03710 Calpe, Alicante</small>
+                </div>
+              </div>
+              <div class="block">
+                <div class="k">WhatsApp</div>
+                <div class="v">
+                  +34 635 05 52 18
+                  <small>Respondemos en horario de centro</small>
+                </div>
+              </div>
+              <div class="block">
+                <div class="k">Email</div>
+                <div class="v">
+                  info@quirobeautique.com
+                  <small>Consultas, presupuestos, bonos</small>
+                </div>
+              </div>
+              <div class="block">
+                <div class="k">Reserva online</div>
+                <div class="v">
+                  quirobeautique.com
+                  <small>Agenda 24 h</small>
+                </div>
+              </div>
+            </div>
+            <div class="contact-actions">
+              <a class="btn-primary" href="#">Reservar online</a>
+              <a class="btn-outline" href="#">Escribir por WhatsApp</a>
+            </div>
+          </div>
+          <div class="contact-visual">
+            <img
+              src="img/wellness-still-life.jpg"
+              alt="Imagen referencial · bodegón editorial de elementos de bienestar"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="brand-block">
+            <a class="brand" href="#" style="align-items: center">
+              <img
+                src="img/logo.png"
+                alt="QuiroBeautique"
+                style="filter: brightness(0) invert(1); opacity: 0.9"
+              />
+              <span class="word">
+                <span class="name">QuiroBeautique</span>
+                <span class="tag">Wellness · Calpe</span>
+              </span>
+            </a>
+            <p>
+              Centro de bienestar integral en Calpe. Osteopatía, medicina
+              estética avanzada y tecnología INDIBA en un mismo lugar, con
+              atención multilingüe.
+            </p>
+          </div>
+          <div class="footer-col">
+            <h4>Centro</h4>
+            <ul>
+              <li>Concepto</li>
+              <li>Experiencia</li>
+              <li>Tecnología INDIBA</li>
+              <li>Reseñas</li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Tratamientos</h4>
+            <ul>
+              <li>Osteopatía</li>
+              <li>Medicina estética</li>
+              <li>INDIBA estética</li>
+              <li>Recuperación</li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Visítanos</h4>
+            <ul>
+              <li>Pintor Sorolla 1, Calpe</li>
+              <li>+34 635 05 52 18</li>
+              <li>info@quirobeautique.com</li>
+              <li>Reserva online</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-note">
+          Imágenes referenciales. La sesión fotográfica profesional del
+          centro forma parte del servicio Kenaz.
+        </div>
+        <div class="footer-bottom">
+          <span>© 2026 QuiroBeautique · Centro de bienestar integral</span>
+          <span>Diseño propuesto por <a href="https://kenaz.studio">Kenaz Studio</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

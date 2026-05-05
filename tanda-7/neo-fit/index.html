@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neo Fit Gym Calpe — Entrenamiento funcional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root{
+    --bg: #0c0d10;
+    --bg-2: #15171c;
+    --line: #2a2d35;
+    --text: #f3f4f6;
+    --muted: #9ca0aa;
+    --accent: #d2ff3a; /* lime electric */
+    --accent-2: #ff5b1f; /* warm energy */
+    --cyan: #47ccf9; /* logo neo */
+  }
+  html, body { background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
+  body{
+    font-family: 'Archivo', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  img, svg { max-width: 100%; display: block; }
+
+  /* Top utility strip */
+  .util{
+    background: #07080a;
+    border-bottom: 1px solid var(--line);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: .04em;
+  }
+  .util .row{
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 8px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  .util .lang span{ color: var(--text); }
+  .util .lang em{ color: var(--accent); font-style: normal; }
+
+  /* Header / nav */
+  header.nav{
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(12,13,16,.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-row{
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .brand{
+    display: flex; align-items: center; gap: 12px;
+  }
+  .brand .mark{
+    width: 38px; height: 38px;
+    background: var(--cyan);
+    border-radius: 999px;
+    display: grid; place-items: center;
+    color: #0c0d10;
+    font-family: 'Archivo Narrow', sans-serif;
+    font-weight: 800;
+    font-size: 17px;
+    letter-spacing: -.02em;
+  }
+  .brand .name{
+    font-family: 'Archivo Narrow', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: .02em;
+  }
+  .brand .name small{
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .14em;
+    color: var(--muted);
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  nav ul{
+    list-style: none;
+    display: flex; gap: 28px; align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  nav a{ color: var(--text); opacity: .85; transition: opacity .2s; }
+  nav a:hover{ opacity: 1; }
+  .cta-btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 18px;
+    background: var(--accent);
+    color: #0c0d10;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: .01em;
+    transition: transform .15s, background .15s;
+  }
+  .cta-btn:hover{ transform: translateY(-1px); }
+  .cta-btn .arrow{ font-size: 16px; }
+
+  /* HERO */
+  .hero{
+    position: relative;
+    min-height: 88vh;
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap: 0;
+    overflow: hidden;
+  }
+  .hero-content{
+    padding: 80px 64px 64px;
+    display: flex; flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+  }
+  .eyebrow{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 28px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .eyebrow::before{
+    content: ''; display: inline-block;
+    width: 32px; height: 1px; background: var(--accent);
+  }
+  h1{
+    font-family: 'Archivo Narrow', sans-serif;
+    font-weight: 700;
+    font-size: clamp(40px, 6.4vw, 92px);
+    line-height: .95;
+    letter-spacing: -.025em;
+    margin-bottom: 28px;
+    text-transform: uppercase;
+  }
+  h1 .accent{ color: var(--accent); }
+  h1 .stroke{
+    -webkit-text-stroke: 1.5px var(--text);
+    color: transparent;
+    font-style: italic;
+  }
+  .lead{
+    font-size: clamp(16px, 1.3vw, 19px);
+    color: var(--muted);
+    max-width: 540px;
+    margin-bottom: 40px;
+    line-height: 1.55;
+  }
+  .lead strong{ color: var(--text); font-weight: 600; }
+
+  .ctas{
+    display: flex; gap: 14px; flex-wrap: wrap;
+    margin-bottom: 56px;
+  }
+  .cta-secondary{
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 11px 18px;
+    border: 1px solid var(--line);
+    color: var(--text);
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 14px;
+    transition: border-color .15s;
+  }
+  .cta-secondary:hover{ border-color: var(--accent); }
+
+  /* Stats strip */
+  .stats{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+  }
+  .stat .num{
+    font-family: 'Archivo Narrow', sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    letter-spacing: -.02em;
+    color: var(--text);
+    line-height: 1;
+  }
+  .stat .num em{ color: var(--accent); font-style: normal; }
+  .stat .lbl{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .12em;
+    color: var(--muted);
+    margin-top: 8px;
+    text-transform: uppercase;
+  }
+
+  /* Hero visual */
+  .hero-visual{
+    position: relative;
+    background: var(--bg-2);
+    overflow: hidden;
+  }
+  .hero-visual .photo{
+    position: absolute;
+    inset: 0;
+    background-image: url('img/sled-circuit.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: contrast(1.05) brightness(.78) saturate(.9);
+  }
+  .hero-visual::after{
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(95deg, var(--bg) 0%, rgba(12,13,16,.55) 30%, transparent 60%);
+  }
+  .hero-tag{
+    position: absolute;
+    bottom: 40px; right: 40px;
+    z-index: 3;
+    padding: 14px 18px;
+    background: rgba(12,13,16,.78);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    max-width: 280px;
+  }
+  .hero-tag .tlabel{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .14em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .hero-tag .ttext{
+    font-family: 'Archivo Narrow', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 1.3;
+    color: var(--text);
+  }
+  .hero-tag .tmeta{
+    margin-top: 8px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* Vertical signal on left edge */
+  .signal{
+    position: absolute;
+    left: 24px; bottom: 32px;
+    transform-origin: left bottom;
+    transform: rotate(-90deg) translateX(100%);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .25em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  /* MOBILE */
+  @media (max-width: 900px){
+    .util .row{ padding: 7px 16px; flex-wrap: wrap; gap: 6px; }
+    .util .right{ display: none; }
+    .nav-row{ padding: 14px 16px; gap: 12px; }
+    nav ul{ display: none; }
+    .cta-btn{ padding: 9px 14px; font-size: 13px; }
+    .brand .mark{ width: 34px; height: 34px; font-size: 15px; }
+    .brand .name{ font-size: 16px; }
+    .brand .name small{ font-size: 9px; }
+
+    .hero{
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+    .hero-content{
+      padding: 44px 20px 32px;
+      order: 2;
+    }
+    .hero-visual{
+      order: 1;
+      height: 360px;
+    }
+    .hero-visual::after{
+      background: linear-gradient(180deg, transparent 30%, var(--bg) 100%);
+    }
+    .hero-tag{
+      bottom: 20px; right: 20px;
+      padding: 10px 14px;
+      max-width: 220px;
+    }
+    .hero-tag .ttext{ font-size: 13px; }
+    .hero-tag .tmeta{ font-size: 11px; }
+    .eyebrow{ margin-bottom: 18px; font-size: 11px; }
+    .eyebrow::before{ width: 22px; }
+    h1{ margin-bottom: 20px; }
+    .lead{ font-size: 15px; margin-bottom: 28px; }
+    .ctas{ margin-bottom: 36px; gap: 10px; }
+    .ctas a{ flex: 1 1 auto; justify-content: center; }
+    .stats{
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      padding-top: 22px;
+    }
+    .stat .num{ font-size: 24px; }
+    .stat .lbl{ font-size: 9px; letter-spacing: .08em; }
+    .signal{ display: none; }
+  }
+  @media (max-width: 480px){
+    .hero-content{ padding: 36px 18px 28px; }
+    .hero-visual{ height: 300px; }
+    .lead{ font-size: 14px; }
+    .ctas a{ font-size: 13px; padding: 10px 14px; }
+    .stat .num{ font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="util">
+  <div class="row">
+    <div class="left">Carrer la Pinta, 11 · 03710 Calpe · +34 607 758 469</div>
+    <div class="right">
+      <span class="lang"><em>ES</em> · <span style="opacity:.6">EN</span></span>
+    </div>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="nav-row">
+    <div class="brand">
+      <div class="mark">N</div>
+      <div class="name">NEO FIT<small>Calpe · Body Transformation</small></div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#programa">El método 360</a></li>
+        <li><a href="#equipo">Equipo</a></li>
+        <li><a href="#clases">Clases</a></li>
+        <li><a href="#app">App</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <a href="#reservar" class="cta-btn">Reservar prueba <span class="arrow">→</span></a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <div>
+      <div class="eyebrow">Calpe · Entrenamiento funcional</div>
+      <h1>
+        Cuerpos<br>
+        que <span class="stroke">responden,</span><br>
+        no que <span class="accent">aparentan.</span>
+      </h1>
+      <p class="lead">
+        Un gimnasio boutique donde <strong>cada sesión está dirigida</strong> por
+        coaches que viven el deporte. Plan Neo 360, clases grupales en grupos
+        reducidos y seguimiento real entre semanas. Sin máquinas vacías, sin
+        rutinas genéricas.
+      </p>
+      <div class="ctas">
+        <a href="#reservar" class="cta-btn">Reserva tu primera clase <span class="arrow">→</span></a>
+        <a href="#programa" class="cta-secondary">Conoce el método</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="num">4.8<em>/5</em></div>
+        <div class="lbl">Rating Google</div>
+      </div>
+      <div class="stat">
+        <div class="num">5<em>/sem</em></div>
+        <div class="lbl">Clases con Zoe</div>
+      </div>
+      <div class="stat">
+        <div class="num">360°</div>
+        <div class="lbl">Plan integral</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="photo" role="img" aria-label="Sled circuit en Neo Fit Calpe"></div>
+    <div class="hero-tag">
+      <div class="tlabel">Lead Coach</div>
+      <div class="ttext">Zoe Batson dirige cinco clases en directo cada semana.</div>
+      <div class="tmeta">Clasificada · Ninja Warrior España</div>
+    </div>
+  </div>
+  <div class="signal">NEO/01 — Calpe Coast / Funcional</div>
+</section>
+
+</body>
+</html>
