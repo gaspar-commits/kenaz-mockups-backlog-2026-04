@@ -1,0 +1,884 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Castell de la Solana · Hotel boutique Art Déco · Vall de Pop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Cormorant+Unicase:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --carbon: #14110f;
+    --carbon-2: #1f1b17;
+    --ink: #2a2520;
+    --gold: #c9a96a;
+    --gold-soft: #d6b985;
+    --gold-deep: #8b6f3c;
+    --cream: #f3ecdf;
+    --cream-2: #ebe2d0;
+    --ivory: #faf6ed;
+    --emerald: #2c5247;
+    --terracotta: #a85a3c;
+    --line: rgba(201, 169, 106, 0.32);
+    --line-strong: rgba(201, 169, 106, 0.55);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--carbon); color: var(--cream); font-family: 'Inter', sans-serif; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+
+  .display { font-family: 'Cormorant Garamond', serif; font-weight: 400; letter-spacing: 0.005em; }
+  .display-italic { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; }
+  .unicase { font-family: 'Cormorant Unicase', serif; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; }
+  .mono-label { font-family: 'Inter', sans-serif; font-size: 0.68rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+
+  /* ────────── ART DECO ORNAMENTS ────────── */
+  .deco-line {
+    display: flex; align-items: center; gap: 0.9rem;
+    color: var(--gold); font-size: 0.7rem;
+    letter-spacing: 0.36em; text-transform: uppercase;
+  }
+  .deco-line::before, .deco-line::after {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--line-strong), transparent);
+  }
+  .deco-diamond {
+    width: 6px; height: 6px; transform: rotate(45deg);
+    background: var(--gold); display: inline-block;
+    margin: 0 0.5rem; vertical-align: middle;
+  }
+  .deco-arch {
+    border: 1px solid var(--line);
+    border-radius: 50% 50% 4px 4px / 65% 65% 4px 4px;
+  }
+
+  /* ────────── HEADER / NAV ────────── */
+  .nav {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 30;
+    padding: 1.4rem clamp(1.1rem, 4vw, 3rem);
+    display: grid; grid-template-columns: auto 1fr auto;
+    align-items: center; gap: 1.5rem;
+  }
+  .nav__logo { display: flex; align-items: center; gap: 0.7rem; color: var(--ivory); }
+  .nav__logo img { height: clamp(38px, 5vw, 52px); width: auto; }
+  .nav__links { display: flex; gap: 2rem; justify-content: center; }
+  .nav__links a {
+    color: var(--ivory); text-decoration: none; font-size: 0.78rem;
+    letter-spacing: 0.22em; text-transform: uppercase; font-weight: 400;
+    transition: color 0.25s; position: relative;
+  }
+  .nav__links a:hover { color: var(--gold); }
+  .nav__cta {
+    color: var(--ivory); border: 1px solid var(--line-strong);
+    padding: 0.7rem 1.3rem; font-size: 0.72rem;
+    letter-spacing: 0.28em; text-transform: uppercase;
+    text-decoration: none; transition: all 0.3s;
+    background: rgba(20, 17, 15, 0.4); backdrop-filter: blur(6px);
+  }
+  .nav__cta:hover { background: var(--gold); color: var(--carbon); border-color: var(--gold); }
+  .nav__burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .nav__burger span { width: 24px; height: 1px; background: var(--ivory); }
+
+  @media (max-width: 880px) {
+    .nav__links { display: none; }
+    .nav__burger { display: flex; }
+    .nav { grid-template-columns: auto 1fr auto; }
+  }
+
+  /* ────────── HERO ────────── */
+  .hero {
+    position: relative; min-height: 100vh;
+    display: flex; align-items: flex-end;
+    padding: clamp(5rem, 12vh, 8rem) clamp(1.1rem, 4vw, 3rem) clamp(2.5rem, 5vh, 4rem);
+    overflow: hidden;
+    background:
+      linear-gradient(180deg, rgba(20,17,15,0.55) 0%, rgba(20,17,15,0.25) 35%, rgba(20,17,15,0.85) 100%),
+      url('img/hero-aerial.jpg') center/cover no-repeat;
+  }
+  .hero__frame {
+    position: absolute; inset: clamp(1.5rem, 3vw, 2.5rem);
+    border: 1px solid rgba(201, 169, 106, 0.25);
+    pointer-events: none;
+  }
+  .hero__frame::before, .hero__frame::after {
+    content: '';
+    position: absolute; width: 22px; height: 22px;
+    border: 1px solid var(--gold);
+  }
+  .hero__frame::before { top: -1px; left: -1px; border-right: 0; border-bottom: 0; }
+  .hero__frame::after { bottom: -1px; right: -1px; border-left: 0; border-top: 0; }
+
+  .hero__inner { position: relative; z-index: 5; max-width: 1100px; width: 100%; }
+  .hero__eyebrow {
+    display: flex; align-items: center; gap: 0.7rem;
+    margin-bottom: 1.4rem;
+  }
+  .hero__eyebrow-line { width: 38px; height: 1px; background: var(--gold); }
+
+  .hero__title {
+    font-size: clamp(2.6rem, 7.5vw, 6rem);
+    font-weight: 300; line-height: 0.98;
+    color: var(--ivory); letter-spacing: -0.01em;
+    margin-bottom: 1.4rem;
+    max-width: 18ch;
+  }
+  .hero__title em { font-style: italic; color: var(--gold-soft); font-weight: 300; }
+
+  .hero__sub {
+    font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+    color: rgba(243, 236, 223, 0.78);
+    max-width: 44ch; line-height: 1.65;
+    margin-bottom: 2.2rem; font-weight: 300;
+  }
+
+  .hero__actions {
+    display: flex; flex-wrap: wrap; gap: 0.9rem; align-items: center;
+    margin-bottom: 2rem;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.7rem;
+    padding: 1rem 1.8rem; font-size: 0.74rem;
+    letter-spacing: 0.28em; text-transform: uppercase;
+    text-decoration: none; transition: all 0.3s;
+    font-weight: 500; cursor: pointer; border: 0;
+  }
+  .btn--gold { background: var(--gold); color: var(--carbon); }
+  .btn--gold:hover { background: var(--gold-soft); }
+  .btn--ghost { background: transparent; color: var(--ivory); border: 1px solid var(--line-strong); }
+  .btn--ghost:hover { border-color: var(--gold); color: var(--gold); }
+  .btn__arrow { font-family: serif; font-size: 1.1rem; line-height: 1; }
+
+  .hero__meta {
+    display: flex; flex-wrap: wrap; gap: clamp(1.3rem, 3vw, 2.6rem);
+    padding-top: 1.6rem;
+    border-top: 1px solid rgba(201, 169, 106, 0.22);
+  }
+  .hero__meta-item { display: flex; flex-direction: column; gap: 0.3rem; }
+  .hero__meta-label { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); }
+  .hero__meta-value { font-size: 0.92rem; color: var(--ivory); font-weight: 300; }
+
+  .hero__scroll {
+    position: absolute; right: clamp(1.5rem, 3vw, 3rem); bottom: clamp(2rem, 4vh, 3rem);
+    color: var(--gold); font-size: 0.65rem;
+    letter-spacing: 0.32em; text-transform: uppercase;
+    writing-mode: vertical-rl; transform: rotate(180deg);
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .hero__scroll::after { content: ''; width: 1px; height: 50px; background: var(--gold); }
+
+  @media (max-width: 720px) {
+    .hero { padding-top: 7rem; }
+    .hero__scroll { display: none; }
+    .hero__meta { gap: 1.1rem 1.5rem; }
+  }
+
+  /* ────────── SECTION: ART DECO PHILOSOPHY ────────── */
+  .philosophy {
+    background: var(--ivory); color: var(--carbon);
+    padding: clamp(4rem, 10vw, 8rem) clamp(1.1rem, 4vw, 3rem);
+    position: relative;
+  }
+  .container { max-width: 1240px; margin: 0 auto; }
+  .philosophy__grid {
+    display: grid; grid-template-columns: 1fr 1.15fr;
+    gap: clamp(2.5rem, 6vw, 5rem); align-items: center;
+  }
+  .philosophy__lead { color: var(--gold-deep); }
+  .philosophy__title {
+    font-size: clamp(2rem, 4.5vw, 3.4rem);
+    font-weight: 300; line-height: 1.05;
+    color: var(--ink); margin: 1.2rem 0 1.6rem;
+    letter-spacing: -0.005em;
+  }
+  .philosophy__title em { font-style: italic; color: var(--gold-deep); }
+  .philosophy__body p { color: var(--ink); font-size: 1rem; line-height: 1.8; margin-bottom: 1.1rem; font-weight: 300; max-width: 52ch; }
+  .philosophy__quote {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: clamp(1.2rem, 1.8vw, 1.5rem); color: var(--gold-deep);
+    border-left: 2px solid var(--gold); padding-left: 1.4rem;
+    margin: 1.8rem 0; line-height: 1.5;
+  }
+
+  .philosophy__visual { position: relative; }
+  .philosophy__visual img {
+    width: 100%; height: auto; display: block;
+    aspect-ratio: 4/5; object-fit: cover;
+    filter: saturate(0.92) contrast(1.02);
+  }
+  .philosophy__visual::after {
+    content: ''; position: absolute; inset: -14px -14px 14px 14px;
+    border: 1px solid var(--gold); z-index: -1;
+  }
+  .philosophy__caption {
+    position: absolute; bottom: -18px; left: 18px; right: 18px;
+    background: var(--carbon); color: var(--cream);
+    padding: 1rem 1.3rem; display: flex; justify-content: space-between;
+    align-items: center; font-size: 0.7rem; letter-spacing: 0.28em;
+    text-transform: uppercase;
+  }
+  .philosophy__caption span:last-child { color: var(--gold); }
+
+  @media (max-width: 880px) {
+    .philosophy__grid { grid-template-columns: 1fr; gap: 3rem; }
+    .philosophy__visual::after { inset: -10px -10px 10px 10px; }
+    .philosophy__caption { font-size: 0.62rem; padding: 0.8rem 1rem; }
+  }
+
+  /* ────────── SECTION: HABITACIONES TEMÁTICAS ────────── */
+  .rooms {
+    background: var(--carbon); color: var(--cream);
+    padding: clamp(4rem, 10vw, 8rem) clamp(1.1rem, 4vw, 3rem);
+  }
+  .section-head { text-align: center; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+  .section-head__lead { color: var(--gold); }
+  .section-head__title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4.5vw, 3.4rem);
+    font-weight: 300; line-height: 1.1;
+    color: var(--ivory); margin: 0.8rem 0 1.2rem;
+  }
+  .section-head__title em { font-style: italic; color: var(--gold-soft); }
+  .section-head__sub {
+    color: rgba(243, 236, 223, 0.65);
+    max-width: 56ch; margin: 0 auto;
+    font-size: 0.98rem; line-height: 1.7; font-weight: 300;
+  }
+
+  .rooms__grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1.4rem;
+  }
+  .room-card {
+    position: relative; overflow: hidden;
+    background: var(--carbon-2);
+    border: 1px solid rgba(201, 169, 106, 0.18);
+  }
+  .room-card__img-wrap { position: relative; overflow: hidden; aspect-ratio: 4/5; }
+  .room-card__img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s; }
+  .room-card:hover .room-card__img-wrap img { transform: scale(1.04); }
+  .room-card__num {
+    position: absolute; top: 1rem; right: 1rem;
+    color: var(--gold); font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 1.4rem; z-index: 5;
+  }
+  .room-card__body { padding: 1.4rem 1.4rem 1.6rem; }
+  .room-card__era { color: var(--gold); font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; }
+  .room-card__name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 400;
+    color: var(--ivory); margin: 0.5rem 0 0.7rem;
+  }
+  .room-card__desc { color: rgba(243, 236, 223, 0.65); font-size: 0.85rem; line-height: 1.6; font-weight: 300; }
+
+  @media (max-width: 880px) {
+    .rooms__grid { grid-template-columns: 1fr; gap: 1.2rem; }
+  }
+
+  /* ────────── SECTION: WELLBEING / RETIROS PROPIOS ────────── */
+  .wellbeing {
+    background: var(--cream); color: var(--ink);
+    padding: clamp(4rem, 10vw, 8rem) clamp(1.1rem, 4vw, 3rem);
+    position: relative;
+  }
+  .wellbeing__top {
+    display: grid; grid-template-columns: 1.1fr 1fr;
+    gap: clamp(2.5rem, 6vw, 5rem);
+    margin-bottom: clamp(3rem, 6vw, 5rem);
+  }
+  .wellbeing__title { color: var(--ink); }
+  .wellbeing__pitch {
+    background: var(--carbon); color: var(--cream);
+    padding: 2rem 2.2rem; border-left: 3px solid var(--gold);
+    align-self: center;
+  }
+  .wellbeing__pitch-label { color: var(--gold); font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 0.8rem; }
+  .wellbeing__pitch p { font-size: 0.95rem; line-height: 1.7; font-weight: 300; }
+  .wellbeing__pitch p + p { margin-top: 0.7rem; }
+
+  .wellbeing__grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1.6rem;
+  }
+  .retreat {
+    background: var(--ivory); border: 1px solid rgba(20,17,15,0.08);
+    padding: 1.7rem 1.7rem 1.9rem;
+    display: flex; flex-direction: column; gap: 0.8rem;
+    position: relative; transition: transform 0.4s, border-color 0.4s;
+  }
+  .retreat:hover { transform: translateY(-3px); border-color: var(--gold); }
+  .retreat__img { width: 100%; aspect-ratio: 16/10; object-fit: cover; margin-bottom: 0.5rem; }
+  .retreat__num {
+    color: var(--gold-deep); font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 0.9rem;
+  }
+  .retreat__name { font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; font-weight: 500; color: var(--ink); line-height: 1.15; }
+  .retreat__meta { display: flex; gap: 0.7rem; flex-wrap: wrap; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-deep); }
+  .retreat__meta span { padding: 0.25rem 0.6rem; border: 1px solid var(--line-strong); }
+  .retreat__desc { color: rgba(42,37,32,0.75); font-size: 0.88rem; line-height: 1.65; font-weight: 300; }
+  .retreat__cta {
+    margin-top: auto; color: var(--ink); font-size: 0.72rem;
+    letter-spacing: 0.28em; text-transform: uppercase; font-weight: 500;
+    text-decoration: none; padding-top: 0.8rem;
+    border-top: 1px solid var(--line); display: flex;
+    justify-content: space-between; align-items: center;
+  }
+  .retreat__cta::after { content: '→'; font-family: serif; color: var(--gold-deep); }
+
+  @media (max-width: 1000px) {
+    .wellbeing__top { grid-template-columns: 1fr; gap: 2rem; }
+    .wellbeing__grid { grid-template-columns: 1fr; gap: 1.2rem; }
+  }
+
+  /* ────────── SECTION: VALL DE POP ENTORNO ────────── */
+  .terroir {
+    background: var(--carbon); color: var(--cream);
+    padding: clamp(4rem, 10vw, 8rem) clamp(1.1rem, 4vw, 3rem);
+    position: relative;
+    background:
+      linear-gradient(180deg, rgba(20,17,15,0.85) 0%, rgba(20,17,15,0.7) 100%),
+      url('img/solana-house-valley.jpg') center/cover no-repeat fixed;
+  }
+  .terroir__inner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2.5rem, 5vw, 4rem); align-items: end; }
+  .terroir__title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 300; line-height: 1.05;
+    color: var(--ivory); letter-spacing: -0.005em;
+  }
+  .terroir__title em { font-style: italic; color: var(--gold-soft); }
+  .terroir__body p { color: rgba(243,236,223,0.75); font-size: 1rem; line-height: 1.8; font-weight: 300; max-width: 50ch; }
+  .terroir__body p + p { margin-top: 1rem; }
+
+  .terroir__stats {
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1.4rem;
+    border-top: 1px solid rgba(201, 169, 106, 0.22);
+    padding-top: clamp(2rem, 4vw, 3rem);
+  }
+  .stat { display: flex; flex-direction: column; gap: 0.4rem; }
+  .stat__num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 300; color: var(--gold-soft); line-height: 1;
+  }
+  .stat__num em { font-style: italic; }
+  .stat__label { font-size: 0.7rem; letter-spacing: 0.26em; text-transform: uppercase; color: rgba(243,236,223,0.7); }
+
+  @media (max-width: 880px) {
+    .terroir__inner { grid-template-columns: 1fr; }
+    .terroir__stats { grid-template-columns: repeat(2, 1fr); gap: 1.5rem 1rem; }
+    .terroir { background-attachment: scroll; }
+  }
+
+  /* ────────── SECTION: RESERVA DIRECTA ────────── */
+  .booking {
+    background: var(--ivory); color: var(--ink);
+    padding: clamp(4rem, 10vw, 8rem) clamp(1.1rem, 4vw, 3rem);
+  }
+  .booking__inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: clamp(2.5rem, 6vw, 5rem); align-items: center;
+  }
+  .booking__title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4.5vw, 3.4rem);
+    font-weight: 300; line-height: 1.1; color: var(--ink);
+    margin-bottom: 1.4rem;
+  }
+  .booking__title em { font-style: italic; color: var(--gold-deep); }
+  .booking__body p { color: rgba(42,37,32,0.78); font-size: 1rem; line-height: 1.75; font-weight: 300; max-width: 52ch; }
+  .booking__body p + p { margin-top: 0.9rem; }
+  .booking__list { margin-top: 1.6rem; display: flex; flex-direction: column; gap: 0.9rem; }
+  .booking__list li {
+    list-style: none; padding-left: 1.6rem; position: relative;
+    color: var(--ink); font-size: 0.95rem; line-height: 1.5; font-weight: 400;
+  }
+  .booking__list li::before {
+    content: ''; position: absolute; left: 0; top: 0.55rem;
+    width: 8px; height: 8px; transform: rotate(45deg);
+    background: var(--gold);
+  }
+
+  .booking__form {
+    background: var(--carbon); color: var(--cream);
+    padding: 2.6rem 2.2rem; position: relative;
+  }
+  .booking__form::before, .booking__form::after {
+    content: ''; position: absolute; width: 30px; height: 30px;
+    border: 1px solid var(--gold);
+  }
+  .booking__form::before { top: 12px; left: 12px; border-right: 0; border-bottom: 0; }
+  .booking__form::after { bottom: 12px; right: 12px; border-left: 0; border-top: 0; }
+  .form-label { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; display: block; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.3rem; }
+  .form-field { background: transparent; border: 0; border-bottom: 1px solid rgba(201,169,106,0.4); color: var(--ivory); padding: 0.6rem 0; font-family: inherit; font-size: 0.95rem; width: 100%; }
+  .form-field:focus { outline: 0; border-bottom-color: var(--gold); }
+  .form-cta {
+    margin-top: 1.4rem; width: 100%;
+    background: var(--gold); color: var(--carbon);
+    padding: 1.05rem 1.5rem; border: 0;
+    font-size: 0.74rem; letter-spacing: 0.3em; text-transform: uppercase;
+    font-weight: 600; cursor: pointer; transition: background 0.3s;
+    font-family: inherit;
+  }
+  .form-cta:hover { background: var(--gold-soft); }
+
+  @media (max-width: 880px) {
+    .booking__inner { grid-template-columns: 1fr; }
+    .booking__form { padding: 2rem 1.4rem; }
+    .form-row { grid-template-columns: 1fr; gap: 1.3rem; }
+  }
+
+  /* ────────── FOOTER ────────── */
+  .footer {
+    background: var(--carbon); color: rgba(243,236,223,0.7);
+    padding: clamp(3rem, 6vw, 5rem) clamp(1.1rem, 4vw, 3rem) 2rem;
+    border-top: 1px solid rgba(201,169,106,0.22);
+  }
+  .footer__top {
+    display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 2.5rem; padding-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(201,169,106,0.18);
+  }
+  .footer__brand img { height: 56px; margin-bottom: 1rem; }
+  .footer__brand p { font-size: 0.88rem; line-height: 1.7; font-weight: 300; max-width: 32ch; color: rgba(243,236,223,0.6); }
+  .footer__col h4 { font-size: 0.7rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.1rem; font-weight: 500; }
+  .footer__col ul { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+  .footer__col a, .footer__col li { color: rgba(243,236,223,0.7); text-decoration: none; font-size: 0.88rem; transition: color 0.3s; font-weight: 300; }
+  .footer__col a:hover { color: var(--gold); }
+  .footer__bottom {
+    margin-top: 2rem; display: flex; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem; font-size: 0.72rem;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(243,236,223,0.5);
+  }
+  .footer__kenaz { color: var(--gold-soft); text-decoration: none; }
+  .footer__note {
+    margin-top: 1.4rem; padding-top: 1.4rem;
+    border-top: 1px dashed rgba(201,169,106,0.18);
+    font-size: 0.7rem; color: rgba(243,236,223,0.4);
+    font-style: italic; line-height: 1.6; max-width: 80ch;
+  }
+
+  @media (max-width: 880px) {
+    .footer__top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .footer__brand { grid-column: 1 / -1; }
+  }
+
+  /* utility */
+  .lang { display: flex; gap: 0.5rem; align-items: center; font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(243,236,223,0.6); }
+  .lang a { color: rgba(243,236,223,0.6); text-decoration: none; padding: 0.2rem 0.4rem; }
+  .lang a.active { color: var(--gold); border-bottom: 1px solid var(--gold); }
+</style>
+</head>
+<body>
+
+<!-- ─────── NAV ─────── -->
+<nav class="nav">
+  <a class="nav__logo" href="#">
+    <img src="img/logo-white.png" alt="Castell de la Solana" />
+  </a>
+  <div class="nav__links">
+    <a href="#filosofia">El Castell</a>
+    <a href="#habitaciones">Habitaciones</a>
+    <a href="#wellbeing">Retiros</a>
+    <a href="#terroir">Vall de Pop</a>
+    <a href="#reservas">Eventos</a>
+  </div>
+  <div style="display:flex;gap:1rem;align-items:center;">
+    <div class="lang" style="display:none;">
+      <a href="#" class="active">ES</a><span>·</span>
+      <a href="#">EN</a><span>·</span>
+      <a href="#">DE</a><span>·</span>
+      <a href="#">NL</a>
+    </div>
+    <a class="nav__cta" href="#reservas">Reservar</a>
+    <div class="nav__burger" aria-label="Menú"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- ─────── HERO ─────── -->
+<header class="hero">
+  <div class="hero__frame"></div>
+  <div class="hero__inner">
+    <div class="hero__eyebrow">
+      <span class="hero__eyebrow-line"></span>
+      <span class="mono-label">Hotel boutique · Vall de Pop · Alcalalí</span>
+    </div>
+    <h1 class="hero__title display">
+      Siete habitaciones,<br />
+      siete <em>obsesiones</em><br />
+      Art Déco entre olivos.
+    </h1>
+    <p class="hero__sub">
+      Una finca rodeada de olivos en el corazón del Vall de Pop.
+      Cada habitación, una era; cada cena, una pausa; cada retiro, una vuelta
+      a lo esencial. Reservas directas, sin intermediarios.
+    </p>
+    <div class="hero__actions">
+      <a class="btn btn--gold" href="#reservas">Reservar estancia <span class="btn__arrow">→</span></a>
+      <a class="btn btn--ghost" href="#wellbeing">Ver retiros</a>
+    </div>
+    <div class="hero__meta">
+      <div class="hero__meta-item">
+        <span class="hero__meta-label">Estilo</span>
+        <span class="hero__meta-value">Art Déco · Art Nouveau</span>
+      </div>
+      <div class="hero__meta-item">
+        <span class="hero__meta-label">Habitaciones</span>
+        <span class="hero__meta-value">Siete suites temáticas</span>
+      </div>
+      <div class="hero__meta-item">
+        <span class="hero__meta-label">Entorno</span>
+        <span class="hero__meta-value">Vall de Pop · olivar centenario</span>
+      </div>
+      <div class="hero__meta-item">
+        <span class="hero__meta-label">Reserva</span>
+        <span class="hero__meta-value">Directa · sin comisión</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero__scroll">Scroll</div>
+</header>
+
+<!-- ─────── PHILOSOPHY ─────── -->
+<section class="philosophy" id="filosofia">
+  <div class="container">
+    <div class="philosophy__grid">
+      <div class="philosophy__visual">
+        <img src="img/the-house.jpg" alt="Fachada de Castell de la Solana, hotel boutique en Alcalalí." />
+        <div class="philosophy__caption">
+          <span>El Castell</span>
+          <span>Alcalalí · Marina Alta</span>
+        </div>
+      </div>
+      <div class="philosophy__text">
+        <span class="mono-label philosophy__lead"><span class="deco-diamond"></span> Filosofía de la casa</span>
+        <h2 class="philosophy__title display">
+          Una casa que <em>recuerda</em>,<br />
+          un valle que <em>respira</em>.
+        </h2>
+        <div class="philosophy__body">
+          <p>
+            Castell de la Solana no es un hotel temático. Es una finca con historia
+            propia, restaurada con criterio Art Déco y Art Nouveau — no como
+            decorado, sino como una manera de entender el detalle: la forma curva
+            del marco de una ventana, la geometría de un mosaico, la pausa que
+            permite una habitación bien diseñada.
+          </p>
+          <blockquote class="philosophy__quote">
+            «Diseñamos cada habitación como un ensayo: una década, una atmósfera,
+            una pausa para quien la habite.»
+          </blockquote>
+          <p>
+            Siete habitaciones, ningún pasillo idéntico. Mesa cuidada, programas
+            con maestros invitados y retiros diseñados desde la casa — no
+            terciarizados a operadores externos.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────── ROOMS ─────── -->
+<section class="rooms" id="habitaciones">
+  <div class="container">
+    <div class="section-head">
+      <span class="mono-label section-head__lead"><span class="deco-diamond"></span> Habitaciones · Siete eras</span>
+      <h2 class="section-head__title">
+        Cada habitación, <em>una década distinta</em>.
+      </h2>
+      <p class="section-head__sub">
+        El Art Déco de los años 20, la curva orgánica del Art Nouveau, la pausa
+        del modernismo mediterráneo. Siete habitaciones, siete atmósferas. Galería
+        editorial dedicada — propuesta Kenaz para vender cada una con su personalidad.
+      </p>
+    </div>
+    <div class="rooms__grid">
+      <article class="room-card">
+        <div class="room-card__img-wrap">
+          <span class="room-card__num">i.</span>
+          <img src="img/rooms.jpg" alt="Imagen referencial · habitación temática Art Déco." />
+        </div>
+        <div class="room-card__body">
+          <span class="room-card__era">Art Déco · 1925</span>
+          <h3 class="room-card__name">Suite del Geometra</h3>
+          <p class="room-card__desc">
+            Líneas rectas, lacas oscuras y latón cepillado. Una habitación que se
+            ordena como un teorema. Vistas al olivar.
+          </p>
+        </div>
+      </article>
+
+      <article class="room-card">
+        <div class="room-card__img-wrap">
+          <span class="room-card__num">ii.</span>
+          <img src="img/wellbeing-jacuzzi.jpg" alt="Imagen referencial · habitación con jacuzzi privado." />
+        </div>
+        <div class="room-card__body">
+          <span class="room-card__era">Art Nouveau · 1900</span>
+          <h3 class="room-card__name">Suite del Jardín</h3>
+          <p class="room-card__desc">
+            Curvas vegetales, cerámica esmaltada, luz filtrada por vidrieras.
+            Bañera exenta y terraza privada al jardín.
+          </p>
+        </div>
+      </article>
+
+      <article class="room-card">
+        <div class="room-card__img-wrap">
+          <span class="room-card__num">iii.</span>
+          <img src="img/the-garden.jpg" alt="Imagen referencial · suite con vistas al jardín." />
+        </div>
+        <div class="room-card__body">
+          <span class="room-card__era">Modernismo mediterráneo</span>
+          <h3 class="room-card__name">Suite del Olivar</h3>
+          <p class="room-card__desc">
+            Maderas claras, lino crudo y la presencia del olivar centenario al
+            otro lado del cristal. La habitación más serena de la casa.
+          </p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ─────── WELLBEING ─────── -->
+<section class="wellbeing" id="wellbeing">
+  <div class="container">
+    <div class="wellbeing__top">
+      <div>
+        <span class="mono-label" style="color: var(--gold-deep);"><span class="deco-diamond"></span> Retiros propios</span>
+        <h2 class="wellbeing__title display" style="font-size: clamp(2rem, 4.5vw, 3.4rem); font-weight: 300; line-height: 1.05; margin: 1rem 0 1.4rem;">
+          Tus retiros, <em style="font-style:italic; color: var(--gold-deep);">en tu propia casa</em>.
+        </h2>
+        <p style="color: rgba(42,37,32,0.78); font-size: 1rem; line-height: 1.75; max-width: 52ch; font-weight: 300;">
+          Yoga, cosecha del olivar, escritura, silencio. Programas diseñados con
+          maestros invitados, agendados desde el calendario del Castell. Reserva
+          y pago en castelldelasolana.es — sin desviar a operadores externos.
+        </p>
+      </div>
+      <aside class="wellbeing__pitch">
+        <div class="wellbeing__pitch-label"><span class="deco-diamond"></span> Propuesta Kenaz</div>
+        <p>
+          Hoy, los retiros y eventos del Castell redirigen a operadores en
+          Finlandia y Suecia. Cada lead que llega a la web se le entrega a un
+          tercero que cobra comisión.
+        </p>
+        <p>
+          Sistema de retiros propio: calendario integrado, reserva directa,
+          mailing en cuatro idiomas, métricas tuyas. La conversión vuelve a casa.
+        </p>
+      </aside>
+    </div>
+
+    <div class="wellbeing__grid">
+      <article class="retreat">
+        <img src="img/yoga-retreat.jpg" alt="Imagen referencial · retiro de yoga al aire libre." class="retreat__img" />
+        <span class="retreat__num">№ 01</span>
+        <h3 class="retreat__name">Yoga &amp; Olivar</h3>
+        <div class="retreat__meta">
+          <span>5 noches</span>
+          <span>Marzo · Octubre</span>
+        </div>
+        <p class="retreat__desc">
+          Práctica diaria al amanecer entre olivos. Silencio guiado,
+          cocina vegetariana de temporada, caminatas por el valle.
+        </p>
+        <a class="retreat__cta" href="#">Programa completo</a>
+      </article>
+
+      <article class="retreat">
+        <img src="img/olive-harvest.jpg" alt="Imagen referencial · semana de cosecha del olivar." class="retreat__img" />
+        <span class="retreat__num">№ 02</span>
+        <h3 class="retreat__name">Semana de la Cosecha</h3>
+        <div class="retreat__meta">
+          <span>4 noches</span>
+          <span>Noviembre</span>
+        </div>
+        <p class="retreat__desc">
+          Cosecha manual del olivar, prensa en almazara, cata de aceites del año.
+          Un retiro que se gana al final del día con una mesa larga y vino.
+        </p>
+        <a class="retreat__cta" href="#">Programa completo</a>
+      </article>
+
+      <article class="retreat">
+        <img src="img/wellbeing-spa.jpg" alt="Imagen referencial · zona de spa y bienestar." class="retreat__img" />
+        <span class="retreat__num">№ 03</span>
+        <h3 class="retreat__name">Silencio y Lectura</h3>
+        <div class="retreat__meta">
+          <span>3 noches</span>
+          <span>Enero · Febrero</span>
+        </div>
+        <p class="retreat__desc">
+          Tres días sin agenda. Biblioteca, baños calientes, paseos sin destino.
+          Lo más caro hoy: una semana sin ruido.
+        </p>
+        <a class="retreat__cta" href="#">Programa completo</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ─────── TERROIR ─────── -->
+<section class="terroir" id="terroir">
+  <div class="container">
+    <div class="terroir__inner">
+      <div>
+        <span class="mono-label"><span class="deco-diamond"></span> El entorno · Marina Alta</span>
+        <h2 class="terroir__title display" style="margin-top: 1.2rem;">
+          Vall de Pop:<br />
+          un valle que <em>siempre fue boutique</em>.
+        </h2>
+      </div>
+      <div class="terroir__body">
+        <p>
+          A pocos kilómetros del mar y a horas del ruido. Vall de Pop es viña vieja,
+          bancales de almendro, pueblos blancos y una luz que cambia la geometría
+          de las cosas a media tarde.
+        </p>
+        <p>
+          Alcalalí, Jalón, Llíber, Parcent. Bodegas familiares, mercado del jueves,
+          rutas de senderismo entre piedra seca y romero. El Castell está en el
+          centro de todo eso, y nada en este valle se siente lejos.
+        </p>
+      </div>
+    </div>
+
+    <div class="terroir__stats">
+      <div class="stat">
+        <span class="stat__num">7 <em>hab</em></span>
+        <span class="stat__label">Habitaciones temáticas</span>
+      </div>
+      <div class="stat">
+        <span class="stat__num"><em>2</em></span>
+        <span class="stat__label">Estilos: Art Déco · Art Nouveau</span>
+      </div>
+      <div class="stat">
+        <span class="stat__num">4</span>
+        <span class="stat__label">Idiomas propuestos: ES · EN · DE · NL</span>
+      </div>
+      <div class="stat">
+        <span class="stat__num">0%</span>
+        <span class="stat__label">Comisión en reserva directa</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────── BOOKING ─────── -->
+<section class="booking" id="reservas">
+  <div class="container">
+    <div class="booking__inner">
+      <div>
+        <span class="mono-label" style="color: var(--gold-deep);"><span class="deco-diamond"></span> Reserva directa</span>
+        <h2 class="booking__title">
+          Reserva en <em>la casa</em>,<br />
+          no en una <em>plataforma</em>.
+        </h2>
+        <div class="booking__body">
+          <p>
+            La página del Castell debería ser el primer canal de reserva, no el
+            último. Lo que llega a Booking se queda con un 17–25 % de comisión;
+            lo que se reserva aquí, se queda en casa.
+          </p>
+          <ul class="booking__list">
+            <li>Mejor tarifa garantizada al reservar directamente.</li>
+            <li>Cuatro idiomas: castellano, inglés, alemán, neerlandés.</li>
+            <li>Calendario unificado para habitaciones, retiros y eventos privados.</li>
+            <li>Confirmación inmediata · contacto humano para cualquier ajuste.</li>
+          </ul>
+        </div>
+      </div>
+
+      <form class="booking__form" onsubmit="event.preventDefault();">
+        <span class="form-label" style="color: var(--gold); margin-bottom: 1.6rem; font-size: 0.7rem;">Solicitud de reserva</span>
+        <div class="form-row">
+          <div>
+            <label class="form-label">Llegada</label>
+            <input type="text" class="form-field" value="08 jun 2026" />
+          </div>
+          <div>
+            <label class="form-label">Salida</label>
+            <input type="text" class="form-field" value="12 jun 2026" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div>
+            <label class="form-label">Habitación</label>
+            <input type="text" class="form-field" value="Suite del Olivar" />
+          </div>
+          <div>
+            <label class="form-label">Personas</label>
+            <input type="text" class="form-field" value="2 adultos" />
+          </div>
+        </div>
+        <div style="margin-bottom: 1.3rem;">
+          <label class="form-label">Su nombre</label>
+          <input type="text" class="form-field" placeholder="Nombre y apellido" />
+        </div>
+        <div style="margin-bottom: 1.3rem;">
+          <label class="form-label">Correo electrónico</label>
+          <input type="email" class="form-field" placeholder="usted@correo.com" />
+        </div>
+        <button type="submit" class="form-cta">Solicitar disponibilidad</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ─────── FOOTER ─────── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <img src="img/logo-white.png" alt="Castell de la Solana" />
+        <p>
+          Hotel boutique en el Vall de Pop. Siete habitaciones, una finca de
+          olivar, retiros propios.
+        </p>
+      </div>
+      <div class="footer__col">
+        <h4>Hotel</h4>
+        <ul>
+          <li><a href="#">Habitaciones</a></li>
+          <li><a href="#">Filosofía Art Déco</a></li>
+          <li><a href="#">Galería</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Experiencias</h4>
+        <ul>
+          <li><a href="#">Retiros wellness</a></li>
+          <li><a href="#">Cosecha del olivar</a></li>
+          <li><a href="#">Eventos privados</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Contacto</h4>
+        <ul>
+          <li>Partida Solana</li>
+          <li>03728 Alcalalí · Alicante</li>
+          <li><a href="tel:+34627928554">+34 627 928 554</a></li>
+          <li><a href="mailto:info@castelldelasolana.es">info@castelldelasolana.es</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© Castell de la Solana · Vall de Pop · Marina Alta</span>
+      <span>Diseño propuesto por <a class="footer__kenaz" href="https://kenaz.studio">Kenaz Studio</a></span>
+    </div>
+    <p class="footer__note">
+      Mockup de propuesta visual. Las fotografías provienen de la web actual de
+      Castell de la Solana; los textos y la estructura son una propuesta editorial
+      de Kenaz. Nombres de habitaciones (Geometra, Jardín, Olivar) son ilustrativos
+      y deberán confirmarse con el hotel antes de cualquier publicación.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

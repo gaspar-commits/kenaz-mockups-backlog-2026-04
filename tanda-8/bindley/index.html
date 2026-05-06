@@ -1,0 +1,1050 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Bindley Properties — Villas & Inmuebles de Lujo en Costa Blanca</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bone: #faf7f2;
+    --bone-2: #f3eee5;
+    --ink: #1c2c44;
+    --ink-soft: #2c3e5a;
+    --ink-mute: #5b6a82;
+    --line: rgba(28, 44, 68, 0.14);
+    --line-soft: rgba(28, 44, 68, 0.08);
+    --gold: #b5a07a;
+    --gold-deep: #8e7a52;
+    --shadow-card: 0 24px 60px -28px rgba(28, 44, 68, 0.32), 0 2px 6px rgba(28, 44, 68, 0.06);
+    --shadow-soft: 0 12px 36px -18px rgba(28, 44, 68, 0.22);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; overflow-x: hidden; }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--bone);
+    color: var(--ink);
+    font-weight: 400;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  .display { font-family: 'Cormorant Garamond', 'Times New Roman', serif; }
+
+  img { display: block; max-width: 100%; height: auto; }
+
+  /* ========== TOP BAR ========== */
+  .topbar {
+    background: var(--ink);
+    color: rgba(250, 247, 242, 0.78);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(181, 160, 122, 0.22);
+  }
+  .topbar-inner {
+    max-width: 1380px;
+    margin: 0 auto;
+    padding: 0 clamp(18px, 4vw, 56px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .topbar-left { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .topbar-right { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+  .topbar-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--gold);
+    letter-spacing: 0.22em;
+    font-weight: 500;
+  }
+  .topbar-pill::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    background: var(--gold);
+    border-radius: 50%;
+  }
+  .topbar-langs { display: inline-flex; gap: 12px; color: rgba(250, 247, 242, 0.6); }
+  .topbar-langs strong { color: var(--bone); font-weight: 500; }
+
+  /* ========== NAV ========== */
+  .nav {
+    background: var(--bone);
+    border-bottom: 1px solid var(--line-soft);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(8px);
+  }
+  .nav-inner {
+    max-width: 1380px;
+    margin: 0 auto;
+    padding: clamp(18px, 2.4vw, 26px) clamp(18px, 4vw, 56px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    color: inherit;
+  }
+  .brand-mark {
+    width: clamp(34px, 4vw, 42px);
+    height: clamp(34px, 4vw, 42px);
+    border: 1.4px solid var(--ink);
+    display: grid;
+    place-items: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 2.4vw, 26px);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    flex: none;
+  }
+  .brand-text { display: flex; flex-direction: column; gap: 2px; line-height: 1; }
+  .brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 2.4vw, 26px);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+  .brand-tag {
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    color: var(--gold-deep);
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .nav-links {
+    display: flex;
+    gap: clamp(18px, 2.4vw, 32px);
+    list-style: none;
+    align-items: center;
+  }
+  .nav-links a {
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold-deep); }
+  .nav-cta {
+    border: 1px solid var(--ink);
+    padding: 11px 22px;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .nav-cta:hover { background: var(--ink); color: var(--bone); }
+
+  @media (max-width: 900px) {
+    .nav-links li:not(.nav-cta-li) { display: none; }
+  }
+
+  /* ========== HERO ========== */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    background: var(--bone);
+  }
+  .hero-grid {
+    max-width: 1380px;
+    margin: 0 auto;
+    padding: clamp(40px, 6vw, 80px) clamp(18px, 4vw, 56px) clamp(48px, 6vw, 96px);
+    display: grid;
+    grid-template-columns: 1fr 1.05fr;
+    gap: clamp(32px, 4vw, 64px);
+    align-items: center;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--gold-deep);
+    font-size: 12px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: clamp(20px, 2.4vw, 28px);
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: clamp(28px, 4vw, 48px);
+    height: 1px;
+    background: var(--gold);
+  }
+  .hero-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 6.4vw, 78px);
+    line-height: 1.02;
+    font-weight: 400;
+    letter-spacing: -0.018em;
+    color: var(--ink);
+    margin-bottom: clamp(20px, 2.4vw, 28px);
+  }
+  .hero-headline em {
+    font-style: italic;
+    color: var(--gold-deep);
+    font-weight: 400;
+  }
+  .hero-sub {
+    color: var(--ink-mute);
+    font-size: clamp(15px, 1.4vw, 17px);
+    line-height: 1.65;
+    max-width: 48ch;
+    margin-bottom: clamp(28px, 3vw, 36px);
+  }
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: clamp(36px, 4vw, 48px);
+  }
+  .btn-primary {
+    background: var(--ink);
+    color: var(--bone);
+    padding: 16px 28px;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid var(--ink);
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .btn-primary:hover { background: transparent; color: var(--ink); }
+  .btn-primary::after {
+    content: '→';
+    font-size: 14px;
+    letter-spacing: 0;
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    padding: 16px 28px;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid var(--line);
+    transition: all 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--ink); }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(16px, 2vw, 28px);
+    border-top: 1px solid var(--line);
+    padding-top: clamp(24px, 3vw, 32px);
+  }
+  .hero-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 3.4vw, 40px);
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+  .hero-stat-label {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    line-height: 1.4;
+  }
+
+  /* hero visual */
+  .hero-visual {
+    position: relative;
+    aspect-ratio: 4/5;
+  }
+  .hero-img-main {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    box-shadow: var(--shadow-card);
+  }
+  .hero-img-frame {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border: 1px solid rgba(181, 160, 122, 0.4);
+    transform: translate(18px, 18px);
+    z-index: -1;
+  }
+  .hero-tag {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    background: rgba(250, 247, 242, 0.96);
+    backdrop-filter: blur(6px);
+    padding: 18px 22px;
+    border-left: 2px solid var(--gold);
+    box-shadow: var(--shadow-soft);
+  }
+  .hero-tag-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .hero-tag-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 1.8vw, 22px);
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .hero-tag-meta {
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .hero-tag-price {
+    margin-top: 8px;
+    color: var(--gold-deep);
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  @media (max-width: 880px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+    .hero-visual { aspect-ratio: 4/5; max-width: 520px; margin: 0 auto; width: 100%; }
+    .hero-headline { font-size: clamp(36px, 9vw, 56px); }
+    .hero-stats { grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+    .hero-stat-num { font-size: clamp(22px, 7vw, 30px); }
+    .hero-stat-label { font-size: 10px; letter-spacing: 0.18em; }
+  }
+
+  /* ========== AUTHORITY STRIP ========== */
+  .authority {
+    background: var(--ink);
+    color: var(--bone);
+    padding: clamp(48px, 6vw, 72px) 0;
+  }
+  .authority-inner {
+    max-width: 1380px;
+    margin: 0 auto;
+    padding: 0 clamp(18px, 4vw, 56px);
+  }
+  .authority-eyebrow {
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .authority-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
+  .authority-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 3.4vw, 42px);
+    line-height: 1.15;
+    font-weight: 400;
+    max-width: 22ch;
+    margin-bottom: clamp(36px, 4vw, 56px);
+    letter-spacing: -0.01em;
+  }
+  .authority-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(20px, 2.4vw, 36px);
+    align-items: stretch;
+  }
+  .auth-card {
+    border: 1px solid rgba(181, 160, 122, 0.28);
+    padding: clamp(22px, 2.4vw, 28px);
+    background: rgba(250, 247, 242, 0.03);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .auth-card-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+  }
+  .auth-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 2vw, 24px);
+    line-height: 1.2;
+    font-weight: 500;
+  }
+  .auth-card-title em { font-style: italic; color: var(--gold); }
+  .auth-card-body {
+    color: rgba(250, 247, 242, 0.72);
+    font-size: 13.5px;
+    line-height: 1.6;
+    margin-top: auto;
+  }
+  .auth-card-source {
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgba(181, 160, 122, 0.7);
+    border-top: 1px solid rgba(181, 160, 122, 0.18);
+    padding-top: 12px;
+    margin-top: 12px;
+  }
+
+  @media (max-width: 980px) {
+    .authority-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 540px) {
+    .authority-grid { grid-template-columns: 1fr; gap: 16px; }
+  }
+
+  /* ========== PORTFOLIO ========== */
+  .portfolio {
+    padding: clamp(64px, 8vw, 110px) 0;
+    background: var(--bone);
+  }
+  .portfolio-inner {
+    max-width: 1380px;
+    margin: 0 auto;
+    padding: 0 clamp(18px, 4vw, 56px);
+  }
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    margin-bottom: clamp(40px, 4vw, 56px);
+    flex-wrap: wrap;
+  }
+  .section-eyebrow {
+    color: var(--gold-deep);
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    line-height: 1.05;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    max-width: 18ch;
+  }
+  .section-title em { font-style: italic; color: var(--gold-deep); font-weight: 400; }
+  .section-link {
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 4px;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .section-link:hover { color: var(--gold-deep); border-color: var(--gold-deep); }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(20px, 2.4vw, 32px);
+  }
+  .property {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease;
+  }
+  .property:hover { transform: translateY(-4px); }
+  .property-img-wrap {
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    margin-bottom: 18px;
+    background: var(--bone-2);
+  }
+  .property-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .property:hover .property-img { transform: scale(1.04); }
+  .property-ref {
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    color: var(--gold-deep);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .property-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 2vw, 26px);
+    line-height: 1.15;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+  .property-meta {
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    line-height: 1.4;
+  }
+  .property-foot {
+    margin-top: 10px;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+  }
+
+  @media (max-width: 880px) {
+    .portfolio-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .property-name { font-size: 20px; }
+  }
+  @media (max-width: 540px) {
+    .portfolio-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ========== TEAM / VOICE ========== */
+  .team {
+    padding: clamp(64px, 8vw, 110px) 0;
+    background: var(--bone-2);
+  }
+  .team-inner {
+    max-width: 1380px;
+    margin: 0 auto;
+    padding: 0 clamp(18px, 4vw, 56px);
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: clamp(36px, 5vw, 72px);
+    align-items: center;
+  }
+  .team-img-wrap {
+    aspect-ratio: 5/6;
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    position: relative;
+  }
+  .team-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+  .team-frame {
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(181, 160, 122, 0.5);
+    transform: translate(-18px, -18px);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .team-content { display: flex; flex-direction: column; gap: clamp(20px, 2.4vw, 28px); }
+  .team-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 2.6vw, 34px);
+    line-height: 1.3;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--ink);
+    border-left: 2px solid var(--gold);
+    padding-left: clamp(20px, 2vw, 28px);
+  }
+  .team-quote::before { content: '"'; }
+  .team-quote::after { content: '"'; }
+  .team-body { color: var(--ink-mute); font-size: 15.5px; line-height: 1.7; max-width: 56ch; }
+  .team-meta {
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    font-weight: 500;
+  }
+
+  @media (max-width: 880px) {
+    .team-inner { grid-template-columns: 1fr; }
+    .team-img-wrap { max-width: 480px; margin: 0 auto; width: 100%; }
+    .team-frame { transform: translate(-12px, -12px); }
+  }
+
+  /* ========== LANGUAGES ========== */
+  .langs {
+    padding: clamp(56px, 7vw, 96px) 0;
+    background: var(--bone);
+    border-top: 1px solid var(--line-soft);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .langs-inner {
+    max-width: 1380px;
+    margin: 0 auto;
+    padding: 0 clamp(18px, 4vw, 56px);
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: clamp(36px, 5vw, 72px);
+    align-items: center;
+  }
+  .langs-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+  }
+  .lang-card {
+    border: 1px solid var(--line);
+    padding: 22px 14px;
+    text-align: center;
+    background: var(--bone);
+    transition: all 0.2s;
+  }
+  .lang-card:hover { border-color: var(--gold); }
+  .lang-code {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 2.4vw, 28px);
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .lang-name {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .lang-card.proposed {
+    border-style: dashed;
+    border-color: var(--gold);
+  }
+  .lang-card.proposed .lang-code { color: var(--gold-deep); }
+
+  @media (max-width: 880px) {
+    .langs-inner { grid-template-columns: 1fr; }
+    .langs-grid { grid-template-columns: repeat(5, 1fr); gap: 8px; }
+    .lang-card { padding: 16px 8px; }
+  }
+  @media (max-width: 480px) {
+    .langs-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  /* ========== CONTACT ========== */
+  .contact {
+    padding: clamp(64px, 8vw, 110px) 0;
+    background: var(--ink);
+    color: var(--bone);
+  }
+  .contact-inner {
+    max-width: 1380px;
+    margin: 0 auto;
+    padding: 0 clamp(18px, 4vw, 56px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(36px, 5vw, 72px);
+  }
+  .contact-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4.4vw, 56px);
+    line-height: 1.05;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    margin-bottom: 24px;
+    max-width: 16ch;
+  }
+  .contact-title em { font-style: italic; color: var(--gold); }
+  .contact-body {
+    color: rgba(250, 247, 242, 0.7);
+    font-size: 15.5px;
+    line-height: 1.7;
+    margin-bottom: 32px;
+    max-width: 50ch;
+  }
+  .contact-info { display: flex; flex-direction: column; gap: 24px; }
+  .info-row {
+    border-top: 1px solid rgba(181, 160, 122, 0.22);
+    padding-top: 18px;
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 16px;
+    align-items: baseline;
+  }
+  .info-label {
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+  }
+  .info-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 1.6vw, 22px);
+    color: var(--bone);
+    font-weight: 400;
+    line-height: 1.4;
+  }
+  .info-value a { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(181, 160, 122, 0.4); padding-bottom: 2px; }
+
+  @media (max-width: 880px) {
+    .contact-inner { grid-template-columns: 1fr; }
+    .info-row { grid-template-columns: 100px 1fr; gap: 12px; }
+  }
+
+  /* ========== FOOTER ========== */
+  .footer {
+    background: var(--bone);
+    border-top: 1px solid var(--line-soft);
+    padding: 36px 0 24px;
+  }
+  .footer-inner {
+    max-width: 1380px;
+    margin: 0 auto;
+    padding: 0 clamp(18px, 4vw, 56px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .footer-note {
+    text-align: center;
+    margin-top: 18px;
+    padding: 0 clamp(18px, 4vw, 56px);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--ink-mute);
+    font-style: italic;
+    text-transform: none;
+    line-height: 1.6;
+  }
+
+  /* mobile padding tweak top */
+  @media (max-width: 720px) {
+    .topbar { padding: 8px 0; font-size: 10px; }
+    .topbar-langs { display: none; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-left">
+        <span class="topbar-pill">Luxury Lifestyle Awards</span>
+        <span class="topbar-pill">REALTOR · Certified Residential Specialist</span>
+      </div>
+      <div class="topbar-right">
+        <span class="topbar-langs"><strong>EN</strong> · ES · DE · FR · NL</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#">
+        <div class="brand-mark">B</div>
+        <div class="brand-text">
+          <span class="brand-name">Bindley</span>
+          <span class="brand-tag">Properties · Moraira</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#authority">Distinciones</a></li>
+        <li><a href="#equipo">Equipo</a></li>
+        <li><a href="#idiomas">Servicios</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li class="nav-cta-li"><a class="nav-cta" href="#contacto">Solicitar visita</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <span class="hero-eyebrow">Boutique Real Estate · Costa Blanca</span>
+        <h1 class="hero-headline">
+          Villas <em>de autor</em><br/>
+          en la costa más<br/>
+          discreta del<br/>
+          Mediterráneo.
+        </h1>
+        <p class="hero-sub">
+          Operamos en Moraira, Benissa y el Poble Nou de Benitachell con un portfolio
+          de propiedades seleccionadas para un comprador internacional que pide
+          exclusividad, criterio y silencio.
+        </p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="#portfolio">Ver portfolio</a>
+          <a class="btn-ghost" href="#contacto">Hablar con un asesor</a>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="hero-stat-num">280+</div>
+            <div class="hero-stat-label">Propiedades<br/>en cartera</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">3</div>
+            <div class="hero-stat-label">Municipios<br/>premium</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">5</div>
+            <div class="hero-stat-label">Idiomas<br/>de atención</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <span class="hero-img-frame"></span>
+        <img class="hero-img-main" src="img/property-1.jpg" alt="Villa de lujo en Moraira con vistas al Mediterráneo · imagen del portfolio Bindley" />
+        <div class="hero-tag">
+          <div class="hero-tag-row">
+            <div class="hero-tag-title">Villa signature</div>
+            <div class="hero-tag-meta">Costa Blanca</div>
+          </div>
+          <div class="hero-tag-price">Detalles a consultar</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUTHORITY -->
+  <section class="authority" id="authority">
+    <div class="authority-inner">
+      <span class="authority-eyebrow">Distinciones que respaldan el ticket</span>
+      <h2 class="authority-title">
+        El comprador de cuatro millones <em>compra a quién</em>, no qué.
+      </h2>
+      <div class="authority-grid">
+        <div class="auth-card">
+          <span class="auth-card-num">N.º 01</span>
+          <span class="auth-card-title">Luxury Lifestyle <em>Awards</em></span>
+          <p class="auth-card-body">
+            Premio internacional al inmobiliario boutique en el segmento de lujo.
+            Una distinción que no compite con volumen, compite con criterio.
+          </p>
+          <span class="auth-card-source">Galardón verificado</span>
+        </div>
+        <div class="auth-card">
+          <span class="auth-card-num">N.º 02</span>
+          <span class="auth-card-title">REALTOR <em>Certified</em></span>
+          <p class="auth-card-body">
+            Membresía de la National Association of Realtors. Acceso al ecosistema
+            internacional de compradores americanos y referencias cruzadas.
+          </p>
+          <span class="auth-card-source">Autoridad institucional</span>
+        </div>
+        <div class="auth-card">
+          <span class="auth-card-num">N.º 03</span>
+          <span class="auth-card-title">Certified Residential <em>Specialist</em></span>
+          <p class="auth-card-body">
+            La acreditación más exigente para residencial premium. Un porcentaje
+            mínimo de agentes en el mundo la obtiene.
+          </p>
+          <span class="auth-card-source">Especialización verificada</span>
+        </div>
+        <div class="auth-card">
+          <span class="auth-card-num">N.º 04</span>
+          <span class="auth-card-title">280+ propiedades <em>activas</em></span>
+          <p class="auth-card-body">
+            Cartera viva en Moraira, Benissa y Benitachell. Volumen real de
+            inventario boutique, no acumulación genérica.
+          </p>
+          <span class="auth-card-source">Portfolio en operación</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section class="portfolio" id="portfolio">
+    <div class="portfolio-inner">
+      <div class="section-head">
+        <div>
+          <span class="section-eyebrow">Selección editorial</span>
+          <h2 class="section-title">Propiedades <em>destacadas</em> del portfolio</h2>
+        </div>
+        <a class="section-link" href="#">Explorar las 280+ →</a>
+      </div>
+      <div class="portfolio-grid">
+        <a class="property" href="#">
+          <div class="property-img-wrap">
+            <img class="property-img" src="img/property-1.jpg" alt="Villa con piscina y vistas al mar — imagen del portfolio Bindley" />
+          </div>
+          <div class="property-ref">Ref. signature · Moraira</div>
+          <div class="property-name">Villa con vistas abiertas al Mediterráneo</div>
+          <div class="property-meta">Detalles a consultar</div>
+          <div class="property-foot">Solicitar dossier →</div>
+        </a>
+        <a class="property" href="#">
+          <div class="property-img-wrap">
+            <img class="property-img" src="img/property-2.jpg" alt="Apartamento en Moraira con terraza amplia — imagen del portfolio Bindley" />
+          </div>
+          <div class="property-ref">Ref. premium · Moraira</div>
+          <div class="property-name">Apartamento con terraza de 14 m²</div>
+          <div class="property-meta">Detalles a consultar</div>
+          <div class="property-foot">Solicitar dossier →</div>
+        </a>
+        <a class="property" href="#">
+          <div class="property-img-wrap">
+            <img class="property-img" src="img/property-3.jpg" alt="Adosado en Benitachell con piscina comunitaria — imagen del portfolio Bindley" />
+          </div>
+          <div class="property-ref">Ref. select · Benitachell</div>
+          <div class="property-name">Adosado con vistas abiertas y piscina</div>
+          <div class="property-meta">Detalles a consultar</div>
+          <div class="property-foot">Solicitar dossier →</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM / VOICE -->
+  <section class="team" id="equipo">
+    <div class="team-inner">
+      <div class="team-img-wrap">
+        <span class="team-frame"></span>
+        <img src="img/team-hero.jpg" alt="Equipo Bindley Properties · agencia boutique en Moraira" />
+      </div>
+      <div class="team-content">
+        <span class="team-meta">Equipo · Moraira</span>
+        <h2 class="section-title">Una agencia <em>familiar</em>, no una franquicia.</h2>
+        <p class="team-quote">
+          La diferencia se nota cuando el agente que abre la puerta es el mismo
+          que firma el contrato.
+        </p>
+        <p class="team-body">
+          Bindley Properties trabaja bajo el modelo boutique family-run con
+          agentes con certificaciones REALTOR y Certified Residential Specialist.
+          Acompañamos cada operación con el mismo equipo desde la primera visita
+          hasta la entrega de llaves, en cinco idiomas y con un protocolo de
+          discreción que el cliente premium reconoce desde la primera llamada.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LANGUAGES -->
+  <section class="langs" id="idiomas">
+    <div class="langs-inner">
+      <div>
+        <span class="section-eyebrow">Atención multilingüe</span>
+        <h2 class="section-title">Cinco idiomas, <em>un solo</em> interlocutor.</h2>
+      </div>
+      <div class="langs-grid">
+        <div class="lang-card">
+          <div class="lang-code">EN</div>
+          <div class="lang-name">English</div>
+        </div>
+        <div class="lang-card">
+          <div class="lang-code">ES</div>
+          <div class="lang-name">Español</div>
+        </div>
+        <div class="lang-card">
+          <div class="lang-code">DE</div>
+          <div class="lang-name">Deutsch</div>
+        </div>
+        <div class="lang-card">
+          <div class="lang-code">FR</div>
+          <div class="lang-name">Français</div>
+        </div>
+        <div class="lang-card">
+          <div class="lang-code">NL</div>
+          <div class="lang-name">Nederlands</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contacto">
+    <div class="contact-inner">
+      <div>
+        <h2 class="contact-title">Conversaciones <em>discretas</em>, en cinco idiomas.</h2>
+        <p class="contact-body">
+          Atendemos personalmente cada consulta. Si está considerando una
+          operación premium en Moraira, Benissa o Benitachell, escríbanos
+          o pase por la oficina en Avenida de Madrid.
+        </p>
+      </div>
+      <div class="contact-info">
+        <div class="info-row">
+          <span class="info-label">Email</span>
+          <span class="info-value"><a href="mailto:info@bindleyproperties.com">info@bindleyproperties.com</a></span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Teléfono</span>
+          <span class="info-value">+34 965 04 97 01</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Oficina</span>
+          <span class="info-value">Avenida de Madrid 11, Local 2<br/>03724 Moraira, Alicante</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Cobertura</span>
+          <span class="info-value">Moraira · Benissa · Benitachell</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <span>Bindley Properties · Moraira · Costa Blanca</span>
+      <span>Diseño propuesto por Kenaz Studio</span>
+    </div>
+    <p class="footer-note">
+      Mockup de propuesta visual. Las propiedades mostradas son referencias del portfolio público de Bindley Properties; los detalles se confirman con cada cliente. Cifras de cartera y distinciones (Luxury Lifestyle Awards, REALTOR, CRS) verificadas en la web del prospecto.
+    </p>
+  </footer>
+
+</body>
+</html>

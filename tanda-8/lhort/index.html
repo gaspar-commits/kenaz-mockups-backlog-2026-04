@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Restaurante L'Hort — Tres décadas mirando al valle de Guadalest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #1a2118;             /* verde bosque casi negro */
+    --paper: #f1e8d3;            /* crema oliva cálido */
+    --paper-2: #e6d9b9;          /* crema profundo */
+    --paper-3: #d8c8a3;          /* crema más oscuro */
+    --olive: #4f5b32;            /* verde oliva mediterráneo */
+    --olive-deep: #2c351c;       /* verde profundo bosque */
+    --terracotta: #b35a32;       /* terracota cálido */
+    --terracotta-deep: #8a3f1f;  /* terracota profundo */
+    --bermellon: #c25a36;        /* acento mediterráneo */
+    --stone: #8c8068;            /* piedra valle */
+    --line: rgba(26, 33, 24, 0.16);
+    --muted: rgba(26, 33, 24, 0.62);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Manrope', system-ui, sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body { overflow-x: hidden; }
+
+  .display {
+    font-family: 'EB Garamond', 'Times New Roman', serif;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+  }
+  .italic { font-style: italic; font-weight: 400; }
+  .label {
+    font-family: 'Manrope', sans-serif;
+    font-feature-settings: "tnum";
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 500;
+  }
+
+  img { max-width: 100%; display: block; }
+
+  /* ============ NAV ============ */
+  .nav {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    z-index: 30;
+    padding: 28px 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--paper);
+  }
+  .brand { display: flex; flex-direction: column; line-height: 1; }
+  .brand .wm {
+    font-family: 'EB Garamond', serif;
+    font-weight: 500;
+    font-size: 30px;
+    letter-spacing: 0.005em;
+  }
+  .brand .wm em { font-style: italic; font-weight: 500; }
+  .brand .sub {
+    font-family: 'Manrope', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.36em;
+    text-transform: uppercase;
+    margin-top: 7px;
+    opacity: 0.85;
+  }
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .nav-links a {
+    color: var(--paper);
+    text-decoration: none;
+    opacity: 0.92;
+  }
+  .nav-lang {
+    display: flex;
+    gap: 12px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-left: 14px;
+    padding-left: 22px;
+    border-left: 1px solid rgba(241, 232, 211, 0.32);
+  }
+  .nav-lang a { color: var(--paper); opacity: 0.55; text-decoration: none; }
+  .nav-lang a.active { opacity: 1; }
+  .reservar-btn {
+    border: 1px solid rgba(241, 232, 211, 0.5);
+    padding: 12px 22px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--paper);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  .reservar-btn:hover {
+    background: var(--paper);
+    color: var(--ink);
+  }
+  .nav-toggle {
+    display: none;
+    background: transparent;
+    border: 1px solid rgba(241, 232, 211, 0.5);
+    color: var(--paper);
+    padding: 10px 14px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 720px;
+    overflow: hidden;
+  }
+  .hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+  }
+  .hero-shade {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(26, 33, 24, 0.55) 0%, rgba(26, 33, 24, 0.05) 32%, rgba(26, 33, 24, 0.10) 60%, rgba(26, 33, 24, 0.78) 100%);
+    z-index: 1;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: 0 56px 60px;
+    color: var(--paper);
+  }
+  .hero-spacer { /* nav lives in absolute, this row keeps the grid */ }
+  .hero-main {
+    align-self: end;
+    max-width: 940px;
+    margin-bottom: 80px;
+  }
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 28px;
+    color: var(--paper);
+    opacity: 0.92;
+  }
+  .hero-eyebrow .line {
+    width: 56px;
+    height: 1px;
+    background: var(--paper);
+    opacity: 0.7;
+  }
+  .hero h1 {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(48px, 6.5vw, 96px);
+    line-height: 1.02;
+    font-weight: 500;
+    letter-spacing: -0.012em;
+    color: var(--paper);
+  }
+  .hero h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: #f3d8a8;
+  }
+  .hero h1 .small { display: block; font-size: 0.42em; letter-spacing: 0.36em; text-transform: uppercase; font-style: normal; opacity: 0.7; margin-top: 28px; font-family: 'Manrope', sans-serif; font-weight: 500; }
+  .hero-sub {
+    margin-top: 32px;
+    max-width: 540px;
+    font-size: clamp(15px, 1.2vw, 17px);
+    line-height: 1.6;
+    color: var(--paper);
+    opacity: 0.92;
+  }
+  .hero-cta-row {
+    margin-top: 44px;
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--paper);
+    color: var(--ink);
+    border: none;
+    padding: 18px 32px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  .btn-primary:hover { background: #f3d8a8; }
+  .btn-ghost {
+    background: transparent;
+    color: var(--paper);
+    border: 1px solid rgba(241, 232, 211, 0.55);
+    padding: 17px 28px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .hero-stats {
+    align-self: end;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 28px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(241, 232, 211, 0.22);
+  }
+  .stat .num {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(32px, 3.4vw, 48px);
+    font-weight: 500;
+    line-height: 1;
+    color: var(--paper);
+  }
+  .stat .num em { font-style: italic; }
+  .stat .lbl {
+    font-family: 'Manrope', sans-serif;
+    font-size: 10.5px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    margin-top: 12px;
+    color: var(--paper);
+    opacity: 0.78;
+  }
+
+  /* ============ HISTORIA ============ */
+  .historia {
+    background: var(--paper);
+    padding: 130px 56px 110px;
+    position: relative;
+  }
+  .historia-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.05fr;
+    gap: 96px;
+    align-items: start;
+  }
+  .historia-text .label { color: var(--terracotta); margin-bottom: 22px; display: inline-block; }
+  .historia-text h2 {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(40px, 4.6vw, 64px);
+    line-height: 1.04;
+    font-weight: 500;
+    letter-spacing: -0.012em;
+    color: var(--olive-deep);
+    margin-bottom: 32px;
+  }
+  .historia-text h2 em { font-style: italic; color: var(--terracotta-deep); }
+  .historia-text p {
+    font-size: 16px;
+    line-height: 1.72;
+    color: var(--ink);
+    opacity: 0.86;
+    margin-bottom: 18px;
+    max-width: 540px;
+  }
+  .historia-text .firma {
+    margin-top: 36px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .historia-text .firma .name {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--olive-deep);
+  }
+  .historia-text .firma .role {
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .historia-img-stack {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 280px 280px;
+    gap: 14px;
+  }
+  .historia-img-stack .a {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+    overflow: hidden;
+  }
+  .historia-img-stack .b {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    overflow: hidden;
+  }
+  .historia-img-stack .c {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    overflow: hidden;
+  }
+  .historia-img-stack img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .historia-img-cap {
+    margin-top: 14px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 10.5px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ============ CARTA ============ */
+  .carta {
+    background: var(--olive-deep);
+    color: var(--paper);
+    padding: 130px 56px 120px;
+  }
+  .carta-head {
+    max-width: 1280px;
+    margin: 0 auto 72px;
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 60px;
+    align-items: end;
+  }
+  .carta-head .label { color: #d8c8a3; }
+  .carta-head h2 {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(40px, 4.6vw, 64px);
+    line-height: 1.06;
+    font-weight: 500;
+    letter-spacing: -0.012em;
+    color: var(--paper);
+    margin-top: 22px;
+  }
+  .carta-head h2 em { font-style: italic; color: #f3d8a8; }
+  .carta-head p {
+    font-size: 16px;
+    line-height: 1.72;
+    color: var(--paper);
+    opacity: 0.82;
+    max-width: 560px;
+  }
+  .carta-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px 64px;
+  }
+  .plato {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+  .plato-img {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+  }
+  .plato-img img { width: 100%; height: 100%; object-fit: cover; }
+  .plato-num {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: #f3d8a8;
+    opacity: 0.85;
+    margin-bottom: 10px;
+  }
+  .plato h3 {
+    font-family: 'EB Garamond', serif;
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 1.15;
+    margin-bottom: 12px;
+    color: var(--paper);
+  }
+  .plato h3 em { font-style: italic; color: #f3d8a8; }
+  .plato p {
+    font-size: 14.5px;
+    line-height: 1.62;
+    color: var(--paper);
+    opacity: 0.78;
+  }
+  .plato .price-row {
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(241, 232, 211, 0.18);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--paper);
+    opacity: 0.7;
+  }
+  .carta-foot {
+    max-width: 1280px;
+    margin: 80px auto 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 32px;
+    border-top: 1px solid rgba(241, 232, 211, 0.18);
+  }
+  .carta-foot .menu-info {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--paper);
+    opacity: 0.82;
+  }
+  .carta-foot .menu-info strong { font-style: normal; color: #f3d8a8; font-weight: 500; }
+
+  /* ============ TERRAZA ============ */
+  .terraza {
+    background: var(--paper);
+    padding: 130px 56px 120px;
+  }
+  .terraza-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .terraza-img {
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+  }
+  .terraza-img img { width: 100%; height: 100%; object-fit: cover; }
+  .terraza-text .label { color: var(--terracotta); }
+  .terraza-text h2 {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(36px, 4.2vw, 56px);
+    line-height: 1.06;
+    font-weight: 500;
+    letter-spacing: -0.012em;
+    color: var(--olive-deep);
+    margin: 22px 0 28px;
+  }
+  .terraza-text h2 em { font-style: italic; color: var(--terracotta-deep); }
+  .terraza-text p {
+    font-size: 16px;
+    line-height: 1.72;
+    color: var(--ink);
+    opacity: 0.82;
+    margin-bottom: 18px;
+    max-width: 480px;
+  }
+  .terraza-features {
+    margin-top: 36px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 36px;
+    border-top: 1px solid var(--line);
+    padding-top: 28px;
+  }
+  .feature .num {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 30px;
+    color: var(--terracotta-deep);
+    line-height: 1;
+  }
+  .feature .lbl {
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 8px;
+  }
+
+  /* ============ RESERVAS ============ */
+  .reservas {
+    position: relative;
+    overflow: hidden;
+    color: var(--paper);
+    padding: 140px 56px 130px;
+  }
+  .reservas-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .reservas-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .reservas-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(26, 33, 24, 0.86) 0%, rgba(26, 33, 24, 0.62) 100%);
+  }
+  .reservas-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .reservas-text .label { color: #f3d8a8; }
+  .reservas-text h2 {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(40px, 5vw, 68px);
+    line-height: 1.04;
+    font-weight: 500;
+    letter-spacing: -0.012em;
+    color: var(--paper);
+    margin: 22px 0 28px;
+  }
+  .reservas-text h2 em { font-style: italic; color: #f3d8a8; }
+  .reservas-text p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--paper);
+    opacity: 0.86;
+    margin-bottom: 14px;
+    max-width: 540px;
+  }
+  .reservas-form {
+    background: rgba(241, 232, 211, 0.06);
+    border: 1px solid rgba(241, 232, 211, 0.18);
+    padding: 38px 36px;
+    backdrop-filter: blur(4px);
+  }
+  .reservas-form .label {
+    color: #f3d8a8;
+    margin-bottom: 18px;
+    display: block;
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  .form-row.full { grid-template-columns: 1fr; }
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .form-field label {
+    font-family: 'Manrope', sans-serif;
+    font-size: 10.5px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--paper);
+    opacity: 0.66;
+  }
+  .form-field .val {
+    font-family: 'EB Garamond', serif;
+    font-size: 17px;
+    color: var(--paper);
+    padding: 10px 0 12px;
+    border-bottom: 1px solid rgba(241, 232, 211, 0.32);
+    font-style: italic;
+  }
+  .reservas-form .submit {
+    margin-top: 22px;
+    width: 100%;
+    background: var(--paper);
+    color: var(--olive-deep);
+    border: none;
+    padding: 18px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .reservas-form .alt {
+    margin-top: 16px;
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--paper);
+    opacity: 0.7;
+    text-align: center;
+  }
+
+  /* ============ CONTACTO ============ */
+  .contacto {
+    background: var(--paper-2);
+    padding: 110px 56px 80px;
+  }
+  .contacto-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 60px;
+  }
+  .contacto h2 {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(32px, 3.6vw, 44px);
+    line-height: 1.1;
+    font-weight: 500;
+    color: var(--olive-deep);
+    letter-spacing: -0.01em;
+  }
+  .contacto h2 em { font-style: italic; color: var(--terracotta-deep); }
+  .contacto-block .label {
+    color: var(--terracotta);
+    margin-bottom: 16px;
+    display: block;
+  }
+  .contacto-block p {
+    font-family: 'EB Garamond', serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .contacto-block p.lead {
+    font-style: italic;
+    color: var(--olive-deep);
+  }
+  .contacto-block .small {
+    font-family: 'Manrope', sans-serif;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .contacto-block a {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    text-decoration-color: var(--terracotta);
+  }
+  .horarios-list {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px 28px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 13.5px;
+    color: var(--ink);
+  }
+  .horarios-list .day { letter-spacing: 0.04em; }
+  .horarios-list .hr { font-variant-numeric: tabular-nums; opacity: 0.85; }
+  .horarios-list .closed { color: var(--terracotta-deep); font-style: italic; }
+
+  /* ============ FOOTER ============ */
+  .footer {
+    background: var(--olive-deep);
+    color: var(--paper);
+    padding: 60px 56px 40px;
+    border-top: 1px solid rgba(241, 232, 211, 0.12);
+  }
+  .footer-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 60px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid rgba(241, 232, 211, 0.14);
+  }
+  .footer-brand .wm {
+    font-family: 'EB Garamond', serif;
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--paper);
+  }
+  .footer-brand .wm em { font-style: italic; }
+  .footer-brand p {
+    margin-top: 16px;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--paper);
+    opacity: 0.7;
+    max-width: 360px;
+  }
+  .footer-col h4 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    color: #f3d8a8;
+  }
+  .footer-col a, .footer-col p {
+    display: block;
+    color: var(--paper);
+    opacity: 0.75;
+    text-decoration: none;
+    font-size: 13.5px;
+    line-height: 1.9;
+  }
+  .footer-bottom {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-top: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--paper);
+    opacity: 0.55;
+  }
+  .footer-bottom a { color: var(--paper); text-decoration: none; opacity: 0.85; }
+  .footer-note {
+    max-width: 1280px;
+    margin: 22px auto 0;
+    font-family: 'Manrope', sans-serif;
+    font-size: 10.5px;
+    line-height: 1.6;
+    letter-spacing: 0.04em;
+    color: var(--paper);
+    opacity: 0.42;
+  }
+
+  /* ================== MEDIA QUERIES ================== */
+
+  @media (max-width: 960px) {
+    .nav { padding: 22px 32px; }
+    .nav-links, .nav-lang, .reservar-btn { display: none; }
+    .nav-toggle { display: inline-flex; }
+    .hero { min-height: 640px; }
+    .hero-content { padding: 0 32px 50px; }
+    .hero-main { margin-bottom: 56px; }
+    .hero-stats { grid-template-columns: 1fr 1fr; gap: 22px; }
+    .historia, .carta, .terraza, .contacto { padding-left: 32px; padding-right: 32px; }
+    .reservas { padding-left: 32px; padding-right: 32px; }
+    .footer { padding-left: 32px; padding-right: 32px; }
+    .historia-grid { grid-template-columns: 1fr; gap: 56px; }
+    .historia-img-stack { grid-template-rows: 220px 200px; }
+    .carta-head { grid-template-columns: 1fr; gap: 24px; }
+    .carta-grid { grid-template-columns: 1fr; gap: 48px; }
+    .terraza-grid { grid-template-columns: 1fr; gap: 48px; }
+    .reservas-inner { grid-template-columns: 1fr; gap: 56px; }
+    .contacto-grid { grid-template-columns: 1fr; gap: 44px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+  }
+
+  @media (max-width: 640px) {
+    .nav { padding: 18px 22px; }
+    .brand .wm { font-size: 24px; }
+    .brand .sub { font-size: 9px; letter-spacing: 0.3em; }
+    .nav-toggle { padding: 8px 12px; font-size: 10px; }
+    .hero { min-height: 580px; height: 92vh; }
+    .hero-content { padding: 0 22px 36px; }
+    .hero-eyebrow { gap: 12px; margin-bottom: 22px; font-size: 10px; }
+    .hero-eyebrow .line { width: 30px; }
+    .hero h1 { font-size: clamp(36px, 9.5vw, 52px); }
+    .hero h1 .small { font-size: 0.32em; letter-spacing: 0.28em; margin-top: 18px; }
+    .hero-sub { margin-top: 22px; font-size: 14.5px; line-height: 1.6; }
+    .hero-cta-row { margin-top: 30px; gap: 12px; flex-direction: column; align-items: stretch; }
+    .btn-primary, .btn-ghost { padding: 16px 22px; font-size: 11.5px; text-align: center; }
+    .hero-main { margin-bottom: 36px; }
+    .hero-stats { grid-template-columns: 1fr 1fr; gap: 20px 24px; padding-top: 22px; }
+    .stat .num { font-size: 26px; }
+    .stat .lbl { font-size: 9.5px; letter-spacing: 0.22em; margin-top: 6px; }
+    .historia, .carta, .terraza, .contacto, .reservas, .footer { padding-left: 22px; padding-right: 22px; }
+    .historia { padding-top: 80px; padding-bottom: 70px; }
+    .carta { padding-top: 80px; padding-bottom: 70px; }
+    .terraza { padding-top: 80px; padding-bottom: 70px; }
+    .reservas { padding-top: 80px; padding-bottom: 70px; }
+    .contacto { padding-top: 70px; padding-bottom: 50px; }
+    .historia-text h2 { font-size: clamp(30px, 8vw, 40px); margin-bottom: 22px; }
+    .historia-text p { font-size: 14.5px; }
+    .historia-img-stack { grid-template-rows: 180px 160px; gap: 10px; }
+    .carta-head h2 { font-size: clamp(30px, 8vw, 40px); }
+    .carta-head p { font-size: 14.5px; }
+    .plato { grid-template-columns: 1fr; gap: 18px; }
+    .plato-img { aspect-ratio: 16 / 11; }
+    .plato h3 { font-size: 22px; }
+    .plato p { font-size: 13.5px; }
+    .carta-foot { flex-direction: column; gap: 18px; align-items: flex-start; margin-top: 56px; }
+    .terraza-text h2 { font-size: clamp(28px, 7.5vw, 38px); }
+    .terraza-text p { font-size: 14.5px; }
+    .terraza-features { grid-template-columns: 1fr 1fr; gap: 20px 18px; }
+    .feature .num { font-size: 24px; }
+    .feature .lbl { font-size: 10px; }
+    .reservas-text h2 { font-size: clamp(30px, 9vw, 44px); }
+    .reservas-form { padding: 28px 22px; }
+    .form-row { grid-template-columns: 1fr; gap: 14px; }
+    .form-field .val { font-size: 15px; }
+    .contacto h2 { font-size: clamp(26px, 7vw, 34px); }
+    .contacto-block p { font-size: 16px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 36px; padding-bottom: 28px; }
+    .footer-brand .wm { font-size: 26px; }
+    .footer-bottom { flex-direction: column; gap: 12px; align-items: flex-start; font-size: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <img class="hero-img" src="img/hero-terraza-valle.jpg" alt="Imagen referencial · terraza con vistas al valle de Guadalest" />
+  <div class="hero-shade"></div>
+
+  <nav class="nav">
+    <div class="brand">
+      <div class="wm">Restaurante <em>L'Hort</em></div>
+      <div class="sub">El Castell de Guadalest · Marina Baixa</div>
+    </div>
+    <div class="nav-links">
+      <a href="#historia">Historia</a>
+      <a href="#carta">Carta</a>
+      <a href="#terraza">Terraza</a>
+      <a href="#contacto">Contacto</a>
+      <div class="nav-lang">
+        <a href="#" class="active">ES</a>
+        <a href="#">EN</a>
+        <a href="#">DE</a>
+      </div>
+      <button class="reservar-btn">Reservar mesa</button>
+    </div>
+    <button class="nav-toggle">Menú</button>
+  </nav>
+
+  <div class="hero-content">
+    <div class="hero-spacer"></div>
+
+    <div class="hero-main">
+      <div class="hero-eyebrow">
+        <span class="line"></span>
+        <span class="label">Cocina valenciana de la Marina Baixa</span>
+      </div>
+      <h1>
+        Tres décadas<br />
+        <em>mirando al valle.</em>
+        <span class="small">Restaurante L'Hort · El Castell de Guadalest</span>
+      </h1>
+      <p class="hero-sub">
+        Una terraza suspendida sobre el valle, una cocina que sigue las recetas de la
+        Marina Baixa, y una mesa que ya conocen miles de visitantes de toda Europa.
+      </p>
+      <div class="hero-cta-row">
+        <button class="btn-primary">Reservar mesa</button>
+        <button class="btn-ghost">Ver la carta</button>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="num">30<em>+</em></div>
+        <div class="lbl">Años abiertos</div>
+      </div>
+      <div class="stat">
+        <div class="num">4,2<em>★</em></div>
+        <div class="lbl">375 reseñas</div>
+      </div>
+      <div class="stat">
+        <div class="num">#4</div>
+        <div class="lbl">de 19 en Guadalest</div>
+      </div>
+      <div class="stat">
+        <div class="num">80</div>
+        <div class="lbl">comensales</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== HISTORIA ===================== -->
+<section class="historia" id="historia">
+  <div class="historia-grid">
+    <div class="historia-text">
+      <span class="label">La casa</span>
+      <h2>Tres generaciones de visitantes,<br /><em>una sola cocina.</em></h2>
+      <p>
+        L'Hort lleva más de tres décadas abierto en El Castell de Guadalest, uno de
+        los pueblos más visitados de España. En todo este tiempo no hemos cambiado
+        la receta de la olleta, ni la forma de hornear el cordero, ni la mesa con
+        mejor vista de la casa.
+      </p>
+      <p>
+        Macarena cocina cada día como lo hacía su madre. Toni atiende la sala como
+        quien recibe en su propia casa. El resto lo hace el valle.
+      </p>
+      <div class="firma">
+        <span class="name">Macarena &amp; Toni</span>
+        <span class="role">Cocina y sala</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="historia-img-stack">
+        <div class="a"><img src="img/comedor.jpg" alt="Imagen referencial · comedor interior con vistas al valle" /></div>
+        <div class="b"><img src="img/textura-piedra.jpg" alt="Imagen referencial · muro de piedra valenciana" /></div>
+        <div class="c"><img src="img/vista-castillo.jpg" alt="Imagen referencial · castillo de Guadalest al atardecer" /></div>
+      </div>
+      <div class="historia-img-cap">El Castell de Guadalest · Marina Baixa · Alicante</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CARTA ===================== -->
+<section class="carta" id="carta">
+  <div class="carta-head">
+    <div>
+      <span class="label">La carta</span>
+      <h2>Recetas de la Marina Baixa,<br /><em>como las hacía la abuela.</em></h2>
+    </div>
+    <p>
+      Cocina tradicional valenciana sin atajos: olleta de blat a fuego lento, minxos
+      hechos a mano cada mañana, cordero al horno de leña, y un menú diario a 20 €
+      que cambia con la huerta y la temporada.
+    </p>
+  </div>
+
+  <div class="carta-grid">
+
+    <article class="plato">
+      <div class="plato-img"><img src="img/cordero.jpg" alt="Imagen referencial · cordero al horno con romero y patatas" /></div>
+      <div>
+        <div class="plato-num">— Plato I</div>
+        <h3>Cordero al horno <em>de leña</em></h3>
+        <p>Pierna y costillar de cordero asado lento sobre cama de patata, ajo entero
+          y romero fresco. Se sirve con su jugo y limón asado.</p>
+        <div class="price-row"><span>Carta tradicional</span><span>según mercado</span></div>
+      </div>
+    </article>
+
+    <article class="plato">
+      <div class="plato-img"><img src="img/minxos.jpg" alt="Imagen referencial · minxos tradicionales valencianos" /></div>
+      <div>
+        <div class="plato-num">— Plato II</div>
+        <h3>Minxos <em>de la Marina</em></h3>
+        <p>Tortas finas de harina de maíz rellenas de acelgas, piñones y pasas.
+          Receta tradicional de los pueblos del valle, hechas a mano cada mañana.</p>
+        <div class="price-row"><span>Entrante</span><span>de la huerta</span></div>
+      </div>
+    </article>
+
+  </div>
+
+  <div class="carta-foot">
+    <div class="menu-info">
+      Menú diario · <strong>20 €</strong> · de lunes a viernes y domingo
+    </div>
+    <button class="btn-primary" style="background: #f3d8a8; color: #2c351c;">Ver carta completa</button>
+  </div>
+</section>
+
+<!-- ===================== TERRAZA ===================== -->
+<section class="terraza" id="terraza">
+  <div class="terraza-grid">
+    <div class="terraza-img">
+      <img src="img/vista-castillo.jpg" alt="Imagen referencial · castillo y valle de Guadalest desde la terraza" />
+    </div>
+    <div class="terraza-text">
+      <span class="label">La terraza</span>
+      <h2>El mejor sitio<br /><em>para mirar el valle.</em></h2>
+      <p>
+        La terraza de L'Hort se asoma directa al valle de Guadalest, con la sierra
+        de Aitana enfrente y el embalse turquesa abajo. Cuando hace bueno, comer
+        aquí es una de esas cosas que un turista recuerda años después.
+      </p>
+      <p>
+        Reserva con tiempo. Las mesas con vista directa son contadas, y se llenan.
+      </p>
+      <div class="terraza-features">
+        <div class="feature">
+          <div class="num">80</div>
+          <div class="lbl">Comensales</div>
+        </div>
+        <div class="feature">
+          <div class="num">3</div>
+          <div class="lbl">Salas + terraza</div>
+        </div>
+        <div class="feature">
+          <div class="num">7€</div>
+          <div class="lbl">Aparcamiento cerca</div>
+        </div>
+        <div class="feature">
+          <div class="num">∞</div>
+          <div class="lbl">Vistas al valle</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== RESERVAS ===================== -->
+<section class="reservas">
+  <div class="reservas-bg">
+    <img src="img/hero-terraza-valle.jpg" alt="Imagen referencial · terraza al atardecer" />
+  </div>
+  <div class="reservas-inner">
+    <div class="reservas-text">
+      <span class="label">Reservas</span>
+      <h2>Tu mesa, <em>con vista.</em></h2>
+      <p>
+        Reservar online es lo más rápido. Si prefieres llamar, contestamos de
+        10 a 17 h todos los días excepto sábado.
+      </p>
+      <p>
+        Para grupos de más de 8 personas, llámanos directamente al
+        <strong>965 88 52 69</strong> y te atendemos sin esperas.
+      </p>
+    </div>
+
+    <form class="reservas-form" onsubmit="return false;">
+      <span class="label">Reservar mesa</span>
+      <div class="form-row">
+        <div class="form-field">
+          <label>Día</label>
+          <div class="val">Viernes, 8 mayo</div>
+        </div>
+        <div class="form-field">
+          <label>Hora</label>
+          <div class="val">14:00</div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label>Comensales</label>
+          <div class="val">4 personas</div>
+        </div>
+        <div class="form-field">
+          <label>Sala</label>
+          <div class="val">Terraza</div>
+        </div>
+      </div>
+      <div class="form-row full">
+        <div class="form-field">
+          <label>Nombre</label>
+          <div class="val">&nbsp;</div>
+        </div>
+      </div>
+      <button class="submit">Confirmar reserva</button>
+      <div class="alt">o llámanos al 965 88 52 69</div>
+    </form>
+  </div>
+</section>
+
+<!-- ===================== CONTACTO ===================== -->
+<section class="contacto" id="contacto">
+  <div class="contacto-grid">
+    <div class="contacto-block">
+      <span class="label">Visítanos</span>
+      <h2>El Castell de<br /><em>Guadalest.</em></h2>
+      <p class="lead" style="margin-top: 22px;">Calle de la Virgen, 1</p>
+      <p class="small">03517 El Castell de Guadalest · Alicante</p>
+      <p class="small" style="margin-top: 18px;">A 45 minutos de Benidorm y de la costa.</p>
+    </div>
+
+    <div class="contacto-block">
+      <span class="label">Horario</span>
+      <div class="horarios-list" style="margin-top: 6px;">
+        <span class="day">Lunes</span><span class="hr">10:00 — 17:00</span>
+        <span class="day">Martes</span><span class="hr">10:00 — 17:00</span>
+        <span class="day">Miércoles</span><span class="hr">10:00 — 17:00</span>
+        <span class="day">Jueves</span><span class="hr">10:00 — 17:00</span>
+        <span class="day">Viernes</span><span class="hr">10:00 — 17:00</span>
+        <span class="day">Sábado</span><span class="closed">cerrado</span>
+        <span class="day">Domingo</span><span class="hr">10:00 — 17:00</span>
+      </div>
+    </div>
+
+    <div class="contacto-block">
+      <span class="label">Contacto</span>
+      <p style="margin-top: 6px;"><a href="tel:+34965885269">+34 965 88 52 69</a></p>
+      <p class="small" style="margin-top: 6px;">Reservas y consultas</p>
+      <p style="margin-top: 22px;"><a href="mailto:lhort.guadalest@gmail.com">lhort.guadalest@gmail.com</a></p>
+      <p class="small" style="margin-top: 6px;">Respondemos en 24 h</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="wm">Restaurante <em>L'Hort</em></div>
+      <p>
+        Cocina tradicional valenciana con vistas al valle de Guadalest desde hace tres décadas.
+        Tres décadas dando de comer a viajeros de toda Europa.
+      </p>
+    </div>
+    <div class="footer-col">
+      <h4>Carta</h4>
+      <a href="#">Menú del día</a>
+      <a href="#">Carta completa</a>
+      <a href="#">Vinos &amp; postres</a>
+      <a href="#">Grupos</a>
+    </div>
+    <div class="footer-col">
+      <h4>Casa</h4>
+      <a href="#">Historia</a>
+      <a href="#">La terraza</a>
+      <a href="#">Eventos privados</a>
+      <a href="#">Reservar</a>
+    </div>
+    <div class="footer-col">
+      <h4>Redes</h4>
+      <a href="https://www.facebook.com/restaurantlhort/">Facebook</a>
+      <a href="#">TripAdvisor</a>
+      <a href="#">Google Maps</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© Restaurante L'Hort · El Castell de Guadalest</span>
+    <span>Diseño propuesto por <a href="https://kenaz.studio">Kenaz Studio</a></span>
+  </div>
+
+  <div class="footer-note">
+    Mockup conceptual de propuesta. Las fotografías que ilustran esta maqueta son
+    imágenes de referencia generadas como aproximación visual: el material final
+    se realizaría con sesión fotográfica propia del restaurante, la terraza, los
+    platos y el equipo. Datos verificados a 2026-05-06.
+  </div>
+</footer>
+
+</body>
+</html>

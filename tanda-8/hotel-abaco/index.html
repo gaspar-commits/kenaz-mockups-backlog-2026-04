@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hotel Ábaco · Boutique en el casco antiguo de Altea</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bone: #f4ede1;
+    --bone-soft: #fbf8f3;
+    --ink: #1a3a4a;
+    --ink-soft: #2c4a5a;
+    --copper: #b08454;
+    --copper-soft: #c2a472;
+    --char: #1a1a1a;
+    --line: #d8cfc0;
+    --muted: #5a6f7a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bone);
+    color: var(--char);
+    font-weight: 300;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  .serif { font-family: 'Cormorant Garamond', 'Times New Roman', serif; }
+  .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--copper);
+  }
+  .container { max-width: 1280px; margin: 0 auto; padding: 0 48px; }
+
+  /* ─── NAV ─── */
+  .nav {
+    position: absolute; top: 0; left: 0; right: 0;
+    z-index: 10; padding: 28px 0;
+    background: linear-gradient(to bottom, rgba(26,58,74,0.45), transparent);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 16px;
+  }
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 500; letter-spacing: 0.32em;
+    color: var(--bone); text-transform: uppercase;
+  }
+  .logo small {
+    display: block; font-family: 'Inter', sans-serif;
+    font-size: 9px; letter-spacing: 0.4em; font-weight: 400;
+    color: var(--copper-soft); margin-top: 2px;
+  }
+  .nav-links { display: flex; gap: 36px; flex-wrap: wrap; }
+  .nav-links a {
+    font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--bone); text-decoration: none; font-weight: 400;
+    padding: 4px 0; transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--copper-soft); }
+  .nav-cta {
+    font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--bone); text-decoration: none;
+    border: 1px solid var(--copper-soft); padding: 10px 22px;
+    transition: all 0.3s; font-weight: 500;
+  }
+  .nav-cta:hover { background: var(--copper); border-color: var(--copper); }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative; min-height: 100vh;
+    display: flex; align-items: flex-end;
+    color: var(--bone);
+    overflow: hidden;
+    padding-bottom: 80px;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: url('img/abaco-245.jpg') center/cover no-repeat;
+    z-index: 0;
+  }
+  .hero::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg,
+      rgba(26,58,74,0.35) 0%,
+      rgba(26,58,74,0.20) 40%,
+      rgba(26,58,74,0.75) 100%);
+    z-index: 1;
+  }
+  .hero-content { position: relative; z-index: 2; width: 100%; }
+  .hero-grid {
+    display: grid; grid-template-columns: 1fr auto;
+    gap: 80px; align-items: end;
+  }
+  .hero-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(44px, 6vw, 88px);
+    line-height: 0.98;
+    letter-spacing: -0.01em;
+    color: var(--bone);
+    max-width: 14ch;
+  }
+  .hero-headline em {
+    font-style: italic; font-weight: 300; color: var(--copper-soft);
+  }
+  .hero-sub {
+    margin-top: 28px;
+    font-size: 16px; line-height: 1.65; max-width: 50ch;
+    color: rgba(244, 237, 225, 0.86); font-weight: 300;
+  }
+  .hero-meta {
+    display: flex; flex-direction: column; gap: 18px;
+    text-align: right; min-width: 220px;
+  }
+  .hero-meta-item .eyebrow { color: var(--copper-soft); }
+  .hero-meta-item .value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 400; color: var(--bone);
+    margin-top: 2px; line-height: 1.1;
+  }
+  .hero-bottom {
+    margin-top: 60px;
+    display: flex; justify-content: space-between; align-items: flex-end;
+    gap: 40px; flex-wrap: wrap;
+    border-top: 1px solid rgba(244,237,225,0.18);
+    padding-top: 28px;
+  }
+  .hero-pill {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+    color: rgba(244,237,225,0.7); font-weight: 400;
+  }
+  .hero-pill::before {
+    content: ''; width: 18px; height: 1px; background: var(--copper-soft);
+  }
+  .hero-cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 16px 28px; font-size: 12px; letter-spacing: 0.22em;
+    text-transform: uppercase; text-decoration: none; font-weight: 500;
+    transition: all 0.3s; border: 1px solid;
+  }
+  .btn-primary {
+    background: var(--copper); color: var(--bone); border-color: var(--copper);
+  }
+  .btn-primary:hover { background: transparent; }
+  .btn-ghost {
+    background: transparent; color: var(--bone); border-color: rgba(244,237,225,0.35);
+  }
+  .btn-ghost:hover { border-color: var(--copper-soft); color: var(--copper-soft); }
+
+  /* ─── SECTION COMMON ─── */
+  section { padding: 120px 0; position: relative; }
+  .section-head {
+    display: grid; grid-template-columns: 280px 1fr;
+    gap: 80px; margin-bottom: 80px; align-items: end;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4.2vw, 60px); line-height: 1.05;
+    color: var(--ink); font-weight: 400;
+    letter-spacing: -0.005em;
+  }
+  .section-title em { font-style: italic; color: var(--copper); }
+  .section-lead {
+    font-size: 16px; line-height: 1.75; color: var(--ink-soft);
+    max-width: 56ch;
+  }
+
+  /* ─── FILOSOFÍA ─── */
+  .filosofia { background: var(--bone-soft); }
+  .filosofia-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .filosofia-card {
+    background: var(--bone-soft); padding: 44px 36px;
+    display: flex; flex-direction: column; gap: 20px;
+  }
+  .filosofia-card .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px; color: var(--copper); letter-spacing: 0.3em;
+    font-weight: 500;
+  }
+  .filosofia-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; color: var(--ink); font-weight: 500;
+    line-height: 1.15;
+  }
+  .filosofia-card p {
+    font-size: 15px; color: var(--ink-soft); line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ─── HABITACIONES ─── */
+  .habitaciones-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
+  }
+  .room {
+    background: var(--bone-soft);
+    border: 1px solid var(--line);
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: transform 0.5s;
+  }
+  .room:hover { transform: translateY(-4px); }
+  .room-img {
+    aspect-ratio: 4 / 3;
+    background-size: cover; background-position: center;
+    position: relative;
+  }
+  .room-img::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(26,58,74,0.15), transparent 50%);
+  }
+  .room-body { padding: 28px 28px 32px; }
+  .room h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px; color: var(--ink); font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .room-meta {
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--copper); font-weight: 500; margin-bottom: 14px;
+  }
+  .room p {
+    font-size: 14px; color: var(--ink-soft); line-height: 1.7;
+    font-weight: 300;
+  }
+  .habitaciones-foot {
+    margin-top: 56px; text-align: center;
+    font-size: 14px; color: var(--ink-soft); font-weight: 300;
+  }
+  .habitaciones-foot a {
+    color: var(--copper); text-decoration: none; border-bottom: 1px solid var(--copper);
+    padding-bottom: 2px; margin-left: 8px; font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+
+  /* ─── GASTRONOMÍA ─── */
+  .gastronomia { background: var(--ink); color: var(--bone); }
+  .gastronomia .section-title { color: var(--bone); }
+  .gastronomia .section-title em { color: var(--copper-soft); }
+  .gastronomia .section-lead { color: rgba(244,237,225,0.7); }
+  .gastro-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+  }
+  .gastro-card {
+    border-top: 1px solid rgba(244,237,225,0.18);
+    padding-top: 36px;
+  }
+  .gastro-card .year {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px; letter-spacing: 0.3em; color: var(--copper-soft);
+    font-weight: 500; margin-bottom: 12px;
+  }
+  .gastro-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px; color: var(--bone); font-weight: 400;
+    margin-bottom: 18px; line-height: 1.05;
+  }
+  .gastro-card h3 em { font-style: italic; color: var(--copper-soft); }
+  .gastro-card p {
+    font-size: 15px; color: rgba(244,237,225,0.78); line-height: 1.75;
+    font-weight: 300; margin-bottom: 24px;
+  }
+  .gastro-img {
+    margin-top: 28px;
+    aspect-ratio: 16 / 10;
+    background-size: cover; background-position: center;
+    border: 1px solid rgba(244,237,225,0.12);
+  }
+
+  /* ─── ENTORNO ─── */
+  .entorno {
+    display: grid; grid-template-columns: 1.1fr 1fr;
+    gap: 0; padding: 0; align-items: stretch;
+  }
+  .entorno-img {
+    aspect-ratio: auto;
+    background: url('img/abaco-328.jpg') center/cover no-repeat;
+    min-height: 560px;
+  }
+  .entorno-text {
+    padding: 100px 80px;
+    background: var(--bone);
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .entorno-text .eyebrow { margin-bottom: 18px; }
+  .entorno-text h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 3.6vw, 52px);
+    color: var(--ink); font-weight: 400; line-height: 1.1;
+    margin-bottom: 28px;
+  }
+  .entorno-text h2 em { font-style: italic; color: var(--copper); }
+  .entorno-text p {
+    font-size: 16px; color: var(--ink-soft); line-height: 1.75;
+    font-weight: 300; margin-bottom: 18px;
+  }
+  .entorno-list {
+    margin-top: 24px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px 32px;
+  }
+  .entorno-list li {
+    list-style: none;
+    font-size: 13px; color: var(--ink-soft); font-weight: 400;
+    letter-spacing: 0.04em;
+    padding-left: 18px; position: relative;
+  }
+  .entorno-list li::before {
+    content: ''; position: absolute; left: 0; top: 9px;
+    width: 8px; height: 1px; background: var(--copper);
+  }
+
+  /* ─── CONTACTO ─── */
+  .contacto { background: var(--bone-soft); padding: 120px 0 100px; }
+  .contacto-grid {
+    display: grid; grid-template-columns: 1.1fr 1fr; gap: 80px;
+    align-items: start;
+  }
+  .contacto h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4.2vw, 60px);
+    color: var(--ink); font-weight: 400; line-height: 1.05;
+    margin-bottom: 28px;
+  }
+  .contacto h2 em { font-style: italic; color: var(--copper); }
+  .contacto-lead {
+    font-size: 17px; color: var(--ink-soft); line-height: 1.7;
+    margin-bottom: 36px; font-weight: 300; max-width: 50ch;
+  }
+  .contacto-cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+  .contacto-info {
+    border-left: 1px solid var(--line);
+    padding-left: 48px;
+    display: flex; flex-direction: column; gap: 32px;
+  }
+  .info-block .eyebrow { display: block; margin-bottom: 8px; }
+  .info-block .value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; color: var(--ink); font-weight: 400;
+    line-height: 1.3;
+  }
+  .info-block .value a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 2px; }
+  .info-block .value a:hover { border-color: var(--copper); color: var(--copper); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--ink); color: var(--bone);
+    padding: 48px 0 32px;
+    font-size: 12px; font-weight: 300;
+  }
+  .footer-inner {
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 24px;
+  }
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--bone);
+  }
+  .footer-meta {
+    color: rgba(244,237,225,0.6); letter-spacing: 0.05em;
+    font-size: 11px;
+  }
+  .footer-kenaz {
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(244,237,225,0.45); font-weight: 400;
+  }
+  .footer-kenaz a { color: var(--copper-soft); text-decoration: none; }
+  .footer-note {
+    margin-top: 24px; padding-top: 20px;
+    border-top: 1px solid rgba(244,237,225,0.12);
+    font-size: 10px; color: rgba(244,237,225,0.4);
+    letter-spacing: 0.06em; max-width: 80ch; line-height: 1.6;
+  }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 768px) {
+    .container { padding: 0 24px; }
+    section { padding: 80px 0; }
+
+    .nav { padding: 20px 0; background: linear-gradient(to bottom, rgba(26,58,74,0.6), transparent); }
+    .nav-inner { gap: 12px; }
+    .nav-links { gap: 18px; order: 3; width: 100%; justify-content: flex-start; }
+    .nav-links a { font-size: 11px; letter-spacing: 0.16em; }
+    .logo { font-size: 22px; letter-spacing: 0.28em; }
+    .logo small { font-size: 8px; }
+    .nav-cta { padding: 8px 16px; font-size: 10px; }
+
+    .hero { min-height: 100svh; padding-bottom: 56px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+    .hero-meta { text-align: left; min-width: 0; flex-direction: row; gap: 24px; flex-wrap: wrap; }
+    .hero-meta-item .value { font-size: 18px; }
+    .hero-headline { font-size: clamp(36px, 9vw, 52px); max-width: 100%; }
+    .hero-sub { font-size: 14.5px; margin-top: 20px; }
+    .hero-bottom { flex-direction: column; align-items: flex-start; gap: 24px; padding-top: 24px; margin-top: 40px; }
+    .hero-cta-row { width: 100%; }
+    .btn { padding: 14px 22px; font-size: 11px; flex: 1; justify-content: center; min-width: 140px; }
+
+    .section-head { grid-template-columns: 1fr; gap: 24px; margin-bottom: 48px; }
+    .section-title { font-size: clamp(30px, 7.5vw, 42px); }
+    .section-lead { font-size: 15px; }
+
+    .filosofia-grid { grid-template-columns: 1fr; }
+    .filosofia-card { padding: 36px 28px; }
+    .filosofia-card h3 { font-size: 24px; }
+
+    .habitaciones-grid { grid-template-columns: 1fr; gap: 24px; }
+    .room-body { padding: 24px 22px 28px; }
+
+    .gastro-grid { grid-template-columns: 1fr; gap: 56px; }
+    .gastro-card h3 { font-size: 32px; }
+
+    .entorno { grid-template-columns: 1fr; }
+    .entorno-img { min-height: 320px; }
+    .entorno-text { padding: 64px 24px; }
+    .entorno-list { grid-template-columns: 1fr; gap: 12px; }
+
+    .contacto { padding: 80px 0 64px; }
+    .contacto-grid { grid-template-columns: 1fr; gap: 48px; }
+    .contacto-info { border-left: none; border-top: 1px solid var(--line); padding-left: 0; padding-top: 36px; }
+    .contacto-cta-row .btn { flex: 1; }
+
+    .footer-inner { flex-direction: column; align-items: flex-start; text-align: left; gap: 16px; }
+  }
+
+  @media (max-width: 480px) {
+    .container { padding: 0 18px; }
+    .nav-links { gap: 14px; }
+    .nav-links a { font-size: 10px; letter-spacing: 0.14em; }
+    .hero-headline { font-size: 36px; line-height: 1.02; }
+    .hero-sub { font-size: 14px; }
+    .section-title { font-size: 28px; }
+    .gastro-card h3 { font-size: 28px; }
+    .entorno-text h2 { font-size: 28px; }
+    .contacto h2 { font-size: 28px; }
+    .btn { font-size: 10.5px; padding: 13px 18px; letter-spacing: 0.18em; }
+    .info-block .value { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════ HERO ═══════════════════════════════════════ -->
+<section class="hero">
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="logo">
+        Ábaco
+        <small>Altea · Boutique</small>
+      </div>
+      <div class="nav-links">
+        <a href="#filosofia">El hotel</a>
+        <a href="#habitaciones">Habitaciones</a>
+        <a href="#gastronomia">Gastronomía</a>
+        <a href="#entorno">Altea</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+      <a href="#contacto" class="nav-cta">Reservar directo</a>
+    </div>
+  </nav>
+
+  <div class="container hero-content">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow" style="margin-bottom: 28px; color: var(--copper-soft);">Casco antiguo de Altea · Mediterráneo</div>
+        <h1 class="hero-headline">
+          Una panadería del<br>
+          siglo <em>XVIII</em><br>
+          convertida en hotel.
+        </h1>
+        <p class="hero-sub">
+          Dieciocho habitaciones temáticas en piedra centenaria, sobre las calles
+          empedradas que suben hasta la iglesia azul. Atención personalizada de
+          quienes lo gestionan en primera persona.
+        </p>
+      </div>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <div class="eyebrow">Habitaciones</div>
+          <div class="value">18 únicas</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="eyebrow">Distinción</div>
+          <div class="value">Domus Selecta</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="eyebrow">Acogida</div>
+          <div class="value">Adelina &amp; Thomas</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-bottom">
+      <span class="hero-pill">Reservas oficiales sin intermediarios</span>
+      <div class="hero-cta-row">
+        <a href="#contacto" class="btn btn-primary">Comprobar disponibilidad</a>
+        <a href="#habitaciones" class="btn btn-ghost">Ver habitaciones</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ FILOSOFÍA ═══════════════════════════════════════ -->
+<section class="filosofia" id="filosofia">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Filosofía boutique</div>
+      <div>
+        <h2 class="section-title">Hospitalidad que <em>no se delega</em>.<br>Casa propia, no franquicia.</h2>
+      </div>
+    </div>
+    <div class="filosofia-grid">
+      <article class="filosofia-card">
+        <span class="num">— 01</span>
+        <h3>Patrimonio vivido</h3>
+        <p>El edificio fue panadería del siglo XVIII en pleno casco antiguo de Altea. Restaurado conservando piedra, vigas y la escala humana del barrio. Cada habitación responde a la geometría que ya estaba.</p>
+      </article>
+      <article class="filosofia-card">
+        <span class="num">— 02</span>
+        <h3>Anfitriones presentes</h3>
+        <p>Adelina y Thomas gestionan el hotel en primera persona. Recomiendan dónde comer, qué cala visitar, qué evitar en agosto. La experiencia no se subcontrata a una recepción rotativa.</p>
+      </article>
+      <article class="filosofia-card">
+        <span class="num">— 03</span>
+        <h3>Dieciocho personalidades</h3>
+        <p>Ninguna habitación se repite. Distintas dimensiones, distintas vistas, distintos detalles. Reservar en Ábaco es elegir un espacio concreto, no un número intercambiable.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ HABITACIONES ═══════════════════════════════════════ -->
+<section id="habitaciones">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Habitaciones · Selección</div>
+      <div>
+        <h2 class="section-title">Dieciocho estancias<br><em>temáticas</em>, ninguna idéntica.</h2>
+        <p class="section-lead" style="margin-top: 24px;">
+          Cada habitación toma el carácter de la fachada y de la luz que entra
+          por sus ventanas. Algunas miran al casco viejo, otras a un patio
+          interior protegido del bullicio.
+        </p>
+      </div>
+    </div>
+
+    <div class="habitaciones-grid">
+      <article class="room">
+        <div class="room-img" style="background-image: url('img/abaco-4.jpg');" role="img" aria-label="Habitación del hotel — cabecero artesanal y textiles naturales"></div>
+        <div class="room-body">
+          <h4>Estancias clásicas</h4>
+          <div class="room-meta">Piedra · Vigas · Carácter</div>
+          <p>Habitaciones que conservan la huella del edificio original. Materiales nobles, maderas patinadas, baño completo y la calma del casco antiguo.</p>
+        </div>
+      </article>
+      <article class="room">
+        <div class="room-img" style="background-image: url('img/abaco-322.jpg');" role="img" aria-label="Imagen referencial · terraza superior del hotel"></div>
+        <div class="room-body">
+          <h4>Habitaciones superiores</h4>
+          <div class="room-meta">Vista · Luz · Espacio</div>
+          <p>Versiones más amplias con vistas seleccionadas hacia el casco antiguo o el patio interior. Pensadas para estancias largas en pareja.</p>
+        </div>
+      </article>
+      <article class="room">
+        <div class="room-img" style="background-image: url('img/abaco-231.jpg');" role="img" aria-label="Imagen referencial · detalle de baño con textil del hotel"></div>
+        <div class="room-body">
+          <h4>Suites Casa Altea &amp; Casa la Cova</h4>
+          <div class="room-meta">Signature · Estancia completa</div>
+          <p>Las dos casas signature del hotel: estancias completas con personalidad propia para quien busca una experiencia más íntima dentro del proyecto Ábaco.</p>
+        </div>
+      </article>
+    </div>
+
+    <p class="habitaciones-foot">
+      Cada habitación tiene su propia ficha y galería.
+      <a href="#contacto">Ver disponibilidad completa</a>
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ GASTRONOMÍA ═══════════════════════════════════════ -->
+<section class="gastronomia" id="gastronomia">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow" style="color: var(--copper-soft);">Gastronomía · Las dos almas de Ábaco</div>
+      <div>
+        <h2 class="section-title">Una <em>cocina</em>,<br>dos lecturas del Mediterráneo.</h2>
+      </div>
+    </div>
+
+    <div class="gastro-grid">
+      <article class="gastro-card">
+        <div class="year">— Desde 2004</div>
+        <h3>Ábaco <em>Vintage</em></h3>
+        <p>
+          La identidad fundacional. Cocina mediterránea de raíz alicantina,
+          producto cercano y recetario reconocible. Trabajada con la calma
+          de veinte años puliendo cartas de temporada.
+        </p>
+        <div class="gastro-img" style="background-image: url('img/abaco-2.jpg');" role="img" aria-label="Imagen referencial · zona común del hotel"></div>
+      </article>
+      <article class="gastro-card">
+        <div class="year">— Desde 2020</div>
+        <h3>Ábaco <em>Fusion</em></h3>
+        <p>
+          La segunda generación de la cocina del hotel. Diálogo entre el
+          Mediterráneo y técnicas y producto que vienen de fuera. Cartas
+          más cortas, formato más experimental, mismo nivel de exigencia.
+        </p>
+        <div class="gastro-img" style="background-image: url('img/abaco-336.jpg');" role="img" aria-label="Imagen referencial · interior del hotel"></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ ENTORNO ═══════════════════════════════════════ -->
+<section class="entorno" id="entorno">
+  <div class="entorno-img" role="img" aria-label="Vista panorámica de Altea — tejados del casco antiguo y Peñón de Ifach al fondo"></div>
+  <div class="entorno-text">
+    <div class="eyebrow">El entorno · Altea</div>
+    <h2>Cinco minutos a pie del <em>azul</em> de Altea.</h2>
+    <p>
+      El hotel está en el corazón del casco antiguo, a pocos pasos de la
+      iglesia de Nuestra Señora del Consuelo y sus cúpulas azules. Las
+      calles empedradas bajan hasta el paseo marítimo y suben hacia los
+      miradores que abren al Peñón de Ifach.
+    </p>
+    <p>
+      Recomendamos personalmente las calas escondidas, el mercado del
+      martes, los rincones que solo conoce quien vive aquí.
+    </p>
+    <ul class="entorno-list">
+      <li>Iglesia · 3 min andando</li>
+      <li>Paseo marítimo · 8 min</li>
+      <li>Calas y miradores</li>
+      <li>Mercadillo del martes</li>
+      <li>Aeropuerto Alicante · 50 min</li>
+      <li>Estación AVE Alicante · 55 min</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ CONTACTO ═══════════════════════════════════════ -->
+<section class="contacto" id="contacto">
+  <div class="container">
+    <div class="contacto-grid">
+      <div>
+        <div class="eyebrow" style="margin-bottom: 18px;">Reservar · Sin intermediarios</div>
+        <h2>Hable directamente <em>con la casa</em>.</h2>
+        <p class="contacto-lead">
+          Reservar a través de nuestro canal directo significa atención
+          personalizada desde el primer contacto, recomendaciones reales y
+          condiciones que ningún intermediario puede igualar.
+        </p>
+        <div class="contacto-cta-row">
+          <a href="mailto:abaco@hotelabaco.es" class="btn btn-primary" style="background: var(--copper); color: var(--bone); border-color: var(--copper);">Escribir al hotel</a>
+          <a href="tel:+34966882500" class="btn btn-ghost" style="color: var(--ink); border-color: var(--line);">Llamar · 966 88 25 00</a>
+        </div>
+      </div>
+      <aside class="contacto-info">
+        <div class="info-block">
+          <span class="eyebrow">Dirección</span>
+          <div class="value">Calle Unión, 1<br>03590 Altea, Alicante</div>
+        </div>
+        <div class="info-block">
+          <span class="eyebrow">Email</span>
+          <div class="value"><a href="mailto:abaco@hotelabaco.es">abaco@hotelabaco.es</a></div>
+        </div>
+        <div class="info-block">
+          <span class="eyebrow">Teléfono</span>
+          <div class="value"><a href="tel:+34966882500">+34 966 88 25 00</a></div>
+        </div>
+        <div class="info-block">
+          <span class="eyebrow">Idiomas de atención</span>
+          <div class="value">Español · English · Français</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ FOOTER ═══════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">Ábaco · Altea</div>
+      <div class="footer-meta">Calle Unión, 1 · 03590 Altea · Alicante</div>
+      <div class="footer-kenaz">Diseño propuesto por <a href="https://kenaz.studio">Kenaz Studio</a></div>
+    </div>
+    <p class="footer-note">
+      Mockup de propuesta. Las imágenes proceden de la web oficial del hotel
+      y se utilizan como referencia visual de un nuevo diseño editorial.
+      La sesión fotográfica profesional forma parte del servicio Kenaz.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

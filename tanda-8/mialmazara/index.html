@@ -1,0 +1,1483 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hotel Boutique Mi AlmaZara — Jávea</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bone: #f5f0e8;
+    --bone-soft: #ede5d6;
+    --olive: #2f3a26;
+    --olive-soft: #4a5a3a;
+    --earth: #8a6a48;
+    --champagne: #c8a368;
+    --ink: #1c1a16;
+    --ink-soft: #3a3530;
+    --line: rgba(28,26,22,0.14);
+    --line-soft: rgba(28,26,22,0.07);
+    --serif: 'Cormorant Garamond', 'EB Garamond', Georgia, serif;
+    --sans: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    background: var(--bone);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.55;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  img { max-width: 100%; display: block; height: auto; }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ===========================
+     NAV
+     =========================== */
+  .nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    padding: 28px 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--bone);
+    line-height: 1;
+  }
+  .nav-logo .small {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 0.32em;
+    font-family: var(--sans);
+    font-weight: 400;
+    margin-top: 6px;
+    opacity: 0.75;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+    flex-wrap: wrap;
+  }
+  .nav-links a {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--bone);
+    opacity: 0.85;
+    transition: opacity .2s;
+  }
+  .nav-links a:hover { opacity: 1; }
+
+  .nav-cta {
+    border: 1px solid rgba(245,240,232,0.6);
+    color: var(--bone);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 12px 22px;
+    transition: background .2s, color .2s;
+  }
+  .nav-cta:hover { background: var(--bone); color: var(--olive); }
+
+  /* ===========================
+     HERO
+     =========================== */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    background: var(--olive);
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  .hero-img-fallback {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 70%, rgba(200,163,104,0.18), transparent 50%),
+      radial-gradient(ellipse at 80% 30%, rgba(74,90,58,0.4), transparent 60%),
+      linear-gradient(180deg, #1c2418 0%, #2f3a26 60%, #3a4a30 100%);
+    z-index: 1;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(28,26,22,0.55) 0%,
+      rgba(28,26,22,0.25) 30%,
+      rgba(28,26,22,0.35) 65%,
+      rgba(28,26,22,0.78) 100%
+    );
+    z-index: 2;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    padding: 0 64px 96px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: end;
+  }
+
+  .hero-headline {
+    color: var(--bone);
+  }
+
+  .hero-eyebrow {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--champagne);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 38px;
+    height: 1px;
+    background: var(--champagne);
+  }
+
+  .hero-headline h1 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(40px, 5.6vw, 84px);
+    line-height: 1.02;
+    letter-spacing: -0.01em;
+    color: var(--bone);
+    margin-bottom: 32px;
+  }
+  .hero-headline h1 em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--champagne);
+  }
+
+  .hero-headline p.lede {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: clamp(15px, 1.15vw, 18px);
+    line-height: 1.65;
+    color: rgba(245,240,232,0.85);
+    max-width: 480px;
+  }
+
+  .hero-meta {
+    color: var(--bone);
+    border-left: 1px solid rgba(245,240,232,0.25);
+    padding-left: 36px;
+    align-self: end;
+  }
+
+  .hero-meta-block {
+    margin-bottom: 28px;
+  }
+  .hero-meta-block:last-child { margin-bottom: 0; }
+
+  .hero-meta-label {
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 8px;
+  }
+  .hero-meta-value {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.3;
+  }
+  .hero-meta-value strong {
+    font-weight: 500;
+    color: var(--champagne);
+  }
+
+  .hero-cta-row {
+    display: flex;
+    gap: 16px;
+    margin-top: 36px;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--bone);
+    color: var(--olive);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 16px 28px;
+    border: 1px solid var(--bone);
+    transition: background .2s, color .2s;
+  }
+  .btn-primary:hover { background: var(--champagne); border-color: var(--champagne); color: var(--ink); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--bone);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 16px 28px;
+    border: 1px solid rgba(245,240,232,0.45);
+    transition: border-color .2s;
+  }
+  .btn-ghost:hover { border-color: var(--bone); }
+
+  .hero-scroll-mark {
+    position: absolute;
+    bottom: 28px;
+    left: 64px;
+    z-index: 3;
+    font-size: 9px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.55);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-scroll-mark::after {
+    content: '';
+    width: 60px;
+    height: 1px;
+    background: rgba(245,240,232,0.4);
+  }
+
+  /* ===========================
+     IKIGAI — filosofia
+     =========================== */
+  .section {
+    padding: 120px 64px;
+  }
+
+  .section-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--earth);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .section-eyebrow::before {
+    content: '';
+    width: 38px;
+    height: 1px;
+    background: var(--earth);
+  }
+
+  .ikigai {
+    background: var(--bone);
+    color: var(--ink);
+  }
+
+  .ikigai-grid {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 80px;
+    align-items: start;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .ikigai-headline {
+    font-family: var(--serif);
+    font-size: clamp(32px, 3.6vw, 52px);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--olive);
+  }
+  .ikigai-headline em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--earth);
+  }
+
+  .ikigai-body p {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+    max-width: 560px;
+  }
+  .ikigai-body p:last-child { margin-bottom: 0; }
+
+  .ikigai-elementos {
+    margin-top: 56px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
+    border-top: 1px solid var(--line);
+    padding-top: 36px;
+  }
+  .ikigai-elemento {
+    text-align: center;
+  }
+  .ikigai-elemento-num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--earth);
+    margin-bottom: 6px;
+  }
+  .ikigai-elemento-name {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--olive);
+    margin-bottom: 4px;
+  }
+  .ikigai-elemento-desc {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    opacity: 0.7;
+  }
+
+  /* ===========================
+     SUITES
+     =========================== */
+  .suites {
+    background: var(--bone-soft);
+    color: var(--ink);
+  }
+
+  .suites-header {
+    max-width: 1280px;
+    margin: 0 auto 64px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: end;
+  }
+
+  .suites-title {
+    font-family: var(--serif);
+    font-size: clamp(32px, 3.6vw, 52px);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--olive);
+  }
+  .suites-title em { font-style: italic; color: var(--earth); }
+
+  .suites-intro {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    max-width: 480px;
+  }
+
+  .suites-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    gap: 40px;
+  }
+
+  .suite-card {
+    background: var(--bone);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .suite-card-img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: var(--olive);
+    object-fit: cover;
+  }
+  .suite-card-meta {
+    padding: 28px 32px 32px;
+  }
+  .suite-card-num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--earth);
+    margin-bottom: 6px;
+  }
+  .suite-card-name {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--olive);
+    margin-bottom: 12px;
+  }
+  .suite-card-desc {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+  }
+  .suite-card-tags {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--earth);
+  }
+  .suite-card-tags span:not(:last-child)::after {
+    content: '·';
+    margin-left: 14px;
+    color: var(--line);
+  }
+
+  .suite-summary {
+    background: var(--olive);
+    color: var(--bone);
+    padding: 48px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .suite-summary-title {
+    font-family: var(--serif);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 1.15;
+    margin-bottom: 24px;
+  }
+  .suite-summary-title em { font-style: italic; color: var(--champagne); }
+  .suite-summary-list {
+    list-style: none;
+  }
+  .suite-summary-list li {
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(245,240,232,0.15);
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    font-size: 14px;
+  }
+  .suite-summary-list li:last-child { border-bottom: 0; }
+  .suite-summary-list .label {
+    opacity: 0.7;
+    letter-spacing: 0.04em;
+  }
+  .suite-summary-list .value {
+    font-family: var(--serif);
+    font-size: 16px;
+    color: var(--champagne);
+  }
+
+  /* ===========================
+     RESTAURANTE NIKKEI
+     =========================== */
+  .restaurant {
+    background: var(--ink);
+    color: var(--bone);
+  }
+
+  .restaurant-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 6fr 6fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .restaurant-img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
+
+  .restaurant-eyebrow {
+    color: var(--champagne);
+    margin-bottom: 24px;
+  }
+
+  .restaurant-title {
+    font-family: var(--serif);
+    font-size: clamp(36px, 4vw, 64px);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 28px;
+  }
+  .restaurant-title em { font-style: italic; color: var(--champagne); }
+
+  .restaurant-body p {
+    font-size: 16px;
+    line-height: 1.75;
+    color: rgba(245,240,232,0.78);
+    margin-bottom: 20px;
+  }
+
+  .restaurant-chef {
+    margin-top: 36px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(245,240,232,0.18);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .restaurant-chef-label {
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.55);
+  }
+  .restaurant-chef-name {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--bone);
+  }
+  .restaurant-chef-name em { font-style: italic; color: var(--champagne); }
+
+  .restaurant-hours {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .restaurant-hours-block .label {
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.5);
+    margin-bottom: 6px;
+  }
+  .restaurant-hours-block .value {
+    color: var(--bone);
+    opacity: 0.9;
+  }
+
+  /* ===========================
+     WELLNESS + MONTGÓ
+     =========================== */
+  .wellness {
+    background: var(--bone);
+    color: var(--ink);
+  }
+
+  .wellness-header {
+    max-width: 1280px;
+    margin: 0 auto 56px;
+    text-align: center;
+  }
+  .wellness-header .section-eyebrow {
+    justify-content: center;
+  }
+  .wellness-header .section-eyebrow::before {
+    background: var(--earth);
+  }
+  .wellness-header .section-eyebrow {
+    color: var(--earth);
+  }
+
+  .wellness-title {
+    font-family: var(--serif);
+    font-size: clamp(32px, 3.6vw, 52px);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--olive);
+    max-width: 720px;
+    margin: 0 auto 16px;
+  }
+  .wellness-title em { font-style: italic; color: var(--earth); }
+  .wellness-subtitle {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .wellness-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+  .wellness-card {
+    border-top: 1px solid var(--line);
+    padding-top: 28px;
+  }
+  .wellness-card-img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    margin-bottom: 24px;
+  }
+  .wellness-card-num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--earth);
+    margin-bottom: 6px;
+  }
+  .wellness-card-title {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--olive);
+    margin-bottom: 10px;
+  }
+  .wellness-card-body {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+  }
+
+  /* ===========================
+     SOCIAL PROOF
+     =========================== */
+  .proof {
+    background: var(--olive);
+    color: var(--bone);
+  }
+
+  .proof-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .proof-eyebrow {
+    color: var(--champagne);
+  }
+  .proof-eyebrow::before { background: var(--champagne); }
+
+  .proof-title {
+    font-family: var(--serif);
+    font-size: clamp(28px, 3.2vw, 44px);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--bone);
+  }
+  .proof-title em { font-style: italic; color: var(--champagne); }
+
+  .proof-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .proof-stat {
+    border: 1px solid rgba(245,240,232,0.18);
+    padding: 28px 24px;
+  }
+  .proof-stat-num {
+    font-family: var(--serif);
+    font-size: clamp(40px, 4vw, 56px);
+    font-weight: 400;
+    line-height: 1;
+    color: var(--champagne);
+    margin-bottom: 12px;
+  }
+  .proof-stat-label {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.7);
+    line-height: 1.5;
+  }
+  .proof-source {
+    margin-top: 32px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.5);
+    grid-column: 1 / -1;
+  }
+
+  /* ===========================
+     CONTACTO + RESERVA
+     =========================== */
+  .contact {
+    background: var(--bone-soft);
+    color: var(--ink);
+  }
+
+  .contact-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 6fr 6fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .contact-title {
+    font-family: var(--serif);
+    font-size: clamp(36px, 4vw, 60px);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--olive);
+    margin-bottom: 28px;
+  }
+  .contact-title em { font-style: italic; color: var(--earth); }
+
+  .contact-lede {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin-bottom: 36px;
+    max-width: 480px;
+  }
+
+  .contact-direct {
+    display: inline-block;
+    background: var(--olive);
+    color: var(--bone);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 18px 32px;
+    transition: background .2s;
+  }
+  .contact-direct:hover { background: var(--ink); }
+
+  .contact-info {
+    background: var(--bone);
+    padding: 40px 36px;
+    border: 1px solid var(--line);
+  }
+  .contact-info-block {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .contact-info-block:first-child { padding-top: 0; }
+  .contact-info-block:last-child { border-bottom: 0; padding-bottom: 0; }
+  .contact-info-label {
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--earth);
+    margin-bottom: 6px;
+  }
+  .contact-info-value {
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--olive);
+    line-height: 1.4;
+  }
+  .contact-info-value a:hover { color: var(--earth); }
+
+  /* ===========================
+     FOOTER
+     =========================== */
+  .footer {
+    background: var(--ink);
+    color: var(--bone);
+    padding: 64px 64px 36px;
+  }
+
+  .footer-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 4fr 4fr 4fr;
+    gap: 56px;
+    margin-bottom: 48px;
+  }
+
+  .footer-brand .name {
+    font-family: var(--serif);
+    font-size: 22px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .footer-brand .tag {
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.55);
+    margin-bottom: 24px;
+  }
+  .footer-brand p {
+    font-size: 13px;
+    line-height: 1.7;
+    color: rgba(245,240,232,0.65);
+    max-width: 280px;
+  }
+
+  .footer-col h4 {
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--champagne);
+    margin-bottom: 18px;
+    font-weight: 500;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li {
+    font-size: 14px;
+    line-height: 1.85;
+    color: rgba(245,240,232,0.7);
+  }
+  .footer-col li a:hover { color: var(--bone); }
+
+  .footer-bar {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-top: 28px;
+    border-top: 1px solid rgba(245,240,232,0.12);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.5);
+  }
+  .footer-bar .kenaz {
+    color: rgba(245,240,232,0.6);
+  }
+
+  .footer-disclaimer {
+    max-width: 1280px;
+    margin: 16px auto 0;
+    font-size: 10px;
+    color: rgba(245,240,232,0.35);
+    letter-spacing: 0.04em;
+    text-transform: none;
+    line-height: 1.6;
+    font-family: var(--sans);
+  }
+
+  /* ===========================
+     RESPONSIVE — TABLET
+     =========================== */
+  @media (max-width: 1024px) {
+    .nav { padding: 24px 40px; }
+    .section { padding: 96px 40px; }
+    .hero-content { padding: 0 40px 80px; gap: 40px; }
+    .hero-scroll-mark { left: 40px; }
+    .footer { padding: 56px 40px 32px; }
+
+    .ikigai-grid,
+    .suites-header,
+    .suites-grid,
+    .restaurant-grid,
+    .proof-grid,
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .wellness-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .restaurant-img {
+      max-height: 540px;
+      aspect-ratio: 16 / 10;
+    }
+  }
+
+  /* ===========================
+     RESPONSIVE — MOBILE
+     =========================== */
+  @media (max-width: 768px) {
+    body { font-size: 15px; }
+
+    .nav {
+      padding: 20px 24px;
+      align-items: center;
+      gap: 12px;
+    }
+    .nav-links { display: none; }
+    .nav-cta {
+      padding: 10px 16px;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+    }
+    .nav-logo { font-size: 18px; }
+    .nav-logo .small { font-size: 8px; }
+
+    .hero {
+      min-height: 92vh;
+    }
+    .hero-content {
+      padding: 0 24px 64px;
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+    .hero-headline h1 {
+      font-size: clamp(34px, 9vw, 48px);
+    }
+    .hero-headline p.lede { font-size: 14px; }
+    .hero-eyebrow { margin-bottom: 20px; font-size: 10px; }
+    .hero-meta {
+      border-left: 0;
+      border-top: 1px solid rgba(245,240,232,0.2);
+      padding-left: 0;
+      padding-top: 28px;
+    }
+    .hero-meta-block { margin-bottom: 20px; }
+    .hero-meta-value { font-size: 18px; }
+    .hero-cta-row { margin-top: 24px; gap: 12px; }
+    .btn-primary, .btn-ghost {
+      padding: 14px 20px;
+      font-size: 10px;
+      flex: 1 0 auto;
+      text-align: center;
+    }
+    .hero-scroll-mark { display: none; }
+
+    .section { padding: 72px 24px; }
+
+    .ikigai-grid { gap: 32px; }
+    .ikigai-headline { font-size: clamp(28px, 7vw, 36px); }
+    .ikigai-body p { font-size: 15px; }
+    .ikigai-elementos {
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      margin-top: 36px;
+      padding-top: 24px;
+    }
+    .ikigai-elemento-name { font-size: 16px; }
+    .ikigai-elemento-num { font-size: 11px; }
+    .ikigai-elemento-desc { font-size: 9px; letter-spacing: 0.14em; }
+
+    .suites-header { gap: 24px; margin-bottom: 40px; }
+    .suites-title { font-size: clamp(28px, 7vw, 36px); }
+    .suites-grid { gap: 24px; }
+    .suite-card-meta { padding: 22px 24px 26px; }
+    .suite-card-name { font-size: 24px; }
+    .suite-summary { padding: 36px 28px; }
+    .suite-summary-title { font-size: 26px; }
+
+    .restaurant-grid { gap: 32px; }
+    .restaurant-title { font-size: clamp(32px, 8vw, 44px); }
+    .restaurant-body p { font-size: 15px; }
+    .restaurant-chef-name { font-size: 20px; }
+    .restaurant-hours { grid-template-columns: 1fr; gap: 14px; }
+
+    .wellness-header { margin-bottom: 40px; }
+    .wellness-title { font-size: clamp(28px, 7vw, 36px); }
+    .wellness-grid { grid-template-columns: 1fr; gap: 32px; }
+    .wellness-card { padding-top: 24px; }
+    .wellness-card-title { font-size: 22px; }
+
+    .proof-grid { gap: 32px; }
+    .proof-title { font-size: clamp(26px, 7vw, 34px); }
+    .proof-stats { grid-template-columns: 1fr 1fr; gap: 14px; }
+    .proof-stat { padding: 22px 18px; }
+    .proof-stat-num { font-size: clamp(34px, 9vw, 44px); }
+    .proof-stat-label { font-size: 10px; }
+
+    .contact-grid { gap: 32px; }
+    .contact-title { font-size: clamp(30px, 8vw, 42px); }
+    .contact-lede { font-size: 15px; }
+    .contact-info { padding: 28px 24px; }
+
+    .footer { padding: 48px 24px 28px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; margin-bottom: 32px; }
+    .footer-brand p { max-width: none; }
+    .footer-bar {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 10px;
+    }
+    .footer-disclaimer { font-size: 10px; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-headline h1 { font-size: clamp(30px, 9.5vw, 40px); line-height: 1.05; }
+    .hero-headline p.lede { font-size: 13px; }
+    .hero-meta-value { font-size: 16px; }
+    .nav { padding: 16px 20px; }
+    .nav-logo { font-size: 16px; }
+    .section { padding: 56px 20px; }
+    .hero-content { padding: 0 20px 48px; }
+    .footer { padding: 36px 20px 24px; }
+    .ikigai-elementos { gap: 4px; }
+    .ikigai-elemento-name { font-size: 13px; }
+    .ikigai-elemento-desc { font-size: 8px; letter-spacing: 0.1em; }
+    .btn-primary, .btn-ghost { padding: 13px 16px; font-size: 10px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ============== NAV ============== -->
+  <nav class="nav" aria-label="Principal">
+    <a href="#" class="nav-logo">
+      Mi AlmaZara
+      <span class="small">Hotel Boutique · Jávea</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#suites">Suites</a></li>
+      <li><a href="#restaurante">Restaurante</a></li>
+      <li><a href="#wellness">Wellness</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a href="#contacto" class="nav-cta">Reservar directo</a>
+  </nav>
+
+  <!-- ============== HERO ============== -->
+  <section class="hero">
+    <img
+      src="img/hero-suite-montgo.jpg"
+      alt="Imagen referencial · suite mediterránea con chimenea y vistas"
+      class="hero-img"
+      onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+    />
+    <div class="hero-img-fallback" style="display:none;"></div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <div class="hero-headline">
+        <div class="hero-eyebrow">Hotel Boutique · Adults Only · Jávea</div>
+        <h1>
+          Una década<br />
+          construyendo <em>Ikigai</em>.<br />
+          Ahora se reserva<br />directo.
+        </h1>
+        <p class="lede">
+          Catorce suites con chimenea, restaurante Nikkei y vistas al Montgó.
+          Diseñado durante diez años con cinco elementos —fuego, agua, tierra,
+          viento, madera— en clave de minimalismo con alma.
+        </p>
+      </div>
+
+      <aside class="hero-meta">
+        <div class="hero-meta-block">
+          <div class="hero-meta-label">Reconocimiento</div>
+          <div class="hero-meta-value">
+            <strong>9,5 / 10</strong> en Booking<br />
+            #2 de 14 hoteles · 252 reseñas
+          </div>
+        </div>
+        <div class="hero-meta-block">
+          <div class="hero-meta-label">Ubicación</div>
+          <div class="hero-meta-value">
+            Ctra. de Jesús Pobre, 161<br />
+            Jávea · Costa Blanca
+          </div>
+        </div>
+        <div class="hero-cta-row">
+          <a href="#contacto" class="btn-primary">Consultar disponibilidad</a>
+          <a href="#suites" class="btn-ghost">Ver suites</a>
+        </div>
+      </aside>
+    </div>
+
+    <div class="hero-scroll-mark">Desciende</div>
+  </section>
+
+  <!-- ============== IKIGAI ============== -->
+  <section class="section ikigai" id="filosofia">
+    <div class="ikigai-grid">
+      <div>
+        <div class="section-eyebrow">La filosofía</div>
+        <h2 class="ikigai-headline">
+          Ikigai es la razón<br />
+          por la que <em>vale la pena</em><br />
+          despertarse.
+        </h2>
+      </div>
+      <div class="ikigai-body">
+        <p>
+          Mi AlmaZara se construyó durante una década antes de abrir sus
+          puertas. No es un hotel que se reformó: es un proyecto de diseño
+          completo, levantado sobre una antigua almazara de Jesús Pobre con
+          el propósito explícito de encarnar la filosofía japonesa del Ikigai.
+        </p>
+        <p>
+          Calma sobre velocidad. Materiales nobles sobre lujo ostentoso.
+          Diseño integrado con la naturaleza, no impuesto sobre ella.
+          Madera, piedra, algodón y esparto en cada superficie. El Montgó
+          como horizonte permanente.
+        </p>
+      </div>
+    </div>
+
+    <div class="ikigai-elementos" aria-label="Cinco elementos">
+      <div class="ikigai-elemento">
+        <div class="ikigai-elemento-num">i.</div>
+        <div class="ikigai-elemento-name">Fuego</div>
+        <div class="ikigai-elemento-desc">Chimenea</div>
+      </div>
+      <div class="ikigai-elemento">
+        <div class="ikigai-elemento-num">ii.</div>
+        <div class="ikigai-elemento-name">Agua</div>
+        <div class="ikigai-elemento-desc">Piscina</div>
+      </div>
+      <div class="ikigai-elemento">
+        <div class="ikigai-elemento-num">iii.</div>
+        <div class="ikigai-elemento-name">Tierra</div>
+        <div class="ikigai-elemento-desc">Olivar</div>
+      </div>
+      <div class="ikigai-elemento">
+        <div class="ikigai-elemento-num">iv.</div>
+        <div class="ikigai-elemento-name">Viento</div>
+        <div class="ikigai-elemento-desc">Montgó</div>
+      </div>
+      <div class="ikigai-elemento">
+        <div class="ikigai-elemento-num">v.</div>
+        <div class="ikigai-elemento-name">Madera</div>
+        <div class="ikigai-elemento-desc">Esparto</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== SUITES ============== -->
+  <section class="section suites" id="suites">
+    <div class="suites-header">
+      <h2 class="suites-title">
+        Catorce suites.<br />
+        Catorce <em>identidades</em>.
+      </h2>
+      <p class="suites-intro">
+        Cada suite tiene chimenea propia, terraza privada y un lenguaje
+        material distinto. Camas king-size, baños en suite y vistas al
+        olivar o al Montgó. No son habitaciones: son retiros.
+      </p>
+    </div>
+
+    <div class="suites-grid">
+      <article class="suite-card">
+        <img
+          src="img/suite-fireplace.jpg"
+          alt="Imagen referencial · interior de suite boutique con chimenea"
+          class="suite-card-img"
+          onerror="this.style.background='linear-gradient(135deg, #2f3a26, #4a5a3a)'; this.alt='';"
+        />
+        <div class="suite-card-meta">
+          <div class="suite-card-num">Suite del elemento</div>
+          <h3 class="suite-card-name">Fuego, piedra y madera</h3>
+          <p class="suite-card-desc">
+            Chimenea de leña como punto focal, paredes de piedra natural,
+            vigas de madera vista. Cama king-size en lino crudo, terraza
+            privada con vistas al olivar centenario.
+          </p>
+          <div class="suite-card-tags">
+            <span>Chimenea</span>
+            <span>Terraza privada</span>
+            <span>Vista olivar</span>
+          </div>
+        </div>
+      </article>
+
+      <aside class="suite-summary">
+        <h3 class="suite-summary-title">
+          Lo que <em>nunca</em><br />
+          falta en una suite.
+        </h3>
+        <ul class="suite-summary-list">
+          <li><span class="label">Suites totales</span><span class="value">14</span></li>
+          <li><span class="label">Cama</span><span class="value">King-size</span></li>
+          <li><span class="label">Chimenea</span><span class="value">En todas</span></li>
+          <li><span class="label">Terraza</span><span class="value">Privada</span></li>
+          <li><span class="label">Adults only</span><span class="value">Sí</span></li>
+          <li><span class="label">Comfort Booking</span><span class="value">9,9 / 10</span></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============== RESTAURANTE NIKKEI ============== -->
+  <section class="section restaurant" id="restaurante">
+    <div class="restaurant-grid">
+      <img
+        src="img/nikkei-plate.jpg"
+        alt="Imagen referencial · plato de cocina Nikkei contemporánea"
+        class="restaurant-img"
+        onerror="this.style.background='linear-gradient(135deg, #1c1a16, #3a3530)'; this.alt='';"
+      />
+      <div>
+        <div class="section-eyebrow restaurant-eyebrow">El restaurante</div>
+        <h2 class="restaurant-title">
+          Cocina <em>Nikkei</em>.<br />
+          Japón y Perú,<br />
+          en Jávea.
+        </h2>
+        <div class="restaurant-body">
+          <p>
+            Fusión japonesa-peruana servida en un comedor abierto al jardín.
+            Producto de proximidad mediterráneo tratado con la precisión
+            del corte japonés y la intensidad aromática de la tradición
+            peruana.
+          </p>
+          <p>
+            El restaurante es accesible también para no huéspedes. Cocina
+            como ritual, no como servicio.
+          </p>
+        </div>
+
+        <div class="restaurant-chef">
+          <div class="restaurant-chef-label">Dirección de cocina</div>
+          <div class="restaurant-chef-name">Chef <em>Edu Acuña</em></div>
+        </div>
+
+        <div class="restaurant-hours">
+          <div class="restaurant-hours-block">
+            <div class="label">Cenas</div>
+            <div class="value">Martes a sábado</div>
+          </div>
+          <div class="restaurant-hours-block">
+            <div class="label">Almuerzos</div>
+            <div class="value">Fines de semana</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== WELLNESS ============== -->
+  <section class="section wellness" id="wellness">
+    <header class="wellness-header">
+      <div class="section-eyebrow">Wellness integrado</div>
+      <h2 class="wellness-title">
+        Práctica, no <em>amenity</em>.
+      </h2>
+      <p class="wellness-subtitle">
+        Yoga, meditación guiada, masajes, sesiones de gong, senderismo
+        en el Parque Natural del Montgó. El descanso ocurre, no se
+        ofrece.
+      </p>
+    </header>
+
+    <div class="wellness-grid">
+      <article class="wellness-card">
+        <img
+          src="img/wellness-yoga.jpg"
+          alt="Imagen referencial · plataforma de yoga al aire libre"
+          class="wellness-card-img"
+          onerror="this.style.background='linear-gradient(135deg, #ede5d6, #c8a368)'; this.alt='';"
+        />
+        <div class="wellness-card-num">i.</div>
+        <h3 class="wellness-card-title">Yoga y meditación</h3>
+        <p class="wellness-card-body">
+          Sesiones diarias guiadas en plataforma exterior bajo los olivos.
+          Práctica abierta a todos los niveles, incluyendo meditación
+          silenciosa al amanecer.
+        </p>
+      </article>
+
+      <article class="wellness-card">
+        <img
+          src="img/olive-grove-pool.jpg"
+          alt="Imagen referencial · piscina rodeada de olivos centenarios"
+          class="wellness-card-img"
+          onerror="this.style.background='linear-gradient(135deg, #ede5d6, #4a5a3a)'; this.alt='';"
+        />
+        <div class="wellness-card-num">ii.</div>
+        <h3 class="wellness-card-title">Sesiones de gong</h3>
+        <p class="wellness-card-body">
+          Baños sonoros con cuencos tibetanos y gong programados durante
+          la estancia. Masajes y tratamientos disponibles en habitación
+          o en zonas comunes.
+        </p>
+      </article>
+
+      <article class="wellness-card">
+        <img
+          src="img/olive-detail.jpg"
+          alt="Imagen referencial · aceite de oliva con olivas frescas"
+          class="wellness-card-img"
+          onerror="this.style.background='linear-gradient(135deg, #ede5d6, #8a6a48)'; this.alt='';"
+        />
+        <div class="wellness-card-num">iii.</div>
+        <h3 class="wellness-card-title">Retiros a medida</h3>
+        <p class="wellness-card-body">
+          Programas personalizados que combinan wellness, gastronomía
+          Nikkei, catas de aceite con productores locales y senderismo
+          guiado por el Montgó.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============== SOCIAL PROOF ============== -->
+  <section class="section proof">
+    <div class="proof-grid">
+      <div>
+        <div class="section-eyebrow proof-eyebrow">La operación habla</div>
+        <h2 class="proof-title">
+          La calidad ya está.<br />
+          Lo que falta es<br />
+          una <em>web propia</em><br />
+          que la cuente.
+        </h2>
+      </div>
+      <div class="proof-stats">
+        <div class="proof-stat">
+          <div class="proof-stat-num">9,5</div>
+          <div class="proof-stat-label">Puntuación Booking<br />sobre 10</div>
+        </div>
+        <div class="proof-stat">
+          <div class="proof-stat-num">252</div>
+          <div class="proof-stat-label">Reseñas<br />verificadas</div>
+        </div>
+        <div class="proof-stat">
+          <div class="proof-stat-num">#2</div>
+          <div class="proof-stat-label">De 14 hoteles<br />en Jávea</div>
+        </div>
+        <div class="proof-stat">
+          <div class="proof-stat-num">9,8</div>
+          <div class="proof-stat-label">Limpieza · personal<br />subscores</div>
+        </div>
+        <div class="proof-source">Fuente: Booking.com (Guests Choice Property)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== CONTACTO ============== -->
+  <section class="section contact" id="contacto">
+    <div class="contact-grid">
+      <div>
+        <div class="section-eyebrow">Reserva directa</div>
+        <h2 class="contact-title">
+          Habla con la<br />
+          casa, <em>no</em><br />
+          con un portal.
+        </h2>
+        <p class="contact-lede">
+          La reserva directa permite seleccionar suite por su elemento,
+          coordinar el restaurante Nikkei y diseñar el retiro a medida
+          desde la primera conversación.
+        </p>
+        <a href="mailto:hello@mialmazarahotel.com" class="contact-direct">
+          Escribir a recepción
+        </a>
+      </div>
+
+      <aside class="contact-info">
+        <div class="contact-info-block">
+          <div class="contact-info-label">Email</div>
+          <div class="contact-info-value">
+            <a href="mailto:hello@mialmazarahotel.com">hello@mialmazarahotel.com</a>
+          </div>
+        </div>
+        <div class="contact-info-block">
+          <div class="contact-info-label">Teléfono</div>
+          <div class="contact-info-value">
+            <a href="tel:+34623210413">+34 623 21 04 13</a>
+          </div>
+        </div>
+        <div class="contact-info-block">
+          <div class="contact-info-label">Dirección</div>
+          <div class="contact-info-value">
+            Ctra. de Jesús Pobre, 161<br />
+            Jávea · Alicante
+          </div>
+        </div>
+        <div class="contact-info-block">
+          <div class="contact-info-label">Instagram</div>
+          <div class="contact-info-value">
+            <a href="https://instagram.com/mialmazara_javea" target="_blank" rel="noopener">@mialmazara_javea</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============== FOOTER ============== -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="name">Mi AlmaZara</div>
+        <div class="tag">Hotel Boutique · Jávea</div>
+        <p>
+          Catorce suites con chimenea, restaurante Nikkei y filosofía
+          Ikigai. Adults only. Una década de diseño antes de abrir.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Visitar</h4>
+        <ul>
+          <li><a href="#suites">Las 14 suites</a></li>
+          <li><a href="#restaurante">Restaurante Nikkei</a></li>
+          <li><a href="#wellness">Wellness y retiros</a></li>
+          <li><a href="#filosofia">Filosofía Ikigai</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Reserva directa</h4>
+        <ul>
+          <li><a href="mailto:hello@mialmazarahotel.com">hello@mialmazarahotel.com</a></li>
+          <li><a href="tel:+34623210413">+34 623 21 04 13</a></li>
+          <li>Ctra. de Jesús Pobre, 161</li>
+          <li>03730 Jávea, Alicante</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bar">
+      <span>© Hotel Boutique Mi AlmaZara · Jávea</span>
+      <span class="kenaz">Diseño propuesto por Kenaz Studio</span>
+    </div>
+    <p class="footer-disclaimer">
+      Las imágenes de este mockup son referenciales. La sesión fotográfica
+      profesional del hotel forma parte del servicio Kenaz.
+    </p>
+  </footer>
+
+</body>
+</html>

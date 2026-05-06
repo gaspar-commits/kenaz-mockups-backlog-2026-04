@@ -1,0 +1,1558 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Clínica Castelblanque — Medicina estética en Dénia · Dra. Laura Castelblanque Moreno</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --cream: #f6f0e6;
+        --cream-2: #ede5d6;
+        --ivory: #fbf7ee;
+        --champagne: #c4a572;
+        --champagne-soft: #e2cfa6;
+        --champagne-deep: #9b7f4f;
+        --sage: #8a9a82;
+        --sage-deep: #5e6c58;
+        --mauve: #a89099;
+        --mauve-deep: #75606b;
+        --ink: #2a241f;
+        --ink-soft: #4d4439;
+        --line: rgba(42, 36, 31, 0.12);
+        --line-soft: rgba(42, 36, 31, 0.06);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: var(--ivory);
+        color: var(--ink);
+        font-family: "Inter", -apple-system, sans-serif;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .display {
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-weight: 400;
+        letter-spacing: -0.01em;
+      }
+
+      .eyebrow {
+        font-family: "Inter", sans-serif;
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--champagne-deep);
+      }
+
+      .container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 48px;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      /* ===== TOP BAR ===== */
+      .topbar {
+        background: var(--ink);
+        color: var(--cream);
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        padding: 9px 0;
+      }
+      .topbar .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .topbar .langs {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .topbar .langs a {
+        opacity: 0.55;
+        transition: opacity 0.2s;
+      }
+      .topbar .langs a.active {
+        opacity: 1;
+        color: var(--champagne-soft);
+      }
+      .topbar .langs a.proposed {
+        opacity: 0.45;
+        border-bottom: 1px dashed rgba(226, 207, 166, 0.5);
+        padding-bottom: 1px;
+      }
+      .topbar .langs .label-prop {
+        font-size: 9px;
+        letter-spacing: 0.18em;
+        opacity: 0.5;
+        text-transform: uppercase;
+        margin-left: 6px;
+        color: var(--champagne-soft);
+      }
+      .topbar .langs .sep {
+        opacity: 0.25;
+        margin: 0 2px;
+      }
+      .topbar .info {
+        display: flex;
+        gap: 22px;
+        opacity: 0.85;
+      }
+      .topbar .info span::before {
+        content: "·";
+        margin-right: 8px;
+        opacity: 0.4;
+      }
+      .topbar .info span:first-child::before {
+        content: "";
+        margin: 0;
+      }
+
+      /* ===== HEADER ===== */
+      header {
+        background: var(--ivory);
+        border-bottom: 1px solid var(--line-soft);
+        position: relative;
+        z-index: 10;
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 24px 0;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .brand-mark {
+        width: 44px;
+        height: 44px;
+        border: 1px solid var(--champagne);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 22px;
+        font-style: italic;
+        color: var(--champagne-deep);
+        font-weight: 500;
+      }
+      .brand .word {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.05;
+      }
+      .brand .word .name {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 24px;
+        font-weight: 500;
+        letter-spacing: 0.01em;
+        color: var(--ink);
+      }
+      .brand .word .tag {
+        font-size: 10px;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--champagne-deep);
+        margin-top: 3px;
+      }
+      nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 30px;
+      }
+      nav ul a {
+        font-size: 13px;
+        letter-spacing: 0.04em;
+        color: var(--ink-soft);
+        font-weight: 400;
+        transition: color 0.2s;
+      }
+      nav ul a:hover {
+        color: var(--champagne-deep);
+      }
+      .cta-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 22px;
+        background: var(--ink);
+        color: var(--cream);
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-weight: 500;
+        border-radius: 999px;
+        transition: background 0.2s;
+      }
+      .cta-pill:hover {
+        background: var(--champagne-deep);
+      }
+      .cta-pill::after {
+        content: "→";
+        font-size: 14px;
+      }
+
+      /* ===== HERO ===== */
+      .hero {
+        background: var(--ivory);
+        padding: 64px 0 88px;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 1px;
+        height: 80px;
+        background: var(--champagne-soft);
+        opacity: 0.6;
+      }
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.05fr 1fr;
+        gap: 64px;
+        align-items: center;
+      }
+      .hero-copy .eyebrow {
+        margin-bottom: 26px;
+      }
+      .hero h1 {
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 400;
+        font-size: clamp(40px, 5.4vw, 80px);
+        line-height: 1.02;
+        letter-spacing: -0.018em;
+        color: var(--ink);
+        margin: 0 0 28px;
+      }
+      .hero h1 em {
+        font-style: italic;
+        color: var(--champagne-deep);
+        font-weight: 400;
+      }
+      .hero .lead {
+        font-size: 17px;
+        line-height: 1.7;
+        color: var(--ink-soft);
+        max-width: 480px;
+        margin: 0 0 36px;
+        font-weight: 300;
+      }
+      .hero-actions {
+        display: flex;
+        gap: 18px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .btn-ghost {
+        font-size: 13px;
+        letter-spacing: 0.06em;
+        color: var(--ink-soft);
+        border-bottom: 1px solid var(--ink);
+        padding-bottom: 4px;
+        transition: color 0.2s, border-color 0.2s;
+      }
+      .btn-ghost:hover {
+        color: var(--champagne-deep);
+        border-color: var(--champagne-deep);
+      }
+
+      .hero-meta {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin-top: 56px;
+        padding-top: 32px;
+        border-top: 1px solid var(--line-soft);
+      }
+      .hero-meta .item .num {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 30px;
+        line-height: 1;
+        color: var(--ink);
+        font-weight: 400;
+      }
+      .hero-meta .item .num em {
+        font-style: italic;
+        color: var(--champagne-deep);
+      }
+      .hero-meta .item .lbl {
+        font-size: 10.5px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--champagne-deep);
+        margin-top: 8px;
+      }
+
+      .hero-visual {
+        position: relative;
+      }
+      .hero-visual .frame {
+        position: relative;
+        aspect-ratio: 4 / 5;
+        overflow: hidden;
+        background: var(--cream-2);
+      }
+      .hero-visual .frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .hero-visual .badge {
+        position: absolute;
+        top: 24px;
+        left: 24px;
+        background: rgba(251, 247, 238, 0.94);
+        backdrop-filter: blur(6px);
+        padding: 14px 18px;
+        border-left: 2px solid var(--champagne);
+      }
+      .hero-visual .badge .k {
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--champagne-deep);
+      }
+      .hero-visual .badge .v {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 18px;
+        color: var(--ink);
+        margin-top: 4px;
+        line-height: 1.2;
+        font-style: italic;
+      }
+      .hero-visual .caption {
+        position: absolute;
+        bottom: 24px;
+        right: 24px;
+        background: var(--ink);
+        color: var(--cream);
+        padding: 14px 20px;
+        max-width: 240px;
+      }
+      .hero-visual .caption .k {
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        opacity: 0.65;
+        color: var(--champagne-soft);
+      }
+      .hero-visual .caption .v {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 16px;
+        margin-top: 4px;
+        line-height: 1.3;
+      }
+
+      /* ===== AUTORIDAD / DOCTORA ===== */
+      .authority {
+        background: var(--cream);
+        padding: 110px 0;
+      }
+      .authority-grid {
+        display: grid;
+        grid-template-columns: 0.95fr 1.05fr;
+        gap: 80px;
+        align-items: center;
+      }
+      .authority h2 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(34px, 3.8vw, 56px);
+        font-weight: 400;
+        line-height: 1.06;
+        letter-spacing: -0.012em;
+        margin: 16px 0 24px;
+        color: var(--ink);
+      }
+      .authority h2 em {
+        font-style: italic;
+        color: var(--champagne-deep);
+      }
+      .authority-text p {
+        font-size: 16px;
+        line-height: 1.75;
+        color: var(--ink-soft);
+        margin: 0 0 18px;
+      }
+      .authority-text p:first-of-type::first-letter {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 56px;
+        float: left;
+        line-height: 0.9;
+        padding: 6px 12px 0 0;
+        color: var(--champagne-deep);
+        font-style: italic;
+      }
+      .credentials {
+        margin-top: 32px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px 28px;
+      }
+      .credentials .cred {
+        padding: 14px 0;
+        border-top: 1px solid var(--line);
+      }
+      .credentials .cred .k {
+        font-size: 10.5px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--champagne-deep);
+      }
+      .credentials .cred .v {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 18px;
+        color: var(--ink);
+        margin-top: 6px;
+        line-height: 1.25;
+      }
+      .authority-visual {
+        position: relative;
+        aspect-ratio: 4 / 5;
+        overflow: hidden;
+      }
+      .authority-visual img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .authority-visual::after {
+        content: "Imagen referencial · Bodegón editorial";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 16px 22px;
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--champagne-soft);
+        background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.55));
+      }
+
+      /* ===== TREATMENTS ===== */
+      .treatments {
+        background: var(--ivory);
+        padding: 110px 0;
+      }
+      .treatments-head {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 64px;
+        align-items: end;
+        margin-bottom: 56px;
+      }
+      .treatments-head h2 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(34px, 3.6vw, 52px);
+        font-weight: 400;
+        line-height: 1.08;
+        margin: 14px 0 0;
+        letter-spacing: -0.01em;
+      }
+      .treatments-head h2 em {
+        font-style: italic;
+        color: var(--champagne-deep);
+      }
+      .treatments-head p {
+        font-size: 15px;
+        line-height: 1.7;
+        color: var(--ink-soft);
+        margin: 0;
+      }
+      .treatments-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: var(--line);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+      .treatments-grid .item {
+        background: var(--ivory);
+        padding: 36px 28px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        min-height: 220px;
+      }
+      .treatments-grid .num {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 14px;
+        font-style: italic;
+        color: var(--champagne);
+        letter-spacing: 0.08em;
+      }
+      .treatments-grid h3 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 25px;
+        font-weight: 400;
+        line-height: 1.18;
+        margin: 0;
+        color: var(--ink);
+      }
+      .treatments-grid p {
+        font-size: 14px;
+        line-height: 1.6;
+        color: var(--ink-soft);
+        margin: 0;
+        font-weight: 300;
+      }
+      .treatments-grid .arrow {
+        margin-top: auto;
+        font-size: 11px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--champagne-deep);
+      }
+
+      /* ===== MULTILINGUE ===== */
+      .languages {
+        background: var(--ink);
+        color: var(--cream);
+        padding: 110px 0;
+      }
+      .languages .eyebrow {
+        color: var(--champagne-soft);
+      }
+      .languages-head {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 64px;
+        align-items: end;
+        margin-bottom: 60px;
+      }
+      .languages h2 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(34px, 3.6vw, 52px);
+        font-weight: 400;
+        line-height: 1.08;
+        margin: 14px 0 0;
+        letter-spacing: -0.01em;
+      }
+      .languages h2 em {
+        font-style: italic;
+        color: var(--champagne-soft);
+      }
+      .languages-head p {
+        font-size: 15px;
+        line-height: 1.7;
+        color: rgba(246, 240, 230, 0.72);
+        margin: 0;
+        font-weight: 300;
+      }
+      .lang-grid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 1px;
+        background: rgba(246, 240, 230, 0.1);
+        border-top: 1px solid rgba(246, 240, 230, 0.1);
+        border-bottom: 1px solid rgba(246, 240, 230, 0.1);
+      }
+      .lang-grid .lang {
+        background: var(--ink);
+        padding: 36px 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        min-height: 200px;
+      }
+      .lang-grid .lang.proposed {
+        background: rgba(246, 240, 230, 0.025);
+      }
+      .lang-grid .lang .code {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 36px;
+        font-weight: 400;
+        line-height: 1;
+        color: var(--cream);
+        letter-spacing: 0.02em;
+      }
+      .lang-grid .lang.proposed .code {
+        color: rgba(246, 240, 230, 0.55);
+        font-style: italic;
+      }
+      .lang-grid .lang .name {
+        font-size: 13px;
+        letter-spacing: 0.04em;
+        color: rgba(246, 240, 230, 0.75);
+      }
+      .lang-grid .lang.proposed .name {
+        color: rgba(246, 240, 230, 0.42);
+      }
+      .lang-grid .lang .status {
+        margin-top: auto;
+        font-size: 9.5px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        padding-top: 12px;
+        border-top: 1px solid rgba(246, 240, 230, 0.12);
+      }
+      .lang-grid .lang .status.activo {
+        color: var(--champagne-soft);
+      }
+      .lang-grid .lang.proposed .status {
+        color: rgba(246, 240, 230, 0.4);
+        border-top: 1px dashed rgba(246, 240, 230, 0.18);
+      }
+      .lang-foot {
+        margin-top: 32px;
+        font-size: 12px;
+        color: rgba(246, 240, 230, 0.5);
+        font-style: italic;
+        line-height: 1.6;
+      }
+
+      /* ===== BOOKING ===== */
+      .booking {
+        background: var(--cream);
+        padding: 110px 0;
+      }
+      .booking-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 56px;
+        align-items: stretch;
+      }
+      .booking .visual {
+        aspect-ratio: 4 / 5;
+        overflow: hidden;
+        position: relative;
+      }
+      .booking .visual img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .booking .visual::after {
+        content: "Imagen referencial · Sala de tratamiento";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 16px 22px;
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--champagne-soft);
+        background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.55));
+      }
+      .booking .copy {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 24px 0;
+      }
+      .booking h2 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(32px, 3.4vw, 48px);
+        font-weight: 400;
+        line-height: 1.1;
+        margin: 14px 0 24px;
+        color: var(--ink);
+      }
+      .booking h2 em {
+        font-style: italic;
+        color: var(--champagne-deep);
+      }
+      .booking p {
+        font-size: 16px;
+        line-height: 1.7;
+        color: var(--ink-soft);
+        margin: 0 0 16px;
+      }
+      .booking-steps {
+        margin-top: 28px;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+      .booking-steps .step {
+        display: grid;
+        grid-template-columns: 32px 1fr;
+        gap: 16px;
+        padding: 14px 0;
+        border-top: 1px solid var(--line);
+      }
+      .booking-steps .step:last-child {
+        border-bottom: 1px solid var(--line);
+      }
+      .booking-steps .step .n {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 22px;
+        font-style: italic;
+        color: var(--champagne-deep);
+        line-height: 1;
+        padding-top: 2px;
+      }
+      .booking-steps .step .label {
+        font-size: 14px;
+        line-height: 1.55;
+        color: var(--ink);
+      }
+      .booking-steps .step .label small {
+        display: block;
+        font-size: 12px;
+        color: var(--ink-soft);
+        margin-top: 3px;
+        font-weight: 300;
+      }
+
+      /* ===== CONTACT ===== */
+      .contact {
+        background: var(--ivory);
+        padding: 110px 0 90px;
+        border-top: 1px solid var(--line-soft);
+      }
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 64px;
+        align-items: start;
+      }
+      .contact h2 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(34px, 3.6vw, 52px);
+        font-weight: 400;
+        line-height: 1.1;
+        margin: 14px 0 22px;
+      }
+      .contact h2 em {
+        font-style: italic;
+        color: var(--champagne-deep);
+      }
+      .contact p {
+        font-size: 15px;
+        line-height: 1.7;
+        color: var(--ink-soft);
+        margin: 0 0 28px;
+      }
+      .contact-info {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px 32px;
+        margin-top: 28px;
+      }
+      .contact-info .block .k {
+        font-size: 10.5px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--champagne-deep);
+        margin-bottom: 8px;
+      }
+      .contact-info .block .v {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 19px;
+        color: var(--ink);
+        line-height: 1.3;
+      }
+      .contact-info .block .v small {
+        display: block;
+        font-family: "Inter", sans-serif;
+        font-size: 13px;
+        font-weight: 300;
+        color: var(--ink-soft);
+        margin-top: 4px;
+      }
+      .contact-actions {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-top: 36px;
+      }
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        padding: 16px 28px;
+        background: var(--ink);
+        color: var(--cream);
+        font-size: 12px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-weight: 500;
+        border-radius: 999px;
+        transition: background 0.2s;
+      }
+      .btn-primary::after {
+        content: "→";
+      }
+      .btn-primary:hover {
+        background: var(--champagne-deep);
+      }
+      .btn-outline {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 16px 26px;
+        border: 1px solid var(--ink);
+        color: var(--ink);
+        font-size: 12px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-weight: 500;
+        border-radius: 999px;
+        transition: background 0.2s, color 0.2s;
+      }
+      .btn-outline:hover {
+        background: var(--ink);
+        color: var(--cream);
+      }
+
+      .contact-visual {
+        aspect-ratio: 4 / 5;
+        overflow: hidden;
+        background: var(--cream-2);
+        position: relative;
+      }
+      .contact-visual img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .contact-visual::after {
+        content: "Imagen referencial · Dénia";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 16px 22px;
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--champagne-soft);
+        background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.55));
+      }
+
+      /* ===== FOOTER ===== */
+      footer {
+        background: var(--ink);
+        color: var(--cream);
+        padding: 60px 0 32px;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 1fr 1fr;
+        gap: 48px;
+        margin-bottom: 48px;
+      }
+      footer .brand-block .word .name {
+        color: var(--cream);
+      }
+      footer .brand-block .word .tag {
+        color: var(--champagne-soft);
+      }
+      footer .brand-block .brand-mark {
+        border-color: var(--champagne-soft);
+        color: var(--champagne-soft);
+      }
+      footer .brand-block p {
+        font-size: 13px;
+        line-height: 1.65;
+        color: rgba(246, 240, 230, 0.6);
+        margin: 18px 0 0;
+        max-width: 320px;
+      }
+      .footer-col h4 {
+        font-size: 11px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--champagne-soft);
+        margin: 0 0 18px;
+        font-weight: 500;
+      }
+      .footer-col ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .footer-col li {
+        font-size: 13px;
+        color: rgba(246, 240, 230, 0.72);
+      }
+      .footer-note {
+        font-size: 11px;
+        line-height: 1.65;
+        letter-spacing: 0.04em;
+        color: rgba(246, 240, 230, 0.5);
+        font-style: italic;
+        margin: 0 0 20px;
+        max-width: 760px;
+      }
+      .footer-bottom {
+        border-top: 1px solid rgba(246, 240, 230, 0.12);
+        padding-top: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+      .footer-bottom .legal {
+        font-size: 11px;
+        color: rgba(246, 240, 230, 0.45);
+        letter-spacing: 0.04em;
+      }
+      .footer-bottom .kenaz {
+        font-size: 10px;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: rgba(246, 240, 230, 0.55);
+      }
+      .footer-bottom .kenaz a {
+        color: var(--champagne-soft);
+        border-bottom: 1px solid rgba(226, 207, 166, 0.3);
+        padding-bottom: 1px;
+      }
+
+      /* ===== MOBILE ===== */
+      @media (max-width: 900px) {
+        .container {
+          padding: 0 22px;
+        }
+        .topbar {
+          padding: 8px 0;
+          font-size: 10.5px;
+        }
+        .topbar .row {
+          gap: 10px;
+          justify-content: center;
+        }
+        .topbar .info {
+          gap: 14px;
+          font-size: 10px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        .topbar .langs {
+          gap: 10px;
+          font-size: 10px;
+          justify-content: center;
+        }
+        .topbar .langs .label-prop {
+          display: none;
+        }
+        .nav {
+          padding: 18px 0;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 16px;
+        }
+        nav ul {
+          gap: 18px;
+          flex-wrap: wrap;
+          font-size: 12px;
+        }
+        nav ul a {
+          font-size: 12px;
+        }
+        .cta-pill {
+          padding: 11px 18px;
+          font-size: 11px;
+          align-self: stretch;
+          justify-content: center;
+        }
+        .brand-mark {
+          width: 38px;
+          height: 38px;
+          font-size: 19px;
+        }
+        .brand .word .name {
+          font-size: 21px;
+        }
+
+        .hero {
+          padding: 36px 0 56px;
+        }
+        .hero-grid {
+          grid-template-columns: 1fr;
+          gap: 36px;
+        }
+        .hero h1 {
+          font-size: clamp(34px, 9vw, 50px);
+        }
+        .hero .lead {
+          font-size: 16px;
+        }
+        .hero-actions {
+          gap: 14px;
+        }
+        .hero-actions .cta-pill {
+          align-self: flex-start;
+        }
+        .hero-meta {
+          margin-top: 32px;
+          padding-top: 24px;
+          gap: 14px;
+        }
+        .hero-meta .item .num {
+          font-size: 26px;
+        }
+        .hero-meta .item .lbl {
+          font-size: 9.5px;
+          letter-spacing: 0.1em;
+        }
+        .hero-visual .badge {
+          top: 16px;
+          left: 16px;
+          padding: 11px 14px;
+        }
+        .hero-visual .badge .v {
+          font-size: 15px;
+        }
+        .hero-visual .caption {
+          bottom: 16px;
+          right: 16px;
+          padding: 11px 16px;
+          max-width: 200px;
+        }
+        .hero-visual .caption .v {
+          font-size: 14px;
+        }
+
+        .authority,
+        .treatments,
+        .languages,
+        .booking,
+        .contact {
+          padding: 64px 0;
+        }
+        .authority-grid,
+        .treatments-head,
+        .booking-grid,
+        .contact-grid,
+        .languages-head {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+        .credentials {
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+        .credentials .cred {
+          padding: 12px 0;
+        }
+        .treatments-grid {
+          grid-template-columns: 1fr;
+        }
+        .treatments-grid .item {
+          padding: 28px 22px;
+          min-height: auto;
+        }
+        .lang-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .lang-grid .lang {
+          padding: 26px 18px;
+          min-height: 160px;
+        }
+        .lang-grid .lang .code {
+          font-size: 30px;
+        }
+        .booking .visual,
+        .authority-visual,
+        .contact-visual {
+          aspect-ratio: 4 / 5;
+        }
+        .contact-info {
+          grid-template-columns: 1fr;
+          gap: 18px;
+        }
+        .contact-actions {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .contact-actions .btn-primary,
+        .contact-actions .btn-outline {
+          justify-content: center;
+        }
+
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 32px;
+        }
+        footer .brand-block {
+          grid-column: 1 / -1;
+        }
+        .footer-bottom {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 12px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 0 18px;
+        }
+        .hero h1 {
+          font-size: clamp(30px, 8.5vw, 42px);
+        }
+        .hero-meta {
+          grid-template-columns: 1fr 1fr;
+        }
+        .hero-meta .item:nth-child(3) {
+          grid-column: 1 / -1;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div class="container row">
+        <div class="langs">
+          <a href="#" class="active">ES</a>
+          <a href="#" class="active" style="opacity: 1; color: var(--champagne-soft)">EN</a>
+          <span class="sep">|</span>
+          <a href="#" class="proposed">DE</a>
+          <a href="#" class="proposed">NL</a>
+          <a href="#" class="proposed">FR</a>
+          <a href="#" class="proposed">RU</a>
+          <span class="label-prop">Propuesto</span>
+        </div>
+        <div class="info">
+          <span>Calle Marqués de Campo, 46 · Dénia</span>
+          <span>+34 966 421 549</span>
+          <span>info@clinicacastelblanque.com</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- HEADER -->
+    <header>
+      <div class="container nav">
+        <a href="#" class="brand">
+          <div class="brand-mark">C</div>
+          <div class="word">
+            <span class="name">Castelblanque</span>
+            <span class="tag">Clínica · Medicina estética</span>
+          </div>
+        </a>
+        <nav>
+          <ul>
+            <li><a href="#authority">La doctora</a></li>
+            <li><a href="#treatments">Tratamientos</a></li>
+            <li><a href="#booking">Cita online</a></li>
+            <li><a href="#contact">Dénia</a></li>
+          </ul>
+        </nav>
+        <a href="#booking" class="cta-pill">Reservar consulta</a>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">Medicina estética · Dénia</div>
+          <h1>
+            La diferencia tiene <em>nombre y formación</em>.<br />
+            Y se llama Dra. Castelblanque.
+          </h1>
+          <p class="lead">
+            Medicina estética y cirugía facial dirigida personalmente por la
+            Dra. Laura Castelblanque Moreno. Cada consulta empieza
+            escuchando, no recetando.
+          </p>
+          <div class="hero-actions">
+            <a href="#booking" class="cta-pill">Reservar primera consulta</a>
+            <a href="#authority" class="btn-ghost">Conocer a la doctora</a>
+          </div>
+          <div class="hero-meta">
+            <div class="item">
+              <div class="num"><em>4,7</em></div>
+              <div class="lbl">Google Maps · Dénia</div>
+            </div>
+            <div class="item">
+              <div class="num"><em>5,0</em></div>
+              <div class="lbl">Doctoralia verificada</div>
+            </div>
+            <div class="item">
+              <div class="num"><em>1ª</em></div>
+              <div class="lbl">Consulta personal · Sin lista de espera</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="frame">
+            <img
+              src="img/hero-doctor-silhouette.jpg"
+              alt="Imagen referencial · Silueta editorial de la doctora en consulta"
+            />
+            <div class="badge">
+              <div class="k">Dirección médica</div>
+              <div class="v">Dra. Laura<br />Castelblanque Moreno</div>
+            </div>
+            <div class="caption">
+              <div class="k">Consulta privada</div>
+              <div class="v">Marqués de Campo, 46 — Dénia centro</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AUTHORITY -->
+    <section class="authority" id="authority">
+      <div class="container authority-grid">
+        <div class="authority-text">
+          <div class="eyebrow">Dirección médica</div>
+          <h2>
+            Una consulta dirigida por <em>la doctora</em>, no por una
+            recepcionista con catálogo.
+          </h2>
+          <p>
+            La Dra. Laura Castelblanque Moreno es médica de familia con
+            formación específica en medicina estética. Su práctica combina
+            criterio clínico y juicio facial — dos cosas que no siempre van
+            juntas en un sector saturado de promesas.
+          </p>
+          <p>
+            En Castelblanque no hay franquicia ni protocolo enlatado. Cada
+            paciente que entra por la puerta es atendido por la misma persona
+            que firma los tratamientos.
+          </p>
+          <div class="credentials">
+            <div class="cred">
+              <div class="k">Formación</div>
+              <div class="v">Medicina de familia<br />Medicina estética</div>
+            </div>
+            <div class="cred">
+              <div class="k">Práctica</div>
+              <div class="v">Tratamientos faciales<br />Diagnóstico y seguimiento</div>
+            </div>
+            <div class="cred">
+              <div class="k">Verificada en</div>
+              <div class="v">Doctoralia · 5 ★<br />Google · 4,7 ★</div>
+            </div>
+            <div class="cred">
+              <div class="k">Ubicación</div>
+              <div class="v">Dénia centro<br />Marqués de Campo</div>
+            </div>
+          </div>
+        </div>
+        <div class="authority-visual">
+          <img
+            src="img/credentials-bodegon.jpg"
+            alt="Imagen referencial · Bodegón editorial de instrumental y materiales"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- TREATMENTS -->
+    <section class="treatments" id="treatments">
+      <div class="container">
+        <div class="treatments-head">
+          <div>
+            <div class="eyebrow">Tratamientos</div>
+            <h2>
+              Lo que <em>hacemos</em> y por qué lo hacemos.
+            </h2>
+          </div>
+          <p>
+            Categorías generales del servicio. Cada tratamiento se decide en
+            consulta médica privada y se ajusta al rostro de quien tenemos
+            delante. Sin paquetes cerrados.
+          </p>
+        </div>
+        <div class="treatments-grid">
+          <div class="item">
+            <div class="num">01</div>
+            <h3>Medicina estética facial</h3>
+            <p>
+              Tratamientos no quirúrgicos para descansar, suavizar y
+              armonizar. Con criterio médico y dosis pensadas para no
+              alterar la expresión.
+            </p>
+            <div class="arrow">Consultar →</div>
+          </div>
+          <div class="item">
+            <div class="num">02</div>
+            <h3>Aparatología avanzada</h3>
+            <p>
+              Tecnología clínica para piel, textura y firmeza. Indicada en
+              consulta según diagnóstico, no como menú comercial.
+            </p>
+            <div class="arrow">Consultar →</div>
+          </div>
+          <div class="item">
+            <div class="num">03</div>
+            <h3>Diagnóstico y seguimiento</h3>
+            <p>
+              Primera consulta de evaluación detallada. Plan de tratamiento
+              personal y revisiones a tiempo, no a calendario comercial.
+            </p>
+            <div class="arrow">Consultar →</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LANGUAGES -->
+    <section class="languages">
+      <div class="container">
+        <div class="languages-head">
+          <div>
+            <div class="eyebrow">Multilingüe</div>
+            <h2>
+              Dénia <em>habla seis idiomas</em>.<br />
+              La consulta debería atenderlos.
+            </h2>
+          </div>
+          <p>
+            La Marina Alta es uno de los mayores núcleos expat de España.
+            Hoy la web habla castellano e inglés. La propuesta es ampliar
+            a los idiomas que viven en Dénia y comarca.
+          </p>
+        </div>
+        <div class="lang-grid">
+          <div class="lang">
+            <div class="code">ES</div>
+            <div class="name">Castellano</div>
+            <div class="status activo">Activo</div>
+          </div>
+          <div class="lang">
+            <div class="code">EN</div>
+            <div class="name">English</div>
+            <div class="status activo">Activo</div>
+          </div>
+          <div class="lang proposed">
+            <div class="code">DE</div>
+            <div class="name">Deutsch</div>
+            <div class="status">Propuesto</div>
+          </div>
+          <div class="lang proposed">
+            <div class="code">NL</div>
+            <div class="name">Nederlands</div>
+            <div class="status">Propuesto</div>
+          </div>
+          <div class="lang proposed">
+            <div class="code">FR</div>
+            <div class="name">Français</div>
+            <div class="status">Propuesto</div>
+          </div>
+          <div class="lang proposed">
+            <div class="code">RU</div>
+            <div class="name">Русский</div>
+            <div class="status">Propuesto</div>
+          </div>
+        </div>
+        <p class="lang-foot">
+          ES y EN son los idiomas hoy activos en clinicacastelblanque.com.
+          DE, NL, FR y RU son una propuesta de Kenaz Studio basada en el
+          perfil del paciente real de la Marina Alta.
+        </p>
+      </div>
+    </section>
+
+    <!-- BOOKING -->
+    <section class="booking" id="booking">
+      <div class="container booking-grid">
+        <div class="visual">
+          <img
+            src="img/treatment-room.jpg"
+            alt="Imagen referencial · Sala de tratamiento editorial"
+          />
+        </div>
+        <div class="copy">
+          <div class="eyebrow">Cita online · Propuesto</div>
+          <h2>
+            Reservar una consulta debería tomar <em>menos de un minuto</em>.
+          </h2>
+          <p>
+            La web actual pide rellenar un formulario y esperar. Proponemos
+            agenda integrada que muestra los huecos reales de la doctora y
+            confirma al instante.
+          </p>
+          <div class="booking-steps">
+            <div class="step">
+              <div class="n">1</div>
+              <div class="label">
+                Elegir motivo
+                <small>Primera consulta · Revisión · Tratamiento concreto</small>
+              </div>
+            </div>
+            <div class="step">
+              <div class="n">2</div>
+              <div class="label">
+                Elegir horario
+                <small>Calendario en vivo con disponibilidad real</small>
+              </div>
+            </div>
+            <div class="step">
+              <div class="n">3</div>
+              <div class="label">
+                Confirmar
+                <small>Email + recordatorio + cancelación gestionable</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+      <div class="container contact-grid">
+        <div>
+          <div class="eyebrow">Dénia · Marina Alta</div>
+          <h2>Pasar por la <em>consulta</em>.</h2>
+          <p>
+            La clínica está en Calle Marqués de Campo, 46, en pleno centro
+            de Dénia, sobre el Edificio Oficampos. Recepción atiende
+            castellano e inglés.
+          </p>
+          <div class="contact-info">
+            <div class="block">
+              <div class="k">Dirección</div>
+              <div class="v">
+                Marqués de Campo, 46
+                <small>Edificio Oficampos · 03700 Dénia, Alicante</small>
+              </div>
+            </div>
+            <div class="block">
+              <div class="k">Teléfono</div>
+              <div class="v">
+                +34 966 421 549
+                <small>+34 609 290 044 · móvil</small>
+              </div>
+            </div>
+            <div class="block">
+              <div class="k">Email</div>
+              <div class="v">
+                info@<br />clinicacastelblanque.com
+              </div>
+            </div>
+            <div class="block">
+              <div class="k">Verificada en</div>
+              <div class="v">
+                Google · 4,7 ★
+                <small>Doctoralia · 5,0 ★ — Dra. Laura Castelblanque Moreno</small>
+              </div>
+            </div>
+          </div>
+          <div class="contact-actions">
+            <a href="#booking" class="btn-primary">Reservar primera consulta</a>
+            <a href="tel:+34966421549" class="btn-outline">Llamar a la clínica</a>
+          </div>
+        </div>
+        <div class="contact-visual">
+          <img
+            src="img/denia-coastal.jpg"
+            alt="Imagen referencial · Vista costera de Dénia"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="brand-block">
+            <a href="#" class="brand">
+              <div class="brand-mark">C</div>
+              <div class="word">
+                <span class="name">Castelblanque</span>
+                <span class="tag">Clínica · Medicina estética</span>
+              </div>
+            </a>
+            <p>
+              Consulta privada de medicina estética en Dénia, dirigida por
+              la Dra. Laura Castelblanque Moreno. Atención personal,
+              criterio clínico y seguimiento real.
+            </p>
+          </div>
+          <div class="footer-col">
+            <h4>Clínica</h4>
+            <ul>
+              <li>La doctora</li>
+              <li>Tratamientos</li>
+              <li>Cita online</li>
+              <li>Aviso legal</li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Contacto</h4>
+            <ul>
+              <li>Marqués de Campo, 46</li>
+              <li>03700 Dénia · Alicante</li>
+              <li>+34 966 421 549</li>
+              <li>info@clinicacastelblanque.com</li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Idiomas</h4>
+            <ul>
+              <li>ES · Activo</li>
+              <li>EN · Activo</li>
+              <li style="opacity: 0.55">DE · Propuesto</li>
+              <li style="opacity: 0.55">NL · FR · RU · Propuestos</li>
+            </ul>
+          </div>
+        </div>
+        <p class="footer-note">
+          Imágenes referenciales generadas para presentación. Las fotografías
+          finales son sesión propia con la Dra. Castelblanque y la clínica
+          real. Datos de contacto, dirección y credenciales verificados en
+          fuentes públicas (web propia, Doctoralia, Google Maps · mayo 2026).
+        </p>
+        <div class="footer-bottom">
+          <div class="legal">
+            © Clínica Castelblanque · Dénia, Marina Alta
+          </div>
+          <div class="kenaz">
+            Diseño propuesto por <a href="https://kenaz.studio">Kenaz Studio</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
